@@ -11,8 +11,6 @@ import {
   FieldValues
 } from 'react-hook-form'
 
-import { getErrorMessage } from 'dbaas/services/errorCodes'
-
 import { FormActions, FormActionsProps } from './FormActions'
 import { FormErrorMessage, FormErrorMessageProps } from './FormErrorMessage'
 import { FormLayout, FormLayoutProps, FormLayoutType } from './FormLayout'
@@ -68,7 +66,7 @@ const _Form = <T extends object = {}>({
       await onSubmit(data, event)
       setSubmitting(false)
     } catch (e) {
-      setSubmitError(getErrorMessage(e))
+      setSubmitError((e as any).message)
       setSubmitting(false)
     }
   }
