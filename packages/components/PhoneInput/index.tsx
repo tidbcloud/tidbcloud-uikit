@@ -10,7 +10,6 @@ import {
 import { useState } from 'react'
 import ReactPhoneInput, { PhoneInputProps as ReactPhoneInputProps } from 'react-phone-input-2'
 
-import styles from './index.module.css'
 import useStyles from './styles'
 
 export interface PhoneInputProps
@@ -53,7 +52,7 @@ export const PhoneInput: React.FC<PhoneInputProps> = (props) => {
           // styles
           inputClass={cx(classes.input, { [classes.inputError]: wrapperProps.error }, inputClass)}
           buttonClass={cx(classes.dropdownButton, buttonClass)}
-          containerClass={cx(styles.container, { [classes.containerError]: wrapperProps.error }, containerClass)}
+          containerClass={cx(classes.container, { [classes.containerError]: wrapperProps.error }, containerClass)}
           disableDropdown
           dropdownClass={cx(classes.dropdown, dropdownClass)}
           searchClass={cx(classes.search, searchClass)}

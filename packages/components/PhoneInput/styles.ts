@@ -6,7 +6,16 @@ export default createStyles((theme) => {
       display: 'none'
     },
     dropdown: {},
-    container: {},
+    container: {
+      '& .react-tel-input .form-control': {
+        width: '100%',
+        height: 40,
+        minHeight: 40,
+        lineHeight: '38px',
+        borderRadius: 8,
+        padding: '0 12px'
+      }
+    },
     containerError: {
       marginBottom: 5
     },
