@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "gen:icon": "tsx ./scripts/icon.ts",
-    "build": "tsup"
+    "build": "tsup",
+    "postbuild": "tsx ./scripts/postbuild.ts"
   },
   "dependencies": {
     "@elastic/charts": "^47.2.1",

@@ -19,5 +19,6 @@ export default defineConfig({
   shims: true,
   clean: true,
   dts: true,
-  external: ['react', 'react-dom']
+  external: ['react', 'react-dom'],
+  onSuccess: 'pnpm run postbuild'
 })
