@@ -1,7 +1,7 @@
+import { Checkbox, CheckboxProps } from '@mantine/core'
 import { get } from 'lodash-es'
 import React from 'react'
 import { Controller, RegisterOptions, useFormContext } from 'react-hook-form'
-import { Checkbox, CheckboxProps } from '@mantine/core'
 
 export interface FormCheckboxProps extends CheckboxProps {
   name: string

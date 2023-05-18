@@ -3,12 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "typecheck": "tsc --noEmit",
     "gen:icon": "tsx ./scripts/icon.ts",
     "build": "tsup",
-    "postbuild": "tsx ./scripts/postbuild.ts"
+    "postbuild": "tsx ./scripts/postbuild.ts",
+    "prepare": "is-ci || husky install"
   },
   "dependencies": {
-    "@elastic/charts": "^47.2.1",
     "@emotion/react": "^11.10.5",
     "@mantine/carousel": "5.10.4",
     "@mantine/core": "5.10.4",
@@ -47,6 +48,11 @@
     "@types/react": "^17.0.49",
     "@types/react-dom": "^17.0.17",
     "@types/react-table": "^7.1.12",
+    "eslint": "^8.40.0",
+    "eslint-config-react-app": "^7.0.1",
+    "husky": "^8.0.3",
+    "is-ci": "^3.0.1",
+    "lint-staged": "^13.2.2",
     "markdown-table": "^3.0.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",

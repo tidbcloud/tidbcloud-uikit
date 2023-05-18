@@ -1,5 +1,6 @@
-import React from 'react'
 import { Box } from '@mantine/core'
+import React from 'react'
+
 import { Colors } from '../theme'
 
 export interface DotProps {

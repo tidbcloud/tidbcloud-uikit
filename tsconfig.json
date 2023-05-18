@@ -27,6 +27,6 @@
     "useDefineForClassFields": true,
     "noFallthroughCasesInSwitch": true,
   },
-  "include": ["packages/**/*.ts"],
+  "include": ["packages"],
   "exclude": ["node_modules", "dist"]
 }
