@@ -1,0 +1,40 @@
+name: publish
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '18'
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Check
+        run: pnpm typecheck
+
+      - name: Build
+        run: pnpm build
+
+      - name: Publish
+        run: |
+          git config --global user.name "github-bot"
+          git config --global user.email "username@users.noreply.github.com"
+          git add .
+          git add dist -f
+          git commit -m "publish"
+          git push origin master:next -f
