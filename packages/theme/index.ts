@@ -6,5 +6,3 @@ export * from './fns'
 export { FONT_FAMILY } from './font'
 
 export { theme as Theme } from './theme'
-
-export * from './Chart'
