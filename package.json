@@ -1,5 +1,5 @@
 {
-  "name": "@tidbcloud/uikit",
+  "name": "uikit",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -33,8 +33,8 @@
     "react-table": "^7.8.0"
   },
   "peerDependencies": {
-    "react": "17 || 18",
-    "react-dom": "17 || 18"
+    "react": "17",
+    "react-dom": "17"
   },
   "devDependencies": {
     "@svgr/core": "^8.0.0",
@@ -52,5 +52,73 @@
     "tsup": "^6.7.0",
     "tsx": "^3.12.7",
     "typescript": "^5.0.4"
+  },
+  "main": "dist/components/index.js",
+  "module": "./dist/components/index.mjs",
+  "exports": {
+    ".": {
+      "types": "./dist/components/index.d.ts",
+      "require": "./dist/components/index.js",
+      "import": "./dist/components/index.mjs"
+    },
+    "./carousel": {
+      "types": "./dist/carousel/index.d.ts",
+      "require": "./dist/carousel/index.js",
+      "import": "./dist/carousel/index.mjs"
+    },
+    "./components": {
+      "types": "./dist/components/index.d.ts",
+      "require": "./dist/components/index.js",
+      "import": "./dist/components/index.mjs"
+    },
+    "./dates": {
+      "types": "./dist/dates/index.d.ts",
+      "require": "./dist/dates/index.js",
+      "import": "./dist/dates/index.mjs"
+    },
+    "./form": {
+      "types": "./dist/form/index.d.ts",
+      "require": "./dist/form/index.js",
+      "import": "./dist/form/index.mjs"
+    },
+    "./hooks": {
+      "types": "./dist/hooks/index.d.ts",
+      "require": "./dist/hooks/index.js",
+      "import": "./dist/hooks/index.mjs"
+    },
+    "./icons": {
+      "types": "./dist/icons/index.d.ts",
+      "require": "./dist/icons/index.js",
+      "import": "./dist/icons/index.mjs"
+    },
+    "./modals": {
+      "types": "./dist/modals/index.d.ts",
+      "require": "./dist/modals/index.js",
+      "import": "./dist/modals/index.mjs"
+    },
+    "./notifications": {
+      "types": "./dist/notifications/index.d.ts",
+      "require": "./dist/notifications/index.js",
+      "import": "./dist/notifications/index.mjs"
+    },
+    "./prism": {
+      "types": "./dist/prism/index.d.ts",
+      "require": "./dist/prism/index.js",
+      "import": "./dist/prism/index.mjs"
+    },
+    "./theme": {
+      "types": "./dist/theme/index.d.ts",
+      "require": "./dist/theme/index.js",
+      "import": "./dist/theme/index.mjs"
+    },
+    "./utils": {
+      "types": "./dist/utils/index.d.ts",
+      "require": "./dist/utils/index.js",
+      "import": "./dist/utils/index.mjs"
+    },
+    "./package.json": {
+      "require": "./package.json",
+      "import": "./package.json"
+    }
   }
 }
