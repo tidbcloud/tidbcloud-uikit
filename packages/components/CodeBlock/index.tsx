@@ -2,7 +2,7 @@ import { CopyButton, ActionIcon, Flex, Tooltip } from '@mantine/core'
 import { Prism } from '@mantine/prism'
 import { Language } from 'prism-react-renderer'
 
-import { Icon } from '../icons'
+import { Icon } from '../../icons'
 
 export interface CodeBlockProps {
   value: string

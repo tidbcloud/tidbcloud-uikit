@@ -9,8 +9,8 @@ import {
   MultiSelectStylesParams
 } from '@mantine/core'
 
-import { getButtonStyles } from '../components/Button'
-import { getInputStyles } from '../components/Input'
+import { getButtonStyles } from '../components/Button/style'
+import { getInputStyles } from '../components/Input/style'
 
 import { FONT_FAMILY } from './font'
 

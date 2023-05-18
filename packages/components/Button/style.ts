@@ -1,6 +1,6 @@
 import { ButtonStylesParams, CSSObject, MantineTheme } from '@mantine/core'
 
-import { LegacyColors } from '../theme/colors'
+import { LegacyColors } from '../../theme/colors'
 
 export const getButtonStyles = (theme: MantineTheme, params: ButtonStylesParams): Record<string, CSSObject> => {
   const { color, variant, gradient } = params

@@ -1,6 +1,6 @@
 import { Box, Tooltip } from '@mantine/core'
 
-import { Icon } from '../icons'
+import { Icon } from '../../icons'
 
 export function LabelTooltip({ label }: { label: string | JSX.Element }) {
   return (
