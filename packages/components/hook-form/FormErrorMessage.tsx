@@ -1,6 +1,6 @@
 import { Alert, AlertProps } from '@mantine/core'
 import DOMPurify from 'dompurify'
-import { useState, useRef, useEffect } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 
 import { Icon } from '../../icons'
 

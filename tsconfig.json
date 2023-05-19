@@ -10,7 +10,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx",
+    "jsx": "react",
     "forceConsistentCasingInFileNames": true,
     "noImplicitReturns": false,
     "noImplicitThis": false,

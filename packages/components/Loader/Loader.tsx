@@ -1,5 +1,6 @@
 import { Box, LoaderProps } from '@mantine/core'
 import { useMantineTheme, useComponentDefaultProps } from '@mantine/styles'
+import React from 'react'
 
 import { Oval } from './loaders/Oval'
 

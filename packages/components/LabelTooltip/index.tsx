@@ -1,4 +1,5 @@
 import { Box, Tooltip } from '@mantine/core'
+import React from 'react'
 
 import { Icon } from '../../icons'
 

@@ -1,4 +1,5 @@
 import { LoadingOverlay as MatineLoadingOverlay, LoadingOverlayProps } from '@mantine/core'
+import React from 'react'
 
 import { Loader } from '../Loader'
 

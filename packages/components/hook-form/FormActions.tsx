@@ -1,5 +1,6 @@
 import { Button, ButtonProps, Flex, FlexProps } from '@mantine/core'
 import { PolymorphicComponentProps } from '@mantine/utils'
+import React from 'react'
 
 import { TYPOGRAPHY_STYLES_MAP } from '../Typography'
 

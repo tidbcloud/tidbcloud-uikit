@@ -1,5 +1,6 @@
 import { MantineStyleSystemProps, Text, TextProps } from '@mantine/core'
 import { createPolymorphicComponent } from '@mantine/utils'
+import React from 'react'
 
 type TypographyVariants =
   | 'title'

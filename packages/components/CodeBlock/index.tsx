@@ -1,6 +1,7 @@
 import { CopyButton, ActionIcon, Flex, Tooltip } from '@mantine/core'
 import { Prism } from '@mantine/prism'
 import { Language } from 'prism-react-renderer'
+import React from 'react'
 
 import { Icon } from '../../icons'
 

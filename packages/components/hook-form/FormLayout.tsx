@@ -1,4 +1,5 @@
 import { Flex, FlexProps } from '@mantine/core'
+import React from 'react'
 
 export type FormLayoutType = 'horizontal' | 'vertical' | 'none'
 export interface FormLayoutProps extends FlexProps {

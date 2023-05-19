@@ -1,4 +1,5 @@
 import { Box, keyframes } from '@mantine/core'
+import React from 'react'
 
 import { LoaderProps } from './loader-props'
 
