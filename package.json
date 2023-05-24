@@ -7,7 +7,9 @@
     "gen:icon": "tsx ./scripts/icon.ts",
     "build": "tsup",
     "postbuild": "tsx ./scripts/postbuild.ts",
-    "prepare": "node ./scripts/prepare.js"
+    "prepare": "node ./scripts/prepare.js",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "@emotion/react": "^11.10.5",
@@ -40,6 +42,14 @@
     "react-dom": ">=17"
   },
   "devDependencies": {
+    "@storybook/addon-essentials": "^7.0.15",
+    "@storybook/addon-interactions": "^7.0.15",
+    "@storybook/addon-links": "^7.0.15",
+    "@storybook/blocks": "^7.0.15",
+    "@storybook/global": "^5.0.0",
+    "@storybook/react": "^7.0.15",
+    "@storybook/react-vite": "^7.0.15",
+    "@storybook/testing-library": "^0.0.14-next.2",
     "@svgr/core": "^8.0.0",
     "@svgr/plugin-jsx": "^8.0.1",
     "@svgr/plugin-prettier": "^8.0.1",
@@ -52,12 +62,16 @@
     "@types/react-window": "^1.8.5",
     "eslint": "^8.40.0",
     "eslint-config-react-app": "^7.0.1",
+    "eslint-plugin-storybook": "^0.6.12",
     "husky": "^8.0.3",
     "is-ci": "^3.0.1",
     "lint-staged": "^13.2.2",
     "markdown-table": "^3.0.3",
+    "prop-types": "^15.8.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "storybook": "^7.0.15",
+    "storybook-dark-mode": "^3.0.0",
     "tsup": "^6.7.0",
     "tsx": "^3.12.7",
     "typescript": "~4.7.4"
