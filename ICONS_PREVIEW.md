@@ -3,7 +3,7 @@
 ## Add new SVG Icon
 
 1. put new svg files into `src/uikit/icons/raw`
-2. run npm script `yarn gen:icon`
+2. run npm script `npm run gen:icon`
 
 ## Usage
 
@@ -17,7 +17,7 @@ import { Icon } from '@tidb-cloud-uikit/icons'
 
 ## Preview
 
-|                                 Preview                                | Name                 | Usage                                  |
+|                                Preview                                 | Name                 | Usage                                  |
 | :--------------------------------------------------------------------: | :------------------- | :------------------------------------- |
 |          ![AiExplore01](./packages/icons/raw/AiExplore01.svg)          | AiExplore01          | `<Icon name="AiExplore01" />`          |
 |          ![AlertCircle](./packages/icons/raw/AlertCircle.svg)          | AlertCircle          | `<Icon name="AlertCircle" />`          |
