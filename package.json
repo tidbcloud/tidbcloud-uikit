@@ -36,8 +36,8 @@
     "react-window": "^1.8.9"
   },
   "peerDependencies": {
-    "react": "17",
-    "react-dom": "17"
+    "react": ">=17",
+    "react-dom": ">=17"
   },
   "devDependencies": {
     "@svgr/core": "^8.0.0",
