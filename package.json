@@ -7,7 +7,7 @@
     "gen:icon": "tsx ./scripts/icon.ts",
     "build": "tsup",
     "postbuild": "tsx ./scripts/postbuild.ts",
-    "prepare": "is-ci || husky install"
+    "prepare": "node ./scripts/prepare.js"
   },
   "dependencies": {
     "@emotion/react": "^11.10.5",
