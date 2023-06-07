@@ -1,0 +1,33 @@
+{
+  "name": "@tidbcloud/uikit-primitives",
+  "version": "0.0.1",
+  "description": "primitive components",
+  "main": "dist/index.js",
+  "module": "dis/index.mjs",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "test": "test",
+    "build": "tsup"
+  },
+  "files": ["dist"],
+  "author": "",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:tidbcloud/tidbcloud-uikit.git"
+  },
+  "tsup": {
+    "entry": ["src/index.ts"],
+    "format": ["cjs", "esm"],
+    "sourcemap": true,
+    "clean": true,
+    "dts": true
+  },
+  "license": "MIT"
+}
