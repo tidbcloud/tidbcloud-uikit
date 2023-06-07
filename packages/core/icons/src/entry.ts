@@ -35,12 +35,15 @@ import ChevronLeft from './react/ChevronLeft'
 import ChevronRight from './react/ChevronRight'
 import ChevronRightFill from './react/ChevronRightFill'
 import ChevronUp from './react/ChevronUp'
+import ChevronVerticalExpand from './react/ChevronVerticalExpand'
+import ChevronVerticalShrink from './react/ChevronVerticalShrink'
 import Clock from './react/Clock'
 import CodeBrowser from './react/CodeBrowser'
 import CodeCircle02 from './react/CodeCircle02'
 import CodeCircle03 from './react/CodeCircle03'
 import Connect from './react/Connect'
 import Copy01 from './react/Copy01'
+import Copy03 from './react/Copy03'
 import Copy07 from './react/Copy07'
 import CurrencyDollarCircle from './react/CurrencyDollarCircle'
 import CursorClick01 from './react/CursorClick01'
@@ -67,10 +70,12 @@ import EyeOff from './react/EyeOff'
 import FaceNeutral from './react/FaceNeutral'
 import FaceSmile from './react/FaceSmile'
 import File02 from './react/File02'
+import File05 from './react/File05'
 import File06 from './react/File06'
 import FileImport02 from './react/FileImport02'
 import FilterFunnel01 from './react/FilterFunnel01'
 import FilterLines from './react/FilterLines'
+import Github from './react/Github'
 import Glasses01 from './react/Glasses01'
 import Grid01 from './react/Grid01'
 import HeartHand from './react/HeartHand'
@@ -111,18 +116,23 @@ import MessageTextSquare01 from './react/MessageTextSquare01'
 import MessageTextSquare02 from './react/MessageTextSquare02'
 import Minimize01 from './react/Minimize01'
 import Minus from './react/Minus'
+import MinusCircle from './react/MinusCircle'
 import Moon from './react/Moon'
 import NotificationBox from './react/NotificationBox'
 import Numberic from './react/Numberic'
 import OpenAi from './react/OpenAi'
+import OrientationHorizontalFill from './react/OrientationHorizontalFill'
+import OrientationVerticalFill from './react/OrientationVerticalFill'
 import PackagePlus from './react/PackagePlus'
 import ParagraphSpacing from './react/ParagraphSpacing'
 import PauseCircle from './react/PauseCircle'
+import Pencil01 from './react/Pencil01'
 import PieChart03 from './react/PieChart03'
 import PlayCircle from './react/PlayCircle'
 import Plus from './react/Plus'
 import PlusSquare from './react/PlusSquare'
 import Question from './react/Question'
+import Redeploy from './react/Redeploy'
 import RefreshCw01 from './react/RefreshCw01'
 import RefreshCw02 from './react/RefreshCw02'
 import RefreshCw04 from './react/RefreshCw04'
@@ -165,7 +175,7 @@ import YAxis from './react/YAxis'
 
 
 export const ICON_MAP = {
-AiExplore01,AlertCircle,AlertTriangle,AlertTriangleFill,AlignLeft01,AlignRight01,ArrowDown,ArrowLeft,ArrowRight,ArrowUp,Atom01,BarChart04,BarChart07,BarChart08,BarHorizontal,BarVertical,BookClosed,BookOpen02,Brackets,BracketsEllipses,Building05,Calendar,Check,CheckCircle,CheckCirclebroken,CheckSquareBroken,CheckVerified02,ChevronDown,ChevronDownFill,ChevronLeft,ChevronRight,ChevronRightFill,ChevronUp,Clock,CodeBrowser,CodeCircle02,CodeCircle03,Connect,Copy01,Copy07,CurrencyDollarCircle,CursorClick01,DataApiSystem,DataService,DataServiceAdd,Database,Database01,Database03,DatabseTable,Dataflow03,DotPoints01,DotsHorizontal,DotsVertical,Download01,DownloadCloud01,DragIn,Edit03,Edit05,Eraser,Expand01,Eye,EyeOff,FaceNeutral,FaceSmile,File02,File06,FileImport02,FilterFunnel01,FilterLines,Glasses01,Grid01,HeartHand,HelpCircle,HomeLine,Inbox01,Info2,InfoCircle,Key02,LaygroundGrid02,LayoutAlt03,LayoutBottom,LayoutBottomFill,LayoutLeft,LayoutLeftFill,LayoutRight,LayoutRightFill,LayoutTop,LayoutTopFill,LeftIndent01,LineChart,LineChartUp01,Link03,LinkExternal01,List,Lock01,LockUnlocked01,LogOut03,MediaGithub,MediaGoogle,MediaMicrosoft,Menu01,MenuLeft,MenuRight,MessageChatSquare,MessageSquare02,MessageTextSquare01,MessageTextSquare02,Minimize01,Minus,Moon,NotificationBox,Numberic,OpenAi,PackagePlus,ParagraphSpacing,PauseCircle,PieChart03,PlayCircle,Plus,PlusSquare,Question,RefreshCw01,RefreshCw02,RefreshCw04,Repeat04,Right,RightIndent01,Rocket02,Run,RunFill,Scale02,Scale03,SearchLg,Series,Server02,Server05,Service,Settings01,Settings02,Shield03,ShieldTick,ShieldUser,Star04,String01,Sun,SwitchHorizontal02,SwitchVertical02,SystemDatabase,Tools,Trash01,Types02,UploadCloud01,UserCircle,Users01,Variable,Wifi,XAxis,XCircle,XClose,YAxis
+AiExplore01,AlertCircle,AlertTriangle,AlertTriangleFill,AlignLeft01,AlignRight01,ArrowDown,ArrowLeft,ArrowRight,ArrowUp,Atom01,BarChart04,BarChart07,BarChart08,BarHorizontal,BarVertical,BookClosed,BookOpen02,Brackets,BracketsEllipses,Building05,Calendar,Check,CheckCircle,CheckCirclebroken,CheckSquareBroken,CheckVerified02,ChevronDown,ChevronDownFill,ChevronLeft,ChevronRight,ChevronRightFill,ChevronUp,ChevronVerticalExpand,ChevronVerticalShrink,Clock,CodeBrowser,CodeCircle02,CodeCircle03,Connect,Copy01,Copy03,Copy07,CurrencyDollarCircle,CursorClick01,DataApiSystem,DataService,DataServiceAdd,Database,Database01,Database03,DatabseTable,Dataflow03,DotPoints01,DotsHorizontal,DotsVertical,Download01,DownloadCloud01,DragIn,Edit03,Edit05,Eraser,Expand01,Eye,EyeOff,FaceNeutral,FaceSmile,File02,File05,File06,FileImport02,FilterFunnel01,FilterLines,Github,Glasses01,Grid01,HeartHand,HelpCircle,HomeLine,Inbox01,Info2,InfoCircle,Key02,LaygroundGrid02,LayoutAlt03,LayoutBottom,LayoutBottomFill,LayoutLeft,LayoutLeftFill,LayoutRight,LayoutRightFill,LayoutTop,LayoutTopFill,LeftIndent01,LineChart,LineChartUp01,Link03,LinkExternal01,List,Lock01,LockUnlocked01,LogOut03,MediaGithub,MediaGoogle,MediaMicrosoft,Menu01,MenuLeft,MenuRight,MessageChatSquare,MessageSquare02,MessageTextSquare01,MessageTextSquare02,Minimize01,Minus,MinusCircle,Moon,NotificationBox,Numberic,OpenAi,OrientationHorizontalFill,OrientationVerticalFill,PackagePlus,ParagraphSpacing,PauseCircle,Pencil01,PieChart03,PlayCircle,Plus,PlusSquare,Question,Redeploy,RefreshCw01,RefreshCw02,RefreshCw04,Repeat04,Right,RightIndent01,Rocket02,Run,RunFill,Scale02,Scale03,SearchLg,Series,Server02,Server05,Service,Settings01,Settings02,Shield03,ShieldTick,ShieldUser,Star04,String01,Sun,SwitchHorizontal02,SwitchVertical02,SystemDatabase,Tools,Trash01,Types02,UploadCloud01,UserCircle,Users01,Variable,Wifi,XAxis,XCircle,XClose,YAxis
 }
 
 
@@ -203,12 +213,15 @@ ChevronLeft,
 ChevronRight,
 ChevronRightFill,
 ChevronUp,
+ChevronVerticalExpand,
+ChevronVerticalShrink,
 Clock,
 CodeBrowser,
 CodeCircle02,
 CodeCircle03,
 Connect,
 Copy01,
+Copy03,
 Copy07,
 CurrencyDollarCircle,
 CursorClick01,
@@ -235,10 +248,12 @@ EyeOff,
 FaceNeutral,
 FaceSmile,
 File02,
+File05,
 File06,
 FileImport02,
 FilterFunnel01,
 FilterLines,
+Github,
 Glasses01,
 Grid01,
 HeartHand,
@@ -279,18 +294,23 @@ MessageTextSquare01,
 MessageTextSquare02,
 Minimize01,
 Minus,
+MinusCircle,
 Moon,
 NotificationBox,
 Numberic,
 OpenAi,
+OrientationHorizontalFill,
+OrientationVerticalFill,
 PackagePlus,
 ParagraphSpacing,
 PauseCircle,
+Pencil01,
 PieChart03,
 PlayCircle,
 Plus,
 PlusSquare,
 Question,
+Redeploy,
 RefreshCw01,
 RefreshCw02,
 RefreshCw04,
