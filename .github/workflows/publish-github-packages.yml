@@ -38,12 +38,12 @@ jobs:
       contents: read
       packages: write
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - name: Publish to Github Packages
+        id: changesets
+        uses: changesets/action@v1
         with:
-          node-version: 16
-          registry-url: https://npm.pkg.github.com/
-          cache: 'pnpm'
-      - run: pnpm publish -r
+          publish: pnpm release
+          commit: "ci(changesets): version packages"
+          setupGitUser: false
         env:
-          NPM_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
