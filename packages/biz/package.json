@@ -1,6 +1,6 @@
 {
   "name": "@tidbcloud/uikit-biz",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "",
   "main": "dist/index.js",
   "module": "dis/index.mjs",
@@ -41,5 +41,11 @@
     "sourcemap": true,
     "clean": true,
     "dts": true
+  },
+  "devDependencies": {
+    "ahooks": "^3.7.7"
+  },
+  "peerDependencies": {
+    "ahooks": "^3.7.7"
   }
 }

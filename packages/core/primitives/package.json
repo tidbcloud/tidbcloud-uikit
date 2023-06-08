@@ -1,6 +1,6 @@
 {
   "name": "@tidbcloud/uikit-primitives",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "primitive components",
   "main": "dist/index.js",
   "module": "dis/index.mjs",
@@ -9,7 +9,9 @@
     "test": "test",
     "build": "tsup"
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "author": "",
   "exports": {
     ".": {
@@ -23,8 +25,13 @@
     "url": "git@github.com:tidbcloud/tidbcloud-uikit.git"
   },
   "tsup": {
-    "entry": ["src/index.ts"],
-    "format": ["cjs", "esm"],
+    "entry": [
+      "src/index.ts"
+    ],
+    "format": [
+      "cjs",
+      "esm"
+    ],
     "sourcemap": true,
     "clean": true,
     "dts": true
