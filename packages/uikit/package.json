@@ -1,6 +1,6 @@
 {
   "name": "@tidbcloud/uikit",
-  "version": "0.0.2",
+  "version": "0.0.6",
   "description": "tidbcloud uikit",
   "main": "dist/index.js",
   "module": "dis/index.mjs",
@@ -14,20 +14,13 @@
     "dist"
   ],
   "author": "",
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "require": "./dist/index.js",
-      "import": "./dist/index.mjs"
-    }
-  },
   "repository": {
     "type": "git",
     "url": "git@github.com:tidbcloud/tidbcloud-uikit.git"
   },
   "tsup": {
     "entry": [
-      "src/index.ts"
+      "src/**/*.{ts,jsx}"
     ],
     "format": [
       "cjs",
@@ -35,10 +28,11 @@
     ],
     "sourcemap": true,
     "clean": true,
-    "dts": true
+    "dts": true,
+    "bundle": false
   },
   "license": "MIT",
-  "devDependencies": {
+  "dependencies": {
     "@emotion/react": "^11.10.5",
     "@mantine/carousel": "5.10.4",
     "@mantine/core": "5.10.4",
@@ -57,33 +51,28 @@
     "embla-carousel-react": "^7.0.5",
     "google-libphonenumber": "^3.2.30",
     "lodash-es": "^4.17.21",
+    "mantine-react-table": "0.9.5",
     "react-hook-form": "6.15.8",
     "react-phone-input-2": "^2.15.1",
     "react-table": "^7.8.0",
+    "react-table-sticky": "^1.1.3",
     "react-window": "^1.8.9"
   },
-  "peerDependencies": {
-    "@emotion/react": "^11.10.5",
-    "@mantine/carousel": "5.10.4",
-    "@mantine/core": "5.10.4",
-    "@mantine/dates": "5.10.4",
-    "@mantine/dropzone": "5.10.4",
-    "@mantine/form": "5.10.4",
-    "@mantine/hooks": "5.10.4",
-    "@mantine/modals": "5.10.4",
-    "@mantine/notifications": "5.10.4",
-    "@mantine/prism": "5.10.4",
-    "@mantine/styles": "5.10.4",
-    "@mantine/utils": "5.10.4",
-    "ahooks": "^3.7.7",
-    "dayjs": "^1.11.5",
-    "dompurify": "^3.0.3",
-    "embla-carousel-react": "^7.0.5",
-    "google-libphonenumber": "^3.2.30",
-    "lodash-es": "^4.17.21",
-    "react-hook-form": "6.15.8",
-    "react-phone-input-2": "^2.15.1",
-    "react-table": "^7.8.0",
-    "react-window": "^1.8.9"
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs"
+    },
+    "./icons": {
+      "types": "./dist/icons/index.d.ts",
+      "require": "./dist/icons/index.js",
+      "import": "./dist/icons/index.mjs"
+    },
+    "./form": {
+      "types": "./dist/form/index.d.ts",
+      "require": "./dist/form/index.js",
+      "import": "./dist/form/index.mjs"
+    }
   }
 }

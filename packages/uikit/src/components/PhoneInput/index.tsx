@@ -10,6 +10,8 @@ import {
 import { useState } from 'react'
 import ReactPhoneInput, { PhoneInputProps as ReactPhoneInputProps } from 'react-phone-input-2'
 
+export * from './helper'
+
 import { mergeStyles } from '../../utils'
 
 import useStyles from './styles'

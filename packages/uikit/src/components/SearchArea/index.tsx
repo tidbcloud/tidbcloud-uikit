@@ -1,5 +1,5 @@
 import { Box, Button } from '@tidb-cloud-uikit/components'
-import { Form, FormProps } from '@tidb-cloud-uikit/components/hook-form'
+import { ProForm as Form, ProFormProps as FormProps } from '@tidb-cloud-uikit/components/hook-form'
 import { Icon } from '@tidb-cloud-uikit/icons'
 import { useDebounce } from 'ahooks'
 import React, { useEffect } from 'react'

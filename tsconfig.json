@@ -26,6 +26,13 @@
     "strict": true,
     "useDefineForClassFields": true,
     "noFallthroughCasesInSwitch": true,
+    "baseUrl": ".",
+    "paths": {
+      "@tidb-cloud-uikit/utils": ["./packages/uikit/src/utils"],
+      "@tidb-cloud-uikit/icons": ["./packages/uikit/src/icons"],
+      "@tidb-cloud-uikit/components": ["./packages/uikit/src/components"],
+      "@tidb-cloud-uikit/components/hook-form": ["./packages/uikit/src/components/hook-form"]
+    }
   },
   "include": ["packages"],
   "exclude": ["node_modules", "dist"]
