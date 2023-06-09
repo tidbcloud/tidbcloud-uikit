@@ -1,1 +1,0 @@
-export { getVariant } from './variant'
