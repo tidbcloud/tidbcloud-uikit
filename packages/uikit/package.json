@@ -20,7 +20,8 @@
   },
   "tsup": {
     "entry": [
-      "src/**/*.{ts,jsx}"
+      "src/index.ts",
+      "src/icons/index.ts"
     ],
     "format": [
       "cjs",
