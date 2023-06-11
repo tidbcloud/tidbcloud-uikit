@@ -1,10 +1,10 @@
 {
   "name": "@tidbcloud/uikit",
-  "version": "0.0.6",
+  "version": "0.0.19",
   "description": "tidbcloud uikit",
-  "main": "dist/index.js",
-  "module": "dis/index.mjs",
-  "types": "dist/index.d.ts",
+  "main": "./src/index.js",
+  "module": "./src/index.mjs",
+  "types": "./dist/index.d.ts",
   "scripts": {
     "test": "test",
     "gen:icon": "tsx ./scripts/icon.ts",
@@ -19,10 +19,11 @@
     "url": "git@github.com:tidbcloud/tidbcloud-uikit.git"
   },
   "tsup": {
-    "entry": [
-      "src/index.ts",
-      "src/icons/index.ts"
-    ],
+    "entry": {
+      "index": "src/index.ts",
+      "icons": "src/icons/index.ts",
+      "form": "src/form/index.ts"
+    },
     "format": [
       "cjs",
       "esm"
@@ -30,7 +31,11 @@
     "sourcemap": true,
     "clean": true,
     "dts": true,
-    "bundle": false
+    "bundle": true,
+    "external": [
+      "react",
+      "react-dom"
+    ]
   },
   "license": "MIT",
   "dependencies": {
@@ -66,14 +71,14 @@
       "import": "./dist/index.mjs"
     },
     "./icons": {
-      "types": "./dist/icons/index.d.ts",
-      "require": "./dist/icons/index.js",
-      "import": "./dist/icons/index.mjs"
+      "types": "./dist/icons.d.ts",
+      "require": "./dist/icons.js",
+      "import": "./dist/icons.mjs"
     },
     "./form": {
-      "types": "./dist/form/index.d.ts",
-      "require": "./dist/form/index.js",
-      "import": "./dist/form/index.mjs"
+      "types": "./dist/form.d.ts",
+      "require": "./dist/form.js",
+      "import": "./dist/form.mjs"
     }
   }
 }

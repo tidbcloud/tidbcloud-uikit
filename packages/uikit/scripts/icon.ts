@@ -63,7 +63,6 @@ function transformSvgIcon() {
       { plugins: ['@svgr/plugin-svgo', '@svgr/plugin-jsx', '@svgr/plugin-prettier'], icon: true },
       { componentName: name }
     )
-    console.log('jsCode: ', jsCode)
     fs.writeFileSync(path.resolve(reactIconOutput, `${name}.jsx`), jsCode)
   })
 }

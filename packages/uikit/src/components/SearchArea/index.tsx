@@ -1,6 +1,7 @@
-import { Box, Button } from '@tidb-cloud-uikit/components'
-import { ProForm as Form, ProFormProps as FormProps } from '@tidb-cloud-uikit/components/hook-form'
-import { Icon } from '@tidb-cloud-uikit/icons'
+import { Box, Button } from '@mantine/core'
+import { Form, FormProps } from '../hook-form/Form'
+
+import { Icon } from '../../icons'
 import { useDebounce } from 'ahooks'
 import React, { useEffect } from 'react'
 import { FieldValues, useForm } from 'react-hook-form'
@@ -11,7 +12,7 @@ export interface SearchAreaProps<T extends FieldValues> extends FormProps<T> {
 
 const SX_Y_MID = { display: 'flex', alignItems: 'center' }
 
-export default function SearchArea<T extends object>(props: SearchAreaProps<T>) {
+export const SearchArea = <T extends object>(props: SearchAreaProps<T>) => {
   const { children, onSubmit, ...rest } = props
   const form = useForm<T>()
   const values = form.watch()
@@ -70,3 +71,5 @@ export default function SearchArea<T extends object>(props: SearchAreaProps<T>) 
     </Box>
   )
 }
+
+export default SearchArea

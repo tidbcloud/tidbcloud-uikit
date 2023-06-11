@@ -1,13 +1,14 @@
 import { Box, useMantineTheme, BoxProps } from '@mantine/core'
-import { Icon } from '@tidb-cloud-uikit/icons'
-import { mergeSx } from '@tidb-cloud-uikit/utils'
+import { Icon } from '../../../icons'
+
+import { mergeSx } from '../../../utils'
+
 import { MantineReactTable, MantineReactTableProps } from 'mantine-react-table'
 
 import { TablePagination, TablePaginationProps } from '../TablePagination'
 
-export * from 'mantine-react-table'
-
 export * from './Expand'
+export * from 'mantine-react-table'
 
 export interface ProTableProps<TData extends Record<string, any> = {}> extends MantineReactTableProps<TData> {
   withBorder?: boolean
