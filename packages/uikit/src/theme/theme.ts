@@ -12,6 +12,7 @@ import {
 
 import { getButtonStyles } from '../components/Button'
 import { getInputStyles } from '../components/Input'
+import { loaderAnimation, loaderClassName } from '../components/Loader'
 
 import { FONT_FAMILY } from './font'
 
@@ -35,9 +36,21 @@ export const theme: MantineThemeOverride = {
     lg: '0px 8px 64px rgba(0, 0, 0, 0.08)',
     xl: '0px 16px 64px rgba(0, 0, 0, 0.08)'
   },
+  globalStyles(theme) {
+    return {
+      [`.${loaderClassName}`]: {
+        animation: loaderAnimation
+      }
+    }
+  },
   components: {
     Button: {
       styles: getButtonStyles
+    },
+    Loader: {
+      defaultProps: {
+        color: 'gray.5'
+      }
     },
     Skeleton: {
       styles(theme, params: SkeletonStylesParams) {
@@ -295,6 +308,19 @@ export const theme: MantineThemeOverride = {
         const styles = getInputStyles(theme, params)
         styles.input.height = undefined
         return styles
+      }
+    },
+    Badge: {
+      styles(theme, params) {
+        if (params.variant === 'dot') {
+          return {
+            root: {
+              border: 'none'
+            }
+          }
+        } else {
+          return { root: {} }
+        }
       }
     },
     Checkbox: {

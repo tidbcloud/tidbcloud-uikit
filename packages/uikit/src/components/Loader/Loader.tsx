@@ -1,36 +1,14 @@
-import { Box, LoaderProps } from '@mantine/core'
-import { useMantineTheme, useComponentDefaultProps } from '@mantine/styles'
+import { Box, Loader as MantineLoader, LoaderProps } from '@mantine/core'
+import { forwardRef } from 'react'
 
-import { Oval } from './loaders/Oval'
+import { withLoaderPatch } from './patch'
 
-const sizes = {
-  xs: 18,
-  sm: 22,
-  md: 36,
-  lg: 44,
-  xl: 58
-}
+const forwardedLoader = forwardRef<HTMLSpanElement, LoaderProps>((props, ref) => (
+  <Box component="span" ref={ref} lh={0}>
+    <MantineLoader {...props} />
+  </Box>
+))
 
-const defaultProps: Partial<LoaderProps> = {
-  size: 'md'
-}
+forwardedLoader.displayName = MantineLoader.displayName
 
-export function Loader(props: LoaderProps) {
-  const { size, color, variant, ...others } = useComponentDefaultProps('Loader', defaultProps, props)
-  const theme = useMantineTheme()
-
-  return (
-    <Box
-      component={Oval}
-      size={theme.fn.size({ size: size!, sizes })}
-      color={
-        theme.fn.variant({
-          variant: 'filled',
-          primaryFallback: false,
-          color: color || theme.primaryColor
-        }).background || 'transparent'
-      }
-      {...others}
-    />
-  )
-}
+export const Loader = withLoaderPatch<HTMLSpanElement, LoaderProps>(forwardedLoader)

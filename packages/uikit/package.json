@@ -1,6 +1,6 @@
 {
   "name": "@tidbcloud/uikit",
-  "version": "0.0.23",
+  "version": "0.0.24",
   "description": "tidbcloud uikit",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",

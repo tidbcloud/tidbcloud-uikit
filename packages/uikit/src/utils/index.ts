@@ -3,6 +3,8 @@ import { merge } from 'lodash-es'
 
 export * from '@mantine/utils'
 
+export * from './fc'
+
 export const mergeSx = (theme: MantineTheme, ...sxs: DefaultProps['sx'][]) => {
   const styles: CSSObject = {}
   sxs.forEach((sx) => {

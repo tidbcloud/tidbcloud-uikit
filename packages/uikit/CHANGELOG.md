@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 0.0.24
+
+### Patch Changes
+
+- Update loader
+
 ## 0.0.23
 
 ### Patch Changes
