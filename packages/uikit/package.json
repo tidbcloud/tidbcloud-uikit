@@ -1,14 +1,15 @@
 {
   "name": "@tidbcloud/uikit",
-  "version": "0.0.19",
+  "version": "0.0.23",
   "description": "tidbcloud uikit",
-  "main": "./src/index.js",
-  "module": "./src/index.mjs",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "scripts": {
     "test": "test",
+    "copy:raw-icon": "mkdir -p ./dist/icons/raw && cp -r ./src/icons/raw/ ./dist/icons/raw/",
     "gen:icon": "tsx ./scripts/icon.ts",
-    "build": "pnpm gen:icon && tsup"
+    "build": "pnpm gen:icon && tsup && pnpm run copy:raw-icon"
   },
   "files": [
     "dist"
@@ -20,9 +21,17 @@
   },
   "tsup": {
     "entry": {
-      "index": "src/index.ts",
+      "carousel": "src/carousel/index.ts",
+      "index": "src/components/index.ts",
+      "dates": "src/dates/index.ts",
+      "form": "src/form/index.ts",
+      "hooks": "src/hooks/index.ts",
       "icons": "src/icons/index.ts",
-      "form": "src/form/index.ts"
+      "modals": "src/modals/index.ts",
+      "notifications": "src/notifications/index.ts",
+      "prism": "src/prism/index.ts",
+      "theme": "src/theme/index.ts",
+      "utils": "src/utils/index.ts"
     },
     "format": [
       "cjs",
@@ -70,15 +79,67 @@
       "require": "./dist/index.js",
       "import": "./dist/index.mjs"
     },
-    "./icons": {
-      "types": "./dist/icons.d.ts",
-      "require": "./dist/icons.js",
-      "import": "./dist/icons.mjs"
+    "./carousel": {
+      "types": "./dist/carousel.d.ts",
+      "require": "./dist/carousel.js",
+      "import": "./dist/carousel.mjs"
+    },
+    "./dates": {
+      "types": "./dist/dates.d.ts",
+      "require": "./dist/dates.js",
+      "import": "./dist/dates.mjs"
     },
     "./form": {
       "types": "./dist/form.d.ts",
       "require": "./dist/form.js",
       "import": "./dist/form.mjs"
+    },
+    "./hooks": {
+      "types": "./dist/hoos.d.ts",
+      "require": "./dist/hooks.js",
+      "import": "./dist/hooks.mjs"
+    },
+    "./icons": {
+      "types": "./dist/icons.d.ts",
+      "require": "./dist/icons.js",
+      "import": "./dist/icons.mjs"
+    },
+    "./modals": {
+      "types": "./dist/modals.d.ts",
+      "require": "./dist/modals.js",
+      "import": "./dist/modals.mjs"
+    },
+    "./notifications": {
+      "types": "./dist/notifications.d.ts",
+      "require": "./dist/notifications.js",
+      "import": "./dist/notifications.mjs"
+    },
+    "./prism": {
+      "types": "./dist/prism.d.ts",
+      "require": "./dist/prism.js",
+      "import": "./dist/prism.mjs"
+    },
+    "./theme": {
+      "types": "./dist/theme.d.ts",
+      "require": "./dist/theme.js",
+      "import": "./dist/theme.mjs"
+    },
+    "./utils": {
+      "types": "./dist/utils.d.ts",
+      "require": "./dist/utils.js",
+      "import": "./dist/utils.mjs"
+    },
+    "./*": [
+      "./*",
+      "./*.d.ts"
+    ]
+  },
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./dist/*",
+        "./*"
+      ]
     }
   }
 }

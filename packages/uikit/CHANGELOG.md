@@ -1,5 +1,29 @@
 # @tidbcloud/uikit
 
+## 0.0.23
+
+### Patch Changes
+
+- Update Icons
+
+## 0.0.22
+
+### Patch Changes
+
+- update build
+
+## 0.0.21
+
+### Patch Changes
+
+- build raw icons
+
+## 0.0.20
+
+### Patch Changes
+
+- Update d.ts
+
 ## 0.0.6
 
 ### Patch Changes

@@ -12,5 +12,3 @@ export * from './PhoneInput'
 export * from './Table'
 export * from './SearchArea'
 export * from './LabelTooltip'
-
-export { notifier } from '../notifications'
