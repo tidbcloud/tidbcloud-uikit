@@ -1,0 +1,36 @@
+import { Lock01 } from './entry'
+
+export const IconArrowAutofitContent = Lock01
+export const IconArrowDown = Lock01
+export const IconArrowsSort = Lock01
+export const IconBoxMultiple = Lock01
+export const IconChevronDown = Lock01
+export const IconChevronLeft = Lock01
+export const IconChevronRight = Lock01
+export const IconChevronUp = Lock01
+export const IconChevronsDown = Lock01
+export const IconCircleOff = Lock01
+export const IconCircleX = Lock01
+export const IconClearAll = Lock01
+export const IconColumns = Lock01
+export const IconDeviceFloppy = Lock01
+export const IconDots = Lock01
+export const IconDotsVertical = Lock01
+export const IconEdit = Lock01
+export const IconEyeOff = Lock01
+export const IconFilter = Lock01
+export const IconFilterOff = Lock01
+export const IconGripHorizontal = Lock01
+export const IconMaximize = Lock01
+export const IconMinimize = Lock01
+export const IconPinned = Lock01
+export const IconPinnedOff = Lock01
+export const IconSearch = Lock01
+export const IconSortAscending = Lock01
+export const IconSortDescending = Lock01
+export const IconTallymark1 = Lock01
+export const IconTallymark2 = Lock01
+export const IconTallymark3 = Lock01
+export const IconTallymark4 = Lock01
+export const IconTallymarks = Lock01
+export const IconX = Lock01

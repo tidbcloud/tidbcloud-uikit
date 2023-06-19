@@ -1,0 +1,49 @@
+import { createStyles } from '@mantine/core'
+
+export default createStyles((theme, params: { hasError?: boolean }) => {
+  const primaryShade = theme.fn.primaryShade()
+  const { hasError } = params
+  const invalidColor = theme.colors.red[primaryShade]
+  const normalColor = theme.colors.cyan[primaryShade]
+
+  return {
+    dropdownButton: {
+      display: 'none'
+    },
+    container: {
+      // marginTop: 8,
+      '&.react-tel-input': {
+        '.form-control': {
+          // see more https://github.com/mantinedev/mantine/blob/master/src/mantine-core/src/Input/Input.styles.ts#LL40C23-L40C89
+          backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.white,
+
+          color: theme.colorScheme === 'dark' ? theme.colors.gray[8] : theme.black,
+          width: '100%',
+          height: 40,
+          minHeight: 40,
+          lineHeight: '38px',
+          borderRadius: theme.defaultRadius,
+          padding: '0 12px',
+          borderColor: hasError ? invalidColor : theme.colors.gray[4],
+          marginBottom: hasError ? 5 : undefined,
+
+          '::placeholder': {
+            ...theme.fn.placeholderStyles(),
+            ...(hasError
+              ? {
+                  opacity: 1,
+                  color: invalidColor
+                }
+              : undefined)
+          },
+          '&:hover': {
+            borderColor: hasError ? invalidColor : normalColor
+          },
+          '&:focus': {
+            borderColor: hasError ? invalidColor : normalColor
+          }
+        }
+      }
+    }
+  }
+})
