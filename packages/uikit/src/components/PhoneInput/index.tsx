@@ -8,7 +8,8 @@ import {
   InputWrapperStylesNames
 } from '@mantine/core'
 import { useState } from 'react'
-import ReactPhoneInput, { PhoneInputProps as ReactPhoneInputProps } from 'react-phone-input-2'
+
+import ReactPhoneInput, { type PhoneInputProps as ReactPhoneInputProps } from 'react-phone-input-2'
 
 export * from './helper'
 
@@ -69,6 +70,7 @@ export const PhoneInput: React.FC<PhoneInputProps> = (props) => {
           placeholder={placeholder}
           specialLabel=""
           country={showContryCodeAfterFocus && isPhoneInputFocus ? country.toLowerCase() : undefined}
+          // @ts-ignore
           onFocus={(e, data) => {
             setIsPhoneInputFocus(true)
             onFocus?.(e, data)

@@ -1,9 +1,25 @@
 import { ActionIcon, Box, BoxProps, CopyButton, Group, Tooltip } from '@mantine/core'
 import { Prism, PrismProps } from '@mantine/prism'
+import { useLocalStorage } from '@mantine/hooks'
 import React, { useMemo, useState } from 'react'
 
 import { Icon } from '../../icons'
 import { mergeStyles, mergeSx } from '../../utils'
+
+function useFold(persistenceKey?: string) {
+  const foldPersistenceKey = `${persistenceKey}.codeblock.fold`
+  const [persistentFolded, setPersistentFolded] = useLocalStorage({
+    key: foldPersistenceKey,
+    defaultValue: true,
+    getInitialValueInEffect: false
+  })
+  const [memoryFolded, setMemoryFolded] = useState(true)
+  const persistent = !!persistenceKey
+
+  const folded = persistent ? persistentFolded : memoryFolded
+  const setFolded: (v: boolean) => void = persistent ? setPersistentFolded : setMemoryFolded
+  return { folded, setFolded }
+}
 
 interface CodeBlockProps extends BoxProps {
   language?: PrismProps['language']
@@ -16,34 +32,36 @@ interface CodeBlockProps extends BoxProps {
 
   prismProps?: Omit<PrismProps, 'language' | 'children'>
 
-  defaultHeight?: number
-  showExpand?: boolean
-  onExpandClick?: () => void
+  foldProps?: {
+    defaultHeight?: number
+    persistenceKey?: string
+    iconVisible?: boolean
+    onIconClick?: (folded: boolean) => void
+  }
 }
 
 export const CodeBlock: React.FC<CodeBlockProps> = ({
   language = 'bash',
   codeRender,
+  children,
   copyContent,
   onCopyClick,
-  defaultHeight,
-  showExpand = false,
-  onExpandClick,
-  children,
   prismProps,
+  foldProps,
   ...rest
 }) => {
-  const [expanded, setExpanded] = useState(false)
+  const { defaultHeight, persistenceKey, iconVisible: foldIconVisible, onIconClick: onFoldIconClick } = foldProps || {}
+  const { folded, setFolded } = useFold(persistenceKey)
 
   const mah = useMemo(() => {
     if (defaultHeight) {
-      return expanded ? undefined : defaultHeight
+      return folded ? defaultHeight : undefined
     }
-    if (showExpand) {
-      return expanded ? undefined : 200
+    if (foldIconVisible) {
+      return folded ? 200 : undefined
     }
     return undefined
-  }, [showExpand, expanded, defaultHeight])
+  }, [foldIconVisible, folded, defaultHeight])
 
   return (
     <Box {...rest} sx={(theme) => mergeSx(theme, { position: 'relative' }, rest?.sx)}>
@@ -90,21 +108,21 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
       </Box>
 
       <Group spacing={4} sx={(theme) => ({ position: 'absolute', top: 16, right: 16, color: theme.colors.gray[7] })}>
-        {showExpand && (
-          <Tooltip label={expanded ? 'Collapse' : 'Expand'} withArrow position="top">
+        {foldIconVisible && (
+          <Tooltip label={folded ? 'Expand' : 'Collapse'} withArrow position="top">
             <ActionIcon
               variant="transparent"
               size="sm"
               onClick={() => {
-                const v = !expanded
-                setExpanded(v)
-                onExpandClick?.()
+                const v = !folded
+                setFolded(v)
+                onFoldIconClick?.(v)
               }}
             >
-              {expanded ? (
-                <Icon name="ChevronVerticalShrink" size={14} strokeWidth={2.5} />
-              ) : (
+              {folded ? (
                 <Icon name="ChevronVerticalExpand" size={14} strokeWidth={2.5} />
+              ) : (
+                <Icon name="ChevronVerticalShrink" size={14} strokeWidth={2.5} />
               )}
             </ActionIcon>
           </Tooltip>

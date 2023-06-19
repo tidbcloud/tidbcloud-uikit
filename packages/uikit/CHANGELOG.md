@@ -1,5 +1,59 @@
 # @tidbcloud/uikit
 
+## 0.2.7
+
+### Patch Changes
+
+- bundle react-phone-input2
+
+## 0.2.6
+
+### Patch Changes
+
+- update phone input
+
+## 0.2.5
+
+### Patch Changes
+
+- update phone
+
+## 0.2.4
+
+### Patch Changes
+
+- update phone input
+
+## 0.2.3
+
+### Patch Changes
+
+- update react-phone-input2 typing
+
+## 0.2.2
+
+### Patch Changes
+
+- update phoneinput import
+
+## 0.2.1
+
+### Patch Changes
+
+- update codeblock
+
+## 0.2.0
+
+### Minor Changes
+
+- add dropzone
+
+## 0.1.0
+
+### Minor Changes
+
+- add uitest entry
+
 ## 0.0.24
 
 ### Patch Changes
