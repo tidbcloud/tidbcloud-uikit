@@ -7,79 +7,6 @@ settings:
 importers:
 
   .:
-    dependencies:
-      '@emotion/react':
-        specifier: ^11.10.5
-        version: 11.11.0(@types/react@17.0.59)(react@17.0.2)
-      '@mantine/carousel':
-        specifier: 5.10.4
-        version: 5.10.4(@mantine/core@5.10.4)(@mantine/hooks@5.10.4)(embla-carousel-react@7.1.0)(react@17.0.2)
-      '@mantine/core':
-        specifier: 5.10.4
-        version: 5.10.4(@emotion/react@11.11.0)(@mantine/hooks@5.10.4)(@types/react@17.0.59)(react-dom@17.0.2)(react@17.0.2)
-      '@mantine/dates':
-        specifier: 5.10.4
-        version: 5.10.4(@mantine/core@5.10.4)(@mantine/hooks@5.10.4)(dayjs@1.11.7)(react@17.0.2)
-      '@mantine/dropzone':
-        specifier: 5.10.4
-        version: 5.10.4(@mantine/core@5.10.4)(@mantine/hooks@5.10.4)(react-dom@17.0.2)(react@17.0.2)
-      '@mantine/form':
-        specifier: 5.10.4
-        version: 5.10.4(react@17.0.2)
-      '@mantine/hooks':
-        specifier: 5.10.4
-        version: 5.10.4(react@17.0.2)
-      '@mantine/modals':
-        specifier: 5.10.4
-        version: 5.10.4(@mantine/core@5.10.4)(@mantine/hooks@5.10.4)(react-dom@17.0.2)(react@17.0.2)
-      '@mantine/notifications':
-        specifier: 5.10.4
-        version: 5.10.4(@mantine/core@5.10.4)(@mantine/hooks@5.10.4)(react-dom@17.0.2)(react@17.0.2)
-      '@mantine/prism':
-        specifier: 5.10.4
-        version: 5.10.4(@mantine/core@5.10.4)(@mantine/hooks@5.10.4)(react-dom@17.0.2)(react@17.0.2)
-      '@mantine/styles':
-        specifier: 5.10.4
-        version: 5.10.4(@emotion/react@11.11.0)(react-dom@17.0.2)(react@17.0.2)
-      '@mantine/utils':
-        specifier: 5.10.4
-        version: 5.10.4(react@17.0.2)
-      '@types/lodash-es':
-        specifier: ^4.17.7
-        version: 4.17.7
-      '@types/node':
-        specifier: ^20.1.7
-        version: 20.1.7
-      ahooks:
-        specifier: ^3.7.7
-        version: 3.7.7(react@17.0.2)
-      dayjs:
-        specifier: ^1.11.5
-        version: 1.11.7
-      dompurify:
-        specifier: ^3.0.3
-        version: 3.0.3
-      embla-carousel-react:
-        specifier: ^7.0.5
-        version: 7.1.0(react@17.0.2)
-      google-libphonenumber:
-        specifier: ^3.2.30
-        version: 3.2.30
-      lodash-es:
-        specifier: ^4.17.21
-        version: 4.17.21
-      react-hook-form:
-        specifier: 6.15.8
-        version: 6.15.8(react@17.0.2)
-      react-phone-input-2:
-        specifier: ^2.15.1
-        version: 2.15.1(react-dom@17.0.2)(react@17.0.2)
-      react-table:
-        specifier: ^7.8.0
-        version: 7.8.0(react@17.0.2)
-      react-window:
-        specifier: ^1.8.9
-        version: 1.8.9(react-dom@17.0.2)(react@17.0.2)
     devDependencies:
       '@changesets/cli':
         specifier: ^2.26.1
@@ -104,7 +31,7 @@ importers:
         version: 7.0.20(react-dom@17.0.2)(react@17.0.2)(typescript@4.7.4)
       '@storybook/react-vite':
         specifier: ^7.0.20
-        version: 7.0.20(react-dom@17.0.2)(react@17.0.2)(typescript@4.7.4)(vite@4.3.8)
+        version: 7.0.20(react-dom@17.0.2)(react@17.0.2)(typescript@4.7.4)(vite@4.3.9)
       '@storybook/testing-library':
         specifier: ^0.1.0
         version: 0.1.0
@@ -120,24 +47,6 @@ importers:
       '@svgr/plugin-svgo':
         specifier: ^8.0.1
         version: 8.0.1(@svgr/core@8.0.0)
-      '@types/dompurify':
-        specifier: ^2.3.4
-        version: 2.3.4
-      '@types/google-libphonenumber':
-        specifier: ^7.4.23
-        version: 7.4.23
-      '@types/react':
-        specifier: ^17.0.49
-        version: 17.0.59
-      '@types/react-dom':
-        specifier: ^17.0.17
-        version: 17.0.20
-      '@types/react-table':
-        specifier: ^7.7.12
-        version: 7.7.12
-      '@types/react-window':
-        specifier: ^1.8.5
-        version: 1.8.5
       eslint:
         specifier: ^8.40.0
         version: 8.40.0
@@ -156,9 +65,6 @@ importers:
       lint-staged:
         specifier: ^13.2.2
         version: 13.2.2
-      markdown-table:
-        specifier: ^3.0.3
-        version: 3.0.3
       prop-types:
         specifier: ^15.8.1
         version: 15.8.1
@@ -177,12 +83,12 @@ importers:
       tsup:
         specifier: ^6.7.0
         version: 6.7.0(typescript@4.7.4)
-      tsx:
-        specifier: ^3.12.7
-        version: 3.12.7
       typescript:
         specifier: ~4.7.4
         version: 4.7.4
+      vite:
+        specifier: ^4.3.9
+        version: 4.3.9
 
   packages/uikit:
     dependencies:
@@ -201,9 +107,6 @@ importers:
       '@mantine/dropzone':
         specifier: 5.10.4
         version: 5.10.4(@mantine/core@5.10.4)(@mantine/hooks@5.10.4)(react-dom@17.0.2)(react@17.0.2)
-      '@mantine/form':
-        specifier: 5.10.4
-        version: 5.10.4(react@17.0.2)
       '@mantine/hooks':
         specifier: 5.10.4
         version: 5.10.4(react@17.0.2)
@@ -242,7 +145,13 @@ importers:
         version: 4.17.21
       mantine-react-table:
         specifier: 0.9.5
-        version: 0.9.5(@emotion/react@11.11.0)(@mantine/core@5.10.4)(@mantine/dates@5.10.4)(@mantine/hooks@5.10.4)(@tabler/icons-react@2.22.0)(react-dom@17.0.2)(react@17.0.2)
+        version: 0.9.5(@emotion/react@11.11.0)(@mantine/core@5.10.4)(@mantine/dates@5.10.4)(@mantine/hooks@5.10.4)(react-dom@17.0.2)(react@17.0.2)
+      react:
+        specifier: '>=17'
+        version: 17.0.2
+      react-dom:
+        specifier: '>=17'
+        version: 17.0.2(react@17.0.2)
       react-hook-form:
         specifier: 6.15.8
         version: 6.15.8(react@17.0.2)
@@ -256,9 +165,39 @@ importers:
         specifier: ^1.8.9
         version: 1.8.9(react-dom@17.0.2)(react@17.0.2)
     devDependencies:
+      '@types/dompurify':
+        specifier: ^2.3.4
+        version: 2.3.4
+      '@types/google-libphonenumber':
+        specifier: ^7.4.23
+        version: 7.4.23
+      '@types/lodash-es':
+        specifier: ^4.17.7
+        version: 4.17.7
+      '@types/react':
+        specifier: ^17.0.49
+        version: 17.0.59
+      '@types/react-dom':
+        specifier: ^17.0.17
+        version: 17.0.20
+      '@types/react-table':
+        specifier: ^7.7.12
+        version: 7.7.12
+      '@types/react-window':
+        specifier: ^1.8.5
+        version: 1.8.5
+      markdown-table:
+        specifier: ^3.0.3
+        version: 3.0.3
       react-phone-input-2:
         specifier: ^2.15.1
         version: 2.15.1(react-dom@17.0.2)(react@17.0.2)
+      tsx:
+        specifier: ^3.12.7
+        version: 3.12.7
+      typescript:
+        specifier: ~4.7.4
+        version: 4.7.4
 
 packages:
 
@@ -1901,6 +1840,8 @@ packages:
     peerDependenciesMeta:
       '@types/react':
         optional: true
+      react:
+        optional: true
     dependencies:
       '@babel/runtime': 7.21.5
       '@emotion/babel-plugin': 11.11.0
@@ -1936,6 +1877,9 @@ packages:
     resolution: {integrity: sha512-jT/qyKZ9rzLErtrjGgdkMBn2OP8wl0G3sQlBb3YPryvKHsjvINUhVaPFfP+fpBcOkmrVOVEEHQFJ7nbj2TH2gw==}
     peerDependencies:
       react: '>=16.8.0'
+    peerDependenciesMeta:
+      react:
+        optional: true
     dependencies:
       react: 17.0.2
 
@@ -2222,6 +2166,11 @@ packages:
     peerDependencies:
       react: '>=16.8.0'
       react-dom: '>=16.8.0'
+    peerDependenciesMeta:
+      react:
+        optional: true
+      react-dom:
+        optional: true
     dependencies:
       '@floating-ui/dom': 1.2.8
       react: 17.0.2
@@ -2233,6 +2182,11 @@ packages:
     peerDependencies:
       react: '>=16.8.0'
       react-dom: '>=16.8.0'
+    peerDependenciesMeta:
+      react:
+        optional: true
+      react-dom:
+        optional: true
     dependencies:
       '@floating-ui/react-dom': 1.3.0(react-dom@17.0.2)(react@17.0.2)
       aria-hidden: 1.2.3
@@ -2330,7 +2284,7 @@ packages:
       chalk: 4.1.2
     dev: true
 
-  /@joshwooding/vite-plugin-react-docgen-typescript@0.2.1(typescript@4.7.4)(vite@4.3.8):
+  /@joshwooding/vite-plugin-react-docgen-typescript@0.2.1(typescript@4.7.4)(vite@4.3.9):
     resolution: {integrity: sha512-ou4ZJSXMMWHqGS4g8uNRbC5TiTWxAgQZiVucoUrOCWuPrTbkpJbmVyIi9jU72SBry7gQtuMEDp4YR8EEXAg7VQ==}
     peerDependencies:
       typescript: '>= 4.3.x'
@@ -2344,7 +2298,7 @@ packages:
       magic-string: 0.27.0
       react-docgen-typescript: 2.2.2(typescript@4.7.4)
       typescript: 4.7.4
-      vite: 4.3.8(@types/node@20.1.7)
+      vite: 4.3.9
     dev: true
 
   /@jridgewell/gen-mapping@0.3.3:
@@ -2392,6 +2346,9 @@ packages:
       '@mantine/hooks': 5.10.4
       embla-carousel-react: ^7.0.0
       react: '>=16.8.0'
+    peerDependenciesMeta:
+      react:
+        optional: true
     dependencies:
       '@mantine/core': 5.10.4(@emotion/react@11.11.0)(@mantine/hooks@5.10.4)(@types/react@17.0.59)(react-dom@17.0.2)(react@17.0.2)
       '@mantine/hooks': 5.10.4(react@17.0.2)
@@ -2406,6 +2363,11 @@ packages:
       '@mantine/hooks': 5.10.4
       react: '>=16.8.0'
       react-dom: '>=16.8.0'
+    peerDependenciesMeta:
+      react:
+        optional: true
+      react-dom:
+        optional: true
     dependencies:
       '@floating-ui/react': 0.19.2(react-dom@17.0.2)(react@17.0.2)
       '@mantine/hooks': 5.10.4(react@17.0.2)
@@ -2427,6 +2389,9 @@ packages:
       '@mantine/hooks': 5.10.4
       dayjs: '>=1.0.0'
       react: '>=16.8.0'
+    peerDependenciesMeta:
+      react:
+        optional: true
     dependencies:
       '@mantine/core': 5.10.4(@emotion/react@11.11.0)(@mantine/hooks@5.10.4)(@types/react@17.0.59)(react-dom@17.0.2)(react@17.0.2)
       '@mantine/hooks': 5.10.4(react@17.0.2)
@@ -2442,6 +2407,11 @@ packages:
       '@mantine/hooks': 5.10.4
       react: '>=16.8.0'
       react-dom: '>=16.8.0'
+    peerDependenciesMeta:
+      react:
+        optional: true
+      react-dom:
+        optional: true
     dependencies:
       '@mantine/core': 5.10.4(@emotion/react@11.11.0)(@mantine/hooks@5.10.4)(@types/react@17.0.59)(react-dom@17.0.2)(react@17.0.2)
       '@mantine/hooks': 5.10.4(react@17.0.2)
@@ -2451,20 +2421,13 @@ packages:
       react-dropzone: 14.2.3(react@17.0.2)
     dev: false
 
-  /@mantine/form@5.10.4(react@17.0.2):
-    resolution: {integrity: sha512-gf/aNwvWzJwqo1C98yxLK0nJJxYIxYTI7nVQ/spFlaWY+arvXgybwPsdphxdo0j3aM4xJXjC52gDMme3gQrwNw==}
-    peerDependencies:
-      react: '>=16.8.0'
-    dependencies:
-      fast-deep-equal: 3.1.3
-      klona: 2.0.6
-      react: 17.0.2
-    dev: false
-
   /@mantine/hooks@5.10.4(react@17.0.2):
     resolution: {integrity: sha512-HkdJWJgZvm9zkIv0gQpnobSdZ8SlGWWZwyORw3+b5SCbAn/VHq0hmGUL5uvCZ7FoFuaWC/ZTCDhospa5YVjkpg==}
     peerDependencies:
       react: '>=16.8.0'
+    peerDependenciesMeta:
+      react:
+        optional: true
     dependencies:
       react: 17.0.2
     dev: false
@@ -2476,6 +2439,11 @@ packages:
       '@mantine/hooks': 5.10.4
       react: '>=16.8.0'
       react-dom: '>=16.8.0'
+    peerDependenciesMeta:
+      react:
+        optional: true
+      react-dom:
+        optional: true
     dependencies:
       '@mantine/core': 5.10.4(@emotion/react@11.11.0)(@mantine/hooks@5.10.4)(@types/react@17.0.59)(react-dom@17.0.2)(react@17.0.2)
       '@mantine/hooks': 5.10.4(react@17.0.2)
@@ -2491,6 +2459,11 @@ packages:
       '@mantine/hooks': 5.10.4
       react: '>=16.8.0'
       react-dom: '>=16.8.0'
+    peerDependenciesMeta:
+      react:
+        optional: true
+      react-dom:
+        optional: true
     dependencies:
       '@mantine/core': 5.10.4(@emotion/react@11.11.0)(@mantine/hooks@5.10.4)(@types/react@17.0.59)(react-dom@17.0.2)(react@17.0.2)
       '@mantine/hooks': 5.10.4(react@17.0.2)
@@ -2507,6 +2480,11 @@ packages:
       '@mantine/hooks': 5.10.4
       react: '>=16.8.0'
       react-dom: '>=16.8.0'
+    peerDependenciesMeta:
+      react:
+        optional: true
+      react-dom:
+        optional: true
     dependencies:
       '@mantine/core': 5.10.4(@emotion/react@11.11.0)(@mantine/hooks@5.10.4)(@types/react@17.0.59)(react-dom@17.0.2)(react@17.0.2)
       '@mantine/hooks': 5.10.4(react@17.0.2)
@@ -2522,6 +2500,11 @@ packages:
       '@emotion/react': '>=11.9.0'
       react: '>=16.8.0'
       react-dom: '>=16.8.0'
+    peerDependenciesMeta:
+      react:
+        optional: true
+      react-dom:
+        optional: true
     dependencies:
       '@emotion/react': 11.11.0(@types/react@17.0.59)(react@17.0.2)
       clsx: 1.1.1
@@ -2534,6 +2517,9 @@ packages:
     resolution: {integrity: sha512-Xrx7Pk+GOwk/0P0qa/JEknZ5AzUBRnD+Ghz1Wu3z4w32NwsNSgq/8YvFVhvxAP7FMbi7Z5xicHzHmhXy1BvZrw==}
     peerDependencies:
       react: '>=16.8.0'
+    peerDependenciesMeta:
+      react:
+        optional: true
     dependencies:
       react: 17.0.2
     dev: false
@@ -2562,6 +2548,9 @@ packages:
     resolution: {integrity: sha512-zQH//gdOmuu7nt2oJR29vFhDv88oGPmVw6BggmrHeMI+xgEkp1B2dX9/bMBSYtK0dyLX/aOmesKS09g222K1/g==}
     peerDependencies:
       react: '>=16'
+    peerDependenciesMeta:
+      react:
+        optional: true
     dependencies:
       '@types/mdx': 2.0.5
       '@types/react': 17.0.59
@@ -2619,6 +2608,9 @@ packages:
     resolution: {integrity: sha512-0KaSv6sx787/hK3eF53iOkiSLwAGlFMx5lotrqD2pTjB18KbybKoEIgkNZTKC60YECDQTKGTRcDBILwZVqVKvA==}
     peerDependencies:
       react: ^16.8 || ^17.0 || ^18.0
+    peerDependenciesMeta:
+      react:
+        optional: true
     dependencies:
       '@babel/runtime': 7.21.5
       react: 17.0.2
@@ -2628,6 +2620,9 @@ packages:
     resolution: {integrity: sha512-1pVM9RfOQ+n/N5PJK33kRSKsr1glNxomxONs5c49MliinBY6Yw2Q995qfBUUo0/Mbg05B/sGA0gkgPI7kmSHBg==}
     peerDependencies:
       react: ^16.8 || ^17.0 || ^18.0
+    peerDependenciesMeta:
+      react:
+        optional: true
     dependencies:
       '@babel/runtime': 7.21.5
       react: 17.0.2
@@ -2637,6 +2632,9 @@ packages:
     resolution: {integrity: sha512-2HV05lGUgYcA6xgLQ4BKPDmtL+QbIZYH5fCOTAOOcJ5O0QbWS3i9lKaurLzliYUDhORI2Qr3pyjhJh44lKA3rQ==}
     peerDependencies:
       react: ^16.8 || ^17.0 || ^18.0
+    peerDependenciesMeta:
+      react:
+        optional: true
     dependencies:
       '@babel/runtime': 7.21.5
       react: 17.0.2
@@ -2647,6 +2645,11 @@ packages:
     peerDependencies:
       react: ^16.8 || ^17.0 || ^18.0
       react-dom: ^16.8 || ^17.0 || ^18.0
+    peerDependenciesMeta:
+      react:
+        optional: true
+      react-dom:
+        optional: true
     dependencies:
       '@babel/runtime': 7.21.5
       '@radix-ui/react-compose-refs': 1.0.0(react@17.0.2)
@@ -2660,6 +2663,11 @@ packages:
     peerDependencies:
       react: ^16.8 || ^17.0 || ^18.0
       react-dom: ^16.8 || ^17.0 || ^18.0
+    peerDependenciesMeta:
+      react:
+        optional: true
+      react-dom:
+        optional: true
     dependencies:
       '@babel/runtime': 7.21.5
       '@radix-ui/react-slot': 1.0.1(react@17.0.2)
@@ -2672,6 +2680,11 @@ packages:
     peerDependencies:
       react: ^16.8 || ^17.0 || ^18.0
       react-dom: ^16.8 || ^17.0 || ^18.0
+    peerDependenciesMeta:
+      react:
+        optional: true
+      react-dom:
+        optional: true
     dependencies:
       '@babel/runtime': 7.21.5
       '@radix-ui/number': 1.0.0
@@ -2691,6 +2704,9 @@ packages:
     resolution: {integrity: sha512-avutXAFL1ehGvAXtPquu0YK5oz6ctS474iM3vNGQIkswrVhdrS52e3uoMQBzZhNRAIE0jBnUyXWNmSjGHhCFcw==}
     peerDependencies:
       react: ^16.8 || ^17.0 || ^18.0
+    peerDependenciesMeta:
+      react:
+        optional: true
     dependencies:
       '@babel/runtime': 7.21.5
       '@radix-ui/react-compose-refs': 1.0.0(react@17.0.2)
@@ -2701,6 +2717,9 @@ packages:
     resolution: {integrity: sha512-GZtyzoHz95Rhs6S63D2t/eqvdFCm7I+yHMLVQheKM7nBD8mbZIt+ct1jz4536MDnaOGKIxynJ8eHTkVGVVkoTg==}
     peerDependencies:
       react: ^16.8 || ^17.0 || ^18.0
+    peerDependenciesMeta:
+      react:
+        optional: true
     dependencies:
       '@babel/runtime': 7.21.5
       react: 17.0.2
@@ -2710,6 +2729,9 @@ packages:
     resolution: {integrity: sha512-6Tpkq+R6LOlmQb1R5NNETLG0B4YP0wc+klfXafpUCj6JGyaUc8il7/kUZ7m59rGbXGczE9Bs+iz2qloqsZBduQ==}
     peerDependencies:
       react: ^16.8 || ^17.0 || ^18.0
+    peerDependenciesMeta:
+      react:
+        optional: true
     dependencies:
       '@babel/runtime': 7.21.5
       react: 17.0.2
@@ -2820,6 +2842,11 @@ packages:
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
       react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+    peerDependenciesMeta:
+      react:
+        optional: true
+      react-dom:
+        optional: true
     dependencies:
       '@babel/core': 7.21.8
       '@babel/plugin-transform-react-jsx': 7.21.5(@babel/core@7.21.8)
@@ -2853,6 +2880,11 @@ packages:
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
       react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+    peerDependenciesMeta:
+      react:
+        optional: true
+      react-dom:
+        optional: true
     dependencies:
       '@storybook/addon-actions': 7.0.20(react-dom@17.0.2)(react@17.0.2)
       '@storybook/addon-backgrounds': 7.0.20(react-dom@17.0.2)(react@17.0.2)
@@ -3031,6 +3063,11 @@ packages:
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
       react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+    peerDependenciesMeta:
+      react:
+        optional: true
+      react-dom:
+        optional: true
     dependencies:
       '@storybook/manager-api': 7.0.17(react-dom@17.0.2)(react@17.0.2)
       '@storybook/preview-api': 7.0.17
@@ -3061,6 +3098,11 @@ packages:
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
       react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+    peerDependenciesMeta:
+      react:
+        optional: true
+      react-dom:
+        optional: true
     dependencies:
       '@storybook/channels': 7.0.20
       '@storybook/client-logger': 7.0.20
@@ -3113,7 +3155,7 @@ packages:
       - supports-color
     dev: true
 
-  /@storybook/builder-vite@7.0.20(typescript@4.7.4)(vite@4.3.8):
+  /@storybook/builder-vite@7.0.20(typescript@4.7.4)(vite@4.3.9):
     resolution: {integrity: sha512-+SQMdvrqpuuYE1KGNfvGfxt0sjeshMEEXCfxvh2/iCPPIMYTEQ5WfVeEuAla+PRyXrE4JLwCZEowcZoxel1uTA==}
     peerDependencies:
       '@preact/preset-vite': '*'
@@ -3149,7 +3191,7 @@ packages:
       remark-slug: 6.1.0
       rollup: 3.21.8
       typescript: 4.7.4
-      vite: 4.3.8(@types/node@20.1.7)
+      vite: 4.3.9
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -3311,6 +3353,11 @@ packages:
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
       react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+    peerDependenciesMeta:
+      react:
+        optional: true
+      react-dom:
+        optional: true
     dependencies:
       '@storybook/client-logger': 7.0.15
       '@storybook/csf': 0.1.0
@@ -3329,6 +3376,11 @@ packages:
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
       react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+    peerDependenciesMeta:
+      react:
+        optional: true
+      react-dom:
+        optional: true
     dependencies:
       '@storybook/client-logger': 7.0.20
       '@storybook/csf': 0.1.0
@@ -3527,6 +3579,11 @@ packages:
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
       react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+    peerDependenciesMeta:
+      react:
+        optional: true
+      react-dom:
+        optional: true
     dependencies:
       '@storybook/channels': 7.0.17
       '@storybook/client-logger': 7.0.17
@@ -3552,6 +3609,11 @@ packages:
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
       react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+    peerDependenciesMeta:
+      react:
+        optional: true
+      react-dom:
+        optional: true
     dependencies:
       '@storybook/channels': 7.0.20
       '@storybook/client-logger': 7.0.20
@@ -3662,30 +3724,40 @@ packages:
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
       react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+    peerDependenciesMeta:
+      react:
+        optional: true
+      react-dom:
+        optional: true
     dependencies:
       react: 17.0.2
       react-dom: 17.0.2(react@17.0.2)
     dev: true
 
-  /@storybook/react-vite@7.0.20(react-dom@17.0.2)(react@17.0.2)(typescript@4.7.4)(vite@4.3.8):
+  /@storybook/react-vite@7.0.20(react-dom@17.0.2)(react@17.0.2)(typescript@4.7.4)(vite@4.3.9):
     resolution: {integrity: sha512-BUIhMD6bxIJ+LTocRyiqfg9Y8HraQDyhSWTIonBjRoIxjCkVhJ3QHQkEy6P+0cerWsntTD2/Gwmq1o1Vzl/6Sw==}
     engines: {node: '>=16'}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
       react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
       vite: ^3.0.0 || ^4.0.0
+    peerDependenciesMeta:
+      react:
+        optional: true
+      react-dom:
+        optional: true
     dependencies:
-      '@joshwooding/vite-plugin-react-docgen-typescript': 0.2.1(typescript@4.7.4)(vite@4.3.8)
+      '@joshwooding/vite-plugin-react-docgen-typescript': 0.2.1(typescript@4.7.4)(vite@4.3.9)
       '@rollup/pluginutils': 4.2.1
-      '@storybook/builder-vite': 7.0.20(typescript@4.7.4)(vite@4.3.8)
+      '@storybook/builder-vite': 7.0.20(typescript@4.7.4)(vite@4.3.9)
       '@storybook/react': 7.0.20(react-dom@17.0.2)(react@17.0.2)(typescript@4.7.4)
-      '@vitejs/plugin-react': 3.1.0(vite@4.3.8)
+      '@vitejs/plugin-react': 3.1.0(vite@4.3.9)
       ast-types: 0.14.2
       magic-string: 0.27.0
       react: 17.0.2
       react-docgen: 6.0.0-alpha.3
       react-dom: 17.0.2(react@17.0.2)
-      vite: 4.3.8(@types/node@20.1.7)
+      vite: 4.3.9
     transitivePeerDependencies:
       - '@preact/preset-vite'
       - supports-color
@@ -3701,6 +3773,10 @@ packages:
       react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
       typescript: '*'
     peerDependenciesMeta:
+      react:
+        optional: true
+      react-dom:
+        optional: true
       typescript:
         optional: true
     dependencies:
@@ -3737,6 +3813,11 @@ packages:
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
       react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+    peerDependenciesMeta:
+      react:
+        optional: true
+      react-dom:
+        optional: true
     dependencies:
       '@storybook/client-logger': 7.0.17
       memoizerific: 1.11.3
@@ -3750,6 +3831,11 @@ packages:
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
       react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+    peerDependenciesMeta:
+      react:
+        optional: true
+      react-dom:
+        optional: true
     dependencies:
       '@storybook/client-logger': 7.0.20
       memoizerific: 1.11.3
@@ -3790,6 +3876,11 @@ packages:
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
       react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+    peerDependenciesMeta:
+      react:
+        optional: true
+      react-dom:
+        optional: true
     dependencies:
       '@emotion/use-insertion-effect-with-fallbacks': 1.0.1(react@17.0.2)
       '@storybook/client-logger': 7.0.15
@@ -3804,6 +3895,11 @@ packages:
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
       react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+    peerDependenciesMeta:
+      react:
+        optional: true
+      react-dom:
+        optional: true
     dependencies:
       '@emotion/use-insertion-effect-with-fallbacks': 1.0.1(react@17.0.2)
       '@storybook/client-logger': 7.0.17
@@ -3818,6 +3914,11 @@ packages:
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
       react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+    peerDependenciesMeta:
+      react:
+        optional: true
+      react-dom:
+        optional: true
     dependencies:
       '@emotion/use-insertion-effect-with-fallbacks': 1.0.1(react@17.0.2)
       '@storybook/client-logger': 7.0.20
@@ -4011,20 +4112,6 @@ packages:
       svgo: 3.0.2
     dev: true
 
-  /@tabler/icons-react@2.22.0(react@17.0.2):
-    resolution: {integrity: sha512-9udRxrbsbWzUETur4jmbZQIZkH7jVA2GU7YnKYS7ZCUjdOHZZEhmsfJ/Gdbzz0gSRC3mU7SDMsKejun/IBjvpQ==}
-    peerDependencies:
-      react: ^16.5.1 || ^17.0.0 || ^18.0.0
-    dependencies:
-      '@tabler/icons': 2.22.0
-      prop-types: 15.8.1
-      react: 17.0.2
-    dev: false
-
-  /@tabler/icons@2.22.0:
-    resolution: {integrity: sha512-lOsGHqRPIKNARMWHHFkUUJH78C8ptQmUcDnumFBUI4YLRKFouKa7uAZL3ZfuH0HjDpOhsnWqUYZ7FhMCLcGpAQ==}
-    dev: false
-
   /@tanstack/match-sorter-utils@8.7.6:
     resolution: {integrity: sha512-2AMpRiA6QivHOUiBpQAVxjiHAA68Ei23ZUMNaRJrN6omWiSFLoYrxGcT6BXtuzp0Jw4h6HZCmGGIM/gbwebO2A==}
     engines: {node: '>=12'}
@@ -4038,6 +4125,11 @@ packages:
     peerDependencies:
       react: '>=16'
       react-dom: '>=16'
+    peerDependenciesMeta:
+      react:
+        optional: true
+      react-dom:
+        optional: true
     dependencies:
       '@tanstack/table-core': 8.7.9
       react: 17.0.2
@@ -4048,6 +4140,9 @@ packages:
     resolution: {integrity: sha512-RnZTzzrmmL9WDNtmNTHGRB6e+yKJuRsrQjlIhK2bGVU0HEVvC7w/X6VUWCSAqJSriypniE8daRXSAisgQzhbsA==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    peerDependenciesMeta:
+      react:
+        optional: true
     dependencies:
       '@tanstack/virtual-core': 3.0.0-beta.47
       react: 17.0.2
@@ -4247,10 +4342,11 @@ packages:
     resolution: {integrity: sha512-z0ptr6UI10VlU6l5MYhGwS4mC8DZyYer2mCoyysZtSF7p26zOX8UpbrV0YpNYLGS8K4PUFIyEr62IMFFjveSiQ==}
     dependencies:
       '@types/lodash': 4.14.194
-    dev: false
+    dev: true
 
   /@types/lodash@4.14.194:
     resolution: {integrity: sha512-r22s9tAS7imvBt2lyHC9B8AGwWnXaYb1tY09oyLkXDs4vArpYJzw09nj8MLx5VfciBPGIb+ZwG0ssYnEPJxn/g==}
+    dev: true
 
   /@types/mdx@2.0.5:
     resolution: {integrity: sha512-76CqzuD6Q7LC+AtbPqrvD9AqsN0k8bsYo2bM2J8pmNldP1aIPAbzUQ7QbobyXL4eLr1wK5x8FZFe8eF/ubRuBg==}
@@ -4293,6 +4389,7 @@ packages:
 
   /@types/node@20.1.7:
     resolution: {integrity: sha512-WCuw/o4GSwDGMoonES8rcvwsig77dGCMbZDrZr2x4ZZiNW4P/gcoZXe/0twgtobcTkmg9TuKflxYL/DuwDyJzg==}
+    dev: true
 
   /@types/normalize-package-data@2.4.1:
     resolution: {integrity: sha512-Gj7cI7z+98M282Tqmp2K5EIsoouUEzbBJhQQzDE3jSIRk6r9gsz0oUokqIUR4u1R3dMHo0pDHM7sNOHyhulypw==}
@@ -4537,7 +4634,7 @@ packages:
       eslint-visitor-keys: 3.4.1
     dev: true
 
-  /@vitejs/plugin-react@3.1.0(vite@4.3.8):
+  /@vitejs/plugin-react@3.1.0(vite@4.3.9):
     resolution: {integrity: sha512-AfgcRL8ZBhAlc3BFdigClmTUMISmmzHn7sB2h9U1odvc5U/MjWXsAaz18b/WoppUTDBzxOJwo2VdClfUcItu9g==}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
@@ -4548,7 +4645,7 @@ packages:
       '@babel/plugin-transform-react-jsx-source': 7.19.6(@babel/core@7.21.8)
       magic-string: 0.27.0
       react-refresh: 0.14.0
-      vite: 4.3.8(@types/node@20.1.7)
+      vite: 4.3.9
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -4640,6 +4737,9 @@ packages:
     engines: {node: '>=8.0.0'}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    peerDependenciesMeta:
+      react:
+        optional: true
     dependencies:
       '@babel/runtime': 7.21.5
       '@types/js-cookie': 2.2.7
@@ -5279,6 +5379,7 @@ packages:
 
   /classnames@2.3.2:
     resolution: {integrity: sha512-CSbhY4cFEJRe6/GQzIk5qXZ4Jeg5pcsP7b5peFSDpffpe1cqjASH/n9UTjBwOp6XpMSTwQ8Za2K5V02ueA7Tmw==}
+    dev: true
 
   /clean-stack@2.2.0:
     resolution: {integrity: sha512-4diC9HaTE+KRAMWhDhrGOECgWZxoevMc5TlkObMqNSsVU62PYzXZ/SMTjzyGAFF1YusgxGcSWTEXBhp0CPwQ1A==}
@@ -5916,6 +6017,9 @@ packages:
     resolution: {integrity: sha512-tbYRPRZSDNd2QLNqYDcArAakGIxtUbhS7tkP0dGXktXHGgcX+3ji3VrOUTOftBiujZrMV8kRxtrRUe/1soloIQ==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.1 || ^18.0.0
+    peerDependenciesMeta:
+      react:
+        optional: true
     dependencies:
       embla-carousel: 7.1.0
       react: 17.0.2
@@ -6597,6 +6701,7 @@ packages:
 
   /fast-deep-equal@3.1.3:
     resolution: {integrity: sha512-f3qQ9oQy9j2AhBe/H9VC91wLmKBCCU/gDOnKNAYG5hswO7BLKj09Hc5HYNz9cGI++xlpDCIgDaitVs03ATR84Q==}
+    dev: true
 
   /fast-glob@3.2.12:
     resolution: {integrity: sha512-DVj4CQIYYow0BlaelwK1pHl5n5cRSJfM60UA0zK891sVInoPri2Ekj7+e1CT3/3qxXenpI+nBBmQAcJPJgaj4w==}
@@ -7812,11 +7917,6 @@ packages:
     engines: {node: '>=6'}
     dev: true
 
-  /klona@2.0.6:
-    resolution: {integrity: sha512-dhG34DXATL5hSxJbIexCft8FChFXtmskoZYnoPWjXQuebWYCNkVeV3KkGegCK9CP1oswI/vQibS2GY7Em/sJJA==}
-    engines: {node: '>= 8'}
-    dev: false
-
   /language-subtag-registry@0.3.22:
     resolution: {integrity: sha512-tN0MCzyWnoz/4nHS6uxdlFWoUZT7ABptwKPQ52Ea7URk6vll88bWBVhodtnlfEuCcKWNGoc+uGbw1cwa9IKh/w==}
     dev: true
@@ -7950,9 +8050,11 @@ packages:
 
   /lodash.debounce@4.0.8:
     resolution: {integrity: sha512-FT1yDzDYEoYWhnSGnpE/4Kj1fLZkDFyqRb7fNt6FdYOSxlUWAtp42Eh6Wb0rGIv/m9Bgo7x4GhQbm5Ys4SG5ow==}
+    dev: true
 
   /lodash.memoize@4.1.2:
     resolution: {integrity: sha512-t7j+NzmgnQzTAYXcsHYLgimltOV1MXHtlOWf6GjL9Kj8GK5FInw5JotxvbOs+IvV1/Dzo04/fCGfLVs7aXb4Ag==}
+    dev: true
 
   /lodash.merge@4.6.2:
     resolution: {integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==}
@@ -7960,6 +8062,7 @@ packages:
 
   /lodash.reduce@4.6.0:
     resolution: {integrity: sha512-6raRe2vxCYBhpBu+B+TtNGUzah+hQjVdu3E17wfusjyrXBka2nBS8OH/gjVZ5PvHOhWmIZTYri09Z6n/QfnNMw==}
+    dev: true
 
   /lodash.sortby@4.7.0:
     resolution: {integrity: sha512-HDWXG8isMntAyRF5vZ7xKuEvOhT4AhlRt/3czTSjvGUxjYCBVRQY48ViDHyfYz9VIoBkW4TMGQNapx+l3RUwdA==}
@@ -7971,6 +8074,7 @@ packages:
 
   /lodash.startswith@4.2.1:
     resolution: {integrity: sha512-XClYR1h4/fJ7H+mmCKppbiBmljN/nGs73iq2SjCT9SF4CBPoUHzLvWmH1GtZMhMBZSiRkHXfeA2RY1eIlJ75ww==}
+    dev: true
 
   /lodash@4.17.21:
     resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==}
@@ -8058,7 +8162,7 @@ packages:
       tmpl: 1.0.5
     dev: true
 
-  /mantine-react-table@0.9.5(@emotion/react@11.11.0)(@mantine/core@5.10.4)(@mantine/dates@5.10.4)(@mantine/hooks@5.10.4)(@tabler/icons-react@2.22.0)(react-dom@17.0.2)(react@17.0.2):
+  /mantine-react-table@0.9.5(@emotion/react@11.11.0)(@mantine/core@5.10.4)(@mantine/dates@5.10.4)(@mantine/hooks@5.10.4)(react-dom@17.0.2)(react@17.0.2):
     resolution: {integrity: sha512-iHXUkVnSc6q98nE/Io+8eTSBMiPH/sLmuSH/Ss+LFq86u5bpxVyeXcw1HuBIPlm3olU7V0ZPlxGDfFS6GdOKag==}
     engines: {node: '>=14'}
     peerDependencies:
@@ -8069,12 +8173,18 @@ packages:
       '@tabler/icons-react': '>=2'
       react: '>=17.0'
       react-dom: '>=17.0'
+    peerDependenciesMeta:
+      '@tabler/icons-react':
+        optional: true
+      react:
+        optional: true
+      react-dom:
+        optional: true
     dependencies:
       '@emotion/react': 11.11.0(@types/react@17.0.59)(react@17.0.2)
       '@mantine/core': 5.10.4(@emotion/react@11.11.0)(@mantine/hooks@5.10.4)(@types/react@17.0.59)(react-dom@17.0.2)(react@17.0.2)
       '@mantine/dates': 5.10.4(@mantine/core@5.10.4)(@mantine/hooks@5.10.4)(dayjs@1.11.7)(react@17.0.2)
       '@mantine/hooks': 5.10.4(react@17.0.2)
-      '@tabler/icons-react': 2.22.0(react@17.0.2)
       '@tanstack/match-sorter-utils': 8.7.6
       '@tanstack/react-table': 8.7.9(react-dom@17.0.2)(react@17.0.2)
       '@tanstack/react-virtual': 3.0.0-beta.47(react@17.0.2)
@@ -8106,6 +8216,9 @@ packages:
     engines: {node: '>= 10'}
     peerDependencies:
       react: '>= 0.14.0'
+    peerDependenciesMeta:
+      react:
+        optional: true
     dependencies:
       react: 17.0.2
     dev: true
@@ -8845,6 +8958,9 @@ packages:
     resolution: {integrity: sha512-IJ+MSwBWKG+SM3b2SUfdrhC+gu01QkV2KmRQgREThBfSQRoufqRfxfHUxpG1WcaFjP+kojcFyO9Qqtpgt3qLCg==}
     peerDependencies:
       react: '>=0.14.9'
+    peerDependenciesMeta:
+      react:
+        optional: true
     dependencies:
       react: 17.0.2
     dev: false
@@ -8988,6 +9104,11 @@ packages:
     peerDependencies:
       react: '>=16.8.0'
       react-dom: '>=16.8.0'
+    peerDependenciesMeta:
+      react:
+        optional: true
+      react-dom:
+        optional: true
     dependencies:
       react: 17.0.2
       react-dom: 17.0.2(react@17.0.2)
@@ -9024,6 +9145,9 @@ packages:
     resolution: {integrity: sha512-s4h96KtLDUQlsENhMn1ar8t2bEa+q/YAtj8pPPdIjPDGBDIVNsrD9aXNWqspUe6AzKCIG0C1HZZLqLV7qpOBGA==}
     peerDependencies:
       react: 17.0.2
+    peerDependenciesMeta:
+      react:
+        optional: true
     dependencies:
       loose-envify: 1.4.0
       object-assign: 4.1.1
@@ -9035,6 +9159,9 @@ packages:
     engines: {node: '>= 10.13'}
     peerDependencies:
       react: '>= 16.8 || 18.0.0'
+    peerDependenciesMeta:
+      react:
+        optional: true
     dependencies:
       attr-accept: 2.2.2
       file-selector: 0.6.0
@@ -9047,6 +9174,11 @@ packages:
     peerDependencies:
       react: ^0.14.8 || ^15.0.1 || ^16.0.0 || ^17.0.1 || ^18.0.0
       react-dom: ^0.14.8 || ^15.0.1 || ^16.0.0 || ^17.0.1 || ^18.0.0
+    peerDependenciesMeta:
+      react:
+        optional: true
+      react-dom:
+        optional: true
     dependencies:
       '@base2/pretty-print-object': 1.0.1
       is-plain-object: 5.0.0
@@ -9059,6 +9191,9 @@ packages:
     resolution: {integrity: sha512-prq82ofMbnRyj5wqDe8hsTRcdR25jQ+B8KtCS7BLCzjFHAwNuCjRwzPuP4eYLsEBjEIeYd6try+pdLdw0kPkpg==}
     peerDependencies:
       react: ^16.8.0 || ^17
+    peerDependenciesMeta:
+      react:
+        optional: true
     dependencies:
       react: 17.0.2
     dev: false
@@ -9067,6 +9202,9 @@ packages:
     resolution: {integrity: sha512-cxKSeFTf7jpSSVddm66sKdolG90qURAX3g1roTeaN6x0YEbtWc8JpmFN9+yIqLNH2uEkYerWLtJZIXRIFuBKrg==}
     peerDependencies:
       react: ^16.8.4 || ^17.0.0 || ^18.0.0
+    peerDependenciesMeta:
+      react:
+        optional: true
     dependencies:
       react: 17.0.2
     dev: true
@@ -9087,6 +9225,11 @@ packages:
     peerDependencies:
       react: ^16.12.0 || ^17.0.0 || ^18.0.0 || ^19.0.0 || ^20.0.0 || ^21.0.0
       react-dom: ^16.12.0 || ^17.0.0 || ^18.0.0 || ^19.0.0 || ^20.0.0 || ^21.0.0
+    peerDependenciesMeta:
+      react:
+        optional: true
+      react-dom:
+        optional: true
     dependencies:
       classnames: 2.3.2
       lodash.debounce: 4.0.8
@@ -9096,6 +9239,7 @@ packages:
       prop-types: 15.8.1
       react: 17.0.2
       react-dom: 17.0.2(react@17.0.2)
+    dev: true
 
   /react-refresh@0.14.0:
     resolution: {integrity: sha512-wViHqhAd8OHeLS/IRMJjTSDHF3U9eWi62F/MledQGPdJGDhodXJ9PBLNGr6WWL7qlH12Mt3TyTpbS+hGXMjCzQ==}
@@ -9110,6 +9254,9 @@ packages:
     resolution: {integrity: sha512-hNaz4ygkZO4bESeFfnfOft73iBUj8K5oKi1EcSHPAibEydfsX2MyU6Z8KCr3mv3C9Kqqh71U+DhZkFvibbnPbA==}
     peerDependencies:
       react: ^16.8.3 || ^17.0.0-0 || ^18.0.0
+    peerDependenciesMeta:
+      react:
+        optional: true
     dependencies:
       react: 17.0.2
     dev: false
@@ -9119,6 +9266,9 @@ packages:
     engines: {node: '>=10'}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    peerDependenciesMeta:
+      react:
+        optional: true
     dependencies:
       '@babel/runtime': 7.21.5
       react: 17.0.2
@@ -9133,6 +9283,11 @@ packages:
     peerDependencies:
       react: '>=16.6.0'
       react-dom: '>=16.6.0'
+    peerDependenciesMeta:
+      react:
+        optional: true
+      react-dom:
+        optional: true
     dependencies:
       '@babel/runtime': 7.21.5
       dom-helpers: 5.2.1
@@ -9148,6 +9303,11 @@ packages:
     peerDependencies:
       react: ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0
       react-dom: ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0
+    peerDependenciesMeta:
+      react:
+        optional: true
+      react-dom:
+        optional: true
     dependencies:
       '@babel/runtime': 7.21.5
       memoize-one: 5.2.1
@@ -10405,6 +10565,9 @@ packages:
     resolution: {integrity: sha512-GLMG0Jc/jiKov/3Ulid1wbv3r54K9HlMW29IWcDFPEqFkSO2nS0MuefWgMJpeHQ9YJeXDL3ZUF+P3jdXlZX/cQ==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    peerDependenciesMeta:
+      react:
+        optional: true
     dependencies:
       react: 17.0.2
     dev: false
@@ -10416,6 +10579,8 @@ packages:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
     peerDependenciesMeta:
       '@types/react':
+        optional: true
+      react:
         optional: true
     dependencies:
       '@types/react': 17.0.59
@@ -10430,6 +10595,8 @@ packages:
     peerDependenciesMeta:
       '@types/react':
         optional: true
+      react:
+        optional: true
     dependencies:
       '@types/react': 17.0.59
       react: 17.0.2
@@ -10441,6 +10608,11 @@ packages:
     peerDependencies:
       react: 16.8.0 - 18
       react-dom: 16.8.0 - 18
+    peerDependenciesMeta:
+      react:
+        optional: true
+      react-dom:
+        optional: true
     dependencies:
       '@juggle/resize-observer': 3.4.0
       react: 17.0.2
@@ -10492,8 +10664,8 @@ packages:
     engines: {node: '>= 0.8'}
     dev: true
 
-  /vite@4.3.8(@types/node@20.1.7):
-    resolution: {integrity: sha512-uYB8PwN7hbMrf4j1xzGDk/lqjsZvCDbt/JC5dyfxc19Pg8kRm14LinK/uq+HSLNswZEoKmweGdtpbnxRtrAXiQ==}
+  /vite@4.3.9:
+    resolution: {integrity: sha512-qsTNZjO9NoJNW7KnOrgYwczm0WctJ8m/yqYAMAK9Lxt4SoySUfS5S8ia9K7JHpa3KEeMfyF8LoJ3c5NeBJy6pg==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
     peerDependencies:
@@ -10517,7 +10689,6 @@ packages:
       terser:
         optional: true
     dependencies:
-      '@types/node': 20.1.7
       esbuild: 0.17.19
       postcss: 8.4.23
       rollup: 3.21.8

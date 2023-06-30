@@ -1,10 +1,10 @@
 import { Box, Button } from '@mantine/core'
-import { Form, FormProps } from '../hook-form/Form'
-
-import { Icon } from '../../icons'
 import { useDebounce } from 'ahooks'
 import React, { useEffect } from 'react'
 import { FieldValues, useForm } from 'react-hook-form'
+
+import { Form, FormProps } from '../../form/Form'
+import { Icon } from '../../icons'
 
 export interface SearchAreaProps<T extends FieldValues> extends FormProps<T> {
   children: React.ReactNode

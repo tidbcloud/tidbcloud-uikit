@@ -1,7 +1,6 @@
+import { MantineProvider, useMantineTheme } from '@mantine/core'
 import { Prism, PrismProps } from '@mantine/prism'
 import React from 'react'
-
-import { MantineProvider, useMantineTheme } from '@mantine/core'
 
 import { getPrismTheme } from './prism-theme'
 
