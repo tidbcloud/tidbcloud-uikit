@@ -87,14 +87,22 @@ cp .npmrc.sample .npmrc
 
 4. Go to Github > Settings > Personal access token -> [Tokens(classic)](https://github.com/settings/tokens)
 
-   a. Generate a new token(classic)
-   <img src="media/token.png" style="display: block;" />
+   a. Generate a new token(classic).
+   <div>
+      <img src="media/token.png" style="display: block;" />
+   </div>
+  
 
-   b. Give the token `read:packages`
-   <img src="media/packages.png" style="display: block;" />
-
-   c. Replace the symbol called `${NPM_TOKEN}` with your github token residing in `.npmrc`
-   <img src="media/npmrc.png" style="display: block;" />
+   b. Give the token `read:packages`.
+   <div>
+     <img src="media/packages.png" style="display: block;" />
+   </div>
+   
+   c. Replace the symbol called `${NPM_TOKEN}` with your github token residing in `.npmrc`.
+   <div>
+     <img src="media/npmrc.png" style="display: block;" />
+   </div>
+   
 
 ### Development
 
