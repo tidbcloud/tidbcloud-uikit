@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 0.4.0
+
+### Minor Changes
+
+- move SearchArea to /form
+
 ## 0.3.0
 
 ### Minor Changes
