@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 0.3.0
+
+### Minor Changes
+
+- split hook-form to resolve peer dependency issue
+
 ## 0.2.7
 
 ### Patch Changes
