@@ -8,14 +8,13 @@ import {
   InputWrapperStylesNames
 } from '@mantine/core'
 import { useState } from 'react'
-
 import ReactPhoneInput, { type PhoneInputProps as ReactPhoneInputProps } from 'react-phone-input-2'
-
-export * from './helper'
 
 import { mergeStyles } from '../../utils'
 
 import useStyles from './styles'
+
+export * from './helper'
 
 export interface PhoneInputProps
   extends ReactPhoneInputProps,

@@ -1,10 +1,8 @@
 import { Box, useMantineTheme, BoxProps } from '@mantine/core'
-import { Icon } from '../../../icons'
-
-import { mergeSx } from '../../../utils'
-
 import { MantineReactTable, MantineReactTableProps } from 'mantine-react-table'
 
+import { Icon } from '../../../icons'
+import { mergeSx } from '../../../utils'
 import { TablePagination, TablePaginationProps } from '../TablePagination'
 
 export * from './Expand'
