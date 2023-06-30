@@ -7,79 +7,6 @@ settings:
 importers:
 
   .:
-    dependencies:
-      '@emotion/react':
-        specifier: ^11.10.5
-        version: 11.11.0(@types/react@17.0.59)(react@17.0.2)
-      '@mantine/carousel':
-        specifier: 5.10.4
-        version: 5.10.4(@mantine/core@5.10.4)(@mantine/hooks@5.10.4)(embla-carousel-react@7.1.0)(react@17.0.2)
-      '@mantine/core':
-        specifier: 5.10.4
-        version: 5.10.4(@emotion/react@11.11.0)(@mantine/hooks@5.10.4)(@types/react@17.0.59)(react-dom@17.0.2)(react@17.0.2)
-      '@mantine/dates':
-        specifier: 5.10.4
-        version: 5.10.4(@mantine/core@5.10.4)(@mantine/hooks@5.10.4)(dayjs@1.11.7)(react@17.0.2)
-      '@mantine/dropzone':
-        specifier: 5.10.4
-        version: 5.10.4(@mantine/core@5.10.4)(@mantine/hooks@5.10.4)(react-dom@17.0.2)(react@17.0.2)
-      '@mantine/form':
-        specifier: 5.10.4
-        version: 5.10.4(react@17.0.2)
-      '@mantine/hooks':
-        specifier: 5.10.4
-        version: 5.10.4(react@17.0.2)
-      '@mantine/modals':
-        specifier: 5.10.4
-        version: 5.10.4(@mantine/core@5.10.4)(@mantine/hooks@5.10.4)(react-dom@17.0.2)(react@17.0.2)
-      '@mantine/notifications':
-        specifier: 5.10.4
-        version: 5.10.4(@mantine/core@5.10.4)(@mantine/hooks@5.10.4)(react-dom@17.0.2)(react@17.0.2)
-      '@mantine/prism':
-        specifier: 5.10.4
-        version: 5.10.4(@mantine/core@5.10.4)(@mantine/hooks@5.10.4)(react-dom@17.0.2)(react@17.0.2)
-      '@mantine/styles':
-        specifier: 5.10.4
-        version: 5.10.4(@emotion/react@11.11.0)(react-dom@17.0.2)(react@17.0.2)
-      '@mantine/utils':
-        specifier: 5.10.4
-        version: 5.10.4(react@17.0.2)
-      '@types/lodash-es':
-        specifier: ^4.17.7
-        version: 4.17.7
-      '@types/node':
-        specifier: ^20.1.7
-        version: 20.1.7
-      ahooks:
-        specifier: ^3.7.7
-        version: 3.7.7(react@17.0.2)
-      dayjs:
-        specifier: ^1.11.5
-        version: 1.11.7
-      dompurify:
-        specifier: ^3.0.3
-        version: 3.0.3
-      embla-carousel-react:
-        specifier: ^7.0.5
-        version: 7.1.0(react@17.0.2)
-      google-libphonenumber:
-        specifier: ^3.2.30
-        version: 3.2.30
-      lodash-es:
-        specifier: ^4.17.21
-        version: 4.17.21
-      react-hook-form:
-        specifier: 6.15.8
-        version: 6.15.8(react@17.0.2)
-      react-phone-input-2:
-        specifier: ^2.15.1
-        version: 2.15.1(react-dom@17.0.2)(react@17.0.2)
-      react-table:
-        specifier: ^7.8.0
-        version: 7.8.0(react@17.0.2)
-      react-window:
-        specifier: ^1.8.9
-        version: 1.8.9(react-dom@17.0.2)(react@17.0.2)
     devDependencies:
       '@changesets/cli':
         specifier: ^2.26.1
@@ -120,24 +47,6 @@ importers:
       '@svgr/plugin-svgo':
         specifier: ^8.0.1
         version: 8.0.1(@svgr/core@8.0.0)
-      '@types/dompurify':
-        specifier: ^2.3.4
-        version: 2.3.4
-      '@types/google-libphonenumber':
-        specifier: ^7.4.23
-        version: 7.4.23
-      '@types/react':
-        specifier: ^17.0.49
-        version: 17.0.59
-      '@types/react-dom':
-        specifier: ^17.0.17
-        version: 17.0.20
-      '@types/react-table':
-        specifier: ^7.7.12
-        version: 7.7.12
-      '@types/react-window':
-        specifier: ^1.8.5
-        version: 1.8.5
       eslint:
         specifier: ^8.40.0
         version: 8.40.0
@@ -156,9 +65,6 @@ importers:
       lint-staged:
         specifier: ^13.2.2
         version: 13.2.2
-      markdown-table:
-        specifier: ^3.0.3
-        version: 3.0.3
       prop-types:
         specifier: ^15.8.1
         version: 15.8.1
@@ -177,9 +83,6 @@ importers:
       tsup:
         specifier: ^6.7.0
         version: 6.7.0(typescript@4.7.4)
-      tsx:
-        specifier: ^3.12.7
-        version: 3.12.7
       typescript:
         specifier: ~4.7.4
         version: 4.7.4
@@ -201,9 +104,6 @@ importers:
       '@mantine/dropzone':
         specifier: 5.10.4
         version: 5.10.4(@mantine/core@5.10.4)(@mantine/hooks@5.10.4)(react-dom@17.0.2)(react@17.0.2)
-      '@mantine/form':
-        specifier: 5.10.4
-        version: 5.10.4(react@17.0.2)
       '@mantine/hooks':
         specifier: 5.10.4
         version: 5.10.4(react@17.0.2)
@@ -243,6 +143,12 @@ importers:
       mantine-react-table:
         specifier: 0.9.5
         version: 0.9.5(@emotion/react@11.11.0)(@mantine/core@5.10.4)(@mantine/dates@5.10.4)(@mantine/hooks@5.10.4)(@tabler/icons-react@2.22.0)(react-dom@17.0.2)(react@17.0.2)
+      react:
+        specifier: '>=17'
+        version: 17.0.2
+      react-dom:
+        specifier: '>=17'
+        version: 17.0.2(react@17.0.2)
       react-hook-form:
         specifier: 6.15.8
         version: 6.15.8(react@17.0.2)
@@ -256,9 +162,39 @@ importers:
         specifier: ^1.8.9
         version: 1.8.9(react-dom@17.0.2)(react@17.0.2)
     devDependencies:
+      '@types/dompurify':
+        specifier: ^2.3.4
+        version: 2.3.4
+      '@types/google-libphonenumber':
+        specifier: ^7.4.23
+        version: 7.4.23
+      '@types/lodash-es':
+        specifier: ^4.17.7
+        version: 4.17.7
+      '@types/react':
+        specifier: ^17.0.49
+        version: 17.0.59
+      '@types/react-dom':
+        specifier: ^17.0.17
+        version: 17.0.20
+      '@types/react-table':
+        specifier: ^7.7.12
+        version: 7.7.12
+      '@types/react-window':
+        specifier: ^1.8.5
+        version: 1.8.5
+      markdown-table:
+        specifier: ^3.0.3
+        version: 3.0.3
       react-phone-input-2:
         specifier: ^2.15.1
         version: 2.15.1(react-dom@17.0.2)(react@17.0.2)
+      tsx:
+        specifier: ^3.12.7
+        version: 3.12.7
+      typescript:
+        specifier: ~4.7.4
+        version: 4.7.4
 
 packages:
 
@@ -2344,7 +2280,7 @@ packages:
       magic-string: 0.27.0
       react-docgen-typescript: 2.2.2(typescript@4.7.4)
       typescript: 4.7.4
-      vite: 4.3.8(@types/node@20.1.7)
+      vite: 4.3.8
     dev: true
 
   /@jridgewell/gen-mapping@0.3.3:
@@ -2449,16 +2385,6 @@ packages:
       react: 17.0.2
       react-dom: 17.0.2(react@17.0.2)
       react-dropzone: 14.2.3(react@17.0.2)
-    dev: false
-
-  /@mantine/form@5.10.4(react@17.0.2):
-    resolution: {integrity: sha512-gf/aNwvWzJwqo1C98yxLK0nJJxYIxYTI7nVQ/spFlaWY+arvXgybwPsdphxdo0j3aM4xJXjC52gDMme3gQrwNw==}
-    peerDependencies:
-      react: '>=16.8.0'
-    dependencies:
-      fast-deep-equal: 3.1.3
-      klona: 2.0.6
-      react: 17.0.2
     dev: false
 
   /@mantine/hooks@5.10.4(react@17.0.2):
@@ -3149,7 +3075,7 @@ packages:
       remark-slug: 6.1.0
       rollup: 3.21.8
       typescript: 4.7.4
-      vite: 4.3.8(@types/node@20.1.7)
+      vite: 4.3.8
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -3685,7 +3611,7 @@ packages:
       react: 17.0.2
       react-docgen: 6.0.0-alpha.3
       react-dom: 17.0.2(react@17.0.2)
-      vite: 4.3.8(@types/node@20.1.7)
+      vite: 4.3.8
     transitivePeerDependencies:
       - '@preact/preset-vite'
       - supports-color
@@ -4247,10 +4173,11 @@ packages:
     resolution: {integrity: sha512-z0ptr6UI10VlU6l5MYhGwS4mC8DZyYer2mCoyysZtSF7p26zOX8UpbrV0YpNYLGS8K4PUFIyEr62IMFFjveSiQ==}
     dependencies:
       '@types/lodash': 4.14.194
-    dev: false
+    dev: true
 
   /@types/lodash@4.14.194:
     resolution: {integrity: sha512-r22s9tAS7imvBt2lyHC9B8AGwWnXaYb1tY09oyLkXDs4vArpYJzw09nj8MLx5VfciBPGIb+ZwG0ssYnEPJxn/g==}
+    dev: true
 
   /@types/mdx@2.0.5:
     resolution: {integrity: sha512-76CqzuD6Q7LC+AtbPqrvD9AqsN0k8bsYo2bM2J8pmNldP1aIPAbzUQ7QbobyXL4eLr1wK5x8FZFe8eF/ubRuBg==}
@@ -4293,6 +4220,7 @@ packages:
 
   /@types/node@20.1.7:
     resolution: {integrity: sha512-WCuw/o4GSwDGMoonES8rcvwsig77dGCMbZDrZr2x4ZZiNW4P/gcoZXe/0twgtobcTkmg9TuKflxYL/DuwDyJzg==}
+    dev: true
 
   /@types/normalize-package-data@2.4.1:
     resolution: {integrity: sha512-Gj7cI7z+98M282Tqmp2K5EIsoouUEzbBJhQQzDE3jSIRk6r9gsz0oUokqIUR4u1R3dMHo0pDHM7sNOHyhulypw==}
@@ -4548,7 +4476,7 @@ packages:
       '@babel/plugin-transform-react-jsx-source': 7.19.6(@babel/core@7.21.8)
       magic-string: 0.27.0
       react-refresh: 0.14.0
-      vite: 4.3.8(@types/node@20.1.7)
+      vite: 4.3.8
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -5279,6 +5207,7 @@ packages:
 
   /classnames@2.3.2:
     resolution: {integrity: sha512-CSbhY4cFEJRe6/GQzIk5qXZ4Jeg5pcsP7b5peFSDpffpe1cqjASH/n9UTjBwOp6XpMSTwQ8Za2K5V02ueA7Tmw==}
+    dev: true
 
   /clean-stack@2.2.0:
     resolution: {integrity: sha512-4diC9HaTE+KRAMWhDhrGOECgWZxoevMc5TlkObMqNSsVU62PYzXZ/SMTjzyGAFF1YusgxGcSWTEXBhp0CPwQ1A==}
@@ -6597,6 +6526,7 @@ packages:
 
   /fast-deep-equal@3.1.3:
     resolution: {integrity: sha512-f3qQ9oQy9j2AhBe/H9VC91wLmKBCCU/gDOnKNAYG5hswO7BLKj09Hc5HYNz9cGI++xlpDCIgDaitVs03ATR84Q==}
+    dev: true
 
   /fast-glob@3.2.12:
     resolution: {integrity: sha512-DVj4CQIYYow0BlaelwK1pHl5n5cRSJfM60UA0zK891sVInoPri2Ekj7+e1CT3/3qxXenpI+nBBmQAcJPJgaj4w==}
@@ -7812,11 +7742,6 @@ packages:
     engines: {node: '>=6'}
     dev: true
 
-  /klona@2.0.6:
-    resolution: {integrity: sha512-dhG34DXATL5hSxJbIexCft8FChFXtmskoZYnoPWjXQuebWYCNkVeV3KkGegCK9CP1oswI/vQibS2GY7Em/sJJA==}
-    engines: {node: '>= 8'}
-    dev: false
-
   /language-subtag-registry@0.3.22:
     resolution: {integrity: sha512-tN0MCzyWnoz/4nHS6uxdlFWoUZT7ABptwKPQ52Ea7URk6vll88bWBVhodtnlfEuCcKWNGoc+uGbw1cwa9IKh/w==}
     dev: true
@@ -7950,9 +7875,11 @@ packages:
 
   /lodash.debounce@4.0.8:
     resolution: {integrity: sha512-FT1yDzDYEoYWhnSGnpE/4Kj1fLZkDFyqRb7fNt6FdYOSxlUWAtp42Eh6Wb0rGIv/m9Bgo7x4GhQbm5Ys4SG5ow==}
+    dev: true
 
   /lodash.memoize@4.1.2:
     resolution: {integrity: sha512-t7j+NzmgnQzTAYXcsHYLgimltOV1MXHtlOWf6GjL9Kj8GK5FInw5JotxvbOs+IvV1/Dzo04/fCGfLVs7aXb4Ag==}
+    dev: true
 
   /lodash.merge@4.6.2:
     resolution: {integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==}
@@ -7960,6 +7887,7 @@ packages:
 
   /lodash.reduce@4.6.0:
     resolution: {integrity: sha512-6raRe2vxCYBhpBu+B+TtNGUzah+hQjVdu3E17wfusjyrXBka2nBS8OH/gjVZ5PvHOhWmIZTYri09Z6n/QfnNMw==}
+    dev: true
 
   /lodash.sortby@4.7.0:
     resolution: {integrity: sha512-HDWXG8isMntAyRF5vZ7xKuEvOhT4AhlRt/3czTSjvGUxjYCBVRQY48ViDHyfYz9VIoBkW4TMGQNapx+l3RUwdA==}
@@ -7971,6 +7899,7 @@ packages:
 
   /lodash.startswith@4.2.1:
     resolution: {integrity: sha512-XClYR1h4/fJ7H+mmCKppbiBmljN/nGs73iq2SjCT9SF4CBPoUHzLvWmH1GtZMhMBZSiRkHXfeA2RY1eIlJ75ww==}
+    dev: true
 
   /lodash@4.17.21:
     resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==}
@@ -9096,6 +9025,7 @@ packages:
       prop-types: 15.8.1
       react: 17.0.2
       react-dom: 17.0.2(react@17.0.2)
+    dev: true
 
   /react-refresh@0.14.0:
     resolution: {integrity: sha512-wViHqhAd8OHeLS/IRMJjTSDHF3U9eWi62F/MledQGPdJGDhodXJ9PBLNGr6WWL7qlH12Mt3TyTpbS+hGXMjCzQ==}
@@ -10492,7 +10422,7 @@ packages:
     engines: {node: '>= 0.8'}
     dev: true
 
-  /vite@4.3.8(@types/node@20.1.7):
+  /vite@4.3.8:
     resolution: {integrity: sha512-uYB8PwN7hbMrf4j1xzGDk/lqjsZvCDbt/JC5dyfxc19Pg8kRm14LinK/uq+HSLNswZEoKmweGdtpbnxRtrAXiQ==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
@@ -10517,7 +10447,6 @@ packages:
       terser:
         optional: true
     dependencies:
-      '@types/node': 20.1.7
       esbuild: 0.17.19
       postcss: 8.4.23
       rollup: 3.21.8
