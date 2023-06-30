@@ -9,7 +9,7 @@
     "test": "test",
     "copy:raw-icon": "mkdir -p ./dist/icons/raw && cp -r ./src/icons/raw/ ./dist/icons/raw/",
     "gen:icon": "tsx ./scripts/icon.ts",
-    "build": "pnpm gen:icon && tsup && pnpm run copy:raw-icon"
+    "build": "pnpm gen:icon && tsup"
   },
   "files": [
     "dist"
@@ -18,34 +18,6 @@
   "repository": {
     "type": "git",
     "url": "git@github.com:tidbcloud/tidbcloud-uikit.git"
-  },
-  "tsup": {
-    "entry": {
-      "carousel": "src/carousel/index.ts",
-      "index": "src/components/index.ts",
-      "dates": "src/dates/index.ts",
-      "form": "src/form/index.ts",
-      "hooks": "src/hooks/index.ts",
-      "icons": "src/icons/index.ts",
-      "modals": "src/modals/index.ts",
-      "notifications": "src/notifications/index.ts",
-      "prism": "src/prism/index.ts",
-      "theme": "src/theme/index.ts",
-      "utils": "src/utils/index.ts",
-      "dropzone": "src/dropzone/index.ts"
-    },
-    "format": [
-      "cjs",
-      "esm"
-    ],
-    "sourcemap": true,
-    "clean": true,
-    "dts": true,
-    "bundle": true,
-    "external": [
-      "react",
-      "react-dom"
-    ]
   },
   "license": "MIT",
   "dependencies": {
