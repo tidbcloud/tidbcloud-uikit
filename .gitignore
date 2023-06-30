@@ -1,6 +1,6 @@
 node_modules/
 dist/
-
+.npmrc
 .DS_Store
 storybook-static/
 packages/core/icons/src/react/
