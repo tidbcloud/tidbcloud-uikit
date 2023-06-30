@@ -8,7 +8,7 @@ This repo is hosted TiDB Cloud UIKit including primitive, biz and pro components
 
 ## Table of Contents
 
-- 📦 [Installation](#Installation)
+- 📦 [Installation](#installation)
 - 💻 [Usage](#usage)
 - ⚙️ [Setup the repo](#setup-the-repo)
 - 🛠️ [Development](#development)
@@ -45,7 +45,6 @@ To start using the components, you just need to:
 
 ```typescript
 import { Card } from '@tidbcloud/uikit'
-
 ```
 
 Now, we have follwing built-in components
