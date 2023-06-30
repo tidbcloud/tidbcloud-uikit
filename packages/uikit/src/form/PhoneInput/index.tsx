@@ -4,7 +4,7 @@ import { get } from 'lodash-es'
 import { Controller, RegisterOptions, useFormContext } from 'react-hook-form'
 import type { CountryData } from 'react-phone-input-2'
 
-import { PhoneInput, PhoneInputProps } from '../../PhoneInput'
+import { PhoneInput, PhoneInputProps } from '../../components/PhoneInput'
 import { FormSelect } from '../Select'
 
 import rawCountries from './rawCountries'

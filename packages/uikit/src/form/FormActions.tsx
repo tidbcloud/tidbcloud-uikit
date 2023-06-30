@@ -1,7 +1,7 @@
 import { Button, ButtonProps, Flex, FlexProps } from '@mantine/core'
 import { PolymorphicComponentProps } from '@mantine/utils'
 
-import { TYPOGRAPHY_STYLES_MAP } from '../Typography'
+import { TYPOGRAPHY_STYLES_MAP } from '../components/Typography'
 
 type ActionButtonProps = Omit<PolymorphicComponentProps<'button', ButtonProps>, 'children'> & {
   [p: `data-${string}`]: string

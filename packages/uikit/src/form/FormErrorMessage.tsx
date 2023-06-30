@@ -2,7 +2,7 @@ import { Alert, AlertProps } from '@mantine/core'
 import DOMPurify from 'dompurify'
 import { useState, useRef, useEffect } from 'react'
 
-import { Icon } from '../../icons'
+import { Icon } from '../icons'
 
 export interface FormErrorMessageProps extends Omit<AlertProps, 'children'> {
   message: string
