@@ -5,6 +5,72 @@
 
 This repo is hosted TiDB Cloud UIKit including primitive, biz and pro components
 
+
+## Table of Contents
+
+- 📦 [Installation](#Installation)
+- 💻 [Usage](#usage)
+- ⚙️ [Setup the repo](#setup-the-repo)
+- 🛠️ [Development](#development)
+- ✍️ [Make a pull request](#making-a-pull-request)
+- 🚀 [Release](#release)
+
+
+## How to use
+
+### Installation
+To use TiDBCloud UIKit, you need follow two steps
+
+1. Change your registry. Beacuse we use github hosts the package, as accessing a private package, you need to setup the register for the uikit.
+
+```
+@tidbcloud:registry=https://npm.pkg.github.com
+//npm.pkg.github.com/:_authToken=${NPM_TOKEN}
+```
+Paste above code into a file named `.npmrc`, replace the `${NPM_TOKEN}` with the token that you got from github, and place this file to your project's root path. How to generate the token, please follow the [Setup the repo](#setup-the-repo).
+
+2. Install `@tidbcloud/uikit`
+
+```bash
+yarn add @tidbcloud/uikit
+
+# or
+
+npm i @tidbcloud/uikit
+```
+
+### Usage
+
+To start using the components, you just need to:
+
+```typescript
+import { Card } from '@tidbcloud/uikit'
+
+```
+
+Now, we have follwing built-in components
+
+|          Name        | Usage                     | Description | Status |
+| :------------------: | :------------------------ | :-------| :------- |
+| Primitive components from [mantine](https://v5.mantine.dev/) |  `import { Button } from '@tidbcloud/uikit'` |  Current using `mantine v5` as our basic library | ✅|
+| CodeBlock | `import { CodeBlock } from '@tidbcloud/uikit'` | Display code with copy button | ✅ |
+| BasicTable | `import { BasicTable } from '@tidbcloud/uikit'` | A table wrapped `mantine table` and `react-table`  | ✅  |
+| ProTable | `import { ProTable } from '@tidbcloud/uikit'` | A table wrapped [mantine-react-table](https://www.mantine-react-table.com/)  | ✅  |
+| PhoneInput | `import { PhoneInput } from '@tidbcloud/uikit'` | Phone input wrapped with [react-phone-input-2](https://bl00mber.github.io/react-phone-input-2.html)  | ✅  |
+| SearchArea | `import { SearchArea } from '@tidbcloud/uikit'` | A component for search  | ✅  |
+| Icons | `import { Icon, Inbox1 } from '@tidbcloud/uikit/icons'` | A component for icons  | ✅  |
+| Dates | `import { DatePicker, Calendar, Month } from '@tidbcloud/uikit/dates'` | A component for date  | ✅  |
+| Form | `import { Form, FormTextInput, FormNumberInput } from '@tidbcloud/uikit/form'` | A set of components for form, incluing `FormTextInput`, `FormNumberInput`, `FormCheckBox`, `Form`, `FormSelect`, `FormSwitch`, `FormTextArea`, `FormPasswordInput`, `Form.ErrorMessage`, `Form.Actions`, `FormMultiSelect` | ✅  |
+| Carousel | `import { Carousel } from '@tidbcloud/uikit/carousel'` | Carousel component  | ✅  |
+| Hooks | `import { useDebouncedValue } from '@tidbcloud/uikit/hooks'` | A set of hooks  | ✅  |
+| Notifications | `import { notifier } from '@tidbcloud/uikit/notifications'` | A set of notifications  | ✅  |
+| Modals | `import { openModal } from '@tidbcloud/uikit/modals'` | A set of modals  | ✅  |
+| Dropzone | `import { Dropzone, DropzoneProps, IMAGE_MIME_TYPE } from '@tidbcloud/uikit/notifications'` | A set of notifications  | ✅  |
+| Utils | `import { useHovered } from '@tidbcloud/uikit/utils'` | A set of utils  | ✅  |
+| Prism | `import { Prism } from '@tidbcloud/uikit/prism'` | Highlight component  | ✅  |
+
+## Contributing
+
 ### Setup the repo
 
 Before developing
