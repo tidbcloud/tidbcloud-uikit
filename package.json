@@ -37,14 +37,16 @@
     "storybook": "^7.0.20",
     "storybook-dark-mode": "^3.0.0",
     "tsup": "^6.7.0",
-    "typescript": "~4.7.4"
+    "typescript": "~4.7.4",
+    "vite": "^4.3.9"
   },
   "pnpm": {
     "peerDependencyRules": {
       "ignoreMissing": [
         "react",
         "react-dom",
-        "@tabler/icons-react"
+        "@tabler/icons-react",
+        "@babel/*"
       ]
     }
   }
