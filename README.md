@@ -23,7 +23,7 @@ To use TiDBCloud UIKit, you need follow two steps
 
 1. Change your registry. Beacuse we use github hosts the package, as accessing a private package, you need to setup the register for the uikit.
 
-```
+```bash
 @tidbcloud:registry=https://npm.pkg.github.com
 //npm.pkg.github.com/:_authToken=${NPM_TOKEN}
 ```
