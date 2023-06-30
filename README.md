@@ -13,7 +13,7 @@ Before developing
 2. Clone the project & install the depenceis
 3. Enter the root folder, and use blow command
 
-```shell
+```bash
 
 cd ./tidbcloud-uikit/
 cp .npmrc.sample .npmrc
@@ -42,10 +42,10 @@ cp .npmrc.sample .npmrc
 
 #### Commands
 
-`pnpm install`: bootstraps the entire project, symlinks all dependencies for cross-component development and builds all components.
-`pnpm storybook`: starts storybook server and loads stories in files that end with .stories.tsx.
-`pnpm build`: run build for all component packages.
-`pnpm release`: publish changed packages.
+- `pnpm install`: bootstraps the entire project, symlinks all dependencies for cross-component development and builds all components.
+- `pnpm storybook`: starts storybook server and loads stories in files that end with .stories.tsx.
+- `pnpm build`: run build for all component packages.
+- `pnpm release`: publish changed packages.
 
 #### Developing
 
@@ -70,14 +70,31 @@ Once you've committed your message. You can do your PR
 
 1. Make a changeset
 
-```shell
+```bash
 pnpm changeset
 ```
 
 2. Follow the changeset interactive prompts, commit your change
 
-```shell
+```bash
 git commit -m 'feat(uikit): your message'
 ```
 
 3. Push the changes, request a PR. Waiting for the review and merged with the master
+
+
+### Release
+Please make sure grant the permission of `write:packages` to your token in the Setup Repo step.
+
+1. Update Version, using follow command update package version. Also, please follow the principle of Semver.
+
+```bash
+pnpm version-packages
+```
+
+2. Release to github packages. Execute below command will release to github packages
+
+```
+pnpm release
+```
+
