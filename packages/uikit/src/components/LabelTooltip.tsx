@@ -1,25 +1,24 @@
-import { Box, Tooltip } from '@mantine/core'
+import { Box, HoverCard } from '@mantine/core'
+import { HoverCardProps } from '@mantine/core'
+import { Icon } from '@tidb-cloud-uikit/icons'
 
-import { Icon } from '../icons'
+import { Typography } from './Typography'
 
-export function LabelTooltip({ label }: { label: string | JSX.Element }) {
+export interface LabelTooltipProps extends HoverCardProps {
+  label: React.ReactNode
+}
+
+export function LabelTooltip({ label, ...rest }: LabelTooltipProps) {
   return (
-    <Tooltip
-      label={label}
-      withinPortal
-      multiline
-      sx={{ maxWidth: 480 }}
-      styles={(theme) => ({
-        tooltip: {
-          backgroundColor: theme.other.white,
-          color: theme.colors.gray[7],
-          border: `1px solid ${theme.colors.gray[3]}`
-        }
-      })}
-    >
-      <Box sx={{ marginLeft: 8, verticalAlign: 'middle', position: 'relative', top: 1 }} component="span">
-        <Icon cursor="pointer" name="InfoCircle" size={14} color="gray.7" />
-      </Box>
-    </Tooltip>
+    <HoverCard shadow="md" withArrow withinPortal position="top" {...rest}>
+      <HoverCard.Target>
+        <Box sx={{ marginLeft: 8, verticalAlign: 'middle', position: 'relative', top: 1 }} component="span">
+          <Icon cursor="pointer" name="InfoCircle" size={14} color="gray.7" />
+        </Box>
+      </HoverCard.Target>
+      <HoverCard.Dropdown maw={480}>
+        <Typography variant="body-lg">{label}</Typography>
+      </HoverCard.Dropdown>
+    </HoverCard>
   )
 }

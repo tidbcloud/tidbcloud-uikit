@@ -1,6 +1,6 @@
 import { MantineTheme, CSSObject, InputStylesParams } from '@mantine/core'
 
-export const getInputStyles = (theme: MantineTheme, params: InputStylesParams): Record<string, CSSObject> => {
+export const getInputStyles = (theme: MantineTheme, params: InputStylesParams) => {
   const inputStyle = {
     height: 40,
     minHeight: 40,

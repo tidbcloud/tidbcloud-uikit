@@ -98,7 +98,7 @@ export const BasicTable = <T extends object = {}>({
             memoRows.map((row) => {
               prepareRow(row)
               return (
-                <tr {...row.getRowProps()} data-row-depth={'depth' in row ? (row as any).depth : ''}>
+                <tr {...row.getRowProps()} data-row-depth={'depth' in row ? row.depth : ''}>
                   {row.cells.map((cell) => {
                     return <td {...cell.getCellProps(cellProps)}>{cell.render('Cell')}</td>
                   })}

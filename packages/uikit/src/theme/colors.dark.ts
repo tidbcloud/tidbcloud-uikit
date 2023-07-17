@@ -134,7 +134,3 @@ export const Colors: MantineThemeOther = {
   alert: themeColors.red[7],
   warning: themeColors.yellow[7]
 }
-
-export const LegacyColors = {
-  primaryColorHover: '#19B3FF'
-}

@@ -98,7 +98,7 @@ export function getVariant(theme: MantineTheme) {
           border: 'transparent',
           background: getThemeColor(_color, _shade, primaryFallback),
           color: theme.white,
-          hover: getThemeColor(_color, 2)
+          hover: getThemeColor(_color, _shade === 9 ? 8 : _shade + 1)
         }
       }
     }

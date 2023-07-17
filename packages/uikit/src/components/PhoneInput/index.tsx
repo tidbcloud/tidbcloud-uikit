@@ -7,14 +7,11 @@ import {
   DefaultProps,
   InputWrapperStylesNames
 } from '@mantine/core'
+import { mergeStylesList } from '@tidb-cloud-uikit/utils'
 import { useState } from 'react'
-import ReactPhoneInput, { type PhoneInputProps as ReactPhoneInputProps } from 'react-phone-input-2'
-
-import { mergeStyles } from '../../utils'
+import ReactPhoneInput, { PhoneInputProps as ReactPhoneInputProps } from 'react-phone-input-2'
 
 import useStyles from './styles'
-
-export * from './helper'
 
 export interface PhoneInputProps
   extends ReactPhoneInputProps,
@@ -49,12 +46,7 @@ export const PhoneInput: React.FC<PhoneInputProps> = (props) => {
   const [isPhoneInputFocus, setIsPhoneInputFocus] = useState(false)
   return (
     <Box {...boxProps}>
-      <Input.Wrapper
-        {...wrapperProps}
-        styles={(theme, params) => {
-          return mergeStyles(theme, params, wrapperProps.styles, { label: { marginBottom: 8 } })
-        }}
-      >
+      <Input.Wrapper {...wrapperProps} styles={mergeStylesList([wrapperProps.styles, { label: { marginBottom: 8 } }])}>
         <ReactPhoneInput
           // controlled value
           value={value}
@@ -69,7 +61,6 @@ export const PhoneInput: React.FC<PhoneInputProps> = (props) => {
           placeholder={placeholder}
           specialLabel=""
           country={showContryCodeAfterFocus && isPhoneInputFocus ? country.toLowerCase() : undefined}
-          // @ts-ignore
           onFocus={(e, data) => {
             setIsPhoneInputFocus(true)
             onFocus?.(e, data)
