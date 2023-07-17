@@ -12,4 +12,4 @@ export const Stepper = withLoaderPatch<
 >(MantineStepper, {
   Step: MantineStepper.Step,
   Completed: MantineStepper.Completed
-})
+}) as typeof MantineStepper
