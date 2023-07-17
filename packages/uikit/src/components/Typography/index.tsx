@@ -1,5 +1,6 @@
 import { MantineStyleSystemProps, Text, TextProps } from '@mantine/core'
 import { createPolymorphicComponent } from '@mantine/utils'
+import { forwardRef } from 'react'
 
 type TypographyVariants =
   | 'title'
@@ -194,14 +195,13 @@ export const TYPOGRAPHY_STYLES_MAP: Record<
   }
 }
 
-const _Typography: React.FC<TypographyProps> = ({ children, variant, ...rest }) => {
-  const style = variant ? TYPOGRAPHY_STYLES_MAP[variant] : {}
-
+const _Typography = forwardRef<HTMLDivElement, TypographyProps>(({ children, variant, ...rest }, ref) => {
+  const style = TYPOGRAPHY_STYLES_MAP[variant || ''] || {}
   return (
-    <Text {...style} {...rest}>
+    <Text ref={ref} {...style} {...rest}>
       {children}
     </Text>
   )
-}
+})
 
 export const Typography = createPolymorphicComponent<'div', TypographyProps>(_Typography)

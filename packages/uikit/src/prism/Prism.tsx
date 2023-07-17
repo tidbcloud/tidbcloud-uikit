@@ -1,5 +1,5 @@
-import { MantineProvider, useMantineTheme } from '@mantine/core'
 import { Prism, PrismProps } from '@mantine/prism'
+import { MantineProvider, useMantineTheme } from '@tidb-cloud-uikit/components'
 import React from 'react'
 
 import { getPrismTheme } from './prism-theme'

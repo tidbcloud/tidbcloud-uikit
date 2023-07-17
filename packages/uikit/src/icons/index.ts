@@ -1,8 +1,6 @@
 import React, { forwardRef } from 'react'
 
-import { ICON_MAP } from './entry'
-
-export * from './entry'
+import { ICON_MAP } from './raw'
 
 export type IconProps = {
   name: keyof typeof ICON_MAP

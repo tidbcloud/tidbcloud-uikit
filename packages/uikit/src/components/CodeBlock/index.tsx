@@ -1,10 +1,9 @@
-import { ActionIcon, Box, BoxProps, CopyButton, Group, Tooltip } from '@mantine/core'
-import { useLocalStorage } from '@mantine/hooks'
-import { Prism, PrismProps } from '@mantine/prism'
+import { ActionIcon, Box, BoxProps, CopyButton, Group, Tooltip, Code, CodeProps } from '@tidb-cloud-uikit/components'
+import { useLocalStorage } from '@tidb-cloud-uikit/hooks'
+import { Icon } from '@tidb-cloud-uikit/icons'
+import { Prism, PrismProps } from '@tidb-cloud-uikit/prism'
+import { mergeSxList, mergeStylesList } from '@tidb-cloud-uikit/utils'
 import React, { useMemo, useState } from 'react'
-
-import { Icon } from '../../icons'
-import { mergeStyles, mergeSx } from '../../utils'
 
 function useFold(persistenceKey?: string) {
   const foldPersistenceKey = `${persistenceKey}.codeblock.fold`
@@ -64,7 +63,7 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
   }, [foldIconVisible, folded, defaultHeight])
 
   return (
-    <Box {...rest} sx={(theme) => mergeSx(theme, { position: 'relative' }, rest?.sx)}>
+    <Box {...rest} sx={mergeSxList([{ position: 'relative' }, rest?.sx])}>
       <Box
         p="md"
         mah={mah}
@@ -81,26 +80,22 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
           <Prism
             {...prismProps}
             language={language}
-            styles={(theme, params) =>
-              mergeStyles(
-                theme,
-                params,
-                {
-                  code: {
-                    padding: 0,
-                    backgroundColor: `transparent !important`,
-                    wordBreak: 'break-all'
-                  },
-                  line: {
-                    paddingLeft: 0
-                  },
-                  lineContent: {
-                    whiteSpace: 'pre-wrap'
-                  }
+            styles={mergeStylesList([
+              {
+                code: {
+                  padding: 0,
+                  backgroundColor: `transparent !important`,
+                  wordBreak: 'break-all'
                 },
-                prismProps?.styles || {}
-              )
-            }
+                line: {
+                  paddingLeft: 0
+                },
+                lineContent: {
+                  whiteSpace: 'pre-wrap'
+                }
+              },
+              prismProps?.styles
+            ])}
           >
             {children}
           </Prism>
@@ -146,5 +141,50 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
         </CopyButton>
       </Group>
     </Box>
+  )
+}
+
+export interface CopyTextProps extends CodeProps {
+  value: string
+}
+
+export const CopyText: React.FC<CopyTextProps> = ({ children, value, ...rest }) => {
+  return (
+    <Code
+      bg="gray.2"
+      {...rest}
+      p={8}
+      sx={(theme) => {
+        return mergeSxList([
+          {
+            display: 'inline-flex',
+            position: 'relative',
+            justifyContent: 'center',
+            alignItems: 'center',
+            borderRadius: theme.defaultRadius
+          },
+          rest?.sx
+        ])(theme)
+      }}
+    >
+      {children}
+      <CopyButton value={value} timeout={2000}>
+        {({ copied, copy }) => (
+          <Tooltip label={copied ? 'Copied' : 'Copy'} withArrow position="top">
+            <ActionIcon
+              variant="transparent"
+              size="sm"
+              ml={8}
+              display="inline-block"
+              onClick={() => {
+                copy()
+              }}
+            >
+              {copied ? <Icon name="Check" size={14} /> : <Icon name="Copy01" size={14} strokeWidth={2.5} />}
+            </ActionIcon>
+          </Tooltip>
+        )}
+      </CopyButton>
+    </Code>
   )
 }

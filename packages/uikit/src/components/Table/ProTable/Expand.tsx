@@ -25,7 +25,7 @@ export const renderExpandCell = <T extends Record<string, any> = {}>({ row, cell
         paddingLeft: canExpand ? paddingLeft : paddingLeft + 6,
         display: 'flex',
         alignItems: 'center',
-        cursor: 'pointer'
+        cursor: canExpand ? 'pointer' : undefined
       })}
       onClick={row.getToggleExpandedHandler()}
     >

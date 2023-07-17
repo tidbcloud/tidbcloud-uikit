@@ -1,12 +1,10 @@
-import { Box, useMantineTheme, BoxProps } from '@mantine/core'
+import { Box, BoxProps } from '@mantine/core'
+import { Icon } from '@tidb-cloud-uikit/icons'
 import { MantineReactTable, MantineReactTableProps } from 'mantine-react-table'
 
-import { Icon } from '../../../icons'
-import { mergeSx } from '../../../utils'
 import { TablePagination, TablePaginationProps } from '../TablePagination'
 
-export * from './Expand'
-export * from 'mantine-react-table'
+import { mergeMProps } from './helpers'
 
 export interface ProTableProps<TData extends Record<string, any> = {}> extends MantineReactTableProps<TData> {
   withBorder?: boolean
@@ -36,12 +34,34 @@ export const ProTable = <T extends Record<string, any> = {}>({
   localization,
   ...rest
 }: ProTableProps<T>) => {
-  const theme = useMantineTheme()
+  const mPaperProps = mergeMProps<NonNullable<MantineReactTableProps<T>['mantinePaperProps']>>(
+    {
+      shadow: 'none',
+      withBorder,
+      sx: (theme) => ({
+        backgroundColor: 'inherit',
+        borderRadius: withBorder ? theme.defaultRadius : 0,
+        overflow: 'hidden',
+        transition: 'none',
 
-  if (typeof mantineTableProps === 'object') {
-    mantineTableProps.sx = mergeSx(
-      theme,
-      () => ({
+        '& ::-webkit-scrollbar': enableStickyHeader
+          ? {
+              width: 0,
+              height: 0
+            }
+          : undefined
+      })
+    },
+    mantinePaperProps
+  )
+
+  const mTableProps = mergeMProps<NonNullable<MantineReactTableProps<T>['mantineTableProps']>>(
+    {
+      highlightOnHover: true,
+      withColumnBorders: false,
+      horizontalSpacing: 8,
+      verticalSpacing: 8,
+      sx: {
         color: 'inherit',
         thead: {
           tr: {
@@ -60,30 +80,36 @@ export const ProTable = <T extends Record<string, any> = {}>({
             }
           }
         }
-      }),
-      mantineTableProps.sx
-    )
-  }
+      }
+    },
+    mantineTableProps
+  )
 
-  if (typeof mantinePaperProps === 'object') {
-    mantinePaperProps.sx = mergeSx(
-      theme,
-      {
+  const mTableBodyProps = mergeMProps<NonNullable<MantineReactTableProps<T>['mantineTableBodyProps']>>((args) => {
+    if (!data?.length) {
+      return {
+        sx: {
+          'tr td div': {
+            maxWidth: `min(100vw, ${args?.table?.refs.tablePaperRef?.current?.clientWidth ?? '100%'})`
+          }
+        }
+      }
+    }
+
+    return {}
+  }, mantineTableBodyProps)
+
+  const mBottomToolbarProps = mergeMProps<NonNullable<MantineReactTableProps<T>['mantineBottomToolbarProps']>>(
+    {
+      sx: (theme) => ({
         backgroundColor: 'inherit',
-        borderRadius: withBorder ? theme.defaultRadius : 0,
-        overflow: 'hidden',
         transition: 'none',
-
-        '& ::-webkit-scrollbar': enableStickyHeader
-          ? {
-              width: 0,
-              height: 0
-            }
-          : undefined
-      },
-      mantinePaperProps.sx
-    )
-  }
+        borderBottomLeftRadius: withBorder ? theme.defaultRadius : undefined,
+        borderBottomRightRadius: withBorder ? theme.defaultRadius : undefined
+      })
+    },
+    mantineBottomToolbarProps
+  )
 
   return (
     <Box {...wrapperProps}>
@@ -96,51 +122,10 @@ export const ProTable = <T extends Record<string, any> = {}>({
         enableBottomToolbar={enableBottomToolbar}
         enablePagination={enablePagination}
         enableSorting={enableSorting}
-        mantinePaperProps={{
-          shadow: 'none',
-          withBorder,
-          ...mantinePaperProps
-        }}
-        mantineTableProps={{
-          highlightOnHover: true,
-          withColumnBorders: false,
-          horizontalSpacing: 8,
-          verticalSpacing: 8,
-          ...mantineTableProps
-        }}
-        mantineBottomToolbarProps={{
-          ...mantineBottomToolbarProps,
-          sx: {
-            backgroundColor: 'inherit',
-            transition: 'none',
-            borderBottomLeftRadius: withBorder ? theme.defaultRadius : undefined,
-            borderBottomRightRadius: withBorder ? theme.defaultRadius : undefined
-          }
-        }}
-        mantineTableBodyProps={(table) => {
-          const bodyProps =
-            typeof mantineTableBodyProps === 'function' ? mantineTableBodyProps(table) : mantineTableBodyProps
-
-          // fix empty message align when first load
-          if (!data?.length) {
-            return {
-              sx: mergeSx(
-                theme,
-                {
-                  tr: {
-                    td: {
-                      div: {
-                        maxWidth: `min(100vw, ${table?.table?.refs.tablePaperRef?.current?.clientWidth ?? '100%'})`
-                      }
-                    }
-                  }
-                },
-                bodyProps?.sx
-              )
-            }
-          }
-          return { ...bodyProps }
-        }}
+        mantinePaperProps={mPaperProps}
+        mantineTableProps={mTableProps}
+        mantineTableBodyProps={mTableBodyProps}
+        mantineBottomToolbarProps={mBottomToolbarProps}
         mantinePaginationProps={{}}
         data={data}
         localization={{

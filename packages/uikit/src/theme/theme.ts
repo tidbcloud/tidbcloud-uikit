@@ -7,7 +7,9 @@ import {
   SkeletonStylesParams,
   keyframes,
   MultiSelectStylesParams,
-  TableStylesParams
+  TableStylesParams,
+  StepperStylesParams,
+  SwitchStylesParams
 } from '@mantine/core'
 
 import { getButtonStyles } from '../components/Button'
@@ -38,6 +40,12 @@ export const theme: MantineThemeOverride = {
   },
   globalStyles(theme) {
     return {
+      body: {
+        backgroundColor: theme.other.white,
+        color: theme.colors.gray[8],
+        MozOsxFontSmoothing: 'grayscale',
+        WebkitFontSmoothing: 'antialiased'
+      },
       [`.${loaderClassName}`]: {
         animation: loaderAnimation
       }
@@ -125,17 +133,24 @@ export const theme: MantineThemeOverride = {
         item: {
           transition: 'background 150ms ease-in-out',
           color: theme.colors.gray[7],
-          '&:hover': {
-            textDecoration: 'none'
-          },
-          '&[data-hovered]': {
+          '&[data-hovered], &:hover': {
             color: theme.colors.gray[8],
-            backgroundColor: theme.colors.gray[2]
+            backgroundColor: theme.colors.gray[2],
+            textDecoration: 'none'
           },
           '&[data-active]': {
             color: theme.colors.sky[7],
             '&:hover': {
               backgroundColor: theme.colors.gray[2]
+            }
+          },
+          '&[data-disabled]': {
+            color: theme.colors.gray[5],
+            userSelect: 'none',
+            cursor: 'not-allowed',
+            '&[data-hovered], &:hover': {
+              color: theme.colors.gray[5],
+              backgroundColor: 'transparent'
             }
           }
         }
@@ -187,31 +202,57 @@ export const theme: MantineThemeOverride = {
       }
     },
     Stepper: {
-      styles: (theme) => ({
-        stepIcon: {
-          backgroundColor: theme.white,
-          borderColor: theme.colors.gray[3]
-        },
-        separator: {
-          borderColor: theme.colors.gray[3]
-        },
-        verticalSeparator: {
-          borderColor: theme.colors.gray[3]
+      styles: (theme, params: StepperStylesParams) => {
+        const filledColors = theme.fn.variant({
+          variant: 'filled',
+          color: params.color || theme.primaryColor,
+          primaryFallback: false
+        })
+        const lightColors = theme.fn.variant({
+          variant: 'light',
+          color: params.color || theme.primaryColor,
+          primaryFallback: false
+        })
+
+        return {
+          stepIcon: {
+            backgroundColor: theme.colors.gray[0],
+            borderColor: theme.colors.gray[3],
+            color: theme.colors.gray[7],
+            '&[data-progress]': {
+              backgroundColor: filledColors.background,
+              color: filledColors.color
+            },
+            '&[data-completed]': {
+              backgroundColor: lightColors.background,
+              color: lightColors.color
+            }
+          },
+          stepCompletedIcon: {
+            color: lightColors.color,
+            '> svg': {
+              width: 14,
+              height: 14
+            }
+          },
+          separator: {
+            borderColor: theme.colors.gray[3]
+          },
+          verticalSeparator: {
+            borderColor: theme.colors.gray[3]
+          }
         }
-      })
+      }
     },
     Alert: {
       styles: (theme, params: AlertStylesParams) => {
-        const colorName = params.color || theme.primaryColor
-        const targetColors = theme.colors[colorName]
-
         return {
           root: {
             borderRadius: 0,
             border: 'none',
-            borderLeft: `2px solid ${targetColors[7]}`,
-            color: targetColors[9],
-            backgroundColor: targetColors[1]
+            borderLeft: `2px solid ${theme.fn.themeColor(params.color, 7)}`,
+            color: theme.fn.themeColor(params.color, 9),
+            backgroundColor: theme.fn.themeColor(params.color, 1)
           },
           title: {
             color: 'inherit'
@@ -315,7 +356,9 @@ export const theme: MantineThemeOverride = {
         if (params.variant === 'dot') {
           return {
             root: {
-              border: 'none'
+              border: 'none',
+              textTransform: 'capitalize',
+              fontWeight: 500
             }
           }
         } else {
@@ -350,6 +393,13 @@ export const theme: MantineThemeOverride = {
         root: {
           backgroundColor: theme.colorScheme === 'dark' ? theme.colors.gray[0] : theme.white
         }
+      })
+    },
+    Drawer: {
+      defaultProps: (theme) => ({
+        overlayColor: theme.colors.gray[1],
+        overlayOpacity: 0.9,
+        overlayBlur: 3
       })
     },
     Modal: {
@@ -413,6 +463,23 @@ export const theme: MantineThemeOverride = {
             },
             ...borderStyles,
             ...colBorderStyles
+          }
+        }
+      }
+    },
+    Switch: {
+      styles: (theme, params: SwitchStylesParams) => {
+        const color = params.color ?? theme.colors.cyan[4]
+        return {
+          root: {
+            '& input:disabled:checked+.mantine-Switch-track': {
+              backgroundColor: color,
+              borderColor: color
+            },
+            '& input:disabled+*>.mantine-Switch-thumb': {
+              backgroundColor: theme.colorScheme === 'light' ? theme.white : theme.colors.gray[6],
+              borderColor: theme.colorScheme === 'light' ? theme.white : theme.colors.gray[6]
+            }
           }
         }
       }

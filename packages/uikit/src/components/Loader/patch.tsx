@@ -1,7 +1,8 @@
 import { useMergedRef } from '@mantine/hooks'
-import { FixedFunctionComponent } from '@tidb-cloud-uikit/utils'
 import { useMount, useMutationObserver } from 'ahooks'
 import React, { useRef } from 'react'
+
+import { FixedFunctionComponent } from '../../utils'
 
 import { loaderClassName } from './Loader.styles'
 
