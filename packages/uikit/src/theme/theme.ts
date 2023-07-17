@@ -9,14 +9,82 @@ import {
   MultiSelectStylesParams,
   TableStylesParams,
   StepperStylesParams,
-  SwitchStylesParams
+  SwitchStylesParams,
+  ButtonStylesParams,
+  MantineTheme
 } from '@mantine/core'
 
-import { getButtonStyles } from '../components/Button'
-import { getInputStyles } from '../components/Input'
 import { loaderAnimation, loaderClassName } from '../components/Loader'
 
 import { FONT_FAMILY } from './font'
+
+const getButtonStyles = (theme: MantineTheme, params: ButtonStylesParams): Record<string, CSSObject> => {
+  const hoverStyles =
+    params.variant === 'subtle'
+      ? theme.fn.hover({
+          backgroundColor: 'transparent'
+        })
+      : {}
+
+  const diffSizeStyles: Record<string, CSSObject> = {
+    sm: {
+      height: 40
+    }
+  }
+  const matches = diffSizeStyles[params.size] || {}
+
+  return {
+    root: {
+      fontWeight: 700,
+      ...matches,
+      ...hoverStyles
+    }
+  }
+}
+
+const getInputStyles = (theme: MantineTheme, params: InputStylesParams) => {
+  const inputStyle = {
+    height: 40,
+    minHeight: 40,
+    lineHeight: '38px'
+  }
+  const diffSizeStyles: Record<string, Record<string, CSSObject>> = {
+    sm: {
+      label: {
+        lineHeight: '20px',
+        marginBottom: 8
+      },
+      input: {
+        ...inputStyle,
+
+        // This is for PasswordInput, is has different dom structure with normal input
+        // FIXME innerInput is not working in current v5.10.4, use that key after upgrade mantine
+        '& .mantine-PasswordInput-innerInput': inputStyle
+      }
+    }
+  }
+
+  const matches = diffSizeStyles[params.size] || { label: {}, input: {} }
+
+  return {
+    label: matches.label,
+    input: {
+      ...matches.input,
+      color: theme.colors.gray[8],
+      '&:disabled': {
+        opacity: 1
+      }
+    },
+    invalid: {
+      '&:hover': {
+        borderColor: theme.colors.red[5]
+      },
+      '&:focus': {
+        borderColor: theme.colors.red[5]
+      }
+    }
+  }
+}
 
 export const theme: MantineThemeOverride = {
   primaryColor: 'sky',

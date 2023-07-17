@@ -196,7 +196,7 @@ export const TYPOGRAPHY_STYLES_MAP: Record<
 }
 
 const _Typography = forwardRef<HTMLDivElement, TypographyProps>(({ children, variant, ...rest }, ref) => {
-  const style = TYPOGRAPHY_STYLES_MAP[variant || ''] || {}
+  const style = variant ? TYPOGRAPHY_STYLES_MAP[variant] : {}
   return (
     <Text ref={ref} {...style} {...rest}>
       {children}

@@ -1,5 +1,5 @@
 import * as React from 'react'
-const Connect = (props) => (
+const UsersPlus = (props) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="1em"
@@ -14,8 +14,8 @@ const Connect = (props) => (
       strokeLinecap="round"
       strokeLinejoin="round"
       strokeWidth="inherit"
-      d="m15.646 8.881-6.39 6.855M21.482 5.253a3.56 3.56 0 1 1-6.819 2.052 3.56 3.56 0 0 1 6.819-2.052Zm-11.243 12.06a3.56 3.56 0 1 1-6.819 2.051 3.56 3.56 0 0 1 6.819-2.052Z"
+      d="M19 21v-6m-3 3h6m-10-3H8c-1.864 0-2.796 0-3.53.305a4 4 0 0 0-2.166 2.164C2 18.204 2 19.136 2 21M15.5 3.29a4.001 4.001 0 0 1 0 7.42M13.5 7a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z"
     />
   </svg>
 )
-export default Connect
+export default UsersPlus
