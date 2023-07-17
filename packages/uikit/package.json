@@ -109,10 +109,7 @@
       "require": "./dist/dropzone.js",
       "import": "./dist/dropzone.mjs"
     },
-    "./*": [
-      "./*",
-      "./*.d.ts"
-    ]
+    "./package.json": "./package.json"
   },
   "typesVersions": {
     "*": {
