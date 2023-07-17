@@ -1,9 +1,9 @@
 import fs from 'node:fs'
 
-import packageJson from '../package.json'
+import packageJson from '../../../package.json'
 
 export function postbuild() {
-  const exports = Object.keys(packageJson.exports).filter((i) => !['.', './package.json'].includes(i))
+  const exports = Object.keys((packageJson as any).exports).filter((i) => !['.', './package.json'].includes(i))
 
   exports.forEach((i) => {
     fs.writeFileSync(`${i}.js`, `module.exports = require("./dist/${i.replace('./', '')}");`)

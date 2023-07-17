@@ -15,7 +15,7 @@ export default defineConfig({
     utils: 'src/utils/index.ts',
     dropzone: 'src/dropzone/index.ts'
   },
-  format: ['cjs', 'esm'],
+  format: ['esm'],
   sourcemap: true,
   clean: true,
   dts: true,

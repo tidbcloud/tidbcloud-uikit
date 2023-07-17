@@ -1,6 +1,7 @@
-import { Box, BoxProps } from '@tidb-cloud-uikit/components'
-import { Colors } from '@tidb-cloud-uikit/theme'
+import { Box, BoxProps } from '@mantine/core'
 import React from 'react'
+
+import { Colors } from '../theme'
 
 export interface DotProps extends BoxProps {
   color: keyof typeof Colors

@@ -39,8 +39,10 @@ import { Icon } from '@tidbcloud/uikit-icons'
 |                ![BookOpen02](./src/icons/raw/BookOpen02.svg)                | BookOpen02                | `<Icon name="BookOpen02" />`                |
 |                  ![Brackets](./src/icons/raw/Brackets.svg)                  | Brackets                  | `<Icon name="Brackets" />`                  |
 |          ![BracketsEllipses](./src/icons/raw/BracketsEllipses.svg)          | BracketsEllipses          | `<Icon name="BracketsEllipses" />`          |
+|               ![Breakdown02](./src/icons/raw/Breakdown02.svg)               | Breakdown02               | `<Icon name="Breakdown02" />`               |
 |                ![Building05](./src/icons/raw/Building05.svg)                | Building05                | `<Icon name="Building05" />`                |
 |                  ![Calendar](./src/icons/raw/Calendar.svg)                  | Calendar                  | `<Icon name="Calendar" />`                  |
+|                 ![ChatRobot](./src/icons/raw/ChatRobot.svg)                 | ChatRobot                 | `<Icon name="ChatRobot" />`                 |
 |                     ![Check](./src/icons/raw/Check.svg)                     | Check                     | `<Icon name="Check" />`                     |
 |               ![CheckCircle](./src/icons/raw/CheckCircle.svg)               | CheckCircle               | `<Icon name="CheckCircle" />`               |
 |         ![CheckCirclebroken](./src/icons/raw/CheckCirclebroken.svg)         | CheckCirclebroken         | `<Icon name="CheckCirclebroken" />`         |
@@ -58,6 +60,7 @@ import { Icon } from '@tidbcloud/uikit-icons'
 |               ![CodeBrowser](./src/icons/raw/CodeBrowser.svg)               | CodeBrowser               | `<Icon name="CodeBrowser" />`               |
 |              ![CodeCircle02](./src/icons/raw/CodeCircle02.svg)              | CodeCircle02              | `<Icon name="CodeCircle02" />`              |
 |              ![CodeCircle03](./src/icons/raw/CodeCircle03.svg)              | CodeCircle03              | `<Icon name="CodeCircle03" />`              |
+|                ![Collapse08](./src/icons/raw/Collapse08.svg)                | Collapse08                | `<Icon name="Collapse08" />`                |
 |                   ![Connect](./src/icons/raw/Connect.svg)                   | Connect                   | `<Icon name="Connect" />`                   |
 |                    ![Copy01](./src/icons/raw/Copy01.svg)                    | Copy01                    | `<Icon name="Copy01" />`                    |
 |                    ![Copy03](./src/icons/raw/Copy03.svg)                    | Copy03                    | `<Icon name="Copy03" />`                    |
@@ -82,6 +85,7 @@ import { Icon } from '@tidbcloud/uikit-icons'
 |                    ![Edit05](./src/icons/raw/Edit05.svg)                    | Edit05                    | `<Icon name="Edit05" />`                    |
 |                    ![Eraser](./src/icons/raw/Eraser.svg)                    | Eraser                    | `<Icon name="Eraser" />`                    |
 |                  ![Expand01](./src/icons/raw/Expand01.svg)                  | Expand01                  | `<Icon name="Expand01" />`                  |
+|                  ![Expand08](./src/icons/raw/Expand08.svg)                  | Expand08                  | `<Icon name="Expand08" />`                  |
 |                       ![Eye](./src/icons/raw/Eye.svg)                       | Eye                       | `<Icon name="Eye" />`                       |
 |                    ![EyeOff](./src/icons/raw/EyeOff.svg)                    | EyeOff                    | `<Icon name="EyeOff" />`                    |
 |               ![FaceNeutral](./src/icons/raw/FaceNeutral.svg)               | FaceNeutral               | `<Icon name="FaceNeutral" />`               |
@@ -92,9 +96,14 @@ import { Icon } from '@tidbcloud/uikit-icons'
 |              ![FileImport02](./src/icons/raw/FileImport02.svg)              | FileImport02              | `<Icon name="FileImport02" />`              |
 |            ![FilterFunnel01](./src/icons/raw/FilterFunnel01.svg)            | FilterFunnel01            | `<Icon name="FilterFunnel01" />`            |
 |               ![FilterLines](./src/icons/raw/FilterLines.svg)               | FilterLines               | `<Icon name="FilterLines" />`               |
+|            ![FolderSettings](./src/icons/raw/FolderSettings.svg)            | FolderSettings            | `<Icon name="FolderSettings" />`            |
 |                    ![Github](./src/icons/raw/Github.svg)                    | Github                    | `<Icon name="Github" />`                    |
 |                 ![Glasses01](./src/icons/raw/Glasses01.svg)                 | Glasses01                 | `<Icon name="Glasses01" />`                 |
 |                    ![Grid01](./src/icons/raw/Grid01.svg)                    | Grid01                    | `<Icon name="Grid01" />`                    |
+|                 ![HandsDown](./src/icons/raw/HandsDown.svg)                 | HandsDown                 | `<Icon name="HandsDown" />`                 |
+|             ![HandsDownFill](./src/icons/raw/HandsDownFill.svg)             | HandsDownFill             | `<Icon name="HandsDownFill" />`             |
+|                   ![HandsUp](./src/icons/raw/HandsUp.svg)                   | HandsUp                   | `<Icon name="HandsUp" />`                   |
+|               ![HandsUpFill](./src/icons/raw/HandsUpFill.svg)               | HandsUpFill               | `<Icon name="HandsUpFill" />`               |
 |                 ![HeartHand](./src/icons/raw/HeartHand.svg)                 | HeartHand                 | `<Icon name="HeartHand" />`                 |
 |                ![HelpCircle](./src/icons/raw/HelpCircle.svg)                | HelpCircle                | `<Icon name="HelpCircle" />`                |
 |                  ![HomeLine](./src/icons/raw/HomeLine.svg)                  | HomeLine                  | `<Icon name="HomeLine" />`                  |
@@ -113,6 +122,7 @@ import { Icon } from '@tidbcloud/uikit-icons'
 |                 ![LayoutTop](./src/icons/raw/LayoutTop.svg)                 | LayoutTop                 | `<Icon name="LayoutTop" />`                 |
 |             ![LayoutTopFill](./src/icons/raw/LayoutTopFill.svg)             | LayoutTopFill             | `<Icon name="LayoutTopFill" />`             |
 |              ![LeftIndent01](./src/icons/raw/LeftIndent01.svg)              | LeftIndent01              | `<Icon name="LeftIndent01" />`              |
+|                ![LifeBuoy01](./src/icons/raw/LifeBuoy01.svg)                | LifeBuoy01                | `<Icon name="LifeBuoy01" />`                |
 |                 ![LineChart](./src/icons/raw/LineChart.svg)                 | LineChart                 | `<Icon name="LineChart" />`                 |
 |             ![LineChartUp01](./src/icons/raw/LineChartUp01.svg)             | LineChartUp01             | `<Icon name="LineChartUp01" />`             |
 |                    ![Link03](./src/icons/raw/Link03.svg)                    | Link03                    | `<Icon name="Link03" />`                    |
@@ -121,7 +131,9 @@ import { Icon } from '@tidbcloud/uikit-icons'
 |                    ![Lock01](./src/icons/raw/Lock01.svg)                    | Lock01                    | `<Icon name="Lock01" />`                    |
 |            ![LockUnlocked01](./src/icons/raw/LockUnlocked01.svg)            | LockUnlocked01            | `<Icon name="LockUnlocked01" />`            |
 |                  ![LogOut03](./src/icons/raw/LogOut03.svg)                  | LogOut03                  | `<Icon name="LogOut03" />`                  |
+|               ![MagicWand02](./src/icons/raw/MagicWand02.svg)               | MagicWand02               | `<Icon name="MagicWand02" />`               |
 |               ![MediaGithub](./src/icons/raw/MediaGithub.svg)               | MediaGithub               | `<Icon name="MediaGithub" />`               |
+|           ![MediaGithubFill](./src/icons/raw/MediaGithubFill.svg)           | MediaGithubFill           | `<Icon name="MediaGithubFill" />`           |
 |               ![MediaGoogle](./src/icons/raw/MediaGoogle.svg)               | MediaGoogle               | `<Icon name="MediaGoogle" />`               |
 |            ![MediaMicrosoft](./src/icons/raw/MediaMicrosoft.svg)            | MediaMicrosoft            | `<Icon name="MediaMicrosoft" />`            |
 |                    ![Menu01](./src/icons/raw/Menu01.svg)                    | Menu01                    | `<Icon name="Menu01" />`                    |
@@ -134,7 +146,7 @@ import { Icon } from '@tidbcloud/uikit-icons'
 |                ![Minimize01](./src/icons/raw/Minimize01.svg)                | Minimize01                | `<Icon name="Minimize01" />`                |
 |                     ![Minus](./src/icons/raw/Minus.svg)                     | Minus                     | `<Icon name="Minus" />`                     |
 |               ![MinusCircle](./src/icons/raw/MinusCircle.svg)               | MinusCircle               | `<Icon name="MinusCircle" />`               |
-|                      ![Moon](./src/icons/raw/Moon.svg)                      | Moon                      | `<Icon name="Moon" />`                      |
+|                    ![Moon01](./src/icons/raw/Moon01.svg)                    | Moon01                    | `<Icon name="Moon01" />`                    |
 |           ![NotificationBox](./src/icons/raw/NotificationBox.svg)           | NotificationBox           | `<Icon name="NotificationBox" />`           |
 |                  ![Numberic](./src/icons/raw/Numberic.svg)                  | Numberic                  | `<Icon name="Numberic" />`                  |
 |                    ![OpenAi](./src/icons/raw/OpenAi.svg)                    | OpenAi                    | `<Icon name="OpenAi" />`                    |
@@ -162,6 +174,9 @@ import { Icon } from '@tidbcloud/uikit-icons'
 |                   ![Scale02](./src/icons/raw/Scale02.svg)                   | Scale02                   | `<Icon name="Scale02" />`                   |
 |                   ![Scale03](./src/icons/raw/Scale03.svg)                   | Scale03                   | `<Icon name="Scale03" />`                   |
 |                  ![SearchLg](./src/icons/raw/SearchLg.svg)                  | SearchLg                  | `<Icon name="SearchLg" />`                  |
+|                   ![SeeMore](./src/icons/raw/SeeMore.svg)                   | SeeMore                   | `<Icon name="SeeMore" />`                   |
+|                  ![SeeShort](./src/icons/raw/SeeShort.svg)                  | SeeShort                  | `<Icon name="SeeShort" />`                  |
+|                    ![Send03](./src/icons/raw/Send03.svg)                    | Send03                    | `<Icon name="Send03" />`                    |
 |                    ![Series](./src/icons/raw/Series.svg)                    | Series                    | `<Icon name="Series" />`                    |
 |                  ![Server02](./src/icons/raw/Server02.svg)                  | Server02                  | `<Icon name="Server02" />`                  |
 |                  ![Server05](./src/icons/raw/Server05.svg)                  | Server05                  | `<Icon name="Server05" />`                  |
@@ -177,12 +192,15 @@ import { Icon } from '@tidbcloud/uikit-icons'
 |        ![SwitchHorizontal02](./src/icons/raw/SwitchHorizontal02.svg)        | SwitchHorizontal02        | `<Icon name="SwitchHorizontal02" />`        |
 |          ![SwitchVertical02](./src/icons/raw/SwitchVertical02.svg)          | SwitchVertical02          | `<Icon name="SwitchVertical02" />`          |
 |            ![SystemDatabase](./src/icons/raw/SystemDatabase.svg)            | SystemDatabase            | `<Icon name="SystemDatabase" />`            |
+|                ![SystemMode](./src/icons/raw/SystemMode.svg)                | SystemMode                | `<Icon name="SystemMode" />`                |
+|                     ![Table](./src/icons/raw/Table.svg)                     | Table                     | `<Icon name="Table" />`                     |
 |                     ![Tools](./src/icons/raw/Tools.svg)                     | Tools                     | `<Icon name="Tools" />`                     |
 |                   ![Trash01](./src/icons/raw/Trash01.svg)                   | Trash01                   | `<Icon name="Trash01" />`                   |
 |                   ![Types02](./src/icons/raw/Types02.svg)                   | Types02                   | `<Icon name="Types02" />`                   |
 |             ![UploadCloud01](./src/icons/raw/UploadCloud01.svg)             | UploadCloud01             | `<Icon name="UploadCloud01" />`             |
 |                ![UserCircle](./src/icons/raw/UserCircle.svg)                | UserCircle                | `<Icon name="UserCircle" />`                |
 |                   ![Users01](./src/icons/raw/Users01.svg)                   | Users01                   | `<Icon name="Users01" />`                   |
+|                 ![UsersPlus](./src/icons/raw/UsersPlus.svg)                 | UsersPlus                 | `<Icon name="UsersPlus" />`                 |
 |                  ![Variable](./src/icons/raw/Variable.svg)                  | Variable                  | `<Icon name="Variable" />`                  |
 |                      ![Wifi](./src/icons/raw/Wifi.svg)                      | Wifi                      | `<Icon name="Wifi" />`                      |
 |                     ![XAxis](./src/icons/raw/XAxis.svg)                     | XAxis                     | `<Icon name="XAxis" />`                     |

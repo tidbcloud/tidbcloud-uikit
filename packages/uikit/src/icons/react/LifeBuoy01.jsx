@@ -1,5 +1,5 @@
 import * as React from 'react'
-const Connect = (props) => (
+const LifeBuoy01 = (props) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="1em"
@@ -14,8 +14,8 @@ const Connect = (props) => (
       strokeLinecap="round"
       strokeLinejoin="round"
       strokeWidth="inherit"
-      d="m15.646 8.881-6.39 6.855M21.482 5.253a3.56 3.56 0 1 1-6.819 2.052 3.56 3.56 0 0 1 6.819-2.052Zm-11.243 12.06a3.56 3.56 0 1 1-6.819 2.051 3.56 3.56 0 0 1 6.819-2.052Z"
+      d="M9.136 9.136 4.93 4.93m0 14.142 4.239-4.239m5.693.032 4.207 4.207m0-14.142-4.24 4.24M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10Zm-6 0a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z"
     />
   </svg>
 )
-export default Connect
+export default LifeBuoy01

@@ -1,9 +1,10 @@
-import { ActionIcon, Box, BoxProps, CopyButton, Group, Tooltip, Code, CodeProps } from '@tidb-cloud-uikit/components'
-import { useLocalStorage } from '@tidb-cloud-uikit/hooks'
-import { Icon } from '@tidb-cloud-uikit/icons'
-import { Prism, PrismProps } from '@tidb-cloud-uikit/prism'
-import { mergeSxList, mergeStylesList } from '@tidb-cloud-uikit/utils'
+import { ActionIcon, Box, BoxProps, CopyButton, Group, Tooltip, Code, CodeProps } from '@mantine/core'
+import { useLocalStorage } from '@mantine/hooks'
+import { Prism, PrismProps } from '@mantine/prism'
 import React, { useMemo, useState } from 'react'
+
+import { Icon } from '~/icons'
+import { mergeSxList, mergeStylesList } from '~/utils'
 
 function useFold(persistenceKey?: string) {
   const foldPersistenceKey = `${persistenceKey}.codeblock.fold`

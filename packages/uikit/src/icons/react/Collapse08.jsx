@@ -1,5 +1,5 @@
 import * as React from 'react'
-const Connect = (props) => (
+const Collapse08 = (props) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="1em"
@@ -14,8 +14,8 @@ const Connect = (props) => (
       strokeLinecap="round"
       strokeLinejoin="round"
       strokeWidth="inherit"
-      d="m15.646 8.881-6.39 6.855M21.482 5.253a3.56 3.56 0 1 1-6.819 2.052 3.56 3.56 0 0 1 6.819-2.052Zm-11.243 12.06a3.56 3.56 0 1 1-6.819 2.051 3.56 3.56 0 0 1 6.819-2.052Z"
+      d="m8 19.5 4-4 4 4m-8-15 4 4 4-4"
     />
   </svg>
 )
-export default Connect
+export default Collapse08

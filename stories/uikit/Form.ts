@@ -1,1 +1,1 @@
-export * from '../../packages/uikit/src/components'
+export * from '@tidbcloud/uikit'

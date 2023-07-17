@@ -1,4 +1,4 @@
-import { Lock01 } from './raw'
+import { Lock01 } from './entry'
 
 export const IconArrowAutofitContent = Lock01
 export const IconArrowDown = Lock01

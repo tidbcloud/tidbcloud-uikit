@@ -1,5 +1,5 @@
 import * as React from 'react'
-const ChevronRight = (props) => (
+const SeeShort = (props) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="1em"
@@ -9,7 +9,7 @@ const ChevronRight = (props) => (
     viewBox="0 0 24 24"
     {...props}
   >
-    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="inherit" d="m9 18 6-6-6-6" />
+    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="inherit" d="M20 12.5H3" />
   </svg>
 )
-export default ChevronRight
+export default SeeShort
