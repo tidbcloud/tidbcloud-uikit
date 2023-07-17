@@ -2,6 +2,7 @@
   "name": "@tidbcloud/uikit",
   "version": "0.4.2",
   "description": "tidbcloud uikit",
+  "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -39,7 +40,6 @@
     "google-libphonenumber": "^3.2.30",
     "lodash-es": "^4.17.21",
     "mantine-react-table": "0.9.5",
-    "react-hook-form": "6.15.8",
     "react-table": "^7.8.0",
     "react-table-sticky": "^1.1.3",
     "react-window": "^1.8.9"
@@ -50,64 +50,49 @@
   },
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "require": "./dist/index.js",
-      "import": "./dist/index.mjs"
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.js"
     },
     "./carousel": {
-      "types": "./dist/carousel.d.ts",
-      "require": "./dist/carousel.js",
-      "import": "./dist/carousel.mjs"
+      "require": "./dist/carousel.cjs",
+      "import": "./dist/carousel.js"
     },
     "./dates": {
-      "types": "./dist/dates.d.ts",
-      "require": "./dist/dates.js",
-      "import": "./dist/dates.mjs"
-    },
-    "./form": {
-      "types": "./dist/form.d.ts",
-      "require": "./dist/form.js",
-      "import": "./dist/form.mjs"
+      "require": "./dist/dates.cjs",
+      "import": "./dist/dates.js"
     },
     "./hooks": {
-      "types": "./dist/hoos.d.ts",
-      "require": "./dist/hooks.js",
-      "import": "./dist/hooks.mjs"
+      "require": "./dist/hooks.cjs",
+      "import": "./dist/hooks.js"
     },
     "./icons": {
-      "types": "./dist/icons.d.ts",
-      "require": "./dist/icons.js",
-      "import": "./dist/icons.mjs"
+      "require": "./dist/icons.cjs",
+      "import": "./dist/icons.js"
     },
+    "./icons/raw/*": "./dist/icons/raw/*.svg",
     "./modals": {
-      "types": "./dist/modals.d.ts",
-      "require": "./dist/modals.js",
-      "import": "./dist/modals.mjs"
+      "require": "./dist/modals.cjs",
+      "import": "./dist/modals.js"
     },
     "./notifications": {
-      "types": "./dist/notifications.d.ts",
-      "require": "./dist/notifications.js",
-      "import": "./dist/notifications.mjs"
+      "require": "./dist/notifications.cjs",
+      "import": "./dist/notifications.js"
     },
     "./prism": {
-      "types": "./dist/prism.d.ts",
-      "require": "./dist/prism.js",
-      "import": "./dist/prism.mjs"
+      "require": "./dist/prism.cjs",
+      "import": "./dist/prism.js"
     },
     "./theme": {
-      "types": "./dist/theme.d.ts",
-      "require": "./dist/theme.js",
-      "import": "./dist/theme.mjs"
+      "require": "./dist/theme.cjs",
+      "import": "./dist/theme.js"
     },
     "./utils": {
-      "types": "./dist/utils.d.ts",
-      "require": "./dist/utils.js",
-      "import": "./dist/utils.mjs"
+      "require": "./dist/utils.cjs",
+      "import": "./dist/utils.js"
     },
     "./dropzone": {
-      "types": "./dist/dropzone.d.ts",
-      "require": "./dist/dropzone.js",
-      "import": "./dist/dropzone.mjs"
+      "require": "./dist/dropzone.cjs",
+      "import": "./dist/dropzone.js"
     },
     "./package.json": "./package.json"
   },
