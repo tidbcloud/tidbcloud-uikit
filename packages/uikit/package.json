@@ -3,19 +3,13 @@
   "version": "0.4.2",
   "description": "tidbcloud uikit",
   "type": "module",
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
+  "main": "./dist/components/index.js",
   "scripts": {
     "test": "test",
     "copy:raw-icon": "mkdir -p ./dist/icons/raw && cp -r ./src/icons/raw/ ./dist/icons/raw/",
     "gen:icon": "tsx ./scripts/icon.ts",
     "build": "pnpm gen:icon && tsup"
   },
-  "files": [
-    "dist"
-  ],
-  "author": "",
   "repository": {
     "type": "git",
     "url": "git@github.com:tidbcloud/tidbcloud-uikit.git"
@@ -48,62 +42,6 @@
     "react": ">=17",
     "react-dom": ">=17"
   },
-  "exports": {
-    ".": {
-      "require": "./dist/index.cjs",
-      "import": "./dist/index.js"
-    },
-    "./carousel": {
-      "require": "./dist/carousel.cjs",
-      "import": "./dist/carousel.js"
-    },
-    "./dates": {
-      "require": "./dist/dates.cjs",
-      "import": "./dist/dates.js"
-    },
-    "./hooks": {
-      "require": "./dist/hooks.cjs",
-      "import": "./dist/hooks.js"
-    },
-    "./icons": {
-      "require": "./dist/icons.cjs",
-      "import": "./dist/icons.js"
-    },
-    "./icons/raw/*": "./dist/icons/raw/*.svg",
-    "./modals": {
-      "require": "./dist/modals.cjs",
-      "import": "./dist/modals.js"
-    },
-    "./notifications": {
-      "require": "./dist/notifications.cjs",
-      "import": "./dist/notifications.js"
-    },
-    "./prism": {
-      "require": "./dist/prism.cjs",
-      "import": "./dist/prism.js"
-    },
-    "./theme": {
-      "require": "./dist/theme.cjs",
-      "import": "./dist/theme.js"
-    },
-    "./utils": {
-      "require": "./dist/utils.cjs",
-      "import": "./dist/utils.js"
-    },
-    "./dropzone": {
-      "require": "./dist/dropzone.cjs",
-      "import": "./dist/dropzone.js"
-    },
-    "./package.json": "./package.json"
-  },
-  "typesVersions": {
-    "*": {
-      "*": [
-        "./dist/*",
-        "./*"
-      ]
-    }
-  },
   "devDependencies": {
     "@types/dompurify": "^2.3.4",
     "@types/google-libphonenumber": "^7.4.23",
@@ -116,5 +54,30 @@
     "react-phone-input-2": "^2.15.1",
     "tsx": "^3.12.7",
     "typescript": "~4.7.4"
-  }
+  },
+  "files": [
+    "dist",
+    "carousel.js",
+    "carousel.d.ts",
+    "components.js",
+    "components.d.ts",
+    "dates.js",
+    "dates.d.ts",
+    "dropzone.js",
+    "dropzone.d.ts",
+    "hooks.js",
+    "hooks.d.ts",
+    "icons.js",
+    "icons.d.ts",
+    "modals.js",
+    "modals.d.ts",
+    "notifications.js",
+    "notifications.d.ts",
+    "prism.js",
+    "prism.d.ts",
+    "theme.js",
+    "theme.d.ts",
+    "utils.js",
+    "utils.d.ts"
+  ]
 }
