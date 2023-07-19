@@ -3,8 +3,8 @@ import { useLocalStorage } from '@mantine/hooks'
 import { Prism, PrismProps } from '@mantine/prism'
 import React, { useMemo, useState } from 'react'
 
-import { Icon } from '~/icons'
-import { mergeSxList, mergeStylesList } from '~/utils'
+import { Icon } from '../../icons'
+import { mergeSxList, mergeStylesList } from '../../utils'
 
 function useFold(persistenceKey?: string) {
   const foldPersistenceKey = `${persistenceKey}.codeblock.fold`

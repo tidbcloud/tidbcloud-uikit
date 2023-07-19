@@ -7,9 +7,10 @@ import {
   DefaultProps,
   InputWrapperStylesNames
 } from '@mantine/core'
-import { mergeStylesList } from '@tidb-cloud-uikit/utils'
 import { useState } from 'react'
 import ReactPhoneInput, { PhoneInputProps as ReactPhoneInputProps } from 'react-phone-input-2'
+
+import { mergeStylesList } from '../../utils'
 
 import useStyles from './styles'
 
