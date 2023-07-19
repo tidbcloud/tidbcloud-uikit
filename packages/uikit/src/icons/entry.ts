@@ -93,6 +93,7 @@ import HomeLine from './react/HomeLine'
 import Inbox01 from './react/Inbox01'
 import Info2 from './react/Info2'
 import InfoCircle from './react/InfoCircle'
+import InfoHexagon from './react/InfoHexagon'
 import Key02 from './react/Key02'
 import LaygroundGrid02 from './react/LaygroundGrid02'
 import LayoutAlt03 from './react/LayoutAlt03'
@@ -283,6 +284,7 @@ export const ICON_MAP = {
   Inbox01,
   Info2,
   InfoCircle,
+  InfoHexagon,
   Key02,
   LaygroundGrid02,
   LayoutAlt03,
@@ -474,6 +476,7 @@ export {
   Inbox01,
   Info2,
   InfoCircle,
+  InfoHexagon,
   Key02,
   LaygroundGrid02,
   LayoutAlt03,
