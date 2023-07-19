@@ -110,6 +110,7 @@ import { Icon } from '@tidbcloud/uikit-icons'
 |                   ![Inbox01](./src/icons/raw/Inbox01.svg)                   | Inbox01                   | `<Icon name="Inbox01" />`                   |
 |                     ![Info2](./src/icons/raw/Info2.svg)                     | Info2                     | `<Icon name="Info2" />`                     |
 |                ![InfoCircle](./src/icons/raw/InfoCircle.svg)                | InfoCircle                | `<Icon name="InfoCircle" />`                |
+|               ![InfoHexagon](./src/icons/raw/InfoHexagon.svg)               | InfoHexagon               | `<Icon name="InfoHexagon" />`               |
 |                     ![Key02](./src/icons/raw/Key02.svg)                     | Key02                     | `<Icon name="Key02" />`                     |
 |           ![LaygroundGrid02](./src/icons/raw/LaygroundGrid02.svg)           | LaygroundGrid02           | `<Icon name="LaygroundGrid02" />`           |
 |               ![LayoutAlt03](./src/icons/raw/LayoutAlt03.svg)               | LayoutAlt03               | `<Icon name="LayoutAlt03" />`               |
