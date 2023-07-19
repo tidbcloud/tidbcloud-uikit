@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 0.5.0
+
+### Minor Changes
+
+- ec57499: Fix bundle and esm/cjs issue
+
 ## 0.4.0
 
 ### Minor Changes
