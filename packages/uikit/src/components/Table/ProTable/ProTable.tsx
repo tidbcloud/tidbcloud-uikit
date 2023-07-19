@@ -1,7 +1,7 @@
 import { Box, BoxProps } from '@mantine/core'
-import { Icon } from '@tidb-cloud-uikit/icons'
 import { MantineReactTable, MantineReactTableProps } from 'mantine-react-table'
 
+import { Icon } from '../../../icons'
 import { TablePagination, TablePaginationProps } from '../TablePagination'
 
 import { mergeMProps } from './helpers'

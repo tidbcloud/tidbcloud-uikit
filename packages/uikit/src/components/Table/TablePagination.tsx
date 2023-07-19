@@ -1,5 +1,6 @@
 import { Pagination, PaginationProps } from '@mantine/core'
-import { mergeStylesList } from '@tidb-cloud-uikit/utils'
+
+import { mergeStylesList } from '../../utils'
 
 export interface TablePaginationProps extends PaginationProps {}
 

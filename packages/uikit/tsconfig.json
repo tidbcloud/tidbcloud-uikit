@@ -4,10 +4,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@tidb-cloud-uikit/utils": ["./src/utils"],
-      "@tidb-cloud-uikit/icons": ["./src/icons"],
-      "@tidb-cloud-uikit/components": ["./src/components"],
-      "~/*": ["./src/*"]
+      "DO_NOT_USE_IT": ["ESBUILD_NOT_WELL_SUPPORTED"]
     }
   }
 }

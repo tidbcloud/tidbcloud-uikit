@@ -1,6 +1,7 @@
 import { Box, HoverCard } from '@mantine/core'
 import { HoverCardProps } from '@mantine/core'
-import { Icon } from '@tidb-cloud-uikit/icons'
+
+import { Icon } from '../icons'
 
 import { Typography } from './Typography'
 

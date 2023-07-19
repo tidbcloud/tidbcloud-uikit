@@ -1,6 +1,7 @@
 import { DefaultProps } from '@mantine/core'
-import { mergeSxList } from '@tidb-cloud-uikit/utils'
 import { isFunction } from 'lodash-es'
+
+import { mergeSxList } from '../../../utils'
 
 export function mergeMProps<P extends DefaultProps | ((...args: unknown[]) => DefaultProps)>(preProps: P, mProps?: P) {
   type PropsResult = Extract<P, { className?: string }> | undefined
