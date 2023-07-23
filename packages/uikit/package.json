@@ -6,8 +6,8 @@
   "scripts": {
     "test": "test",
     "copy:raw-icon": "mkdir -p ./dist/icons/raw && cp -r ./src/icons/raw/ ./dist/icons/raw/",
-    "gen:icon": "tsx ./scripts/icon.ts",
-    "build": "pnpm gen:icon && tsup"
+    "build:icon": "tsx ./scripts/icon.ts",
+    "build": "tsup"
   },
   "repository": {
     "type": "git",

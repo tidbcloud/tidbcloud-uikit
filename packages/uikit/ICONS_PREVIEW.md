@@ -3,12 +3,12 @@
 ## Add new SVG Icon
 
 1. put new svg files into `src/raw`
-2. run npm script `yarn gen:icon`
+2. run script `pnpm build:icon`
 
 ## Usage
 
 ```ts
-import { Icon } from '@tidbcloud/uikit-icons'
+import { Icon } from '@tidbcloud/uikit/icons'
 
 // with ts typing support!
 <Icon name="SomeName" />
