@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 0.5.1
+
+### Patch Changes
+
+- 06ce447: Update icon styles
+
 ## 0.5.0
 
 ### Minor Changes
