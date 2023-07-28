@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 0.6.0
+
+### Minor Changes
+
+- 5fa0e82: fix: forward ref when build icon component
+
 ## 0.5.1
 
 ### Patch Changes
