@@ -1,6 +1,7 @@
 import * as React from 'react'
-const Eye = (props) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 24 24" {...props}>
+import { forwardRef } from 'react'
+const Eye = (props, ref) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 24 24" ref={ref} {...props}>
     <path
       stroke="currentColor"
       strokeLinecap="round"
@@ -17,4 +18,5 @@ const Eye = (props) => (
     />
   </svg>
 )
-export default Eye
+const ForwardRef = forwardRef(Eye)
+export default ForwardRef

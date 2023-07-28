@@ -1,6 +1,7 @@
 import * as React from 'react'
-const Key02 = (props) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 16 16" {...props}>
+import { forwardRef } from 'react'
+const Key02 = (props, ref) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 16 16" ref={ref} {...props}>
     <path
       stroke="#F2AA18"
       strokeLinecap="round"
@@ -9,4 +10,5 @@ const Key02 = (props) => (
     />
   </svg>
 )
-export default Key02
+const ForwardRef = forwardRef(Key02)
+export default ForwardRef

@@ -1,6 +1,7 @@
 import * as React from 'react'
-const Calendar = (props) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 14 16" {...props}>
+import { forwardRef } from 'react'
+const Calendar = (props, ref) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 14 16" ref={ref} {...props}>
     <path
       stroke="#999"
       strokeLinecap="round"
@@ -9,4 +10,5 @@ const Calendar = (props) => (
     />
   </svg>
 )
-export default Calendar
+const ForwardRef = forwardRef(Calendar)
+export default ForwardRef

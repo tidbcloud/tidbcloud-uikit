@@ -60,7 +60,11 @@ function transformSvgIcon() {
     const name = pascalCase(i)
     const jsCode = transform.sync(
       content,
-      { plugins: ['@svgr/plugin-svgo', '@svgr/plugin-jsx', '@svgr/plugin-prettier'], icon: true },
+      {
+        plugins: ['@svgr/plugin-svgo', '@svgr/plugin-jsx', '@svgr/plugin-prettier'],
+        icon: true,
+        ref: true
+      },
       { componentName: name }
     )
     fs.writeFileSync(path.resolve(reactIconOutput, `${name}.jsx`), jsCode)
@@ -98,7 +102,9 @@ function updateImportEntry() {
   fs.writeFileSync(entryOutput, [noEdit, imports, '\n', exportMap, '\n', reexports].join('\n') + '\n')
 }
 
-prepare()
-transformSvgIcon()
-generatePreview()
-updateImportEntry()
+;(function () {
+  prepare()
+  transformSvgIcon()
+  generatePreview()
+  updateImportEntry()
+})()

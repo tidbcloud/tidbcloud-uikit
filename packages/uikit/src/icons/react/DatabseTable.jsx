@@ -1,6 +1,7 @@
 import * as React from 'react'
-const DatabseTable = (props) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 16 16" {...props}>
+import { forwardRef } from 'react'
+const DatabseTable = (props, ref) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 16 16" ref={ref} {...props}>
     <path
       stroke="#91B2F2"
       strokeLinecap="round"
@@ -9,4 +10,5 @@ const DatabseTable = (props) => (
     />
   </svg>
 )
-export default DatabseTable
+const ForwardRef = forwardRef(DatabseTable)
+export default ForwardRef

@@ -1,6 +1,7 @@
 import * as React from 'react'
-const MessageTextSquare01 = (props) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 20 20" {...props}>
+import { forwardRef } from 'react'
+const MessageTextSquare01 = (props, ref) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 20 20" ref={ref} {...props}>
     <path
       stroke="currentColor"
       strokeLinecap="round"
@@ -10,4 +11,5 @@ const MessageTextSquare01 = (props) => (
     />
   </svg>
 )
-export default MessageTextSquare01
+const ForwardRef = forwardRef(MessageTextSquare01)
+export default ForwardRef

@@ -1,6 +1,7 @@
 import * as React from 'react'
-const DataApiSystem = (props) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 24 24" {...props}>
+import { forwardRef } from 'react'
+const DataApiSystem = (props, ref) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 24 24" ref={ref} {...props}>
     <path
       stroke="currentColor"
       strokeLinecap="round"
@@ -17,4 +18,5 @@ const DataApiSystem = (props) => (
     />
   </svg>
 )
-export default DataApiSystem
+const ForwardRef = forwardRef(DataApiSystem)
+export default ForwardRef

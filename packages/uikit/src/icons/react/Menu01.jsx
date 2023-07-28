@@ -1,5 +1,6 @@
 import * as React from 'react'
-const Menu01 = (props) => (
+import { forwardRef } from 'react'
+const Menu01 = (props, ref) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="1em"
@@ -7,6 +8,7 @@ const Menu01 = (props) => (
     fill="none"
     strokeWidth={2}
     viewBox="0 0 24 24"
+    ref={ref}
     {...props}
   >
     <path
@@ -18,4 +20,5 @@ const Menu01 = (props) => (
     />
   </svg>
 )
-export default Menu01
+const ForwardRef = forwardRef(Menu01)
+export default ForwardRef

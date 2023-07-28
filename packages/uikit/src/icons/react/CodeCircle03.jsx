@@ -1,6 +1,7 @@
 import * as React from 'react'
-const CodeCircle03 = (props) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 16 16" {...props}>
+import { forwardRef } from 'react'
+const CodeCircle03 = (props, ref) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 16 16" ref={ref} {...props}>
     <g clipPath="url(#prefix__a)">
       <path
         stroke="#52CC7A"
@@ -16,4 +17,5 @@ const CodeCircle03 = (props) => (
     </defs>
   </svg>
 )
-export default CodeCircle03
+const ForwardRef = forwardRef(CodeCircle03)
+export default ForwardRef

@@ -1,5 +1,6 @@
 import * as React from 'react'
-const Copy01 = (props) => (
+import { forwardRef } from 'react'
+const Copy01 = (props, ref) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="1em"
@@ -7,6 +8,7 @@ const Copy01 = (props) => (
     fill="none"
     strokeWidth={2}
     viewBox="0 0 24 24"
+    ref={ref}
     {...props}
   >
     <path
@@ -18,4 +20,5 @@ const Copy01 = (props) => (
     />
   </svg>
 )
-export default Copy01
+const ForwardRef = forwardRef(Copy01)
+export default ForwardRef

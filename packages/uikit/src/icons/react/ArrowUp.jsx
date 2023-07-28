@@ -1,6 +1,7 @@
 import * as React from 'react'
-const ArrowUp = (props) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 24 24" {...props}>
+import { forwardRef } from 'react'
+const ArrowUp = (props, ref) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 24 24" ref={ref} {...props}>
     <path
       stroke="currentColor"
       strokeLinecap="round"
@@ -10,4 +11,5 @@ const ArrowUp = (props) => (
     />
   </svg>
 )
-export default ArrowUp
+const ForwardRef = forwardRef(ArrowUp)
+export default ForwardRef

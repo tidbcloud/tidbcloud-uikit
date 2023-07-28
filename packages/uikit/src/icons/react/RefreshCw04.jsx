@@ -1,6 +1,7 @@
 import * as React from 'react'
-const RefreshCw04 = (props) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 16 20" {...props}>
+import { forwardRef } from 'react'
+const RefreshCw04 = (props, ref) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 16 20" ref={ref} {...props}>
     <path
       stroke="currentColor"
       strokeLinecap="round"
@@ -10,4 +11,5 @@ const RefreshCw04 = (props) => (
     />
   </svg>
 )
-export default RefreshCw04
+const ForwardRef = forwardRef(RefreshCw04)
+export default ForwardRef

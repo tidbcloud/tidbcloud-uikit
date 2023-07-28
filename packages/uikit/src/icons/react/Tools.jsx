@@ -1,6 +1,7 @@
 import * as React from 'react'
-const Tools = (props) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 20 19" {...props}>
+import { forwardRef } from 'react'
+const Tools = (props, ref) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 20 19" ref={ref} {...props}>
     <path
       stroke="#666"
       strokeLinecap="round"
@@ -10,4 +11,5 @@ const Tools = (props) => (
     />
   </svg>
 )
-export default Tools
+const ForwardRef = forwardRef(Tools)
+export default ForwardRef

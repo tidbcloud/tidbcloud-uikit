@@ -1,6 +1,7 @@
 import * as React from 'react'
-const Database01 = (props) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 16 16" {...props}>
+import { forwardRef } from 'react'
+const Database01 = (props, ref) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 16 16" ref={ref} {...props}>
     <path
       stroke="currentColor"
       strokeLinecap="round"
@@ -9,4 +10,5 @@ const Database01 = (props) => (
     />
   </svg>
 )
-export default Database01
+const ForwardRef = forwardRef(Database01)
+export default ForwardRef

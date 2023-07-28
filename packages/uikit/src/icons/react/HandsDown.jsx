@@ -1,5 +1,6 @@
 import * as React from 'react'
-const HandsDown = (props) => (
+import { forwardRef } from 'react'
+const HandsDown = (props, ref) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="1em"
@@ -7,6 +8,7 @@ const HandsDown = (props) => (
     fill="none"
     strokeWidth={1.5}
     viewBox="0 0 22 22"
+    ref={ref}
     {...props}
   >
     <path
@@ -16,4 +18,5 @@ const HandsDown = (props) => (
     />
   </svg>
 )
-export default HandsDown
+const ForwardRef = forwardRef(HandsDown)
+export default ForwardRef

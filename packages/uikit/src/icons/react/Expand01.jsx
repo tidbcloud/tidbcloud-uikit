@@ -1,6 +1,7 @@
 import * as React from 'react'
-const Expand01 = (props) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 24 24" {...props}>
+import { forwardRef } from 'react'
+const Expand01 = (props, ref) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 24 24" ref={ref} {...props}>
     <path
       stroke="currentColor"
       strokeLinecap="round"
@@ -10,4 +11,5 @@ const Expand01 = (props) => (
     />
   </svg>
 )
-export default Expand01
+const ForwardRef = forwardRef(Expand01)
+export default ForwardRef

@@ -1,5 +1,6 @@
 import * as React from 'react'
-const CheckCircle = (props) => (
+import { forwardRef } from 'react'
+const CheckCircle = (props, ref) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="1em"
@@ -7,6 +8,7 @@ const CheckCircle = (props) => (
     fill="none"
     strokeWidth={1.5}
     viewBox="0 0 24 24"
+    ref={ref}
     {...props}
   >
     <path
@@ -18,4 +20,5 @@ const CheckCircle = (props) => (
     />
   </svg>
 )
-export default CheckCircle
+const ForwardRef = forwardRef(CheckCircle)
+export default ForwardRef

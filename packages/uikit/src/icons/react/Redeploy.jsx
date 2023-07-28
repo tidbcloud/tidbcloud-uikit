@@ -1,6 +1,7 @@
 import * as React from 'react'
-const Redeploy = (props) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 14 14" {...props}>
+import { forwardRef } from 'react'
+const Redeploy = (props, ref) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 14 14" ref={ref} {...props}>
     <path
       stroke="currentColor"
       strokeLinecap="round"
@@ -9,4 +10,5 @@ const Redeploy = (props) => (
     />
   </svg>
 )
-export default Redeploy
+const ForwardRef = forwardRef(Redeploy)
+export default ForwardRef

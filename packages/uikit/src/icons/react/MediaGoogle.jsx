@@ -1,6 +1,7 @@
 import * as React from 'react'
-const MediaGoogle = (props) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 24 24" {...props}>
+import { forwardRef } from 'react'
+const MediaGoogle = (props, ref) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 24 24" ref={ref} {...props}>
     <path
       fill="#4285F4"
       d="M22.532 12.248c0-.725-.064-1.412-.174-2.081H12V14.3h5.93c-.265 1.357-1.044 2.502-2.2 3.281v2.75h3.54c2.07-1.915 3.262-4.739 3.262-8.085Z"
@@ -19,4 +20,5 @@ const MediaGoogle = (props) => (
     />
   </svg>
 )
-export default MediaGoogle
+const ForwardRef = forwardRef(MediaGoogle)
+export default ForwardRef

@@ -1,6 +1,7 @@
 import * as React from 'react'
-const AlertTriangleFill = (props) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 24 24" {...props}>
+import { forwardRef } from 'react'
+const AlertTriangleFill = (props, ref) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 24 24" ref={ref} {...props}>
     <path
       fill="currentColor"
       fillRule="evenodd"
@@ -9,4 +10,5 @@ const AlertTriangleFill = (props) => (
     />
   </svg>
 )
-export default AlertTriangleFill
+const ForwardRef = forwardRef(AlertTriangleFill)
+export default ForwardRef

@@ -1,6 +1,7 @@
 import * as React from 'react'
-const HomeLine = (props) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 18 18" {...props}>
+import { forwardRef } from 'react'
+const HomeLine = (props, ref) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 18 18" ref={ref} {...props}>
     <path
       stroke="currentColor"
       strokeLinecap="round"
@@ -10,4 +11,5 @@ const HomeLine = (props) => (
     />
   </svg>
 )
-export default HomeLine
+const ForwardRef = forwardRef(HomeLine)
+export default ForwardRef

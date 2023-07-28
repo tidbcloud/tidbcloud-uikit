@@ -1,6 +1,7 @@
 import * as React from 'react'
-const Dataflow03 = (props) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 24 24" {...props}>
+import { forwardRef } from 'react'
+const Dataflow03 = (props, ref) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 24 24" ref={ref} {...props}>
     <path
       stroke="currentColor"
       strokeLinecap="round"
@@ -10,4 +11,5 @@ const Dataflow03 = (props) => (
     />
   </svg>
 )
-export default Dataflow03
+const ForwardRef = forwardRef(Dataflow03)
+export default ForwardRef

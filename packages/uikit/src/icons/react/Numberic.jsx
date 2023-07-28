@@ -1,6 +1,7 @@
 import * as React from 'react'
-const Numberic = (props) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 16 16" {...props}>
+import { forwardRef } from 'react'
+const Numberic = (props, ref) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 16 16" ref={ref} {...props}>
     <g clipPath="url(#prefix__a)">
       <path
         stroke="#999"
@@ -15,4 +16,5 @@ const Numberic = (props) => (
     </defs>
   </svg>
 )
-export default Numberic
+const ForwardRef = forwardRef(Numberic)
+export default ForwardRef

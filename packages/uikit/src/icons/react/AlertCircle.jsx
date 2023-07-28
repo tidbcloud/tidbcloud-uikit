@@ -1,5 +1,6 @@
 import * as React from 'react'
-const AlertCircle = (props) => (
+import { forwardRef } from 'react'
+const AlertCircle = (props, ref) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="1em"
@@ -7,6 +8,7 @@ const AlertCircle = (props) => (
     fill="none"
     strokeWidth={1.5}
     viewBox="0 0 24 24"
+    ref={ref}
     {...props}
   >
     <path
@@ -18,4 +20,5 @@ const AlertCircle = (props) => (
     />
   </svg>
 )
-export default AlertCircle
+const ForwardRef = forwardRef(AlertCircle)
+export default ForwardRef
