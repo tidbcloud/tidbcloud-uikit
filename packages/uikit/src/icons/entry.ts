@@ -82,6 +82,7 @@ import FilterLines from './react/FilterLines'
 import FolderSettings from './react/FolderSettings'
 import Github from './react/Github'
 import Glasses01 from './react/Glasses01'
+import Globe01 from './react/Globe01'
 import Grid01 from './react/Grid01'
 import HandsDown from './react/HandsDown'
 import HandsDownFill from './react/HandsDownFill'
@@ -274,6 +275,7 @@ export const ICON_MAP = {
   Github,
   Glasses01,
   Grid01,
+  Globe01,
   HandsDown,
   HandsDownFill,
   HandsUp,
@@ -466,6 +468,7 @@ export {
   Github,
   Glasses01,
   Grid01,
+  Globe01,
   HandsDown,
   HandsDownFill,
   HandsUp,

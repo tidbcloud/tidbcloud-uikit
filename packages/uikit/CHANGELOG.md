@@ -1,5 +1,17 @@
 # @tidbcloud/uikit
 
+## 0.6.2
+
+### Patch Changes
+
+- 659205f: fix: globe01 icon add entry
+
+## 0.6.1
+
+### Patch Changes
+
+- 793a330: feat(uikit): add icon globe01
+
 ## 0.6.0
 
 ### Minor Changes
