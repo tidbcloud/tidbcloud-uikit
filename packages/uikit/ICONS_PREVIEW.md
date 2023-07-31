@@ -188,6 +188,7 @@ import { Icon } from '@tidbcloud/uikit/icons'
 |                ![ShieldTick](./src/icons/raw/ShieldTick.svg)                | ShieldTick                | `<Icon name="ShieldTick" />`                |
 |                ![ShieldUser](./src/icons/raw/ShieldUser.svg)                | ShieldUser                | `<Icon name="ShieldUser" />`                |
 |                    ![Star04](./src/icons/raw/Star04.svg)                    | Star04                    | `<Icon name="Star04" />`                    |
+|                    ![Star06](./src/icons/raw/Star06.svg)                    | Star06                    | `<Icon name="Star06" />`                    |
 |                  ![String01](./src/icons/raw/String01.svg)                  | String01                  | `<Icon name="String01" />`                  |
 |                       ![Sun](./src/icons/raw/Sun.svg)                       | Sun                       | `<Icon name="Sun" />`                       |
 |        ![SwitchHorizontal02](./src/icons/raw/SwitchHorizontal02.svg)        | SwitchHorizontal02        | `<Icon name="SwitchHorizontal02" />`        |

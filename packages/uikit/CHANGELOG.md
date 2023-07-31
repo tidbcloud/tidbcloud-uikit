@@ -1,5 +1,17 @@
 # @tidbcloud/uikit
 
+## 0.6.4
+
+### Patch Changes
+
+- fix build
+
+## 0.6.3
+
+### Patch Changes
+
+- uikit/icons: add Star06
+
 ## 0.6.2
 
 ### Patch Changes
