@@ -12,7 +12,7 @@ import ReactPhoneInput, { PhoneInputProps as ReactPhoneInputProps } from 'react-
 
 import { mergeStylesList } from '../../utils'
 
-import useStyles from './styles'
+import { useStyles } from './styles'
 
 export interface PhoneInputProps
   extends ReactPhoneInputProps,
