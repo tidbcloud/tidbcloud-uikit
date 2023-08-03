@@ -1,9 +1,9 @@
 import { ActionIcon, Box, BoxProps, CopyButton, Group, Tooltip, Code, CodeProps } from '@mantine/core'
 import { useLocalStorage } from '@mantine/hooks'
-import { Prism, PrismProps } from '@mantine/prism'
 import React, { useMemo, useState } from 'react'
 
 import { Icon } from '../../icons'
+import { Prism, PrismProps } from '../../prism'
 import { mergeSxList, mergeStylesList } from '../../utils'
 
 function useFold(persistenceKey?: string) {
