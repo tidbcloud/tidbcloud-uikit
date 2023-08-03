@@ -1,7 +1,7 @@
 import { Box, BoxProps } from '@mantine/core'
 import React from 'react'
 
-import { Colors } from '../theme'
+import { Colors } from '../../theme'
 
 export interface DotProps extends BoxProps {
   color: keyof typeof Colors
