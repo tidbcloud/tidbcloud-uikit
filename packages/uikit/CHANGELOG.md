@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 0.6.5
+
+### Patch Changes
+
+- 9110ca1: Fix prism import path
+
 ## 0.6.4
 
 ### Patch Changes
