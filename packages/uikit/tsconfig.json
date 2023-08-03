@@ -4,7 +4,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "DO_NOT_USE_IT": ["ESBUILD_NOT_WELL_SUPPORTED"]
+      "DO_NOT_USE_PATH_ALIAS": ["IT IS NOT WELL SUPPORTED BY ESBUILD"]
     }
   }
 }

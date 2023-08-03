@@ -1,6 +1,6 @@
 import { createStyles } from '@mantine/core'
 
-export default createStyles((theme, params: { hasError?: boolean }) => {
+export const useStyles = createStyles((theme, params: { hasError?: boolean }) => {
   const primaryShade = theme.fn.primaryShade()
   const { hasError } = params
   const invalidColor = theme.colors.red[primaryShade]
