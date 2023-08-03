@@ -4,3 +4,4 @@ dist/
 .DS_Store
 storybook-static/
 packages/core/icons/src/react/
+.idea/
