@@ -2,6 +2,7 @@
   "extends": "../../tsconfig.json",
   "include": ["src"],
   "compilerOptions": {
+    "typeRoots": [],
     "baseUrl": ".",
     "paths": {
       "DO_NOT_USE_PATH_ALIAS": ["IT IS NOT WELL SUPPORTED BY ESBUILD"]
