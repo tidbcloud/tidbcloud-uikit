@@ -5,45 +5,47 @@ name: Publish Github Packages
 
 on:
   push:
-    tags:
-      - v*
+    branches:
+      - master
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout Repo
+        uses: actions/checkout@v3
 
       - uses: pnpm/action-setup@v2
         with:
           version: 8
 
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v3
         with:
           node-version: '18'
           cache: 'pnpm'
 
+      - name: Creating .npmrc
+        run: |
+          cat << EOF > "$HOME/.npmrc"
+            @tidbcloud:registry=https://npm.pkg.github.com
+            //npm.pkg.github.com/:_authToken=$NPM_TOKEN
+          EOF
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
       - name: Install dependencies
         run: pnpm -r install
 
-      - name: Check
-        run: pnpm typecheck
-
-      - name: Build
+      - name: Build Package
         run: pnpm -r build
 
-  publish-gpr:
-    needs: build
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
-    steps:
-      - name: Publish to Github Packages
-        id: changesets
+      - name: Create Release Pull Request or Publish to npm
         uses: changesets/action@v1
         with:
+          version: pnpm version
+          commit: "release: bump versions"
+          title: "release: bump versions"
           publish: pnpm release
-          commit: "ci(changesets): version packages"
-          setupGitUser: false
         env:
-          NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

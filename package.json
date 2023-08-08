@@ -5,8 +5,8 @@
   "scripts": {
     "build": "pnpm -r run build",
     "changeset": "changeset",
-    "version-packages": "changeset version",
-    "release": " pnpm version-packages && changeset publish",
+    "version": "changeset version",
+    "release": "changeset publish",
     "prepare": "node ./scripts/prepare.js",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
