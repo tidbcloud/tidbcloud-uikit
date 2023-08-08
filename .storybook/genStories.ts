@@ -24,14 +24,14 @@ const isJSXElment = (properties: ts.Symbol[]) => {
   })
 }
 
-const genereateStory = async (comp: string, imported: string) => {
+const genereateStory = async (comp: string, imported: string, compNamespace: string) => {
   const template = `
 import type { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
 import { ${comp} } from '${imported}'
 
 const meta: Meta<typeof ${comp}> = {
-  title: 'Biz/Form',
+  title: '${compNamespace}',
   component: ${comp},
   parameters: {}
 }
@@ -48,27 +48,30 @@ export const Primary${comp}: Story = {
 `
   const filePath = `${process.cwd()}/stories/uikit/${comp}.stories.tsx`
   fs.stat(filePath).catch((e) => {
-    // only write when file does not exist
     if (e.code === 'ENOENT') {
-      fs.writeFile(filePath, template)
+      fs.writeFile(filePath, template, { encoding: 'utf8', flag: 'w' })
     }
   })
 }
 
 const resolveImportPath = (file: string) => {
   const defaultPath = '@tidbcloud/uikit'
-  const paths: [RegExp, string][] = [
+  const paths: [RegExp, string, string?][] = [
+    [/carousel/, 'carousel'],
+    [/prism/, 'prism'],
+    [/modals/, 'modals'],
+    [/dates/, 'dates'],
     [/theme/, 'theme'],
     [/icons/, 'icons']
   ]
   for (let i = 0; i < paths.length; i++) {
     const [regexp, name] = paths[i]
     if (regexp.test(file)) {
-      return `${defaultPath}/${name}`
+      return [`${defaultPath}/${name}`, name || 'components']
     }
   }
 
-  return defaultPath
+  return [defaultPath, 'components']
 }
 
 const getAllPaths = async () => {
@@ -98,7 +101,8 @@ const getAllPaths = async () => {
       if (!isJSXElment(properties)) {
         return
       }
-      genereateStory(symbol.escapedName!, resolveImportPath(file))
+      const [importedPath, compNamespace] = resolveImportPath(file)
+      genereateStory(symbol.escapedName!, importedPath, `Biz/${compNamespace}`)
     })
   })
 }
