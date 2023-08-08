@@ -1,5 +1,6 @@
 export * from '@mantine/core'
 export * from '@mantine/dropzone'
+export * from '@mantine/carousel'
 
 /**
  * Re-export `mantine` components with laoder patch
