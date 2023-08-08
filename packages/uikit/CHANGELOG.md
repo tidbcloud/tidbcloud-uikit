@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 0.6.6
+
+### Patch Changes
+
+- 708b524: test
+
 ## 0.6.5
 
 ### Patch Changes
