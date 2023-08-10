@@ -1,14 +1,12 @@
 import React, { useState } from 'react'
 import { useDarkMode } from 'storybook-dark-mode'
-import { MantineProvider, ColorSchemeProvider } from '@mantine/core'
-import { useHotkeys } from '@mantine/hooks'
+import { MantineProvider, ColorSchemeProvider } from '@tidbcloud/uikit'
 
 export const parameters = { layout: 'fullscreen' }
 
 function ThemeWrapper(props: any) {
   const [mode, setMode] = useState<'dark' | 'light'>('light')
   const toggleMode = () => setMode((mode) => (mode === 'dark' ? 'light' : 'dark'))
-  useHotkeys([['mod + D', toggleMode]])
 
   return (
     <ColorSchemeProvider colorScheme="light" toggleColorScheme={() => {}}>
