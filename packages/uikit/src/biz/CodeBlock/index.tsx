@@ -3,7 +3,7 @@ import { useLocalStorage } from '@mantine/hooks'
 import React, { useMemo, useState } from 'react'
 
 import { Icon } from '../../icons'
-import { Prism, PrismProps } from '../../prism'
+import { Prism, PrismProps } from '../../primitive/Prism'
 import { mergeSxList, mergeStylesList } from '../../utils'
 
 function useFold(persistenceKey?: string) {

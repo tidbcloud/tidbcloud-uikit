@@ -1,6 +1,6 @@
 import { Stepper as MantineStepper, StepperProps } from '@mantine/core'
 
-import { withLoaderPatch } from '../Loader'
+import { withLoaderPatch } from '../../primitive/Loader'
 
 export const Stepper = withLoaderPatch<
   HTMLDivElement,

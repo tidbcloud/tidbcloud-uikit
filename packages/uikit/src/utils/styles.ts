@@ -1,4 +1,4 @@
-import { CSSObject, DefaultProps, MantineTheme, Styles } from '@mantine/core'
+import { CSSObject, DefaultProps, MantineTheme } from '@mantine/core'
 import { merge } from 'lodash-es'
 
 function mergeSxValues(values: DefaultProps['sx'][], theme: MantineTheme) {
