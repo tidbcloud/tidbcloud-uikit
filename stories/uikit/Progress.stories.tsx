@@ -1,19 +1,40 @@
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj, StoryFn } from '@storybook/react'
+import { MantineProvider, NotificationsProvider } from '@tidbcloud/uikit'
 import { Progress } from '@tidbcloud/uikit'
-import React from 'react'
+import { Theme, themeColors } from '@tidbcloud/uikit/theme'
+
+type Story = StoryObj<typeof Progress>
+
+const themeDecorator = (Story: StoryFn) => {
+  return (
+    <MantineProvider
+      withGlobalStyles
+      withNormalizeCSS
+      theme={{
+        ...Theme,
+        colors: themeColors
+      }}
+    >
+      <NotificationsProvider position="top-center">
+        <div style={{ margin: '3em' }}>
+          <Story />
+        </div>
+      </NotificationsProvider>
+    </MantineProvider>
+  )
+}
 
 const meta: Meta<typeof Progress> = {
-  title: 'Biz/components',
+  title: 'Primitive/Progress',
   component: Progress,
+  decorators: [themeDecorator],
   parameters: {}
 }
 
 export default meta
 
-type Story = StoryObj<typeof Progress>
-
 // More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
-export const PrimaryProgress: Story = {
+export const Primary: Story = {
   render: () => <Progress></Progress>,
   args: {}
 }

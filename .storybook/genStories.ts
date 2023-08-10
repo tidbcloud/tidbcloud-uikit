@@ -1,92 +1,99 @@
+import fs from 'node:fs'
 import { glob } from 'glob'
-import fs from 'node:fs/promises'
-import path from 'path'
 import ts from 'typescript'
 
-const getPropsTypes = (properties: ts.Symbol[], checker: ts.TypeChecker, symbol: ts.Symbol) => {
-  properties.forEach((prop) => {
-    if (prop.escapedName === 'propTypes' && symbol.declarations?.[0]) {
-      const propType = checker.getTypeOfSymbolAtLocation(prop, symbol.declarations[0])
-      // console.log(
-      checker
-        .getPropertiesOfType(propType)
-        .filter((p) => {})
-        .map((t) => t.escapedName)
-      // )
-    }
-  })
+function ensureFolderExist(folder: string) {
+  try {
+    fs.mkdirSync(folder)
+  } catch (err) {}
 }
 
-const isJSXElment = (properties: ts.Symbol[]) => {
-  const names = ['defaultProps', 'propTypes', 'displayName']
-  return properties.some((prop) => {
-    return names.includes(prop.escapedName!)
-  })
-}
+const genereateStory = (comp: string, imported: string, compNamespace: string) => {
+  const title = `${compNamespace}/${comp}`
 
-const genereateStory = async (comp: string, imported: string, compNamespace: string) => {
   const template = `
-import type { Meta, StoryObj } from '@storybook/react'
-import React from 'react'
+import type { Meta, StoryObj, StoryFn } from '@storybook/react'
+import { MantineProvider, NotificationsProvider } from '@tidbcloud/uikit'
 import { ${comp} } from '${imported}'
+import { Theme, themeColors } from '@tidbcloud/uikit/theme'
+
+type Story = StoryObj<typeof ${comp}>
+
+const themeDecorator = (Story: StoryFn) => {
+  return (
+    <MantineProvider
+      withGlobalStyles
+      withNormalizeCSS
+      theme={{
+        ...Theme,
+        colors: themeColors
+      }}
+    >
+      <NotificationsProvider position="top-center">
+        <div style={{ margin: '3em' }}>
+          <Story />
+        </div>
+      </NotificationsProvider>
+    </MantineProvider>
+  )
+}
 
 const meta: Meta<typeof ${comp}> = {
-  title: '${compNamespace}',
+  title: '${title}',
   component: ${comp},
-  parameters: {}
+  decorators: [themeDecorator],
+  parameters: {},
 }
 
 export default meta
 
-type Story = StoryObj<typeof ${comp}>
-
 // More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
-export const Primary${comp}: Story = {
+export const Primary: Story = {
   render: () => (<${comp}></${comp}>),
   args: {}
 }
 `
-  const filePath = `${process.cwd()}/stories/uikit/${comp}.stories.tsx`
-  fs.stat(filePath).catch((e) => {
-    if (e.code === 'ENOENT') {
-      fs.writeFile(filePath, template, { encoding: 'utf8', flag: 'w' })
-    }
-  })
+  const outDir = `${process.cwd()}/stories/uikit`
+  const filePath = `${outDir}/${comp}.stories.tsx`
+  ensureFolderExist(outDir)
+
+  if (fs.existsSync(filePath)) {
+    console.log(`Skipping ${title} already exists`)
+    return
+  }
+
+  console.log(`Generating story for ${title}`)
+  fs.writeFileSync(filePath, template, { encoding: 'utf8', flag: 'w' })
 }
 
 const resolveImportPath = (file: string) => {
   const defaultPath = '@tidbcloud/uikit'
   const paths: [RegExp, string, string?][] = [
-    [/carousel/, 'carousel'],
-    [/prism/, 'prism'],
-    [/modals/, 'modals'],
-    [/dates/, 'dates'],
+    [/primitive/, 'primitive'],
     [/theme/, 'theme'],
     [/icons/, 'icons']
   ]
-  for (let i = 0; i < paths.length; i++) {
-    const [regexp, name] = paths[i]
+  for (const [regexp, name] of paths) {
     if (regexp.test(file)) {
-      return [`${defaultPath}/${name}`, name || 'components']
+      return [defaultPath, 'Primitive']
     }
   }
-
-  return [defaultPath, 'components']
+  return [`${defaultPath}/biz`, 'Biz']
 }
 
-const getAllPaths = async () => {
-  const paths = glob.sync(`${process.cwd()}/packages/uikit/src/**/index.{ts,tsx}`, {
-    ignore: ['**/utils/**', '**/theme/**', '**/hooks/**']
-  })
+const getAllPaths = () => {
+  const targetFolders = ['primitive', 'biz']
 
-  const program = ts.createProgram({
-    rootNames: paths,
-    options: { allowJs: true, esModuleInterop: true, allowSyntheticDefaultImports: true }
-  })
+  targetFolders.forEach((folder) => {
+    const targetEntry = `${process.cwd()}/packages/uikit/src/${folder}/index.ts`
+    const rootNames = glob.sync(`${process.cwd()}/packages/uikit/src/${folder}/**/*.{ts,tsx}`)
+    const program = ts.createProgram({
+      rootNames,
+      options: { allowJs: true, esModuleInterop: true, allowSyntheticDefaultImports: true }
+    })
 
-  paths.map((file) => {
     const checker = program.getTypeChecker()
-    const sourceFile = program.getSourceFile(file)
+    const sourceFile = program.getSourceFile(targetEntry)
     if (!sourceFile) {
       return
     }
@@ -94,15 +101,25 @@ const getAllPaths = async () => {
     if (!symbol) {
       return
     }
-    const symbols = checker.getExportsOfModule(symbol)
-    symbols.forEach((symbol) => {
-      const type = checker.getTypeOfSymbolAtLocation(symbol, sourceFile)
+
+    const isReactComponent = (s: ts.Symbol) => {
+      const type = checker.getTypeOfSymbolAtLocation(s, sourceFile)
+      const typeString = checker.typeToString(type)
       const properties = type.getProperties()
-      if (!isJSXElment(properties)) {
-        return
-      }
-      const [importedPath, compNamespace] = resolveImportPath(file)
-      genereateStory(symbol.escapedName!, importedPath, `Biz/${compNamespace}`)
+      const names = ['defaultProps', 'propTypes', 'displayName']
+      const hasReactProperties = properties.some((prop) => names.includes(prop.escapedName!))
+      const isFunctionalComponent = typeString.includes('FC<')
+      return (hasReactProperties || isFunctionalComponent) && !typeString.endsWith('Provider')
+    }
+
+    const symbols = checker.getExportsOfModule(symbol)
+    console.log(`Found ${symbols.length} symbols in ${folder}`)
+    const componentSymbols = symbols.filter((i) => isReactComponent(i))
+
+    console.log(`Found ${componentSymbols.length} components in ${folder} should have story`)
+    componentSymbols.forEach((symbol) => {
+      const [importedPath, compNamespace] = resolveImportPath(targetEntry)
+      genereateStory(symbol.escapedName!, importedPath, compNamespace)
     })
   })
 }

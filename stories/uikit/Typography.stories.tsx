@@ -1,19 +1,40 @@
-import type { Meta, StoryObj } from '@storybook/react'
-import { Typography } from '@tidbcloud/uikit'
-import React from 'react'
+import type { Meta, StoryObj, StoryFn } from '@storybook/react'
+import { MantineProvider, NotificationsProvider } from '@tidbcloud/uikit'
+import { Typography } from '@tidbcloud/uikit/biz'
+import { Theme, themeColors } from '@tidbcloud/uikit/theme'
+
+type Story = StoryObj<typeof Typography>
+
+const themeDecorator = (Story: StoryFn) => {
+  return (
+    <MantineProvider
+      withGlobalStyles
+      withNormalizeCSS
+      theme={{
+        ...Theme,
+        colors: themeColors
+      }}
+    >
+      <NotificationsProvider position="top-center">
+        <div style={{ margin: '3em' }}>
+          <Story />
+        </div>
+      </NotificationsProvider>
+    </MantineProvider>
+  )
+}
 
 const meta: Meta<typeof Typography> = {
-  title: 'Biz/components',
+  title: 'Biz/Typography',
   component: Typography,
+  decorators: [themeDecorator],
   parameters: {}
 }
 
 export default meta
 
-type Story = StoryObj<typeof Typography>
-
 // More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
-export const PrimaryTypography: Story = {
+export const Primary: Story = {
   render: () => <Typography></Typography>,
   args: {}
 }
