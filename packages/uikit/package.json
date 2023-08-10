@@ -2,7 +2,10 @@
   "name": "@tidbcloud/uikit",
   "version": "0.6.7",
   "description": "tidbcloud uikit",
-  "main": "./dist/components/index.js",
+  "main": "./components.js",
+  "types": "./components.d.ts",
+  "module": "./dist/components/index.mjs",
+  "browser": "./dist/components/index.mjs",
   "scripts": {
     "test": "test",
     "copy:raw-icon": "mkdir -p ./dist/icons/raw && cpy 'src/icons/raw/*.svg' ./dist/icons/raw/",
