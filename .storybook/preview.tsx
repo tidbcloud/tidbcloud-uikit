@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useDarkMode } from 'storybook-dark-mode'
 import { MantineProvider, ColorSchemeProvider, NotificationsProvider } from '@tidbcloud/uikit'
 import { Theme, themeColors } from '@tidbcloud/uikit/theme'
+import { Preview } from '@storybook/react'
 
 export const parameters = { layout: 'fullscreen' }
 
@@ -29,3 +30,15 @@ function ThemeWrapper(props: any) {
 }
 
 export const decorators = [(renderStory: any) => <ThemeWrapper>{renderStory()}</ThemeWrapper>]
+
+const preview: Preview = {
+  parameters: {
+    options: {
+      storySort: {
+        order: ['Biz', 'Primitive']
+      }
+    }
+  }
+}
+
+export default preview
