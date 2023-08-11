@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 0.7.0
+
+### Minor Changes
+
+- 7e4deb7: reorganize package entry point, now it only has `biz`/`hooks`/`icons`/`theme`/`utils` as legal subpath imports
+
 ## 0.6.7
 
 ### Patch Changes
