@@ -1,5 +1,5 @@
 import type { Meta, StoryObj, StoryFn } from '@storybook/react'
-import { HoverCard } from '@tidbcloud/uikit'
+import { Button, Group, HoverCard } from '@tidbcloud/uikit'
 
 type Story = StoryObj<typeof HoverCard>
 
@@ -20,8 +20,24 @@ const meta: Meta<typeof HoverCard> = {
 
 export default meta
 
+function PrimaryDemo() {
+  return (
+    <Group position="center">
+      <HoverCard width={280} shadow="md">
+        <HoverCard.Target>
+          <Button>Hover to reveal the card</Button>
+        </HoverCard.Target>
+        <HoverCard.Dropdown>
+          Hover card is revealed when user hovers over target element, it will be hidden once mouse is not over both
+          target and dropdown elements
+        </HoverCard.Dropdown>
+      </HoverCard>
+    </Group>
+  )
+}
+
 // More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
 export const Primary: Story = {
-  render: () => <HoverCard></HoverCard>,
+  render: () => <PrimaryDemo />,
   args: {}
 }

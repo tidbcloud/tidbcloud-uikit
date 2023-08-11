@@ -20,8 +20,22 @@ const meta: Meta<typeof MultiSelect> = {
 
 export default meta
 
+const data = [
+  { value: 'react', label: 'React' },
+  { value: 'ng', label: 'Angular' },
+  { value: 'svelte', label: 'Svelte' },
+  { value: 'vue', label: 'Vue' },
+  { value: 'riot', label: 'Riot' },
+  { value: 'next', label: 'Next.js' },
+  { value: 'blitz', label: 'Blitz.js' }
+]
+
+function Demo() {
+  return <MultiSelect data={data} label="Your favorite frameworks/libraries" placeholder="Pick all that you like" />
+}
+
 // More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
 export const Primary: Story = {
-  render: () => <MultiSelect></MultiSelect>,
+  render: () => <Demo />,
   args: {}
 }

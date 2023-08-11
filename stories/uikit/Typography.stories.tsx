@@ -1,5 +1,6 @@
 import type { Meta, StoryObj, StoryFn } from '@storybook/react'
-import { Typography } from '@tidbcloud/uikit/biz'
+import { Stack } from '@tidbcloud/uikit'
+import { Typography, TYPOGRAPHY_STYLES_MAP } from '@tidbcloud/uikit/biz'
 
 type Story = StoryObj<typeof Typography>
 
@@ -20,8 +21,17 @@ const meta: Meta<typeof Typography> = {
 
 export default meta
 
+function Demo() {
+  const texts = Object.keys(TYPOGRAPHY_STYLES_MAP).map((i) => (
+    <Typography variant={i as any} key={i}>
+      variant: {i}
+    </Typography>
+  ))
+  return <Stack>{texts}</Stack>
+}
+
 // More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
 export const Primary: Story = {
-  render: () => <Typography></Typography>,
+  render: () => <Demo />,
   args: {}
 }

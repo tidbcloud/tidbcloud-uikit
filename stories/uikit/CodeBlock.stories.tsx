@@ -20,8 +20,16 @@ const meta: Meta<typeof CodeBlock> = {
 
 export default meta
 
+const code = `
+import { CodeBlock } from '@tidbcloud/uikit';
+
+function Demo() {
+  return <CodeBlock>Put some real code here</CodeBlock>
+}
+`
+
 // More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
 export const Primary: Story = {
-  render: () => <CodeBlock></CodeBlock>,
+  render: () => <CodeBlock>{code}</CodeBlock>,
   args: {}
 }

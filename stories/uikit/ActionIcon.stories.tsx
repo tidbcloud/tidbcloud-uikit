@@ -1,5 +1,6 @@
 import type { Meta, StoryObj, StoryFn } from '@storybook/react'
 import { ActionIcon } from '@tidbcloud/uikit'
+import { Icon } from '@tidbcloud/uikit/icons'
 
 type Story = StoryObj<typeof ActionIcon>
 
@@ -22,6 +23,10 @@ export default meta
 
 // More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
 export const Primary: Story = {
-  render: () => <ActionIcon></ActionIcon>,
+  render: () => (
+    <ActionIcon>
+      <Icon name="Menu01" />
+    </ActionIcon>
+  ),
   args: {}
 }

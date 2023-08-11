@@ -1,5 +1,5 @@
 import type { Meta, StoryObj, StoryFn } from '@storybook/react'
-import { Indicator } from '@tidbcloud/uikit'
+import { Avatar, Group, Indicator } from '@tidbcloud/uikit'
 
 type Story = StoryObj<typeof Indicator>
 
@@ -22,6 +22,12 @@ export default meta
 
 // More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
 export const Primary: Story = {
-  render: () => <Indicator></Indicator>,
+  render: () => (
+    <Group position="center">
+      <Indicator>
+        <Avatar size="lg" />
+      </Indicator>
+    </Group>
+  ),
   args: {}
 }

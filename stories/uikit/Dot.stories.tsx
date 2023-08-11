@@ -1,4 +1,5 @@
 import type { Meta, StoryObj, StoryFn } from '@storybook/react'
+import { Group, useMantineTheme } from '@tidbcloud/uikit'
 import { Dot } from '@tidbcloud/uikit/biz'
 
 type Story = StoryObj<typeof Dot>
@@ -20,8 +21,15 @@ const meta: Meta<typeof Dot> = {
 
 export default meta
 
+function Demo() {
+  const theme = useMantineTheme()
+  const dots = Object.keys(theme.colors).map((i) => <Dot color={i} key={i} />)
+
+  return <Group>{dots}</Group>
+}
+
 // More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
 export const Primary: Story = {
-  render: () => <Dot></Dot>,
+  render: () => <Demo />,
   args: {}
 }

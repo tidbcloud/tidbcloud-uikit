@@ -1,5 +1,5 @@
 import type { Meta, StoryObj, StoryFn } from '@storybook/react'
-import { Tooltip } from '@tidbcloud/uikit'
+import { Button, Tooltip } from '@tidbcloud/uikit'
 
 type Story = StoryObj<typeof Tooltip>
 
@@ -22,6 +22,10 @@ export default meta
 
 // More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
 export const Primary: Story = {
-  render: () => <Tooltip></Tooltip>,
+  render: () => (
+    <Tooltip label="Tooltip">
+      <Button variant="outline">Button with tooltip</Button>
+    </Tooltip>
+  ),
   args: {}
 }

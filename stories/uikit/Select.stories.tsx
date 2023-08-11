@@ -22,6 +22,17 @@ export default meta
 
 // More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
 export const Primary: Story = {
-  render: () => <Select></Select>,
+  render: () => (
+    <Select
+      label="Your favorite framework/library"
+      placeholder="Pick one"
+      data={[
+        { value: 'react', label: 'React' },
+        { value: 'ng', label: 'Angular' },
+        { value: 'svelte', label: 'Svelte' },
+        { value: 'vue', label: 'Vue' }
+      ]}
+    />
+  ),
   args: {}
 }
