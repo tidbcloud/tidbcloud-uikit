@@ -1,33 +1,20 @@
 import type { Meta, StoryObj, StoryFn } from '@storybook/react'
-import { MantineProvider, NotificationsProvider } from '@tidbcloud/uikit'
 import { Autocomplete } from '@tidbcloud/uikit'
-import { Theme, themeColors } from '@tidbcloud/uikit/theme'
 
 type Story = StoryObj<typeof Autocomplete>
 
-const themeDecorator = (Story: StoryFn) => {
+const decorator = (Story: StoryFn) => {
   return (
-    <MantineProvider
-      withGlobalStyles
-      withNormalizeCSS
-      theme={{
-        ...Theme,
-        colors: themeColors
-      }}
-    >
-      <NotificationsProvider position="top-center">
-        <div style={{ margin: '3em' }}>
-          <Story />
-        </div>
-      </NotificationsProvider>
-    </MantineProvider>
+    <div style={{ margin: '3em' }}>
+      <Story />
+    </div>
   )
 }
 
 const meta: Meta<typeof Autocomplete> = {
   title: 'Primitive/Autocomplete',
   component: Autocomplete,
-  decorators: [themeDecorator],
+  decorators: [decorator],
   parameters: {}
 }
 

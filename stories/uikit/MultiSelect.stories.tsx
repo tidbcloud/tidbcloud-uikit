@@ -1,40 +1,41 @@
 import type { Meta, StoryObj, StoryFn } from '@storybook/react'
-import { MantineProvider, NotificationsProvider } from '@tidbcloud/uikit'
 import { MultiSelect } from '@tidbcloud/uikit'
-import { Theme, themeColors } from '@tidbcloud/uikit/theme'
 
 type Story = StoryObj<typeof MultiSelect>
 
-const themeDecorator = (Story: StoryFn) => {
+const decorator = (Story: StoryFn) => {
   return (
-    <MantineProvider
-      withGlobalStyles
-      withNormalizeCSS
-      theme={{
-        ...Theme,
-        colors: themeColors
-      }}
-    >
-      <NotificationsProvider position="top-center">
-        <div style={{ margin: '3em' }}>
-          <Story />
-        </div>
-      </NotificationsProvider>
-    </MantineProvider>
+    <div style={{ margin: '3em' }}>
+      <Story />
+    </div>
   )
 }
 
 const meta: Meta<typeof MultiSelect> = {
   title: 'Primitive/MultiSelect',
   component: MultiSelect,
-  decorators: [themeDecorator],
+  decorators: [decorator],
   parameters: {}
 }
 
 export default meta
 
+const data = [
+  { value: 'react', label: 'React' },
+  { value: 'ng', label: 'Angular' },
+  { value: 'svelte', label: 'Svelte' },
+  { value: 'vue', label: 'Vue' },
+  { value: 'riot', label: 'Riot' },
+  { value: 'next', label: 'Next.js' },
+  { value: 'blitz', label: 'Blitz.js' }
+]
+
+function Demo() {
+  return <MultiSelect data={data} label="Your favorite frameworks/libraries" placeholder="Pick all that you like" />
+}
+
 // More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
 export const Primary: Story = {
-  render: () => <MultiSelect></MultiSelect>,
+  render: () => <Demo />,
   args: {}
 }

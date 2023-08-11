@@ -1,40 +1,37 @@
 import type { Meta, StoryObj, StoryFn } from '@storybook/react'
-import { MantineProvider, NotificationsProvider } from '@tidbcloud/uikit'
-import { Typography } from '@tidbcloud/uikit/biz'
-import { Theme, themeColors } from '@tidbcloud/uikit/theme'
+import { Stack } from '@tidbcloud/uikit'
+import { Typography, TYPOGRAPHY_STYLES_MAP } from '@tidbcloud/uikit/biz'
 
 type Story = StoryObj<typeof Typography>
 
-const themeDecorator = (Story: StoryFn) => {
+const decorator = (Story: StoryFn) => {
   return (
-    <MantineProvider
-      withGlobalStyles
-      withNormalizeCSS
-      theme={{
-        ...Theme,
-        colors: themeColors
-      }}
-    >
-      <NotificationsProvider position="top-center">
-        <div style={{ margin: '3em' }}>
-          <Story />
-        </div>
-      </NotificationsProvider>
-    </MantineProvider>
+    <div style={{ margin: '3em' }}>
+      <Story />
+    </div>
   )
 }
 
 const meta: Meta<typeof Typography> = {
   title: 'Biz/Typography',
   component: Typography,
-  decorators: [themeDecorator],
+  decorators: [decorator],
   parameters: {}
 }
 
 export default meta
 
+function Demo() {
+  const texts = Object.keys(TYPOGRAPHY_STYLES_MAP).map((i) => (
+    <Typography variant={i as any} key={i}>
+      variant: {i}
+    </Typography>
+  ))
+  return <Stack>{texts}</Stack>
+}
+
 // More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
 export const Primary: Story = {
-  render: () => <Typography></Typography>,
+  render: () => <Demo />,
   args: {}
 }

@@ -1,40 +1,35 @@
 import type { Meta, StoryObj, StoryFn } from '@storybook/react'
-import { MantineProvider, NotificationsProvider } from '@tidbcloud/uikit'
+import { Group, useMantineTheme } from '@tidbcloud/uikit'
 import { Dot } from '@tidbcloud/uikit/biz'
-import { Theme, themeColors } from '@tidbcloud/uikit/theme'
 
 type Story = StoryObj<typeof Dot>
 
-const themeDecorator = (Story: StoryFn) => {
+const decorator = (Story: StoryFn) => {
   return (
-    <MantineProvider
-      withGlobalStyles
-      withNormalizeCSS
-      theme={{
-        ...Theme,
-        colors: themeColors
-      }}
-    >
-      <NotificationsProvider position="top-center">
-        <div style={{ margin: '3em' }}>
-          <Story />
-        </div>
-      </NotificationsProvider>
-    </MantineProvider>
+    <div style={{ margin: '3em' }}>
+      <Story />
+    </div>
   )
 }
 
 const meta: Meta<typeof Dot> = {
   title: 'Biz/Dot',
   component: Dot,
-  decorators: [themeDecorator],
+  decorators: [decorator],
   parameters: {}
 }
 
 export default meta
 
+function Demo() {
+  const theme = useMantineTheme()
+  const dots = Object.keys(theme.colors).map((i) => <Dot color={i} key={i} />)
+
+  return <Group>{dots}</Group>
+}
+
 // More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
 export const Primary: Story = {
-  render: () => <Dot></Dot>,
+  render: () => <Demo />,
   args: {}
 }

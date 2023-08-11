@@ -1,33 +1,20 @@
 import type { Meta, StoryObj, StoryFn } from '@storybook/react'
-import { MantineProvider, NotificationsProvider } from '@tidbcloud/uikit'
-import { Button } from '@tidbcloud/uikit'
-import { Theme, themeColors } from '@tidbcloud/uikit/theme'
+import { Button, Stack } from '@tidbcloud/uikit'
 
 type Story = StoryObj<typeof Button>
 
-const themeDecorator = (Story: StoryFn) => {
+const decorator = (Story: StoryFn) => {
   return (
-    <MantineProvider
-      withGlobalStyles
-      withNormalizeCSS
-      theme={{
-        ...Theme,
-        colors: themeColors
-      }}
-    >
-      <NotificationsProvider position="top-center">
-        <div style={{ margin: '3em' }}>
-          <Story />
-        </div>
-      </NotificationsProvider>
-    </MantineProvider>
+    <div style={{ margin: '3em' }}>
+      <Story />
+    </div>
   )
 }
 
 const meta: Meta<typeof Button> = {
   title: 'Primitive/Button',
   component: Button,
-  decorators: [themeDecorator],
+  decorators: [decorator],
   parameters: {}
 }
 
@@ -35,6 +22,14 @@ export default meta
 
 // More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
 export const Primary: Story = {
-  render: () => <Button></Button>,
+  render: () => (
+    <Stack align="flex-start">
+      <Button>Click Me!</Button>
+      <Button variant="default">variant is default</Button>
+      <Button variant="light">variant is light</Button>
+      <Button variant="outline">variant is outline</Button>
+      <Button variant="subtle">variant is subtle</Button>
+    </Stack>
+  ),
   args: {}
 }

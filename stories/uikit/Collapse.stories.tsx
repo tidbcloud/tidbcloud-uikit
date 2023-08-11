@@ -1,40 +1,43 @@
 import type { Meta, StoryObj, StoryFn } from '@storybook/react'
-import { MantineProvider, NotificationsProvider } from '@tidbcloud/uikit'
-import { Collapse } from '@tidbcloud/uikit'
-import { Theme, themeColors } from '@tidbcloud/uikit/theme'
+import { Button, Collapse } from '@tidbcloud/uikit'
+import { useState } from 'react'
 
 type Story = StoryObj<typeof Collapse>
 
-const themeDecorator = (Story: StoryFn) => {
+const decorator = (Story: StoryFn) => {
   return (
-    <MantineProvider
-      withGlobalStyles
-      withNormalizeCSS
-      theme={{
-        ...Theme,
-        colors: themeColors
-      }}
-    >
-      <NotificationsProvider position="top-center">
-        <div style={{ margin: '3em' }}>
-          <Story />
-        </div>
-      </NotificationsProvider>
-    </MantineProvider>
+    <div style={{ margin: '3em' }}>
+      <Story />
+    </div>
   )
 }
 
 const meta: Meta<typeof Collapse> = {
   title: 'Primitive/Collapse',
   component: Collapse,
-  decorators: [themeDecorator],
+  decorators: [decorator],
   parameters: {}
 }
 
 export default meta
 
+function PrimaryDemo() {
+  const [opened, setOpened] = useState(false)
+
+  return (
+    <>
+      <Button onClick={() => setOpened((o) => !o)}>Toggle content</Button>
+
+      <Collapse in={opened}>
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Earum omnis aliquam voluptatum delectus quas, et vero
+        nobis voluptatibus fugit exercitationem laboriosam dolor voluptatem! Est ea ipsum consequatur quod amet nihil!
+      </Collapse>
+    </>
+  )
+}
+
 // More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
 export const Primary: Story = {
-  render: () => <Collapse></Collapse>,
+  render: () => <PrimaryDemo />,
   args: {}
 }
