@@ -1,19 +1,40 @@
-import type { Meta, StoryObj } from '@storybook/react'
-import { RangeCalendar } from '@tidbcloud/uikit/dates'
-import React from 'react'
+import type { Meta, StoryObj, StoryFn } from '@storybook/react'
+import { MantineProvider, NotificationsProvider } from '@tidbcloud/uikit'
+import { RangeCalendar } from '@tidbcloud/uikit'
+import { Theme, themeColors } from '@tidbcloud/uikit/theme'
+
+type Story = StoryObj<typeof RangeCalendar>
+
+const themeDecorator = (Story: StoryFn) => {
+  return (
+    <MantineProvider
+      withGlobalStyles
+      withNormalizeCSS
+      theme={{
+        ...Theme,
+        colors: themeColors
+      }}
+    >
+      <NotificationsProvider position="top-center">
+        <div style={{ margin: '3em' }}>
+          <Story />
+        </div>
+      </NotificationsProvider>
+    </MantineProvider>
+  )
+}
 
 const meta: Meta<typeof RangeCalendar> = {
-  title: 'Biz/dates',
+  title: 'Primitive/RangeCalendar',
   component: RangeCalendar,
+  decorators: [themeDecorator],
   parameters: {}
 }
 
 export default meta
 
-type Story = StoryObj<typeof RangeCalendar>
-
 // More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
-export const PrimaryRangeCalendar: Story = {
+export const Primary: Story = {
   render: () => <RangeCalendar></RangeCalendar>,
   args: {}
 }

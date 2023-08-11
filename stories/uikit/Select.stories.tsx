@@ -1,19 +1,40 @@
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj, StoryFn } from '@storybook/react'
+import { MantineProvider, NotificationsProvider } from '@tidbcloud/uikit'
 import { Select } from '@tidbcloud/uikit'
-import React from 'react'
+import { Theme, themeColors } from '@tidbcloud/uikit/theme'
+
+type Story = StoryObj<typeof Select>
+
+const themeDecorator = (Story: StoryFn) => {
+  return (
+    <MantineProvider
+      withGlobalStyles
+      withNormalizeCSS
+      theme={{
+        ...Theme,
+        colors: themeColors
+      }}
+    >
+      <NotificationsProvider position="top-center">
+        <div style={{ margin: '3em' }}>
+          <Story />
+        </div>
+      </NotificationsProvider>
+    </MantineProvider>
+  )
+}
 
 const meta: Meta<typeof Select> = {
-  title: 'Biz/components',
+  title: 'Primitive/Select',
   component: Select,
+  decorators: [themeDecorator],
   parameters: {}
 }
 
 export default meta
 
-type Story = StoryObj<typeof Select>
-
 // More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
-export const PrimarySelect: Story = {
+export const Primary: Story = {
   render: () => <Select></Select>,
   args: {}
 }

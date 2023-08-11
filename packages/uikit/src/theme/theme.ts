@@ -14,7 +14,7 @@ import {
   MantineTheme
 } from '@mantine/core'
 
-import { loaderAnimation, loaderClassName } from '../components/Loader'
+import { loaderAnimation, loaderClassName } from '../primitive/Loader'
 
 import { FONT_FAMILY } from './font'
 

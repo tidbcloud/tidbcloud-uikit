@@ -1,19 +1,40 @@
-import type { Meta, StoryObj } from '@storybook/react'
-import { Carousel } from '@tidbcloud/uikit/carousel'
-import React from 'react'
+import type { Meta, StoryObj, StoryFn } from '@storybook/react'
+import { MantineProvider, NotificationsProvider } from '@tidbcloud/uikit'
+import { Carousel } from '@tidbcloud/uikit'
+import { Theme, themeColors } from '@tidbcloud/uikit/theme'
+
+type Story = StoryObj<typeof Carousel>
+
+const themeDecorator = (Story: StoryFn) => {
+  return (
+    <MantineProvider
+      withGlobalStyles
+      withNormalizeCSS
+      theme={{
+        ...Theme,
+        colors: themeColors
+      }}
+    >
+      <NotificationsProvider position="top-center">
+        <div style={{ margin: '3em' }}>
+          <Story />
+        </div>
+      </NotificationsProvider>
+    </MantineProvider>
+  )
+}
 
 const meta: Meta<typeof Carousel> = {
-  title: 'Biz/carousel',
+  title: 'Primitive/Carousel',
   component: Carousel,
+  decorators: [themeDecorator],
   parameters: {}
 }
 
 export default meta
 
-type Story = StoryObj<typeof Carousel>
-
 // More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
-export const PrimaryCarousel: Story = {
+export const Primary: Story = {
   render: () => <Carousel></Carousel>,
   args: {}
 }

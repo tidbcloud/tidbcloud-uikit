@@ -1,19 +1,40 @@
-import type { Meta, StoryObj } from '@storybook/react'
-import { CalendarBase } from '@tidbcloud/uikit/dates'
-import React from 'react'
+import type { Meta, StoryObj, StoryFn } from '@storybook/react'
+import { MantineProvider, NotificationsProvider } from '@tidbcloud/uikit'
+import { CalendarBase } from '@tidbcloud/uikit'
+import { Theme, themeColors } from '@tidbcloud/uikit/theme'
+
+type Story = StoryObj<typeof CalendarBase>
+
+const themeDecorator = (Story: StoryFn) => {
+  return (
+    <MantineProvider
+      withGlobalStyles
+      withNormalizeCSS
+      theme={{
+        ...Theme,
+        colors: themeColors
+      }}
+    >
+      <NotificationsProvider position="top-center">
+        <div style={{ margin: '3em' }}>
+          <Story />
+        </div>
+      </NotificationsProvider>
+    </MantineProvider>
+  )
+}
 
 const meta: Meta<typeof CalendarBase> = {
-  title: 'Biz/dates',
+  title: 'Primitive/CalendarBase',
   component: CalendarBase,
+  decorators: [themeDecorator],
   parameters: {}
 }
 
 export default meta
 
-type Story = StoryObj<typeof CalendarBase>
-
 // More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
-export const PrimaryCalendarBase: Story = {
+export const Primary: Story = {
   render: () => <CalendarBase></CalendarBase>,
   args: {}
 }
