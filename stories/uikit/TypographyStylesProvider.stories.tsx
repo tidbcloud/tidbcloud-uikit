@@ -1,7 +1,7 @@
 import type { Meta, StoryObj, StoryFn } from '@storybook/react'
-import { Tabs } from '@tidbcloud/uikit'
+import { TypographyStylesProvider } from '@tidbcloud/uikit'
 
-type Story = StoryObj<typeof Tabs>
+type Story = StoryObj<typeof TypographyStylesProvider>
 
 const decorator = (Story: StoryFn) => {
   return (
@@ -11,9 +11,9 @@ const decorator = (Story: StoryFn) => {
   )
 }
 
-const meta: Meta<typeof Tabs> = {
-  title: 'Primitive/Tabs',
-  component: Tabs,
+const meta: Meta<typeof TypographyStylesProvider> = {
+  title: 'Primitive/TypographyStylesProvider',
+  component: TypographyStylesProvider,
   decorators: [decorator],
   parameters: {}
 }
@@ -22,6 +22,6 @@ export default meta
 
 // More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
 export const Primary: Story = {
-  render: () => <Tabs></Tabs>,
+  render: () => <TypographyStylesProvider></TypographyStylesProvider>,
   args: {}
 }
