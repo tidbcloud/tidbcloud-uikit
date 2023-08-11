@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 0.7.1
+
+### Patch Changes
+
+- d1a5304: fix missing uploaded files when publish
+
 ## 0.7.0
 
 ### Minor Changes
