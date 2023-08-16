@@ -1,5 +1,5 @@
 import type { Meta, StoryObj, StoryFn } from '@storybook/react'
-import { Space } from '@tidbcloud/uikit'
+import { Space, Text } from '@tidbcloud/uikit'
 
 type Story = StoryObj<typeof Space>
 
@@ -22,6 +22,12 @@ export default meta
 
 // More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
 export const Primary: Story = {
-  render: () => <Space></Space>,
+  render: () => (
+    <>
+      <Text>First line</Text>
+      <Space h="md" />
+      <Text>Second line</Text>
+    </>
+  ),
   args: {}
 }

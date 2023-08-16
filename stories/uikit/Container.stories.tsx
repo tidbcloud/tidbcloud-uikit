@@ -22,6 +22,18 @@ export default meta
 
 // More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
 export const Primary: Story = {
-  render: () => <Container></Container>,
+  render: () => (
+    <>
+      <Container bg="#EFEFEF">Default container</Container>
+
+      <Container size="xs" px="xs" bg="#DDDDDD">
+        xs container with xs horizontal padding
+      </Container>
+
+      <Container size="lg" px={0} bg="#EFEFEF">
+        lg with 0 horizontal padding
+      </Container>
+    </>
+  ),
   args: {}
 }
