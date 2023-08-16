@@ -22,6 +22,18 @@ export default meta
 
 // More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
 export const Primary: Story = {
-  render: () => <Grid></Grid>,
+  render: () => (
+    <Grid>
+      <Grid.Col span={4} bg="#EFEFEF">
+        1
+      </Grid.Col>
+      <Grid.Col span={4} bg="#DDDDDD">
+        2
+      </Grid.Col>
+      <Grid.Col span={4} bg="#EFEFEF">
+        3
+      </Grid.Col>
+    </Grid>
+  ),
   args: {}
 }

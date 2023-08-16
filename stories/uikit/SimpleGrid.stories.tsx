@@ -1,5 +1,5 @@
 import type { Meta, StoryObj, StoryFn } from '@storybook/react'
-import { SimpleGrid } from '@tidbcloud/uikit'
+import { SimpleGrid, Box } from '@tidbcloud/uikit'
 
 type Story = StoryObj<typeof SimpleGrid>
 
@@ -22,6 +22,14 @@ export default meta
 
 // More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
 export const Primary: Story = {
-  render: () => <SimpleGrid></SimpleGrid>,
+  render: () => (
+    <SimpleGrid cols={3}>
+      <Box bg="#EFEFEF">1</Box>
+      <Box bg="#EFEFEF">2</Box>
+      <Box bg="#EFEFEF">3</Box>
+      <Box bg="#EFEFEF">4</Box>
+      <Box bg="#EFEFEF">5</Box>
+    </SimpleGrid>
+  ),
   args: {}
 }

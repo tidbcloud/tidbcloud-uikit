@@ -1,5 +1,5 @@
 import type { Meta, StoryObj, StoryFn } from '@storybook/react'
-import { MediaQuery } from '@tidbcloud/uikit'
+import { MediaQuery, Text } from '@tidbcloud/uikit'
 
 type Story = StoryObj<typeof MediaQuery>
 
@@ -22,6 +22,15 @@ export default meta
 
 // More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
 export const Primary: Story = {
-  render: () => <MediaQuery></MediaQuery>,
+  render: () => (
+    <MediaQuery
+      query="(max-width: 75em) and (min-width: 50em)"
+      styles={{ color: '#CC0000', '&:hover': { backgroundColor: 'silver' } }}
+    >
+      <Text>
+        Stretch the browser width, when it reaches (max-width: 75em) and (min-width: 50em) breakpoints, will turn red!
+      </Text>
+    </MediaQuery>
+  ),
   args: {}
 }

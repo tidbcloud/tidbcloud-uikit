@@ -1,5 +1,5 @@
 import type { Meta, StoryObj, StoryFn } from '@storybook/react'
-import { Group } from '@tidbcloud/uikit'
+import { Group, Button } from '@tidbcloud/uikit'
 
 type Story = StoryObj<typeof Group>
 
@@ -22,6 +22,12 @@ export default meta
 
 // More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
 export const Primary: Story = {
-  render: () => <Group></Group>,
+  render: () => (
+    <Group>
+      <Button variant="outline">1</Button>
+      <Button variant="outline">2</Button>
+      <Button variant="outline">3</Button>
+    </Group>
+  ),
   args: {}
 }
