@@ -1,5 +1,5 @@
 import type { Meta, StoryObj, StoryFn } from '@storybook/react'
-import { Paper } from '@tidbcloud/uikit'
+import { Box, Paper, Text } from '@tidbcloud/uikit'
 
 type Story = StoryObj<typeof Paper>
 
@@ -20,8 +20,19 @@ const meta: Meta<typeof Paper> = {
 
 export default meta
 
+function PrimaryDemo() {
+  return (
+    <Box p="md">
+      <Paper shadow="md" p="md">
+        <Text>Paper is the most basic ui component</Text>
+        <Text>Use it to create cards, dropdowns, modals and other components that require background with shadow</Text>
+      </Paper>
+    </Box>
+  )
+}
+
 // More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
 export const Primary: Story = {
-  render: () => <Paper></Paper>,
+  render: () => <PrimaryDemo />,
   args: {}
 }
