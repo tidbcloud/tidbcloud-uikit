@@ -1,5 +1,5 @@
 import type { Meta, StoryObj, StoryFn } from '@storybook/react'
-import { Mark } from '@tidbcloud/uikit'
+import { Text, Mark } from '@tidbcloud/uikit'
 
 type Story = StoryObj<typeof Mark>
 
@@ -20,8 +20,16 @@ const meta: Meta<typeof Mark> = {
 
 export default meta
 
+function PrimaryDemo() {
+  return (
+    <Text>
+      Thanks for stopping by and checking out <Mark>Mantine</Mark>, you are awesome!
+    </Text>
+  )
+}
+
 // More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
 export const Primary: Story = {
-  render: () => <Mark></Mark>,
+  render: () => <PrimaryDemo />,
   args: {}
 }
