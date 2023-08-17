@@ -85,7 +85,8 @@ cp .npmrc.sample .npmrc
 
 #### Tools
 
-- [pnpm](https://pnpm.io/) to manage packages and dependencies
+- [Node.js 18](https://nodejs.org/)
+- [pnpm 8](https://pnpm.io/) to manage packages and dependencies
 - [tsup](https://tsup.egoist.dev/) to bundle packages
 - [storybook](https://storybook.js.org/) for rapid UI component development and testing
 - [changeset](https://github.com/atlassian/changesets) for changes documentation, changelog generation, and release management.
@@ -93,11 +94,13 @@ cp .npmrc.sample .npmrc
 #### Commands
 
 - `pnpm install`: bootstraps the entire project, symlinks all dependencies for cross-component development and builds all components.
-- `pnpm storybook`: starts storybook server and loads stories in files that end with .stories.tsx.
 - `pnpm build`: run build for all component packages.
 - `pnpm release`: publish changed packages.
+- `pnpm storybook`: starts storybook server and loads stories in files that end with .stories.tsx.
 
 #### Developing
+
+Run `pnpm i && pnpm build && pnpm storybook` to start the project in development mode.
 
 Your working area is uikit and stories. Once you finish your coding in the uikit, please write some stories for testing.
 

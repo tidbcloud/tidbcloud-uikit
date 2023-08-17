@@ -22,6 +22,15 @@ export default meta
 
 // More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
 export const Primary: Story = {
-  render: () => <PhoneInput></PhoneInput>,
-  args: {}
+  render: ({ ...rest }) => <PhoneInput {...rest}></PhoneInput>,
+  args: {
+    label: 'Phone Number',
+    description: 'Phone Number Input',
+    country: 'US',
+    error: 'Invalid',
+    required: true,
+    withAsterisk: true,
+    errorProps: {},
+    labelProps: {}
+  }
 }

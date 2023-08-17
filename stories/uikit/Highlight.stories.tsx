@@ -20,8 +20,22 @@ const meta: Meta<typeof Highlight> = {
 
 export default meta
 
+function PrimaryDemo() {
+  return (
+    <Highlight
+      highlight={['this', 'that']}
+      sx={(theme) => ({
+        '& [data-highlight="this"]': { backgroundColor: theme.colors.grape[4] },
+        '& [data-highlight="that"]': { backgroundColor: theme.colors.teal[4] }
+      })}
+    >
+      Highlight this, that, also this and also that
+    </Highlight>
+  )
+}
+
 // More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
 export const Primary: Story = {
-  render: () => <Highlight></Highlight>,
+  render: () => <PrimaryDemo />,
   args: {}
 }
