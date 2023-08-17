@@ -20,16 +20,37 @@ const meta: Meta<typeof Mark> = {
 
 export default meta
 
-function PrimaryDemo() {
+function PrimaryDemo({ ...rest }) {
   return (
     <Text>
-      Thanks for stopping by and checking out <Mark>Mantine</Mark>, you are awesome!
+      Thanks for stopping by and checking out <Mark {...rest}>Mantine</Mark>, you are awesome!
     </Text>
   )
 }
 
 // More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
 export const Primary: Story = {
-  render: () => <PrimaryDemo />,
-  args: {}
+  render: ({ ...rest }) => <PrimaryDemo {...rest} />,
+  args: {},
+  argTypes: {
+    color: {
+      options: [
+        'dark',
+        'gray',
+        'red',
+        'pink',
+        'grape',
+        'violet',
+        'indigo',
+        'blue',
+        'cyan',
+        'green',
+        'lime',
+        'yellow',
+        'orange',
+        'teal'
+      ],
+      control: { type: 'select' }
+    }
+  }
 }
