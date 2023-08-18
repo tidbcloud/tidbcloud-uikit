@@ -22,12 +22,18 @@ export default meta
 
 // More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
 export const Primary: Story = {
-  render: () => (
+  render: ({ ...rest }) => (
     <>
       <Text>First line</Text>
-      <Space h="md" />
+      <Space h="md" {...rest} />
       <Text>Second line</Text>
     </>
   ),
-  args: {}
+  args: {},
+  argTypes: {
+    h: {
+      options: ['xs', 'sm', 'md', 'lg', 'xl'],
+      control: { type: 'select' }
+    }
+  }
 }
