@@ -22,18 +22,30 @@ export default meta
 
 // More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
 export const Primary: Story = {
-  render: () => (
-    <Grid>
-      <Grid.Col span={4} bg="#EFEFEF">
+  render: ({ ...rest }) => (
+    <Grid {...rest}>
+      <Grid.Col span={2} bg="#EFEFEF">
         1
       </Grid.Col>
-      <Grid.Col span={4} bg="#DDDDDD">
+      <Grid.Col span={2} bg="#DDDDDD">
         2
       </Grid.Col>
-      <Grid.Col span={4} bg="#EFEFEF">
+      <Grid.Col span={2} bg="#EFEFEF">
         3
       </Grid.Col>
     </Grid>
   ),
-  args: {}
+  args: {
+    gutter: 5
+  },
+  argTypes: {
+    align: {
+      options: ['stretch', 'flex-start', 'flex-end', 'center'],
+      control: { type: 'select' }
+    },
+    justify: {
+      options: ['flex-start', 'flex-end', 'center', 'space-between', 'space-around', 'space-evenly'],
+      control: { type: 'select' }
+    }
+  }
 }
