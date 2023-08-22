@@ -22,10 +22,44 @@ export default meta
 
 // More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
 export const Primary: Story = {
-  render: () => (
-    <Tooltip label="Tooltip">
+  render: ({ ...props }) => (
+    <Tooltip {...props} label="Tooltip">
       <Button variant="outline">Button with tooltip</Button>
     </Tooltip>
   ),
-  args: {}
+  args: {
+    position: 'bottom',
+    offset: 5,
+    withArrow: true,
+    arrowPosition: 'side'
+  },
+  argTypes: {
+    withArrow: {
+      control: 'boolean'
+    },
+    position: {
+      control: 'select',
+      options: [
+        'bottom',
+        'left',
+        'right',
+        'top',
+        'bottom-end',
+        'bottom-start',
+        'left-end',
+        'left-start',
+        'right-end',
+        'right-start',
+        'top-end',
+        'top-start'
+      ]
+    },
+    arrowPosition: {
+      control: 'select',
+      options: ['center', 'side']
+    },
+    offset: {
+      control: 'number'
+    }
+  }
 }

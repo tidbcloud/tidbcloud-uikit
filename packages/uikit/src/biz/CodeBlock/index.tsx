@@ -21,7 +21,7 @@ function useFold(persistenceKey?: string) {
   return { folded, setFolded }
 }
 
-interface CodeBlockProps extends BoxProps {
+export interface CodeBlockProps extends BoxProps {
   language?: PrismProps['language']
 
   codeRender?: (content: string) => React.ReactNode

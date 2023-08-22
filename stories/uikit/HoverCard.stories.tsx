@@ -1,5 +1,5 @@
-import type { Meta, StoryObj, StoryFn } from '@storybook/react'
-import { Button, Group, HoverCard } from '@tidbcloud/uikit'
+import type { Meta, StoryObj, StoryFn, ArgTypes } from '@storybook/react'
+import { Button, Group, HoverCard, HoverCardProps } from '@tidbcloud/uikit'
 
 type Story = StoryObj<typeof HoverCard>
 
@@ -20,10 +20,10 @@ const meta: Meta<typeof HoverCard> = {
 
 export default meta
 
-function PrimaryDemo() {
+function PrimaryDemo({ ...props }) {
   return (
     <Group position="center">
-      <HoverCard width={280} shadow="md">
+      <HoverCard width={280} shadow="md" {...props}>
         <HoverCard.Target>
           <Button>Hover to reveal the card</Button>
         </HoverCard.Target>
@@ -38,6 +38,30 @@ function PrimaryDemo() {
 
 // More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
 export const Primary: Story = {
-  render: () => <PrimaryDemo />,
-  args: {}
+  render: PrimaryDemo,
+  args: {
+    withArrow: false
+  },
+  argTypes: {
+    withArrow: {
+      control: 'boolean'
+    },
+    position: {
+      control: 'select',
+      options: [
+        'bottom',
+        'left',
+        'right',
+        'top',
+        'bottom-end',
+        'bottom-start',
+        'left-end',
+        'left-start',
+        'right-end',
+        'right-start',
+        'top-end',
+        'top-start'
+      ]
+    }
+  }
 }
