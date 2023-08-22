@@ -96,8 +96,12 @@ export const Primary: Story = {
         arg: 'loading',
         truthy: true
       },
-      description:
-        'Props spread to Loader component, type is LoaderProps, example: {size: "sm", color: "red", variant: "filled"'
+      description: 'Props spread to Loader component, example: {size: "sm", color: "red", variant: "filled"}',
+      table: {
+        type: {
+          summary: 'LoaderProps'
+        }
+      }
     },
     compact: {
       control: 'boolean'
