@@ -24,7 +24,7 @@ export default meta
 export const Primary: Story = {
   render: ({ ...props }) => <Input {...props}></Input>,
   args: {
-    placeholder: '111'
+    placeholder: ''
   },
   argTypes: {}
 }
