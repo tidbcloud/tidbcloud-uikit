@@ -1,6 +1,8 @@
 import type { Meta, StoryObj, StoryFn } from '@storybook/react'
 import { Title } from '@tidbcloud/uikit'
 
+import { SIZE_LIST } from '../constants'
+
 type Story = StoryObj<typeof Title>
 
 const decorator = (Story: StoryFn) => {
@@ -20,7 +22,7 @@ const meta: Meta<typeof Title> = {
 
 export default meta
 
-function PrimaryDemo() {
+function PrimaryDemo({ ...rest }) {
   return (
     <>
       <Title order={1}>This is h1 title</Title>
@@ -29,12 +31,25 @@ function PrimaryDemo() {
       <Title order={4}>This is h4 title</Title>
       <Title order={5}>This is h5 title</Title>
       <Title order={6}>This is h6 title</Title>
+      <Title {...rest} />
     </>
   )
 }
 
 // More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
 export const Primary: Story = {
-  render: () => <PrimaryDemo />,
-  args: {}
+  render: ({ ...rest }) => <PrimaryDemo {...rest} />,
+  args: {
+    children: 'This is a title'
+  },
+  argTypes: {
+    order: {
+      options: [1, 2, 3, 4, 5, 6],
+      control: { type: 'select' }
+    },
+    size: {
+      options: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
+      control: { type: 'select' }
+    }
+  }
 }
