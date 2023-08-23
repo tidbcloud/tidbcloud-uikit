@@ -22,6 +22,9 @@ export default meta
 
 // More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
 export const Primary: Story = {
-  render: () => <Input></Input>,
-  args: {}
+  render: ({ ...props }) => <Input {...props}></Input>,
+  args: {
+    placeholder: '111'
+  },
+  argTypes: {}
 }
