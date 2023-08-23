@@ -21,9 +21,9 @@ const meta: Meta<typeof Popover> = {
 
 export default meta
 
-function PrimaryDemo() {
+function PrimaryDemo({ ...props }) {
   return (
-    <Popover width={200} position="bottom" withArrow shadow="md">
+    <Popover width={200} shadow="md" {...props}>
       <Popover.Target>
         <Button>Toggle popover</Button>
       </Popover.Target>
@@ -36,6 +36,40 @@ function PrimaryDemo() {
 
 // More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
 export const Primary: Story = {
-  render: () => <PrimaryDemo />,
-  args: {}
+  render: PrimaryDemo,
+  args: {
+    position: 'bottom',
+    offset: 5,
+    withArrow: true,
+    arrowPosition: 'side'
+  },
+  argTypes: {
+    withArrow: {
+      control: 'boolean'
+    },
+    position: {
+      control: 'select',
+      options: [
+        'bottom',
+        'left',
+        'right',
+        'top',
+        'bottom-end',
+        'bottom-start',
+        'left-end',
+        'left-start',
+        'right-end',
+        'right-start',
+        'top-end',
+        'top-start'
+      ]
+    },
+    arrowPosition: {
+      control: 'select',
+      options: ['center', 'side']
+    },
+    offset: {
+      control: 'number'
+    }
+  }
 }

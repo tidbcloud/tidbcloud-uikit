@@ -22,14 +22,14 @@ const meta: Meta<typeof LoadingOverlay> = {
 
 export default meta
 
-function PrimaryDemo() {
+function PrimaryDemo({ ...props }) {
   const [visible, setVisible] = useState(false)
 
   // Note that position: relative is required
   return (
     <>
       <div style={{ width: 400, position: 'relative' }}>
-        <LoadingOverlay visible={visible} overlayBlur={2} />
+        <LoadingOverlay visible={visible} {...props} />
         {/* ...other content */}
 
         <div>this is content</div>
@@ -49,6 +49,16 @@ function PrimaryDemo() {
 
 // More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
 export const Primary: Story = {
-  render: () => <PrimaryDemo />,
-  args: {}
+  render: PrimaryDemo,
+  args: {
+    overlayBlur: 2
+  },
+  argTypes: {
+    overlayBlur: {
+      control: 'number'
+    },
+    overlayColor: {
+      control: 'text'
+    }
+  }
 }

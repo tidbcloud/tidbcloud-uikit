@@ -1,5 +1,5 @@
 import type { Meta, StoryObj, StoryFn } from '@storybook/react'
-import { Menu, Button, Text } from '@tidbcloud/uikit'
+import { Menu, Button, Text, Group } from '@tidbcloud/uikit'
 
 type Story = StoryObj<typeof Menu>
 
@@ -20,40 +20,76 @@ const meta: Meta<typeof Menu> = {
 
 export default meta
 
-function PrimaryDemo() {
+function PrimaryDemo({ ...props }) {
   return (
-    <Menu shadow="md" width={200}>
-      <Menu.Target>
-        <Button>Toggle menu</Button>
-      </Menu.Target>
+    <Group position="center" h={500}>
+      <Menu shadow="md" width={200} {...props}>
+        <Menu.Target>
+          <Button>Toggle menu</Button>
+        </Menu.Target>
 
-      <Menu.Dropdown>
-        <Menu.Label>Application</Menu.Label>
-        <Menu.Item>Settings</Menu.Item>
-        <Menu.Item>Messages</Menu.Item>
-        <Menu.Item>Gallery</Menu.Item>
-        <Menu.Item
-          rightSection={
-            <Text size="xs" color="dimmed">
-              ⌘K
-            </Text>
-          }
-        >
-          Search
-        </Menu.Item>
+        <Menu.Dropdown>
+          <Menu.Label>Application</Menu.Label>
+          <Menu.Item>Settings</Menu.Item>
+          <Menu.Item>Messages</Menu.Item>
+          <Menu.Item>Gallery</Menu.Item>
+          <Menu.Item
+            rightSection={
+              <Text size="xs" color="dimmed">
+                ⌘K
+              </Text>
+            }
+          >
+            Search
+          </Menu.Item>
 
-        <Menu.Divider />
+          <Menu.Divider />
 
-        <Menu.Label>Danger zone</Menu.Label>
-        <Menu.Item>Transfer my data</Menu.Item>
-        <Menu.Item color="red">Delete my account</Menu.Item>
-      </Menu.Dropdown>
-    </Menu>
+          <Menu.Label>Danger zone</Menu.Label>
+          <Menu.Item>Transfer my data</Menu.Item>
+          <Menu.Item color="red">Delete my account</Menu.Item>
+        </Menu.Dropdown>
+      </Menu>
+    </Group>
   )
 }
 
 // More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
 export const Primary: Story = {
-  render: () => <PrimaryDemo />,
-  args: {}
+  render: PrimaryDemo,
+  args: {
+    position: 'bottom',
+    offset: 5,
+    withArrow: false,
+    arrowPosition: 'side'
+  },
+  argTypes: {
+    withArrow: {
+      control: 'boolean'
+    },
+    position: {
+      control: 'select',
+      options: [
+        'bottom',
+        'left',
+        'right',
+        'top',
+        'bottom-end',
+        'bottom-start',
+        'left-end',
+        'left-start',
+        'right-end',
+        'right-start',
+        'top-end',
+        'top-start'
+      ]
+    },
+    arrowPosition: {
+      control: 'select',
+      options: ['center', 'side']
+    },
+    offset: {
+      control: 'number'
+    }
+  }
 }
