@@ -1,7 +1,5 @@
 import type { Meta, StoryObj, StoryFn } from '@storybook/react'
-import { BackgroundImage, Center, Text, Box } from '@tidbcloud/uikit'
-
-import { SIZE_LIST } from '../constants'
+import { BackgroundImage, BackgroundImageProps, Box, Center, Text } from '@tidbcloud/uikit'
 
 type Story = StoryObj<typeof BackgroundImage>
 
@@ -22,13 +20,12 @@ const meta: Meta<typeof BackgroundImage> = {
 
 export default meta
 
-function Demo({ ...args }) {
+function Wrapper(props: BackgroundImageProps) {
   return (
-    <Center>
+    <Box sx={{ maxWidth: 300 }} mx="auto">
       <BackgroundImage
         src="https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=720&q=80"
-        radius="sm"
-        {...args}
+        radius="md"
       >
         <Center p="md">
           <Text color="#fff">
@@ -37,27 +34,11 @@ function Demo({ ...args }) {
           </Text>
         </Center>
       </BackgroundImage>
-    </Center>
+    </Box>
   )
 }
 
 // More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
 export const Primary: Story = {
-  render: ({ ...args }) => <Demo {...args} />,
-  args: {
-    width: 300,
-    height: 300,
-    maw: 500
-  },
-  argTypes: {
-    radius: {
-      options: SIZE_LIST,
-      control: { type: 'select' },
-      table: {
-        defaultValue: {
-          summary: 'theme.defaultRadius'
-        }
-      }
-    }
-  }
+  render: Wrapper
 }

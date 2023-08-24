@@ -20,8 +20,26 @@ const meta: Meta<typeof Card> = {
 
 export default meta
 
+function Usage() {
+  return (
+    <div style={{ maxWidth: 400, padding: 40, margin: 'auto' }}>
+      <Card withBorder p="lg">
+        <Card.Section inheritPadding>Card section 1</Card.Section>
+        <Card.Section inheritPadding withBorder>
+          Card section 2
+        </Card.Section>
+        <Card.Section inheritPadding withBorder>
+          Card section 3
+        </Card.Section>
+        <Card.Section inheritPadding withBorder>
+          Card section 4
+        </Card.Section>
+      </Card>
+    </div>
+  )
+}
+
 // More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
 export const Primary: Story = {
-  render: () => <Card></Card>,
-  args: {}
+  render: Usage
 }
