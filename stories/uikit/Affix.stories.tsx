@@ -22,17 +22,20 @@ export default meta
 
 // More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
 export const Primary: Story = {
-  render: () => (
+  render: ({ ...rest }) => (
     <div>
       <p>
         Affix renders div element with fixed position inside Portal component. Use component to display elements fixed
         at any position on screen, for example, scroll to top button:
       </p>
 
-      <Affix position={{ top: 100, left: 50 }}>
+      <Affix position={{ top: 200, left: 50 }} {...rest}>
         <Button onClick={() => alert('Scroll to top!')}>Scroll to top</Button>
       </Affix>
     </div>
   ),
-  args: {}
+  args: {
+    withinPortal: false,
+    zIndex: 0
+  }
 }
