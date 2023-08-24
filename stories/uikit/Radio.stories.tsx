@@ -22,6 +22,8 @@ export default meta
 
 // More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
 export const Primary: Story = {
-  render: () => <Radio></Radio>,
-  args: {}
+  render: ({ ...props }) => <Radio {...props}></Radio>,
+  args: {
+    disabled: false
+  }
 }

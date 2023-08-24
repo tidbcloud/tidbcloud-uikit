@@ -1,7 +1,7 @@
 import type { Meta, StoryObj, StoryFn } from '@storybook/react'
-import { NativeSelect } from '@tidbcloud/uikit'
+import { FileInput } from '@tidbcloud/uikit'
 
-type Story = StoryObj<typeof NativeSelect>
+type Story = StoryObj<typeof FileInput>
 
 const decorator = (Story: StoryFn) => {
   return (
@@ -11,9 +11,9 @@ const decorator = (Story: StoryFn) => {
   )
 }
 
-const meta: Meta<typeof NativeSelect> = {
-  title: 'Primitive/NativeSelect',
-  component: NativeSelect,
+const meta: Meta<typeof FileInput> = {
+  title: 'Primitive/FileInput',
+  component: FileInput,
   decorators: [decorator],
   parameters: {}
 }
@@ -22,21 +22,21 @@ export default meta
 
 // More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
 export const Primary: Story = {
-  render: ({ ...props }) => (
-    <NativeSelect
-      data={['React', 'Vue', 'Angular', 'Svelte']}
-      label="Select your favorite framework/library"
-      description="This is anonymous"
-      withAsterisk
-      {...props}
-    />
-  ),
+  render: ({ ...props }) => <FileInput {...props}></FileInput>,
   args: {
-    disabled: false
+    multiple: false,
+    disabled: false,
+    accept: ''
   },
   argTypes: {
+    multiple: {
+      control: 'boolean'
+    },
     disabled: {
       control: 'boolean'
+    },
+    accept: {
+      control: 'text'
     }
   }
 }

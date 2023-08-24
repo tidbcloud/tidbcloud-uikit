@@ -22,6 +22,9 @@ export default meta
 
 // More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
 export const Primary: Story = {
-  render: () => <JsonInput></JsonInput>,
-  args: {}
+  render: ({ ...props }) => <JsonInput {...props}></JsonInput>,
+  args: { disabled: false },
+  argTypes: {
+    disabled: { control: 'boolean' }
+  }
 }

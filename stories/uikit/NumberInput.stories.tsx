@@ -22,6 +22,16 @@ export default meta
 
 // More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
 export const Primary: Story = {
-  render: () => <NumberInput></NumberInput>,
-  args: {}
+  render: ({ ...props }) => <NumberInput {...props}></NumberInput>,
+  args: {
+    min: 0,
+    max: 120,
+    stepHoldDelay: 500,
+    stepHoldInterval: 100,
+    step: 0.05,
+    precision: 2,
+    decimalSeparator: ',',
+    thousandsSeparator: '.',
+    disabled: false
+  }
 }
