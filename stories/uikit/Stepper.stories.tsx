@@ -2,6 +2,8 @@ import type { Meta, StoryObj, StoryFn } from '@storybook/react'
 import { Button, Group, Stepper } from '@tidbcloud/uikit'
 import { useState } from 'react'
 
+import { SIZE_LIST } from '../constants'
+
 type Story = StoryObj<typeof Stepper>
 
 const decorator = (Story: StoryFn) => {
@@ -16,19 +18,25 @@ const meta: Meta<typeof Stepper> = {
   title: 'Primitive/Stepper',
   component: Stepper,
   decorators: [decorator],
-  parameters: {}
+  parameters: {},
+  argTypes: {
+    size: {
+      options: SIZE_LIST,
+      control: 'inline-radio'
+    }
+  }
 }
 
 export default meta
 
-function PrimaryDemo() {
+function PrimaryDemo({ ...props }) {
   const [active, setActive] = useState(1)
   const nextStep = () => setActive((current) => (current < 3 ? current + 1 : current))
   const prevStep = () => setActive((current) => (current > 0 ? current - 1 : current))
 
   return (
     <>
-      <Stepper active={active} onStepClick={setActive} breakpoint="sm">
+      <Stepper active={active} onStepClick={setActive} breakpoint="sm" {...props}>
         <Stepper.Step label="First step" description="Create an account">
           Step 1 content: Create an account
         </Stepper.Step>
@@ -53,6 +61,5 @@ function PrimaryDemo() {
 
 // More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
 export const Primary: Story = {
-  render: () => <PrimaryDemo />,
-  args: {}
+  render: PrimaryDemo
 }
