@@ -1,8 +1,8 @@
-import { ActionIcon, Box, BoxProps, CopyButton, Group, Tooltip, Code, CodeProps } from '@mantine/core'
-import { useLocalStorage } from '@mantine/hooks'
 import React, { useMemo, useState } from 'react'
 
+import { useLocalStorage } from '../../hooks'
 import { Icon } from '../../icons'
+import { ActionIcon, Box, BoxProps, CopyButton, Group, Tooltip, Code, CodeProps } from '../../primitive'
 import { Prism, PrismProps } from '../../primitive/Prism'
 import { mergeSxList, mergeStylesList } from '../../utils'
 

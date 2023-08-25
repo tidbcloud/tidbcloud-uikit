@@ -4,3 +4,5 @@ export * from './CodeBlock'
 export * from './PhoneInput'
 export * from './Table'
 export * from './DotBadge'
+
+export * from './Form'

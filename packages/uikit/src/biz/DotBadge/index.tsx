@@ -1,6 +1,6 @@
-import { Badge, BadgeProps } from '@mantine/core'
 import React from 'react'
 
+import { Badge, BadgeProps } from '../../primitive'
 import { Dot, DotProps } from '../Dot'
 import { Typography } from '../Typography'
 

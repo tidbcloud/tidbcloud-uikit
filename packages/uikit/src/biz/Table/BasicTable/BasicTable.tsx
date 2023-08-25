@@ -1,10 +1,10 @@
-import { Table, TableProps, Box } from '@mantine/core'
 import React, { useMemo } from 'react'
 // for Table logic Hooks
 // https://github.com/tannerlinsley/react-table
 import { useTable, Column, useExpanded, PluginHook } from 'react-table'
 import { useSticky } from 'react-table-sticky'
 
+import { Table, TableProps, Box } from '../../../primitive'
 import { cellProps, headerProps } from '../helpers'
 import { TablePagination, TablePaginationProps } from '../TablePagination'
 
