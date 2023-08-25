@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 0.8.0
+
+### Minor Changes
+
+- 4ed148d: Add Form/SearchArea/LabelTooltip components
+
 ## 0.7.1
 
 ### Patch Changes
