@@ -1,5 +1,4 @@
-import { Pagination, PaginationProps } from '@mantine/core'
-
+import { Pagination, PaginationProps } from '../../primitive'
 import { mergeStylesList } from '../../utils'
 
 export interface TablePaginationProps extends PaginationProps {}
