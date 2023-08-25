@@ -4,6 +4,7 @@ export * from './CodeBlock'
 export * from './PhoneInput'
 export * from './Table'
 export * from './DotBadge'
+export * from './SearchArea'
+export * from './LabelTooltip'
 
 export * from './Form'
-export * from './LabelTooltip'
