@@ -12,7 +12,7 @@ export interface SearchAreaProps<T extends FieldValues> extends FormProps<T> {
 
 const SX_Y_MID = { display: 'flex', alignItems: 'center' }
 
-export default function SearchArea<T extends object>(props: SearchAreaProps<T>) {
+export function SearchArea<T extends object>(props: SearchAreaProps<T>) {
   const { children, onSubmit, ...rest } = props
   const form = useForm<T>()
   const values = form.watch()
