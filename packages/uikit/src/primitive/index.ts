@@ -57,19 +57,38 @@ export {
 export type { ModalsProviderProps, ContextModalProps } from '@mantine/modals'
 
 // Re-export @mantine/dates
-export { DatePicker, DateRangePicker, Calendar, RangeCalendar, Month, TimeInput } from '@mantine/dates'
+export {
+  DatePicker,
+  DatePickerBase,
+  DateRangePicker,
+  Calendar,
+  CalendarBase,
+  RangeCalendar,
+  Month,
+  TimeInput,
+  TimeRangeInput
+} from '@mantine/dates'
 export type {
   CalendarProps,
+  CalendarBaseProps,
+  CalendarBaseStylesNames,
   DatePickerProps,
+  DatePickerBaseProps,
+  DatePickerBaseSharedProps,
   DatePickerStylesNames,
   DateRangePickerProps,
   DateRangePickerValue,
   RangeCalendarProps,
   MonthProps,
   TimeInputProps,
+  TimeInputStylesNames,
+  TimeInputStylesParams,
   DayKeydownPayload,
   DayModifiers,
-  MonthSettings
+  MonthSettings,
+  TimeRangeInputProps,
+  TimeRangeInputStylesNames,
+  TimeRangeInputStylesParams
 } from '@mantine/dates'
 
 // Re-export Typography for convenience
