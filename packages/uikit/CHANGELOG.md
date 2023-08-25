@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 0.8.2
+
+### Patch Changes
+
+- 471fa41: Fix missing form component ex-exports
+
 ## 0.8.1
 
 ### Patch Changes
