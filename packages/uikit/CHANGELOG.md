@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 0.8.1
+
+### Patch Changes
+
+- d6010ed: Fix missing LabelTooltip export
+
 ## 0.8.0
 
 ### Minor Changes
