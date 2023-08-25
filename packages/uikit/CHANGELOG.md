@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 0.8.3
+
+### Patch Changes
+
+- 24e2501: Fix SearchArea exports
+
 ## 0.8.2
 
 ### Patch Changes
