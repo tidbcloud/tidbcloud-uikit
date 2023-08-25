@@ -37,6 +37,7 @@
     "google-libphonenumber": "^3.2.30",
     "lodash-es": "^4.17.21",
     "mantine-react-table": "0.9.5",
+    "react-hook-form": "6.15.8",
     "react-phone-input-2": "^2.15.1",
     "react-table": "^7.8.0",
     "react-table-sticky": "^1.1.3",
