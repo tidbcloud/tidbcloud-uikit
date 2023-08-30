@@ -20,8 +20,18 @@ const meta: Meta<typeof Divider> = {
 
 export default meta
 
+function Demo() {
+  return (
+    <>
+      <Divider my="sm" />
+      <Divider my="sm" variant="dashed" />
+      <Divider my="sm" variant="dotted" />
+    </>
+  )
+}
+
 // More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
 export const Primary: Story = {
-  render: () => <Divider></Divider>,
+  render: () => <Demo></Demo>,
   args: {}
 }
