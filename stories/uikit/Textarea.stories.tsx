@@ -20,8 +20,19 @@ const meta: Meta<typeof Textarea> = {
 
 export default meta
 
+function Asterisk() {
+  return (
+    <div style={{ width: 300, padding: 20 }}>
+      <Textarea label="With required asterisk" withAsterisk />
+      <Textarea label="Just required" required />
+      <Textarea label="Required asterisk off" required withAsterisk={false} />
+      <Textarea label="Required false asterisk on" required={false} withAsterisk />
+    </div>
+  )
+}
+
 // More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
 export const Primary: Story = {
-  render: () => <Textarea></Textarea>,
+  render: () => <Asterisk />,
   args: {}
 }
