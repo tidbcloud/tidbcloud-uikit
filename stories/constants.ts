@@ -1,3 +1,5 @@
+import { MantineSize } from '@tidbcloud/uikit'
+
 export const COLOR_LIST = [
   'dark',
   'gray',
@@ -15,5 +17,5 @@ export const COLOR_LIST = [
   'orange'
 ]
 export const VARIANT_LIST = ['outline', 'transparent', 'light', 'default', 'filled', 'gradient', 'subtle']
-export const SIZE_LIST = ['xs', 'sm', 'md', 'lg', 'xl']
+export const SIZE_LIST: MantineSize[] = ['xs', 'sm', 'md', 'lg', 'xl']
 export const COLOR_FORMAT = ['hex', 'hexa', 'rgb', 'rgba', 'hsl', 'hsla']
