@@ -28,7 +28,7 @@ const elements = [
   { position: 58, mass: 140.12, symbol: 'Ce', name: 'Cerium' }
 ]
 
-function PrimaryDemo() {
+function PrimaryDemo({ ...rest }) {
   const rows = elements.map((element) => (
     <tr key={element.name}>
       <td>{element.position}</td>
@@ -39,7 +39,7 @@ function PrimaryDemo() {
   ))
 
   return (
-    <Table>
+    <Table {...rest}>
       <thead>
         <tr>
           <th>Element position</th>
@@ -55,6 +55,29 @@ function PrimaryDemo() {
 
 // More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
 export const Primary: Story = {
-  render: () => <PrimaryDemo />,
-  args: {}
+  render: ({ ...rest }) => <PrimaryDemo {...rest} />,
+  args: {
+    striped: false,
+    highlightOnHover: false,
+    withBorder: false,
+    withColumnBorders: false
+  },
+  argTypes: {
+    captionSide: {
+      options: ['top', 'bottom'],
+      control: { type: 'select' }
+    },
+    horizontalSpacing: {
+      options: ['xs', 'sm', 'md', 'lg', 'xl'],
+      control: { type: 'select' }
+    },
+    verticalSpacing: {
+      options: ['xs', 'sm', 'md', 'lg', 'xl'],
+      control: { type: 'select' }
+    },
+    fontSize: {
+      options: ['xs', 'sm', 'md', 'lg', 'xl'],
+      control: { type: 'select' }
+    }
+  }
 }

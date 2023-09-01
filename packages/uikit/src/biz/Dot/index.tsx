@@ -1,6 +1,6 @@
-import { Box, BoxProps } from '@mantine/core'
 import React from 'react'
 
+import { Box, BoxProps } from '../../primitive'
 import { Colors } from '../../theme'
 
 export interface DotProps extends BoxProps {

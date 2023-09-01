@@ -1,8 +1,8 @@
-import { ActionIcon, Box, BoxProps, CopyButton, Group, Tooltip, Code, CodeProps } from '@mantine/core'
-import { useLocalStorage } from '@mantine/hooks'
 import React, { useMemo, useState } from 'react'
 
+import { useLocalStorage } from '../../hooks'
 import { Icon } from '../../icons'
+import { ActionIcon, Box, BoxProps, CopyButton, Group, Tooltip, Code, CodeProps } from '../../primitive'
 import { Prism, PrismProps } from '../../primitive/Prism'
 import { mergeSxList, mergeStylesList } from '../../utils'
 
@@ -21,7 +21,7 @@ function useFold(persistenceKey?: string) {
   return { folded, setFolded }
 }
 
-interface CodeBlockProps extends BoxProps {
+export interface CodeBlockProps extends BoxProps {
   language?: PrismProps['language']
 
   codeRender?: (content: string) => React.ReactNode

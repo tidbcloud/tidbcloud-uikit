@@ -1,8 +1,8 @@
-import { Box } from '@mantine/core'
 import { MRT_Cell, MRT_Row, MRT_Column, MRT_TableInstance } from 'mantine-react-table'
 import { ReactNode } from 'react'
 
 import { Icon } from '../../../icons'
+import { Box } from '../../../primitive'
 
 interface CellProps<TData> {
   cell: MRT_Cell<TData>

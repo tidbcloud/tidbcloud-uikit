@@ -2,6 +2,8 @@ import type { Meta, StoryObj, StoryFn } from '@storybook/react'
 import { Stack } from '@tidbcloud/uikit'
 import { Typography, TYPOGRAPHY_STYLES_MAP } from '@tidbcloud/uikit/biz'
 
+import { COLOR_LIST } from '../constants'
+
 type Story = StoryObj<typeof Typography>
 
 const decorator = (Story: StoryFn) => {
@@ -21,9 +23,9 @@ const meta: Meta<typeof Typography> = {
 
 export default meta
 
-function Demo() {
+function Demo({ ...args }) {
   const texts = Object.keys(TYPOGRAPHY_STYLES_MAP).map((i) => (
-    <Typography variant={i as any} key={i}>
+    <Typography variant={i as any} key={i} {...args}>
       variant: {i}
     </Typography>
   ))
@@ -32,6 +34,15 @@ function Demo() {
 
 // More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
 export const Primary: Story = {
-  render: () => <Demo />,
-  args: {}
+  parameters: {
+    controls: { expanded: true }
+  },
+  render: ({ ...args }) => <Demo {...args} />,
+  args: {},
+  argTypes: {
+    c: {
+      options: ['', ...COLOR_LIST],
+      control: { type: 'select' }
+    }
+  }
 }

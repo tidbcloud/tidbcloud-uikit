@@ -22,8 +22,8 @@ export default meta
 
 // More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
 export const Primary: Story = {
-  render: () => (
-    <Spoiler maxHeight={120} showLabel="Show more" hideLabel="Hide">
+  render: ({ children, ...rest }) => (
+    <Spoiler {...rest}>
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo recusandae ipsam sint quos rerum similique, rem
       impedit eligendi temporibus reiciendis distinctio possimus nesciunt quasi debitis suscipit non mollitia eveniet
       fugiat. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam sint vel dignissimos rerum libero
@@ -35,5 +35,10 @@ export const Primary: Story = {
       molestias voluptates?
     </Spoiler>
   ),
-  args: {}
+  args: {
+    showLabel: 'Show more',
+    maxHeight: 120,
+    hideLabel: 'Hide',
+    transitionDuration: 200
+  }
 }

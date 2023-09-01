@@ -22,6 +22,25 @@ export default meta
 
 // More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
 export const Primary: Story = {
-  render: () => <Blockquote></Blockquote>,
-  args: {}
+  render: ({ cite, color, children }) => (
+    <Blockquote cite={cite} color={color}>
+      {children}
+    </Blockquote>
+  ),
+  args: {
+    cite: '– Forrest Gump',
+    color: 'gray',
+    children: 'Life is like an npm install – you never know what you are going to get.'
+  },
+  argTypes: {
+    color: {
+      control: 'text'
+    },
+    cite: {
+      control: 'text'
+    },
+    children: {
+      control: 'text'
+    }
+  }
 }

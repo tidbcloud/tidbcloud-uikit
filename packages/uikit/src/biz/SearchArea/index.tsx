@@ -1,9 +1,10 @@
-import { Box, Button } from '@tidb-cloud-uikit/components'
-import { Form, FormProps } from '@tidb-cloud-uikit/components/hook-form'
-import { Icon } from '@tidb-cloud-uikit/icons'
 import { useDebounce } from 'ahooks'
 import React, { useEffect } from 'react'
 import { FieldValues, useForm } from 'react-hook-form'
+
+import { Icon } from '../../icons'
+import { Box, Button } from '../../primitive'
+import { Form, FormProps } from '../Form'
 
 export interface SearchAreaProps<T extends FieldValues> extends FormProps<T> {
   children: React.ReactNode

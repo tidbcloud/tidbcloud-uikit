@@ -30,12 +30,55 @@ const data = [
   { value: 'blitz', label: 'Blitz.js' }
 ]
 
-function Demo() {
-  return <MultiSelect data={data} label="Your favorite frameworks/libraries" placeholder="Pick all that you like" />
+function Demo({ ...props }) {
+  return (
+    <MultiSelect
+      data={data}
+      label="Your favorite frameworks/libraries"
+      placeholder="Pick all that you like"
+      {...props}
+    />
+  )
 }
 
 // More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
 export const Primary: Story = {
-  render: () => <Demo />,
-  args: {}
+  render: ({ ...props }) => <Demo {...props} />,
+  args: {
+    searchable: false,
+    clearable: false,
+    creatable: false,
+    disabled: false,
+    readOnly: false,
+    disableSelectedItemFiltering: false,
+    maxSelectedValues: 3,
+    dropdownPosition: 'flip'
+  },
+  argTypes: {
+    searchable: {
+      control: 'boolean'
+    },
+    clearable: {
+      control: 'boolean'
+    },
+    creatable: {
+      control: 'boolean'
+    },
+    disabled: {
+      control: 'boolean'
+    },
+    readOnly: {
+      control: 'boolean'
+    },
+    disableSelectedItemFiltering: {
+      control: 'boolean'
+    },
+    maxSelectedValues: {
+      control: 'number'
+    },
+    dropdownPosition: {
+      control: 'select',
+      options: ['top', 'bottom', 'flip']
+    }
+  }
 }

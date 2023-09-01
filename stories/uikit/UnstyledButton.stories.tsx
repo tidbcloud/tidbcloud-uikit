@@ -1,5 +1,5 @@
 import type { Meta, StoryObj, StoryFn } from '@storybook/react'
-import { UnstyledButton } from '@tidbcloud/uikit'
+import { Avatar, Box, UnstyledButton, Group, Text, Kbd } from '@tidbcloud/uikit'
 
 type Story = StoryObj<typeof UnstyledButton>
 
@@ -22,6 +22,25 @@ export default meta
 
 // More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
 export const Primary: Story = {
-  render: () => <UnstyledButton></UnstyledButton>,
+  render: () => (
+    <Box>
+      <Text mb={16} c="gray" fz={12}>
+        UnstyledButton resets default <Kbd>button</Kbd> styles, it can be used to create custom buttons:
+      </Text>
+      <UnstyledButton>
+        <Group>
+          <Avatar size={40} color="blue">
+            BH
+          </Avatar>
+          <div>
+            <Text>Bob Handsome</Text>
+            <Text size="xs" color="dimmed">
+              bob@pingcap.com
+            </Text>
+          </div>
+        </Group>
+      </UnstyledButton>
+    </Box>
+  ),
   args: {}
 }

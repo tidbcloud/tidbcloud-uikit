@@ -1,6 +1,8 @@
 import type { Meta, StoryObj, StoryFn } from '@storybook/react'
 import { Notification, Stack } from '@tidbcloud/uikit'
 
+import { COLOR_LIST, SIZE_LIST } from '../constants'
+
 type Story = StoryObj<typeof Notification>
 
 const decorator = (Story: StoryFn) => {
@@ -20,7 +22,7 @@ const meta: Meta<typeof Notification> = {
 
 export default meta
 
-function PrimaryDemo() {
+function PrimaryDemo({ ...rest }) {
   return (
     <Stack align="flex-start">
       <Notification title="Default notification">This is default notification with title and body</Notification>
@@ -34,12 +36,29 @@ function PrimaryDemo() {
       <Notification loading title="Uploading data to the server" disallowClose>
         Please wait until data is uploaded, you cannot close this notification yet
       </Notification>
+
+      <Notification {...rest} />
     </Stack>
   )
 }
 
 // More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
 export const Primary: Story = {
-  render: () => <PrimaryDemo />,
-  args: {}
+  render: ({ ...rest }) => <PrimaryDemo {...rest} />,
+  args: {
+    loading: false,
+    title: 'Success!',
+    children: 'Data was successfully uploaded to the server',
+    disallowClose: false
+  },
+  argTypes: {
+    color: {
+      options: COLOR_LIST,
+      control: { type: 'select' }
+    },
+    radius: {
+      options: SIZE_LIST,
+      control: { type: 'select' }
+    }
+  }
 }

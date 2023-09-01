@@ -1,7 +1,7 @@
-import { Box, BoxProps } from '@mantine/core'
 import { MantineReactTable, MantineReactTableProps } from 'mantine-react-table'
 
 import { Icon } from '../../../icons'
+import { Box, BoxProps } from '../../../primitive'
 import { TablePagination, TablePaginationProps } from '../TablePagination'
 
 import { mergeMProps } from './helpers'

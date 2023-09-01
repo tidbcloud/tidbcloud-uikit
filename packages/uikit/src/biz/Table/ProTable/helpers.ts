@@ -1,6 +1,6 @@
-import { DefaultProps } from '@mantine/core'
 import { isFunction } from 'lodash-es'
 
+import { DefaultProps } from '../../../primitive'
 import { mergeSxList } from '../../../utils'
 
 export function mergeMProps<P extends DefaultProps | ((...args: unknown[]) => DefaultProps)>(preProps: P, mProps?: P) {

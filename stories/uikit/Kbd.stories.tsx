@@ -22,6 +22,10 @@ export default meta
 
 // More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
 export const Primary: Story = {
-  render: () => <Kbd></Kbd>,
+  render: () => (
+    <>
+      <Kbd>⌘</Kbd> + <Kbd>shift</Kbd> + <Kbd>M</Kbd>
+    </>
+  ),
   args: {}
 }
