@@ -31,8 +31,6 @@ export function SearchArea<T extends object>(props: SearchAreaProps<T>) {
     form.reset(rest.defaultValues)
   }
 
-  ;(window as any)._d_ = form
-
   return (
     <Box>
       <Form<T>
