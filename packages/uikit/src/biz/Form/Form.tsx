@@ -12,9 +12,12 @@ import {
 
 import { Box, BoxProps } from '../../primitive'
 
+import { useHookFormContext } from './context'
 import { FormActions, FormActionsProps } from './FormActions'
 import { FormErrorMessage, FormErrorMessageProps } from './FormErrorMessage'
 import { FormLayout, FormLayoutProps, FormLayoutType } from './FormLayout'
+
+const getErrorMessage = (e: any) => e?.message
 
 export interface FormProps<T extends FieldValues = object> extends BoxProps {
   errorMessage?: string
@@ -29,6 +32,7 @@ export interface FormProps<T extends FieldValues = object> extends BoxProps {
   layoutProps?: Omit<FormLayoutProps, 'layout'>
 
   onSubmit: SubmitHandler<T>
+  onError?: () => any
   onCancel?: () => void
   onFormUnMount?: () => void
 }
@@ -47,6 +51,7 @@ const _Form = <T extends object = {}>({
   errorMessageProps,
   layout = 'vertical',
   layoutProps,
+  onError,
   ...rest
 }: FormProps<T>) => {
   const [submitError, setSubmitError] = useSafeState('')
@@ -59,6 +64,7 @@ const _Form = <T extends object = {}>({
 
   const methods = form || defaultMethods
   const { handleSubmit } = methods
+  const context = useHookFormContext()
 
   const submit: SubmitHandler<T> = async (data, event) => {
     setSubmitError('')
@@ -68,7 +74,8 @@ const _Form = <T extends object = {}>({
       setSubmitting(false)
     } catch (e) {
       // TODO @awxxxxxx
-      // setSubmitError(getErrorMessage(e))
+      const handleError = onError || context?.onError || getErrorMessage
+      setSubmitError(handleError?.(e))
       setSubmitting(false)
     }
   }
