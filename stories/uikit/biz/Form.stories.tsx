@@ -55,6 +55,7 @@ export const Primary: Story = {
           label="Email"
           icon={<Icon name="Atom01" size={16} stroke="1.5" />}
         />
+        <FormTextInput name="url" mt="md" required placeholder="Your url" label="url" leftLabel="https://www.test." />
         <FormPasswordInput
           name="password"
           mt="md"
