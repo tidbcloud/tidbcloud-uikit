@@ -1,6 +1,16 @@
 import type { Meta, StoryObj, StoryFn } from '@storybook/react'
-import { Form, FormTextInput, FormPasswordInput, FormMultiSelect, FormSelect } from '@tidbcloud/uikit/biz'
 import { Group, Center } from '@tidbcloud/uikit'
+import {
+  Form,
+  FormTextInput,
+  FormPasswordInput,
+  FormMultiSelect,
+  FormSelect,
+  FormNumberInput,
+  FormRatingInput,
+  FormSwitch,
+  FormTextareaInput
+} from '@tidbcloud/uikit/biz'
 import { Icon } from '@tidbcloud/uikit/icons'
 
 type Story = StoryObj<typeof Form>
@@ -63,12 +73,17 @@ export const Primary: Story = {
         ></FormSelect>
         <FormMultiSelect
           name="framework"
+          placeholder="Framework"
           data={[
             { label: 'React', value: 'react' },
             { label: 'Vue', value: 'vue' }
           ]}
           label="Multi Frameworks"
         />
+        <FormNumberInput name="amount" label="Amount" placeholder="Your amount" />
+        <FormRatingInput name="rating" label="Rating" placeholder="Your rating" />
+        <FormSwitch name="Checked" label="Checked" />
+        <FormTextareaInput name="message" label="Messasge" placeholder="Your message" minRows={2} />
       </Form>
     </Center>
   ),
