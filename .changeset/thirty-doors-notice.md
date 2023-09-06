@@ -2,4 +2,4 @@
 '@tidbcloud/uikit': minor
 ---
 
-add left label to changeset
+add lefLabel to TextInput
