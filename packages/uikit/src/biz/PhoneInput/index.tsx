@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import ReactPhoneInput, { PhoneInputProps as ReactPhoneInputProps } from 'react-phone-input-2'
+import ReactPhoneInput2, { PhoneInputProps as ReactPhoneInputProps } from 'react-phone-input-2'
 
 import {
   Input,
@@ -13,6 +13,10 @@ import {
 import { mergeStylesList } from '../../utils'
 
 import { useStyles } from './styles'
+
+// fuck esm/cjs interop https://github.com/evanw/esbuild/issues/1719#issuecomment-953470495
+// @ts-ignore // prettier-ignore
+const ReactPhoneInput: typeof ReactPhoneInput2 = ReactPhoneInput2.default ? ReactPhoneInput2.default : ReactPhoneInput2
 
 export interface PhoneInputProps
   extends ReactPhoneInputProps,
