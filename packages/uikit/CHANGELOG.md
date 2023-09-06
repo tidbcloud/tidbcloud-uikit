@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 0.10.0
+
+### Minor Changes
+
+- 908cd04: add leftLabel to TextInput
+
 ## 0.9.0
 
 ### Minor Changes
