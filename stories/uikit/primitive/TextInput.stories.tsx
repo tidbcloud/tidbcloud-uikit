@@ -23,8 +23,11 @@ export default meta
 
 // More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
 export const Primary: Story = {
-  render: () => <TextInput></TextInput>,
-  args: {}
+  render: ({ ...args }) => <TextInput {...args}></TextInput>,
+  args: {
+    leftLabel: 'prefix',
+    label: 'Input'
+  }
 }
 
 export function Controlled(props: Partial<TextInputProps>) {
