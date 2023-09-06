@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 0.10.1
+
+### Patch Changes
+
+- c6c7236: Fix cjs import from esm for react-phone-input-2
+
 ## 0.10.0
 
 ### Minor Changes
