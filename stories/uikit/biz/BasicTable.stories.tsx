@@ -18,7 +18,21 @@ const meta: Meta<typeof BasicTable> = {
   component: BasicTable,
   tags: ['autodocs'],
   decorators: [decorator],
-  parameters: {}
+  parameters: {},
+  argTypes: {
+    captionSide: {
+      options: ['top', 'bottom'],
+      control: { type: 'select' }
+    },
+    verticalSpacing: {
+      options: SIZE_LIST,
+      control: { type: 'select' }
+    },
+    horizontalSpacing: {
+      options: SIZE_LIST,
+      control: { type: 'select' }
+    }
+  }
 }
 
 export default meta
@@ -62,19 +76,5 @@ export const Primary: Story = {
     highlightOnHover: true,
     columns,
     data
-  },
-  argTypes: {
-    captionSide: {
-      options: ['top', 'bottom'],
-      control: { type: 'select' }
-    },
-    verticalSpacing: {
-      options: SIZE_LIST,
-      control: { type: 'select' }
-    },
-    horizontalSpacing: {
-      options: SIZE_LIST,
-      control: { type: 'select' }
-    }
   }
 }

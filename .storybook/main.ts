@@ -1,5 +1,4 @@
 import type { StorybookConfig } from '@storybook/react-vite'
-import { mergeConfig } from 'vite'
 
 const config: StorybookConfig = {
   stories: ['../stories/**/*.mdx', '../stories/**/*.stories.@(js|jsx|ts|tsx)'],
@@ -19,7 +18,7 @@ const config: StorybookConfig = {
     }
   },
   docs: {
-    autodocs: 'tag'
+    autodocs: true
   }
 }
 export default config
