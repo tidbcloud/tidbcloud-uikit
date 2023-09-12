@@ -1,5 +1,23 @@
 # @tidbcloud/uikit
 
+## 0.10.1
+
+### Patch Changes
+
+- c6c7236: Fix cjs import from esm for react-phone-input-2
+
+## 0.10.0
+
+### Minor Changes
+
+- 908cd04: add leftLabel to TextInput
+
+## 0.9.0
+
+### Minor Changes
+
+- 8c57c6e: extract form error message
+
 ## 0.8.3
 
 ### Patch Changes
