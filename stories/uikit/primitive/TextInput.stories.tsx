@@ -26,7 +26,8 @@ export const Primary: Story = {
   render: ({ ...args }) => <TextInput {...args}></TextInput>,
   args: {
     leftLabel: 'prefix',
-    label: 'Input'
+    label: 'Input',
+    icon: 'Icon'
   }
 }
 
