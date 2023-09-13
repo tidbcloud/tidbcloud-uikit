@@ -26,6 +26,12 @@
     "strict": true,
     "useDefineForClassFields": true,
     "noFallthroughCasesInSwitch": true,
+    "baseUrl": ".",
+    "paths": {
+      // https://remarkablemark.org/blog/2023/06/30/react-types-reactnode-error/
+      // https://github.com/facebook/react/issues/24304#issuecomment-1094565891
+      "react": ["node_modules/@types/react"]
+    }
   },
   "exclude": ["node_modules", "dist"]
 }
