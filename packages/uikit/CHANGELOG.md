@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 0.10.2
+
+### Patch Changes
+
+- d0d60c4: fix text input icon missing
+
 ## 0.10.1
 
 ### Patch Changes
