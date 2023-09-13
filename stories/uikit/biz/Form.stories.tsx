@@ -9,7 +9,8 @@ import {
   FormNumberInput,
   FormRatingInput,
   FormSwitch,
-  FormTextareaInput
+  FormTextareaInput,
+  FormPhoneInput
 } from '@tidbcloud/uikit/biz'
 import { Icon } from '@tidbcloud/uikit/icons'
 
@@ -64,6 +65,7 @@ export const Primary: Story = {
           label="Password"
           icon={<Icon name="Lock01" size={16} stroke="1.5" />}
         />
+        <FormPhoneInput name="phone" label="Phone Number" />
         <FormSelect
           name="framework"
           data={[

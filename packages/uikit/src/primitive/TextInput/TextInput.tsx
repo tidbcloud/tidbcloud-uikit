@@ -9,7 +9,7 @@ export interface TextInputProps extends MantineTextInputProps {
 }
 
 export const TextInput = forwardRef<HTMLInputElement, TextInputProps>((props, ref) => {
-  const { leftLabel, ...rest } = props
+  const { leftLabel, icon, ...rest } = props
   return (
     <MantineTextInput
       {...rest}
@@ -53,7 +53,9 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>((props, re
           <Typography variant="label-lg" c="gray.6">
             {leftLabel}
           </Typography>
-        ) : undefined
+        ) : (
+          icon
+        )
       }
       ref={ref}
     />
