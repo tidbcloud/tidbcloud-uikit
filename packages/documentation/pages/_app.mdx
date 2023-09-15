@@ -1,0 +1,33 @@
+import '../style.css'
+import { useEffect } from 'react'
+import { MantineProvider } from '@tidbcloud/uikit'
+import { Theme, themeColors } from '@tidbcloud/uikit/theme'
+
+export default function App({ Component, pageProps }) {
+  useEffect(() => {
+    if (document) {
+      const all = document.querySelectorAll('style')
+      const s = Array.from(all).find((i) => i.innerText.includes('[type=button]{-webkit-appearance:button;background-color:transparent;background-image:none}'))
+      if (s && s.dataset.moved !== 'true') {
+        s.dataset.moved = 'true';
+        document.head.removeChild(s)
+        document.head.insertBefore(s, document.head.firstChild)
+      }
+    }
+  }, [])
+
+  return (
+    <MantineProvider
+      withGlobalStyles
+      withNormalizeCSS
+      theme={{
+        ...Theme,
+        colors: themeColors
+      }}
+    >
+      <Component {...pageProps} />
+    </MantineProvider>
+  )
+}
+
+

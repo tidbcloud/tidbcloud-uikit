@@ -5,3 +5,5 @@ dist/
 storybook-static/
 packages/core/icons/src/react/
 .idea/
+.next/
+.env

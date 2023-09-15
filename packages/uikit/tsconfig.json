@@ -5,6 +5,7 @@
     "typeRoots": [],
     "baseUrl": ".",
     "paths": {
+      "react": ["node_modules/@types/react"],
       "DO_NOT_USE_PATH_ALIAS": ["IT IS NOT WELL SUPPORTED BY ESBUILD"]
     }
   }
