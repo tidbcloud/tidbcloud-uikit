@@ -43,7 +43,7 @@ import Clock from './react/Clock'
 import CodeBrowser from './react/CodeBrowser'
 import CodeCircle02 from './react/CodeCircle02'
 import CodeCircle03 from './react/CodeCircle03'
-import Coins from './react/Coins'
+import Coins02 from './react/Coins02'
 import Collapse08 from './react/Collapse08'
 import Connect from './react/Connect'
 import Copy01 from './react/Copy01'
@@ -239,7 +239,7 @@ export const ICON_MAP = {
   CodeBrowser,
   CodeCircle02,
   CodeCircle03,
-  Coins,
+  Coins02,
   Collapse08,
   Connect,
   Copy01,
@@ -436,7 +436,7 @@ export {
   CodeBrowser,
   CodeCircle02,
   CodeCircle03,
-  Coins,
+  Coins02,
   Collapse08,
   Connect,
   Copy01,
