@@ -60,6 +60,7 @@ import { Icon } from '@tidbcloud/uikit/icons'
 |               ![CodeBrowser](./src/icons/raw/CodeBrowser.svg)               | CodeBrowser               | `<Icon name="CodeBrowser" />`               |
 |              ![CodeCircle02](./src/icons/raw/CodeCircle02.svg)              | CodeCircle02              | `<Icon name="CodeCircle02" />`              |
 |              ![CodeCircle03](./src/icons/raw/CodeCircle03.svg)              | CodeCircle03              | `<Icon name="CodeCircle03" />`              |
+|                   ![Coins02](./src/icons/raw/Coins02.svg)                   | Coins02                   | `<Icon name="Coins02" />`                   |
 |                ![Collapse08](./src/icons/raw/Collapse08.svg)                | Collapse08                | `<Icon name="Collapse08" />`                |
 |                   ![Connect](./src/icons/raw/Connect.svg)                   | Connect                   | `<Icon name="Connect" />`                   |
 |                    ![Copy01](./src/icons/raw/Copy01.svg)                    | Copy01                    | `<Icon name="Copy01" />`                    |
@@ -99,6 +100,7 @@ import { Icon } from '@tidbcloud/uikit/icons'
 |            ![FolderSettings](./src/icons/raw/FolderSettings.svg)            | FolderSettings            | `<Icon name="FolderSettings" />`            |
 |                    ![Github](./src/icons/raw/Github.svg)                    | Github                    | `<Icon name="Github" />`                    |
 |                 ![Glasses01](./src/icons/raw/Glasses01.svg)                 | Glasses01                 | `<Icon name="Glasses01" />`                 |
+|                   ![Globe01](./src/icons/raw/Globe01.svg)                   | Globe01                   | `<Icon name="Globe01" />`                   |
 |                    ![Grid01](./src/icons/raw/Grid01.svg)                    | Grid01                    | `<Icon name="Grid01" />`                    |
 |                 ![HandsDown](./src/icons/raw/HandsDown.svg)                 | HandsDown                 | `<Icon name="HandsDown" />`                 |
 |             ![HandsDownFill](./src/icons/raw/HandsDownFill.svg)             | HandsDownFill             | `<Icon name="HandsDownFill" />`             |
@@ -112,6 +114,7 @@ import { Icon } from '@tidbcloud/uikit/icons'
 |                ![InfoCircle](./src/icons/raw/InfoCircle.svg)                | InfoCircle                | `<Icon name="InfoCircle" />`                |
 |               ![InfoHexagon](./src/icons/raw/InfoHexagon.svg)               | InfoHexagon               | `<Icon name="InfoHexagon" />`               |
 |                     ![Key02](./src/icons/raw/Key02.svg)                     | Key02                     | `<Icon name="Key02" />`                     |
+|             ![LayersThree01](./src/icons/raw/LayersThree01.svg)             | LayersThree01             | `<Icon name="LayersThree01" />`             |
 |           ![LaygroundGrid02](./src/icons/raw/LaygroundGrid02.svg)           | LaygroundGrid02           | `<Icon name="LaygroundGrid02" />`           |
 |               ![LayoutAlt03](./src/icons/raw/LayoutAlt03.svg)               | LayoutAlt03               | `<Icon name="LayoutAlt03" />`               |
 |              ![LayoutBottom](./src/icons/raw/LayoutBottom.svg)              | LayoutBottom              | `<Icon name="LayoutBottom" />`              |
@@ -209,3 +212,4 @@ import { Icon } from '@tidbcloud/uikit/icons'
 |                   ![XCircle](./src/icons/raw/XCircle.svg)                   | XCircle                   | `<Icon name="XCircle" />`                   |
 |                    ![XClose](./src/icons/raw/XClose.svg)                    | XClose                    | `<Icon name="XClose" />`                    |
 |                     ![YAxis](./src/icons/raw/YAxis.svg)                     | YAxis                     | `<Icon name="YAxis" />`                     |
+|                   ![ZapFast](./src/icons/raw/ZapFast.svg)                   | ZapFast                   | `<Icon name="ZapFast" />`                   |
