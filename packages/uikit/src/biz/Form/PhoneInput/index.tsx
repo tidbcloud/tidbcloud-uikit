@@ -59,7 +59,13 @@ export interface FormPhoneInputV2Props extends PhoneInputProps {
   rules?: RegisterOptions
   countryRules?: RegisterOptions
   onSelect?: (value: string, country: CountryData | {}) => void
-  selectProps: Omit<SelectProps, 'data'>
+  selectProps: Omit<SelectProps, 'data'> & {
+    onFilter?: (
+      data: { value: string; label: string },
+      index: number,
+      array: { value: string; label: string }[]
+    ) => boolean
+  }
   rootProps?: BoxProps
 }
 
@@ -108,10 +114,10 @@ export const FormPhoneInputV2: React.FC<FormPhoneInputV2Props> = ({
     <Box {...rootProps}>
       <Box display="flex">
         <FormSelect
+          data={!!selectProps?.onFilter ? countryOptions.filter(selectProps.onFilter) : countryOptions}
           {...selectProps}
           name={countryKey}
           rules={countryRules}
-          data={countryOptions}
           error={countryError?.message}
           styles={(theme, params) => {
             const styles =

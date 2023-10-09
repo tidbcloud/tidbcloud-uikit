@@ -10,7 +10,8 @@ import {
   FormRatingInput,
   FormSwitch,
   FormTextareaInput,
-  FormPhoneInput
+  FormPhoneInput,
+  FormPhoneInputV2
 } from '@tidbcloud/uikit/biz'
 import { Icon } from '@tidbcloud/uikit/icons'
 
@@ -66,6 +67,40 @@ export const Primary: Story = {
           icon={<Icon name="Lock01" size={16} stroke="1.5" />}
         />
         <FormPhoneInput name="phone" label="Phone Number" />
+        <FormPhoneInputV2
+          countryKey="country"
+          phoneKey="phone_number"
+          selectProps={{
+            placeholder: 'Country/Region',
+            maxDropdownHeight: 180,
+            searchable: true,
+            onChange: (val) => {},
+            onFilter(data, index, array) {
+              if (data.value === 'kp') {
+                return false
+              }
+              return true
+            },
+            styles: (theme) => {
+              return {
+                dropdown: {
+                  width: '256px !important',
+                  transform: 'translateX(58px)'
+                },
+                item: {
+                  wordBreak: 'keep-all',
+                  whiteSpace: 'nowrap'
+                },
+                root: {
+                  width: 220
+                },
+                input: {
+                  paddingRight: 20
+                }
+              }
+            }
+          }}
+        />
         <FormSelect
           name="framework"
           data={[
