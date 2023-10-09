@@ -1,5 +1,5 @@
 ---
-'@tidbcloud/uikit': major
+'@tidbcloud/uikit': patch
 ---
 
 PhoneInputV2 support filter country
