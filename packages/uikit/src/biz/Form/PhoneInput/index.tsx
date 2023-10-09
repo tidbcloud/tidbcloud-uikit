@@ -2,7 +2,7 @@ import { get } from 'lodash-es'
 import { Controller, RegisterOptions, useFormContext } from 'react-hook-form'
 import { CountryData } from 'react-phone-input-2'
 
-import { SelectProps, Box, BoxProps, createStyles } from '../../../primitive'
+import { SelectProps, Box, BoxProps, createStyles, SelectItem } from '../../../primitive'
 import { PhoneInput, PhoneInputProps } from '../../PhoneInput'
 import { FormSelect } from '../Select'
 
@@ -59,7 +59,13 @@ export interface FormPhoneInputV2Props extends PhoneInputProps {
   rules?: RegisterOptions
   countryRules?: RegisterOptions
   onSelect?: (value: string, country: CountryData | {}) => void
-  selectProps: Omit<SelectProps, 'data'>
+  selectProps: Omit<SelectProps, 'data'> & {
+    onFilter?: (
+      data: { value: string; label: string },
+      index: number,
+      array: { value: string; label: string }[]
+    ) => boolean
+  }
   rootProps?: BoxProps
 }
 
@@ -108,10 +114,10 @@ export const FormPhoneInputV2: React.FC<FormPhoneInputV2Props> = ({
     <Box {...rootProps}>
       <Box display="flex">
         <FormSelect
+          data={!!selectProps?.onFilter ? countryOptions.filter(selectProps.onFilter) : countryOptions}
           {...selectProps}
           name={countryKey}
           rules={countryRules}
-          data={countryOptions}
           error={countryError?.message}
           styles={(theme, params) => {
             const styles =
