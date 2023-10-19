@@ -27,7 +27,6 @@ export function SearchArea<T extends object>(props: SearchAreaProps<T>) {
   }
 
   const handleReset = () => {
-    console.log('reset', rest.defaultValues)
     form.reset(rest.defaultValues)
   }
 
