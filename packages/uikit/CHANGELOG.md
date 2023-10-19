@@ -1,5 +1,17 @@
 # @tidbcloud/uikit
 
+## 1.0.1
+
+### Patch Changes
+
+- 3aa2977: PhoneInputV2 support filter country
+
+## 1.0.0
+
+### Major Changes
+
+- 6bf8b39: add some icons
+
 ## 0.10.2
 
 ### Patch Changes
