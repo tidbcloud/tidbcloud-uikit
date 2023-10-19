@@ -59,16 +59,49 @@ function Demo() {
   )
 }
 
+const code = `
+function Demo() {
+  const [searchQuery, setSearchQuery] = useState<FormData | null>(null)
+  const handleSubmit = async (data: FormData) => {
+    setSearchQuery(data)
+  }
+
+  const jsonString = JSON.stringify(searchQuery, null, 4)
+
+  return (
+    <Box>
+      <Box>
+        <SearchArea<FormData>
+          // defaultValues are required
+          defaultValues={{ category: '', customerId: '', operator: '', status: '' }}
+          // onSubmit is required
+          onSubmit={handleSubmit}
+        >
+          {/* // name is required and should be aligned with FormData */}
+          <FormTextInput name="category" placeholder="Category" w={220} />
+          <FormTextInput name="customerId" placeholder="Customer ID" w={220} />
+          <FormTextInput name="operator" placeholder="Operator" w={220} />
+        </SearchArea>
+      </Box>
+      <Box>{jsonString && jsonString !== '{}' && <pre>{jsonString}</pre>}</Box>
+    </Box>
+  )
+}
+`
+
 // More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
 export const Primary: Story = {
   parameters: {
     controls: { expanded: true },
     docs: {
-      source: `test hahahaha okokok`
+      source: {
+        language: 'jsx',
+        code
+      }
     }
   },
   render: () => <Demo />,
   args: {
-    children: Demo
+    children: <Demo />
   }
 }
