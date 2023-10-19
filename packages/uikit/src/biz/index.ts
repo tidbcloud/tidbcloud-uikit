@@ -6,5 +6,4 @@ export * from './Table'
 export * from './DotBadge'
 export * from './SearchArea'
 export * from './LabelTooltip'
-
 export * from './Form'
