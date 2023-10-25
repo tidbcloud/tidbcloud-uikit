@@ -7,6 +7,14 @@
       "layout": "raw"
     }
   },
+  "icons": {
+    "type": "page",
+    "title": "IconKit",
+    "theme": {
+      "typesetting": "article",
+      "layout": "full"
+    }
+  },
   "docs": {
     "type": "page",
     "title": "Documentation"
