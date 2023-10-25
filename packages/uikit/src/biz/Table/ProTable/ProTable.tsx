@@ -1,6 +1,6 @@
 import { MantineReactTable, MantineReactTableProps } from 'mantine-react-table'
 
-import { Icon } from '../../../icons'
+import { IconSwitchVertical02, IconArrowUp, IconArrowDown } from '../../../icons'
 import { Box, BoxProps } from '../../../primitive'
 import { TablePagination, TablePaginationProps } from '../TablePagination'
 
@@ -139,9 +139,9 @@ export const ProTable = <T extends Record<string, any> = {}>({
           ...localization
         }}
         icons={{
-          IconArrowsSort: () => <Icon name="SwitchVertical02" size={14} />,
-          IconSortAscending: () => <Icon name="ArrowUp" size={14} />,
-          IconSortDescending: () => <Icon name="ArrowDown" size={14} />
+          IconArrowsSort: () => <IconSwitchVertical02 size={14} />,
+          IconSortAscending: () => <IconArrowUp size={14} />,
+          IconSortDescending: () => <IconArrowDown size={14} />
         }}
         {...rest}
       />

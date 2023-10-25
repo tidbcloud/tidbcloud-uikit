@@ -1,6 +1,6 @@
 import type { Meta, StoryObj, StoryFn } from '@storybook/react'
 import { Text, Timeline } from '@tidbcloud/uikit'
-import { Icon } from '@tidbcloud/uikit/icons'
+import { IconLink03, IconList, IconAlertCircle, IconDotsHorizontal } from '@tidbcloud/uikit/icons'
 
 import { COLOR_LIST, SIZE_LIST } from '../../constants'
 
@@ -27,7 +27,7 @@ export default meta
 export const Primary: Story = {
   render: ({ ...rest }) => (
     <Timeline {...rest}>
-      <Timeline.Item bullet={<Icon name="Link03" size={12} />} title="New branch">
+      <Timeline.Item bullet={<IconLink03 size={12} />} title="New branch">
         <Text color="dimmed" size="sm">
           You&apos;ve created new branch{' '}
           <Text variant="link" component="span" inherit>
@@ -40,7 +40,7 @@ export const Primary: Story = {
         </Text>
       </Timeline.Item>
 
-      <Timeline.Item bullet={<Icon name="List" size={12} />} title="Commits">
+      <Timeline.Item bullet={<IconList size={12} />} title="Commits">
         <Text color="dimmed" size="sm">
           You&apos;ve pushed 23 commits to
           <Text variant="link" component="span" inherit>
@@ -52,7 +52,7 @@ export const Primary: Story = {
         </Text>
       </Timeline.Item>
 
-      <Timeline.Item title="Pull request" bullet={<Icon name="AlertCircle" size={12} />} lineVariant="dashed">
+      <Timeline.Item title="Pull request" bullet={<IconAlertCircle size={12} />} lineVariant="dashed">
         <Text color="dimmed" size="sm">
           You&apos;ve submitted a pull request
           <Text variant="link" component="span" inherit>
@@ -64,7 +64,7 @@ export const Primary: Story = {
         </Text>
       </Timeline.Item>
 
-      <Timeline.Item title="Code review" bullet={<Icon name="DotsHorizontal" size={12} />}>
+      <Timeline.Item title="Code review" bullet={<IconDotsHorizontal size={12} />}>
         <Text color="dimmed" size="sm">
           <Text variant="link" component="span" inherit>
             Robert Gluesticker

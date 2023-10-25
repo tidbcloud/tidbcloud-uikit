@@ -1,15 +1,32 @@
 import * as React from 'react'
 import { forwardRef } from 'react'
-const RefreshCw04 = (props, ref) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 16 20" ref={ref} {...props}>
-    <path
-      stroke="currentColor"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth={1.5}
-      d="M12.167 4.271A7.083 7.083 0 0 1 8 17.083h-.417m-3.75-1.354A7.083 7.083 0 0 1 8 2.917h.417m.416 15.75L7.167 17l1.666-1.667M7.167 4.667 8.833 3 7.167 1.333"
-    />
-  </svg>
-)
+const RefreshCw04 = (props, ref) => {
+  if (typeof props.size === 'number') {
+    props = {
+      ...props,
+      height: props.size,
+      width: props.width
+    }
+  }
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="1em"
+      height="1em"
+      fill="none"
+      viewBox="0 0 16 20"
+      ref={ref}
+      {...props}
+    >
+      <path
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={1.5}
+        d="M12.167 4.271A7.083 7.083 0 0 1 8 17.083h-.417m-3.75-1.354A7.083 7.083 0 0 1 8 2.917h.417m.416 15.75L7.167 17l1.666-1.667M7.167 4.667 8.833 3 7.167 1.333"
+      />
+    </svg>
+  )
+}
 const ForwardRef = forwardRef(RefreshCw04)
 export default ForwardRef

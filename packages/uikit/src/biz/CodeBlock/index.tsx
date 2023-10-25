@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from 'react'
 
 import { useLocalStorage } from '../../hooks'
-import { Icon } from '../../icons'
+import { IconChevronVerticalExpand, IconChevronVerticalShrink, IconCheck, IconCopy01 } from '../../icons'
 import { ActionIcon, Box, BoxProps, CopyButton, Group, Tooltip, Code, CodeProps } from '../../primitive'
 import { Prism, PrismProps } from '../../primitive/Prism'
 import { mergeSxList, mergeStylesList } from '../../utils'
@@ -116,9 +116,9 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
               }}
             >
               {folded ? (
-                <Icon name="ChevronVerticalExpand" size={14} strokeWidth={2.5} />
+                <IconChevronVerticalExpand size={14} strokeWidth={2.5} />
               ) : (
-                <Icon name="ChevronVerticalShrink" size={14} strokeWidth={2.5} />
+                <IconChevronVerticalShrink size={14} strokeWidth={2.5} />
               )}
             </ActionIcon>
           </Tooltip>
@@ -135,7 +135,7 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
                   onCopyClick?.()
                 }}
               >
-                {copied ? <Icon name="Check" size={14} /> : <Icon name="Copy01" size={14} strokeWidth={2.5} />}
+                {copied ? <IconCheck size={14} /> : <IconCopy01 size={14} strokeWidth={2.5} />}
               </ActionIcon>
             </Tooltip>
           )}
@@ -181,7 +181,7 @@ export const CopyText: React.FC<CopyTextProps> = ({ children, value, ...rest }) 
                 copy()
               }}
             >
-              {copied ? <Icon name="Check" size={14} /> : <Icon name="Copy01" size={14} strokeWidth={2.5} />}
+              {copied ? <IconCheck size={14} /> : <IconCopy01 size={14} strokeWidth={2.5} />}
             </ActionIcon>
           </Tooltip>
         )}

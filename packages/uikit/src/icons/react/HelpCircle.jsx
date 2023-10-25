@@ -1,24 +1,33 @@
 import * as React from 'react'
 import { forwardRef } from 'react'
-const HelpCircle = (props, ref) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="1em"
-    height="1em"
-    fill="none"
-    strokeWidth={1.5}
-    viewBox="0 0 24 24"
-    ref={ref}
-    {...props}
-  >
-    <path
-      stroke="currentColor"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth="inherit"
-      d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3m.08 4h.01M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10Z"
-    />
-  </svg>
-)
+const HelpCircle = (props, ref) => {
+  if (typeof props.size === 'number') {
+    props = {
+      ...props,
+      height: props.size,
+      width: props.width
+    }
+  }
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="1em"
+      height="1em"
+      fill="none"
+      strokeWidth={1.5}
+      viewBox="0 0 24 24"
+      ref={ref}
+      {...props}
+    >
+      <path
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="inherit"
+        d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3m.08 4h.01M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10Z"
+      />
+    </svg>
+  )
+}
 const ForwardRef = forwardRef(HelpCircle)
 export default ForwardRef

@@ -10,7 +10,7 @@ import {
   Anchor,
   useMantineTheme
 } from '@tidbcloud/uikit'
-import { Icon } from '@tidbcloud/uikit/icons'
+import { IconAtom01, IconLock01 } from '@tidbcloud/uikit/icons'
 import React, { useState } from 'react'
 
 export interface AuthenticationFormProps {
@@ -65,7 +65,7 @@ export const AuthenticationForm = ({ noShadow, noPadding, noSubmit, style }: Aut
           required
           placeholder="Your email"
           label="Email"
-          icon={<Icon name="Atom01" size={16} stroke="1.5" />}
+          icon={<IconAtom01 size={16} stroke="1.5" />}
         />
 
         <PasswordInput
@@ -73,7 +73,7 @@ export const AuthenticationForm = ({ noShadow, noPadding, noSubmit, style }: Aut
           required
           placeholder="Password"
           label="Password"
-          icon={<Icon name="Lock01" size={16} stroke="1.5" />}
+          icon={<IconLock01 size={16} stroke="1.5" />}
         />
 
         {formType === 'register' && (
@@ -82,7 +82,7 @@ export const AuthenticationForm = ({ noShadow, noPadding, noSubmit, style }: Aut
             required
             label="Confirm Password"
             placeholder="Confirm password"
-            icon={<Icon name="Lock01" size={16} stroke="1.5" />}
+            icon={<IconLock01 size={16} stroke="1.5" />}
           />
         )}
 

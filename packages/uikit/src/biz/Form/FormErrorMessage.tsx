@@ -1,7 +1,7 @@
 import DOMPurify from 'dompurify'
 import { useState, useRef, useEffect } from 'react'
 
-import { Icon } from '../../icons'
+import { IconAlertCircle } from '../../icons'
 import { Alert, AlertProps } from '../../primitive'
 
 export interface FormErrorMessageProps extends Omit<AlertProps, 'children'> {
@@ -39,7 +39,7 @@ export const FormErrorMessage: React.FC<FormErrorMessageProps> = ({
     <Alert
       withCloseButton={Boolean(onDismiss) || closable}
       color="red"
-      icon={<Icon name="AlertCircle" />}
+      icon={<IconAlertCircle />}
       onClose={() => {
         setShow(false)
         onDismiss?.()
