@@ -6,7 +6,8 @@ import { camelCase, upperFirst } from 'lodash-es'
 
 const rawIconInputPath = path.resolve(process.cwd(), './src/icons/raw')
 const reactIconOutput = path.resolve(process.cwd(), './src/icons/react')
-const entryOutput = path.join('./src/icons/index.ts')
+const indexOutput = path.join('./src/icons/index.ts')
+const mapOutput = path.join('./src/icons/map.ts')
 
 const getAllIcons = () =>
   fs
@@ -82,13 +83,16 @@ function updateImportEntry() {
     })
     .join('\n')
 
+  const exportMap = `export const ICON_MAP = {\n${icons.map((i) => pascalCase(i))}\n}`
   const reexports = `export {\n${icons
     .map((name) => {
       return `${pascalCase(name)} as ${pascalCase(`Icon${name}`)}`
     })
     .join(',\n')}\n}`
+  const iconReexport = `export { Icon } from './Icon'`
 
-  fs.writeFileSync(entryOutput, [noEdit, imports, '\n', reexports].join('\n') + '\n')
+  fs.writeFileSync(indexOutput, [noEdit, imports, '\n', reexports, '\n', iconReexport].join('\n') + '\n')
+  fs.writeFileSync(mapOutput, [noEdit, imports, '\n', exportMap].join('\n') + '\n')
 }
 
 ;(function () {
