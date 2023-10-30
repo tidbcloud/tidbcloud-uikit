@@ -1,6 +1,6 @@
 import type { Meta, StoryObj, StoryFn } from '@storybook/react'
 import { ThemeIcon } from '@tidbcloud/uikit'
-import { Icon } from '@tidbcloud/uikit/icons'
+import { IconPieChart03 } from '@tidbcloud/uikit/icons'
 
 import { COLOR_LIST, SIZE_LIST, VARIANT_LIST } from '../../constants'
 
@@ -27,7 +27,7 @@ export default meta
 export const Primary: Story = {
   render: ({ ...rest }) => (
     <ThemeIcon {...rest}>
-      <Icon name="PieChart03" />
+      <IconPieChart03 />
     </ThemeIcon>
   ),
   args: {},

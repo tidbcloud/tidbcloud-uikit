@@ -13,7 +13,7 @@ import {
   FormPhoneInput,
   FormPhoneInputV2
 } from '@tidbcloud/uikit/biz'
-import { Icon } from '@tidbcloud/uikit/icons'
+import { IconAtom01, IconLock01 } from '@tidbcloud/uikit/icons'
 
 type Story = StoryObj<typeof Form>
 
@@ -55,7 +55,7 @@ export const Primary: Story = {
           required
           placeholder="Your email"
           label="Email"
-          icon={<Icon name="Atom01" size={16} stroke="1.5" />}
+          icon={<IconAtom01 size={16} stroke="1.5" />}
         />
         <FormTextInput name="url" mt="md" required placeholder="Your url" label="url" leftLabel="https://www.test." />
         <FormPasswordInput
@@ -64,7 +64,7 @@ export const Primary: Story = {
           required
           placeholder="Password"
           label="Password"
-          icon={<Icon name="Lock01" size={16} stroke="1.5" />}
+          icon={<IconLock01 size={16} stroke="1.5" />}
         />
         <FormPhoneInput name="phone" label="Phone Number" />
         <FormPhoneInputV2

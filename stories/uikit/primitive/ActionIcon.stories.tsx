@@ -1,6 +1,6 @@
 import type { Meta, StoryObj, StoryFn } from '@storybook/react'
 import { ActionIcon } from '@tidbcloud/uikit'
-import { Icon } from '@tidbcloud/uikit/icons'
+import { IconMenu01 } from '@tidbcloud/uikit/icons'
 
 import { COLOR_LIST, VARIANT_LIST, SIZE_LIST } from '../../constants'
 
@@ -27,7 +27,7 @@ export default meta
 export const Primary: Story = {
   render: ({ ...rest }) => (
     <ActionIcon color="cyan" disabled={false} loading={false} variant="filled" {...rest}>
-      <Icon name="Menu01" />
+      <IconMenu01 />
     </ActionIcon>
   ),
   parameters: {

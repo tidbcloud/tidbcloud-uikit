@@ -2,7 +2,7 @@ import { useDebounce } from 'ahooks'
 import React, { useEffect } from 'react'
 import { FieldValues, useForm } from 'react-hook-form'
 
-import { Icon } from '../../icons'
+import { IconEraser, IconRefreshCw01 } from '../../icons'
 import { Box, Button } from '../../primitive'
 import { Form, FormProps } from '../Form'
 
@@ -54,13 +54,13 @@ export function SearchArea<T extends object>(props: SearchAreaProps<T>) {
           <Box sx={SX_Y_MID}>
             <Box sx={SX_Y_MID}>
               <Button variant="subtle" color="gray.7" onClick={handleReset}>
-                <Icon name="Eraser" size={16} style={{ marginRight: 4 }} />
+                <IconEraser size={16} style={{ marginRight: 4 }} />
                 Clear Filters
               </Button>
             </Box>
             <Box ml={16} sx={SX_Y_MID}>
               <Button variant="subtle" color="gray.7" onClick={handleSubmit}>
-                <Icon name="RefreshCw01" size={16} />
+                <IconRefreshCw01 size={16} />
               </Button>
             </Box>
           </Box>

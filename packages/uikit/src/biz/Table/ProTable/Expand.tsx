@@ -1,7 +1,7 @@
 import { MRT_Cell, MRT_Row, MRT_Column, MRT_TableInstance } from 'mantine-react-table'
 import { ReactNode } from 'react'
 
-import { Icon } from '../../../icons'
+import { IconChevronDown, IconChevronRight } from '../../../icons'
 import { Box } from '../../../primitive'
 
 interface CellProps<TData> {
@@ -18,7 +18,7 @@ export const renderExpandCell = <T extends Record<string, any> = {}>({ row, cell
 
   const paddingLeft = row.depth * 20
 
-  const icon = row.getIsExpanded() ? <Icon name="ChevronDown" size={18} /> : <Icon name="ChevronRight" size={18} />
+  const icon = row.getIsExpanded() ? <IconChevronDown size={18} /> : <IconChevronRight size={18} />
   return (
     <Box
       sx={() => ({
