@@ -2,25 +2,18 @@ import { Button, Box, Input, Card, CopyButton, Flex, Typography, Center, Stack, 
 import { useDisclosure } from '@tidbcloud/uikit/hooks'
 import * as icons from '@tidbcloud/uikit/icons'
 import { IconCopy01, IconSearchLg } from '@tidbcloud/uikit/icons'
-import { useInfiniteScroll } from 'ahooks'
+import { useInfiniteScroll, useMemoizedFn } from 'ahooks'
 import { useState, useDeferredValue } from 'react'
 
-const iconsData = ['Icon', ...Object.keys(icons)]
-console.log('iconsData: ', iconsData)
+const iconsData = Object.keys(icons).filter((i) => i !== 'Icon')
 
-function IconCard({ name }: { name: string }) {
+function IconCard({ name, onClick }: { name: string; onClick: (name: string) => void }) {
   // @ts-ignore
   const Icon = icons[name] as any
-  const [opened, handlers] = useDisclosure()
-
-  if (!Icon) {
-    console.log('name: ', name)
-    return null
-  }
 
   return (
     <>
-      <Card w={120} p={16} sx={{ cursor: 'pointer' }} onClick={() => handlers.open()}>
+      <Card w={120} p={16} sx={{ cursor: 'pointer' }} onClick={() => onClick(name)}>
         <Stack>
           <Center>
             <Icon size={24} />
@@ -32,44 +25,6 @@ function IconCard({ name }: { name: string }) {
           </Center>
         </Stack>
       </Card>
-
-      <Modal opened={opened} onClose={() => handlers.close()} closeOnClickOutside centered size={600}>
-        <Flex gap={32}>
-          <Box sx={(theme) => ({ border: `1px solid ${theme.colors.gray[3]}`, borderRadius: 4 })}>
-            <Icon size={180} />
-          </Box>
-          <Stack>
-            <CopyButton value={name}>
-              {({ copied, copy }) => (
-                <Tooltip label={copied ? 'Copied!' : 'Copy name'} withArrow>
-                  <Typography
-                    variant="headline-lg"
-                    onClick={copy}
-                    sx={{ cursor: 'pointer', '&:hover': { textDecoration: 'underline' } }}
-                  >
-                    {name}
-                  </Typography>
-                </Tooltip>
-              )}
-            </CopyButton>
-
-            <CopyButton value={`import { ${name} } from '@tidbcloud/uikit/icons'`}>
-              {({ copied, copy }) => (
-                <Button leftIcon={<IconCopy01 />} onClick={copy} variant="default">
-                  {copied ? 'Copied!' : 'Copy Import'}
-                </Button>
-              )}
-            </CopyButton>
-            <CopyButton value={`<${name} />`}>
-              {({ copied, copy }) => (
-                <Button leftIcon={<IconCopy01 />} onClick={copy}>
-                  {copied ? 'Copied!' : 'Copy JSX'}
-                </Button>
-              )}
-            </CopyButton>
-          </Stack>
-        </Flex>
-      </Modal>
     </>
   )
 }
@@ -106,6 +61,14 @@ export function IconsPreview() {
   const iconCount = iconsData.length
   const { data, loadMore, loadingMore } = useInfiniteScroll((d) => getLoadMoreList(d?.nextId, 100))
   const hasMore = data && data.list.length < data.total
+  const [opened, handlers] = useDisclosure()
+  const [iconName, setIconName] = useState('')
+  const onIconClick = useMemoizedFn((name: string) => {
+    setIconName(name)
+  })
+
+  // @ts-ignore
+  const Icon = icons[iconName] ?? (() => null)
 
   return (
     <Box p={16}>
@@ -119,14 +82,14 @@ export function IconsPreview() {
         mb={32}
       />
 
-      {/* <Flex wrap="wrap" gap={16}>
+      <Flex wrap="wrap" gap={16}>
         {deferredValue
           ? iconsData
               .filter((i) => i.toLowerCase().includes(deferredValue))
               .slice(0, 50)
-              .map((i) => <IconCard name={i} key={i} />)
-          : data?.list.map((i) => <IconCard name={i} key={i} />)}
-      </Flex> */}
+              .map((i) => <IconCard name={i} onClick={onIconClick} key={i} />)
+          : data?.list.map((i) => <IconCard name={i} onClick={onIconClick} key={i} />)}
+      </Flex>
 
       {!deferredValue && hasMore && (
         <Center mt={16}>
@@ -135,6 +98,44 @@ export function IconsPreview() {
           </Button>
         </Center>
       )}
+
+      <Modal opened={opened} onClose={() => handlers.close()} closeOnClickOutside centered size={600}>
+        <Flex gap={32}>
+          <Box sx={(theme) => ({ border: `1px solid ${theme.colors.gray[3]}`, borderRadius: 4 })}>
+            <Icon size={180} />
+          </Box>
+          <Stack>
+            <CopyButton value={iconName}>
+              {({ copied, copy }) => (
+                <Tooltip label={copied ? 'Copied!' : 'Copy name'} withArrow>
+                  <Typography
+                    variant="headline-lg"
+                    onClick={copy}
+                    sx={{ cursor: 'pointer', '&:hover': { textDecoration: 'underline' } }}
+                  >
+                    {iconName}
+                  </Typography>
+                </Tooltip>
+              )}
+            </CopyButton>
+
+            <CopyButton value={`import { ${iconName} } from '@tidbcloud/uikit/icons'`}>
+              {({ copied, copy }) => (
+                <Button leftIcon={<IconCopy01 />} onClick={copy} variant="default">
+                  {copied ? 'Copied!' : 'Copy Import'}
+                </Button>
+              )}
+            </CopyButton>
+            <CopyButton value={`<${iconName} />`}>
+              {({ copied, copy }) => (
+                <Button leftIcon={<IconCopy01 />} onClick={copy}>
+                  {copied ? 'Copied!' : 'Copy JSX'}
+                </Button>
+              )}
+            </CopyButton>
+          </Stack>
+        </Flex>
+      </Modal>
     </Box>
   )
 }
