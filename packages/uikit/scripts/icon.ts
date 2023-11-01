@@ -82,16 +82,18 @@ function updateImportEntry() {
       return `import ${name} from './react/${name}'`
     })
     .join('\n')
+  const reexports = icons
+    .map((i) => {
+      const name = pascalCase(i)
+      return `export { default as ${pascalCase('Icon' + name)} } from './react/${name}'`
+    })
+    .join('\n')
 
   const exportMap = `export const ICON_MAP = {\n${icons.map((i) => pascalCase(i))}\n}`
-  const reexports = `export {\n${icons
-    .map((name) => {
-      return `${pascalCase(name)} as ${pascalCase(`Icon${name}`)}`
-    })
-    .join(',\n')}\n}`
+
   const iconReexport = `export { Icon } from './Icon'`
 
-  fs.writeFileSync(indexOutput, [noEdit, imports, '\n', reexports, '\n', iconReexport].join('\n') + '\n')
+  fs.writeFileSync(indexOutput, [noEdit, reexports, '\n', iconReexport].join('\n') + '\n')
   fs.writeFileSync(mapOutput, [noEdit, imports, '\n', exportMap].join('\n') + '\n')
 }
 
