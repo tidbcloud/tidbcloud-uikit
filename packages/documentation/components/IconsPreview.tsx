@@ -5,12 +5,18 @@ import { IconCopy01, IconSearchLg } from '@tidbcloud/uikit/icons'
 import { useInfiniteScroll } from 'ahooks'
 import { useState, useDeferredValue } from 'react'
 
-const iconsData = Object.keys(icons)
+const iconsData = ['Icon', ...Object.keys(icons)]
+console.log('iconsData: ', iconsData)
 
 function IconCard({ name }: { name: string }) {
   // @ts-ignore
   const Icon = icons[name] as any
   const [opened, handlers] = useDisclosure()
+
+  if (!Icon) {
+    console.log('name: ', name)
+    return null
+  }
 
   return (
     <>
@@ -113,14 +119,14 @@ export function IconsPreview() {
         mb={32}
       />
 
-      <Flex wrap="wrap" gap={16}>
+      {/* <Flex wrap="wrap" gap={16}>
         {deferredValue
           ? iconsData
               .filter((i) => i.toLowerCase().includes(deferredValue))
               .slice(0, 50)
               .map((i) => <IconCard name={i} key={i} />)
           : data?.list.map((i) => <IconCard name={i} key={i} />)}
-      </Flex>
+      </Flex> */}
 
       {!deferredValue && hasMore && (
         <Center mt={16}>
