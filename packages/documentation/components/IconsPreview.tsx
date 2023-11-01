@@ -65,6 +65,7 @@ export function IconsPreview() {
   const [iconName, setIconName] = useState('')
   const onIconClick = useMemoizedFn((name: string) => {
     setIconName(name)
+    handlers.open()
   })
 
   // @ts-ignore
