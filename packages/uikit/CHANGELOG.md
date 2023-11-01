@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 1.1.0
+
+### Minor Changes
+
+- cb94eb4: icon api redesigned, use single import for each icon, the old `Icon` was marked deprecated
+
 ## 1.0.1
 
 ### Patch Changes
