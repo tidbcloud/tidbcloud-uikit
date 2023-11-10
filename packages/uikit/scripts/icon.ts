@@ -1,9 +1,11 @@
 import fs from 'node:fs'
 import path from 'node:path'
+import { argv } from 'node:process'
 
 import { transform, Config } from '@svgr/core'
 import { camelCase, upperFirst } from 'lodash-es'
 
+const withForceFlag = argv.includes('--force')
 const rawIconInputPath = path.resolve(process.cwd(), './src/icons/raw')
 const reactIconOutput = path.resolve(process.cwd(), './src/icons/react')
 const indexOutput = path.join('./src/icons/index.ts')
@@ -61,11 +63,18 @@ function transformSvgIcon() {
         plugins: ['@svgr/plugin-svgo', '@svgr/plugin-jsx', '@svgr/plugin-prettier'],
         icon: true,
         ref: true,
+        replaceAttrValues: {
+          '#000': 'currentColor',
+          black: 'currentColor'
+        },
         template
       },
       { componentName: name }
     )
-    fs.writeFileSync(path.resolve(reactIconOutput, `${name}.jsx`), jsCode)
+    const output = path.resolve(reactIconOutput, `${name}.jsx`)
+    if (!fs.existsSync(output) || withForceFlag) {
+      fs.writeFileSync(output, jsCode)
+    }
   })
 }
 
