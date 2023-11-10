@@ -19,7 +19,7 @@ const FilterFunnel01 = (props, ref) => {
       {...props}
     >
       <path
-        stroke="#000"
+        stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth={2}

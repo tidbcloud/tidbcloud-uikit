@@ -63,6 +63,10 @@ function transformSvgIcon() {
         plugins: ['@svgr/plugin-svgo', '@svgr/plugin-jsx', '@svgr/plugin-prettier'],
         icon: true,
         ref: true,
+        replaceAttrValues: {
+          '#000': 'currentColor',
+          black: 'currentColor'
+        },
         template
       },
       { componentName: name }
