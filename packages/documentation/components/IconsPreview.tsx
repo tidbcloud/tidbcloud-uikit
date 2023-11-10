@@ -76,7 +76,7 @@ export function IconsPreview() {
       <Input
         size="lg"
         radius={32}
-        placeholder={`Search all ${iconCount} icon`}
+        placeholder={`Search all ${iconCount} icons`}
         value={value}
         onChange={(e: any) => setValue(e.target.value)}
         icon={<IconSearchLg size={24} />}
