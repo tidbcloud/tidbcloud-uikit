@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 1.2.0
+
+### Minor Changes
+
+- e4955b1: Remove `Icon` component
+
 ## 1.1.0
 
 ### Minor Changes
