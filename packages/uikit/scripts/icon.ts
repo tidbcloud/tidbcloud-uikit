@@ -1,3 +1,19 @@
+/**
+ * This script will scan all the svg icon in src/icons/raw folder
+ * then generate correspondent react jsx code to src/icons/react folder
+ *
+ * It will:
+ * - Rename all the svg file to PasCal case (or upper camel case)
+ * - Use svgr to generate react jsx code
+ * - Use a custom code template to support other props such as `size`
+ * - By default, it will skip if there are already a jsx file with same name, unless you pass a `--force` flag
+ *
+ * Usage:
+ * ```sh
+ * npx tsx script/icon.ts
+ * npx tsx script/icon.ts --force
+ * ```
+ */
 import fs from 'node:fs'
 import path from 'node:path'
 import { argv } from 'node:process'
@@ -9,7 +25,6 @@ const withForceFlag = argv.includes('--force')
 const rawIconInputPath = path.resolve(process.cwd(), './src/icons/raw')
 const reactIconOutput = path.resolve(process.cwd(), './src/icons/react')
 const indexOutput = path.join('./src/icons/index.ts')
-const mapOutput = path.join('./src/icons/map.ts')
 
 const getAllIcons = () =>
   fs
@@ -85,12 +100,6 @@ const noEdit = `/**
 
 function updateImportEntry() {
   const icons = getAllIcons()
-  const imports = icons
-    .map((i) => {
-      const name = pascalCase(i)
-      return `import ${name} from './react/${name}'`
-    })
-    .join('\n')
   const reexports = icons
     .map((i) => {
       const name = pascalCase(i)
@@ -98,12 +107,7 @@ function updateImportEntry() {
     })
     .join('\n')
 
-  const exportMap = `export const ICON_MAP = {\n${icons.map((i) => pascalCase(i))}\n}`
-
-  const iconReexport = `export { Icon } from './Icon'`
-
-  fs.writeFileSync(indexOutput, [noEdit, reexports, '\n', iconReexport].join('\n') + '\n')
-  fs.writeFileSync(mapOutput, [noEdit, imports, '\n', exportMap].join('\n') + '\n')
+  fs.writeFileSync(indexOutput, [noEdit, reexports].join('\n') + '\n')
 }
 
 ;(function () {
