@@ -1233,5 +1233,3 @@ export { default as IconZapOff } from './react/ZapOff'
 export { default as IconZapSquare } from './react/ZapSquare'
 export { default as IconZoomIn } from './react/ZoomIn'
 export { default as IconZoomOut } from './react/ZoomOut'
-
-export { Icon } from './Icon'
