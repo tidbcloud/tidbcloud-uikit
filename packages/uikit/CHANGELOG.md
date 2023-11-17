@@ -4,7 +4,8 @@
 
 ### Minor Changes
 
-- 41af00f: - Make all icon's default stroke-width to 1.5
+- 41af00f:
+  - Make all icon's default stroke-width to 1.5
   - Hoist stroke-width attribute to svg element
   - Tweak icon script to accomplish the stroke-width change
 
