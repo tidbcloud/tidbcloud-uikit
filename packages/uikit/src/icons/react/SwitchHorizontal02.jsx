@@ -2,10 +2,11 @@ import * as React from 'react'
 import { forwardRef } from 'react'
 const SwitchHorizontal02 = (props, ref) => {
   if (typeof props.size === 'number') {
+    const { size, ...rest } = props
     props = {
-      ...props,
-      height: props.size,
-      width: props.width
+      ...rest,
+      height: size,
+      width: size
     }
   }
   return (
@@ -14,7 +15,7 @@ const SwitchHorizontal02 = (props, ref) => {
       width="1em"
       height="1em"
       fill="none"
-      strokeWidth={2}
+      strokeWidth="1.5"
       viewBox="0 0 24 24"
       ref={ref}
       {...props}
@@ -23,8 +24,8 @@ const SwitchHorizontal02 = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeWidth="inherit"
         d="M4 17h16m0 0-4-4m4 4-4 4m4-14H4m0 0 4-4M4 7l4 4"
+        strokeWidth="inherit"
       />
     </svg>
   )

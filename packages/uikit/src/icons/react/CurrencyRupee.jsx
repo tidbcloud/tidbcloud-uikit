@@ -2,10 +2,11 @@ import * as React from 'react'
 import { forwardRef } from 'react'
 const CurrencyRupee = (props, ref) => {
   if (typeof props.size === 'number') {
+    const { size, ...rest } = props
     props = {
-      ...props,
-      height: props.size,
-      width: props.width
+      ...rest,
+      height: size,
+      width: size
     }
   }
   return (
@@ -15,6 +16,7 @@ const CurrencyRupee = (props, ref) => {
       height="1em"
       fill="none"
       viewBox="0 0 24 24"
+      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
@@ -22,8 +24,8 @@ const CurrencyRupee = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeWidth={2}
         d="M6 3h12M6 8h12m-3.5 13L6 13h3c6.667 0 6.667-10 0-10"
+        strokeWidth="inherit"
       />
     </svg>
   )

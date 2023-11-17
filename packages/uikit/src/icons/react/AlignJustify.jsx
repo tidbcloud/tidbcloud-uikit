@@ -2,10 +2,11 @@ import * as React from 'react'
 import { forwardRef } from 'react'
 const AlignJustify = (props, ref) => {
   if (typeof props.size === 'number') {
+    const { size, ...rest } = props
     props = {
-      ...props,
-      height: props.size,
-      width: props.width
+      ...rest,
+      height: size,
+      width: size
     }
   }
   return (
@@ -15,6 +16,7 @@ const AlignJustify = (props, ref) => {
       height="1em"
       fill="none"
       viewBox="0 0 24 24"
+      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
@@ -22,8 +24,8 @@ const AlignJustify = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeWidth={2}
         d="M21 10H3m18 8H3M21 6H3m18 8H3"
+        strokeWidth="inherit"
       />
     </svg>
   )

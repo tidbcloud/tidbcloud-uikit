@@ -2,10 +2,11 @@ import * as React from 'react'
 import { forwardRef } from 'react'
 const CodeCircle03 = (props, ref) => {
   if (typeof props.size === 'number') {
+    const { size, ...rest } = props
     props = {
-      ...props,
-      height: props.size,
-      width: props.width
+      ...rest,
+      height: size,
+      width: size
     }
   }
   return (
@@ -15,6 +16,7 @@ const CodeCircle03 = (props, ref) => {
       height="1em"
       fill="none"
       viewBox="0 0 16 16"
+      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
@@ -24,11 +26,12 @@ const CodeCircle03 = (props, ref) => {
           strokeLinecap="round"
           strokeLinejoin="round"
           d="m10.334 10 2-2-2-2M5.667 6l-2 2 2 2m3-5.333-1.333 6.667M14.666 8A6.667 6.667 0 1 1 1.334 8a6.667 6.667 0 0 1 13.333 0Z"
+          strokeWidth="inherit"
         />
       </g>
       <defs>
         <clipPath id="prefix__a">
-          <path fill="#fff" d="M0 0h16v16H0z" />
+          <path fill="#fff" d="M0 0h16v16H0z" strokeWidth="inherit" />
         </clipPath>
       </defs>
     </svg>

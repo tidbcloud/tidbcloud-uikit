@@ -2,10 +2,11 @@ import * as React from 'react'
 import { forwardRef } from 'react'
 const Toggle03Left = (props, ref) => {
   if (typeof props.size === 'number') {
+    const { size, ...rest } = props
     props = {
-      ...props,
-      height: props.size,
-      width: props.width
+      ...rest,
+      height: size,
+      width: size
     }
   }
   return (
@@ -15,6 +16,7 @@ const Toggle03Left = (props, ref) => {
       height="1em"
       fill="none"
       viewBox="0 0 24 24"
+      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
@@ -22,15 +24,15 @@ const Toggle03Left = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeWidth={2}
         d="M2 12a6 6 0 0 1 6-6h8a6 6 0 0 1 0 12H8a6 6 0 0 1-6-6Z"
+        strokeWidth="inherit"
       />
       <path
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeWidth={2}
         d="M8 14.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"
+        strokeWidth="inherit"
       />
     </svg>
   )

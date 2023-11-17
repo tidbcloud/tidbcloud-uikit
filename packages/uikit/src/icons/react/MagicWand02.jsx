@@ -2,10 +2,11 @@ import * as React from 'react'
 import { forwardRef } from 'react'
 const MagicWand02 = (props, ref) => {
   if (typeof props.size === 'number') {
+    const { size, ...rest } = props
     props = {
-      ...props,
-      height: props.size,
-      width: props.width
+      ...rest,
+      height: size,
+      width: size
     }
   }
   return (
@@ -15,6 +16,7 @@ const MagicWand02 = (props, ref) => {
       height="1em"
       fill="none"
       viewBox="0 0 24 24"
+      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
@@ -22,8 +24,8 @@ const MagicWand02 = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeWidth={1.5}
         d="M15 4V2m0 14v-2M8 9h2m10 0h2m-4.2 2.8L19 13m-1.2-6.8L19 5M3 21l9-9m.2-5.8L11 5"
+        strokeWidth="inherit"
       />
     </svg>
   )

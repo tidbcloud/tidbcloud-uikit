@@ -2,10 +2,11 @@ import * as React from 'react'
 import { forwardRef } from 'react'
 const MarkerPin02 = (props, ref) => {
   if (typeof props.size === 'number') {
+    const { size, ...rest } = props
     props = {
-      ...props,
-      height: props.size,
-      width: props.width
+      ...rest,
+      height: size,
+      width: size
     }
   }
   return (
@@ -15,6 +16,7 @@ const MarkerPin02 = (props, ref) => {
       height="1em"
       fill="none"
       viewBox="0 0 24 24"
+      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
@@ -22,15 +24,15 @@ const MarkerPin02 = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeWidth={2}
         d="M12 12.5a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"
+        strokeWidth="inherit"
       />
       <path
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeWidth={2}
         d="M12 22c2-4 8-6.582 8-12a8 8 0 1 0-16 0c0 5.418 6 8 8 12Z"
+        strokeWidth="inherit"
       />
     </svg>
   )

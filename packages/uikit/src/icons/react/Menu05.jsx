@@ -2,10 +2,11 @@ import * as React from 'react'
 import { forwardRef } from 'react'
 const Menu05 = (props, ref) => {
   if (typeof props.size === 'number') {
+    const { size, ...rest } = props
     props = {
-      ...props,
-      height: props.size,
-      width: props.width
+      ...rest,
+      height: size,
+      width: size
     }
   }
   return (
@@ -15,10 +16,17 @@ const Menu05 = (props, ref) => {
       height="1em"
       fill="none"
       viewBox="0 0 24 24"
+      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
-      <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8.5h18m-18 7h18" />
+      <path
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M3 8.5h18m-18 7h18"
+        strokeWidth="inherit"
+      />
     </svg>
   )
 }

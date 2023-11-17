@@ -2,10 +2,11 @@ import * as React from 'react'
 import { forwardRef } from 'react'
 const Feather = (props, ref) => {
   if (typeof props.size === 'number') {
+    const { size, ...rest } = props
     props = {
-      ...props,
-      height: props.size,
-      width: props.width
+      ...rest,
+      height: size,
+      width: size
     }
   }
   return (
@@ -15,6 +16,7 @@ const Feather = (props, ref) => {
       height="1em"
       fill="none"
       viewBox="0 0 24 24"
+      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
@@ -22,8 +24,8 @@ const Feather = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeWidth={2}
         d="M16 8 2 22m16-7H9m-2.4 4h6.737c.245 0 .367 0 .482-.028a1 1 0 0 0 .29-.12c.1-.061.187-.148.36-.32L19.5 13.5c.239-.239.358-.358.455-.464a6 6 0 0 0 0-8.072A15.09 15.09 0 0 0 19.5 4.5c-.239-.239-.358-.358-.464-.455a6 6 0 0 0-8.072 0c-.106.097-.225.216-.464.455L5.469 9.531c-.173.173-.26.26-.322.36a1 1 0 0 0-.12.29C5 10.296 5 10.418 5 10.663V17.4c0 .56 0 .84.109 1.054a1 1 0 0 0 .437.437c.214.11.494.11 1.054.11Z"
+        strokeWidth="inherit"
       />
     </svg>
   )

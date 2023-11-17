@@ -2,10 +2,11 @@ import * as React from 'react'
 import { forwardRef } from 'react'
 const Rocket02 = (props, ref) => {
   if (typeof props.size === 'number') {
+    const { size, ...rest } = props
     props = {
-      ...props,
-      height: props.size,
-      width: props.width
+      ...rest,
+      height: size,
+      width: size
     }
   }
   return (
@@ -14,7 +15,7 @@ const Rocket02 = (props, ref) => {
       width="1em"
       height="1em"
       fill="none"
-      strokeWidth={1.5}
+      strokeWidth="1.5"
       viewBox="0 0 24 24"
       ref={ref}
       {...props}
@@ -23,8 +24,8 @@ const Rocket02 = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeWidth="inherit"
         d="m12 15-3-3m3 3a22.355 22.355 0 0 0 4-2m-4 2v5s3.03-.55 4-2c1.08-1.62 0-5 0-5m-7-1a21.999 21.999 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11m-7-1H4s.55-3.03 2-4c1.62-1.08 5 0 5 0m-6.5 8.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09Z"
+        strokeWidth="inherit"
       />
     </svg>
   )

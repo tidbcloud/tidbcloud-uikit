@@ -2,10 +2,11 @@ import * as React from 'react'
 import { forwardRef } from 'react'
 const UploadCloud01 = (props, ref) => {
   if (typeof props.size === 'number') {
+    const { size, ...rest } = props
     props = {
-      ...props,
-      height: props.size,
-      width: props.width
+      ...rest,
+      height: size,
+      width: size
     }
   }
   return (
@@ -15,6 +16,7 @@ const UploadCloud01 = (props, ref) => {
       height="1em"
       fill="none"
       viewBox="0 0 20 18"
+      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
@@ -22,8 +24,8 @@ const UploadCloud01 = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeWidth={1.5}
         d="M3.333 12.535a3.75 3.75 0 0 1 1.733-6.852 5.001 5.001 0 0 1 9.867 0 3.75 3.75 0 0 1 1.734 6.852m-10-.202L10 9m0 0 3.333 3.333M10 9v7.5"
+        strokeWidth="inherit"
       />
     </svg>
   )

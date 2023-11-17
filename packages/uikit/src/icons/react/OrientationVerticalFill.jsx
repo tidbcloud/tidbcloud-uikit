@@ -2,10 +2,11 @@ import * as React from 'react'
 import { forwardRef } from 'react'
 const OrientationVerticalFill = (props, ref) => {
   if (typeof props.size === 'number') {
+    const { size, ...rest } = props
     props = {
-      ...props,
-      height: props.size,
-      width: props.width
+      ...rest,
+      height: size,
+      width: size
     }
   }
   return (
@@ -15,10 +16,11 @@ const OrientationVerticalFill = (props, ref) => {
       height="1em"
       fill="currentColor"
       viewBox="0 0 24 24"
+      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
-      <path d="M4 13h4v7H4v-7ZM10 9h4v11h-4V9ZM16 4h4v16h-4V4Z" />
+      <path d="M4 13h4v7H4v-7ZM10 9h4v11h-4V9ZM16 4h4v16h-4V4Z" strokeWidth="inherit" />
     </svg>
   )
 }

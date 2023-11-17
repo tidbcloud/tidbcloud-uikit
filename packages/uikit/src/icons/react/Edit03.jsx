@@ -2,10 +2,11 @@ import * as React from 'react'
 import { forwardRef } from 'react'
 const Edit03 = (props, ref) => {
   if (typeof props.size === 'number') {
+    const { size, ...rest } = props
     props = {
-      ...props,
-      height: props.size,
-      width: props.width
+      ...rest,
+      height: size,
+      width: size
     }
   }
   return (
@@ -14,7 +15,7 @@ const Edit03 = (props, ref) => {
       width="1em"
       height="1em"
       fill="none"
-      strokeWidth={1.5}
+      strokeWidth="1.5"
       viewBox="0 0 24 24"
       ref={ref}
       {...props}
@@ -23,8 +24,8 @@ const Edit03 = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeWidth="inherit"
         d="M12 20h9M3 20h1.675c.489 0 .733 0 .964-.055.204-.05.399-.13.578-.24.201-.123.374-.296.72-.642L19.5 6.5a2.121 2.121 0 0 0-3-3L3.937 16.063c-.346.346-.519.519-.642.72a2 2 0 0 0-.24.578c-.055.23-.055.475-.055.965V20Z"
+        strokeWidth="inherit"
       />
     </svg>
   )

@@ -2,10 +2,11 @@ import * as React from 'react'
 import { forwardRef } from 'react'
 const String01 = (props, ref) => {
   if (typeof props.size === 'number') {
+    const { size, ...rest } = props
     props = {
-      ...props,
-      height: props.size,
-      width: props.width
+      ...rest,
+      height: size,
+      width: size
     }
   }
   return (
@@ -15,6 +16,7 @@ const String01 = (props, ref) => {
       height="1em"
       fill="none"
       viewBox="0 0 16 16"
+      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
@@ -23,6 +25,7 @@ const String01 = (props, ref) => {
         strokeLinecap="round"
         strokeLinejoin="round"
         d="M2.667 10.842h4.667m-6 3.158L4.825 2l3.84 12m.668-7.064c.313-1.337.94-2.741 2.823-2.34 1.882.401 1.882 2.674 1.882 3.677V9.61m0 0v3.01m0-3.01c-.313-.445-1.192-1.337-2.196-1.337-1.255 0-2.196 1.337-2.196 2.675 0 1.337.314 2.674 1.883 3.008 1.268.27 2.091-.78 2.51-1.337m0 0c0 .446.125 1.337.627 1.337"
+        strokeWidth="inherit"
       />
     </svg>
   )

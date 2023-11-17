@@ -63,6 +63,7 @@ const config: DocsThemeConfig = {
   footer: {
     text: logoWithText
   },
+  darkMode: false,
   useNextSeoProps() {
     return {
       titleTemplate: '%s - TiDB Cloud UIKit'
