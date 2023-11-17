@@ -2,8 +2,8 @@ import { Button, Box, Input, Card, CopyButton, Flex, Typography, Center, Stack, 
 import { useDisclosure } from '@tidbcloud/uikit/hooks'
 import * as icons from '@tidbcloud/uikit/icons'
 import { IconCopy01, IconSearchLg } from '@tidbcloud/uikit/icons'
-import { useInfiniteScroll, useMemoizedFn } from 'ahooks'
-import { useState, useDeferredValue } from 'react'
+import { useInfiniteScroll, useMemoizedFn, useInViewport } from 'ahooks'
+import { useState, useDeferredValue, useRef, useEffect } from 'react'
 
 const iconsData = Object.keys(icons).filter((i) => i !== 'Icon')
 
@@ -71,6 +71,18 @@ export function IconsPreview() {
   // @ts-ignore
   const Icon = icons[iconName] ?? (() => null)
 
+  const isLoadingMoreRef = useRef(false)
+  const loadMoreButtonRef = useRef(null)
+  const [inViewport] = useInViewport(loadMoreButtonRef)
+
+  useEffect(() => {
+    if (inViewport && !isLoadingMoreRef.current) {
+      isLoadingMoreRef.current = true
+      loadMore()
+      isLoadingMoreRef.current = false
+    }
+  }, [inViewport, loadMore])
+
   return (
     <Box p={16}>
       <Input
@@ -94,7 +106,7 @@ export function IconsPreview() {
 
       {!deferredValue && hasMore && (
         <Center mt={16}>
-          <Button type="button" color="dark" variant="subtle" onClick={loadMore}>
+          <Button type="button" color="dark" variant="subtle" onClick={loadMore} ref={loadMoreButtonRef}>
             {loadingMore ? 'Loading more...' : 'Load more icons'}
           </Button>
         </Center>
