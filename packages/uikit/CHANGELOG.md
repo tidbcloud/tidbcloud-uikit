@@ -1,5 +1,14 @@
 # @tidbcloud/uikit
 
+## 1.3.0
+
+### Minor Changes
+
+- 41af00f:
+  - Make all icon's default stroke-width to 1.5
+  - Hoist stroke-width attribute to svg element
+  - Tweak icon script to accomplish the stroke-width change
+
 ## 1.2.0
 
 ### Minor Changes
