@@ -55,7 +55,8 @@ ${variables.interfaces};
 
 const ${variables.componentName} = (${variables.props}) => {
   if (typeof props.size === 'number') {
-    props = { ...props, height: props.size, width: props.width };
+    const { size, ...rest } = props;
+    props = { ...rest, height: size, width: size };
   }
   return (
     ${variables.jsx}
@@ -81,6 +82,36 @@ function transformSvgIcon() {
         replaceAttrValues: {
           '#000': 'currentColor',
           black: 'currentColor'
+        },
+        jsx: {
+          babelConfig: {
+            plugins: [
+              [
+                '@svgr/babel-plugin-remove-jsx-attribute',
+                {
+                  elements: ['path'],
+                  attributes: ['strokeWidth']
+                },
+                'remove strokeWidth on path tag'
+              ],
+              [
+                '@svgr/babel-plugin-add-jsx-attribute',
+                {
+                  elements: ['svg'],
+                  attributes: [{ name: 'strokeWidth', value: '1.5' }]
+                },
+                'add strokeWidth on svg tag'
+              ],
+              [
+                '@svgr/babel-plugin-add-jsx-attribute',
+                {
+                  elements: ['path'],
+                  attributes: [{ name: 'strokeWidth', value: 'inherit' }]
+                },
+                'add strokeWidth inherit on path tag'
+              ]
+            ]
+          }
         },
         template
       },

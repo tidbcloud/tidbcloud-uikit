@@ -2,10 +2,11 @@ import * as React from 'react'
 import { forwardRef } from 'react'
 const SeeShort = (props, ref) => {
   if (typeof props.size === 'number') {
+    const { size, ...rest } = props
     props = {
-      ...props,
-      height: props.size,
-      width: props.width
+      ...rest,
+      height: size,
+      width: size
     }
   }
   return (
@@ -14,12 +15,12 @@ const SeeShort = (props, ref) => {
       width="1em"
       height="1em"
       fill="none"
-      strokeWidth={1.5}
+      strokeWidth="1.5"
       viewBox="0 0 24 24"
       ref={ref}
       {...props}
     >
-      <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="inherit" d="M20 12.5H3" />
+      <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" d="M20 12.5H3" strokeWidth="inherit" />
     </svg>
   )
 }

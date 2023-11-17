@@ -2,10 +2,11 @@ import * as React from 'react'
 import { forwardRef } from 'react'
 const Plus = (props, ref) => {
   if (typeof props.size === 'number') {
+    const { size, ...rest } = props
     props = {
-      ...props,
-      height: props.size,
-      width: props.width
+      ...rest,
+      height: size,
+      width: size
     }
   }
   return (
@@ -14,7 +15,7 @@ const Plus = (props, ref) => {
       width="1em"
       height="1em"
       fill="none"
-      strokeWidth={1.5}
+      strokeWidth="1.5"
       viewBox="0 0 24 24"
       ref={ref}
       {...props}
@@ -23,8 +24,8 @@ const Plus = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeWidth="inherit"
         d="M12 5v14m-7-7h14"
+        strokeWidth="inherit"
       />
     </svg>
   )

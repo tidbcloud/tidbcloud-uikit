@@ -2,10 +2,11 @@ import * as React from 'react'
 import { forwardRef } from 'react'
 const ArrowsTriangle = (props, ref) => {
   if (typeof props.size === 'number') {
+    const { size, ...rest } = props
     props = {
-      ...props,
-      height: props.size,
-      width: props.width
+      ...rest,
+      height: size,
+      width: size
     }
   }
   return (
@@ -15,6 +16,7 @@ const ArrowsTriangle = (props, ref) => {
       height="1em"
       fill="none"
       viewBox="0 0 24 24"
+      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
@@ -22,8 +24,8 @@ const ArrowsTriangle = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeWidth={2}
         d="M13 19h4.294c1.865 0 2.798 0 3.328-.39a2 2 0 0 0 .804-1.436c.058-.655-.429-1.451-1.401-3.043l-.997-1.631M6.13 10.605l-2.155 3.526c-.972 1.592-1.459 2.388-1.401 3.043a2 2 0 0 0 .804 1.435C3.908 19 4.841 19 6.706 19H8.5m8.389-10L14.73 5.468C13.829 3.991 13.377 3.252 12.795 3a2 2 0 0 0-1.59 0c-.581.252-1.033.99-1.935 2.468L8.25 7.137M18 5l-1.098 4.098L12.804 8M2 11.598 6.098 10.5l1.098 4.098M15.5 22l-3-3 3-3"
+        strokeWidth="inherit"
       />
     </svg>
   )

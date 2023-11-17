@@ -2,10 +2,11 @@ import * as React from 'react'
 import { forwardRef } from 'react'
 const IntersectCircle = (props, ref) => {
   if (typeof props.size === 'number') {
+    const { size, ...rest } = props
     props = {
-      ...props,
-      height: props.size,
-      width: props.width
+      ...rest,
+      height: size,
+      width: size
     }
   }
   return (
@@ -15,6 +16,7 @@ const IntersectCircle = (props, ref) => {
       height="1em"
       fill="none"
       viewBox="0 0 24 24"
+      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
@@ -22,15 +24,15 @@ const IntersectCircle = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeWidth={2}
         d="M9 16A7 7 0 1 0 9 2a7 7 0 0 0 0 14Z"
+        strokeWidth="inherit"
       />
       <path
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeWidth={2}
         d="M15 22a7 7 0 1 0 0-14 7 7 0 0 0 0 14Z"
+        strokeWidth="inherit"
       />
     </svg>
   )

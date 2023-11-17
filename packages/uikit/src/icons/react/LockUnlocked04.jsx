@@ -2,10 +2,11 @@ import * as React from 'react'
 import { forwardRef } from 'react'
 const LockUnlocked04 = (props, ref) => {
   if (typeof props.size === 'number') {
+    const { size, ...rest } = props
     props = {
-      ...props,
-      height: props.size,
-      width: props.width
+      ...rest,
+      height: size,
+      width: size
     }
   }
   return (
@@ -15,6 +16,7 @@ const LockUnlocked04 = (props, ref) => {
       height="1em"
       fill="none"
       viewBox="0 0 24 24"
+      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
@@ -22,8 +24,8 @@ const LockUnlocked04 = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeWidth={2}
         d="M7 10V8a5 5 0 0 1 9-3m-4 9v2m7-1a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"
+        strokeWidth="inherit"
       />
     </svg>
   )

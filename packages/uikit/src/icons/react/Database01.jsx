@@ -2,10 +2,11 @@ import * as React from 'react'
 import { forwardRef } from 'react'
 const Database01 = (props, ref) => {
   if (typeof props.size === 'number') {
+    const { size, ...rest } = props
     props = {
-      ...props,
-      height: props.size,
-      width: props.width
+      ...rest,
+      height: size,
+      width: size
     }
   }
   return (
@@ -15,6 +16,7 @@ const Database01 = (props, ref) => {
       height="1em"
       fill="none"
       viewBox="0 0 16 16"
+      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
@@ -23,6 +25,7 @@ const Database01 = (props, ref) => {
         strokeLinecap="round"
         strokeLinejoin="round"
         d="M14 3.333c0 1.105-2.686 2-6 2s-6-.895-6-2m12 0c0-1.104-2.686-2-6-2s-6 .896-6 2m12 0v9.334c0 1.106-2.667 2-6 2s-6-.894-6-2V3.333M14 8c0 1.107-2.667 2-6 2s-6-.893-6-2"
+        strokeWidth="inherit"
       />
     </svg>
   )
