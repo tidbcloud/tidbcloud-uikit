@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 1.4.0
+
+### Minor Changes
+
+- dfcb3d2: add new icon
+
 ## 1.3.0
 
 ### Minor Changes
