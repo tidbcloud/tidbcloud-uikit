@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 1.5.0
+
+### Minor Changes
+
+- 1e3d838: Fix icon name, from `DataAppAi` to `IconDataAppAi`
+
 ## 1.4.0
 
 ### Minor Changes
