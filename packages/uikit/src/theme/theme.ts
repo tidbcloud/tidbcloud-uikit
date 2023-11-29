@@ -11,6 +11,7 @@ import {
   StepperStylesParams,
   SwitchStylesParams,
   ButtonStylesParams,
+  PaperStylesParams,
   MantineTheme
 } from '@mantine/core'
 
@@ -457,9 +458,10 @@ export const theme: MantineThemeOverride = {
         shadow: 'xs',
         withBorder: true
       },
-      styles: (theme) => ({
+      styles: (theme, params: PaperStylesParams) => ({
         root: {
-          backgroundColor: theme.colorScheme === 'dark' ? theme.colors.gray[0] : theme.white
+          backgroundColor: theme.colorScheme === 'dark' ? theme.colors.gray[0] : theme.white,
+          border: params.withBorder ? `1px solid ${theme.colors.gray[2]}` : undefined
         }
       })
     },
