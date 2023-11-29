@@ -1,9 +1,9 @@
 import { clsx, createStyles } from '@mantine/styles'
-import { Card, Box, Stack, ActionIcon } from '@tidbcloud/uikit'
-import { IconChevronRight, IconChevronLeft } from '@tidbcloud/uikit/icons'
 import { useMemoizedFn, useUpdateEffect } from 'ahooks'
 import React, { ReactNode, useMemo, useState } from 'react'
 
+import { IconChevronRight, IconChevronLeft } from '../../icons'
+import { Card, Box, Stack, ActionIcon } from '../../primitive'
 import { Tree, TreeDataNode, TreeProps } from '../Tree'
 
 export interface TransferTreeProps {
