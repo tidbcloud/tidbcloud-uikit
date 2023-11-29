@@ -1,23 +1,22 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useDarkMode } from 'storybook-dark-mode'
 import { MantineProvider, ColorSchemeProvider, NotificationsProvider } from '@tidbcloud/uikit'
-import { Theme, themeColors } from '@tidbcloud/uikit/theme'
+import { Theme, themeColors, darkThemeColors } from '@tidbcloud/uikit/theme'
 import { Preview } from '@storybook/react'
 import { Title, Subtitle, Description, Primary, Controls, Stories } from '@storybook/blocks'
 
 export const parameters = { layout: 'fullscreen' }
 
 function ThemeWrapper(props: any) {
-  const [mode, setMode] = useState<'dark' | 'light'>('light')
-  const toggleMode = () => setMode((mode) => (mode === 'dark' ? 'light' : 'dark'))
+  const colorScheme = useDarkMode() ? 'dark' : 'light'
 
   return (
-    <ColorSchemeProvider colorScheme="light" toggleColorScheme={() => {}}>
+    <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={() => {}}>
       <MantineProvider
         theme={{
           ...Theme,
-          colors: themeColors,
-          colorScheme: useDarkMode() ? 'dark' : 'light'
+          colors: colorScheme === 'dark' ? darkThemeColors : themeColors,
+          colorScheme
         }}
         withGlobalStyles
         withNormalizeCSS
