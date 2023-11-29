@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 1.6.0
+
+### Minor Changes
+
+- 0fca76b: Add `Tree` and `TransferTree` component
+
 ## 1.5.0
 
 ### Minor Changes
