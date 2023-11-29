@@ -290,7 +290,7 @@ export const Tree = React.forwardRef<RcTree, TreeProps>((props, ref) => {
           },
 
           '.tc-uikit-tree-checkbox-disabled.tc-uikit-tree-checkbox-checked .tc-uikit-tree-checkbox-inner:after': {
-            borderColor: theme.black,
+            borderColor: theme.colors.gray[5],
             animationName: 'none'
           },
 
