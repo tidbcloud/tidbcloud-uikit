@@ -11,7 +11,8 @@
     "gen:storybook": "tsx ./.storybook/genStories.ts"
   },
   "dependencies": {
-    "@tidbcloud/uikit": "workspace:*"
+    "@tidbcloud/uikit": "workspace:*",
+    "lodash-es": "^4.17.21"
   },
   "devDependencies": {
     "@changesets/cli": "^2.26.1",
@@ -27,6 +28,7 @@
     "@svgr/plugin-jsx": "^8.0.1",
     "@svgr/plugin-prettier": "^8.0.1",
     "@svgr/plugin-svgo": "^8.0.1",
+    "@types/lodash-es": "^4.17.8",
     "@types/node": "^20.4.2",
     "@types/react": "^18.2.21",
     "@types/react-dom": "^18.2.7",
