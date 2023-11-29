@@ -25,5 +25,11 @@
       "timestamp": false,
       "typesetting": "article"
     }
+  },
+  "storybook_link": {
+    "type": "page",
+    "title": "Storybook",
+    "href": "https://tidbcloud-uikit-story.netlify.app",
+    "newWindow": true
   }
 }
