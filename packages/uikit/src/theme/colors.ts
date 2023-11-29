@@ -115,6 +115,7 @@ export const themeColors = {
 }
 
 /**
+ * @deprecated
  * Do not use this directly, use theme.other instead
  */
 export const Colors: MantineThemeOther = {
