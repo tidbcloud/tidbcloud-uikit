@@ -10,7 +10,7 @@
     "test": "test",
     "copy:raw-icon": "mkdir -p ./dist/icons/raw && cpy 'src/icons/raw/*.svg' ./dist/icons/raw/",
     "build:icon": "tsx ./scripts/icon.ts",
-    "build": "NODE_OPTIONS='--max-old-space-size=4096' tsup"
+    "build": "NODE_OPTIONS='--max-old-space-size=8192' tsup"
   },
   "repository": {
     "type": "git",
