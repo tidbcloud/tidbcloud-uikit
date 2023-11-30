@@ -5,6 +5,8 @@
 
 This repo is hosted TiDB Cloud UIKit including primitive, biz and pro components
 
+[![Publish Github Packages](https://github.com/tidbcloud/tidbcloud-uikit/actions/workflows/publish-github-packages.yml/badge.svg)](https://github.com/tidbcloud/tidbcloud-uikit/actions/workflows/publish-github-packages.yml)
+
 ## Table of Contents
 
 - 📦 [Installation](#installation)
