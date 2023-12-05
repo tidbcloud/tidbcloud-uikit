@@ -88,16 +88,7 @@ export const TransferTree: React.FC<TransferTreeProps> = ({
   }
 
   const onMoveToLeft = () => {
-    setSelectedNodeKeys(
-      (prev) =>
-        new Set(
-          [...prev].filter((i) => {
-            return (
-              !checkedTarget.has(i) || dataSourceMap.get(i)?.children?.some((c) => !checkedTarget.has(c.key as string))
-            )
-          })
-        )
-    )
+    setSelectedNodeKeys((prev) => new Set([...prev].filter((i) => !checkedTarget.has(i))))
     onMoveLeft?.()
   }
 
