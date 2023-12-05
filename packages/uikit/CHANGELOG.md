@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 1.6.1
+
+### Patch Changes
+
+- c7c9587: Fixed a issue where transfer tree parent node remains even all children were moved
+
 ## 1.6.0
 
 ### Minor Changes
