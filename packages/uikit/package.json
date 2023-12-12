@@ -17,6 +17,7 @@
     "url": "git@github.com:tidbcloud/tidbcloud-uikit.git"
   },
   "license": "MIT",
+  "sideEffects": false,
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@mantine/carousel": "5.10.4",
