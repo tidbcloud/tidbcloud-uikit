@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 1.6.2
+
+### Patch Changes
+
+- 2635cd7: Add sideEffects property in package.json for better tree shaking
+
 ## 1.6.1
 
 ### Patch Changes
