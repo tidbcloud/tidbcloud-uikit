@@ -1,5 +1,5 @@
 import { clsx, createStyles } from '@mantine/styles'
-import { useMemoizedFn, useUpdateEffect } from 'ahooks'
+import { useMemoizedFn, useMount, useUpdateEffect } from 'ahooks'
 import React, { ReactNode, useMemo, useState } from 'react'
 
 import { IconChevronRight, IconChevronLeft } from '../../icons'
@@ -59,13 +59,6 @@ export const TransferTree: React.FC<TransferTreeProps> = ({
   const [checkedTarget, setCheckedTarget] = useState<Set<string>>(new Set())
   const [selectedNodeKeys, setSelectedNodeKeys] = useState<Set<string>>(new Set(initialTargetKeys ?? []))
 
-  const dataSourceMap = useMemo(() => {
-    return dataSource.reduce((acc, next) => {
-      acc.set(next.key, next)
-      return acc
-    }, new Map<string | number, TreeDataNode>())
-  }, [dataSource])
-
   const renderedSource = useMemo(() => {
     return filterTree(
       source,
@@ -109,6 +102,12 @@ export const TransferTree: React.FC<TransferTreeProps> = ({
     onChange?.(renderedTarget)
   }, [renderedTarget])
 
+  useMount(() => {
+    if (initialTargetKeys?.length) {
+      setCheckedSource(new Set([...initialTargetKeys]))
+    }
+  })
+
   return (
     <Card withBorder className={clsx(classes.transferTree, className)}>
       <div className={classes.transfer}>
@@ -120,7 +119,13 @@ export const TransferTree: React.FC<TransferTreeProps> = ({
           </Box>
         )}
         <div className={classes.treeWrapper}>
-          <Tree {...treeProps} checkable treeData={renderedSource} onCheck={useMemoizedFn(onCheckLeftTree)} />
+          <Tree
+            {...treeProps}
+            checkable
+            treeData={renderedSource}
+            onCheck={useMemoizedFn(onCheckLeftTree)}
+            defaultCheckedKeys={initialTargetKeys}
+          />
         </div>
       </div>
       <Stack align="center" justify="center">
