@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 1.7.0
+
+### Minor Changes
+
+- fd2ef2a: Fix transfer tree default checked keys not synced
+
 ## 1.6.2
 
 ### Patch Changes
