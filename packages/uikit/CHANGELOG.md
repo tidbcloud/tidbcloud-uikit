@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 1.8.0
+
+### Minor Changes
+
+- 0cb1ac2: add system endpoint icon
+
 ## 1.7.0
 
 ### Minor Changes
