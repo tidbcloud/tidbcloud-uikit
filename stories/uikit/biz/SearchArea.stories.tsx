@@ -39,20 +39,22 @@ function Demo() {
 
   const jsonString = JSON.stringify(searchQuery, null, 4)
 
+  const formData = [
+    { type: 'text', name: 'category', placeholder: 'Category' },
+    { type: 'text', name: 'customerId', placeholder: 'Customer ID' },
+    { type: 'text', name: 'operator', placeholder: 'Operator'}
+  ]
+
   return (
     <Box>
       <Box>
         <SearchArea<FormData>
+          data={formData}
           // defaultValues are required
           defaultValues={{ category: '', customerId: '', operator: '', status: '' }}
           // onSubmit is required
           onSubmit={handleSubmit}
-        >
-          {/* // name is required and should be aligned with FormData */}
-          <FormTextInput name="category" placeholder="Category" w={220} />
-          <FormTextInput name="customerId" placeholder="Customer ID" w={220} />
-          <FormTextInput name="operator" placeholder="Operator" w={220} />
-        </SearchArea>
+        />
       </Box>
       <Box>{jsonString && jsonString !== '{}' && <pre>{jsonString}</pre>}</Box>
     </Box>

@@ -1,26 +1,43 @@
-import { useDebounce } from 'ahooks'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { FieldValues, useForm } from 'react-hook-form'
 
 import { IconEraser, IconRefreshCw01 } from '../../icons'
-import { Box, Button } from '../../primitive'
-import { Form, FormProps } from '../Form'
+import { Button } from '../../primitive'
+import { Form, FormProps, FormTextInput } from '../Form'
+
+export interface IFormItem {
+  type: 'text' | 'select' | 'date' | 'datetime' | 'daterange' | 'datetimerange' | 'number' | 'checkbox' | 'radio'
+  name: string
+  placeholder?: string
+}
 
 export interface SearchAreaProps<T extends FieldValues> extends FormProps<T> {
-  children: React.ReactNode
+  data: IFormItem[]
 }
 
 const SX_Y_MID = { display: 'flex', alignItems: 'center' }
 
+function FormItem(props: { data: IFormItem }) {
+  const { name, placeholder, type } = props.data
+  if (type === 'text') {
+    return (
+      <FormTextInput name={name} placeholder={placeholder ?? ''} />
+    )
+  } else {
+    return null
+  }
+}
+
 export function SearchArea<T extends object>(props: SearchAreaProps<T>) {
-  const { children, onSubmit, ...rest } = props
+  const { data, onSubmit, ...rest } = props
   const form = useForm<T>()
   const values = form.watch()
-  const debouncedValues = useDebounce(values, { wait: 500 })
+  const [seed, setSeed] = useState(Date.now())
 
-  useEffect(() => {
-    onSubmit(debouncedValues)
-  }, [debouncedValues, onSubmit])
+
+  // useEffect(() => {
+  //   onSubmit(values)
+  // }, [values, onSubmit])
 
   const handleSubmit = () => {
     onSubmit(form.getValues())
@@ -49,7 +66,7 @@ export function SearchArea<T extends object>(props: SearchAreaProps<T>) {
               gap: 16
             }}
           >
-            {children}
+            {data.map(x => (<FormItem data={x} key={x.name} />))}
           </Box>
           <Box sx={SX_Y_MID}>
             <Box sx={SX_Y_MID}>
