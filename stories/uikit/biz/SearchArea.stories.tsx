@@ -40,9 +40,9 @@ function Demo() {
   const jsonString = JSON.stringify(searchQuery, null, 4)
 
   const formData = [
-    { type: 'text', name: 'category', placeholder: 'Category' },
-    { type: 'text', name: 'customerId', placeholder: 'Customer ID' },
-    { type: 'text', name: 'operator', placeholder: 'Operator'}
+    { type: 'text' as const, name: 'category', placeholder: 'Category' },
+    { type: 'text' as const, name: 'customerId', placeholder: 'Customer ID' },
+    { type: 'text' as const, name: 'operator', placeholder: 'Operator' }
   ]
 
   return (
