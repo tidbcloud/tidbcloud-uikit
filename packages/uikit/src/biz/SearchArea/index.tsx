@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { FieldValues, useForm } from 'react-hook-form'
 
 import { IconEraser, IconRefreshCw01 } from '../../icons'
@@ -17,10 +17,20 @@ export interface SearchAreaProps<T extends FieldValues> extends FormProps<T> {
 
 const SX_Y_MID = { display: 'flex', alignItems: 'center' }
 
-function FormItem(props: { data: IFormItem }) {
-  const { name, placeholder, type } = props.data
+function FormItem(props: { data: IFormItem; onSubmit?: () => void }) {
+  const {
+    data: { name, placeholder, type },
+    onSubmit
+  } = props
+  function onKeyDownHandler(e: React.KeyboardEvent<HTMLInputElement>) {
+    if (e.key === 'Enter') {
+      e.preventDefault()
+      e.stopPropagation()
+      onSubmit && onSubmit()
+    }
+  }
   if (type === 'text') {
-    return <FormTextInput name={name} placeholder={placeholder ?? ''} />
+    return <FormTextInput name={name} placeholder={placeholder ?? ''} onKeyDown={onKeyDownHandler} />
   } else {
     return null
   }
@@ -29,12 +39,6 @@ function FormItem(props: { data: IFormItem }) {
 export function SearchArea<T extends object>(props: SearchAreaProps<T>) {
   const { data, onSubmit, ...rest } = props
   const form = useForm<T>()
-  const values = form.watch()
-  const [seed, setSeed] = useState(Date.now())
-
-  // useEffect(() => {
-  //   onSubmit(values)
-  // }, [values, onSubmit])
 
   const handleSubmit = () => {
     onSubmit(form.getValues())
@@ -64,7 +68,7 @@ export function SearchArea<T extends object>(props: SearchAreaProps<T>) {
             }}
           >
             {data.map((x) => (
-              <FormItem data={x} key={x.name} />
+              <FormItem data={x} key={x.name} onSubmit={handleSubmit} />
             ))}
           </Box>
           <Box sx={SX_Y_MID}>
