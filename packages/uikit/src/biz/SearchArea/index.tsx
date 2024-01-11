@@ -2,12 +2,13 @@ import React from 'react'
 import { FieldValues, useForm } from 'react-hook-form'
 
 import { IconEraser, IconRefreshCw01 } from '../../icons'
-import { Box, Button } from '../../primitive'
+import { Box, Button, Sx } from '../../primitive'
 import { Form, FormProps, FormSelect, FormTextInput } from '../Form'
 
 interface IFormItemBase {
   name: string
   placeholder?: string
+  sx?: Sx
 }
 
 interface IFormItemText extends IFormItemBase {
@@ -25,10 +26,11 @@ export interface SearchAreaProps<T extends FieldValues> extends FormProps<T> {
 }
 
 const SX_Y_MID = { display: 'flex', alignItems: 'center' }
+const FORM_ITEM_SX_BASE: Sx = { minWidth: '160px' }
 
 function FormItemRender(props: { data: FormItem; onSubmit?: () => void }) {
   const {
-    data: { name, placeholder, type },
+    data: { name, placeholder, type, sx },
     onSubmit
   } = props
 
@@ -42,7 +44,14 @@ function FormItemRender(props: { data: FormItem; onSubmit?: () => void }) {
   }
   switch (type) {
     case 'text':
-      return <FormTextInput name={name} placeholder={placeholder ?? ''} onKeyDown={onKeyDownHandler} />
+      return (
+        <FormTextInput
+          name={name}
+          placeholder={placeholder ?? ''}
+          onKeyDown={onKeyDownHandler}
+          sx={{ ...FORM_ITEM_SX_BASE, ...(sx ?? {}) }}
+        />
+      )
     case 'select':
       return (
         <FormSelect
@@ -50,6 +59,9 @@ function FormItemRender(props: { data: FormItem; onSubmit?: () => void }) {
           name={name}
           placeholder={placeholder ?? ''}
           onChange={triggerSubmit}
+          sx={{ ...FORM_ITEM_SX_BASE, ...(sx ?? {}) }}
+          clearable
+          searchable
         />
       )
     default:
