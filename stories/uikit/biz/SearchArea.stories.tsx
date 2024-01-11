@@ -40,11 +40,16 @@ function Demo() {
   const jsonString = JSON.stringify(searchQuery, null, 4)
 
   const formData: FormItem[] = [
-    { type: 'text' as const, name: 'category', placeholder: 'Category' },
-    { type: 'text' as const, name: 'customerId', placeholder: 'Customer ID' },
-    { type: 'text' as const, name: 'operator', placeholder: 'Operator' },
     {
-      type: 'select' as const,
+      type: 'text',
+      name: 'category',
+      placeholder: 'Category XX',
+      sx: { width: '280px', h: '80px', color: 'red', background: 'yellow' }
+    },
+    { type: 'text', name: 'customerId', placeholder: 'Customer ID', sx: { width: '250px' } },
+    { type: 'text', name: 'operator', placeholder: 'Operator' },
+    {
+      type: 'select',
       name: 'plan',
       placeholder: 'Plan',
       data: [
