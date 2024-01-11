@@ -1,7 +1,7 @@
 import type { Meta, StoryObj, StoryFn } from '@storybook/react'
 import { Box } from '@tidbcloud/uikit'
 import { SearchArea } from '@tidbcloud/uikit/biz'
-import { FormTextInput } from '@tidbcloud/uikit/src/biz'
+import { FormItem, FormTextInput } from '@tidbcloud/uikit/src/biz'
 import { useState } from 'react'
 
 type Story = StoryObj<typeof SearchArea>
@@ -39,10 +39,20 @@ function Demo() {
 
   const jsonString = JSON.stringify(searchQuery, null, 4)
 
-  const formData = [
+  const formData: FormItem[] = [
     { type: 'text' as const, name: 'category', placeholder: 'Category' },
     { type: 'text' as const, name: 'customerId', placeholder: 'Customer ID' },
-    { type: 'text' as const, name: 'operator', placeholder: 'Operator' }
+    { type: 'text' as const, name: 'operator', placeholder: 'Operator' },
+    {
+      type: 'select' as const,
+      name: 'plan',
+      placeholder: 'Plan',
+      data: [
+        { label: 'Basic', value: 'basic' },
+        { label: 'Pro', value: 'pro' },
+        { label: 'Enterprise', value: 'enterprise' }
+      ]
+    }
   ]
 
   return (

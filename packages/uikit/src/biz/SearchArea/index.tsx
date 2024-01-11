@@ -3,36 +3,57 @@ import { FieldValues, useForm } from 'react-hook-form'
 
 import { IconEraser, IconRefreshCw01 } from '../../icons'
 import { Box, Button } from '../../primitive'
-import { Form, FormProps, FormTextInput } from '../Form'
+import { Form, FormProps, FormSelect, FormTextInput } from '../Form'
 
-export interface IFormItem {
-  type: 'text' | 'select' | 'date' | 'datetime' | 'daterange' | 'datetimerange' | 'number' | 'checkbox' | 'radio'
+interface IFormItemBase {
   name: string
   placeholder?: string
 }
 
+interface IFormItemText extends IFormItemBase {
+  type: 'text'
+}
+
+interface IFormItemSelect extends IFormItemBase {
+  type: 'select'
+  data: Array<{ label: string; value: string }>
+}
+
+export type FormItem = IFormItemText | IFormItemSelect
 export interface SearchAreaProps<T extends FieldValues> extends FormProps<T> {
-  data: IFormItem[]
+  data: FormItem[]
 }
 
 const SX_Y_MID = { display: 'flex', alignItems: 'center' }
 
-function FormItem(props: { data: IFormItem; onSubmit?: () => void }) {
+function FormItemRender(props: { data: FormItem; onSubmit?: () => void }) {
   const {
     data: { name, placeholder, type },
     onSubmit
   } = props
+
+  const triggerSubmit = () => onSubmit && onSubmit()
   function onKeyDownHandler(e: React.KeyboardEvent<HTMLInputElement>) {
     if (e.key === 'Enter') {
       e.preventDefault()
       e.stopPropagation()
-      onSubmit && onSubmit()
+      triggerSubmit()
     }
   }
-  if (type === 'text') {
-    return <FormTextInput name={name} placeholder={placeholder ?? ''} onKeyDown={onKeyDownHandler} />
-  } else {
-    return null
+  switch (type) {
+    case 'text':
+      return <FormTextInput name={name} placeholder={placeholder ?? ''} onKeyDown={onKeyDownHandler} />
+    case 'select':
+      return (
+        <FormSelect
+          data={(props.data as IFormItemSelect).data}
+          name={name}
+          placeholder={placeholder ?? ''}
+          onChange={triggerSubmit}
+        />
+      )
+    default:
+      return null
   }
 }
 
@@ -68,7 +89,7 @@ export function SearchArea<T extends object>(props: SearchAreaProps<T>) {
             }}
           >
             {data.map((x) => (
-              <FormItem data={x} key={x.name} onSubmit={handleSubmit} />
+              <FormItemRender data={x} key={x.name} onSubmit={handleSubmit} />
             ))}
           </Box>
           <Box sx={SX_Y_MID}>
