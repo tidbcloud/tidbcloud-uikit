@@ -43,10 +43,9 @@ function Demo() {
     {
       type: 'text',
       name: 'category',
-      placeholder: 'Category XX',
-      sx: { width: '280px', h: '80px', color: 'red', background: 'yellow' }
+      placeholder: 'Category XX'
     },
-    { type: 'text', name: 'customerId', placeholder: 'Customer ID', sx: { width: '250px' } },
+    { type: 'text', name: 'customerId', placeholder: 'Customer ID' },
     { type: 'text', name: 'operator', placeholder: 'Operator' },
     {
       type: 'select',

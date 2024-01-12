@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { FieldValues, useForm } from 'react-hook-form'
 
-import { IconEraser, IconRefreshCw01 } from '../../icons'
+import { IconEraser, IconRefreshCw01, IconXClose } from '../../icons'
 import { Box, Button, Sx } from '../../primitive'
 import { Form, FormProps, FormSelect, FormTextInput } from '../Form'
 
@@ -34,6 +34,8 @@ function FormItemRender(props: { data: FormItem; onSubmit?: () => void }) {
     onSubmit
   } = props
 
+  const [keyword, setKeyword] = useState('')
+
   const triggerSubmit = () => onSubmit && onSubmit()
   function onKeyDownHandler(e: React.KeyboardEvent<HTMLInputElement>) {
     if (e.key === 'Enter') {
@@ -47,9 +49,22 @@ function FormItemRender(props: { data: FormItem; onSubmit?: () => void }) {
       return (
         <FormTextInput
           name={name}
+          value={keyword}
+          onChange={(e) => setKeyword(e.target.value)}
           placeholder={placeholder ?? ''}
           onKeyDown={onKeyDownHandler}
           sx={{ ...FORM_ITEM_SX_BASE, ...(sx ?? {}) }}
+          rightSection={
+            !!keyword && (
+              <IconXClose
+                style={{ cursor: 'pointer' }}
+                size={14}
+                onClick={() => {
+                  setKeyword('')
+                }}
+              />
+            )
+          }
         />
       )
     case 'select':
