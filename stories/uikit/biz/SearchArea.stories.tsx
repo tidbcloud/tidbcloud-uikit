@@ -83,24 +83,35 @@ function Demo() {
 
   const jsonString = JSON.stringify(searchQuery, null, 4)
 
-  const formData = [
-    { type: 'text' as const, name: 'category', placeholder: 'Category' },
-    { type: 'text' as const, name: 'customerId', placeholder: 'Customer ID' },
-    { type: 'text' as const, name: 'operator', placeholder: 'Operator' }
+  const formData: FormItem[] = [
+    { type: 'text', name: 'category', placeholder: 'Category' },
+    { type: 'text', name: 'customerId', placeholder: 'Customer ID' },
+    { type: 'text', name: 'operator', placeholder: 'Operator' },
+    { type: 'datepicker', name: 'date', placeholder: 'Date' },
+    {
+      type: 'select',
+      name: 'plan',
+      placeholder: 'Plan',
+      data: [
+        { label: 'Basic', value: 'basic' },
+        { label: 'Pro', value: 'pro' },
+        { label: 'Enterprise', value: 'enterprise' }
+      ]
+    }
   ]
 
   return (
-    <Box>
+    <Box mih={320}>
       <Box>
         <SearchArea<FormData>
           data={formData}
           // defaultValues are required
-          defaultValues={{ category: '', customerId: '', operator: '', status: '' }}
+          defaultValues={{ category: '', customerId: '', operator: '', date: null, plan: '' }}
           // onSubmit is required
           onSubmit={handleSubmit}
         />
       </Box>
-      <Box>{jsonString && jsonString !== '{}' && <pre>{jsonString}</pre>}</Box>
+      <Box>{jsonString && jsonString !== '{}' && <pre>{jsonString === 'null' ? '' : jsonString}</pre>}</Box>
     </Box>
   )
 }
