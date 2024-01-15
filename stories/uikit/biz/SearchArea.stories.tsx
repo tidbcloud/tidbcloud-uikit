@@ -47,6 +47,7 @@ function Demo() {
     },
     { type: 'text', name: 'customerId', placeholder: 'Customer ID' },
     { type: 'text', name: 'operator', placeholder: 'Operator' },
+    { type: 'datepicker', name: 'date', placeholder: 'Date' },
     {
       type: 'select',
       name: 'plan',
@@ -60,7 +61,7 @@ function Demo() {
   ]
 
   return (
-    <Box>
+    <Box mih={250}>
       <Box>
         <SearchArea<FormData>
           data={formData}

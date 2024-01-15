@@ -4,6 +4,7 @@ import { FieldValues, useForm } from 'react-hook-form'
 import { IconEraser, IconRefreshCw01, IconXClose } from '../../icons'
 import { Box, Button, Sx } from '../../primitive'
 import { Form, FormProps, FormSelect, FormTextInput } from '../Form'
+import { FormDatePicker } from '../Form/DatePicker'
 
 interface IFormItemBase {
   name: string
@@ -15,12 +16,17 @@ interface IFormItemText extends IFormItemBase {
   type: 'text'
 }
 
+interface IFormItemDatePicker extends IFormItemBase {
+  type: 'datepicker'
+}
+
 interface IFormItemSelect extends IFormItemBase {
   type: 'select'
   data: Array<{ label: string; value: string }>
 }
 
-export type FormItem = IFormItemText | IFormItemSelect
+export type FormItem = IFormItemText | IFormItemSelect | IFormItemDatePicker
+
 export interface SearchAreaProps<T extends FieldValues> extends FormProps<T> {
   data: FormItem[]
 }
@@ -77,6 +83,17 @@ function FormItemRender(props: { data: FormItem; onSubmit?: () => void }) {
           sx={{ ...FORM_ITEM_SX_BASE, ...(sx ?? {}) }}
           clearable
           searchable
+        />
+      )
+    case 'datepicker':
+      return (
+        <FormDatePicker
+          data=""
+          name={name}
+          placeholder={placeholder ?? ''}
+          onChange={triggerSubmit}
+          sx={{ ...FORM_ITEM_SX_BASE, ...(sx ?? {}) }}
+          clearable
         />
       )
     default:
