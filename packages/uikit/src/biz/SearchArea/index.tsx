@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { FieldValues, useForm } from 'react-hook-form'
 
 import { IconEraser, IconRefreshCw01, IconXClose } from '../../icons'
@@ -34,13 +34,22 @@ export interface SearchAreaProps<T extends FieldValues> extends FormProps<T> {
 const SX_Y_MID = { display: 'flex', alignItems: 'center' }
 const FORM_ITEM_SX_BASE: Sx = { minWidth: '160px' }
 
-function FormItemRender(props: { data: FormItem; onSubmit?: () => void }) {
+function FormItemRender(props: { data: FormItem; onSubmit?: () => void; defaultValue: string; resetSeed: number }) {
   const {
     data: { name, placeholder, type, sx },
-    onSubmit
+    onSubmit,
+    defaultValue,
+    resetSeed
   } = props
 
-  const [keyword, setKeyword] = useState('')
+  const [keyword, setKeyword] = useState<string | Date>(defaultValue)
+
+  useEffect(() => {
+    if (resetSeed > 0) {
+      console.log(`defaultValue=`, defaultValue, name)
+      setKeyword(defaultValue)
+    }
+  }, [resetSeed])
 
   const triggerSubmit = () => onSubmit && onSubmit()
   function onKeyDownHandler(e: React.KeyboardEvent<HTMLInputElement>) {
@@ -55,7 +64,7 @@ function FormItemRender(props: { data: FormItem; onSubmit?: () => void }) {
       return (
         <FormTextInput
           name={name}
-          value={keyword}
+          value={keyword as string}
           onChange={(e) => setKeyword(e.target.value)}
           placeholder={placeholder ?? ''}
           onKeyDown={onKeyDownHandler}
@@ -78,8 +87,12 @@ function FormItemRender(props: { data: FormItem; onSubmit?: () => void }) {
         <FormSelect
           data={(props.data as IFormItemSelect).data}
           name={name}
+          value={keyword as string}
           placeholder={placeholder ?? ''}
-          onChange={triggerSubmit}
+          onChange={(val) => {
+            setKeyword(val ?? '')
+            triggerSubmit()
+          }}
           sx={{ ...FORM_ITEM_SX_BASE, ...(sx ?? {}) }}
           clearable
           searchable
@@ -88,10 +101,13 @@ function FormItemRender(props: { data: FormItem; onSubmit?: () => void }) {
     case 'datepicker':
       return (
         <FormDatePicker
-          data=""
           name={name}
+          value={keyword as Date}
           placeholder={placeholder ?? ''}
-          onChange={triggerSubmit}
+          onChange={(val) => {
+            setKeyword(val as Date)
+            triggerSubmit()
+          }}
           sx={{ ...FORM_ITEM_SX_BASE, ...(sx ?? {}) }}
           clearable
         />
@@ -104,26 +120,20 @@ function FormItemRender(props: { data: FormItem; onSubmit?: () => void }) {
 export function SearchArea<T extends object>(props: SearchAreaProps<T>) {
   const { data, onSubmit, ...rest } = props
   const form = useForm<T>()
+  const [resetSeed, setResetSeed] = useState(0)
 
   const handleSubmit = () => {
     onSubmit(form.getValues())
   }
 
   const handleReset = () => {
+    setResetSeed(resetSeed + 1)
     form.reset(rest.defaultValues)
   }
 
   return (
     <Box>
-      <Form<T>
-        onSubmit={onSubmit}
-        {...rest}
-        form={form}
-        errorMessageProps={{
-          mx: 16
-        }}
-        withActions={false}
-      >
+      <Form<T> onSubmit={onSubmit} {...rest} form={form} errorMessageProps={{ mx: 16 }} withActions={false}>
         <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <Box
             sx={{
@@ -133,7 +143,13 @@ export function SearchArea<T extends object>(props: SearchAreaProps<T>) {
             }}
           >
             {data.map((x) => (
-              <FormItemRender data={x} key={x.name} onSubmit={handleSubmit} />
+              <FormItemRender
+                data={x}
+                key={x.name}
+                onSubmit={handleSubmit}
+                defaultValue={(rest.defaultValues as any)[x.name]}
+                resetSeed={resetSeed}
+              />
             ))}
             <Box sx={SX_Y_MID}>
               <Box sx={SX_Y_MID}>

@@ -29,6 +29,8 @@ interface FormData {
   customerId: string
   operator: string
   status: string
+  plan: string
+  date: string | null
 }
 
 function Demo() {
@@ -40,11 +42,7 @@ function Demo() {
   const jsonString = JSON.stringify(searchQuery, null, 4)
 
   const formData: FormItem[] = [
-    {
-      type: 'text',
-      name: 'category',
-      placeholder: 'Category XX'
-    },
+    { type: 'text', name: 'category', placeholder: 'Category' },
     { type: 'text', name: 'customerId', placeholder: 'Customer ID' },
     { type: 'text', name: 'operator', placeholder: 'Operator' },
     { type: 'datepicker', name: 'date', placeholder: 'Date' },
@@ -66,12 +64,12 @@ function Demo() {
         <SearchArea<FormData>
           data={formData}
           // defaultValues are required
-          defaultValues={{ category: '', customerId: '', operator: '', status: '' }}
+          defaultValues={{ category: '', customerId: '', operator: '', date: null, plan: '' }}
           // onSubmit is required
           onSubmit={handleSubmit}
         />
       </Box>
-      <Box>{jsonString && jsonString !== '{}' && <pre>{jsonString}</pre>}</Box>
+      <Box>{jsonString && jsonString !== '{}' && <pre>{jsonString === 'null' ? '' : jsonString}</pre>}</Box>
     </Box>
   )
 }
