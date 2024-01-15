@@ -61,7 +61,7 @@ function Demo() {
   ]
 
   return (
-    <Box mih={250}>
+    <Box mih={320}>
       <Box>
         <SearchArea<FormData>
           data={formData}
