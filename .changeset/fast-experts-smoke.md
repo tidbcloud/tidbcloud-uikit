@@ -1,5 +1,5 @@
 ---
-'@tidbcloud/uikit': patch
+'@tidbcloud/uikit': minor
 ---
 
 add FormCopyText
