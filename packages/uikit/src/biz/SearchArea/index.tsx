@@ -31,6 +31,7 @@ export type FormItem = IFormItemText | IFormItemSelect | IFormItemDatePicker
 export interface SearchAreaProps<T extends FieldValues> extends FormProps<T> {
   data: FormItem[]
   recoverFromURLEnabled?: boolean
+  debugEnabled?: boolean
 }
 
 const SX_Y_MID = { display: 'flex', alignItems: 'center' }
@@ -135,6 +136,7 @@ export function SearchArea<T extends object>(props: SearchAreaProps<T>) {
 
   const handleReset = () => {
     setResetSeed(resetSeed + 1)
+    form.reset(defaultValues)
     recoverFromURLEnabled && setFormState(defaultValues as any)
   }
 
@@ -174,6 +176,7 @@ export function SearchArea<T extends object>(props: SearchAreaProps<T>) {
             </Box>
           </Box>
         </Box>
+        {props.debugEnabled && <pre>result = {JSON.stringify(form.getValues(), null, 4)}</pre>}
       </Form>
     </Box>
   )

@@ -24,113 +24,128 @@ const meta: Meta<typeof SearchArea> = {
 
 export default meta
 
-interface FormData {
-  category: string
-  customerId: string
-  operator: string
-  status: string
-  plan: string
-  date: string | null
-}
+// interface FormData {
+//   category: string
+//   customerId: string
+//   operator: string
+//   status: string
+//   plan: string
+//   date: string | null
+// }
 
-function Demo() {
-  const [searchQuery, setSearchQuery] = useState<FormData | null>(null)
-  const handleSubmit = async (data: FormData) => {
-    setSearchQuery(data)
+// function Demo() {
+//   const [searchQuery, setSearchQuery] = useState<FormData | null>(null)
+//   const handleSubmit = async (data: FormData) => {
+//     setSearchQuery(data)
+//   }
+
+//   const jsonString = JSON.stringify(searchQuery, null, 4)
+
+//   const formData: FormItem[] = [
+//     { type: 'text', name: 'category', placeholder: 'Category' },
+//     { type: 'text', name: 'customerId', placeholder: 'Customer ID' },
+//     { type: 'text', name: 'operator', placeholder: 'Operator' },
+//     { type: 'datepicker', name: 'date', placeholder: 'Date' },
+//     {
+//       type: 'select',
+//       name: 'plan',
+//       placeholder: 'Plan',
+//       data: [
+//         { label: 'Basic', value: 'basic' },
+//         { label: 'Pro', value: 'pro' },
+//         { label: 'Enterprise', value: 'enterprise' }
+//       ]
+//     }
+//   ]
+
+//   return (
+//     <Box mih={320}>
+//       <Box>
+//         <SearchArea<FormData>
+//           data={formData}
+//           // defaultValues are required
+//           defaultValues={{ category: '', customerId: '', operator: '', date: null, plan: '' }}
+//           // onSubmit is required
+//           onSubmit={handleSubmit}
+//           recoverFromURLEnabled={true}
+//         />
+//       </Box>
+//       <Box>{jsonString && jsonString !== '{}' && <pre>{jsonString === 'null' ? '' : jsonString}</pre>}</Box>
+//     </Box>
+//   )
+// }
+
+// const code = `
+// function Demo() {
+//   const [searchQuery, setSearchQuery] = useState<FormData | null>(null)
+//   const handleSubmit = async (data: FormData) => {
+//     setSearchQuery(data)
+//   }
+
+//   const jsonString = JSON.stringify(searchQuery, null, 4)
+
+//   const formData: FormItem[] = [
+//     { type: 'text', name: 'category', placeholder: 'Category' },
+//     { type: 'text', name: 'customerId', placeholder: 'Customer ID' },
+//     { type: 'text', name: 'operator', placeholder: 'Operator' },
+//     { type: 'datepicker', name: 'date', placeholder: 'Date' },
+//     {
+//       type: 'select',
+//       name: 'plan',
+//       placeholder: 'Plan',
+//       data: [
+//         { label: 'Basic', value: 'basic' },
+//         { label: 'Pro', value: 'pro' },
+//         { label: 'Enterprise', value: 'enterprise' }
+//       ]
+//     }
+//   ]
+
+//   return (
+//     <Box mih={320}>
+//       <Box>
+//         <SearchArea<FormData>
+//           data={formData}
+//           // defaultValues are required
+//           defaultValues={{ category: '', customerId: '', operator: '', date: null, plan: '' }}
+//           // onSubmit is required
+//           onSubmit={handleSubmit}
+//           recoverFromURLEnabled={true}
+//         />
+//       </Box>
+//       <Box>{jsonString && jsonString !== '{}' && <pre>{jsonString === 'null' ? '' : jsonString}</pre>}</Box>
+//     </Box>
+//   )
+// }
+// `
+
+const formData: FormItem[] = [
+  { type: 'text', name: 'category', placeholder: 'Category' },
+  { type: 'text', name: 'customerId', placeholder: 'Customer ID' },
+  { type: 'text', name: 'operator', placeholder: 'Operator' },
+  { type: 'datepicker', name: 'date', placeholder: 'Date' },
+  {
+    type: 'select',
+    name: 'plan',
+    placeholder: 'Plan',
+    data: [
+      { label: 'Basic', value: 'basic' },
+      { label: 'Pro', value: 'pro' },
+      { label: 'Enterprise', value: 'enterprise' }
+    ]
   }
-
-  const jsonString = JSON.stringify(searchQuery, null, 4)
-
-  const formData: FormItem[] = [
-    { type: 'text', name: 'category', placeholder: 'Category' },
-    { type: 'text', name: 'customerId', placeholder: 'Customer ID' },
-    { type: 'text', name: 'operator', placeholder: 'Operator' },
-    { type: 'datepicker', name: 'date', placeholder: 'Date' },
-    {
-      type: 'select',
-      name: 'plan',
-      placeholder: 'Plan',
-      data: [
-        { label: 'Basic', value: 'basic' },
-        { label: 'Pro', value: 'pro' },
-        { label: 'Enterprise', value: 'enterprise' }
-      ]
-    }
-  ]
-
-  return (
-    <Box mih={320}>
-      <Box>
-        <SearchArea<FormData>
-          data={formData}
-          // defaultValues are required
-          defaultValues={{ category: '', customerId: '', operator: '', date: null, plan: '' }}
-          // onSubmit is required
-          onSubmit={handleSubmit}
-          recoverFromURLEnabled={true}
-        />
-      </Box>
-      <Box>{jsonString && jsonString !== '{}' && <pre>{jsonString === 'null' ? '' : jsonString}</pre>}</Box>
-    </Box>
-  )
-}
-
-const code = `
-function Demo() {
-  const [searchQuery, setSearchQuery] = useState<FormData | null>(null)
-  const handleSubmit = async (data: FormData) => {
-    setSearchQuery(data)
-  }
-
-  const jsonString = JSON.stringify(searchQuery, null, 4)
-
-  const formData: FormItem[] = [
-    { type: 'text', name: 'category', placeholder: 'Category' },
-    { type: 'text', name: 'customerId', placeholder: 'Customer ID' },
-    { type: 'text', name: 'operator', placeholder: 'Operator' },
-    { type: 'datepicker', name: 'date', placeholder: 'Date' },
-    {
-      type: 'select',
-      name: 'plan',
-      placeholder: 'Plan',
-      data: [
-        { label: 'Basic', value: 'basic' },
-        { label: 'Pro', value: 'pro' },
-        { label: 'Enterprise', value: 'enterprise' }
-      ]
-    }
-  ]
-
-  return (
-    <Box mih={320}>
-      <Box>
-        <SearchArea<FormData>
-          data={formData}
-          // defaultValues are required
-          defaultValues={{ category: '', customerId: '', operator: '', date: null, plan: '' }}
-          // onSubmit is required
-          onSubmit={handleSubmit}
-        />
-      </Box>
-      <Box>{jsonString && jsonString !== '{}' && <pre>{jsonString === 'null' ? '' : jsonString}</pre>}</Box>
-    </Box>
-  )
-}
-`
+]
 
 // More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
 export const Primary: Story = {
   parameters: {
-    controls: { expanded: true },
-    docs: {
-      source: {
-        language: 'jsx',
-        code
-      }
-    }
+    controls: { expanded: true }
   },
-  render: () => <Demo />,
   args: {
-    children: <Demo />
+    recoverFromURLEnabled: true,
+    data: formData,
+    defaultValues: { category: '', customerId: '', operator: '', date: null, plan: '' },
+    debugEnabled: true,
+    onSubmit: (data) => console.log(data)
   }
 }
