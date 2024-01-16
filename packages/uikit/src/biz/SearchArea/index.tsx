@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { FieldValues, useForm } from 'react-hook-form'
 
+import { useURLQueryState } from '../../hooks'
 import { IconEraser, IconRefreshCw01, IconXClose } from '../../icons'
 import { Box, Button, Sx } from '../../primitive'
 import { Form, FormProps, FormSelect, FormTextInput } from '../Form'
@@ -29,6 +30,7 @@ export type FormItem = IFormItemText | IFormItemSelect | IFormItemDatePicker
 
 export interface SearchAreaProps<T extends FieldValues> extends FormProps<T> {
   data: FormItem[]
+  recoverFromURLEnabled?: boolean
 }
 
 const SX_Y_MID = { display: 'flex', alignItems: 'center' }
@@ -46,7 +48,6 @@ function FormItemRender(props: { data: FormItem; onSubmit?: () => void; defaultV
 
   useEffect(() => {
     if (resetSeed > 0) {
-      console.log(`defaultValue=`, defaultValue, name)
       setKeyword(defaultValue)
     }
   }, [resetSeed])
@@ -117,37 +118,43 @@ function FormItemRender(props: { data: FormItem; onSubmit?: () => void; defaultV
   }
 }
 
+const FORM_STATE_KEY = '__fs__'
+
 export function SearchArea<T extends object>(props: SearchAreaProps<T>) {
-  const { data, onSubmit, ...rest } = props
+  const { data, onSubmit, recoverFromURLEnabled, defaultValues, ...rest } = props
   const form = useForm<T>()
   const [resetSeed, setResetSeed] = useState(0)
+  const [formState, setFormState] = useURLQueryState(FORM_STATE_KEY, defaultValues)
 
   const handleSubmit = () => {
-    onSubmit(form.getValues())
+    const values = form.getValues()
+    onSubmit(values)
+    setFormState(values)
   }
 
   const handleReset = () => {
     setResetSeed(resetSeed + 1)
-    form.reset(rest.defaultValues)
+    setFormState(defaultValues as any)
   }
 
   return (
     <Box>
-      <Form<T> onSubmit={onSubmit} {...rest} form={form} errorMessageProps={{ mx: 16 }} withActions={false}>
+      <Form<T>
+        onSubmit={onSubmit}
+        {...rest}
+        defaultValues={formState as any}
+        form={form}
+        errorMessageProps={{ mx: 16 }}
+        withActions={false}
+      >
         <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <Box
-            sx={{
-              display: 'flex',
-              gap: 16,
-              flexWrap: 'wrap'
-            }}
-          >
+          <Box sx={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
             {data.map((x) => (
               <FormItemRender
                 data={x}
                 key={x.name}
                 onSubmit={handleSubmit}
-                defaultValue={(rest.defaultValues as any)[x.name]}
+                defaultValue={(formState as any)[x.name]}
                 resetSeed={resetSeed}
               />
             ))}
