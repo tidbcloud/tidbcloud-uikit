@@ -1,0 +1,74 @@
+import { IconCopy01 } from '../../icons'
+import { TypographyProps, TooltipProps } from '../../primitive'
+import { Box, CopyButton, Typography, Tooltip, BoxProps, ActionIcon } from '../../primitive'
+import { mergeSxList } from '../../utils'
+
+export interface FormCopyTextProps extends BoxProps {
+  value: string
+  timeout?: number
+  onClick?: () => void
+  valueProps?: TypographyProps
+  tooltipProps?: TooltipProps
+  size?: number
+}
+
+export const FormCopyText: React.FC<FormCopyTextProps> = ({
+  timeout = 3000,
+  value,
+  valueProps,
+  tooltipProps,
+  size = 16,
+  ...props
+}) => {
+  return (
+    <CopyButton value={value} timeout={timeout}>
+      {({ copied, copy }) => (
+        <Box
+          sx={mergeSxList([
+            (theme) => ({
+              display: 'flex',
+              alignItems: 'center',
+              paddingLeft: 12,
+              paddingRight: 8,
+              height: 40,
+              borderRadius: theme.defaultRadius,
+              backgroundColor: theme.colors.gray[1],
+              border: `1px solid ${theme.colors.gray[4]}`
+            }),
+            props.sx
+          ])}
+          {...props}
+        >
+          <Typography
+            variant="body-lg"
+            c="gray.7"
+            sx={mergeSxList([
+              () => ({
+                flex: '1',
+                whiteSpace: 'nowrap',
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+                marginRight: 8
+              }),
+              valueProps?.sx
+            ])}
+            {...valueProps}
+          >
+            {value}
+          </Typography>
+          <Tooltip label={copied ? 'Copied' : 'Copy'} withArrow {...tooltipProps}>
+            <ActionIcon color="gray.7" variant="transparent" onClick={copy}>
+              <IconCopy01
+                size={size}
+                onClick={() => {
+                  copy()
+                  props.onClick?.()
+                }}
+              />
+            </ActionIcon>
+          </Tooltip>
+        </Box>
+      )}
+    </CopyButton>
+  )
+}
