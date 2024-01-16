@@ -67,6 +67,7 @@ function Demo() {
           defaultValues={{ category: '', customerId: '', operator: '', date: null, plan: '' }}
           // onSubmit is required
           onSubmit={handleSubmit}
+          recoverFromURLEnabled={true}
         />
       </Box>
       <Box>{jsonString && jsonString !== '{}' && <pre>{jsonString === 'null' ? '' : jsonString}</pre>}</Box>

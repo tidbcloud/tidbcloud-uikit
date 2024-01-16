@@ -125,16 +125,17 @@ export function SearchArea<T extends object>(props: SearchAreaProps<T>) {
   const form = useForm<T>()
   const [resetSeed, setResetSeed] = useState(0)
   const [formState, setFormState] = useURLQueryState(FORM_STATE_KEY, defaultValues)
+  const state = recoverFromURLEnabled ? formState : defaultValues
 
   const handleSubmit = () => {
     const values = form.getValues()
     onSubmit(values)
-    setFormState(values)
+    recoverFromURLEnabled && setFormState(values)
   }
 
   const handleReset = () => {
     setResetSeed(resetSeed + 1)
-    setFormState(defaultValues as any)
+    recoverFromURLEnabled && setFormState(defaultValues as any)
   }
 
   return (
@@ -142,7 +143,7 @@ export function SearchArea<T extends object>(props: SearchAreaProps<T>) {
       <Form<T>
         onSubmit={onSubmit}
         {...rest}
-        defaultValues={formState as any}
+        defaultValues={state}
         form={form}
         errorMessageProps={{ mx: 16 }}
         withActions={false}
@@ -154,7 +155,7 @@ export function SearchArea<T extends object>(props: SearchAreaProps<T>) {
                 data={x}
                 key={x.name}
                 onSubmit={handleSubmit}
-                defaultValue={(formState as any)[x.name]}
+                defaultValue={state[x.name]}
                 resetSeed={resetSeed}
               />
             ))}
