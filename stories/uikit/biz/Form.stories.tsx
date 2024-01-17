@@ -11,7 +11,8 @@ import {
   FormSwitch,
   FormTextareaInput,
   FormPhoneInput,
-  FormPhoneInputV2
+  FormPhoneInputV2,
+  FormCopyText
 } from '@tidbcloud/uikit/biz'
 import { IconAtom01, IconLock01 } from '@tidbcloud/uikit/icons'
 
@@ -122,6 +123,7 @@ export const Primary: Story = {
         <FormRatingInput name="rating" label="Rating" placeholder="Your rating" />
         <FormSwitch name="Checked" label="Checked" />
         <FormTextareaInput name="message" label="Messasge" placeholder="Your message" minRows={2} />
+        <FormCopyText value={'This is an example'} />
       </Form>
     </Center>
   ),
