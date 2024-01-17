@@ -1,8 +1,6 @@
 import type { Meta, StoryObj, StoryFn } from '@storybook/react'
-import { Box } from '@tidbcloud/uikit'
 import { SearchArea } from '@tidbcloud/uikit/biz'
-import { FormItem, FormTextInput } from '@tidbcloud/uikit/src/biz'
-import { useState } from 'react'
+import { FormItem } from '@tidbcloud/uikit/src/biz'
 
 type Story = StoryObj<typeof SearchArea>
 
