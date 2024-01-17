@@ -145,7 +145,7 @@ export function SearchArea<T extends object>(props: SearchAreaProps<T>) {
       <Form<T>
         onSubmit={onSubmit}
         {...rest}
-        defaultValues={state}
+        defaultValues={state as any}
         form={form}
         errorMessageProps={{ mx: 16 }}
         withActions={false}
@@ -157,7 +157,7 @@ export function SearchArea<T extends object>(props: SearchAreaProps<T>) {
                 data={x}
                 key={x.name}
                 onSubmit={handleSubmit}
-                defaultValue={state[x.name]}
+                defaultValue={(state as any)[x.name]}
                 resetSeed={resetSeed}
               />
             ))}
