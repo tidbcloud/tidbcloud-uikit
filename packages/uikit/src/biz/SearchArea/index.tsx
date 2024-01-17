@@ -104,7 +104,7 @@ function FormItemRender(props: { data: FormItem; onSubmit?: () => void; defaultV
       return (
         <FormDatePicker
           name={name}
-          value={keyword as Date}
+          value={new Date(keyword)}
           placeholder={placeholder ?? ''}
           onChange={(val) => {
             setKeyword(val as Date)
@@ -176,7 +176,11 @@ export function SearchArea<T extends object>(props: SearchAreaProps<T>) {
             </Box>
           </Box>
         </Box>
-        {props.debugEnabled && <pre>result = {JSON.stringify(form.getValues(), null, 4)}</pre>}
+        {props.debugEnabled && (
+          <Box component="pre" sx={{ height: 320 }}>
+            result = {JSON.stringify(form.getValues(), null, 4)}
+          </Box>
+        )}
       </Form>
     </Box>
   )
