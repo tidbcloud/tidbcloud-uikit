@@ -1,6 +1,8 @@
 import type { Meta, StoryObj, StoryFn } from '@storybook/react'
+import { Box } from '@tidbcloud/uikit'
 import { SearchArea } from '@tidbcloud/uikit/biz'
-import { FormItem } from '@tidbcloud/uikit/src/biz'
+import { FormTextInput } from '@tidbcloud/uikit/src/biz'
+import { useState } from 'react'
 
 type Story = StoryObj<typeof SearchArea>
 
@@ -22,33 +24,84 @@ const meta: Meta<typeof SearchArea> = {
 
 export default meta
 
-const formData: FormItem[] = [
-  { type: 'text', name: 'category', placeholder: 'Category' },
-  { type: 'text', name: 'customerId', placeholder: 'Customer ID' },
-  { type: 'text', name: 'operator', placeholder: 'Operator' },
-  { type: 'datepicker', name: 'date', placeholder: 'Date' },
-  {
-    type: 'select',
-    name: 'plan',
-    placeholder: 'Plan',
-    data: [
-      { label: 'Basic', value: 'basic' },
-      { label: 'Pro', value: 'pro' },
-      { label: 'Enterprise', value: 'enterprise' }
-    ]
+interface FormData {
+  category: string
+  customerId: string
+  operator: string
+  status: string
+}
+
+function Demo() {
+  const [searchQuery, setSearchQuery] = useState<FormData | null>(null)
+  const handleSubmit = async (data: FormData) => {
+    setSearchQuery(data)
   }
-]
+
+  const jsonString = JSON.stringify(searchQuery, null, 4)
+
+  return (
+    <Box>
+      <Box>
+        <SearchArea<FormData>
+          // defaultValues are required
+          defaultValues={{ category: '', customerId: '', operator: '', status: '' }}
+          // onSubmit is required
+          onSubmit={handleSubmit}
+        >
+          {/* // name is required and should be aligned with FormData */}
+          <FormTextInput name="category" placeholder="Category" w={220} />
+          <FormTextInput name="customerId" placeholder="Customer ID" w={220} />
+          <FormTextInput name="operator" placeholder="Operator" w={220} />
+        </SearchArea>
+      </Box>
+      <Box>{jsonString && jsonString !== '{}' && <pre>{jsonString}</pre>}</Box>
+    </Box>
+  )
+}
+
+const code = `
+function Demo() {
+  const [searchQuery, setSearchQuery] = useState<FormData | null>(null)
+  const handleSubmit = async (data: FormData) => {
+    setSearchQuery(data)
+  }
+
+  const jsonString = JSON.stringify(searchQuery, null, 4)
+
+  return (
+    <Box>
+      <Box>
+        <SearchArea<FormData>
+          // defaultValues are required
+          defaultValues={{ category: '', customerId: '', operator: '', status: '' }}
+          // onSubmit is required
+          onSubmit={handleSubmit}
+        >
+          {/* // name is required and should be aligned with FormData */}
+          <FormTextInput name="category" placeholder="Category" w={220} />
+          <FormTextInput name="customerId" placeholder="Customer ID" w={220} />
+          <FormTextInput name="operator" placeholder="Operator" w={220} />
+        </SearchArea>
+      </Box>
+      <Box>{jsonString && jsonString !== '{}' && <pre>{jsonString}</pre>}</Box>
+    </Box>
+  )
+}
+`
 
 // More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
 export const Primary: Story = {
   parameters: {
-    controls: { expanded: true }
+    controls: { expanded: true },
+    docs: {
+      source: {
+        language: 'jsx',
+        code
+      }
+    }
   },
+  render: () => <Demo />,
   args: {
-    recoverFromURLEnabled: true,
-    data: formData,
-    defaultValues: { category: '', customerId: '', operator: '', date: null, plan: '' },
-    debugEnabled: true,
-    onSubmit: (data) => console.log(data)
+    children: <Demo />
   }
 }
