@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 1.9.0
+
+### Minor Changes
+
+- 9080eb9: add FormCopyText
+
 ## 1.8.0
 
 ### Minor Changes
