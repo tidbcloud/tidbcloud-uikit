@@ -1,11 +1,15 @@
-import React, { useEffect } from 'react'
-import { useDarkMode } from 'storybook-dark-mode'
+import React, { useState, useEffect } from 'react'
+import { useDarkMode, DARK_MODE_EVENT_NAME } from 'storybook-dark-mode'
+import { addons } from '@storybook/preview-api'
 import { MantineProvider, ColorSchemeProvider, NotificationsProvider } from '@tidbcloud/uikit'
 import { Theme, themeColors, darkThemeColors } from '@tidbcloud/uikit/theme'
 import { Preview } from '@storybook/react'
-import { Title, Subtitle, Description, Primary, Controls, Stories } from '@storybook/blocks'
+import { Title, Subtitle, Description, Primary, Controls, Stories, DocsContainer } from '@storybook/blocks'
+import { themes } from '@storybook/theming'
 
-export const parameters = { layout: 'fullscreen' }
+export const parameters = {
+  layout: 'fullscreen'
+}
 
 function ThemeWrapper(props: any) {
   const colorScheme = useDarkMode() ? 'dark' : 'light'
@@ -49,6 +53,8 @@ function Globals() {
   return null
 }
 
+const channel = addons.getChannel()
+
 const preview: Preview = {
   parameters: {
     options: {
@@ -57,6 +63,16 @@ const preview: Preview = {
       }
     },
     docs: {
+      container: (props) => {
+        const [isDark, setDark] = useState(useDarkMode())
+
+        useEffect(() => {
+          channel.on(DARK_MODE_EVENT_NAME, setDark)
+          return () => channel.removeListener(DARK_MODE_EVENT_NAME, setDark)
+        }, [channel, setDark])
+
+        return <DocsContainer {...props} theme={isDark ? themes.dark : themes.light} />
+      },
       page: () => (
         <>
           <Globals />
