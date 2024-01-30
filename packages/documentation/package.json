@@ -10,7 +10,7 @@
   "dependencies": {
     "@tidbcloud/uikit": "workspace:*",
     "ahooks": "^3.7.8",
-    "next": "^13.4.19",
+    "next": "^13.5.1",
     "nextra": "^2.13.2",
     "nextra-theme-docs": "^2.13.2",
     "react": "^18.2.0",
