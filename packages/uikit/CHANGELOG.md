@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 1.10.0
+
+### Minor Changes
+
+- 81fc3bc: Enhance SearchArea component ability
+
 ## 1.9.0
 
 ### Minor Changes
