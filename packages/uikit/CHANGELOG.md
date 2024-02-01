@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 1.10.2
+
+### Patch Changes
+
+- 83b39ba: Fix the missing className when spread props in patch
+
 ## 1.10.1
 
 ### Patch Changes
