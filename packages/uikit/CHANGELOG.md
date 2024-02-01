@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 1.10.1
+
+### Patch Changes
+
+- 74ebe3e: Use pnpm patch for loader fix
+
 ## 1.10.0
 
 ### Minor Changes
