@@ -15,8 +15,6 @@ import {
   MantineTheme
 } from '@mantine/core'
 
-import { loaderAnimation, loaderClassName } from '../primitive/Loader'
-
 import { FONT_FAMILY } from './font'
 
 const getButtonStyles = (theme: MantineTheme, params: ButtonStylesParams): Record<string, CSSObject> => {
@@ -86,6 +84,19 @@ const getInputStyles = (theme: MantineTheme, params: InputStylesParams) => {
     }
   }
 }
+
+const spinKeyFrames = keyframes({
+  '0%': {
+    transform: 'rotate(0deg)'
+  },
+  '100%': {
+    transform: 'rotate(360deg)'
+  }
+})
+
+// DO NOT CHANGE, THE PATCH FOR LOADER RELIES ON THIS NAME
+const loaderClassName = 'mantine-loader-root'
+const loaderAnimation = `${spinKeyFrames} 1s linear infinite`
 
 export const theme: MantineThemeOverride = {
   primaryColor: 'sky',
