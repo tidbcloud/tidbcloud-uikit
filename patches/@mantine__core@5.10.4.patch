@@ -1,8 +1,13 @@
 diff --git a/cjs/Loader/loaders/Oval.js b/cjs/Loader/loaders/Oval.js
-index 4699137ec171fd80020a519c348b99f6407b5e1e..8858da0dbb15a672c2e06fd3078a7920128acec8 100644
+index 4699137ec171fd80020a519c348b99f6407b5e1e..82e0f18e7b61a73a1c24b280f080fcc7326c6650 100644
 --- a/cjs/Loader/loaders/Oval.js
 +++ b/cjs/Loader/loaders/Oval.js
-@@ -41,30 +41,23 @@ function Oval(_a) {
+@@ -37,34 +37,27 @@ var __objRest = (source, exclude) => {
+   return target;
+ };
+ function Oval(_a) {
+-  var _b = _a, { size, color } = _b, others = __objRest(_b, ["size", "color"]);
++  var _b = _a, { size, color } = _b, others = __objRest(_b, ["size", "color", "className"]);
    return /* @__PURE__ */ React__default.createElement("svg", __spreadValues({
      width: `${size}px`,
      height: `${size}px`,
