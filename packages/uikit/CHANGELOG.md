@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 1.11.0
+
+### Minor Changes
+
+- 8c883b7: Add arrow tab icon
+
 ## 1.10.2
 
 ### Patch Changes
