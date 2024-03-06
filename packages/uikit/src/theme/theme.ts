@@ -31,12 +31,19 @@ const getButtonStyles = (theme: MantineTheme, params: ButtonStylesParams): Recor
     }
   }
   const matches = diffSizeStyles[params.size] || {}
+  const withBorder =
+    params.variant === 'light'
+      ? {
+          border: `1px solid ${theme.colors[params.color || 'blue'][4]}`
+        }
+      : {}
 
   return {
     root: {
       fontWeight: 700,
       ...matches,
-      ...hoverStyles
+      ...hoverStyles,
+      ...withBorder
     }
   }
 }
