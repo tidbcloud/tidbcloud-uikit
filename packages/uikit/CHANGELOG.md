@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 1.12.0
+
+### Minor Changes
+
+- 6b61b67: Add border for light variant button
+
 ## 1.11.0
 
 ### Minor Changes
