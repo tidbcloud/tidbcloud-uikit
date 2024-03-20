@@ -1,16 +1,16 @@
 /**
- * Don't use wildcard exports(`export *`) from other packages to avoid ambiguous external namespace resolution
+ * Don't use multiple wildcard exports(`export *`) from other third party packages to avoid ambiguous external namespace resolution
  * otherwisw tsc will make guess from one of the packages when importing
  */
 export * from '@mantine/core'
 
-export { TextInput, type TextInputProps } from './TextInput'
+export { TextInput, type TextInputProps } from './TextInput/index.js'
 
 // Re-export @mantine/prims with custom theme
-export * from './Prism'
+export * from './Prism/index.js'
 
 // Re-export @mantine/notifications with custom theme
-export { notifier, NotificationsProvider, type NotificationProviderProps } from './notifier'
+export { notifier, NotificationsProvider, type NotificationProviderProps } from './notifier/index.js'
 
 // Re-export @mantine/dropzone
 export {
@@ -85,5 +85,4 @@ export type {
   TimeRangeInputStylesParams
 } from '@mantine/dates'
 
-// Re-export Typography for convenience
-export * from '../biz/Typography'
+export * from './Typography/index.js'

@@ -1,10 +1,10 @@
 import { MRT_Cell, MRT_Row, MRT_Column, MRT_TableInstance } from 'mantine-react-table'
 import { ReactNode } from 'react'
 
-import { IconChevronDown, IconChevronRight } from '../../../icons'
-import { Box } from '../../../primitive'
+import { IconChevronDown, IconChevronRight } from '../../../icons/index.js'
+import { Box } from '../../../primitive/index.js'
 
-interface CellProps<TData> {
+interface CellProps<TData extends Record<string, any>> {
   cell: MRT_Cell<TData>
   renderedCellValue: number | string | ReactNode
   column: MRT_Column<TData>

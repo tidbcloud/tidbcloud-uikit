@@ -7,8 +7,8 @@ import type { TreeProps as RcTreeProps, BasicDataNode } from 'rc-tree'
 import type { DataNode, Key } from 'rc-tree/lib/interface'
 import React from 'react'
 
-import { collapseMotion } from './motion'
-import renderSwitcherIcon from './renderSwitcherIcon'
+import { collapseMotion } from './motion.js'
+import renderSwitcherIcon from './renderSwitcherIcon.js'
 
 export type { DataNode as TreeDataNode, EventDataNode as TreeEventDataNode } from 'rc-tree/lib/interface'
 
@@ -133,7 +133,7 @@ export const Tree = React.forwardRef<RcTree, TreeProps>((props, ref) => {
         switcherIcon={(nodeProps: TreeNodeProps) => renderSwitcherIcon(prefixCls, switcherIcon, showLine, nodeProps)}
       />
       <Global
-        styles={(theme) => ({
+        styles={(theme: any) => ({
           '.tc-uikit-tree': {
             lineHeight: '24px'
           },

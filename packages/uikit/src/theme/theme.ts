@@ -15,7 +15,7 @@ import {
   MantineTheme
 } from '@mantine/core'
 
-import { FONT_FAMILY } from './font'
+import { FONT_FAMILY } from './font.js'
 
 const getButtonStyles = (theme: MantineTheme, params: ButtonStylesParams): Record<string, CSSObject> => {
   const hoverStyles =
@@ -434,7 +434,7 @@ export const theme: MantineThemeOverride = {
     Textarea: {
       styles: (theme, params) => {
         const styles = getInputStyles(theme, params)
-        styles.input.height = undefined
+        // styles.input.height = undefined
         return styles
       }
     },

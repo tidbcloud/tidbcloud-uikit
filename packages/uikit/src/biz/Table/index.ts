@@ -1,2 +1,2 @@
-export * from './BasicTable/BasicTable'
-export * from './ProTable'
+export * from './BasicTable/BasicTable.js'
+export * from './ProTable/index.js'

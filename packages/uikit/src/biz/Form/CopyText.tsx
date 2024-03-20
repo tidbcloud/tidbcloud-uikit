@@ -1,7 +1,7 @@
-import { IconCopy01 } from '../../icons'
-import { TypographyProps, TooltipProps } from '../../primitive'
-import { Box, CopyButton, Typography, Tooltip, BoxProps, ActionIcon } from '../../primitive'
-import { mergeSxList } from '../../utils'
+import { IconCopy01 } from '../../icons/index.js'
+import { TypographyProps, TooltipProps } from '../../primitive/index.js'
+import { Box, CopyButton, Typography, Tooltip, BoxProps, ActionIcon } from '../../primitive/index.js'
+import { mergeSxList } from '../../utils/index.js'
 
 export interface FormCopyTextProps extends BoxProps {
   value: string

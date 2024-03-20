@@ -1,6 +1,6 @@
-import { TYPOGRAPHY_STYLES_MAP } from '../../biz'
-import { Button, ButtonProps, Flex, FlexProps } from '../../primitive'
-import { PolymorphicComponentProps } from '../../utils'
+import { Button, ButtonProps, Flex, FlexProps } from '../../primitive/index.js'
+import { TYPOGRAPHY_STYLES_MAP } from '../../primitive/Typography/index.js'
+import { PolymorphicComponentProps } from '../../utils/index.js'
 
 type ActionButtonProps = Omit<PolymorphicComponentProps<'button', ButtonProps>, 'children'> & {
   [p: `data-${string}`]: string

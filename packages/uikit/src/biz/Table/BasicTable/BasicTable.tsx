@@ -4,11 +4,11 @@ import React, { useMemo } from 'react'
 import { useTable, Column, useExpanded, PluginHook } from 'react-table'
 import { useSticky } from 'react-table-sticky'
 
-import { Table, TableProps, Box } from '../../../primitive'
-import { cellProps, headerProps } from '../helpers'
-import { TablePagination, TablePaginationProps } from '../TablePagination'
+import { Table, TableProps, Box } from '../../../primitive/index.js'
+import { cellProps, headerProps } from '../helpers.js'
+import { TablePagination, TablePaginationProps } from '../TablePagination.js'
 
-import { useStyles } from './BasicTable.styles'
+import { useStyles } from './BasicTable.styles.js'
 
 // TableNoticeRow for empty table or table loading cases
 export const TableNoticeRow = React.memo(

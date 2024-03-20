@@ -1,8 +1,8 @@
 import { TextInput as MantineTextInput, TextInputProps as MantineTextInputProps } from '@mantine/core'
 import { forwardRef } from 'react'
 
-import { Typography } from '../../biz/'
-import { mergeStylesList } from '../../utils'
+import { mergeStylesList } from '../../utils/index.js'
+import { Typography } from '../Typography/index.js'
 
 export interface TextInputProps extends MantineTextInputProps {
   leftLabel?: string

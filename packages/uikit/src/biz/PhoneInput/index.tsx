@@ -9,10 +9,12 @@ import {
   BoxProps,
   DefaultProps,
   InputWrapperStylesNames
-} from '../../primitive'
-import { mergeStylesList } from '../../utils'
+} from '../../primitive/index.js'
+import { mergeStylesList } from '../../utils/index.js'
 
-import { useStyles } from './styles'
+import { useStyles } from './styles.js'
+
+export { validPhoneNumber } from './helper.js'
 
 // fuck esm/cjs interop https://github.com/evanw/esbuild/issues/1719#issuecomment-953470495
 // @ts-ignore // prettier-ignore

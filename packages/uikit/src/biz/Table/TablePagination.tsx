@@ -1,5 +1,5 @@
-import { Pagination, PaginationProps } from '../../primitive'
-import { mergeStylesList } from '../../utils'
+import { Pagination, PaginationProps } from '../../primitive/index.js'
+import { mergeStylesList } from '../../utils/index.js'
 
 export interface TablePaginationProps extends PaginationProps {}
 

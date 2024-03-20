@@ -1,10 +1,10 @@
 import { MantineReactTable, MantineReactTableProps } from 'mantine-react-table'
 
-import { IconSwitchVertical02, IconArrowUp, IconArrowDown } from '../../../icons'
-import { Box, BoxProps } from '../../../primitive'
-import { TablePagination, TablePaginationProps } from '../TablePagination'
+import { IconSwitchVertical02, IconArrowUp, IconArrowDown } from '../../../icons/index.js'
+import { Box, BoxProps } from '../../../primitive/index.js'
+import { TablePagination, TablePaginationProps } from '../TablePagination.js'
 
-import { mergeMProps } from './helpers'
+import { mergeMProps } from './helpers.js'
 
 export interface ProTableProps<TData extends Record<string, any> = {}> extends MantineReactTableProps<TData> {
   withBorder?: boolean

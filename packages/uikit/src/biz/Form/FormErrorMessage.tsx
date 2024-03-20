@@ -1,8 +1,8 @@
 import DOMPurify from 'dompurify'
 import { useState, useRef, useEffect } from 'react'
 
-import { IconAlertCircle } from '../../icons'
-import { Alert, AlertProps } from '../../primitive'
+import { IconAlertCircle } from '../../icons/index.js'
+import { Alert, AlertProps } from '../../primitive/index.js'
 
 export interface FormErrorMessageProps extends Omit<AlertProps, 'children'> {
   message: string
