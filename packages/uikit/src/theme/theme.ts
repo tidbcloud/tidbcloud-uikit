@@ -434,7 +434,7 @@ export const theme: MantineThemeOverride = {
     Textarea: {
       styles: (theme, params) => {
         const styles = getInputStyles(theme, params)
-        // styles.input.height = undefined
+        styles.input.height = undefined
         return styles
       }
     },
