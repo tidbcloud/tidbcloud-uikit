@@ -1,4 +1,3 @@
-import * as React from 'react'
 import { forwardRef } from 'react'
 const DoubleCheck = (props, ref) => {
   if (typeof props.size === 'number') {
@@ -10,7 +9,7 @@ const DoubleCheck = (props, ref) => {
     }
   }
   return (
-    <svg width="1em" height="1em" fill="none" xmlns="http://www.w3.org/2000/svg" strokeWidth="1.5" ref={ref} {...props}>
+    <svg width="1em" height="1em" fill="none" xmlns="http://www.w3.org/2000/svg" strokeWidth="1" ref={ref} {...props}>
       <path
         fill-rule="evenodd"
         clip-rule="evenodd"
