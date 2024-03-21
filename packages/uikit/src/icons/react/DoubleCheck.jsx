@@ -10,7 +10,16 @@ const DoubleCheck = (props, ref) => {
   }
   console.log('props', props)
   return (
-    <svg width="1em" height="1em" fill="none" xmlns="http://www.w3.org/2000/svg" strokeWidth="1" ref={ref} {...props}>
+    <svg
+      width="1em"
+      height="1em"
+      fill="none"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+      strokeWidth="1"
+      ref={ref}
+      {...props}
+    >
       <path
         fill-rule="evenodd"
         clip-rule="evenodd"
