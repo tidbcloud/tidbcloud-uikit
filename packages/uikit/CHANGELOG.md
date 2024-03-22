@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 1.13.0
+
+### Minor Changes
+
+- 8ddf73d: add notification icon
+
 ## 1.12.0
 
 ### Minor Changes
