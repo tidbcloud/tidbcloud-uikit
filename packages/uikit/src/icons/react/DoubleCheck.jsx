@@ -8,7 +8,6 @@ const DoubleCheck = (props, ref) => {
       width: size
     }
   }
-  console.log('props', props)
   return (
     <svg
       width="1em"
