@@ -10,12 +10,12 @@ import {
   FieldValues
 } from 'react-hook-form'
 
-import { Box, BoxProps } from '../../primitive'
+import { Box, BoxProps } from '../../primitive/index.js'
 
-import { useHookFormContext } from './context'
-import { FormActions, FormActionsProps } from './FormActions'
-import { FormErrorMessage, FormErrorMessageProps } from './FormErrorMessage'
-import { FormLayout, FormLayoutProps, FormLayoutType } from './FormLayout'
+import { useHookFormContext } from './context.js'
+import { FormActions, FormActionsProps } from './FormActions.js'
+import { FormErrorMessage, FormErrorMessageProps } from './FormErrorMessage.js'
+import { FormLayout, FormLayoutProps, FormLayoutType } from './FormLayout.js'
 
 const getErrorMessage = (e: any) => e?.message
 

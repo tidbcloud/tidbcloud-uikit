@@ -2,9 +2,9 @@ import { clsx, createStyles } from '@mantine/styles'
 import { useMemoizedFn, useMount, useUpdateEffect } from 'ahooks'
 import React, { ReactNode, useMemo, useState } from 'react'
 
-import { IconChevronRight, IconChevronLeft } from '../../icons'
-import { Card, Box, Stack, ActionIcon } from '../../primitive'
-import { Tree, TreeDataNode, TreeProps } from '../Tree'
+import { IconChevronRight, IconChevronLeft } from '../../icons/index.js'
+import { Card, Box, Stack, ActionIcon } from '../../primitive/index.js'
+import { Tree, TreeDataNode, TreeProps } from '../Tree/index.js'
 
 export interface TransferTreeProps {
   sourceHeader?: ReactNode

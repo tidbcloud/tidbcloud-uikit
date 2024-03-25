@@ -1,7 +1,7 @@
 import { get } from 'lodash-es'
 import { RegisterOptions, useFormContext, Controller } from 'react-hook-form'
 
-import { MultiSelect, MultiSelectProps } from '../../primitive'
+import { MultiSelect, MultiSelectProps } from '../../primitive/index.js'
 
 export interface FormMultiSelectProps extends MultiSelectProps {
   name: string

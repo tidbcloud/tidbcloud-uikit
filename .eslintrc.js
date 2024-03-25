@@ -1,6 +1,37 @@
 module.exports = {
-  extends: ['react-app', 'plugin:storybook/recommended'],
+  root: true,
+  parser: '@typescript-eslint/parser',
+  plugins: ['file-extension-in-import-ts', 'import'],
+  env: {
+    browser: true,
+    es6: true,
+    node: true
+  },
+  extends: ['plugin:storybook/recommended'],
+  ignorePatterns: [
+    '*.min.*',
+    'CHANGELOG.md',
+    'dist',
+    'LICENSE*',
+    'output',
+    'coverage',
+    'public',
+    'temp',
+    'packages-lock.json',
+    'pnpm-lock.yaml',
+    'yarn.lock',
+    '__snapshots__',
+    '!.github',
+    '!.vitepress',
+    '!.vscode'
+  ],
+  settings: {
+    'import/resolver': {
+      node: { extensions: ['.js', '.mjs', '.ts', '.d.ts'] }
+    }
+  },
   rules: {
+    'file-extension-in-import-ts/file-extension-in-import-ts': 'error',
     'import/order': [
       'error',
       {

@@ -2,15 +2,43 @@
   "name": "@tidbcloud/uikit",
   "version": "1.13.0",
   "description": "tidbcloud uikit",
-  "main": "./dist/primitive/index.js",
-  "types": "./dist/primitive/index.d.ts",
-  "module": "./dist/primitive/index.mjs",
-  "browser": "./dist/primitive/index.mjs",
+  "type": "module",
+  "main": "dist/primitive/index.cjs",
+  "module": "dist/primitive/index.js",
+  "types": "dist/primitive/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/primitive/index.js",
+      "require": "./dist/primitive/index.cjs"
+    },
+    "./biz": {
+      "import": "./dist/biz/index.js",
+      "require": "./dist/biz/index.cjs"
+    },
+    "./hooks": {
+      "import": "./dist/hooks/index.js",
+      "require": "./dist/hooks/index.cjs"
+    },
+    "./theme": {
+      "import": "./dist/theme/index.js",
+      "require": "./dist/theme/index.cjs"
+    },
+    "./utils": {
+      "import": "./dist/utils/index.js",
+      "require": "./dist/utils/index.cjs"
+    },
+    "./icons": {
+      "import": "./dist/icons/index.js",
+      "require": "./dist/icons/index.cjs"
+    },
+    "./dist/icons/raw/*": "./dist/icons/raw/*",
+    "./package.json": "./package.json"
+  },
   "scripts": {
     "test": "test",
     "copy:raw-icon": "mkdir -p ./dist/icons/raw && cpy 'src/icons/raw/*.svg' ./dist/icons/raw/",
     "build:icon": "tsx ./scripts/icon.ts",
-    "build": "NODE_OPTIONS='--max-old-space-size=8192' tsup"
+    "build": "vite build && npm run copy:raw-icon"
   },
   "repository": {
     "type": "git",
@@ -31,7 +59,6 @@
     "@mantine/styles": "5.10.4",
     "@mantine/utils": "5.10.4",
     "@tabler/icons-react": "^2.30.0",
-    "@types/qs": "^6.9.11",
     "ahooks": "^3.7.8",
     "dayjs": "^1.11.5",
     "dompurify": "^3.0.3",
@@ -57,30 +84,30 @@
     "@types/dompurify": "^2.3.4",
     "@types/google-libphonenumber": "^7.4.23",
     "@types/lodash-es": "^4.17.8",
+    "@types/qs": "^6.9.11",
     "@types/react": "^18.2.48",
     "@types/react-dom": "^18.2.18",
     "@types/react-table": "^7.7.12",
     "@types/react-window": "^1.8.5",
+    "@vitejs/plugin-react": "^4.2.1",
     "cpy-cli": "^5.0.0",
     "tsx": "^3.12.7",
-    "typescript": "~4.7.4"
+    "typescript": "^5.4.2",
+    "vite": "^4.5.2",
+    "vite-plugin-dts": "^3.7.3"
+  },
+  "typesVersions": {
+    "*": {
+      "biz": ["./dist/biz/index.d.ts", "./dist/*"],
+      "icons": ["./dist/icons/index.d.ts", "./dist/*"],
+      "theme": ["./dist/theme/index.d.ts", "./dist/*"],
+      "utils": ["./dist/utils/index.d.ts", "./dist/*"],
+      "hooks": ["./dist/hooks/index.d.ts", "./dist/*"],
+      ".": ["./dist/primitive/index.d.ts", "./dist/*"]
+    }
   },
   "files": [
     "dist",
-    "biz.js",
-    "biz.mjs",
-    "biz.d.ts",
-    "hooks.js",
-    "hooks.mjs",
-    "hooks.d.ts",
-    "icons.js",
-    "icons.mjs",
-    "icons.d.ts",
-    "theme.js",
-    "theme.mjs",
-    "theme.d.ts",
-    "utils.js",
-    "utils.mjs",
-    "utils.d.ts"
+    "CHANGELOG.md"
   ]
 }

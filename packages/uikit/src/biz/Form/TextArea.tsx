@@ -1,7 +1,7 @@
 import { get } from 'lodash-es'
 import { Controller, RegisterOptions, useFormContext } from 'react-hook-form'
 
-import { Textarea, TextareaProps } from '../../primitive'
+import { Textarea, TextareaProps } from '../../primitive/index.js'
 
 export interface FormTextareaInputProps extends TextareaProps {
   name: string

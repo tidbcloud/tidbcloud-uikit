@@ -1,9 +1,11 @@
-node_modules/
-dist/
-.npmrc
-.DS_Store
-storybook-static/
-packages/core/icons/src/react/
 .idea/
 .next/
+node_modules/
+dist/
+build/
+storybook-static/
+
+.npmrc
+.DS_Store
 .env
+*.tsbuildinfo

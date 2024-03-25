@@ -1,7 +1,8 @@
 import '../style.css'
-
-import { MantineProvider } from '@tidbcloud/uikit'
 import { Theme, themeColors } from '@tidbcloud/uikit/theme'
+import dynamic from 'next/dynamic'
+
+const MantineProvider = dynamic(() => import('@tidbcloud/uikit').then((mod) => mod.MantineProvider), { ssr: false })
 
 export default function App({ Component, pageProps }) {
   return (

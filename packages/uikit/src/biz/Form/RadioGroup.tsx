@@ -2,7 +2,7 @@ import { get, omit } from 'lodash-es'
 import React, { Fragment } from 'react'
 import { Controller, RegisterOptions, useFormContext } from 'react-hook-form'
 
-import { Radio, RadioGroupProps, RadioProps, Box, HoverCard, HoverCardProps, Tooltip } from '../../primitive'
+import { Radio, RadioGroupProps, RadioProps, Box, HoverCard, HoverCardProps, Tooltip } from '../../primitive/index.js'
 
 export interface FormRadioGroupProps extends Omit<RadioGroupProps, 'children'> {
   name: string

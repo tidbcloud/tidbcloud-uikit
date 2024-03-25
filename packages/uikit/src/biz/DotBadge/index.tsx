@@ -1,8 +1,8 @@
 import React from 'react'
 
-import { Badge, BadgeProps } from '../../primitive'
-import { Dot, DotProps } from '../Dot'
-import { Typography } from '../Typography'
+import { Badge, BadgeProps } from '../../primitive/index.js'
+import { Typography } from '../../primitive/Typography/index.js'
+import { Dot, DotProps } from '../Dot/index.js'
 
 export interface DotBadgeProps extends Omit<BadgeProps, 'color'> {
   color?: DotProps['color']

@@ -13,5 +13,5 @@ module.exports = withNextra({
   experimental: {
     esmExternals: 'loose'
   },
-  transpilePackages: ['@tidbcloud/uikit', 'lodash-es', 'ahooks']
+  transpilePackages: ['lodash-es', 'ahooks']
 })

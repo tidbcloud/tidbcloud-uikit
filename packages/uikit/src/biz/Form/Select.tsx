@@ -1,7 +1,7 @@
 import { get } from 'lodash-es'
 import { RegisterOptions, useFormContext, Controller } from 'react-hook-form'
 
-import { Select, SelectProps } from '../../primitive'
+import { Select, SelectProps } from '../../primitive/index.js'
 
 export interface FormSelectProps extends SelectProps {
   name: string

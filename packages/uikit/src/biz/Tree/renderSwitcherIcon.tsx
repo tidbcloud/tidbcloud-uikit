@@ -1,8 +1,8 @@
 import { clsx } from '@mantine/styles'
 import { isValidElement, cloneElement } from 'react'
 
-import { IconFile02, IconMinus, IconPlus, IconChevronDownFill } from '../../icons'
-import { Loader } from '../../primitive'
+import { IconFile02, IconMinus, IconPlus, IconChevronDownFill } from '../../icons/index.js'
+import { Loader } from '../../primitive/index.js'
 
 import type { SwitcherIcon, TreeLeafIcon, TreeNodeProps } from './index'
 

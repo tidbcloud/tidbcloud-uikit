@@ -1,7 +1,7 @@
 import { get } from 'lodash-es'
 import { Controller, RegisterOptions, useFormContext } from 'react-hook-form'
 
-import { TextInput, TextInputProps } from '../../primitive'
+import { TextInput, TextInputProps } from '../../primitive/index.js'
 
 export interface FormTextInputProps extends TextInputProps {
   name: string

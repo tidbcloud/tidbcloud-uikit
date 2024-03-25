@@ -2,7 +2,7 @@ import { get } from 'lodash-es'
 import React from 'react'
 import { Controller, RegisterOptions, useFormContext } from 'react-hook-form'
 
-import { NumberInput, NumberInputProps } from '../../primitive'
+import { NumberInput, NumberInputProps } from '../../primitive/index.js'
 
 export interface FormNumberInputProps extends NumberInputProps {
   name: string

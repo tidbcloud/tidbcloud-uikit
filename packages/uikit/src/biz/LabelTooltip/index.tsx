@@ -1,5 +1,5 @@
-import { IconInfoCircle } from '../../icons'
-import { Typography, Box, HoverCard, HoverCardProps } from '../../primitive'
+import { IconInfoCircle } from '../../icons/index.js'
+import { Typography, Box, HoverCard, HoverCardProps } from '../../primitive/index.js'
 
 export interface LabelTooltipProps extends HoverCardProps {
   label: React.ReactNode

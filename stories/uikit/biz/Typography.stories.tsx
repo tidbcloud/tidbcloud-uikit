@@ -1,8 +1,7 @@
 import type { Meta, StoryObj, StoryFn } from '@storybook/react'
-import { Stack } from '@tidbcloud/uikit'
-import { Typography, TYPOGRAPHY_STYLES_MAP } from '@tidbcloud/uikit/biz'
+import { Stack, Typography, TYPOGRAPHY_STYLES_MAP } from '@tidbcloud/uikit'
 
-import { COLOR_LIST } from '../../constants'
+import { COLOR_LIST } from '../../constants.js'
 
 type Story = StoryObj<typeof Typography>
 

@@ -2,7 +2,7 @@ import { get } from 'lodash-es'
 import React from 'react'
 import { Controller, RegisterOptions, useFormContext } from 'react-hook-form'
 
-import { PasswordInput, PasswordInputProps } from '../../primitive'
+import { PasswordInput, PasswordInputProps } from '../../primitive/index.js'
 
 export interface FormPasswordInputProps extends PasswordInputProps {
   name: string

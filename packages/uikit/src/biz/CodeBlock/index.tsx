@@ -1,10 +1,10 @@
 import React, { useMemo, useState } from 'react'
 
-import { useLocalStorage } from '../../hooks'
-import { IconChevronVerticalExpand, IconChevronVerticalShrink, IconCheck, IconCopy01 } from '../../icons'
-import { ActionIcon, Box, BoxProps, CopyButton, Group, Tooltip, Code, CodeProps } from '../../primitive'
-import { Prism, PrismProps } from '../../primitive/Prism'
-import { mergeSxList, mergeStylesList } from '../../utils'
+import { useLocalStorage } from '../../hooks/index.js'
+import { IconChevronVerticalExpand, IconChevronVerticalShrink, IconCheck, IconCopy01 } from '../../icons/index.js'
+import { ActionIcon, Box, BoxProps, CopyButton, Group, Tooltip, Code, CodeProps } from '../../primitive/index.js'
+import { Prism, PrismProps } from '../../primitive/Prism/index.js'
+import { mergeSxList, mergeStylesList } from '../../utils/index.js'
 
 function useFold(persistenceKey?: string) {
   const foldPersistenceKey = `${persistenceKey}.codeblock.fold`

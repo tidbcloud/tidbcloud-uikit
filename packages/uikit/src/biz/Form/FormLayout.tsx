@@ -1,4 +1,4 @@
-import { Flex, FlexProps } from '../../primitive'
+import { Flex, FlexProps } from '../../primitive/index.js'
 
 export type FormLayoutType = 'horizontal' | 'vertical' | 'none'
 export interface FormLayoutProps extends FlexProps {

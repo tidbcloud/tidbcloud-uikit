@@ -2,7 +2,7 @@ import { get } from 'lodash-es'
 import React from 'react'
 import { Controller, RegisterOptions, useFormContext } from 'react-hook-form'
 
-import { Switch, SwitchProps } from '../../primitive'
+import { Switch, SwitchProps } from '../../primitive/index.js'
 
 export interface FormSwitchProps extends SwitchProps {
   name: string

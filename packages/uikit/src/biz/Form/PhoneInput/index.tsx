@@ -2,11 +2,11 @@ import { get } from 'lodash-es'
 import { Controller, RegisterOptions, useFormContext } from 'react-hook-form'
 import { CountryData } from 'react-phone-input-2'
 
-import { SelectProps, Box, BoxProps, createStyles } from '../../../primitive'
-import { PhoneInput, PhoneInputProps } from '../../PhoneInput'
-import { FormSelect } from '../Select'
+import { SelectProps, Box, BoxProps, createStyles } from '../../../primitive/index.js'
+import { PhoneInput, PhoneInputProps } from '../../PhoneInput/index.js'
+import { FormSelect } from '../Select.js'
 
-import rawCountries from './rawCountries'
+import rawCountries from './rawCountries.js'
 
 export interface FormPhoneInputProps extends PhoneInputProps {
   name: string

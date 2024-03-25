@@ -9,7 +9,6 @@ export function EmbeddedStory({ src, title }: { src: string; title: string }) {
       if (typeof e.data === 'string') {
         try {
           const data = JSON.parse(e.data)
-          console.log('data: ', data)
           if (data.key === 'storybook-channel') {
             ref.current?.contentWindow?.postMessage({ type: 'getHeight', from: data?.event?.type }, '*')
           }

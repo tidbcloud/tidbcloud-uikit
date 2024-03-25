@@ -1,8 +1,8 @@
 import { get } from 'lodash-es'
 import { Controller, useFormContext, RegisterOptions } from 'react-hook-form'
 
-import { Input, InputWrapperProps, Rating, RatingProps } from '../../primitive'
-import { mergeStylesList } from '../../utils'
+import { Input, InputWrapperProps, Rating, RatingProps } from '../../primitive/index.js'
+import { mergeStylesList } from '../../utils/index.js'
 
 export interface FormRatingInputProps extends RatingProps {
   label?: InputWrapperProps['label']

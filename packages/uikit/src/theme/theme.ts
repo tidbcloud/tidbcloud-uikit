@@ -15,7 +15,7 @@ import {
   MantineTheme
 } from '@mantine/core'
 
-import { FONT_FAMILY } from './font'
+import { FONT_FAMILY } from './font.js'
 
 const getButtonStyles = (theme: MantineTheme, params: ButtonStylesParams): Record<string, CSSObject> => {
   const hoverStyles =

@@ -1,7 +1,7 @@
 import { get } from 'lodash-es'
 import { Controller, RegisterOptions, useFormContext } from 'react-hook-form'
 
-import { DatePicker, DatePickerProps } from '../../primitive'
+import { DatePicker, DatePickerProps } from '../../primitive/index.js'
 
 export interface FormDatePickerProps extends DatePickerProps {
   name: string

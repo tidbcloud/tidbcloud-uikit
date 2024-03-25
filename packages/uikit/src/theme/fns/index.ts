@@ -1,1 +1,1 @@
-export * from './variant'
+export * from './variant.js'

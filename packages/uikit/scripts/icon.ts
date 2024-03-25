@@ -134,7 +134,7 @@ function updateImportEntry() {
   const reexports = icons
     .map((i) => {
       const name = pascalCase(i)
-      return `export { default as ${pascalCase('Icon' + name)} } from './react/${name}'`
+      return `export { default as ${pascalCase('Icon' + name)} } from './react/${name}.jsx'`
     })
     .join('\n')
 

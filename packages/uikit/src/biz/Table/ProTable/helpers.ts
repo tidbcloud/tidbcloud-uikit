@@ -1,7 +1,7 @@
 import { isFunction } from 'lodash-es'
 
-import { DefaultProps } from '../../../primitive'
-import { mergeSxList } from '../../../utils'
+import { DefaultProps } from '../../../primitive/index.js'
+import { mergeSxList } from '../../../utils/index.js'
 
 export function mergeMProps<P extends DefaultProps | ((...args: unknown[]) => DefaultProps)>(preProps: P, mProps?: P) {
   type PropsResult = Extract<P, { className?: string }> | undefined

@@ -1,3 +1,3 @@
 export * from 'mantine-react-table'
-export * from './ProTable'
-export * from './Expand'
+export * from './ProTable.js'
+export * from './Expand.js'
