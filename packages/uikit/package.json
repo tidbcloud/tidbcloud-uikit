@@ -1,6 +1,6 @@
 {
   "name": "@tidbcloud/uikit",
-  "version": "1.13.0",
+  "version": "1.14.0",
   "description": "tidbcloud uikit",
   "type": "module",
   "main": "dist/primitive/index.cjs",
@@ -98,12 +98,30 @@
   },
   "typesVersions": {
     "*": {
-      "biz": ["./dist/biz/index.d.ts", "./dist/*"],
-      "icons": ["./dist/icons/index.d.ts", "./dist/*"],
-      "theme": ["./dist/theme/index.d.ts", "./dist/*"],
-      "utils": ["./dist/utils/index.d.ts", "./dist/*"],
-      "hooks": ["./dist/hooks/index.d.ts", "./dist/*"],
-      ".": ["./dist/primitive/index.d.ts", "./dist/*"]
+      "biz": [
+        "./dist/biz/index.d.ts",
+        "./dist/*"
+      ],
+      "icons": [
+        "./dist/icons/index.d.ts",
+        "./dist/*"
+      ],
+      "theme": [
+        "./dist/theme/index.d.ts",
+        "./dist/*"
+      ],
+      "utils": [
+        "./dist/utils/index.d.ts",
+        "./dist/*"
+      ],
+      "hooks": [
+        "./dist/hooks/index.d.ts",
+        "./dist/*"
+      ],
+      ".": [
+        "./dist/primitive/index.d.ts",
+        "./dist/*"
+      ]
     }
   },
   "files": [

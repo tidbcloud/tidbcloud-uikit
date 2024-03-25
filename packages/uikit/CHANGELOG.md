@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 1.14.0
+
+### Minor Changes
+
+- 8edbe98: Use vite/rollup for bundler
+
 ## 1.13.0
 
 ### Minor Changes
