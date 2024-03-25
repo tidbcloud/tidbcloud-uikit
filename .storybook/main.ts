@@ -18,6 +18,9 @@ const config: StorybookConfig = {
   },
   docs: {
     autodocs: true
+  },
+  typescript: {
+    reactDocgen: false
   }
 }
 
