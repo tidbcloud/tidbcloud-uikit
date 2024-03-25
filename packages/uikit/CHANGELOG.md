@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 1.14.1
+
+### Patch Changes
+
+- 27aa2bd: Bundle MRT and other dependencies to avoid referencing original pakages
+
 ## 1.14.0
 
 ### Minor Changes
