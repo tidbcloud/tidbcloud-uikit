@@ -1,0 +1,5 @@
+{
+  "rules": {
+      "file-extension-in-import-ts/file-extension-in-import-ts": "off"
+  }
+}
