@@ -8,9 +8,11 @@ import dts from 'vite-plugin-dts'
 const packageJson = JSON.parse(readFileSync('./package.json', { encoding: 'utf-8' }))
 
 const globals = {
-  ...(packageJson?.dependencies || {}),
+  // don't include dependencies here, so they will all be bundled
+  // otherwise it might referencing modules in node_moduels and use the original component style
   ...(packageJson?.peerDependencies || {})
 }
+
 export default defineConfig({
   plugins: [
     react(),
