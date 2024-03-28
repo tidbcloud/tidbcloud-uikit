@@ -55,7 +55,7 @@ function getLoadMoreList(nextId: string | undefined, limit: number): Promise<Res
   })
 }
 
-export function IconsPreview() {
+export default function IconsPreview() {
   const [value, setValue] = useState('')
   const deferredValue = useDeferredValue(value)
   const iconCount = iconsData.length
