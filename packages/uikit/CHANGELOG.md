@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 1.15.0
+
+### Minor Changes
+
+- be06bc5: add database none icon
+
 ## 1.14.2
 
 ### Patch Changes
