@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 1.15.1
+
+### Patch Changes
+
+- 7714a56: database-none icon style
+
 ## 1.15.0
 
 ### Minor Changes
