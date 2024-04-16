@@ -17,14 +17,16 @@ export default meta
 const code = `
 import { PropertyCard } from '@tidbcloud/uikit/biz'
 
-<PropertyCard title="Cluster Properties">
+<PropertyCard title="Cluster Properties" w={420}>
   <PropertyCard.Item label="Name" labelProps={{}} value="Cluster0" valueProps={{}}/>
   <PropertyCard.Item label="Status" value="Available" />
   <PropertyCard.Item label="Tier Type" value="Dedicated Tier" />
   <PropertyCard.Item label="TiDB Version" value="v7.5.0" />
   <PropertyCard.Item label="Cloud Provider" value="AWS" />
   <PropertyCard.Item label="Region" value="Oregon (us-west-2)" />
+
   <PropertyCard.Divider />
+
   <PropertyCard.Item
     label="TiDB"
     align="flex-start"
@@ -51,8 +53,27 @@ import { PropertyCard } from '@tidbcloud/uikit/biz'
 export const Primary: Story = {
   args: {
     title: 'Cluster Properties',
-    children: (
-      <>
+    w: 420
+  },
+  argTypes: {
+    title: {
+      control: {
+        type: 'text'
+      }
+    }
+  },
+  parameters: {
+    controls: { expanded: true },
+    docs: {
+      source: {
+        language: 'jsx',
+        code
+      }
+    }
+  },
+  render: (props) => {
+    return (
+      <PropertyCard {...props}>
         <PropertyCard.Item label="Name" value="Cluster0" />
         <PropertyCard.Item label="Status" value="Available" />
         <PropertyCard.Item label="Tier Type" value="Dedicated Tier" />
@@ -81,25 +102,8 @@ export const Primary: Story = {
             </Stack>
           }
         />
-      </>
-    ),
-    w: 420
-  },
-  argTypes: {
-    title: {
-      control: {
-        type: 'text'
-      }
-    }
-  },
-  parameters: {
-    controls: { expanded: true },
-    docs: {
-      source: {
-        language: 'jsx',
-        code
-      }
-    }
+      </PropertyCard>
+    )
   }
 }
 
