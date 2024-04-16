@@ -1,4 +1,4 @@
-import { ReactNode } from 'react'
+import { ReactNode, Children, cloneElement } from 'react'
 
 import {
   Card,
@@ -14,15 +14,37 @@ import {
 
 export interface PropertyCardProps extends CardProps {
   title: string
+  labelProps?: TypographyProps
+  valueProps?: TypographyProps
 }
 
-const PropertyCard = ({ title, children, ...rest }: PropertyCardProps) => {
+const PropertyCard = ({ title, children, labelProps, valueProps, ...rest }: PropertyCardProps) => {
+  const renderChildren = () => {
+    return Children.map(children, (child) => {
+      if (!child || typeof child !== 'object' || !('props' in child)) {
+        return child
+      }
+
+      return cloneElement(child, {
+        ...child.props,
+        labelProps: {
+          ...labelProps,
+          ...child.props.labelProps
+        },
+        valueProps: {
+          ...valueProps,
+          ...child.props.valueProps
+        }
+      })
+    })
+  }
+
   return (
     <Card p="xl" {...rest}>
       <Typography variant="headline-sm" mb={16}>
         {title}
       </Typography>
-      <Stack spacing={16}>{children}</Stack>
+      <Stack spacing={16}>{renderChildren()}</Stack>
     </Card>
   )
 }

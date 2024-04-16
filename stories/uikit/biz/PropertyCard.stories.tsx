@@ -102,3 +102,25 @@ export const Primary: Story = {
     }
   }
 }
+
+export const withGlobalProps: Story = {
+  parameters: {
+    docs: {
+      source: {
+        language: 'jsx',
+        code: `<PropertyCard labelProps={{ miw: 200 }} valueProps={{ color: 'red' }}></PropertyCard>`
+      }
+    }
+  },
+  render: () => {
+    return (
+      <PropertyCard title="Global labelProps and valueProps" labelProps={{ miw: 200 }} valueProps={{ color: 'red' }}>
+        <PropertyCard.Item label="Name" value="Cluster0" />
+        <PropertyCard.Item label="Status" value="Available" />
+        <PropertyCard.Item label="Tier Type" value="Dedicated Tier" />
+        <PropertyCard.Item label="TiDB Version" value="v7.5.0" />
+        <PropertyCard.Item label="Cloud Provider" value="AWS" />
+      </PropertyCard>
+    )
+  }
+}
