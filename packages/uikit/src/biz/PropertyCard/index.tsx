@@ -51,19 +51,18 @@ const PropertyCard = ({ title, children, labelProps, valueProps, ...rest }: Prop
 
 export interface PropertyCardItemProps extends GroupProps {
   label: string
-  value: ReactNode
   labelProps?: TypographyProps
   valueProps?: TypographyProps
 }
 
-const Item = ({ label, value, labelProps, valueProps, ...rest }: PropertyCardItemProps) => {
+const Item = ({ label, children, labelProps, valueProps, ...rest }: PropertyCardItemProps) => {
   return (
     <Group spacing="md" noWrap {...rest}>
-      <Typography variant="body2" miw={128} {...labelProps}>
+      <Typography variant="label-lg" miw={128} {...labelProps}>
         {label}
       </Typography>
-      <Typography variant="body1" sx={{ wordBreak: 'break-all' }} {...valueProps}>
-        {value}
+      <Typography variant="body-lg" sx={{ wordBreak: 'break-all' }} {...valueProps}>
+        {children}
       </Typography>
     </Group>
   )
