@@ -2,4 +2,4 @@
 '@tidbcloud/uikit': minor
 ---
 
-Add PropertyCard component
+Add `PropertyCard` and `PageShell` component
