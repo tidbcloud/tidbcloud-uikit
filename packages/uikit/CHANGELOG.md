@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 1.16.0
+
+### Minor Changes
+
+- 3098b60: Add `PropertyCard` and `PageShell` component
+
 ## 1.15.1
 
 ### Patch Changes
