@@ -32,6 +32,7 @@ type TypographyVariantsV2 =
   | 'body-md'
   | 'body-sm'
   | 'body-xs'
+
 export interface TypographyProps extends Omit<TextProps, 'variant'> {
   variant?: TypographyVariants | TypographyVariantsV2
 }

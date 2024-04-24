@@ -30,7 +30,13 @@
     "paths": {
       // https://remarkablemark.org/blog/2023/06/30/react-types-reactnode-error/
       // https://github.com/facebook/react/issues/24304#issuecomment-1094565891
-      "react": ["node_modules/@types/react"]
+      "react": ["node_modules/@types/react"],
+      "@tidbcloud/uikit/icons": ["packages/uikit/src/icons"],
+      "@tidbcloud/uikit/theme": ["packages/uikit/src/theme"],
+      "@tidbcloud/uikit/hooks": ["packages/uikit/src/hooks"],
+      "@tidbcloud/uikit/biz": ["packages/uikit/src/biz"],
+      "@tidbcloud/uikit/utils": ["packages/uikit/src/utils"],
+      "@tidbcloud/uikit": ["packages/uikit/src/primitive"],
     }
   },
   "exclude": ["node_modules", "dist"]
