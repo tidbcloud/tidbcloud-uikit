@@ -99,28 +99,22 @@
   "typesVersions": {
     "*": {
       "biz": [
-        "./dist/biz/index.d.ts",
-        "./dist/*"
+        "./dist/biz/index.d.ts"
       ],
       "icons": [
-        "./dist/icons/index.d.ts",
-        "./dist/*"
+        "./dist/icons/index.d.ts"
       ],
       "theme": [
-        "./dist/theme/index.d.ts",
-        "./dist/*"
+        "./dist/theme/index.d.ts"
       ],
       "utils": [
-        "./dist/utils/index.d.ts",
-        "./dist/*"
+        "./dist/utils/index.d.ts"
       ],
       "hooks": [
-        "./dist/hooks/index.d.ts",
-        "./dist/*"
+        "./dist/hooks/index.d.ts"
       ],
       ".": [
-        "./dist/primitive/index.d.ts",
-        "./dist/*"
+        "./dist/primitive/index.d.ts"
       ]
     }
   },
