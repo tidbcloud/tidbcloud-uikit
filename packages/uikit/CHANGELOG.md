@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 1.16.1
+
+### Patch Changes
+
+- 9432c15: fix typesVersions in package.json to resolve imports inferences
+
 ## 1.16.0
 
 ### Minor Changes
