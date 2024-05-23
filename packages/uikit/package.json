@@ -112,9 +112,6 @@
       ],
       "hooks": [
         "./dist/hooks/index.d.ts"
-      ],
-      ".": [
-        "./dist/primitive/index.d.ts"
       ]
     }
   },
