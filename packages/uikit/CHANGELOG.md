@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 1.16.2
+
+### Patch Changes
+
+- b5a68e9: Remove types version for root path import
+
 ## 1.16.1
 
 ### Patch Changes
