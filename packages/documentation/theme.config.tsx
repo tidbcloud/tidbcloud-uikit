@@ -64,6 +64,10 @@ const config: DocsThemeConfig = {
     text: logoWithText
   },
   darkMode: false,
+  nextThemes: {
+    defaultTheme: 'light',
+    forcedTheme: 'light'
+  },
   useNextSeoProps() {
     return {
       titleTemplate: '%s - TiDB Cloud UIKit'
