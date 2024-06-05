@@ -24,7 +24,11 @@ export const FormPhoneInput: React.FC<FormPhoneInputProps> = ({
   rootProps,
   ...rest
 }) => {
-  const { control, errors } = useFormContext()
+  const {
+    control,
+
+    formState: { errors }
+  } = useFormContext()
   const error = get(errors, name)
   return (
     <Controller
@@ -104,7 +108,11 @@ export const FormPhoneInputV2: React.FC<FormPhoneInputV2Props> = ({
   rootProps,
   ...rest
 }) => {
-  const { errors, watch } = useFormContext()
+  const {
+    watch,
+
+    formState: { errors }
+  } = useFormContext()
   const { ...restProps } = selectProps
   const countryError = get(errors, countryKey)
   const phoneError = get(errors, phoneKey)

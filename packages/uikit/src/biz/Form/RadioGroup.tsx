@@ -11,7 +11,11 @@ export interface FormRadioGroupProps extends Omit<RadioGroupProps, 'children'> {
 }
 
 export const FormRadioGroup: React.FC<FormRadioGroupProps> = ({ name, rules, onChange, data, ...rest }) => {
-  const { control, errors } = useFormContext()
+  const {
+    control,
+
+    formState: { errors }
+  } = useFormContext()
   const error = get(errors, name)
 
   return (

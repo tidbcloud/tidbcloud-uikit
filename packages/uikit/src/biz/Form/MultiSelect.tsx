@@ -15,7 +15,11 @@ export const FormMultiSelect: React.FC<FormMultiSelectProps> = ({
   data,
   ...restProps
 }) => {
-  const { control, errors } = useFormContext()
+  const {
+    control,
+
+    formState: { errors }
+  } = useFormContext()
   // use lodash get method to query a chained path of the property
   const error = get(errors, name)
 

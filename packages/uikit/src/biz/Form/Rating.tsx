@@ -20,7 +20,11 @@ export const FormRatingInput: React.FC<FormRatingInputProps> = ({
   wrapperProps,
   ...rest
 }) => {
-  const { control, errors } = useFormContext()
+  const {
+    control,
+
+    formState: { errors }
+  } = useFormContext()
   const error = get(errors, name)
   return (
     <Controller

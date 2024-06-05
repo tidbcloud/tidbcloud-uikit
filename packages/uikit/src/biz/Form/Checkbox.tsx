@@ -10,7 +10,11 @@ export interface FormCheckboxProps extends CheckboxProps {
 }
 
 export const FormCheckbox: React.FC<FormCheckboxProps> = ({ name, rules, onChange, ...rest }) => {
-  const { control, errors } = useFormContext()
+  const {
+    control,
+
+    formState: { errors }
+  } = useFormContext()
   const error = get(errors, name)
 
   return (
@@ -44,7 +48,11 @@ export interface FormCheckboxGroupProps extends Omit<CheckboxGroupProps, 'childr
 }
 
 export const FormCheckboxGroup = ({ name, rules, data, onChange, ...rest }: FormCheckboxGroupProps) => {
-  const { control, errors } = useFormContext()
+  const {
+    control,
+
+    formState: { errors }
+  } = useFormContext()
   const error = get(errors, name)
 
   return (

@@ -9,7 +9,11 @@ export interface FormTextareaInputProps extends TextareaProps {
 }
 
 export const FormTextareaInput: React.FC<FormTextareaInputProps> = ({ name, rules, onChange, ...rest }) => {
-  const { control, errors } = useFormContext()
+  const {
+    control,
+
+    formState: { errors }
+  } = useFormContext()
   const error = get(errors, name)
 
   return (
