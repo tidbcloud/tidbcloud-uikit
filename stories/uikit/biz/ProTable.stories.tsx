@@ -60,6 +60,7 @@ export const Primary: Story = {
     enableBottomToolbar: false,
     enableSorting: false,
     columns,
+    emptyMessage: 'No data',
     data
   },
   argTypes: {}
