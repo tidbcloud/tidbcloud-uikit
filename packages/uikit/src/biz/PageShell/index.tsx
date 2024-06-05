@@ -96,7 +96,7 @@ export interface PageShellProps {
    * Default: false
    */
   wrapped?: boolean
-  wrapperProps?: DefaultProps
+  wrapperProps?: DefaultProps & { component?: any }
   headerProps?: GroupProps & {
     /**
      * Determines whether the header should be sticky,
@@ -116,7 +116,7 @@ export interface PageShellProps {
      */
     onBackClick?: () => void
   }
-  bodyProps?: DefaultProps
+  bodyProps?: DefaultProps & { component?: any }
   children: ReactNode
 }
 
