@@ -1,5 +1,10 @@
 .home-page {
   min-height: calc(100vh - 230px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 .home-page h1 {
@@ -10,4 +15,42 @@
 
 .home-page p {
   text-align: center;
+}
+
+.home-page .summary {
+}
+
+.home-page .summary .card {
+  margin: 24px;
+  margin-bottom: 48px;
+  background-color: #e6e6e6;
+  padding: 48px;
+  border-radius: 35px;
+}
+
+.home-page .summary .card .main {
+  display: flex;
+  justify-content: space-between;
+}
+
+.home-page .summary .card .title {
+  font-size: 46px;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+.home-page .summary .card .main .desc {
+  font-size: 16px;
+  padding: 16px;
+  margin-left: 24px;
+  display: flex;
+  align-items: center;
+  max-width: 500px;
+  text-align: left;
+}
+.home-page .summary .card .main .img {
+  width: 600px;
+}
+.home-page .summary .card .main img {
+  border-radius: 15px;
 }

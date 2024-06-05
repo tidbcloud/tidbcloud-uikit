@@ -1,21 +1,78 @@
 import { Button, Center, Box } from '@tidbcloud/uikit'
+import { IconBookOpen01, IconGithub } from '@tidbcloud/uikit/icons'
 import Link from 'next/link'
 
 export default function () {
   return (
-    <main className="home-page">
-      <Box component="h1" mt={32}>
-        Welcome to TiDB Cloud UIKit
+    <Box component="main" className="home-page">
+      <Box mt={32}>
+        <h1>Welcome to TiUI!</h1>
       </Box>
-      <Box component="p" mb={16}>
-        A collection of beautifully designed and well-crafted React components for your next project.
+      <Box mt={32} w={800}>
+        TiUI is the UI library for TiDB Cloud, which includes a component library --- Cloud UI, SQL editor, charts, and
+        more. It enhances development efficiency and unifies UI style and interaction experience. Currently TiUI is
+        still under development.
       </Box>
-
-      <Center>
+      <Box mt={32}>
         <Link href="/docs">
           <Button>Get Started</Button>
         </Link>
-      </Center>
-    </main>
+      </Box>
+      <Box className="summary" mt={48}>
+        <Box className="card">
+          <Box className="main">
+            <Box className="img">
+              <img
+                src="https://boserverdisc.oss-cn-hangzhou.aliyuncs.com/public/tiui/tidb-cloud.png"
+                alt="tidb-cloud"
+              />
+            </Box>
+            <Box>
+              <Box className="title">Cloud UI</Box>
+              <Box className="desc">
+                Cloud UI is the component library for TiDB Cloud. It is based on Mantine and includes many
+                business-specific customizations, providing better support for Dark Mode. Additionally, it has
+                accumulated a large number of business components specifically for the Cloud Database Console.
+              </Box>
+              <Box className="ctrl">
+                <Button variant="default" leftIcon={<IconBookOpen01 />}>
+                  Documentation
+                </Button>
+                <Button variant="default" ml={8} leftIcon={<IconGithub />}>
+                  Git
+                </Button>
+              </Box>
+            </Box>
+          </Box>
+        </Box>
+        <Box className="card">
+          <Box className="main">
+            <Box className="img">
+              <img
+                src="https://boserverdisc.oss-cn-hangzhou.aliyuncs.com/public/tiui/sql-editor.png"
+                alt="sql-editor"
+              />
+            </Box>
+            <Box>
+              <Box className="title">TiSQLEditor</Box>
+              <Box className="desc">
+                TiSQLEditor is an SQL Editor wrapped around CodeMirror, significantly enhancing usability. It includes
+                numerous improvements and refinements for common features such as syntax error handling, Chinese
+                language processing, and interactive pop-ups. This component is also used in the code editor within TiDB
+                Cloud.
+              </Box>
+              <Box className="ctrl">
+                <Button variant="default" leftIcon={<IconBookOpen01 />}>
+                  Documentation
+                </Button>
+                <Button variant="default" ml={8} leftIcon={<IconGithub />}>
+                  Git
+                </Button>
+              </Box>
+            </Box>
+          </Box>
+        </Box>
+      </Box>
+    </Box>
   )
 }
