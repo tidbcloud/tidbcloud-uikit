@@ -117,7 +117,7 @@ export interface PageShellProps {
     onBackClick?: () => void
   }
   bodyProps?: DefaultProps & { component?: any }
-  children: ReactNode
+  children?: ReactNode
 }
 
 export const PageShell = ({
@@ -134,8 +134,6 @@ export const PageShell = ({
   bodyProps = {},
   children
 }: PageShellProps) => {
-  console.log('PageShell')
-
   const headerVisible = !!title || !!headerRightSection
   const leftSection = (!!withBack || !!headerBack) && (
     <ActionIcon
