@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 1.17.1
+
+### Patch Changes
+
+- 886ebb5: Make pageshell children optional
+
 ## 1.17.0
 
 ### Minor Changes
