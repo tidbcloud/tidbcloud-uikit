@@ -1,4 +1,4 @@
-import { get } from 'lodash-es'
+import { ErrorMessage } from '@hookform/error-message'
 import React from 'react'
 import { Controller, RegisterOptions, useFormContext } from 'react-hook-form'
 
@@ -12,17 +12,15 @@ export interface FormCheckboxProps extends CheckboxProps {
 export const FormCheckbox: React.FC<FormCheckboxProps> = ({ name, rules, onChange, ...rest }) => {
   const {
     control,
-
     formState: { errors }
   } = useFormContext()
-  const error = get(errors, name)
 
   return (
     <Controller
       control={control}
       name={name}
       rules={rules}
-      render={(field) => {
+      render={({ field }) => {
         const { onChange: handleChange, value, ...restField } = field
         return (
           <Checkbox
@@ -33,7 +31,7 @@ export const FormCheckbox: React.FC<FormCheckboxProps> = ({ name, rules, onChang
               onChange?.(e)
             }}
             {...restField}
-            error={error?.message}
+            error={<ErrorMessage errors={errors} name={name} />}
           />
         )
       }}
@@ -50,17 +48,15 @@ export interface FormCheckboxGroupProps extends Omit<CheckboxGroupProps, 'childr
 export const FormCheckboxGroup = ({ name, rules, data, onChange, ...rest }: FormCheckboxGroupProps) => {
   const {
     control,
-
     formState: { errors }
   } = useFormContext()
-  const error = get(errors, name)
 
   return (
     <Controller
       control={control}
       name={name}
       rules={rules}
-      render={(field) => {
+      render={({ field }) => {
         const { onChange: handleChange, value, ...restField } = field
         return (
           <Checkbox.Group
@@ -71,7 +67,7 @@ export const FormCheckboxGroup = ({ name, rules, data, onChange, ...rest }: Form
               onChange?.(val)
             }}
             {...restField}
-            error={error?.message}
+            error={<ErrorMessage errors={errors} name={name} />}
           >
             {data.map((i) => (
               <Checkbox {...i} key={i.value as string} />

@@ -1,3 +1,4 @@
+import { ErrorMessage } from '@hookform/error-message'
 import { get } from 'lodash-es'
 import { Controller, useFormContext, RegisterOptions } from 'react-hook-form'
 
@@ -22,19 +23,18 @@ export const FormRatingInput: React.FC<FormRatingInputProps> = ({
 }) => {
   const {
     control,
-
     formState: { errors }
   } = useFormContext()
-  const error = get(errors, name)
+
   return (
     <Controller
       name={name}
       control={control}
       rules={rules}
-      render={({ onChange, value }) => {
+      render={({ field: { onChange, value } }) => {
         return (
           <Input.Wrapper
-            error={error?.message}
+            error={<ErrorMessage errors={errors} name={name} />}
             label={label}
             withAsterisk={withAsterisk}
             {...wrapperProps}

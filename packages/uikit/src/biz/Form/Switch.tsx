@@ -1,4 +1,4 @@
-import { get } from 'lodash-es'
+import { ErrorMessage } from '@hookform/error-message'
 import React from 'react'
 import { Controller, RegisterOptions, useFormContext } from 'react-hook-form'
 
@@ -12,17 +12,15 @@ export interface FormSwitchProps extends SwitchProps {
 export const FormSwitch: React.FC<FormSwitchProps> = ({ name, rules, onChange, label, ...rest }) => {
   const {
     control,
-
     formState: { errors }
   } = useFormContext()
-  const error = get(errors, name)
 
   return (
     <Controller
       control={control}
       name={name}
       rules={rules}
-      render={(field) => {
+      render={({ field }) => {
         const { onChange: handleChange, value, ...restField } = field
         return (
           <Switch
@@ -34,7 +32,7 @@ export const FormSwitch: React.FC<FormSwitchProps> = ({ name, rules, onChange, l
               onChange?.(value)
             }}
             {...restField}
-            error={error?.message}
+            error={<ErrorMessage errors={errors} name={name} />}
           />
         )
       }}

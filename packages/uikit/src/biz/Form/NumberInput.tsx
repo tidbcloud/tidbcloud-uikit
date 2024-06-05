@@ -1,4 +1,4 @@
-import { get } from 'lodash-es'
+import { ErrorMessage } from '@hookform/error-message'
 import React from 'react'
 import { Controller, RegisterOptions, useFormContext } from 'react-hook-form'
 
@@ -12,17 +12,15 @@ export interface FormNumberInputProps extends NumberInputProps {
 export const FormNumberInput: React.FC<FormNumberInputProps> = ({ name, rules, onChange, ...rest }) => {
   const {
     control,
-
     formState: { errors }
   } = useFormContext()
-  const error = get(errors, name)
 
   return (
     <Controller
       control={control}
       name={name}
       rules={rules}
-      render={(field) => {
+      render={({ field }) => {
         const { onChange: handleChange, ...restField } = field
         return (
           <NumberInput
@@ -32,7 +30,7 @@ export const FormNumberInput: React.FC<FormNumberInputProps> = ({ name, rules, o
               onChange?.(value)
             }}
             {...restField}
-            error={error?.message}
+            error={<ErrorMessage errors={errors} name={name} />}
           />
         )
       }}

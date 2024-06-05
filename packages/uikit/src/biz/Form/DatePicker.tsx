@@ -1,4 +1,4 @@
-import { get } from 'lodash-es'
+import { ErrorMessage } from '@hookform/error-message'
 import { Controller, RegisterOptions, useFormContext } from 'react-hook-form'
 
 import { DatePicker, DatePickerProps } from '../../primitive/index.js'
@@ -14,14 +14,13 @@ export const FormDatePicker: React.FC<FormDatePickerProps> = ({ name, rules, onC
 
     formState: { errors }
   } = useFormContext()
-  const error = get(errors, name)
 
   return (
     <Controller
       control={control}
       name={name}
       rules={rules}
-      render={(field) => {
+      render={({ field }) => {
         const { onChange: handleChange, ...restField } = field
         return (
           <DatePicker
@@ -29,7 +28,7 @@ export const FormDatePicker: React.FC<FormDatePickerProps> = ({ name, rules, onC
               handleChange(e)
               onChange?.(e)
             }}
-            error={error?.message}
+            error={<ErrorMessage errors={errors} name={name} />}
             {...restField}
             {...rest}
           />

@@ -1,3 +1,4 @@
+import { ErrorMessage } from '@hookform/error-message'
 import { get, omit } from 'lodash-es'
 import React, { Fragment } from 'react'
 import { Controller, RegisterOptions, useFormContext } from 'react-hook-form'
@@ -13,17 +14,15 @@ export interface FormRadioGroupProps extends Omit<RadioGroupProps, 'children'> {
 export const FormRadioGroup: React.FC<FormRadioGroupProps> = ({ name, rules, onChange, data, ...rest }) => {
   const {
     control,
-
     formState: { errors }
   } = useFormContext()
-  const error = get(errors, name)
 
   return (
     <Controller
       control={control}
       name={name}
       rules={rules}
-      render={(field) => {
+      render={({ field }) => {
         const { onChange: handleChange, ...restField } = field
         return (
           <Radio.Group
@@ -33,7 +32,7 @@ export const FormRadioGroup: React.FC<FormRadioGroupProps> = ({ name, rules, onC
               onChange?.(value)
             }}
             {...restField}
-            error={error?.message}
+            error={<ErrorMessage errors={errors} name={name} />}
           >
             {data.map((i) => {
               const radioProps = omit(i, 'tooltipProps', 'tooltip')

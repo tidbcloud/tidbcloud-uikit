@@ -1,4 +1,4 @@
-import { get } from 'lodash-es'
+import { ErrorMessage } from '@hookform/error-message'
 import { RegisterOptions, useFormContext, Controller } from 'react-hook-form'
 
 import { Select, SelectProps } from '../../primitive/index.js'
@@ -11,18 +11,15 @@ export interface FormSelectProps extends SelectProps {
 export const FormSelect: React.FC<FormSelectProps> = ({ name, rules, onChange: onSelect, data, ...restProps }) => {
   const {
     control,
-
     formState: { errors }
   } = useFormContext()
-  // use lodash get method to query a chained path of the property
-  const error = get(errors, name)
 
   return (
     <Controller
       name={name}
       control={control}
       rules={rules}
-      render={({ onChange, value }) => {
+      render={({ field: { onChange, value } }) => {
         return (
           <Select
             value={value}
@@ -31,7 +28,7 @@ export const FormSelect: React.FC<FormSelectProps> = ({ name, rules, onChange: o
               onChange(val)
               onSelect?.(val)
             }}
-            error={error?.message}
+            error={<ErrorMessage errors={errors} name={name} />}
             {...restProps}
           />
         )

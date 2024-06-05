@@ -1,3 +1,4 @@
+import { ErrorMessage } from '@hookform/error-message'
 import { get } from 'lodash-es'
 import { Controller, RegisterOptions, useFormContext } from 'react-hook-form'
 import { CountryData } from 'react-phone-input-2'
@@ -26,16 +27,15 @@ export const FormPhoneInput: React.FC<FormPhoneInputProps> = ({
 }) => {
   const {
     control,
-
     formState: { errors }
   } = useFormContext()
-  const error = get(errors, name)
+
   return (
     <Controller
       name={name}
       control={control}
       rules={rules}
-      render={({ value, onChange }) => {
+      render={({ field: { value, onChange } }) => {
         const handleChange: PhoneInputProps['onChange'] = (value, data, event, formattedValue: string) => {
           onChange(formattedValue)
           onSelect?.(formattedValue, data)
@@ -43,7 +43,7 @@ export const FormPhoneInput: React.FC<FormPhoneInputProps> = ({
         }
         return (
           <PhoneInput
-            error={error?.message}
+            error={<ErrorMessage errors={errors} name={name} />}
             value={value}
             label={label}
             onChange={handleChange}
@@ -126,7 +126,7 @@ export const FormPhoneInputV2: React.FC<FormPhoneInputV2Props> = ({
           {...selectProps}
           name={countryKey}
           rules={countryRules}
-          error={countryError?.message}
+          error={<ErrorMessage errors={errors} name={countryKey} />}
           styles={(theme, params) => {
             const styles =
               typeof restProps.styles === 'function' ? restProps.styles(theme, params) : restProps.styles || {}
@@ -171,8 +171,11 @@ export const FormPhoneInputV2: React.FC<FormPhoneInputV2Props> = ({
           {...rest}
         />
       </Box>
-      {(!!countryError?.message || !!phoneError?.message) && (
-        <div className={classes.error}>{countryError?.message || phoneError?.message}</div>
+      {(!!errors[countryKey] || !!errors[phoneKey]) && (
+        <div className={classes.error}>
+          <ErrorMessage errors={errors} name={countryKey} />
+          <ErrorMessage errors={errors} name={phoneKey} />
+        </div>
       )}
     </Box>
   )
