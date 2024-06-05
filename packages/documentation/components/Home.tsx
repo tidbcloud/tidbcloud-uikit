@@ -8,10 +8,9 @@ export default function () {
       <Box mt={32}>
         <h1>Welcome to TiUI!</h1>
       </Box>
-      <Box mt={32} w={800}>
-        TiUI is the UI library for TiDB Cloud, which includes a component library --- Cloud UI, SQL editor, charts, and
-        more. It enhances development efficiency and unifies UI style and interaction experience. Currently TiUI is
-        still under development.
+      <Box mt={32} w={800} className="sub-title">
+        <b>TiUI</b> is the UI library for TiDB Cloud, which includes Cloud UI, SQL editor, icons. It enhances
+        development efficiency and unifies UI style and interaction experience.
       </Box>
       <Box mt={32}>
         <Link href="/docs">
@@ -30,7 +29,7 @@ export default function () {
             <Box>
               <Box className="title">Cloud UI</Box>
               <Box className="desc">
-                Cloud UI is the component library for TiDB Cloud. It is based on Mantine and includes many
+                <b>Cloud UI</b> is the component library for TiDB Cloud. It is based on Mantine and includes many
                 business-specific customizations, providing better support for Dark Mode. Additionally, it has
                 accumulated a large number of business components specifically for the Cloud Database Console.
               </Box>
@@ -56,10 +55,10 @@ export default function () {
             <Box>
               <Box className="title">TiSQLEditor</Box>
               <Box className="desc">
-                TiSQLEditor is an SQL Editor wrapped around CodeMirror, significantly enhancing usability. It includes
-                numerous improvements and refinements for common features such as syntax error handling, Chinese
-                language processing, and interactive pop-ups. This component is also used in the code editor within TiDB
-                Cloud.
+                TiSQLEditor is an <b>SQL Editor</b> wrapped around CodeMirror, significantly enhancing usability. It
+                includes numerous improvements and refinements for common features such as syntax error handling,
+                Chinese language processing, and interactive pop-ups. This component is also used in the code editor
+                within TiDB Cloud.
               </Box>
               <Box className="ctrl">
                 <Button variant="default" leftIcon={<IconBookOpen01 />}>
@@ -80,8 +79,8 @@ export default function () {
             <Box>
               <Box className="title">Cloud UI Icons</Box>
               <Box className="desc">
-                A set of icons designed by the TiDB Cloud design team for the cloud database web console, meeting most
-                of the needs of a complex console.
+                A set of <b>icons</b> designed by the TiDB Cloud design team for the cloud database web console, meeting
+                most of the needs of a complex console.
               </Box>
               <Box className="ctrl">
                 <Button variant="default" leftIcon={<IconBookOpen01 />}>

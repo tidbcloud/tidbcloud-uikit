@@ -7,6 +7,10 @@
   text-align: center;
 }
 
+.home-page .sub-title {
+  font-size: 22px;
+}
+
 .home-page h1 {
   text-align: center;
   font-weight: 700;
@@ -43,8 +47,6 @@
   font-size: 16px;
   padding: 16px;
   margin-left: 24px;
-  display: flex;
-  align-items: center;
   max-width: 500px;
   text-align: left;
 }
