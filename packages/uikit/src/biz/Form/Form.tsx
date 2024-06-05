@@ -1,10 +1,10 @@
 import { useSafeState } from 'ahooks'
 import {
   DefaultValues,
-  UseFormMethods,
+  UseFormReturn,
   useForm,
   Mode,
-  UseFormOptions,
+  UseFormProps,
   SubmitHandler,
   FormProvider,
   FieldValues
@@ -22,9 +22,9 @@ const getErrorMessage = (e: any) => e?.message
 export interface FormProps<T extends FieldValues = object> extends BoxProps {
   errorMessage?: string
   formMode?: Mode // mode param in options of useForm
-  reValidateMode?: UseFormOptions['reValidateMode']
+  reValidateMode?: UseFormProps['reValidateMode']
   defaultValues?: DefaultValues<T>
-  form?: UseFormMethods<T>
+  form?: UseFormReturn<T>
   withActions?: boolean
   actionsProps?: FormActionsProps
   errorMessageProps?: Omit<FormErrorMessageProps, 'message'>
