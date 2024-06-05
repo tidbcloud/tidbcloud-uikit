@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.0
+
+### Major Changes
+
+- Upgrade react-hook-form to v7
+
 ## 1.17.1
 
 ### Patch Changes
