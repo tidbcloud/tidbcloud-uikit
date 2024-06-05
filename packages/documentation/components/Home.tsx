@@ -72,6 +72,28 @@ export default function () {
             </Box>
           </Box>
         </Box>
+        <Box className="card">
+          <Box className="main">
+            <Box className="img">
+              <img src="https://boserverdisc.oss-cn-hangzhou.aliyuncs.com/public/tiui/icons.png" alt="cons" />
+            </Box>
+            <Box>
+              <Box className="title">Cloud UI Icons</Box>
+              <Box className="desc">
+                A set of icons designed by the TiDB Cloud design team for the cloud database web console, meeting most
+                of the needs of a complex console.
+              </Box>
+              <Box className="ctrl">
+                <Button variant="default" leftIcon={<IconBookOpen01 />}>
+                  Documentation
+                </Button>
+                <Button variant="default" ml={8} leftIcon={<IconGithub />}>
+                  Git
+                </Button>
+              </Box>
+            </Box>
+          </Box>
+        </Box>
       </Box>
     </Box>
   )
