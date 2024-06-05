@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 1.17.0
+
+### Minor Changes
+
+- cbe56a8: Using built-in mantine-react-table loading state
+
 ## 1.16.2
 
 ### Patch Changes
