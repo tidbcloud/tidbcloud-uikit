@@ -1,10 +1,17 @@
 {
   "index": {
     "type": "page",
-    "title": "TiDB Cloud UIKit",
-    "display": "hidden",
+    "title": "Home",
     "theme": {
       "layout": "raw"
+    }
+  },
+  "cloud-ui": {
+    "type": "page",
+    "title": "Cloud UI",
+    "theme": {
+      "typesetting": "article",
+      "layout": "full"
     }
   },
   "icons": {
@@ -15,9 +22,17 @@
       "layout": "full"
     }
   },
+  "sql-editor": {
+    "type": "page",
+    "title": "SQL Editor",
+    "theme": {
+      "typesetting": "article",
+      "layout": "full"
+    }
+  },
   "docs": {
     "type": "page",
-    "title": "Documentation"
+    "title": "Docs"
   },
   "404": {
     "type": "page",

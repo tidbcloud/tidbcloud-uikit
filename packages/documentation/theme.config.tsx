@@ -8,7 +8,7 @@ const logo = (
         fill="inherit"
       />
     </svg>
-    <b>TiDB Cloud UIKit</b>
+    <b>TiUI</b>
   </div>
 )
 
@@ -70,7 +70,7 @@ const config: DocsThemeConfig = {
   },
   useNextSeoProps() {
     return {
-      titleTemplate: '%s - TiDB Cloud UIKit'
+      titleTemplate: '%s - TiUI'
     }
   }
 }

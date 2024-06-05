@@ -1,9 +1,9 @@
 <p align="center">
   <a href="https://tidbcloud.com" target="_blank"><img src="media/tidbcloud-logo.svg" width="256" alt="TiDB Cloud Logo" /></a>
 </p>
-<h1 align="center">TiDB Cloud UIKit</h1>
+<h1 align="center">TiUI</h1>
 
-This repo is hosted TiDB Cloud UIKit including primitive, biz and pro components
+This repo is hosted TiUI(TiDB Cloud UIKit) including primitive, biz and pro components
 
 [![Publish Github Packages](https://github.com/tidbcloud/tidbcloud-uikit/actions/workflows/publish-github-packages.yml/badge.svg)](https://github.com/tidbcloud/tidbcloud-uikit/actions/workflows/publish-github-packages.yml)
 
