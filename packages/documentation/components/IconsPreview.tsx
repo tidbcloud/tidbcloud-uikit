@@ -1,4 +1,7 @@
-import { Button, Box, Input, Card, CopyButton, Flex, Typography, Center, Stack, Modal, Tooltip } from '@tidbcloud/uikit'
+import { Button } from '@nextui-org/button'
+import { Card } from '@nextui-org/card'
+import { Input } from '@nextui-org/input'
+import { Box, CopyButton, Flex, Typography, Center, Stack, Modal, Tooltip } from '@tidbcloud/uikit'
 import { useDisclosure } from '@tidbcloud/uikit/hooks'
 import * as icons from '@tidbcloud/uikit/icons'
 import { IconCopy01, IconSearchLg } from '@tidbcloud/uikit/icons'
@@ -13,7 +16,7 @@ function IconCard({ name, onClick }: { name: string; onClick: (name: string) => 
 
   return (
     <>
-      <Card w={120} p={16} sx={{ cursor: 'pointer' }} onClick={() => onClick(name)}>
+      <Card className="w-32 p-2" style={{ cursor: 'pointer' }} onClick={() => onClick(name)}>
         <Stack>
           <Center>
             <Icon size={24} />
@@ -87,12 +90,11 @@ export default function IconsPreview() {
     <Box p={16}>
       <Input
         size="lg"
-        radius={32}
         placeholder={`Search all ${iconCount} icons`}
         value={value}
         onChange={(e: any) => setValue(e.target.value)}
-        icon={<IconSearchLg size={24} />}
-        mb={32}
+        startContent={<IconSearchLg size={24} className="mr-4" />}
+        className="mb-8"
       />
 
       <Flex wrap="wrap" gap={16}>
@@ -106,7 +108,7 @@ export default function IconsPreview() {
 
       {!deferredValue && hasMore && (
         <Center mt={16}>
-          <Button type="button" color="dark" variant="subtle" onClick={loadMore} ref={loadMoreButtonRef}>
+          <Button type="button" onClick={loadMore} ref={loadMoreButtonRef}>
             {loadingMore ? 'Loading more...' : 'Load more icons'}
           </Button>
         </Center>

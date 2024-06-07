@@ -1,3 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: var(--font-cormorant_garamond), serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-rethink_sans), sans-serif;
+}
+
 .home-page {
   min-height: calc(100vh - 230px);
   display: flex;
@@ -5,10 +22,6 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-}
-
-.home-page .sub-title {
-  font-size: 22px;
 }
 
 .home-page h1 {
@@ -27,18 +40,16 @@
 .home-page .summary .card {
   margin: 24px;
   margin-bottom: 48px;
-  background-color: #e6e6e6;
-  padding: 48px;
-  border-radius: 35px;
 }
 
 .home-page .summary .card .main {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .home-page .summary .card .title {
-  font-size: 46px;
+  font-size: 32px;
   font-weight: bold;
   margin-bottom: 16px;
 }

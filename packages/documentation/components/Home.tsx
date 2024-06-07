@@ -1,5 +1,7 @@
-import { Button, Center, Box } from '@tidbcloud/uikit'
-import { IconBookOpen01, IconGithub } from '@tidbcloud/uikit/icons'
+import { Button } from '@nextui-org/button'
+import { Card, CardBody } from '@nextui-org/card'
+import { Box } from '@tidbcloud/uikit'
+// import { IconBookOpen01, IconGithub } from '@tidbcloud/uikit/icons'
 import Link from 'next/link'
 
 export default function () {
@@ -8,43 +10,45 @@ export default function () {
       <Box mt={32}>
         <h1>Welcome to TiUI!</h1>
       </Box>
-      <Box mt={32} w={800} className="sub-title">
-        <b>TiUI</b> is the UI library for TiDB Cloud, which includes Cloud UI, SQL editor, icons. It enhances
-        development efficiency and unifies UI style and interaction experience.
+      <Box mt={32} w={800}>
+        <p>
+          <b>TiUI</b> is the UI library for TiDB Cloud, which includes Cloud UI, SQL editor, icons. It enhances
+          development efficiency and unifies UI style and interaction experience.
+        </p>
       </Box>
       <Box mt={32}>
         <Link href="/docs">
-          <Button>Get Started</Button>
+          <Button color="primary">Get Started</Button>
         </Link>
       </Box>
       <Box className="summary" mt={48}>
-        <Box className="card">
-          <Box className="main">
-            <Box className="img">
-              <img
-                src="https://boserverdisc.oss-cn-hangzhou.aliyuncs.com/public/tiui/tidb-cloud.png"
-                alt="tidb-cloud"
-              />
-            </Box>
-            <Box>
-              <Box className="title">Cloud UI</Box>
-              <Box className="desc">
-                <b>Cloud UI</b> is the component library for TiDB Cloud. It is based on Mantine and includes many
-                business-specific customizations, providing better support for Dark Mode. Additionally, it has
-                accumulated a large number of business components specifically for the Cloud Database Console.
+        <Card className="card">
+          <CardBody>
+            <Box className="main">
+              <Box className="img">
+                <img
+                  src="https://boserverdisc.oss-cn-hangzhou.aliyuncs.com/public/tiui/tidb-cloud.png"
+                  alt="tidb-cloud"
+                />
               </Box>
-              <Box className="ctrl">
-                <Button variant="default" leftIcon={<IconBookOpen01 />}>
-                  Documentation
-                </Button>
-                <Button variant="default" ml={8} leftIcon={<IconGithub />}>
-                  Git
-                </Button>
+              <Box>
+                <Box className="title">Cloud UI</Box>
+                <Box className="desc">
+                  <p>
+                    <b>Cloud UI</b> is the component library for TiDB Cloud. It is based on Mantine and includes many
+                    business-specific customizations, providing better support for Dark Mode. Additionally, it has
+                    accumulated a large number of business components specifically for the Cloud Database Console.
+                  </p>
+                </Box>
+                <Box className="ctrl">
+                  <Button>Documentation</Button>
+                  <Button className="mx-4">Git</Button>
+                </Box>
               </Box>
             </Box>
-          </Box>
-        </Box>
-        <Box className="card">
+          </CardBody>
+        </Card>
+        <Card className="card">
           <Box className="main">
             <Box className="img">
               <img
@@ -61,17 +65,13 @@ export default function () {
                 within TiDB Cloud.
               </Box>
               <Box className="ctrl">
-                <Button variant="default" leftIcon={<IconBookOpen01 />}>
-                  Documentation
-                </Button>
-                <Button variant="default" ml={8} leftIcon={<IconGithub />}>
-                  Git
-                </Button>
+                <Button>Documentation</Button>
+                <Button className="mx-4">Git</Button>
               </Box>
             </Box>
           </Box>
-        </Box>
-        <Box className="card">
+        </Card>
+        <Card className="card">
           <Box className="main">
             <Box className="img">
               <img src="https://boserverdisc.oss-cn-hangzhou.aliyuncs.com/public/tiui/icons.png" alt="cons" />
@@ -83,16 +83,12 @@ export default function () {
                 most of the needs of a complex console.
               </Box>
               <Box className="ctrl">
-                <Button variant="default" leftIcon={<IconBookOpen01 />}>
-                  Documentation
-                </Button>
-                <Button variant="default" ml={8} leftIcon={<IconGithub />}>
-                  Git
-                </Button>
+                <Button>Documentation</Button>
+                <Button className="mx-4">Git</Button>
               </Box>
             </Box>
           </Box>
-        </Box>
+        </Card>
       </Box>
     </Box>
   )
