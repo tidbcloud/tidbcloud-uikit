@@ -25,11 +25,14 @@
     "autoprefixer": "^10.4.19",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
+    "install": "^0.13.0",
     "lucide-react": "^0.390.0",
     "next-themes": "^0.3.0",
+    "npm": "^10.8.1",
     "postcss": "^8.4.38",
     "tailwind-merge": "^2.3.0",
     "tailwindcss": "^3.4.4",
     "tailwindcss-animate": "^1.0.7"
-  }
+  },
+  "packageManager": "pnpm@9.2.0"
 }

@@ -2,19 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  font-family: var(--font-cormorant_garamond), serif;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: var(--font-rethink_sans), sans-serif;
-}
-
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -81,10 +68,10 @@ h6 {
 
 @layer base {
   * {
-    @apply yesborder-border;
+    @apply border-border;
   }
 
   body {
-    @apply yesbg-background yestext-foreground;
+    @apply bg-background text-foreground;
   }
 }
