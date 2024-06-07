@@ -1,6 +1,6 @@
-import { Button, Center, Box } from '@tidbcloud/uikit'
-import { IconBookOpen01, IconGithub } from '@tidbcloud/uikit/icons'
 import Link from 'next/link'
+
+import { Button } from '@/components/ui/button'
 
 /**
  * v0 by Vercel.

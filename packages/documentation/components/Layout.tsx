@@ -4,6 +4,8 @@
 import { Rethink_Sans } from 'next/font/google'
 import { Cormorant_Garamond } from 'next/font/google'
 
+import { cn } from '@/lib/utils'
+
 const rethink_sans = Rethink_Sans({
   subsets: ['latin'],
   display: 'swap',
@@ -19,7 +21,13 @@ const cormorant_garamond = Cormorant_Garamond({
 export default function Layout({ children }) {
   return (
     <html lang="en">
-      <body className={rethink_sans.variable + ' ' + cormorant_garamond.variable}>{children}</body>
+      <body
+        className={`${rethink_sans.variable} ${cormorant_garamond.variable} ${cn(
+          'min-h-screen bg-background font-sans antialiased'
+        )}`}
+      >
+        {children}
+      </body>
     </html>
   )
 }

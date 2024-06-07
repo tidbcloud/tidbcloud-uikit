@@ -1,12 +1,14 @@
-import { Button } from '@nextui-org/button'
-import { Card, CardBody } from '@nextui-org/card'
 import { Box } from '@tidbcloud/uikit'
-// import { IconBookOpen01, IconGithub } from '@tidbcloud/uikit/icons'
 import Link from 'next/link'
+
+import { Button } from '@/components/ui/button'
+import { Card } from '@/components/ui/card'
+// import { IconBookOpen01, IconGithub } from '@tidbcloud/uikit/icons'
 
 export default function () {
   return (
     <Box component="main" className="home-page">
+      <h1 className="text-3xl font-bold underline">Hello world!</h1>
       <Box mt={32}>
         <h1>Welcome to TiUI!</h1>
       </Box>
@@ -23,30 +25,28 @@ export default function () {
       </Box>
       <Box className="summary" mt={48}>
         <Card className="card">
-          <CardBody>
-            <Box className="main">
-              <Box className="img">
-                <img
-                  src="https://boserverdisc.oss-cn-hangzhou.aliyuncs.com/public/tiui/tidb-cloud.png"
-                  alt="tidb-cloud"
-                />
+          <Box className="main">
+            <Box className="img">
+              <img
+                src="https://boserverdisc.oss-cn-hangzhou.aliyuncs.com/public/tiui/tidb-cloud.png"
+                alt="tidb-cloud"
+              />
+            </Box>
+            <Box>
+              <Box className="title">Cloud UI</Box>
+              <Box className="desc">
+                <p>
+                  <b>Cloud UI</b> is the component library for TiDB Cloud. It is based on Mantine and includes many
+                  business-specific customizations, providing better support for Dark Mode. Additionally, it has
+                  accumulated a large number of business components specifically for the Cloud Database Console.
+                </p>
               </Box>
-              <Box>
-                <Box className="title">Cloud UI</Box>
-                <Box className="desc">
-                  <p>
-                    <b>Cloud UI</b> is the component library for TiDB Cloud. It is based on Mantine and includes many
-                    business-specific customizations, providing better support for Dark Mode. Additionally, it has
-                    accumulated a large number of business components specifically for the Cloud Database Console.
-                  </p>
-                </Box>
-                <Box className="ctrl">
-                  <Button>Documentation</Button>
-                  <Button className="mx-4">Git</Button>
-                </Box>
+              <Box className="ctrl">
+                <Button>Documentation</Button>
+                <Button className="mx-4">Git</Button>
               </Box>
             </Box>
-          </CardBody>
+          </Box>
         </Card>
         <Card className="card">
           <Box className="main">

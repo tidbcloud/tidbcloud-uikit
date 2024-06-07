@@ -1,12 +1,13 @@
-import { Button } from '@nextui-org/button'
-import { Card } from '@nextui-org/card'
-import { Input } from '@nextui-org/input'
 import { Box, CopyButton, Flex, Typography, Center, Stack, Modal, Tooltip } from '@tidbcloud/uikit'
 import { useDisclosure } from '@tidbcloud/uikit/hooks'
 import * as icons from '@tidbcloud/uikit/icons'
 import { IconCopy01, IconSearchLg } from '@tidbcloud/uikit/icons'
 import { useInfiniteScroll, useMemoizedFn, useInViewport } from 'ahooks'
 import { useState, useDeferredValue, useRef, useEffect } from 'react'
+
+import { Button } from '@/components/ui/button'
+import { Card } from '@/components/ui/card'
+import { Input } from '@/components/ui/input'
 
 const iconsData = Object.keys(icons).filter((i) => i !== 'Icon')
 
