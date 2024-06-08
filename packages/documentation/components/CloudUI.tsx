@@ -14,14 +14,15 @@ export default function Component() {
             <div className="grid gap-4 md:grid-cols-2 md:gap-16">
               <div>
                 <h1 className="lg:leading-tighter text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl xl:text-[3.4rem] 2xl:text-[3.75rem]">
-                  Acme Components
+                  Cloud UI
                 </h1>
                 <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl dark:text-gray-400">
-                  A comprehensive library of beautifully designed React components that you can copy and paste into your
-                  apps.
+                  <b>Cloud UI</b> is the component library for TiDB Cloud. It is based on Mantine and includes many
+                  business-specific customizations, providing better support for Dark Mode. Additionally, it has
+                  accumulated a large number of business components specifically for the Cloud Database Console.
                 </p>
                 <Link
-                  href="#"
+                  href="/docs"
                   className="inline-flex h-9 items-center justify-center rounded-md bg-gray-900 px-4 py-2 text-sm font-medium text-gray-50 shadow transition-colors hover:bg-gray-900/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50 dark:bg-gray-50 dark:text-gray-900 dark:hover:bg-gray-50/90 dark:focus-visible:ring-gray-300"
                   prefetch={false}
                 >
