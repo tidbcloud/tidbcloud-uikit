@@ -32,6 +32,7 @@ export const ProTable = <T extends Record<string, any> = {}>({
   errorMessage,
   data,
   localization,
+  state,
   ...rest
 }: ProTableProps<T>) => {
   const mPaperProps = mergeMProps<NonNullable<MantineReactTableProps<T>['mantinePaperProps']>>(
@@ -129,13 +130,7 @@ export const ProTable = <T extends Record<string, any> = {}>({
         mantinePaginationProps={{}}
         data={data}
         localization={{
-          noRecordsToDisplay: loading
-            ? 'Loading...'
-            : errorMessage
-            ? errorMessage
-            : emptyMessage
-            ? emptyMessage
-            : undefined,
+          noRecordsToDisplay: errorMessage ? errorMessage : emptyMessage ? emptyMessage : undefined,
           ...localization
         }}
         icons={{
@@ -143,6 +138,7 @@ export const ProTable = <T extends Record<string, any> = {}>({
           IconSortAscending: () => <IconArrowUp size={14} />,
           IconSortDescending: () => <IconArrowDown size={14} />
         }}
+        state={{ isLoading: loading, ...state }}
         {...rest}
       />
       {!!pagination && <TablePagination size="sm" position="right" mt={16} {...pagination} />}

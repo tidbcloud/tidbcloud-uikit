@@ -106,6 +106,19 @@ Run `pnpm i && pnpm build && pnpm storybook` to start the project in development
 
 Your working area is uikit and stories. Once you finish your coding in the uikit, please write some stories for testing.
 
+##### Developing documentation
+
+After installing dependencies with `pnpm install`, cd to `packages/documentation`, create a .env file with following content:
+
+```
+NEXT_PUBLIC_STORYBOOK_HOST=https://tidbcloud-uikit-story.netlify.app
+
+# if you want to reference your local storybook, set to
+# NEXT_PUBLIC_STORYBOOK_HOST=http://localhost:6006
+```
+
+then run `pnpm dev` to start the local dev server for documentation.
+
 ### Making a pull request
 
 #### Commit Convention

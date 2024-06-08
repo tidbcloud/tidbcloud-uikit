@@ -96,7 +96,7 @@ export interface PageShellProps {
    * Default: false
    */
   wrapped?: boolean
-  wrapperProps?: DefaultProps
+  wrapperProps?: DefaultProps & { component?: any }
   headerProps?: GroupProps & {
     /**
      * Determines whether the header should be sticky,
@@ -116,8 +116,8 @@ export interface PageShellProps {
      */
     onBackClick?: () => void
   }
-  bodyProps?: DefaultProps
-  children: ReactNode
+  bodyProps?: DefaultProps & { component?: any }
+  children?: ReactNode
 }
 
 export const PageShell = ({
@@ -134,8 +134,6 @@ export const PageShell = ({
   bodyProps = {},
   children
 }: PageShellProps) => {
-  console.log('PageShell')
-
   const headerVisible = !!title || !!headerRightSection
   const leftSection = (!!withBack || !!headerBack) && (
     <ActionIcon
