@@ -18,6 +18,7 @@ const config: DocsThemeConfig = {
   footer: {
     text: 'TiUI'
   },
+  darkMode: true,
   useNextSeoProps() {
     return {
       titleTemplate: '%s - TiUI'
