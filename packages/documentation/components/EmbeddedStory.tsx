@@ -1,13 +1,11 @@
-import { useTheme } from 'next-themes'
-import { useConfig } from 'nextra-theme-docs'
-import { useEffect, useRef, useState } from 'react'
+import { useTheme } from 'nextra-theme-docs'
+import { useEffect, useMemo, useRef, useState } from 'react'
 
 export function EmbeddedStory({ src, title }: { src: string; title: string }) {
   const ref = useRef<HTMLIFrameElement>(null)
   const [height, setHeight] = useState(500)
 
   const theme = useTheme()
-  const config = useConfig()
 
   useEffect(() => {
     function onMessage(e: MessageEvent<any>) {
@@ -30,10 +28,17 @@ export function EmbeddedStory({ src, title }: { src: string; title: string }) {
     return () => window.removeEventListener('message', onMessage)
   }, [])
 
+  const link = useMemo(() => {
+    if (src.indexOf('?') > -1) {
+      return `${src}&theme=${theme.resolvedTheme}`
+    } else {
+      return `${src}?theme=${theme.resolvedTheme}`
+    }
+  }, [src, theme?.theme])
+
   return (
     <>
-      <h1>mode= {JSON.stringify(config.darkMode)}</h1>
-      <iframe src={src} ref={ref} title={title} style={{ width: '100%', height: height }} />
+      <iframe src={link} ref={ref} title={title} style={{ width: '100%', height: height }} />
     </>
   )
 }
