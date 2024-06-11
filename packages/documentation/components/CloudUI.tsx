@@ -17,7 +17,7 @@ export default function Component() {
                 <h1 className="lg:leading-tighter text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl xl:text-[3.4rem] 2xl:text-[3.75rem]">
                   Cloud UI
                 </h1>
-                <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl dark:text-gray-400">
+                <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl dark:text-gray-400 mb-8">
                   <b>Cloud UI</b> is the component library for TiDB Cloud. It is based on Mantine and includes many
                   business-specific customizations, providing better support for Dark Mode. Additionally, it has
                   accumulated a large number of business components specifically for the Cloud Database Console.
