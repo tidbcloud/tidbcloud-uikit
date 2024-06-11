@@ -4,6 +4,7 @@
  * Documentation: https://v0.dev/docs#integrating-generated-code-into-your-nextjs-app
  */
 import Link from 'next/link'
+import { JSX, SVGProps } from 'react'
 
 export default function Component() {
   return (
@@ -125,7 +126,7 @@ export default function Component() {
   )
 }
 
-function BoxIcon(props) {
+function BoxIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}
@@ -146,7 +147,7 @@ function BoxIcon(props) {
   )
 }
 
-function ChevronDownIcon(props) {
+function ChevronDownIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}
@@ -165,7 +166,7 @@ function ChevronDownIcon(props) {
   )
 }
 
-function ChevronRightIcon(props) {
+function ChevronRightIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}
@@ -184,7 +185,7 @@ function ChevronRightIcon(props) {
   )
 }
 
-function CreditCardIcon(props) {
+function CreditCardIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}
@@ -204,7 +205,7 @@ function CreditCardIcon(props) {
   )
 }
 
-function DatabaseIcon(props) {
+function DatabaseIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}
@@ -225,7 +226,7 @@ function DatabaseIcon(props) {
   )
 }
 
-function FileInputIcon(props) {
+function FileInputIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}
@@ -247,7 +248,7 @@ function FileInputIcon(props) {
   )
 }
 
-function LayoutTemplateIcon(props) {
+function LayoutTemplateIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}
@@ -268,7 +269,7 @@ function LayoutTemplateIcon(props) {
   )
 }
 
-function MountainIcon(props) {
+function MountainIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}
@@ -287,7 +288,7 @@ function MountainIcon(props) {
   )
 }
 
-function NavigationIcon(props) {
+function NavigationIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}
@@ -306,7 +307,7 @@ function NavigationIcon(props) {
   )
 }
 
-function NotebookTabsIcon(props) {
+function NotebookTabsIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}
@@ -333,7 +334,7 @@ function NotebookTabsIcon(props) {
   )
 }
 
-function PopcornIcon(props) {
+function PopcornIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}
@@ -355,7 +356,7 @@ function PopcornIcon(props) {
   )
 }
 
-function ReplyIcon(props) {
+function ReplyIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}
@@ -375,7 +376,7 @@ function ReplyIcon(props) {
   )
 }
 
-function ShapesIcon(props) {
+function ShapesIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}

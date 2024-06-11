@@ -89,11 +89,9 @@ export default function IconsPreview() {
   return (
     <Box p={16}>
       <Input
-        size="lg"
         placeholder={`Search all ${iconCount} icons`}
         value={value}
         onChange={(e: any) => setValue(e.target.value)}
-        startContent={<IconSearchLg size={24} className="mr-4" />}
         className="mb-8"
       />
 
@@ -144,17 +142,13 @@ export default function IconsPreview() {
 
             <CopyButton value={`import { ${iconName} } from '@tidbcloud/uikit/icons'`}>
               {({ copied, copy }) => (
-                <Button leftIcon={<IconCopy01 />} onClick={copy} variant="default">
+                <Button onClick={copy} variant="default">
                   {copied ? 'Copied!' : 'Copy Import'}
                 </Button>
               )}
             </CopyButton>
             <CopyButton value={`<${iconName} />`}>
-              {({ copied, copy }) => (
-                <Button leftIcon={<IconCopy01 />} onClick={copy}>
-                  {copied ? 'Copied!' : 'Copy JSX'}
-                </Button>
-              )}
+              {({ copied, copy }) => <Button onClick={copy}>{copied ? 'Copied!' : 'Copy JSX'}</Button>}
             </CopyButton>
           </Stack>
         </Flex>

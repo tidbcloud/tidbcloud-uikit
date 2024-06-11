@@ -4,6 +4,7 @@
 import { cn } from '@lib/utils'
 import { Rethink_Sans } from 'next/font/google'
 import { Cormorant_Garamond } from 'next/font/google'
+import { ReactNode } from 'react'
 
 const rethink_sans = Rethink_Sans({
   subsets: ['latin'],
@@ -17,7 +18,7 @@ const cormorant_garamond = Cormorant_Garamond({
   weight: '500'
 })
 
-export default function Layout({ children }) {
+export default function Layout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <body
