@@ -1,13 +1,12 @@
+import { Button } from '@components/ui/button'
+import { Card } from '@components/ui/card'
+import { Input } from '@components/ui/input'
 import { Box, CopyButton, Flex, Typography, Center, Stack, Modal, Tooltip } from '@tidbcloud/uikit'
 import { useDisclosure } from '@tidbcloud/uikit/hooks'
 import * as icons from '@tidbcloud/uikit/icons'
 import { IconCopy01, IconSearchLg } from '@tidbcloud/uikit/icons'
 import { useInfiniteScroll, useMemoizedFn, useInViewport } from 'ahooks'
 import { useState, useDeferredValue, useRef, useEffect } from 'react'
-
-import { Button } from '@/components/ui/button'
-import { Card } from '@/components/ui/card'
-import { Input } from '@/components/ui/input'
 
 const iconsData = Object.keys(icons).filter((i) => i !== 'Icon')
 
@@ -117,7 +116,12 @@ export default function IconsPreview() {
 
       <Modal opened={opened} onClose={() => handlers.close()} closeOnClickOutside centered size={600}>
         <Flex gap={32}>
-          <Box sx={(theme) => ({ border: `1px solid ${theme.colors.gray[3]}`, borderRadius: 4 })}>
+          <Box
+            sx={(theme) => ({
+              border: `1px solid ${theme.colors.gray[3]}`,
+              borderRadius: 4
+            })}
+          >
             <Icon size={180} />
           </Box>
           <Stack>
@@ -127,7 +131,10 @@ export default function IconsPreview() {
                   <Typography
                     variant="headline-lg"
                     onClick={copy}
-                    sx={{ cursor: 'pointer', '&:hover': { textDecoration: 'underline' } }}
+                    sx={{
+                      cursor: 'pointer',
+                      '&:hover': { textDecoration: 'underline' }
+                    }}
                   >
                     {iconName}
                   </Typography>
