@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useDarkMode, DARK_MODE_EVENT_NAME } from 'storybook-dark-mode'
 import { addons } from '@storybook/preview-api'
-import { MantineProvider, ColorSchemeProvider, NotificationsProvider } from '@tidbcloud/uikit'
+import { MantineProvider, ColorSchemeProvider, NotificationsProvider, ColorScheme } from '@tidbcloud/uikit'
 import { Theme, themeColors, darkThemeColors } from '@tidbcloud/uikit/theme'
 import { Preview } from '@storybook/react'
 import { Title, Subtitle, Description, Primary, Controls, Stories, DocsContainer } from '@storybook/blocks'
@@ -12,7 +12,11 @@ export const parameters = {
 }
 
 function ThemeWrapper(props: any) {
-  const colorScheme = useDarkMode() ? 'dark' : 'light'
+  let colorScheme: ColorScheme = useDarkMode() ? 'dark' : 'light'
+  const curURL = window.location.href
+  if (curURL.indexOf('theme=') > -1) {
+    colorScheme = curURL.indexOf('theme=dark') > -1 ? 'dark' : 'light'
+  }
 
   return (
     <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={() => {}}>
@@ -65,13 +69,18 @@ const preview: Preview = {
     docs: {
       container: (props) => {
         const [isDark, setDark] = useState(useDarkMode())
+        let darkModeEnabled = isDark
+        const curURL = window.location.href
+        if (curURL.indexOf('theme=') > -1) {
+          darkModeEnabled = curURL.indexOf('theme=dark') > -1
+        }
 
         useEffect(() => {
           channel.on(DARK_MODE_EVENT_NAME, setDark)
           return () => channel.removeListener(DARK_MODE_EVENT_NAME, setDark)
         }, [channel, setDark])
 
-        return <DocsContainer {...props} theme={isDark ? themes.dark : themes.light} />
+        return <DocsContainer {...props} theme={darkModeEnabled ? themes.dark : themes.light} />
       },
       page: () => (
         <>
