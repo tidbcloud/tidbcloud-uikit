@@ -5,5 +5,5 @@
     "@tidbcloud/uikit-documentation": "0.1.29",
     "@tidbcloud/uikit": "1.17.1"
   },
-  "changesets": ["eighty-experts-occur"]
+  "changesets": ["eighty-experts-occur", "nasty-carrots-remain"]
 }

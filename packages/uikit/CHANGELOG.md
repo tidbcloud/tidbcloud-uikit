@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.1
+
+### Minor Changes
+
+- Merge master branch
+
 ## 2.0.0-beta.0
 
 ### Major Changes
