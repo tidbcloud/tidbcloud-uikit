@@ -30,9 +30,14 @@
       "layout": "full"
     }
   },
+
   "docs": {
     "type": "page",
     "title": "Docs"
+  },
+  "editor-usage": {
+    "type": "page",
+    "title": "Usage"
   },
   "404": {
     "type": "page",
@@ -41,6 +46,7 @@
       "typesetting": "article"
     }
   },
+
   "storybook_link": {
     "type": "page",
     "title": "Storybook",

@@ -1,0 +1,9 @@
+{
+  "index": "Getting Started",
+  "---": {
+    "type": "separator",
+    "title": "Extensions"
+  },
+  "themes": "Themes",
+  "events": "Events"
+}
