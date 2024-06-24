@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 1.18.0
+
+### Minor Changes
+
+- cd2433d: add icon: vector
+
 ## 1.17.1
 
 ### Patch Changes
