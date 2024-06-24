@@ -1,4 +1,7 @@
-import { Button, Box, Input, Card, CopyButton, Flex, Typography, Center, Stack, Modal, Tooltip } from '@tidbcloud/uikit'
+import { Button } from '@components/ui/button'
+import { Card } from '@components/ui/card'
+import { Input } from '@components/ui/input'
+import { Box, CopyButton, Flex, Typography, Center, Stack, Modal, Tooltip } from '@tidbcloud/uikit'
 import { useDisclosure } from '@tidbcloud/uikit/hooks'
 import * as icons from '@tidbcloud/uikit/icons'
 import { IconCopy01, IconSearchLg } from '@tidbcloud/uikit/icons'
@@ -13,7 +16,7 @@ function IconCard({ name, onClick }: { name: string; onClick: (name: string) => 
 
   return (
     <>
-      <Card w={120} p={16} sx={{ cursor: 'pointer' }} onClick={() => onClick(name)}>
+      <Card className="w-32 p-2" style={{ cursor: 'pointer' }} onClick={() => onClick(name)}>
         <Stack>
           <Center>
             <Icon size={24} />
@@ -86,13 +89,10 @@ export default function IconsPreview() {
   return (
     <Box p={16}>
       <Input
-        size="lg"
-        radius={32}
         placeholder={`Search all ${iconCount} icons`}
         value={value}
         onChange={(e: any) => setValue(e.target.value)}
-        icon={<IconSearchLg size={24} />}
-        mb={32}
+        className="mb-8"
       />
 
       <Flex wrap="wrap" gap={16}>
@@ -106,7 +106,7 @@ export default function IconsPreview() {
 
       {!deferredValue && hasMore && (
         <Center mt={16}>
-          <Button type="button" color="dark" variant="subtle" onClick={loadMore} ref={loadMoreButtonRef}>
+          <Button type="button" onClick={loadMore} ref={loadMoreButtonRef}>
             {loadingMore ? 'Loading more...' : 'Load more icons'}
           </Button>
         </Center>
@@ -114,7 +114,12 @@ export default function IconsPreview() {
 
       <Modal opened={opened} onClose={() => handlers.close()} closeOnClickOutside centered size={600}>
         <Flex gap={32}>
-          <Box sx={(theme) => ({ border: `1px solid ${theme.colors.gray[3]}`, borderRadius: 4 })}>
+          <Box
+            sx={(theme) => ({
+              border: `1px solid ${theme.colors.gray[3]}`,
+              borderRadius: 4
+            })}
+          >
             <Icon size={180} />
           </Box>
           <Stack>
@@ -124,7 +129,10 @@ export default function IconsPreview() {
                   <Typography
                     variant="headline-lg"
                     onClick={copy}
-                    sx={{ cursor: 'pointer', '&:hover': { textDecoration: 'underline' } }}
+                    sx={{
+                      cursor: 'pointer',
+                      '&:hover': { textDecoration: 'underline' }
+                    }}
                   >
                     {iconName}
                   </Typography>
@@ -134,17 +142,13 @@ export default function IconsPreview() {
 
             <CopyButton value={`import { ${iconName} } from '@tidbcloud/uikit/icons'`}>
               {({ copied, copy }) => (
-                <Button leftIcon={<IconCopy01 />} onClick={copy} variant="default">
+                <Button onClick={copy} variant="default">
                   {copied ? 'Copied!' : 'Copy Import'}
                 </Button>
               )}
             </CopyButton>
             <CopyButton value={`<${iconName} />`}>
-              {({ copied, copy }) => (
-                <Button leftIcon={<IconCopy01 />} onClick={copy}>
-                  {copied ? 'Copied!' : 'Copy JSX'}
-                </Button>
-              )}
+              {({ copied, copy }) => <Button onClick={copy}>{copied ? 'Copied!' : 'Copy JSX'}</Button>}
             </CopyButton>
           </Stack>
         </Flex>
