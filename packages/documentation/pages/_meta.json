@@ -22,22 +22,13 @@
       "layout": "full"
     }
   },
-  "sql-editor": {
-    "type": "page",
-    "title": "SQL Editor",
-    "theme": {
-      "typesetting": "article",
-      "layout": "full"
-    }
-  },
-
   "docs": {
     "type": "page",
     "title": "Docs"
   },
   "editor-usage": {
     "type": "page",
-    "title": "Usage"
+    "title": "SQL Editor"
   },
   "404": {
     "type": "page",
