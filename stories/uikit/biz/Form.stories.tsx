@@ -41,13 +41,20 @@ export const Primary: Story = {
   render: ({ ...args }) => (
     <Center w={500} m="0 auto">
       <Form
+        formMode="onChange"
         onSubmit={() => {
           throw new Error('Test error')
         }}
         w={'100%'}
       >
         <Group grow>
-          <FormTextInput name="first_name" required placeholder="Your first name" label="First name" />
+          <FormTextInput
+            name="first_name"
+            rules={{ minLength: { value: 10, message: 'min length is 10' } }}
+            required
+            placeholder="Your first name"
+            label="First name"
+          />
           <FormTextInput name="last_name" required placeholder="Your last name" label="Last name" />
         </Group>
         <FormTextInput
