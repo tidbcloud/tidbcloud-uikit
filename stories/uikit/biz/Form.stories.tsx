@@ -120,7 +120,7 @@ export const Primary: Story = {
           label="Multi Frameworks"
         />
         <FormNumberInput name="amount" label="Amount" placeholder="Your amount" />
-        <FormRatingInput name="rating" label="Rating" placeholder="Your rating" />
+        <FormRatingInput name="rating" label="Rating" />
         <FormSwitch name="Checked" label="Checked" />
         <FormTextareaInput name="message" label="Messasge" placeholder="Your message" minRows={2} />
         <FormCopyText value={'This is an example'} />

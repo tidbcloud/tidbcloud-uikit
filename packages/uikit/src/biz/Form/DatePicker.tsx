@@ -9,11 +9,8 @@ export interface FormDatePickerProps extends DatePickerProps {
 }
 
 export const FormDatePicker: React.FC<FormDatePickerProps> = ({ name, rules, onChange, ...rest }) => {
-  const {
-    control,
-
-    formState: { errors }
-  } = useFormContext()
+  const { control, formState, getFieldState } = useFormContext()
+  const { error } = getFieldState(name, formState)
 
   return (
     <Controller
@@ -28,7 +25,7 @@ export const FormDatePicker: React.FC<FormDatePickerProps> = ({ name, rules, onC
               handleChange(e)
               onChange?.(e)
             }}
-            error={<ErrorMessage errors={errors} name={name} />}
+            error={error ? <ErrorMessage errors={formState.errors} name={name} /> : undefined}
             {...restField}
             {...rest}
           />

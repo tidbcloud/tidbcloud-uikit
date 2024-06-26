@@ -1,5 +1,4 @@
 import { ErrorMessage } from '@hookform/error-message'
-import { get } from 'lodash-es'
 import { Controller, RegisterOptions, useFormContext } from 'react-hook-form'
 import { CountryData } from 'react-phone-input-2'
 
@@ -25,10 +24,8 @@ export const FormPhoneInput: React.FC<FormPhoneInputProps> = ({
   rootProps,
   ...rest
 }) => {
-  const {
-    control,
-    formState: { errors }
-  } = useFormContext()
+  const { control, formState, getFieldState } = useFormContext()
+  const { error } = getFieldState(name, formState)
 
   return (
     <Controller
@@ -43,7 +40,7 @@ export const FormPhoneInput: React.FC<FormPhoneInputProps> = ({
         }
         return (
           <PhoneInput
-            error={<ErrorMessage errors={errors} name={name} />}
+            error={error ? <ErrorMessage errors={formState.errors} name={name} /> : undefined}
             value={value}
             label={label}
             onChange={handleChange}
@@ -102,31 +99,27 @@ const useStyles = createStyles((theme) => {
 export const FormPhoneInputV2: React.FC<FormPhoneInputV2Props> = ({
   countryKey,
   phoneKey,
-  selectProps,
+  selectProps = {},
   countryRules,
   rules,
   rootProps,
   ...rest
 }) => {
-  const {
-    watch,
-
-    formState: { errors }
-  } = useFormContext()
-  const { ...restProps } = selectProps
-  const countryError = get(errors, countryKey)
-  const phoneError = get(errors, phoneKey)
+  const { watch, formState, getFieldState } = useFormContext()
+  const { onFilter, ...restProps } = selectProps
+  const countryError = getFieldState(countryKey, formState)
+  const phoneError = getFieldState(phoneKey, formState)
   const country = watch(countryKey, '')
   const { classes } = useStyles()
+
   return (
     <Box {...rootProps}>
       <Box display="flex">
         <FormSelect
-          data={!!selectProps?.onFilter ? countryOptions.filter(selectProps.onFilter) : countryOptions}
-          {...selectProps}
+          data={onFilter ? countryOptions.filter(onFilter) : countryOptions}
+          {...restProps}
           name={countryKey}
           rules={countryRules}
-          error={<ErrorMessage errors={errors} name={countryKey} />}
           styles={(theme, params) => {
             const styles =
               typeof restProps.styles === 'function' ? restProps.styles(theme, params) : restProps.styles || {}
@@ -171,10 +164,10 @@ export const FormPhoneInputV2: React.FC<FormPhoneInputV2Props> = ({
           {...rest}
         />
       </Box>
-      {(!!errors[countryKey] || !!errors[phoneKey]) && (
+      {(countryError || phoneError) && (
         <div className={classes.error}>
-          <ErrorMessage errors={errors} name={countryKey} />
-          <ErrorMessage errors={errors} name={phoneKey} />
+          <ErrorMessage errors={formState.errors} name={countryKey} />
+          <ErrorMessage errors={formState.errors} name={phoneKey} />
         </div>
       )}
     </Box>

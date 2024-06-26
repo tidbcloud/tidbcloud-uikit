@@ -10,10 +10,8 @@ export interface FormSwitchProps extends SwitchProps {
 }
 
 export const FormSwitch: React.FC<FormSwitchProps> = ({ name, rules, onChange, label, ...rest }) => {
-  const {
-    control,
-    formState: { errors }
-  } = useFormContext()
+  const { control, formState, getFieldState } = useFormContext()
+  const { error } = getFieldState(name, formState)
 
   return (
     <Controller
@@ -32,7 +30,7 @@ export const FormSwitch: React.FC<FormSwitchProps> = ({ name, rules, onChange, l
               onChange?.(value)
             }}
             {...restField}
-            error={<ErrorMessage errors={errors} name={name} />}
+            error={error ? <ErrorMessage errors={formState.errors} name={name} /> : undefined}
           />
         )
       }}

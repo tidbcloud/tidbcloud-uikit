@@ -10,10 +10,8 @@ export interface FormNumberInputProps extends NumberInputProps {
 }
 
 export const FormNumberInput: React.FC<FormNumberInputProps> = ({ name, rules, onChange, ...rest }) => {
-  const {
-    control,
-    formState: { errors }
-  } = useFormContext()
+  const { control, formState, getFieldState } = useFormContext()
+  const { error } = getFieldState(name, formState)
 
   return (
     <Controller
@@ -30,7 +28,7 @@ export const FormNumberInput: React.FC<FormNumberInputProps> = ({ name, rules, o
               onChange?.(value)
             }}
             {...restField}
-            error={<ErrorMessage errors={errors} name={name} />}
+            error={error ? <ErrorMessage errors={formState.errors} name={name} /> : undefined}
           />
         )
       }}
