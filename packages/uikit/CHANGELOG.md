@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.2
+
+### Patch Changes
+
+- Fix form field error message display
+
 ## 2.0.0-beta.1
 
 ### Minor Changes
