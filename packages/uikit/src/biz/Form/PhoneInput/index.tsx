@@ -107,8 +107,8 @@ export const FormPhoneInputV2: React.FC<FormPhoneInputV2Props> = ({
 }) => {
   const { watch, formState, getFieldState } = useFormContext()
   const { onFilter, ...restProps } = selectProps
-  const countryError = getFieldState(countryKey, formState)
-  const phoneError = getFieldState(phoneKey, formState)
+  const { error: countryError } = getFieldState(countryKey, formState)
+  const { error: phoneError } = getFieldState(phoneKey, formState)
   const country = watch(countryKey, '')
   const { classes } = useStyles()
 
