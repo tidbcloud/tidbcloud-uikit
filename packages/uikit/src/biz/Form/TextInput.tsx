@@ -1,5 +1,4 @@
 import { ErrorMessage } from '@hookform/error-message'
-import { get } from 'lodash-es'
 import { Controller, RegisterOptions, useFormContext } from 'react-hook-form'
 
 import { TextInput, TextInputProps } from '../../primitive/index.js'
@@ -10,10 +9,8 @@ export interface FormTextInputProps extends TextInputProps {
 }
 
 export const FormTextInput: React.FC<FormTextInputProps> = ({ name, rules, onChange, ...rest }) => {
-  const {
-    control,
-    formState: { errors }
-  } = useFormContext()
+  const { control, formState, getFieldState } = useFormContext()
+  const { error } = getFieldState(name, formState)
 
   return (
     <Controller
@@ -28,7 +25,7 @@ export const FormTextInput: React.FC<FormTextInputProps> = ({ name, rules, onCha
               handleChange(e)
               onChange?.(e)
             }}
-            error={<ErrorMessage errors={errors} name={name} />}
+            error={error ? <ErrorMessage errors={formState.errors} name={name} /> : undefined}
             {...restField}
             {...rest}
           />

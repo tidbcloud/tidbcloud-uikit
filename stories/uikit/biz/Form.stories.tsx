@@ -41,13 +41,20 @@ export const Primary: Story = {
   render: ({ ...args }) => (
     <Center w={500} m="0 auto">
       <Form
+        formMode="onChange"
         onSubmit={() => {
           throw new Error('Test error')
         }}
         w={'100%'}
       >
         <Group grow>
-          <FormTextInput name="first_name" required placeholder="Your first name" label="First name" />
+          <FormTextInput
+            name="first_name"
+            rules={{ minLength: { value: 10, message: 'min length is 10' } }}
+            required
+            placeholder="Your first name"
+            label="First name"
+          />
           <FormTextInput name="last_name" required placeholder="Your last name" label="Last name" />
         </Group>
         <FormTextInput
@@ -120,7 +127,7 @@ export const Primary: Story = {
           label="Multi Frameworks"
         />
         <FormNumberInput name="amount" label="Amount" placeholder="Your amount" />
-        <FormRatingInput name="rating" label="Rating" placeholder="Your rating" />
+        <FormRatingInput name="rating" label="Rating" />
         <FormSwitch name="Checked" label="Checked" />
         <FormTextareaInput name="message" label="Messasge" placeholder="Your message" minRows={2} />
         <FormCopyText value={'This is an example'} />

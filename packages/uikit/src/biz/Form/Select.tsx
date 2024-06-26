@@ -9,10 +9,8 @@ export interface FormSelectProps extends SelectProps {
 }
 
 export const FormSelect: React.FC<FormSelectProps> = ({ name, rules, onChange: onSelect, data, ...restProps }) => {
-  const {
-    control,
-    formState: { errors }
-  } = useFormContext()
+  const { control, formState, getFieldState } = useFormContext()
+  const { error } = getFieldState(name, formState)
 
   return (
     <Controller
@@ -28,7 +26,7 @@ export const FormSelect: React.FC<FormSelectProps> = ({ name, rules, onChange: o
               onChange(val)
               onSelect?.(val)
             }}
-            error={<ErrorMessage errors={errors} name={name} />}
+            error={error ? <ErrorMessage errors={formState.errors} name={name} /> : undefined}
             {...restProps}
           />
         )

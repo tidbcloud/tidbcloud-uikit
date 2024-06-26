@@ -12,10 +12,8 @@ export interface FormRadioGroupProps extends Omit<RadioGroupProps, 'children'> {
 }
 
 export const FormRadioGroup: React.FC<FormRadioGroupProps> = ({ name, rules, onChange, data, ...rest }) => {
-  const {
-    control,
-    formState: { errors }
-  } = useFormContext()
+  const { control, formState, getFieldState } = useFormContext()
+  const { error } = getFieldState(name, formState)
 
   return (
     <Controller
@@ -32,7 +30,7 @@ export const FormRadioGroup: React.FC<FormRadioGroupProps> = ({ name, rules, onC
               onChange?.(value)
             }}
             {...restField}
-            error={<ErrorMessage errors={errors} name={name} />}
+            error={error ? <ErrorMessage errors={formState.errors} name={name} /> : undefined}
           >
             {data.map((i) => {
               const radioProps = omit(i, 'tooltipProps', 'tooltip')

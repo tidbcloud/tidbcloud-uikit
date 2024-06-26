@@ -15,10 +15,8 @@ export const FormMultiSelect: React.FC<FormMultiSelectProps> = ({
   data,
   ...restProps
 }) => {
-  const {
-    control,
-    formState: { errors }
-  } = useFormContext()
+  const { control, formState, getFieldState } = useFormContext()
+  const { error } = getFieldState(name, formState)
 
   return (
     <Controller
@@ -34,7 +32,7 @@ export const FormMultiSelect: React.FC<FormMultiSelectProps> = ({
               onChange(val)
               onSelect?.(val)
             }}
-            error={<ErrorMessage errors={errors} name={name} />}
+            error={error ? <ErrorMessage errors={formState.errors} name={name} /> : undefined}
             {...restProps}
           />
         )

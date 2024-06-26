@@ -46,10 +46,8 @@ export interface FormCheckboxGroupProps extends Omit<CheckboxGroupProps, 'childr
 }
 
 export const FormCheckboxGroup = ({ name, rules, data, onChange, ...rest }: FormCheckboxGroupProps) => {
-  const {
-    control,
-    formState: { errors }
-  } = useFormContext()
+  const { control, formState, getFieldState } = useFormContext()
+  const { error } = getFieldState(name, formState)
 
   return (
     <Controller
@@ -67,7 +65,7 @@ export const FormCheckboxGroup = ({ name, rules, data, onChange, ...rest }: Form
               onChange?.(val)
             }}
             {...restField}
-            error={<ErrorMessage errors={errors} name={name} />}
+            error={error ? <ErrorMessage errors={formState.errors} name={name} /> : undefined}
           >
             {data.map((i) => (
               <Checkbox {...i} key={i.value as string} />

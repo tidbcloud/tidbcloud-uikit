@@ -10,10 +10,8 @@ export interface FormPasswordInputProps extends PasswordInputProps {
 }
 
 export const FormPasswordInput: React.FC<FormPasswordInputProps> = ({ name, rules, onChange, ...rest }) => {
-  const {
-    control,
-    formState: { errors }
-  } = useFormContext()
+  const { control, formState, getFieldState } = useFormContext()
+  const { error } = getFieldState(name, formState)
 
   return (
     <Controller
@@ -30,7 +28,7 @@ export const FormPasswordInput: React.FC<FormPasswordInputProps> = ({ name, rule
               onChange?.(e)
             }}
             {...restField}
-            error={<ErrorMessage errors={errors} name={name} />}
+            error={error ? <ErrorMessage errors={formState.errors} name={name} /> : undefined}
           />
         )
       }}

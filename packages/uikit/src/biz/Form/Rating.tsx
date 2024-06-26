@@ -1,5 +1,4 @@
 import { ErrorMessage } from '@hookform/error-message'
-import { get } from 'lodash-es'
 import { Controller, useFormContext, RegisterOptions } from 'react-hook-form'
 
 import { Input, InputWrapperProps, Rating, RatingProps } from '../../primitive/index.js'
@@ -21,10 +20,8 @@ export const FormRatingInput: React.FC<FormRatingInputProps> = ({
   wrapperProps,
   ...rest
 }) => {
-  const {
-    control,
-    formState: { errors }
-  } = useFormContext()
+  const { control, formState, getFieldState } = useFormContext()
+  const { error } = getFieldState(name, formState)
 
   return (
     <Controller
@@ -34,7 +31,7 @@ export const FormRatingInput: React.FC<FormRatingInputProps> = ({
       render={({ field: { onChange, value } }) => {
         return (
           <Input.Wrapper
-            error={<ErrorMessage errors={errors} name={name} />}
+            error={error ? <ErrorMessage errors={formState.errors} name={name} /> : undefined}
             label={label}
             withAsterisk={withAsterisk}
             {...wrapperProps}
