@@ -25,11 +25,11 @@ All the extensions as below:
 | @tidbcloud/codemirror-extension-cur-sql        | get the selected SQL statements                                           |
 | @tidbcloud/codemirror-extension-cur-sql-gutter | show gutter for the selected SQL statements                               |
 | @tidbcloud/codemirror-extension-save-helper    | save the editor content if it changes                                     |
-| @tidbcloud/codemirror-extension-autocomplete   |                                                                           |
-| @tidbcloud/codemirror-extension-linters        |                                                                           |
-| @tidbcloud/codemirror-extension-events         |                                                                           |
+| @tidbcloud/codemirror-extension-autocomplete   | SQL keyword and database schema autocomplete tips                         |
+| @tidbcloud/codemirror-extension-linters        | Full-width characters, regular expression, or use statements linter       |
+| @tidbcloud/codemirror-extension-events         | 3 normal event extension                                                  |
 | @tidbcloud/codemirror-extension-themes         | 2 simple builtin themes, `bbedit` for light mode, `oneDark` for dark mode |
-| @tidbcloud/codemirror-extension-basic-setup    |    
+| @tidbcloud/codemirror-extension-basic-setup    | Basic configuration for the CodeMirror6 code editor
 
 ## Quick Start
 ```js
@@ -53,7 +53,8 @@ export function Editor() {
     autoCompletion(),
     curSqlGutter(),
     useDbLinter(),
-    fullWidthCharLinter()
+    fullWidthCharLinter(),
+    // ...some other extensions you need
   ]
 
   return (
@@ -71,4 +72,3 @@ export function Editor() {
 }
 ```
 See [editor.tsx](https://github.com/tidbcloud/tisqleditor/blob/main/packages/playground/src/components/biz/editor-panel/editor.tsx) or [editor-example.tsx](https://github.com/tidbcloud/tisqleditor/blob/main/packages/playground/src/examples/editor-example.tsx) to get more details.
-And you can [Try Playground](https://tisqleditor-playground.netlify.app/)
