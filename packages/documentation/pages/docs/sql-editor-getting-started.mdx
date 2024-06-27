@@ -1,3 +1,74 @@
 # SQL Editor Getting Started
 
-WIP
+## Installation
+Inside your project directory, run the following command to install the core package which provides the `SQLEditorInstance` and `EditorCache` implementation.
+
+`SQLEditorInstance` creates EditorView instance with pre-configured extensions.
+
+`EditorCache` stores the `SQLEditorInstance` in a map.
+
+```sh npm2yarn
+npm install @tidbcloud/tisqleditor
+```
+
+If you need some extension, you can just install it alone. such as the extension @tidbcloud/codemirror-extension-events:
+```sh npm2yarn
+npm install @tidbcloud/codemirror-extension-events
+```
+All the extensions as below:
+
+| package                                        | desc                                                                      |
+| ---------------------------------------------- | ------------------------------------------------------------------------- |
+| @tidbcloud/tisqleditor                         | SQLEditorInstance with pre-configured extensions                          |
+| @tidbcloud/tisqleditor-react                   | React component wrapper                                                   |
+| @tidbcloud/codemirror-extension-sql-parser     | parse the editor content to SQL statements                                |
+| @tidbcloud/codemirror-extension-cur-sql        | get the selected SQL statements                                           |
+| @tidbcloud/codemirror-extension-cur-sql-gutter | show gutter for the selected SQL statements                               |
+| @tidbcloud/codemirror-extension-save-helper    | save the editor content if it changes                                     |
+| @tidbcloud/codemirror-extension-autocomplete   |                                                                           |
+| @tidbcloud/codemirror-extension-linters        |                                                                           |
+| @tidbcloud/codemirror-extension-events         |                                                                           |
+| @tidbcloud/codemirror-extension-themes         | 2 simple builtin themes, `bbedit` for light mode, `oneDark` for dark mode |
+| @tidbcloud/codemirror-extension-basic-setup    |    
+
+## Quick Start
+```js
+import { SQLEditor } from '@tidbcloud/tisqleditor-react'
+import { saveHelper } from '@tidbcloud/codemirror-extension-save-helper'
+import { bbedit, oneDark } from '@tidbcloud/codemirror-extension-themes'
+import { curSqlGutter } from '@tidbcloud/codemirror-extension-cur-sql-gutter'
+import {
+  useDbLinter,
+  fullWidthCharLinter
+} from '@tidbcloud/codemirror-extension-linters'
+import { autoCompletion } from '@tidbcloud/codemirror-extension-autocomplete'
+
+export function Editor() {
+  const extraExts = [
+    saveHelper({
+      save: (view: EditorView) => {
+        // saveHandler()
+      }
+    }),
+    autoCompletion(),
+    curSqlGutter(),
+    useDbLinter(),
+    fullWidthCharLinter()
+  ]
+
+  return (
+    <SQLEditor
+      className="add-your-classname"
+      editorId="your-editor-id"
+      doc={"use test;\n; select * from test limit 1;"}
+      sqlConfig={sqlConfig}
+      theme={oneDark}
+      // theme={bbedit}
+      extraExts={extraExts}
+      onChange={(sql, view) => {console.log(sql, view)}}
+    />
+  )
+}
+```
+See [editor.tsx](https://github.com/tidbcloud/tisqleditor/blob/main/packages/playground/src/components/biz/editor-panel/editor.tsx) or [editor-example.tsx](https://github.com/tidbcloud/tisqleditor/blob/main/packages/playground/src/examples/editor-example.tsx) to get more details.
+And you can [Try Playground](https://tisqleditor-playground.netlify.app/)
