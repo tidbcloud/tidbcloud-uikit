@@ -1,9 +1,23 @@
 {
-  "index": "Getting Started",
-  "---": {
+  "index": "Introduction",
+  "-- Cloud UI": {
     "type": "separator",
-    "title": "Components"
+    "title": "Cloud UI"
   },
-  "biz": "Biz",
-  "primitive": "Primitive"
+  "primitive": {
+    "title": "Cloud UI Primitive"
+  },
+  "biz": {
+    "title": "Cloud UI Business"
+  },
+  "icons": {
+    "title": "Cloud UI Icons"
+  },
+  "-- UIKit": {
+    "type": "separator",
+    "title": "UIKit"
+  },
+  "sql-editor": {
+    "title": "SQL Editor"
+  }
 }
