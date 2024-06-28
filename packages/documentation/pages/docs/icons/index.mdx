@@ -1,3 +1,60 @@
 # Icons
 
-WIP
+import Link from 'next/link'
+
+We also provide an icon library for convenient use. You can import and use it in the following way:
+
+```js
+import { IconAlertCircle } from "@tidbcloud/uikit/icons"
+
+function Demo() {
+  return (
+    <IconAlertCircle />
+  )
+}
+```
+
+To find the icon you want to use, you can visit <Link href="/icons" className="text-blue-500">here</Link>.
+
+### Size
+
+All icons are svg elements, so they support all attributes that SVG supports. Additionally, we have also supported the `size` props, to help you set the width and height of the icon more easily.
+
+```js
+function Demo() {
+  return (
+    <IconAlertCircle
+      stroke={1.5}
+      color="red"
+      size={36}
+    />
+  );
+}
+```
+
+### Custom Icon
+
+If you want to use your own svg icon, it is recommended to wrap it as a React components, so you can pass whatever props you want for better reuse. For consistency, it is also recommended to name you icon start with `Icon`.
+
+```js
+interface IconCustomProps extends React.ComponentPropsWithoutRef<'svg'> {
+  size?: number | string;
+}
+
+export function IconCustom({ size, style, ...others }: IconCustomProps) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="1.5"
+      viewBox="0 0 24 24"
+      {...others}
+    >
+      ...
+    </svg>
+  );
+}
+```
