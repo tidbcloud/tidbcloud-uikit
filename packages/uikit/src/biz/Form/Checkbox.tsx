@@ -10,10 +10,8 @@ export interface FormCheckboxProps extends CheckboxProps {
 }
 
 export const FormCheckbox: React.FC<FormCheckboxProps> = ({ name, rules, onChange, ...rest }) => {
-  const {
-    control,
-    formState: { errors }
-  } = useFormContext()
+  const { control, formState, getFieldState } = useFormContext()
+  const { error } = getFieldState(name, formState)
 
   return (
     <Controller
@@ -31,7 +29,7 @@ export const FormCheckbox: React.FC<FormCheckboxProps> = ({ name, rules, onChang
               onChange?.(e)
             }}
             {...restField}
-            error={<ErrorMessage errors={errors} name={name} />}
+            error={error ? <ErrorMessage errors={formState.errors} name={name} /> : undefined}
           />
         )
       }}

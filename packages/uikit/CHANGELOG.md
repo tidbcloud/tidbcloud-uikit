@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.3
+
+### Patch Changes
+
+- Fix checkbox error status
+
 ## 2.0.0-beta.2
 
 ### Patch Changes
