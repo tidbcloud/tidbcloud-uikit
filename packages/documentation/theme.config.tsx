@@ -23,6 +23,9 @@ const config: DocsThemeConfig = {
     return {
       titleTemplate: '%s - TiUI'
     }
+  },
+  sidebar: {
+    defaultMenuCollapseLevel: 1
   }
 }
 
