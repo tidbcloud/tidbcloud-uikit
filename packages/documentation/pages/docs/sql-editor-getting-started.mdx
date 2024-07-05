@@ -37,52 +37,227 @@ All the extensions as below:
 | @tidbcloud/codemirror-extension-basic-setup    | Basic configuration for the CodeMirror6 code editor
 
 ## Quick Start
+### A mini Editor
+```ts
+import { SQLEditor } from '@tidbcloud/tisqleditor-react'
+import { oneDark } from '@tidbcloud/codemirror-extension-themes'
+import { curSqlGutter } from '@tidbcloud/codemirror-extension-cur-sql-gutter'
 
-Install demo dependencies:
+const Editor = () => {
+  return (
+    <SQLEditor
+      editorId="MySQLEditor"
+      doc={"USE game;\n"}
+      theme={oneDark}
+      basicSetupOptions={{
+        autocompletion: true
+      }}
+      extraExts={[
+        curSqlGutter()
+        // here you can add some other extensions as you need
+      ]}
+    />
+  )
+}
+```
+
+### A mini Editor based on codemiiror
+```ts
+import { useEffect, useRef } from 'react'
+import { EditorState, Compartment } from '@codemirror/state'
+import { EditorView } from '@codemirror/view'
+import { basicSetup } from '@tidbcloud/codemirror-extension-basic-setup'
+import { bbedit, oneDark } from '@tidbcloud/codemirror-extension-themes'
+import { sql, MySQL } from '@codemirror/lang-sql'
+
+const Editor = () => {
+  const editorContainerRef = useRef<HTMLDivElement>(null)
+  const sqlCompartment = new Compartment()
+
+  useEffect(() => {
+    const editorInst = new EditorView({
+      state: EditorState.create({
+        doc: "USE game;\n",
+        extensions: [
+          basicSetup({
+            foldGutter: false,
+            foldKeymap: false,
+            searchKeymap: true,
+            autocompletion: true
+          }),
+          sqlCompartment.of(sql({
+            dialect: MySQL,
+            upperCaseKeywords: true
+          })),
+          oneDark
+          // bbedit
+        ]
+      })
+    })
+
+    editorContainerRef.current?.appendChild(editorInst.dom)
+
+    return () => {
+      if (editorContainerRef.current && editorInst) {
+        editorContainerRef.current.removeChild(editorInst.dom)
+      }
+    }
+  }, [])
+
+  return (
+    <div ref={editorContainerRef}></div>
+  )
+}
+```
+
+### A SQL Editor with some extensions use @tidbcloud/tisqleditor-react
+
 ```sh npm2yarn
 npm install @tidbcloud/tisqleditor-react
 npm install @tidbcloud/codemirror-extension-save-helper
 npm install @tidbcloud/codemirror-extension-themes
 npm install @tidbcloud/codemirror-extension-cur-sql-gutter
 npm install @tidbcloud/codemirror-extension-linters
-npm install @tidbcloud/codemirror-extension-autocomplete
+npm i
 ```
 
-```js
+```ts
 import { SQLEditor } from '@tidbcloud/tisqleditor-react'
-import { saveHelper } from '@tidbcloud/codemirror-extension-save-helper'
-import { bbedit, oneDark } from '@tidbcloud/codemirror-extension-themes'
+import { oneDark } from '@tidbcloud/codemirror-extension-themes'
 import { curSqlGutter } from '@tidbcloud/codemirror-extension-cur-sql-gutter'
-import {
-  useDbLinter,
-  fullWidthCharLinter
-} from '@tidbcloud/codemirror-extension-linters'
-import { autoCompletion } from '@tidbcloud/codemirror-extension-autocomplete'
+import { fullWidthCharLinter } from '@tidbcloud/codemirror-extension-linters'
+import { sqlAutoCompletion } from '@tidbcloud/codemirror-extension-sql-autocomplete'
+import { onSelectionChange, onDocChange, SelectionRange } from '@tidbcloud/codemirror-extension-events'
+import { getNearbyStatement, getSqlStatements } from '@tidbcloud/codemirror-extension-sql-parser'
+import { EditorView } from '@codemirror/view'
+import { SQLConfig } from '@codemirror/lang-sql'
 
-export function Editor() {
-  const extraExts = [
-    saveHelper({
-      save: (view: EditorView) => {
-        // saveHandler()
+interface SchemaData {
+  name: string
+  tables: {
+    name: string
+    columns: {
+      col: string
+      data_type: string
+      nullable?: boolean
+    }[]
+  }[]
+}
+
+/**
+ * mock schema data
+ */
+const schema: SchemaData[] = [
+  {
+    "name": "game",
+    "tables": [
+      {
+        "name": "all_audio_language",
+        "columns": [
+          {
+            "col": "app_id",
+            "data_type": "int",
+            "nullable": false
+          }
+        ]
+      },
+      {
+        "name": "category",
+        "columns": [
+          {
+            "col": "category_id",
+            "data_type": "int",
+            "nullable": false
+          }
+        ]
       }
-    }),
-    autoCompletion(),
-    curSqlGutter(),
-    useDbLinter(),
-    fullWidthCharLinter(),
-    // ...some other extensions you need
-  ]
+    ]            
+  },
+  {
+    "name": "test",
+    "tables": []
+  }
+]
+
+/**
+ * initial SQL content
+ */
+const initialSQL = `USE game;
+
+SELECT
+  g.*
+FROM
+  game_genre gg
+  LEFT JOIN games g ON g.app_id = gg.app_id
+WHERE
+  gg.genre_id = 9
+ORDER BY
+  g.estimated_owners DESC；`
+
+interface ColumnItem {
+  label: string
+  type: string
+}
+
+/**
+ * Convert schema data to SQL config format so that the auto-complete list can be displayed when typing database/table/column name.
+ */
+const convertSchemaToSQLConfig = (dbList: SchemaData[]): SQLConfig => {
+  const schema: {
+    [key: string]: ColumnItem[]
+  } = {}
+  const tables: ColumnItem[] = []
+
+  dbList.forEach((d) => {
+    const db = d.name
+    tables.push({
+      label: db,
+      type: 'database'
+    })
+    d.tables.forEach((t) => {
+      const table = t.name
+      tables.push({ label: table, type: 'table' })
+
+      const columns = t.columns.map((c) => ({
+        label: c.col,
+        type: c.data_type
+      }))
+      tables.push(...columns)
+
+      schema[`${db}.${table}`] = columns
+      schema[table] = columns
+    })
+  })
+
+  return { schema, tables }
+}
+
+const Editor = () => {
+  const sqlConfig = convertSchemaToSQLConfig(schema)
 
   return (
     <SQLEditor
-      className="add-your-classname"
-      editorId="your-editor-id"
-      doc={"use test;\n; select * from test limit 1;"}
+      editorId="mySQLEditor"
+      doc={initialSQL}
       sqlConfig={sqlConfig}
       theme={oneDark}
       // theme={bbedit}
-      extraExts={extraExts}
-      onChange={(sql, view) => {console.log(sql, view)}}
+      basicSetupOptions={{
+        foldGutter: true
+      }}
+      extraExts={[
+        sqlAutoCompletion(),
+        curSqlGutter(),
+        fullWidthCharLinter(),
+        onDocChange((view: EditorView, doc: string) => {
+          console.log('doc change', doc)
+        }),
+        onSelectionChange((view: EditorView, selRanges: SelectionRange[]) => {
+          console.log('selection change', selRanges)
+          console.log(getNearbyStatement(view.state, selRanges[0].from))
+          console.log(getSqlStatements(view.state))
+        })
+      ]}
     />
   )
 }

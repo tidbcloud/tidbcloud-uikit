@@ -4,38 +4,31 @@ A codemirror extension implements the SQL keyword and database schema autocomple
 
 ## Installation
 
-```shell
+```sh npm2yarn
 npm install @tidbcloud/codemirror-extension-sql-autocomplete
 ```
 
 You need to install its peer dependencies as well:
 
-```shell
+```sh npm2yarn
 npm install @codemirror/view @codemirror/state @codemirror/autocomplete @codemirror/commands @codemirror/lang-sql
 ```
 
 ## Usage
 
 ```ts
-import { EditorView } from '@codemirror/view'
-import { EditorState } from '@codemirror/state'
 import { sql, MySQL } from '@codemirror/lang-sql'
 import { sqlAutoCompletion } from '@tidbcloud/codemirror-extension-sql-autocomplete'
 
-const editorView = new EditorView({
-  state: EditorState.create({
-    doc,
-    extensions: [
-      sql({ dialect: MySQL }),
-
-      sqlAutoCompletion({
-        acceptKey: 'Tab',
-        autocompleteItemClassName: 'autocomplete-item-test'
-        // ...
-      })
-    ]
+// add the extension to your editor created by getting started
+const extensions = [
+  // ...other extensions,
+  sql({ dialect: MySQL }),
+  sqlAutoCompletion({
+    autocompleteItemClassName: 'autocomplete-item-test'
+    // ...other configs
   })
-})
+]
 ```
 
 ## API

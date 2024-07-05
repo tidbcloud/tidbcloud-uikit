@@ -6,36 +6,31 @@ If these 2 themes is not suitable for you, you can use other themes from third-p
 
 ## Installation
 
-```shell
+```sh npm2yarn
 npm install @tidbcloud/codemirror-extension-themes
 ```
 
 You need to install its peer dependencies as well:
 
-```shell
+```sh npm2yarn
 npm install @codemirror/view @codemirror/state @codemirror/language @lezer/highlight
 ```
 
 ## Usage
 
 ```ts
-import { EditorView } from '@codemirror/view'
-import { EditorState } from '@codemirror/state'
 import { bbedit, oneDark } from '@tidbcloud/codemirror-extension-themes'
 
-const isDark: boolean
-const editorView = new EditorView({
-  state: EditorState.create({
-    doc,
-    extensions: [isDark ? oneDark : bbedit]
-  })
-})
+// add the extension to your editor created by getting started
+const extensions = [
+  // ...other extensions,
+  oneDark,
+  // bbedit
+]
+
 ```
-
-
 ## try it
 [url](https://tisqleditor-playground.netlify.app/?example=all&with_select=&theme=oneDark)
-
 #### oneDark
 import { EmbeddedStory } from '@components/EmbeddedStory'
 
