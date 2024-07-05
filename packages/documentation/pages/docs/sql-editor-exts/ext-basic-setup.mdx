@@ -5,56 +5,45 @@ This package depends on most of the core library packages and exports extension 
 
 ## Installation
 
-```shell
+```sh npm2yarn
 npm install @tidbcloud/codemirror-extension-basic-setup
 ```
 
 ⚠️ You need to install its peer dependencies as well:
 
-```shell
+```sh npm2yarn
 npm install @codemirror/state @codemirror/view @codemirror/autocomplete @codemirror/commands @codemirror/language  @codemirror/lint @codemirror/search
 ```
 
 ## Usage
 
 ```ts
-import { EditorView } from '@codemirror/view'
-import { EditorState } from '@codemirror/state'
 import { basicSetup } from '@tidbcloud/codemirror-extension-basic-setup'
 
-const editorView = new EditorView({
-  state: EditorState.create({
-    doc,
-    extensions: [
-      basicSetup({
-        foldGutter: false,
-        foldKeymap: false,
-        searchKeymap: true,
-        autocompletion: false
-      })
-    ]
+// add the extension to your editor created by getting started
+const extensions = [
+  basicSetup({
+    foldGutter: false,
+    foldKeymap: false,
+    searchKeymap: true,
+    autocompletion: false
   })
-})
+  // ...other extensions,
+]
 ```
 
 If you have used @tidbcloud/tisqleditor extension, as it used baisc-setup and has some default config values, to override the default values, you can use basicSetupOptions, it has a higher priority, and can config it like this:
 
 ```ts
-import { EditorView } from '@codemirror/view'
-import { EditorState } from '@codemirror/state'
-import { createSQLEditorInstance } from '@tidbcloud/tisqleditor'
+const basicSetupOptions = {
+  foldGutter: false,
+  foldKeymap: false,
+  searchKeymap: true,
+  autocompletion: false,
+  history: false
+}
 
-const editorInst = createSQLEditorInstance({
-  editorId,
-  doc,
-  basicSetupOptions: {
-    foldGutter: false,
-    foldKeymap: false,
-    searchKeymap: true,
-    autocompletion: false,
-    history: false
-  }
-})
+<YourEditorComponent basicSetupOptions={basicSetupOptions} />
 ```
 
 ## API

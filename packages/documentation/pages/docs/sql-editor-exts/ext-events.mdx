@@ -7,13 +7,13 @@
 
 ## Installation
 
-```shell
+```sh npm2yarn
 npm install @tidbcloud/codemirror-extension-events
 ```
 
 You need to install its peer dependencies as well:
 
-```shell
+```sh npm2yarn
 npm install @codemirror/view @codemirror/state
 ```
 
@@ -21,30 +21,24 @@ npm install @codemirror/view @codemirror/state
 
 ```ts
 import { EditorView } from '@codemirror/view'
-import { EditorState } from '@codemirror/state'
 import {
   onDocChange,
   onSelectionChange,
   SelectionRange
 } from '@tidbcloud/codemirror-extension-events'
 
-const docChangeHandler = (view: EditorView, doc: string) => {
-  console.log(doc)
-}
-
-const selectionChangeHandler = (view: EditorView, ranges: SelectionRange[]) => {
-  console.log(ranges)
-}
-
-const editorView = new EditorView({
-  state: EditorState.create({
-    doc,
-    extensions: [
-      onDocChange(docChangeHandler),
-      onSelectionChange(selectionChangeHandler)
-    ]
+// add the extension to your editor created by getting started
+const extensions = [
+  // ...other extensions,
+  onDocChange((view: EditorView, doc: string) => {
+    console.log('doc change', doc)
+  }),
+  onSelectionChange((view: EditorView, selRanges: SelectionRange[]) => {
+    console.log('selection change', selRanges)
+    console.log(getNearbyStatement(view.state, selRanges[0].from))
+    console.log(getSqlStatements(view.state))
   })
-})
+]
 ```
 
 ## try it

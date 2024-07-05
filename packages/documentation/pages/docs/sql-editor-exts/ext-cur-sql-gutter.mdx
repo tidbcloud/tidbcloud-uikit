@@ -4,32 +4,32 @@ A codemirror extension listens the editor selection change, and shows gutter for
 
 ## Installation
 
-```shell
+```sh npm2yarn
 npm install @tidbcloud/codemirror-extension-cur-sql-gutter
 ```
 
 You need to install its peer dependencies as well:
 
-```shell
-npm install @codemirror/view @codemirror/state @codemirror/lang-sql
+```sh npm2yarn
+npm install @codemirror/view @codemirror/state @codemirror/lang-sql @tidbcloud/codemirror-extension-sql-parser @tidbcloud/codemirror/extension-cur-sql
 ```
 
 ## Usage
 
 ```ts
-import { EditorView } from '@codemirror/view'
-import { EditorState } from '@codemirror/state'
 import { sql, MySQL } from '@codemirror/lang-sql'
 import { sqlParser } from '@tidbcloud/codemirror-extension-sql-parser'
 import { curSql } from '@tidbcloud/codemirror-extension-cur-sql'
 import { curSqlGutter } from '@tidbcloud/codemirror-extension-cur-sql-gutter'
 
-const editorView = new EditorView({
-  state: EditorState.create({
-    doc,
-    extensions: [sql({ dialect: MySQL }), sqlParser(), curSql(), curSqlGutter()]
-  })
-})
+// add the extension to your editor created by getting started
+const extensions = [
+  // ...other extensions,
+  sql({ dialect: MySQL }),
+  sqlParser(),
+  curSql(),
+  curSqlGutter()
+]
 ```
 
 ## API

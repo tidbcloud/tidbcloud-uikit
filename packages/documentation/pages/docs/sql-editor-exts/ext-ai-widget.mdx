@@ -1,6 +1,6 @@
 # @tidbcloud/codemirror-extension-ai-widget
 
-A codemirror extension provides a widget to chat with AI to help you write or refine SQL. (work with other languages wip)
+A codemirror extension provides a widget to chat with AI to help you write or refine SQL. (will support to work with other languages later)
 
 ## Features
 
@@ -11,48 +11,42 @@ A codemirror extension provides a widget to chat with AI to help you write or re
 
 ## Installation
 
-```shell
+```sh npm2yarn
 npm install @tidbcloud/codemirror-extension-ai-widget
 ```
 
 You need to install its peer dependencies as well:
 
-```shell
-npm install @codemirror/view @codemirror/state @codemirror/merge @codemirror/lang-sql
+```sh npm2yarn
+npm install @codemirror/view @codemirror/state @codemirror/merge @codemirror/lang-sql @tidbcloud/codemirror-extension-sql-parser @tidbcloud/codemirror-extension-cur-sql
 ```
 
 ## Usage
 
 ```ts
-import { EditorView } from '@codemirror/view'
-import { EditorState } from '@codemirror/state'
 import { sql, MySQL } from '@codemirror/lang-sql'
 import { sqlParser } from '@tidbcloud/codemirror-extension-sql-parser'
 import { curSql } from '@tidbcloud/codemirror-extension-cur-sql'
 import { aiWidget } from '@tidbcloud/codemirror-extension-ai-widget'
 
-const editorView = new EditorView({
-  state: EditorState.create({
-    doc,
-    extensions: [
-      sql({ dialect: MySQL }),
-      sqlParser(),
-      curSql(),
-
-      aiWidget({
-        chat: async () => {
-          // replace it by yourself chat to AI api in production
-          await delay(2000)
-          return { status: 'success', message: 'select * from test;' }
-        },
-        cancelChat: () => {},
-        getDbList: () => {
-          return ['test1', 'test2']
-        }
-      })
-    ]
+// add the extension to your editor created by getting started
+const extensions = [
+  // ...other extensions,
+  sql({ dialect: MySQL }),
+  sqlParser(),
+  curSql(),
+  aiWidget({
+    chat: async () => {
+      // replace it by yourself chat to AI api in production
+      await delay(2000)
+      return { status: 'success', message: 'select * from test;' }
+    },
+    cancelChat: () => {},
+    getDbList: () => {
+      return ['test1', 'test2']
+    }
   })
-})
+]
 ```
 
 ## API

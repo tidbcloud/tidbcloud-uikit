@@ -56,7 +56,56 @@ const Editor = () => {
 }
 ```
 
-### A SQL Editor with some extensions
+### A mini Editor based on codemiiror
+```ts
+import { useEffect, useRef } from 'react'
+import { EditorState, Compartment } from '@codemirror/state'
+import { EditorView } from '@codemirror/view'
+import { basicSetup } from '@tidbcloud/codemirror-extension-basic-setup'
+import { bbedit, oneDark } from '@tidbcloud/codemirror-extension-themes'
+import { sql, MySQL } from '@codemirror/lang-sql'
+
+const Editor = () => {
+  const editorContainerRef = useRef<HTMLDivElement>(null)
+  const sqlCompartment = new Compartment()
+
+  useEffect(() => {
+    const editorInst = new EditorView({
+      state: EditorState.create({
+        doc: "USE game;\n",
+        extensions: [
+          basicSetup({
+            foldGutter: false,
+            foldKeymap: false,
+            searchKeymap: true,
+            autocompletion: true
+          }),
+          sqlCompartment.of(sql({
+            dialect: MySQL,
+            upperCaseKeywords: true
+          })),
+          oneDark
+          // bbedit
+        ]
+      })
+    })
+
+    editorContainerRef.current?.appendChild(editorInst.dom)
+
+    return () => {
+      if (editorContainerRef.current && editorInst) {
+        editorContainerRef.current.removeChild(editorInst.dom)
+      }
+    }
+  }, [])
+
+  return (
+    <div ref={editorContainerRef}></div>
+  )
+}
+```
+
+### A SQL Editor with some extensions use @tidbcloud/tisqleditor-react
 ```ts
 import { SQLEditor } from '@tidbcloud/tisqleditor-react'
 import { oneDark } from '@tidbcloud/codemirror-extension-themes'
