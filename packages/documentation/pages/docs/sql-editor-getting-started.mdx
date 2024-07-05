@@ -38,12 +38,21 @@ All the extensions as below:
 
 ## Quick Start
 ### A mini Editor
+
+Install packages:
+```sh npm2yarn
+npm install @tidbcloud/tisqleditor-react
+npm install @tidbcloud/codemirror-extension-themes
+npm install @tidbcloud/codemirror-extension-cur-sql-gutter
+```
+
 ```ts
+// Editor.tsx
 import { SQLEditor } from '@tidbcloud/tisqleditor-react'
 import { oneDark } from '@tidbcloud/codemirror-extension-themes'
 import { curSqlGutter } from '@tidbcloud/codemirror-extension-cur-sql-gutter'
 
-const Editor = () => {
+export const Editor = () => {
   return (
     <SQLEditor
       editorId="MySQLEditor"
@@ -61,8 +70,19 @@ const Editor = () => {
 }
 ```
 
-### A mini Editor based on codemiiror
+### A mini Editor based on CodeMirror
+
+Install packages:
+```sh npm2yarn
+npm install @codemirror/state
+npm install @codemirror/view
+npm install @codemirror/lang-sql
+npm install @tidbcloud/codemirror-extension-basic-setup
+npm install @tidbcloud/codemirror-extension-themes
+```
+
 ```ts
+//Editor.tsx
 import { useEffect, useRef } from 'react'
 import { EditorState, Compartment } from '@codemirror/state'
 import { EditorView } from '@codemirror/view'
