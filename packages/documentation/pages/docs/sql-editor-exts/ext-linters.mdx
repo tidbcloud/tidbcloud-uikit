@@ -29,20 +29,23 @@ import {
   regexMatchLinter
 } from '@tidbcloud/codemirror-extension-linters'
 
-// add the extension to your editor created by getting started
+// add extensions to your editor created by getting started
 const extensions = [
   // ...other extensions,
   sql({ dialect: MySQL }),
   sqlParser(),
+  // the SQL content should be start with a USE statement or there is a warning message
   useDbLinter({
     level: 'warning',
     title: 'the title when error',
     message: 'error content'
   }),
+  // full width characters are not allowed
   fullWidthCharLinter({
     title: 'the title when error',
     message: 'error content'
   }),
+  // you can customize some reg expressions to verify the content
   regexMatchLinter([
     // when you type ${page} at the editor, there will be error message under it.
     {
@@ -90,7 +93,8 @@ function regexMatchLinter(config: RegexpItem[]): Extension
 ```
 
 ## try it
-[url](https://tisqleditor-playground.netlify.app/?example=use-db-linter&with_select=&theme=oneDark)
+You can try all the extensions playground at [here](https://tisqleditor-playground.netlify.app/?example=use-db-linter&with_select=&theme=oneDark) & the linters extension at [here](https://tisqleditor-playground.netlify.app/?example=use-db-linter&theme=oneDark).
+<br />
 
 import { EmbeddedStory } from '@components/EmbeddedStory'
 

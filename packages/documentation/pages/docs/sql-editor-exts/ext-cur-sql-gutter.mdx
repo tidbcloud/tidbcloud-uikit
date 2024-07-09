@@ -22,7 +22,7 @@ import { sqlParser } from '@tidbcloud/codemirror-extension-sql-parser'
 import { curSql } from '@tidbcloud/codemirror-extension-cur-sql'
 import { curSqlGutter } from '@tidbcloud/codemirror-extension-cur-sql-gutter'
 
-// add the extension to your editor created by getting started
+// add extensions to your editor created by getting started
 const extensions = [
   // ...other extensions,
   sql({ dialect: MySQL }),
@@ -36,11 +36,11 @@ const extensions = [
 
 ```ts
 interface CurSqlGutterConfig {
-  /* gutter background */
+  // gutter background
   backgroundColor?: string
-  /* gutter width */
+  // gutter width
   width?: number
-  /* gutter extra css class */
+  // gutter extra css class
   className?: string
   /* control gutter to hide when some cases happen */
   whenHide?: (view: EditorView) => boolean
@@ -50,8 +50,8 @@ function curSqlGutter(config?: CurSqlGutterConfig): Extension
 ```
 
 ## try it
-[url](https://tisqleditor-playground.netlify.app/?example=cur-sql-gutter&with_select=&theme=oneDark)
-
+You can try all the extensions playground at [here](https://tisqleditor-playground.netlify.app/?example=cur-sql-gutter&with_select=&theme=oneDark) & the cur-sql-gutter extension at [here](https://tisqleditor-playground.netlify.app/?example=cur-sql-gutter&theme=oneDark).
+<br />
 import { EmbeddedStory } from '@components/EmbeddedStory'
 
 <EmbeddedStory src={"https://tisqleditor-playground.netlify.app/?example=cur-sql-gutter&theme=oneDark"} initHeight={400}></EmbeddedStory>

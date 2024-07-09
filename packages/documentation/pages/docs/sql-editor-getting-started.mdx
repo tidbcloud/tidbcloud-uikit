@@ -100,6 +100,7 @@ const Editor = () => {
         doc: "USE game;\n",
         extensions: [
           basicSetup({
+            // set foldGutter: true will add a collapse/expand icon before the multi-line statement 
             foldGutter: false,
             foldKeymap: false,
             searchKeymap: true,
@@ -110,6 +111,7 @@ const Editor = () => {
             upperCaseKeywords: true
           })),
           oneDark
+          // ------ Or ------
           // bbedit
         ]
       })
@@ -200,7 +202,7 @@ const schema: SchemaData[] = [
 ]
 
 /**
- * initial SQL content
+ * initial SQL contents
  */
 const initialSQL = `USE game;
 
@@ -220,8 +222,9 @@ interface ColumnItem {
 }
 
 /**
- * Convert schema data to SQL config format so that the auto-complete list can be displayed when typing database/table/column name.
- */
+convert schema data to SQL config format that the auto-complete list can be displayed
+when typing database/table/column name.
+*/
 const convertSchemaToSQLConfig = (dbList: SchemaData[]): SQLConfig => {
   const schema: {
     [key: string]: ColumnItem[]
@@ -230,6 +233,7 @@ const convertSchemaToSQLConfig = (dbList: SchemaData[]): SQLConfig => {
 
   dbList.forEach((d) => {
     const db = d.name
+    // allow you autocomplete when you type database name, 
     tables.push({
       label: db,
       type: 'database'
@@ -244,6 +248,7 @@ const convertSchemaToSQLConfig = (dbList: SchemaData[]): SQLConfig => {
       }))
       tables.push(...columns)
 
+      // allow you autocomplete when you type table, database.table name, 
       schema[`${db}.${table}`] = columns
       schema[table] = columns
     })
@@ -261,6 +266,7 @@ const Editor = () => {
       doc={initialSQL}
       sqlConfig={sqlConfig}
       theme={oneDark}
+      // ------ Or ------
       // theme={bbedit}
       basicSetupOptions={{
         foldGutter: true
@@ -270,8 +276,14 @@ const Editor = () => {
         curSqlGutter(),
         fullWidthCharLinter(),
         onDocChange((view: EditorView, doc: string) => {
+          // doc is all the current SQL content 
           console.log('doc change', doc)
         }),
+        /**
+        *  When your selection or cursor position changes,
+        *  You can get the selection data from & to by the selRanges params,
+        *  it is the cursor position if from equals to
+        */
         onSelectionChange((view: EditorView, selRanges: SelectionRange[]) => {
           console.log('selection change', selRanges)
           console.log(getNearbyStatement(view.state, selRanges[0].from))

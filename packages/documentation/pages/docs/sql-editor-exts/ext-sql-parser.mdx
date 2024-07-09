@@ -23,7 +23,7 @@ import { sql, MySQL } from '@codemirror/lang-sql'
 import { sqlParser } from '@tidbcloud/codemirror-extension-sql-parser'
 import { curSql, getCurStatements } from '@tidbcloud/codemirror-extension-cur-sql'
  
-// add the extension to your editor created by getting started
+// add extensions to your editor created by getting started
 const extensions = [
   // ...other extensions,
   sql({ dialect: MySQL }),
@@ -40,8 +40,8 @@ type SqlStatement = {
   lineFrom: number
   lineTo: number
   content: string
-  database: string
-  type: 'use' | 'ddl' | 'other'
+  database: string // the database name get from the nearest use statement before the pos
+  type: 'use' | 'ddl' | 'other' // the type is 'use' if the statement start with use ignore case
 }
 
 /* get all parsed statements */

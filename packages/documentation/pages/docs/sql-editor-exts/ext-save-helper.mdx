@@ -20,7 +20,7 @@ npm install @codemirror/view @codemirror/state
 import { EditorView } from '@codemirror/view'
 import { saveHelper } from '@tidbcloud/codemirror-extension-save-helper'
 
-// add the extension to your editor created by getting started
+// add extensions to your editor created by getting started
 const extensions = [
   // ...other extensions,
   saveHelper({
@@ -37,11 +37,11 @@ const extensions = [
 
 ```ts
 type SaveHelperOptions = {
-  /* in milliseconds, default 5000 */
+  // in milliseconds, default 5000
   delay?: number
-  /* default is true */
+  // default is true
   auto?: boolean
-  /* default is Mod-s */
+  // default is Mod-s
   hotkey?: string
   /* save handler */
   save: (view: EditorView) => void
@@ -51,7 +51,8 @@ function saveHelper(options: SaveHelperOptions): Extension
 ```
 
 ## Try it
-[url](https://tisqleditor-playground.netlify.app/?example=save-helper&with_select=&theme=oneDark)
+You can try all the extensions playground at [here](https://tisqleditor-playground.netlify.app/?example=save-helper&with_select=&theme=oneDark) & the save helper extension at [here](https://tisqleditor-playground.netlify.app/?example=save-helper&theme=oneDark).
+<br />
 
 import { EmbeddedStory } from '@components/EmbeddedStory'
 

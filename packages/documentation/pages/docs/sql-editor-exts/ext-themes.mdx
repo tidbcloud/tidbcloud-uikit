@@ -21,20 +21,19 @@ npm install @codemirror/view @codemirror/state @codemirror/language @lezer/highl
 ```ts
 import { bbedit, oneDark } from '@tidbcloud/codemirror-extension-themes'
 
-// add the extension to your editor created by getting started
+// add extensions to your editor created by getting started
 const extensions = [
   // ...other extensions,
-  oneDark,
+  oneDark
+  // ------ Or ------
   // bbedit
 ]
 
 ```
 ## try it
-[url](https://tisqleditor-playground.netlify.app/?example=all&with_select=&theme=oneDark)
-#### oneDark
-import { EmbeddedStory } from '@components/EmbeddedStory'
+You can try all the extensions playground at [here](https://tisqleditor-playground.netlify.app/?example=all&with_select=&theme=oneDark) & the theme extension at [here](https://tisqleditor-playground.netlify.app/?example=all&theme=oneDark).
 
-<EmbeddedStory src={"https://tisqleditor-playground.netlify.app/?example=all&theme=oneDark"} initHeight={400}></EmbeddedStory>
+<br />
+import SQLEditorThemes from '@components/SQLEditorThemes'
 
-#### bbedit
-<EmbeddedStory src={"https://tisqleditor-playground.netlify.app/?example=all&theme=bbedit"} initHeight={400}></EmbeddedStory>
+<SQLEditorThemes />

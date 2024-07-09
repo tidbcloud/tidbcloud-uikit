@@ -23,7 +23,7 @@ import { sql, MySQL } from '@codemirror/lang-sql'
 import { sqlParser } from '@tidbcloud/codemirror-extension-sql-parser'
 import { curSql, getCurStatements } from '@tidbcloud/codemirror-extension-cur-sql'
 
-// add the extension to your editor created by getting started
+// add extensions to your editor created by getting started
 const extensions = [
   // ...other extensions,
   sql({ dialect: MySQL }),
@@ -46,7 +46,8 @@ function curSql(): Extension;
 ```
 
 ## try it
-[url](https://tisqleditor-playground.netlify.app/?example=all&with_select=&theme=oneDark)
+You can try all the extensions playground at [here](https://tisqleditor-playground.netlify.app/?example=all&with_select=&theme=oneDark) & the cur-sql extension at [here](https://tisqleditor-playground.netlify.app/?example=all&theme=oneDark).
+<br />
 
 import { EmbeddedStory } from '@components/EmbeddedStory'
 

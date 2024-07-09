@@ -27,12 +27,18 @@ import {
   SelectionRange
 } from '@tidbcloud/codemirror-extension-events'
 
-// add the extension to your editor created by getting started
+// add extensions to your editor created by getting started
 const extensions = [
   // ...other extensions,
   onDocChange((view: EditorView, doc: string) => {
+    // doc is all the current SQL content
     console.log('doc change', doc)
   }),
+  /**
+  *  When your selection or cursor position changes,
+  *  You can get the selection data from & to by the selRanges params,
+  *  it is the cursor position if from equals to
+  */
   onSelectionChange((view: EditorView, selRanges: SelectionRange[]) => {
     console.log('selection change', selRanges)
     console.log(getNearbyStatement(view.state, selRanges[0].from))
@@ -42,8 +48,9 @@ const extensions = [
 ```
 
 ## try it
-[url](https://tisqleditor-playground.netlify.app/?example=all&with_select=&theme=oneDark)
+You can try all the extensions playground at [here](https://tisqleditor-playground.netlify.app/?example=all&with_select=&theme=oneDark) & the events extension at [here](https://feat-playground-add-events--tisqleditor-playground.netlify.app/?example=events&theme=oneDark).
 
+<br />
 import { EmbeddedStory } from '@components/EmbeddedStory'
 
-<EmbeddedStory src={"https://tisqleditor-playground.netlify.app/?example=all&theme=oneDark"} initHeight={400}></EmbeddedStory>
+<EmbeddedStory src={"https://feat-playground-add-events--tisqleditor-playground.netlify.app/?example=events&theme=oneDark"} initHeight={800}></EmbeddedStory>
