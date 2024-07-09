@@ -280,8 +280,8 @@ const Editor = () => {
           console.log('doc change', doc)
         }),
         /**
-        *  When your selection or cursor position changes,
-        *  You can get the selection data from & to by the selRanges params,
+        *  Triggered when your selection or cursor position changes,
+        *  you can get the selection data from & to by the selRanges params,
         *  it is the cursor position if from equals to
         */
         onSelectionChange((view: EditorView, selRanges: SelectionRange[]) => {
