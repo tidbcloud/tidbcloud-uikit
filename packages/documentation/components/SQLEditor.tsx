@@ -15,10 +15,10 @@ export default function Component() {
             <div className="grid gap-4 md:grid-cols-2 md:gap-16">
               <div>
                 <h1 className="lg:leading-tighter text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl xl:text-[3.4rem] 2xl:text-[3.75rem] mb-2">
-                  Cloud Editor
+                  Ti SQL Editor
                 </h1>
                 <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl dark:text-gray-400 mb-8">
-                  <b>Cloud Editor</b>is an SQL Editor wrapped around CodeMirror, significantly enhancing usability. It
+                  <b>Ti SQL Editor</b>is an SQL Editor wrapped around CodeMirror, significantly enhancing usability. It
                   includes numerous improvements and refinements for common features such as syntax error handling,
                   Chinese language processing, and interactive pop-ups. This component is also used in the code editor
                   within TiDB Cloud.
