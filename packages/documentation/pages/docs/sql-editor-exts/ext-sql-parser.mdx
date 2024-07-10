@@ -1,0 +1,56 @@
+# @tidbcloud/codemirror-extension-sql-parser
+
+A codemirror extension listens the editor doc change, parses the content to SQL statements.
+
+This extension is installed internally inside the `SQLEditorInstance`.
+
+## Installation
+
+```sh npm2yarn
+npm install @tidbcloud/codemirror-extension-sql-parser
+```
+
+You need to install its peer dependencies as well:
+
+```sh npm2yarn
+npm install @codemirror/view @codemirror/state @codemirror/language @codemirror/lang-sql
+```
+
+## Usage
+
+```ts
+import { sql, MySQL } from '@codemirror/lang-sql'
+import { sqlParser } from '@tidbcloud/codemirror-extension-sql-parser'
+import { curSql, getCurStatements } from '@tidbcloud/codemirror-extension-cur-sql'
+// add extensions to your editor created by getting started
+const extensions = [
+  // ...other extensions,
+  sql({ dialect: MySQL }),
+  sqlParser()
+]
+```
+
+## API
+
+```ts
+type SqlStatement = {
+  from: number
+  to: number
+  lineFrom: number
+  lineTo: number
+  content: string
+  database: string // the database name get from the nearest use statement before the pos
+  type: 'use' | 'ddl' | 'other' // the type is 'use' if the statement start with use ignore case
+}
+
+/* get all parsed statements */
+function getSqlStatements(state: EditorState): SqlStatement[]
+
+/* get the nearest statement before the pos */
+function getNearbyStatement(
+  state: EditorState,
+  pos: number
+): SqlStatement | undefined
+
+function sqlParser(): Extension
+```

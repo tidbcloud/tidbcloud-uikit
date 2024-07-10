@@ -3,6 +3,13 @@
  * @see https://v0.dev/t/R87ZJeFaF4p
  * Documentation: https://v0.dev/docs#integrating-generated-code-into-your-nextjs-app
  */
+import {
+  IconAlertSquare,
+  IconBarChartSquareUp,
+  IconCodeSquare01,
+  IconCopy03,
+  IconIntersectSquare
+} from '@tidbcloud/uikit/icons'
 import Link from 'next/link'
 import { JSX, SVGProps } from 'react'
 
@@ -36,7 +43,7 @@ export default function Component() {
                   width="550"
                   height="550"
                   alt="Hero"
-                  className="mx-auto aspect-square overflow-hidden rounded-xl object-cover"
+                  className="mx-auto overflow-hidden rounded-xl object-cover"
                 />
               </div>
             </div>
@@ -55,7 +62,9 @@ export default function Component() {
             <div className="mx-auto grid max-w-5xl items-start gap-8 sm:grid-cols-2 md:gap-12 lg:grid-cols-3">
               <div className="grid gap-4">
                 <div className="bg-gray-100 rounded-md flex items-center justify-center aspect-square p-4 dark:bg-gray-800">
-                  <BoxIcon className="w-8 h-8" />
+                  <a href="https://tidbcloud-uikit-story.netlify.app/?path=/docs/primitive-button--docs">
+                    <img src="https://boserverdisc.oss-cn-hangzhou.aliyuncs.com/public/tiui/button.dark.png" />
+                  </a>
                 </div>
                 <div className="space-y-1">
                   <h3 className="text-lg font-bold">Button</h3>
@@ -66,7 +75,9 @@ export default function Component() {
               </div>
               <div className="grid gap-4">
                 <div className="bg-gray-100 rounded-md flex items-center justify-center aspect-square p-4 dark:bg-gray-800">
-                  <CreditCardIcon className="w-8 h-8" />
+                  <a href="https://tidbcloud-uikit-story.netlify.app/?path=/docs/primitive-card--docs">
+                    <img src="https://boserverdisc.oss-cn-hangzhou.aliyuncs.com/public/tiui/card.dark.png" />
+                  </a>
                 </div>
                 <div className="space-y-1">
                   <h3 className="text-lg font-bold">Card</h3>
@@ -77,10 +88,12 @@ export default function Component() {
               </div>
               <div className="grid gap-4">
                 <div className="bg-gray-100 rounded-md flex items-center justify-center aspect-square p-4 dark:bg-gray-800">
-                  <ChevronDownIcon className="w-8 h-8" />
+                  <a href="https://tidbcloud-uikit-story.netlify.app/?path=/docs/primitive-select--docs">
+                    <img src="https://boserverdisc.oss-cn-hangzhou.aliyuncs.com/public/tiui/select.dark.png" />
+                  </a>
                 </div>
                 <div className="space-y-1">
-                  <h3 className="text-lg font-bold">Dropdown</h3>
+                  <h3 className="text-lg font-bold">Select</h3>
                   <p className="text-sm text-gray-500 dark:text-gray-400">
                     Accessible and customizable dropdown menu component.
                   </p>
@@ -88,7 +101,9 @@ export default function Component() {
               </div>
               <div className="grid gap-4">
                 <div className="bg-gray-100 rounded-md flex items-center justify-center aspect-square p-4 dark:bg-gray-800">
-                  <FileInputIcon className="w-8 h-8" />
+                  <a href="https://tidbcloud-uikit-story.netlify.app/?path=/docs/primitive-input--docs">
+                    <img src="https://boserverdisc.oss-cn-hangzhou.aliyuncs.com/public/tiui/input.dark.png" />
+                  </a>
                 </div>
                 <div className="space-y-1">
                   <h3 className="text-lg font-bold">Input</h3>
@@ -99,7 +114,9 @@ export default function Component() {
               </div>
               <div className="grid gap-4">
                 <div className="bg-gray-100 rounded-md flex items-center justify-center aspect-square p-4 dark:bg-gray-800">
-                  <NotebookTabsIcon className="w-8 h-8" />
+                  <a href="https://tidbcloud-uikit-story.netlify.app/?path=/docs/primitive-tabs--docs">
+                    <img src="https://boserverdisc.oss-cn-hangzhou.aliyuncs.com/public/tiui/tabs.dark.png" />
+                  </a>
                 </div>
                 <div className="space-y-1">
                   <h3 className="text-lg font-bold">Tabs</h3>
@@ -110,7 +127,9 @@ export default function Component() {
               </div>
               <div className="grid gap-4">
                 <div className="bg-gray-100 rounded-md flex items-center justify-center aspect-square p-4 dark:bg-gray-800">
-                  <PopcornIcon className="w-8 h-8" />
+                  <a href="https://tidbcloud-uikit-story.netlify.app/?path=/docs/primitive-popover--docs">
+                    <img src="https://boserverdisc.oss-cn-hangzhou.aliyuncs.com/public/tiui/popover.dark.png" />
+                  </a>
                 </div>
                 <div className="space-y-1">
                   <h3 className="text-lg font-bold">Popover</h3>
@@ -125,35 +144,52 @@ export default function Component() {
         <aside className="w-full py-12 md:py-24 lg:py-32 bg-gray-100 dark:bg-gray-800">
           <div className="container grid items-center justify-center gap-4 px-4 md:px-6 lg:grid-cols-2 lg:gap-10">
             <div className="space-y-2">
-              <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">Component Categories</h2>
+              <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">Component Layers</h2>
               <p className="max-w-[600px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
-                Browse our extensive library of components organized by category.
+                Browse our extensive library of components organized by for layers.
               </p>
             </div>
             <div className="grid gap-4">
               <Link
-                href="#"
+                href="/docs/primitive/Accordion"
                 className="flex items-center justify-between rounded-md bg-white px-4 py-3 shadow-sm transition-colors hover:bg-gray-100 focus:bg-gray-100 focus:outline-none dark:bg-gray-950 dark:hover:bg-gray-800 dark:focus:bg-gray-800"
                 prefetch={false}
               >
                 <div className="flex items-center gap-3">
                   <div className="bg-gray-100 rounded-md flex items-center justify-center aspect-square w-10 dark:bg-gray-800">
-                    <LayoutTemplateIcon className="w-5 h-5" />
+                    <IconCodeSquare01 className="w-5 h-5" />
                   </div>
-                  <span className="text-sm font-medium">Layout</span>
+                  <span className="text-sm font-medium">
+                    Cloud UI Primitive - atomic components like button / link / text...
+                  </span>
                 </div>
                 <ChevronRightIcon className="w-5 h-5 text-gray-500 dark:text-gray-400" />
               </Link>
               <Link
-                href="#"
+                href="/docs/biz/CodeBlock"
                 className="flex items-center justify-between rounded-md bg-white px-4 py-3 shadow-sm transition-colors hover:bg-gray-100 focus:bg-gray-100 focus:outline-none dark:bg-gray-950 dark:hover:bg-gray-800 dark:focus:bg-gray-800"
                 prefetch={false}
               >
                 <div className="flex items-center gap-3">
                   <div className="bg-gray-100 rounded-md flex items-center justify-center aspect-square w-10 dark:bg-gray-800">
-                    <NavigationIcon className="w-5 h-5" />
+                    <IconIntersectSquare className="w-5 h-5" />
                   </div>
-                  <span className="text-sm font-medium">Navigation</span>
+                  <span className="text-sm font-medium">
+                    Cloud UI Business - biz components with rich user interactions & behaviours...
+                  </span>
+                </div>
+                <ChevronRightIcon className="w-5 h-5 text-gray-500 dark:text-gray-400" />
+              </Link>
+              <Link
+                href="/icons"
+                className="flex items-center justify-between rounded-md bg-white px-4 py-3 shadow-sm transition-colors hover:bg-gray-100 focus:bg-gray-100 focus:outline-none dark:bg-gray-950 dark:hover:bg-gray-800 dark:focus:bg-gray-800"
+                prefetch={false}
+              >
+                <div className="flex items-center gap-3">
+                  <div className="bg-gray-100 rounded-md flex items-center justify-center aspect-square w-10 dark:bg-gray-800">
+                    <IconAlertSquare className="w-5 h-5" />
+                  </div>
+                  <span className="text-sm font-medium">Cloud UI Icons - icons make by our design team</span>
                 </div>
                 <ChevronRightIcon className="w-5 h-5 text-gray-500 dark:text-gray-400" />
               </Link>
@@ -166,33 +202,9 @@ export default function Component() {
                   <div className="bg-gray-100 rounded-md flex items-center justify-center aspect-square w-10 dark:bg-gray-800">
                     <ShapesIcon className="w-5 h-5" />
                   </div>
-                  <span className="text-sm font-medium">Form</span>
-                </div>
-                <ChevronRightIcon className="w-5 h-5 text-gray-500 dark:text-gray-400" />
-              </Link>
-              <Link
-                href="#"
-                className="flex items-center justify-between rounded-md bg-white px-4 py-3 shadow-sm transition-colors hover:bg-gray-100 focus:bg-gray-100 focus:outline-none dark:bg-gray-950 dark:hover:bg-gray-800 dark:focus:bg-gray-800"
-                prefetch={false}
-              >
-                <div className="flex items-center gap-3">
-                  <div className="bg-gray-100 rounded-md flex items-center justify-center aspect-square w-10 dark:bg-gray-800">
-                    <DatabaseIcon className="w-5 h-5" />
-                  </div>
-                  <span className="text-sm font-medium">Data</span>
-                </div>
-                <ChevronRightIcon className="w-5 h-5 text-gray-500 dark:text-gray-400" />
-              </Link>
-              <Link
-                href="#"
-                className="flex items-center justify-between rounded-md bg-white px-4 py-3 shadow-sm transition-colors hover:bg-gray-100 focus:bg-gray-100 focus:outline-none dark:bg-gray-950 dark:hover:bg-gray-800 dark:focus:bg-gray-800"
-                prefetch={false}
-              >
-                <div className="flex items-center gap-3">
-                  <div className="bg-gray-100 rounded-md flex items-center justify-center aspect-square w-10 dark:bg-gray-800">
-                    <ReplyIcon className="w-5 h-5" />
-                  </div>
-                  <span className="text-sm font-medium">Feedback</span>
+                  <span className="text-sm font-medium">
+                    Cloud UI Pro (WIP) - sample pages as a good page level demons
+                  </span>
                 </div>
                 <ChevronRightIcon className="w-5 h-5 text-gray-500 dark:text-gray-400" />
               </Link>

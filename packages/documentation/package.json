@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.0.2",
+    "@radix-ui/react-tabs": "^1.1.0",
     "@tidbcloud/uikit": "workspace:*",
     "ahooks": "^3.7.8",
     "next": "^14.2.3",
