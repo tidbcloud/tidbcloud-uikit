@@ -30,6 +30,12 @@
       "layout": "full"
     }
   },
+  "__rap": {
+    "type": "page",
+    "title": "RAP API",
+    "href": "https://doc.rapapi.cn/",
+    "newWindow": true
+  },
   "docs": {
     "type": "page",
     "title": "Docs"
