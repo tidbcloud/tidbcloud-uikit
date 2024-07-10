@@ -81,7 +81,7 @@ export default function Component() {
             <div className="mx-auto grid max-w-5xl items-start gap-8 sm:grid-cols-2 md:gap-12 lg:grid-cols-3">
               <div className="grid gap-4">
                 <img
-                  src="https://boserverdisc.oss-cn-hangzhou.aliyuncs.com/public/tiui/pro-table.png"
+                  src="https://boserverdisc.oss-cn-hangzhou.aliyuncs.com/public/tiui/pro-table-2.png"
                   width="550"
                   height="310"
                   alt="Button"
@@ -92,7 +92,7 @@ export default function Component() {
                   <p className="text-sm text-gray-500 dark:text-gray-400">
                     <b>Cloud UI</b> is the component library for TiDB Cloud. It is based on Mantine and includes many
                     business-specific customizations, providing better support for Dark Mode. Additionally, it has
-                    accumulated a large number of business components specifically for the Cloud Database Console.
+                    accumulated a large number of business components.
                   </p>
                 </div>
                 <Link
@@ -105,7 +105,7 @@ export default function Component() {
               </div>
               <div className="grid gap-4">
                 <img
-                  src="https://boserverdisc.oss-cn-hangzhou.aliyuncs.com/public/tiui/icons.png"
+                  src="https://boserverdisc.oss-cn-hangzhou.aliyuncs.com/public/tiui/icons-2.png"
                   width="550"
                   height="310"
                   alt="Card"
@@ -115,7 +115,8 @@ export default function Component() {
                   <h3 className="text-lg font-bold">Cloud Icons</h3>
                   <p className="text-sm text-gray-500 dark:text-gray-400">
                     A set of <b>icons</b> designed by the TiDB Cloud design team for the cloud database web console,
-                    meeting most of the needs of a complex console.
+                    meeting most of the needs of a complex console. Very suitable to console apps. We are continously
+                    adding new icons. Feel free to use it.
                   </p>
                 </div>
                 <Link
@@ -138,9 +139,8 @@ export default function Component() {
                   <h3 className="text-lg font-bold">Ti SQL Editor</h3>
                   <p className="text-sm text-gray-500 dark:text-gray-400">
                     <b>Ti SQL Editor</b> is an SQL Editor wrapped around CodeMirror, significantly enhancing usability.
-                    It includes numerous improvements and refinements for common features such as syntax error handling,
-                    Chinese language processing, and interactive pop-ups. This component is also used in the code editor
-                    within TiDB Cloud.
+                    It includes numerous improvements for common features such as syntax error handling, Chinese
+                    language processing, and interactive pop-ups. within TiDB Cloud.
                   </p>
                 </div>
                 <Link
