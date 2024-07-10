@@ -21,7 +21,7 @@ export default function Component() {
           <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-primary-foreground px-4 md:px-6">
             <h1 className="text-4xl md:text-6xl font-bold tracking-tighter mb-4">TiUI</h1>
             <p className="max-w-[900px] text-lg md:text-2xl mb-8">
-              Unleash the power of our open-source FE infrastructure, by PingCAP FE Team.
+              Unleash the power of our open-source FE infrastructure, by TiDB Cloud FE Team.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link

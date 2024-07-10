@@ -16,7 +16,7 @@ const config: DocsThemeConfig = {
     backToTop: true
   },
   footer: {
-    text: 'TiUI'
+    text: 'TiUI - TiDB Cloud'
   },
   darkMode: true,
   useNextSeoProps() {
