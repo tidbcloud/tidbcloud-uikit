@@ -12,14 +12,14 @@ const SQLEditorThemeChange = () => {
         <TabsContent value="oneDark">
           <EmbeddedStory
             title="dark"
-            src={'https://tisqleditor-playground.netlify.app/?example=all&theme=oneDark'}
+            src={'https://tisqleditor-playground.netlify.app/?example=cur-sql-gutter&theme=oneDark'}
             initHeight={400}
           ></EmbeddedStory>
         </TabsContent>
         <TabsContent value="bbedit">
           <EmbeddedStory
             title="light"
-            src={'https://tisqleditor-playground.netlify.app/?example=all&theme=bbedit'}
+            src={'https://tisqleditor-playground.netlify.app/?example=cur-sql-gutter&theme=bbedit'}
             initHeight={400}
           ></EmbeddedStory>
         </TabsContent>
