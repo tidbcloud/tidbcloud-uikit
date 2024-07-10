@@ -1,56 +1,56 @@
 # @tidbcloud/codemirror-extension-events
 
-Events Extensions for CodeMirror6. This extension provides 3 default events: onChange, onFocusChange and onSelectionChange.
+2 normal kinds of codemirror event listener: doc change, selection change
+
+- onDocChange: triggered when doc changes
+- onSelectionChange: triggered when selection changes
 
 ## Installation
 
-```shell
+```sh npm2yarn
 npm install @tidbcloud/codemirror-extension-events
 ```
 
 You need to install its peer dependencies as well:
 
-```shell
-npm install @codemirror/view @codemirror/view
+```sh npm2yarn
+npm install @codemirror/view @codemirror/state
 ```
 
 ## Usage
 
 ```ts
 import { EditorView } from '@codemirror/view'
-import { EditorState } from '@codemirror/state'
-import { onChange, onFocusChange, onSelectionChange } from '@tidbcloud/codemirror-extension-events'
+import {
+  onDocChange,
+  onSelectionChange,
+  SelectionRange
+} from '@tidbcloud/codemirror-extension-events'
 
-const onChangeHandler = (sql: string, view: EditorView) => {
-  console.log(sql, view)
-}
-
-const onFocusChangeHandler = (sql: string) => {
-  console.log(sql)
-}
-
-const onSelectionChangeHandler = (selectedRange: {from: number, to: numer}) => {
-  console.log(selectedRange.from, selectedRange.to)
-}
-
-const editorView = new EditorView({
-  state: EditorState.create({
-    doc,
-    extensions: [
-      onChange(onChangeHandler),
-      focusChangeHelper(onFocusChangeHandler),
-      onSelectionChange: (onSelectionChangeHandler)
-    ]
+// add extensions to your editor created by getting started
+const extensions = [
+  // ...other extensions,
+  onDocChange((view: EditorView, doc: string) => {
+    // doc is all the current SQL content
+    console.log('doc change', doc)
+  }),
+  /**
+  *  When your selection or cursor position changes,
+  *  You can get the selection data from & to by the selRanges params,
+  *  it is the cursor position if from equals to
+  */
+  onSelectionChange((view: EditorView, selRanges: SelectionRange[]) => {
+    console.log('selection change', selRanges)
+    console.log(getNearbyStatement(view.state, selRanges[0].from))
+    console.log(getSqlStatements(view.state))
   })
-})
+]
 ```
 
 ## try it
+You can try all the extensions playground at [here](https://tisqleditor-playground.netlify.app/?example=all&with_select=&theme=oneDark) & the events extension at [here](https://tisqleditor-playground.netlify.app/?example=events&theme=oneDark).
+
+<br />
 import { EmbeddedStory } from '@components/EmbeddedStory'
 
-<EmbeddedStory src={"https://667a3273123b350008560429--tisqleditor-playground.netlify.app/?hidden=1"} initHeight={300}></EmbeddedStory>
-
-
-```
-// todo will display the events callback results
-```
+<EmbeddedStory src={"https://tisqleditor-playground.netlify.app/?example=events&theme=oneDark"} initHeight={600}></EmbeddedStory>

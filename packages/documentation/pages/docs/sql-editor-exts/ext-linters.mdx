@@ -1,0 +1,101 @@
+# @tidbcloud/codemirror-extension-linters
+
+3 linter codemirror extensions:
+
+- useDbLinter: use statement linter, the first statement should be `use ${dbName};`
+- fullWidthCharLinter: lint all the full width characters
+- regexMatchLinter: configurable by regular expression
+
+## Installation
+
+```sh npm2yarn
+npm install @tidbcloud/codemirror-extension-linters
+```
+
+You need to install its peer dependencies as well:
+
+```sh npm2yarn
+npm install @codemirror/view @codemirror/state @codemirror/lint @codemirror/lang-sql @tidbcloud/codemirror-extension-sql-parser
+```
+
+## Usage
+
+```ts
+import { sql, MySQL } from '@codemirror/lang-sql'
+import { sqlParser } from '@tidbcloud/codemirror-extension-sql-parser'
+import {
+  useDbLinter,
+  fullWidthCharLinter,
+  regexMatchLinter
+} from '@tidbcloud/codemirror-extension-linters'
+
+// add extensions to your editor created by getting started
+const extensions = [
+  // ...other extensions,
+  sql({ dialect: MySQL }),
+  sqlParser(),
+  // the SQL content should be start with a USE statement or there is a warning message
+  useDbLinter({
+    level: 'warning',
+    title: 'the title when error',
+    message: 'error content'
+  }),
+  // full width characters are not allowed
+  fullWidthCharLinter({
+    title: 'the title when error',
+    message: 'error content'
+  }),
+  // you can customize some reg expressions to verify the content
+  regexMatchLinter([
+    // when you type ${page} at the editor, there will be error message under it.
+    {
+      reg: /\$\{page\}/g,
+      level: 'warning',
+      title: 'Code Error',
+      message: pageTips
+    },
+    // when you type ${page_size} at the editor, there will be error message under it.
+    {
+      reg: /\$\{page_size\}/g,
+      level: 'error',
+      title: 'Code Error',
+      message:
+        '<b>page</b> and <b>page_size</b> are built-in paging variables in the system, please replace the name of parameters.'
+    }
+  ])
+]
+```
+
+## API
+
+```ts
+type DBLinterOptions = {
+  level?: 'error' | 'warning'
+  title?: string
+  message?: string
+  /* control to disable the lint when some cases happen in run time */
+  whenDisable?: (view: EditorView) => boolean
+}
+function useDbLinter(config?: DBLinterOptions): Extension
+
+interface CharLinterConfig {
+  title?: string
+  message?: string
+}
+function fullWidthCharLinter(config?: charLinterConfig): Extension
+
+interface RegexpItem {
+  reg: RegExp
+  title: string
+  message: string
+}
+function regexMatchLinter(config: RegexpItem[]): Extension
+```
+
+## try it
+You can try all the extensions playground at [here](https://tisqleditor-playground.netlify.app/?example=use-db-linter&with_select=&theme=oneDark) & the linters extension at [here](https://tisqleditor-playground.netlify.app/?example=use-db-linter&theme=oneDark).
+<br />
+
+import { EmbeddedStory } from '@components/EmbeddedStory'
+
+<EmbeddedStory src={"https://tisqleditor-playground.netlify.app/?example=use-db-linter&theme=oneDark"} initHeight={400}></EmbeddedStory>
