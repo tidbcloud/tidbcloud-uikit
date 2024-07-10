@@ -55,7 +55,9 @@ export default function Component() {
             <div className="mx-auto grid max-w-5xl items-start gap-8 sm:grid-cols-2 md:gap-12 lg:grid-cols-3">
               <div className="grid gap-4">
                 <div className="bg-gray-100 rounded-md flex items-center justify-center aspect-square p-4 dark:bg-gray-800">
-                  <BoxIcon className="w-8 h-8" />
+                  <a href="https://tidbcloud-uikit-story.netlify.app/?path=/docs/primitive-button--docs">
+                    <img src="https://boserverdisc.oss-cn-hangzhou.aliyuncs.com/public/tiui/button.dark.png" />
+                  </a>
                 </div>
                 <div className="space-y-1">
                   <h3 className="text-lg font-bold">Button</h3>
@@ -66,7 +68,9 @@ export default function Component() {
               </div>
               <div className="grid gap-4">
                 <div className="bg-gray-100 rounded-md flex items-center justify-center aspect-square p-4 dark:bg-gray-800">
-                  <CreditCardIcon className="w-8 h-8" />
+                  <a href="https://tidbcloud-uikit-story.netlify.app/?path=/docs/primitive-card--docs">
+                    <img src="https://boserverdisc.oss-cn-hangzhou.aliyuncs.com/public/tiui/card.dark.png" />
+                  </a>
                 </div>
                 <div className="space-y-1">
                   <h3 className="text-lg font-bold">Card</h3>
@@ -77,10 +81,12 @@ export default function Component() {
               </div>
               <div className="grid gap-4">
                 <div className="bg-gray-100 rounded-md flex items-center justify-center aspect-square p-4 dark:bg-gray-800">
-                  <ChevronDownIcon className="w-8 h-8" />
+                  <a href="https://tidbcloud-uikit-story.netlify.app/?path=/docs/primitive-select--docs">
+                    <img src="https://boserverdisc.oss-cn-hangzhou.aliyuncs.com/public/tiui/select.dark.png" />
+                  </a>
                 </div>
                 <div className="space-y-1">
-                  <h3 className="text-lg font-bold">Dropdown</h3>
+                  <h3 className="text-lg font-bold">Select</h3>
                   <p className="text-sm text-gray-500 dark:text-gray-400">
                     Accessible and customizable dropdown menu component.
                   </p>
@@ -88,7 +94,9 @@ export default function Component() {
               </div>
               <div className="grid gap-4">
                 <div className="bg-gray-100 rounded-md flex items-center justify-center aspect-square p-4 dark:bg-gray-800">
-                  <FileInputIcon className="w-8 h-8" />
+                  <a href="https://tidbcloud-uikit-story.netlify.app/?path=/docs/primitive-input--docs">
+                    <img src="https://boserverdisc.oss-cn-hangzhou.aliyuncs.com/public/tiui/input.dark.png" />
+                  </a>
                 </div>
                 <div className="space-y-1">
                   <h3 className="text-lg font-bold">Input</h3>
@@ -99,7 +107,9 @@ export default function Component() {
               </div>
               <div className="grid gap-4">
                 <div className="bg-gray-100 rounded-md flex items-center justify-center aspect-square p-4 dark:bg-gray-800">
-                  <NotebookTabsIcon className="w-8 h-8" />
+                  <a href="https://tidbcloud-uikit-story.netlify.app/?path=/docs/primitive-tabs--docs">
+                    <img src="https://boserverdisc.oss-cn-hangzhou.aliyuncs.com/public/tiui/tabs.dark.png" />
+                  </a>
                 </div>
                 <div className="space-y-1">
                   <h3 className="text-lg font-bold">Tabs</h3>
@@ -110,7 +120,9 @@ export default function Component() {
               </div>
               <div className="grid gap-4">
                 <div className="bg-gray-100 rounded-md flex items-center justify-center aspect-square p-4 dark:bg-gray-800">
-                  <PopcornIcon className="w-8 h-8" />
+                  <a href="https://tidbcloud-uikit-story.netlify.app/?path=/docs/primitive-popover--docs">
+                    <img src="https://boserverdisc.oss-cn-hangzhou.aliyuncs.com/public/tiui/popover.dark.png" />
+                  </a>
                 </div>
                 <div className="space-y-1">
                   <h3 className="text-lg font-bold">Popover</h3>
