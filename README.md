@@ -111,7 +111,7 @@ Your working area is uikit and stories. Once you finish your coding in the uikit
 After installing dependencies with `pnpm install`, cd to `packages/documentation`, create a .env file with following content:
 
 ```
-NEXT_PUBLIC_STORYBOOK_HOST=https://tidbcloud-uikit-story.netlify.app
+NEXT_PUBLIC_STORYBOOK_HOST=https://story.tiui.tidbcloud.com
 
 # if you want to reference your local storybook, set to
 # NEXT_PUBLIC_STORYBOOK_HOST=http://localhost:6006

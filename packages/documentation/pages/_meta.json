@@ -51,7 +51,7 @@
   "storybook_link": {
     "type": "page",
     "title": "API Refs",
-    "href": "https://tidbcloud-uikit-story.netlify.app",
+    "href": "https://story.tiui.tidbcloud.com",
     "newWindow": true
   }
 }
