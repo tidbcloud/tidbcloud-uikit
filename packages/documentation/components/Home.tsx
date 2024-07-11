@@ -11,7 +11,7 @@ export default function Component() {
     <div className="flex flex-col min-h-[100dvh]">
       <main className="flex-1">
         <section className="relative w-full h-[60vh] overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-r from-primary to-secondary opacity-80" />
+          {/* <div className="absolute inset-0 bg-gradient-to-r from-primary to-secondary opacity-80" /> */}
           <video autoPlay loop muted playsInline className="w-full h-full object-cover">
             <source
               src="https://boserverdisc.oss-cn-hangzhou.aliyuncs.com/public/tiui/video/3129671-uhd_3840_2160_30fps.mp4"
@@ -19,8 +19,8 @@ export default function Component() {
             />
           </video>
           <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-primary-foreground px-4 md:px-6">
-            <h1 className="text-4xl md:text-6xl font-bold tracking-tighter mb-4">TiUI</h1>
-            <p className="max-w-[900px] text-lg md:text-2xl mb-8">
+            <h1 className="text-4xl md:text-6xl font-bold tracking-tighter mb-4 text-white">TiUI</h1>
+            <p className="max-w-[900px] text-lg md:text-2xl mb-8 text-white">
               Unleash the power of our open-source FE infrastructure, by TiDB Cloud FE Team.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
@@ -50,8 +50,9 @@ export default function Component() {
                   Welcome to TiUI!
                 </h1>
                 <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl dark:text-gray-400">
-                  <b>TiUI</b> is the UI library for TiDB Cloud, which includes Cloud UI, SQL editor, icons. It enhances
-                  development efficiency and unifies UI style and interaction experience.
+                  <b>TiUI</b> is the UI library and FE efficiency tools for TiDB Cloud, which includes Cloud UI, SQL
+                  editor, icons and RAP API Platform. It enhances our development efficiency and unifies UI style and
+                  interaction experience.
                 </p>
               </div>
             </div>
@@ -69,7 +70,7 @@ export default function Component() {
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
                 <div className="inline-block rounded-lg bg-gray-100 px-3 py-1 text-sm dark:bg-gray-800">
-                  TiUI Components
+                  Cloud UI Components
                 </div>
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Beautifully Designed Components</h2>
                 <p className="max-w-[900px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
@@ -88,7 +89,7 @@ export default function Component() {
                   className="mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center"
                 />
                 <div className="grid gap-1">
-                  <h3 className="text-lg font-bold">Cloud UI</h3>
+                  <h3 className="text-lg font-bold">Cloud UI Primitive & Business</h3>
                   <p className="text-sm text-gray-500 dark:text-gray-400">
                     <b>Cloud UI</b> is the component library for TiDB Cloud. It is based on Mantine and includes many
                     business-specific customizations, providing better support for Dark Mode. Additionally, it has
@@ -112,7 +113,7 @@ export default function Component() {
                   className="mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center"
                 />
                 <div className="grid gap-1">
-                  <h3 className="text-lg font-bold">Cloud Icons</h3>
+                  <h3 className="text-lg font-bold">Cloud UI Icons</h3>
                   <p className="text-sm text-gray-500 dark:text-gray-400">
                     A set of <b>icons</b> designed by the TiDB Cloud design team for the cloud database web console,
                     meeting most of the needs of a complex console. Very suitable to console apps. We are continously
@@ -150,6 +151,47 @@ export default function Component() {
                 >
                   Get Started
                 </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section className="bg-muted py-12 sm:py-20 lg:py-28">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
+              <div className="space-y-6">
+                <h2 className="text-3xl font-bold tracking-tighter text-foreground sm:text-4xl lg:text-5xl">
+                  RAP API Management Portal
+                </h2>
+                <p className="text-muted-foreground md:text-xl">
+                  An automation、visualization and documentation API management platform, a 20k stars open-sourced
+                  project. Generating TypeScript code automatically, providing a friendly UI for API management, and
+                  supporting mock data generation.
+                </p>
+                <div className="flex flex-col gap-4 sm:flex-row">
+                  <Link
+                    href="https://doc.rapapi.cn"
+                    className="inline-flex h-10 items-center justify-center rounded-md bg-primary px-8 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
+                    target="_blank"
+                    prefetch={false}
+                  >
+                    Documentation
+                  </Link>
+                  <Link
+                    href="https://rapapi.cn"
+                    target="_blank"
+                    className="inline-flex h-10 items-center justify-center rounded-md border border-input bg-background px-8 text-sm font-medium shadow-sm transition-colors hover:bg-accent text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
+                    prefetch={false}
+                  >
+                    Visit RAP
+                  </Link>
+                </div>
+              </div>
+              <div className="relative">
+                <div className="absolute inset-0 -z-10 animate-spin-slow">
+                  <div>
+                    <div />
+                  </div>
+                </div>
               </div>
             </div>
           </div>
