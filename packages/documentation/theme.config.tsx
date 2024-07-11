@@ -2,6 +2,7 @@ import type { DocsThemeConfig } from 'nextra-theme-docs'
 
 const logo = (
   <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+    <img src="https://boserverdisc.oss-cn-hangzhou.aliyuncs.com/public/tiui/favicon3.png" width="25px" />
     <b>TiUI</b>
   </div>
 )
@@ -13,7 +14,7 @@ const config: DocsThemeConfig = {
       <link
         rel="icon"
         type="image/svg+xml"
-        href="https://boserverdisc.oss-cn-hangzhou.aliyuncs.com/public/tiui/favicon.png"
+        href="https://boserverdisc.oss-cn-hangzhou.aliyuncs.com/public/tiui/favicon3.png"
       />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta property="og:title" content="TiUI - TiDB Cloud UI Library" />
