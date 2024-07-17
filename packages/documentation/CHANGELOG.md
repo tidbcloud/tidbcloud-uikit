@@ -28,6 +28,13 @@
 - Updated dependencies
   - @tidbcloud/uikit@2.0.0-beta.0
 
+## 0.1.30
+
+### Patch Changes
+
+- Updated dependencies [cd2433d]
+  - @tidbcloud/uikit@1.18.0
+
 ## 0.1.29
 
 ### Patch Changes

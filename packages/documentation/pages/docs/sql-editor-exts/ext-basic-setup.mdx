@@ -1,0 +1,127 @@
+# @tidbcloud/codemirror-extension-basic-setup
+
+Default basic configuration for codemirror.
+This package depends on most of the core library packages and exports extension bundles to help set up a simple editor in a few lines of code.
+
+## Installation
+
+```sh npm2yarn
+npm install @tidbcloud/codemirror-extension-basic-setup
+```
+
+⚠️ You need to install its peer dependencies as well:
+
+```sh npm2yarn
+npm install @codemirror/state @codemirror/view @codemirror/autocomplete @codemirror/commands @codemirror/language  @codemirror/lint @codemirror/search
+```
+
+## Usage
+
+```ts
+import { basicSetup } from '@tidbcloud/codemirror-extension-basic-setup'
+
+// add extensions to your editor created by getting started
+const extensions = [
+  basicSetup({
+    foldGutter: false,
+    foldKeymap: false,
+    searchKeymap: true,
+    autocompletion: false
+  })
+  // ...other extensions,
+]
+```
+
+If you have used @tidbcloud/tisqleditor extension, as it used baisc-setup and has some default config values, to override the default values, you can use basicSetupOptions, it has a higher priority, and can config it like this:
+
+```ts
+const basicSetupOptions = {
+  foldGutter: false,
+  foldKeymap: false,
+  searchKeymap: true,
+  autocompletion: false,
+  history: false
+}
+
+<YourEditorComponent basicSetupOptions={basicSetupOptions} />
+```
+
+## API
+
+```ts
+interface BasicSetupOptions extends MinimalSetupOptions {
+  lineNumbers?: boolean;
+  highlightActiveLineGutter?: boolean;
+  foldGutter?: boolean;
+  dropCursor?: boolean;
+  allowMultipleSelections?: boolean;
+  indentOnInput?: boolean;
+  bracketMatching?: boolean;
+  closeBrackets?: boolean;
+  autocompletion?: boolean;
+  rectangularSelection?: boolean;
+  crosshairCursor?: boolean;
+  highlightActiveLine?: boolean;
+  highlightSelectionMatches?: boolean;
+  closeBracketsKeymap?: boolean;
+  searchKeymap?: boolean;
+  foldKeymap?: boolean;
+  completionKeymap?: boolean;
+  lintKeymap?: boolean;
+}
+
+/**
+This is an extension value that just pulls together a number of
+extensions that you might want in a basic editor. It is meant as a
+convenient helper to quickly set up CodeMirror without installing
+and importing a lot of separate packages.
+
+Specifically, it includes...
+
+ - [the default command bindings](https://codemirror.net/6/docs/ref/#commands.defaultKeymap)
+ - [line numbers](https://codemirror.net/6/docs/ref/#view.lineNumbers)
+ - [special character highlighting](https://codemirror.net/6/docs/ref/#view.highlightSpecialChars)
+ - [the undo history](https://codemirror.net/6/docs/ref/#commands.history)
+ - [a fold gutter](https://codemirror.net/6/docs/ref/#language.foldGutter)
+ - [custom selection drawing](https://codemirror.net/6/docs/ref/#view.drawSelection)
+ - [drop cursor](https://codemirror.net/6/docs/ref/#view.dropCursor)
+ - [multiple selections](https://codemirror.net/6/docs/ref/#state.EditorState^allowMultipleSelections)
+ - [reindentation on input](https://codemirror.net/6/docs/ref/#language.indentOnInput)
+ - [the default highlight style](https://codemirror.net/6/docs/ref/#language.defaultHighlightStyle) (as fallback)
+ - [bracket matching](https://codemirror.net/6/docs/ref/#language.bracketMatching)
+ - [bracket closing](https://codemirror.net/6/docs/ref/#autocomplete.closeBrackets)
+ - [autocompletion](https://codemirror.net/6/docs/ref/#autocomplete.autocompletion)
+ - [rectangular selection](https://codemirror.net/6/docs/ref/#view.rectangularSelection) and [crosshair cursor](https://codemirror.net/6/docs/ref/#view.crosshairCursor)
+ - [active line highlighting](https://codemirror.net/6/docs/ref/#view.highlightActiveLine)
+ - [active line gutter highlighting](https://codemirror.net/6/docs/ref/#view.highlightActiveLineGutter)
+ - [selection match highlighting](https://codemirror.net/6/docs/ref/#search.highlightSelectionMatches)
+ - [search](https://codemirror.net/6/docs/ref/#search.searchKeymap)
+ - [linting](https://codemirror.net/6/docs/ref/#lint.lintKeymap)
+
+(You'll probably want to add some language package to your setup too.)
+
+This extension does not allow customization. The idea is that,
+once you decide you want to configure your editor more precisely,
+you take this package's source (which is just a bunch of imports
+and an array literal), copy it into your own code, and adjust it
+as desired.
+*/
+declare const basicSetup: (options?: BasicSetupOptions) => Extension[];
+interface MinimalSetupOptions {
+    highlightSpecialChars?: boolean;
+    history?: boolean;
+    drawSelection?: boolean;
+    syntaxHighlighting?: boolean;
+    defaultKeymap?: boolean;
+    historyKeymap?: boolean;
+}
+/**
+A minimal set of extensions to create a functional editor. Only
+includes [the default keymap](https://codemirror.net/6/docs/ref/#commands.defaultKeymap), [undo
+history](https://codemirror.net/6/docs/ref/#commands.history), [special character
+highlighting](https://codemirror.net/6/docs/ref/#view.highlightSpecialChars), [custom selection
+drawing](https://codemirror.net/6/docs/ref/#view.drawSelection), and [default highlight
+style](https://codemirror.net/6/docs/ref/#language.defaultHighlightStyle).
+*/
+declare const minimalSetup: (options?: MinimalSetupOptions) => Extension[];
+```

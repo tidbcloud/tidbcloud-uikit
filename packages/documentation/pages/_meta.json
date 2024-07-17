@@ -30,6 +30,12 @@
       "layout": "full"
     }
   },
+  "__rap": {
+    "type": "page",
+    "title": "RAP API↗",
+    "href": "https://doc.rapapi.cn/",
+    "newWindow": true
+  },
   "docs": {
     "type": "page",
     "title": "Docs"
@@ -41,10 +47,11 @@
       "typesetting": "article"
     }
   },
+
   "storybook_link": {
     "type": "page",
-    "title": "Storybook",
-    "href": "https://tidbcloud-uikit-story.netlify.app",
+    "title": "API Refs↗",
+    "href": "https://story.tiui.tidbcloud.com/",
     "newWindow": true
   }
 }

@@ -1,0 +1,39 @@
+# @tidbcloud/codemirror-extension-themes
+
+This extension provides 2 simple and out of box editor themes to use, `bbedit` is for light mode and `oneDark` is for dark mode.
+
+If these 2 themes is not suitable for you, you can use other themes from third-party libraries or customized a theme by yourself.
+
+## Installation
+
+```sh npm2yarn
+npm install @tidbcloud/codemirror-extension-themes
+```
+
+You need to install its peer dependencies as well:
+
+```sh npm2yarn
+npm install @codemirror/view @codemirror/state @codemirror/language @lezer/highlight
+```
+
+## Usage
+
+```ts
+import { bbedit, oneDark } from '@tidbcloud/codemirror-extension-themes'
+
+// add extensions to your editor created by getting started
+const extensions = [
+  // ...other extensions,
+  oneDark
+  // ------ Or ------
+  // bbedit
+]
+
+```
+## Try it
+You can try all the extensions playground at [here](https://tisqleditor-playground.netlify.app/?example=all&with_select=&theme=oneDark).
+
+<br />
+import SQLEditorThemes from '@components/SQLEditorThemes'
+
+<SQLEditorThemes />
