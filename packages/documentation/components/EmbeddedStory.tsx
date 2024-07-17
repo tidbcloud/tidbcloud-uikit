@@ -4,9 +4,6 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 export function EmbeddedStory({ src, title, initHeight }: { src: string; title: string; initHeight?: number }) {
   const ref = useRef<HTMLIFrameElement>(null)
   const [height, setHeight] = useState(initHeight ?? 500)
-
-  const theme = useTheme()
-
   const theme = useTheme()
 
   useEffect(() => {
