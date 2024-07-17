@@ -6,7 +6,8 @@
     "**/*.tsx",
     "pages/_app.js",
     "components/Dynamics.js",
-    "pages/sql-editor.mdx"
+    "pages/sql-editor.mdx",
+    "pages/sql-editor-doc.mdx",
   ],
   "exclude": ["node_modules"],
   "compilerOptions": {

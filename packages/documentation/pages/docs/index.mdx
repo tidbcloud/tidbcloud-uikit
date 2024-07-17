@@ -1,38 +1,18 @@
-import { Tabs, Tab } from 'nextra-theme-docs'
+# TiUI
 
-# Getting Started
+Welcome to TiUI! TiUI is the UI library for TiDB Cloud, which includes Cloud UI, SQL editor, icons. It enhances development efficiency and unifies UI style and interaction experience.
 
-## Installation
 
-Inside your React project directory, run the following command to install the package:
+## Cloud UI
 
-```sh npm2yarn
-npm install @tidbcloud/uikit
-```
+Cloud UI is the component library for TiDB Cloud. It is based on Mantine and includes many business-specific customizations, providing better support for Dark Mode. Additionally, it has accumulated a large number of business components specifically for the Cloud Database Console.
 
-## Quick Start
+[Read More](/docs/cloud-ui-getting-started)
 
-Wrap your application root component with `MantineProvider`:
 
-```js
-import { MantineProvider } from '@tidbcloud/uikit';
 
-function Main() {
-  return (
-    <MantineProvider withGlobalStyles withNormalizeCSS>
-      <App />
-    </MantineProvider>
-  );
-}
-```
+### Ti SQL Editor
 
-You can now import and use any components anywhere in your application:
+Ti SQL Editor is a powerful and flexible SQL editor that supports syntax highlighting, code completion, and more. It is based on CodeMirror and provides a series of extensions to enhance the editing experience. The SQL Editor is used in TiDB Cloud Console, and is based on CodeMirror and provides a series of extensions to enhance the editing experience.
 
-```js
-import { Button } from '@tidbcloud/uikit';
-
-function Demo() {
-  return <Button>Click me!</Button>;
-}
-```
-
+[Read More](/docs/sql-editor-getting-started)

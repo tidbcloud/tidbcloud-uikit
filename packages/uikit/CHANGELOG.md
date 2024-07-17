@@ -24,6 +24,12 @@
 
 - Upgrade react-hook-form to v7
 
+## 1.18.0
+
+### Minor Changes
+
+- cd2433d: add icon: vector
+
 ## 1.17.1
 
 ### Patch Changes

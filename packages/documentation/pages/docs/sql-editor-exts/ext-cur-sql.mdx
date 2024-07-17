@@ -1,0 +1,54 @@
+# @tidbcloud/codemirror-extension-cur-sql
+
+A codemirror extension listens the editor selection change, returns the complete SQL statements around the cursor position.
+
+This extension is installed internally inside the `SQLEditorInstance`.
+
+## Installation
+
+```sh npm2yarn
+npm install @tidbcloud/codemirror-extension-cur-sql
+```
+
+You need to install its peer dependencies as well:
+
+```sh npm2yarn
+npm install @codemirror/view @codemirror/state @codemirror/language @codemirror/lang-sql @tidbcloud/codemirror-extension-sql-parser
+```
+
+## Usage
+
+```ts
+import { sql, MySQL } from '@codemirror/lang-sql'
+import { sqlParser } from '@tidbcloud/codemirror-extension-sql-parser'
+import { curSql, getCurStatements } from '@tidbcloud/codemirror-extension-cur-sql'
+
+// add extensions to your editor created by getting started
+const extensions = [
+  // ...other extensions,
+  sql({ dialect: MySQL }),
+  sqlParser(),
+  curSql()
+]
+```
+
+## API
+
+```ts
+/* get the statements at the cursor position */
+function getCurStatements(state: EditorState): SqlStatement[];
+/* get the database at the cursor position */
+function getCurDatabase(state: EditorState): string;
+/* get the first statement that is not a use statement */
+function getFirstNonUseTypeStatement(state: EditorState): SqlStatement | undefined;
+/* the extension */
+function curSql(): Extension;
+```
+
+## Try it
+You can try all the extensions playground at [here](https://tisqleditor-playground.netlify.app/?example=all&with_select=&theme=oneDark).
+<br />
+
+import { EmbeddedStory } from '@components/EmbeddedStory'
+
+<EmbeddedStory src={"https://tisqleditor-playground.netlify.app/?example=cur-sql-gutter&theme=oneDark"} initHeight={400}></EmbeddedStory>
