@@ -7,7 +7,7 @@ export function useURLQueryState(
   key: string,
   defaultValue?: TQueryState
 ): [TQueryState | undefined, (value: TQueryState) => void] {
-  const parsed = qs.parse(window.location.search)
+  const parsed = qs.parse(window.location.search.substr(1))
   const initialValue = parsed[key] ? JSON.parse(parsed[key] as string) : defaultValue
   const [formState, setFormState] = useState(initialValue)
   const value = formState
