@@ -1,5 +1,6 @@
 import type { Meta, StoryObj, StoryFn } from '@storybook/react'
 import { TimeRangePicker } from '@tidbcloud/uikit/biz'
+import { dayjs } from '@tidbcloud/uikit/utils'
 
 type Story = StoryObj<typeof TimeRangePicker>
 
@@ -30,24 +31,25 @@ export const Basic: Story = {
 
 export const Primary: Story = {
   args: {
-    value: { type: 'absolute', value: [1721713862, 1721973002] }
+    value: { type: 'absolute', value: [1721713862, 1721973002] },
+    onChange(value) {
+      console.log('new value:', value)
+    },
+    quickRanges: [
+      5 * 60, // 5 mins
+      15 * 60,
+      30 * 60,
+      60 * 60,
+      3 * 60 * 60,
+      6 * 60 * 60,
+      12 * 60 * 60
+    ],
+    minDateTime() {
+      return dayjs.unix(1721713862).subtract(4, 'd').startOf('d').toDate()
+    },
+    maxDateTime() {
+      return dayjs.unix(1721973002).endOf('d').toDate()
+    },
+    maxDuration: 60 * 60 * 24 * 4
   }
-}
-
-{
-  /* <TimeRangePicker
-value={timeRange}
-onChange={(v) => {
-  setFilters(toURLTimeRange(v))
-  eventTracking('Slow Query Time Range Change', { timeRange: v })
-}}
-loading={isLoading || isFetching}
-quickRanges={slowQueryQuickRanges}
-minDateTime={() =>
-  dayjs()
-    .subtract(SLOW_QUERY_QUICK_RANGES[SLOW_QUERY_QUICK_RANGES.length - 1], 'seconds')
-    .toDate()
-}
-maxDateTime={() => dayjs().toDate()}
-/> */
 }
