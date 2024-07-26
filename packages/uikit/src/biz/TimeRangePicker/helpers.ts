@@ -1,5 +1,6 @@
 import dayjs from 'dayjs'
 import { trim } from 'lodash-es'
+import prettyMs from 'pretty-ms'
 
 export type TimeRange = RelativeTimeRange | AbsoluteTimeRange
 
@@ -32,55 +33,61 @@ export const DEFAULT_TIME_RANGE: TimeRange = {
   value: 30 * 60
 }
 
-const FORMAT_TOKENS: { [k: string]: { unit: Intl.RelativeTimeFormatUnit; fnName: string } } = {
-  s: {
-    unit: 'second',
-    fnName: 'asSeconds'
-  },
-  m: {
-    unit: 'minute',
-    fnName: 'asMinutes'
-  },
-  h: {
-    unit: 'hour',
-    fnName: 'asHours'
-  },
-  d: {
-    unit: 'day',
-    fnName: 'asDays'
-  },
-  mo: {
-    unit: 'month',
-    fnName: 'asMonths'
-  }
-}
+// const FORMAT_TOKENS: { [k: string]: { unit: Intl.RelativeTimeFormatUnit; fnName: string } } = {
+//   s: {
+//     unit: 'second',
+//     fnName: 'asSeconds'
+//   },
+//   m: {
+//     unit: 'minute',
+//     fnName: 'asMinutes'
+//   },
+//   h: {
+//     unit: 'hour',
+//     fnName: 'asHours'
+//   },
+//   d: {
+//     unit: 'day',
+//     fnName: 'asDays'
+//   },
+//   mo: {
+//     unit: 'month',
+//     fnName: 'asMonths'
+//   }
+// }
 
 export const formatDuration = (seconds: number, short = false) => {
-  let token = 's'
-  if (seconds >= 30 * 24 * 60 * 60) {
-    token = 'mo'
-  } else if (seconds >= 24 * 60 * 60) {
-    token = 'd'
-  } else if (seconds >= 60 * 60) {
-    token = 'h'
-  } else if (seconds >= 60) {
-    token = 'm'
-  }
+  return prettyMs(seconds * 1000, { verbose: !short })
+  // if (short) {
+  //   return prettyMs(seconds * 1000)
+  // } else {
+  //   return prettyMs(seconds * 1000, { verbose: true })
+  // }
+  // let token = 's'
+  // if (seconds >= 30 * 24 * 60 * 60) {
+  //   token = 'mo'
+  // } else if (seconds >= 24 * 60 * 60) {
+  //   token = 'd'
+  // } else if (seconds >= 60 * 60) {
+  //   token = 'h'
+  // } else if (seconds >= 60) {
+  //   token = 'm'
+  // }
 
-  const durationLength = Math.ceil(dayjs.duration(seconds, 'seconds')[FORMAT_TOKENS[token].fnName]())
+  // const durationLength = Math.ceil(dayjs.duration(seconds, 'seconds')[FORMAT_TOKENS[token].fnName]())
 
-  if (short) {
-    return `${durationLength}${token}`
-  }
+  // if (short) {
+  //   return `${durationLength}${token}`
+  // }
 
-  return `${durationLength}${formatUnit(durationLength, FORMAT_TOKENS[token].unit)}`
+  // return `${durationLength}${formatUnit(durationLength, FORMAT_TOKENS[token].unit)}`
 }
 
-const formatUnit = (seconds: number, unit: Intl.RelativeTimeFormatUnit) => {
-  const rtf = new Intl.RelativeTimeFormat('en', { numeric: 'always' })
-  const parts = rtf.formatToParts(seconds, unit)
-  return parts[parts.length - 1].value
-}
+// const formatUnit = (seconds: number, unit: Intl.RelativeTimeFormatUnit) => {
+//   const rtf = new Intl.RelativeTimeFormat('en', { numeric: 'always' })
+//   const parts = rtf.formatToParts(seconds, unit)
+//   return parts[parts.length - 1].value
+// }
 
 export const toTimeRangeValue = (timeRange: TimeRange, offset = 0): TimeRangeValue => {
   if (timeRange.type === 'absolute') {

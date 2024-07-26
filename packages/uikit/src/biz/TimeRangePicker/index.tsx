@@ -6,7 +6,7 @@ import { Button, Menu, SelectChevronIcon, Text, Box, Tooltip, Group, Typography 
 import AbsoluteTimeRangePicker from './AbsoluteTimeRangePicker.js'
 import { DEFAULT_QUICK_RANGES, TimeRange, formatDuration, toTimeRangeValue, timeFormatter } from './helpers.js'
 
-interface TimeRangePickerProps {
+export interface TimeRangePickerProps {
   value: TimeRange
   onChange?: (value: TimeRange) => void
 
@@ -24,7 +24,7 @@ interface TimeRangePickerProps {
   timezone?: number
 }
 
-const TimeRangePicker: React.FC<React.PropsWithChildren<TimeRangePickerProps>> = ({
+export const TimeRangePicker: React.FC<React.PropsWithChildren<TimeRangePickerProps>> = ({
   value,
   minDateTime,
   maxDateTime,
@@ -175,5 +175,3 @@ const DurationBadge: React.FC<React.PropsWithChildren<unknown>> = ({ children })
     </Box>
   )
 }
-
-export default TimeRangePicker

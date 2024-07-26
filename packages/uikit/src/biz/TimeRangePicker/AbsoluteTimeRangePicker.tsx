@@ -1,5 +1,5 @@
 import dayjs from 'dayjs'
-import prettyMs from 'pretty-ms'
+// import prettyMs from 'pretty-ms'
 import { CSSProperties, MouseEventHandler, useMemo, useState } from 'react'
 
 import { IconChevronLeft, IconAlertCircle } from '../../icons/index.js'
@@ -17,12 +17,12 @@ import {
   TimeInput
 } from '../../primitive/index.js'
 
-import { AbsoluteTimeRange, TimeRangeValue, timeFormatter } from './helpers.js'
+import { AbsoluteTimeRange, TimeRangeValue, timeFormatter, formatDuration } from './helpers.js'
 
-function formatDuration(seconds: number) {
-  let d = prettyMs(seconds * 1000, { verbose: true })
-  return d
-}
+// function formatDuration(seconds: number) {
+//   let d = prettyMs(seconds * 1000, { verbose: true })
+//   return d
+// }
 
 interface AbsoluteTimeRangePickerProps {
   value: TimeRangeValue
