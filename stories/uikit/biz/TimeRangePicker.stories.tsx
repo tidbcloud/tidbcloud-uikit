@@ -1,7 +1,7 @@
 import type { Meta, StoryObj, StoryFn } from '@storybook/react'
-import { PhoneInput } from '@tidbcloud/uikit/biz'
+import { TimeRangePicker } from '@tidbcloud/uikit/biz'
 
-type Story = StoryObj<typeof PhoneInput>
+type Story = StoryObj<typeof TimeRangePicker>
 
 const decorator = (Story: StoryFn) => {
   return (
@@ -11,9 +11,9 @@ const decorator = (Story: StoryFn) => {
   )
 }
 
-const meta: Meta<typeof PhoneInput> = {
-  title: 'Biz/PhoneInput',
-  component: PhoneInput,
+const meta: Meta<typeof TimeRangePicker> = {
+  title: 'Biz/TimeRangePicker',
+  component: TimeRangePicker,
   tags: ['autodocs'],
   decorators: [decorator],
   parameters: {}
@@ -22,22 +22,32 @@ const meta: Meta<typeof PhoneInput> = {
 export default meta
 
 // More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
+export const Basic: Story = {
+  args: {
+    value: { type: 'relative', value: 30 * 60 }
+  }
+}
+
 export const Primary: Story = {
   args: {
-    label: 'Phone Number',
-    description: 'Phone Number Input',
-    country: 'US',
-    required: true,
-    withAsterisk: true,
-    errorProps: {},
-    labelProps: {}
-  },
-  argTypes: {
-    label: {
-      type: 'string'
-    },
-    error: {
-      type: 'string'
-    }
+    value: { type: 'absolute', value: [1721713862, 1721973002] }
   }
+}
+
+{
+  /* <TimeRangePicker
+value={timeRange}
+onChange={(v) => {
+  setFilters(toURLTimeRange(v))
+  eventTracking('Slow Query Time Range Change', { timeRange: v })
+}}
+loading={isLoading || isFetching}
+quickRanges={slowQueryQuickRanges}
+minDateTime={() =>
+  dayjs()
+    .subtract(SLOW_QUERY_QUICK_RANGES[SLOW_QUERY_QUICK_RANGES.length - 1], 'seconds')
+    .toDate()
+}
+maxDateTime={() => dayjs().toDate()}
+/> */
 }

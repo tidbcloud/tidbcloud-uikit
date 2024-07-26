@@ -33,61 +33,13 @@ export const DEFAULT_TIME_RANGE: TimeRange = {
   value: 30 * 60
 }
 
-// const FORMAT_TOKENS: { [k: string]: { unit: Intl.RelativeTimeFormatUnit; fnName: string } } = {
-//   s: {
-//     unit: 'second',
-//     fnName: 'asSeconds'
-//   },
-//   m: {
-//     unit: 'minute',
-//     fnName: 'asMinutes'
-//   },
-//   h: {
-//     unit: 'hour',
-//     fnName: 'asHours'
-//   },
-//   d: {
-//     unit: 'day',
-//     fnName: 'asDays'
-//   },
-//   mo: {
-//     unit: 'month',
-//     fnName: 'asMonths'
-//   }
-// }
-
 export const formatDuration = (seconds: number, short = false) => {
-  return prettyMs(seconds * 1000, { verbose: !short })
-  // if (short) {
-  //   return prettyMs(seconds * 1000)
-  // } else {
-  //   return prettyMs(seconds * 1000, { verbose: true })
-  // }
-  // let token = 's'
-  // if (seconds >= 30 * 24 * 60 * 60) {
-  //   token = 'mo'
-  // } else if (seconds >= 24 * 60 * 60) {
-  //   token = 'd'
-  // } else if (seconds >= 60 * 60) {
-  //   token = 'h'
-  // } else if (seconds >= 60) {
-  //   token = 'm'
-  // }
-
-  // const durationLength = Math.ceil(dayjs.duration(seconds, 'seconds')[FORMAT_TOKENS[token].fnName]())
-
-  // if (short) {
-  //   return `${durationLength}${token}`
-  // }
-
-  // return `${durationLength}${formatUnit(durationLength, FORMAT_TOKENS[token].unit)}`
+  if (short) {
+    return prettyMs(seconds * 1000, { compact: true })
+  } else {
+    return prettyMs(seconds * 1000, { verbose: true })
+  }
 }
-
-// const formatUnit = (seconds: number, unit: Intl.RelativeTimeFormatUnit) => {
-//   const rtf = new Intl.RelativeTimeFormat('en', { numeric: 'always' })
-//   const parts = rtf.formatToParts(seconds, unit)
-//   return parts[parts.length - 1].value
-// }
 
 export const toTimeRangeValue = (timeRange: TimeRange, offset = 0): TimeRangeValue => {
   if (timeRange.type === 'absolute') {
@@ -164,22 +116,6 @@ export const getUTCString = (offset: number) => {
   }
 
   return 'UTC±00:00'
-}
-
-export const formatTime = (
-  timeValue: number | string | Date,
-  options: {
-    offset?: number
-    showSeconds?: boolean
-    showTimezone?: boolean
-  } = {}
-) => {
-  const { showSeconds = true, showTimezone = false, offset } = options
-  let format = showSeconds ? DEFAULT_TIME_FORMAT : `YYYY-MM-DD HH:mm`
-  if (showTimezone) {
-    format += ' Z'
-  }
-  return timeFormatter(timeValue, offset, format)
 }
 
 export const timeFormatter = (

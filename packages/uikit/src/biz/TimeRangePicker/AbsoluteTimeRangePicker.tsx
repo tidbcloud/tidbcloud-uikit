@@ -1,9 +1,9 @@
 import dayjs from 'dayjs'
-// import prettyMs from 'pretty-ms'
 import { CSSProperties, MouseEventHandler, useMemo, useState } from 'react'
 
 import { IconChevronLeft, IconAlertCircle } from '../../icons/index.js'
 import {
+  Box,
   Alert,
   Button,
   Flex,
@@ -18,11 +18,6 @@ import {
 } from '../../primitive/index.js'
 
 import { AbsoluteTimeRange, TimeRangeValue, timeFormatter, formatDuration } from './helpers.js'
-
-// function formatDuration(seconds: number) {
-//   let d = prettyMs(seconds * 1000, { verbose: true })
-//   return d
-// }
 
 interface AbsoluteTimeRangePickerProps {
   value: TimeRangeValue
@@ -98,8 +93,8 @@ const AbsoluteTimeRangePicker: React.FC<React.PropsWithChildren<AbsoluteTimeRang
   const apply = () => onChange?.({ type: 'absolute', value: [dayjs(start).unix(), dayjs(end).unix()] })
 
   return (
-    <div className="wd--m-1 wd-w-[280px] wd-p-4">
-      <Group className="wd-cursor-pointer" onClick={onReturnClick}>
+    <Box p={16} w={280} m={-4}>
+      <Group onClick={onReturnClick} sx={{ cursor: 'pointer' }}>
         <IconChevronLeft size={16} />
         <Typography variant="body-lg">Back</Typography>
       </Group>
@@ -150,7 +145,7 @@ const AbsoluteTimeRangePicker: React.FC<React.PropsWithChildren<AbsoluteTimeRang
         </Group>
       </Group>
 
-      <Flex justify="center" className="wd-pt-2" pt={8}>
+      <Flex justify="center" pt={8}>
         <RangeCalendar
           value={[start, end]}
           onChange={updateDate}
@@ -189,7 +184,7 @@ const AbsoluteTimeRangePicker: React.FC<React.PropsWithChildren<AbsoluteTimeRang
           Apply
         </Button>
       </Flex>
-    </div>
+    </Box>
   )
 }
 

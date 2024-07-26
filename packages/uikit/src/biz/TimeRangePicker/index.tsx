@@ -48,10 +48,10 @@ export const TimeRangePicker: React.FC<React.PropsWithChildren<TimeRangePickerPr
   }, [quickRanges, value])
 
   const formattedAbsDateTime = useMemo(() => {
-    return `${timeFormatter(timeRangeValue[0], timezone || null, 'MMM D, YYY HH:mm')} - ${timeFormatter(
+    return `${timeFormatter(timeRangeValue[0], timezone || null, 'MMM D, YYYY HH:mm')} - ${timeFormatter(
       timeRangeValue[1],
       timezone || null,
-      'MMM D, YYY HH:mm'
+      'MMM D, YYYY HH:mm'
     )}`
   }, [timeRangeValue])
 
@@ -94,15 +94,15 @@ export const TimeRangePicker: React.FC<React.PropsWithChildren<TimeRangePickerPr
             {...(loading ? { 'data-loading': true } : {})}
           >
             <Group w="100%" spacing={0}>
-              <div className="wd-flex-none">
+              <Box sx={{ flex: 'none' }}>
                 <DurationBadge>{formatDuration(duration, true)}</DurationBadge>
-              </div>
-              <Text className="wd-flex-1 wd-truncate wd-px-2">
+              </Box>
+              <Text px={8} sx={{ flex: '1 1', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis' }}>
                 {isRelativeRange ? `Past ${formatDuration(duration)}` : formattedAbsDateTime}
               </Text>
-              <div className="wd-flex-none">
-                <SelectChevronIcon className="wd-flex-none" size="md" error={false} />
-              </div>
+              <Box sx={{ flex: 'none' }}>
+                <SelectChevronIcon size="md" error={false} />
+              </Box>
             </Group>
           </Button>
         </Tooltip>
@@ -169,7 +169,7 @@ const DurationBadge: React.FC<React.PropsWithChildren<unknown>> = ({ children })
       fz={10}
       lh="14px"
       ta="center"
-      className="wd-rounded-lg"
+      sx={{ borderRadius: 8 }}
     >
       {children}
     </Box>
