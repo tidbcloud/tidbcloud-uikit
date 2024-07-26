@@ -1,3 +1,8 @@
+import dayjs from 'dayjs'
+import prettyMs from 'pretty-ms'
+import { CSSProperties, MouseEventHandler, useMemo, useState } from 'react'
+
+import { IconChevronLeft, IconAlertCircle } from '../../icons/index.js'
 import {
   Alert,
   Button,
@@ -10,11 +15,7 @@ import {
   MonthSettings,
   RangeCalendar,
   TimeInput
-} from '@tidbcloud/uikit'
-import { IconChevronLeft, IconAlertCircle } from '@tidbcloud/uikit/icons'
-import dayjs from 'dayjs'
-import prettyMs from 'pretty-ms'
-import { CSSProperties, MouseEventHandler, useMemo, useState } from 'react'
+} from '../../primitive/index.js'
 
 import { AbsoluteTimeRange, TimeRangeValue, timeFormatter } from './helpers.js'
 
