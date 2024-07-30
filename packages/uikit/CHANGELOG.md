@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.6
+
+### Patch Changes
+
+- export helper functions
+
 ## 2.0.0-beta.5
 
 ### Minor Changes
