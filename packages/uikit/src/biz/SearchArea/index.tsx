@@ -58,10 +58,6 @@ function FormItemRender(props: {
 
   const [keyword, setKeyword] = useState<string | Date | TimeRange>(defaultValue)
 
-  if (type === 'timerangepicker') {
-    console.log('keyword', keyword)
-  }
-
   useEffect(() => {
     if (resetSeed > 0) {
       setKeyword(defaultValue)
