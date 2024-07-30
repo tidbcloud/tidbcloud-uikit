@@ -5,7 +5,9 @@ import { useURLQueryState } from '../../hooks/index.js'
 import { IconEraser, IconRefreshCw01, IconXClose } from '../../icons/index.js'
 import { Box, Button, Sx } from '../../primitive/index.js'
 import { FormDatePicker } from '../Form/DatePicker.js'
+import { FormTimeRangePicker } from '../Form/FormTimeRangePicker.js'
 import { Form, FormProps, FormSelect, FormTextInput } from '../Form/index.js'
+import { TimeRange } from '../TimeRangePicker/helpers.js'
 
 interface IFormItemBase {
   name: string
@@ -26,7 +28,11 @@ interface IFormItemSelect extends IFormItemBase {
   data: Array<{ label: string; value: string }>
 }
 
-export type FormItem = IFormItemText | IFormItemSelect | IFormItemDatePicker
+interface IFormItemTimeRangePicker extends IFormItemBase {
+  type: 'timerangepicker'
+}
+
+export type FormItem = IFormItemText | IFormItemSelect | IFormItemDatePicker | IFormItemTimeRangePicker
 
 export interface SearchAreaProps<T extends FieldValues> extends FormProps<T> {
   data: FormItem[]
@@ -37,7 +43,12 @@ export interface SearchAreaProps<T extends FieldValues> extends FormProps<T> {
 const SX_Y_MID = { display: 'flex', alignItems: 'center' }
 const FORM_ITEM_SX_BASE: Sx = { minWidth: '160px' }
 
-function FormItemRender(props: { data: FormItem; onSubmit?: () => void; defaultValue: string; resetSeed: number }) {
+function FormItemRender(props: {
+  data: FormItem
+  onSubmit?: () => void
+  defaultValue: string | Date | TimeRange
+  resetSeed: number
+}) {
   const {
     data: { name, placeholder, type, sx },
     onSubmit,
@@ -45,7 +56,11 @@ function FormItemRender(props: { data: FormItem; onSubmit?: () => void; defaultV
     resetSeed
   } = props
 
-  const [keyword, setKeyword] = useState<string | Date>(defaultValue)
+  const [keyword, setKeyword] = useState<string | Date | TimeRange>(defaultValue)
+
+  if (type === 'timerangepicker') {
+    console.log('keyword', keyword)
+  }
 
   useEffect(() => {
     if (resetSeed > 0) {
@@ -104,7 +119,7 @@ function FormItemRender(props: { data: FormItem; onSubmit?: () => void; defaultV
       return (
         <FormDatePicker
           name={name}
-          value={typeof keyword === 'string' ? new Date(keyword) : keyword}
+          value={typeof keyword === 'string' ? new Date(keyword) : (keyword as Date)}
           placeholder={placeholder ?? ''}
           onChange={(val) => {
             setKeyword(val as Date)
@@ -112,6 +127,18 @@ function FormItemRender(props: { data: FormItem; onSubmit?: () => void; defaultV
           }}
           sx={{ ...FORM_ITEM_SX_BASE, ...(sx ?? {}) }}
           clearable
+        />
+      )
+    case 'timerangepicker':
+      return (
+        <FormTimeRangePicker
+          name={name}
+          value={keyword as TimeRange}
+          onChange={(val) => {
+            setKeyword(val)
+            triggerSubmit()
+          }}
+          sx={{ ...FORM_ITEM_SX_BASE, ...(sx ?? {}) }}
         />
       )
     default:

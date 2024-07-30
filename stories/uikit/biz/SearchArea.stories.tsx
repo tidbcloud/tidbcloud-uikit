@@ -27,6 +27,7 @@ const formData: FormItem[] = [
   { type: 'text', name: 'customerId', placeholder: 'Customer ID' },
   { type: 'text', name: 'operator', placeholder: 'Operator' },
   { type: 'datepicker', name: 'date', placeholder: 'Date' },
+  { type: 'timerangepicker', name: 'timerange', placeholder: 'Time Range' },
   {
     type: 'select',
     name: 'plan',

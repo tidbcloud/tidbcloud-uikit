@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react'
 
 import { IconChevronRight } from '../../icons/index.js'
-import { Button, Menu, SelectChevronIcon, Text, Box, Tooltip, Group, Typography } from '../../primitive/index.js'
+import { Button, Menu, SelectChevronIcon, Text, Box, Tooltip, Group, Typography, Sx } from '../../primitive/index.js'
 
 import AbsoluteTimeRangePicker from './AbsoluteTimeRangePicker.js'
 import { DEFAULT_QUICK_RANGES, TimeRange, formatDuration, toTimeRangeValue, timeFormatter } from './helpers.js'
@@ -9,6 +9,7 @@ import { DEFAULT_QUICK_RANGES, TimeRange, formatDuration, toTimeRangeValue, time
 export interface TimeRangePickerProps {
   value: TimeRange
   onChange?: (value: TimeRange) => void
+  sx?: Sx
 
   loading?: boolean
 
@@ -33,7 +34,8 @@ export const TimeRangePicker: React.FC<React.PropsWithChildren<TimeRangePickerPr
   onChange,
   quickRanges = DEFAULT_QUICK_RANGES,
   loading,
-  timezone
+  timezone,
+  sx
 }) => {
   const [opened, setOpened] = useState(false)
   const [customMode, setCustomMode] = useState(false)
@@ -91,6 +93,7 @@ export const TimeRangePicker: React.FC<React.PropsWithChildren<TimeRangePickerPr
             })}
             w={disableAbsoluteRanges ? 200 : 280}
             fw="normal"
+            sx={sx}
             {...(loading ? { 'data-loading': true } : {})}
           >
             <Group w="100%" spacing={0}>
