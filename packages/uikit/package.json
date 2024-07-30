@@ -1,6 +1,6 @@
 {
   "name": "@tidbcloud/uikit",
-  "version": "2.0.0-beta.4",
+  "version": "2.0.0-beta.5",
   "description": "tidbcloud uikit",
   "type": "module",
   "main": "dist/primitive/index.cjs",
@@ -67,6 +67,7 @@
     "google-libphonenumber": "^3.2.30",
     "lodash-es": "^4.17.21",
     "mantine-react-table": "0.9.5",
+    "pretty-ms": "^9.1.0",
     "rc-tree": "^5.8.2",
     "react-hook-form": "^7.51.5",
     "react-phone-input-2": "^2.15.1",
