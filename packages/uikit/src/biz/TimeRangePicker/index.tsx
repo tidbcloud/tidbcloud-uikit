@@ -40,10 +40,10 @@ export const TimeRangePicker: React.FC<React.PropsWithChildren<TimeRangePickerPr
   const [opened, setOpened] = useState(false)
   const [customMode, setCustomMode] = useState(false)
   const isRelativeRange = value?.type === 'relative'
-  const timeRangeValue = toTimeRangeValue(value)
+  const timeRangeValue = toTimeRangeValue(value ?? { type: 'relative', value: 0 })
   const duration = timeRangeValue[1] - timeRangeValue[0]
   const selectedRelativeItem = useMemo(() => {
-    if (value.type === 'absolute') {
+    if (!value || value.type === 'absolute') {
       return
     }
     return quickRanges.find((it) => it === value.value)
