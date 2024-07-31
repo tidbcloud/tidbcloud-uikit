@@ -2,4 +2,4 @@
 '@tidbcloud/uikit': patch
 ---
 
-export helper functions
+export helper functions for TimeRangePicker component

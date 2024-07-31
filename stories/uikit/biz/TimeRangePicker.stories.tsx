@@ -39,9 +39,6 @@ export const Basic: Story = {
 export const Primary: Story = {
   args: {
     value: { type: 'absolute', value: [1721713862, 1721973002] },
-    onChange(value) {
-      console.log('new value:', value)
-    },
     quickRanges: [
       5 * 60, // 5 mins
       15 * 60,
