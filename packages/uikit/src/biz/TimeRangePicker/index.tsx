@@ -39,8 +39,10 @@ export const TimeRangePicker: React.FC<React.PropsWithChildren<TimeRangePickerPr
 }) => {
   const [opened, setOpened] = useState(false)
   const [customMode, setCustomMode] = useState(false)
-  const isRelativeRange = value?.type === 'relative'
-  const timeRangeValue = toTimeRangeValue(value ?? { type: 'relative', value: 0 })
+  const isRelativeRange = value?.type === 'relative' || !value
+
+  // past 1 day in default if undefined is the initialized value
+  const timeRangeValue = toTimeRangeValue(value ?? { type: 'relative', value: 86400 })
   const duration = timeRangeValue[1] - timeRangeValue[0]
   const selectedRelativeItem = useMemo(() => {
     if (!value || value.type === 'absolute') {
