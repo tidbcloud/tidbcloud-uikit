@@ -6,7 +6,7 @@ type Story = StoryObj<typeof TimeRangePicker>
 
 const decorator = (Story: StoryFn) => {
   return (
-    <div style={{ margin: '3em' }}>
+    <div style={{ margin: '3em', minHeight: '300px' }}>
       <Story />
     </div>
   )
