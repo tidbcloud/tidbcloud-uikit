@@ -52,9 +52,9 @@ export const TimeRangePicker: React.FC<React.PropsWithChildren<TimeRangePickerPr
   }, [quickRanges, value])
 
   const formattedAbsDateTime = useMemo(() => {
-    return `${timeFormatter(timeRangeValue[0], timezone || null, 'MMM D, YYYY HH:mm')} - ${timeFormatter(
+    return `${timeFormatter(timeRangeValue[0], timezone ?? null, 'MMM D, YYYY HH:mm')} - ${timeFormatter(
       timeRangeValue[1],
-      timezone || null,
+      timezone ?? null,
       'MMM D, YYYY HH:mm'
     )}`
   }, [timeRangeValue])

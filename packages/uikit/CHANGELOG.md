@@ -1,10 +1,16 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.7
+
+### Patch Changes
+
+- fix timezone props bug for TimeRangePicker component
+
 ## 2.0.0-beta.6
 
 ### Patch Changes
 
-- export helper functions
+- export helper functions for TimeRangePicker component
 
 ## 2.0.0-beta.5
 
