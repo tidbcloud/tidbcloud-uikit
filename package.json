@@ -25,7 +25,6 @@
     "@storybook/preview-api": "^7.6.10",
     "@storybook/react": "^7.6.10",
     "@storybook/react-vite": "^7.6.10",
-    "@storybook/testing-library": "^0.2.0",
     "@storybook/theming": "^7.6.10",
     "@svgr/core": "^8.0.0",
     "@svgr/plugin-jsx": "^8.0.1",
@@ -40,18 +39,15 @@
     "eslint-plugin-file-extension-in-import-ts": "^2.1.0",
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-storybook": "^0.8.0",
-    "glob": "^10.3.3",
     "husky": "^8.0.3",
     "is-ci": "^3.0.1",
     "lint-staged": "^13.2.2",
     "prettier": "^3.0.3",
-    "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "storybook": "^7.6.10",
     "storybook-dark-mode": "^3.0.3",
-    "tsup": "^8.0.1",
-    "tsx": "^3.12.7",
+    "tsx": "^4.16.3",
     "typescript": "^5.4.2",
     "vite": "^4.5.2"
   },
@@ -64,7 +60,7 @@
     }
   },
   "engines": {
-    "node": ">= 18",
+    "node": ">= 20",
     "pnpm": ">= 8"
   },
   "packageManager": "pnpm@8.15.8"

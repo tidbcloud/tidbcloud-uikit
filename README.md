@@ -87,9 +87,8 @@ cp .npmrc.sample .npmrc
 
 #### Tools
 
-- [Node.js 18](https://nodejs.org/)
-- [pnpm 8](https://pnpm.io/) to manage packages and dependencies
-- [tsup](https://tsup.egoist.dev/) to bundle packages
+- [Node.js v20](https://nodejs.org/)
+- [pnpm v8](https://pnpm.io/) to manage packages and dependencies
 - [storybook](https://storybook.js.org/) for rapid UI component development and testing
 - [changeset](https://github.com/atlassian/changesets) for changes documentation, changelog generation, and release management.
 
