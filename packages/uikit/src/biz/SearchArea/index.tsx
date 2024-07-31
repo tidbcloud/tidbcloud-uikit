@@ -6,8 +6,10 @@ import { IconEraser, IconRefreshCw01, IconXClose } from '../../icons/index.js'
 import { Box, Button, Sx } from '../../primitive/index.js'
 import { FormDatePicker } from '../Form/DatePicker.js'
 import { FormTimeRangePicker } from '../Form/FormTimeRangePicker.js'
-import { Form, FormProps, FormSelect, FormTextInput } from '../Form/index.js'
+import { Form, FormMultiSelect, FormProps, FormSelect, FormTextInput } from '../Form/index.js'
 import { TimeRange } from '../TimeRangePicker/helpers.js'
+
+export type TSearchAreaValue = string | string[] | Date | TimeRange
 
 interface IFormItemBase {
   name: string
@@ -28,11 +30,21 @@ interface IFormItemSelect extends IFormItemBase {
   data: Array<{ label: string; value: string }>
 }
 
+interface IFormItemMultiSelect extends IFormItemBase {
+  type: 'multiselect'
+  data: Array<{ label: string; value: string }>
+}
+
 interface IFormItemTimeRangePicker extends IFormItemBase {
   type: 'timerangepicker'
 }
 
-export type FormItem = IFormItemText | IFormItemSelect | IFormItemDatePicker | IFormItemTimeRangePicker
+export type FormItem =
+  | IFormItemText
+  | IFormItemSelect
+  | IFormItemDatePicker
+  | IFormItemTimeRangePicker
+  | IFormItemMultiSelect
 
 export interface SearchAreaProps<T extends FieldValues> extends FormProps<T> {
   data: FormItem[]
@@ -56,7 +68,7 @@ function FormItemRender(props: {
     resetSeed
   } = props
 
-  const [keyword, setKeyword] = useState<string | Date | TimeRange>(defaultValue)
+  const [keyword, setKeyword] = useState<TSearchAreaValue>(defaultValue)
 
   useEffect(() => {
     if (resetSeed > 0) {
@@ -104,6 +116,22 @@ function FormItemRender(props: {
           placeholder={placeholder ?? ''}
           onChange={(val) => {
             setKeyword(val ?? '')
+            triggerSubmit()
+          }}
+          sx={{ ...FORM_ITEM_SX_BASE, ...(sx ?? {}) }}
+          clearable
+          searchable
+        />
+      )
+    case 'multiselect':
+      return (
+        <FormMultiSelect
+          data={(props.data as IFormItemSelect).data}
+          name={name}
+          value={keyword as string[]}
+          placeholder={placeholder ?? ''}
+          onChange={(val) => {
+            setKeyword(val ?? [])
             triggerSubmit()
           }}
           sx={{ ...FORM_ITEM_SX_BASE, ...(sx ?? {}) }}

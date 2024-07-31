@@ -31,11 +31,21 @@ const formData: FormItem[] = [
   {
     type: 'select',
     name: 'plan',
-    placeholder: 'Plan',
+    placeholder: 'Plan Select',
     data: [
       { label: 'Basic', value: 'basic' },
       { label: 'Pro', value: 'pro' },
       { label: 'Enterprise', value: 'enterprise' }
+    ]
+  },
+  {
+    type: 'multiselect',
+    name: 'roles',
+    placeholder: 'Roles Select',
+    data: [
+      { label: 'Admin', value: 'admin' },
+      { label: 'R&W', value: 'r_and_w' },
+      { label: 'R', value: 'r_only' }
     ]
   }
 ]
@@ -48,7 +58,15 @@ export const Primary: Story = {
   args: {
     recoverFromURLEnabled: true,
     data: formData,
-    defaultValues: { category: '', customerId: '', operator: '', date: null, plan: '' },
+    defaultValues: {
+      category: '',
+      customerId: '',
+      operator: '',
+      date: null,
+      plan: '',
+      timerange: { type: 'relative', value: 259200 },
+      roles: ['admin', 'r_and_w']
+    },
     debugEnabled: true,
     onSubmit: (data) => console.log(data)
   }
