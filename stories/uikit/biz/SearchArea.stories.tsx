@@ -64,7 +64,7 @@ export const Primary: Story = {
       operator: '',
       date: null,
       plan: '',
-      timerange: { type: 'relative', value: 259200 },
+      timerange: undefined,
       roles: ['admin', 'r_and_w']
     },
     debugEnabled: true,

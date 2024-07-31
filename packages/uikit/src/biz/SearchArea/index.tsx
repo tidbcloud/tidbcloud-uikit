@@ -174,10 +174,10 @@ const FORM_STATE_KEY = '__fs__'
 
 export function SearchArea<T extends object>(props: SearchAreaProps<T>) {
   const { data, onSubmit, recoverFromURLEnabled, defaultValues, ...rest } = props
-  const form = useForm<T>()
   const [resetSeed, setResetSeed] = useState(0)
   const [formState, setFormState] = useURLQueryState(FORM_STATE_KEY, defaultValues)
   const state = recoverFromURLEnabled ? formState : defaultValues
+  const form = useForm<T>({ defaultValues: state as any })
 
   const handleSubmit = () => {
     const values = form.getValues()
@@ -193,14 +193,7 @@ export function SearchArea<T extends object>(props: SearchAreaProps<T>) {
 
   return (
     <Box>
-      <Form<T>
-        onSubmit={onSubmit}
-        {...rest}
-        defaultValues={state as any}
-        form={form}
-        errorMessageProps={{ mx: 16 }}
-        withActions={false}
-      >
+      <Form<T> onSubmit={onSubmit} {...rest} form={form} errorMessageProps={{ mx: 16 }} withActions={false}>
         <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <Box sx={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
             {data.map((x) => (
