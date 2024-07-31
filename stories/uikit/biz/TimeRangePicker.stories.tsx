@@ -1,6 +1,13 @@
 import type { Meta, StoryObj, StoryFn } from '@storybook/react'
-import { TimeRangePicker } from '@tidbcloud/uikit/biz'
+import { TimeRangePicker, TimeRangePickerProps } from '@tidbcloud/uikit/biz'
 import { dayjs } from '@tidbcloud/uikit/utils'
+import { useState } from 'react'
+
+function TimeRangePickerWrapper(props: TimeRangePickerProps) {
+  const [tr, setTr] = useState(props.value)
+
+  return <TimeRangePicker {...props} value={tr} onChange={setTr} />
+}
 
 type Story = StoryObj<typeof TimeRangePicker>
 
@@ -14,7 +21,7 @@ const decorator = (Story: StoryFn) => {
 
 const meta: Meta<typeof TimeRangePicker> = {
   title: 'Biz/TimeRangePicker',
-  component: TimeRangePicker,
+  component: TimeRangePickerWrapper,
   tags: ['autodocs'],
   decorators: [decorator],
   parameters: {}
