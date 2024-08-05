@@ -34,10 +34,8 @@
   "sql-editor-exts": {
     "title": "SQL Editor Extensions"
   },
-  "playground-link": {
-    "title": "SQL Editor Playground ↗",
-    "href": "https://tisqleditor-playground.netlify.app/",
-    "newWindow": true
+  "sql-editor-playground": {
+    "title": "SQL Editor Playground"
   },
   "codemirror-link": {
     "title": "CodeMirror Docs ↗",
