@@ -15,7 +15,12 @@ import {
   MantineTheme
 } from '@mantine/core'
 
+import * as dark from './colors.dark.js'
+import * as light from './colors.js'
 import { FONT_FAMILY } from './font.js'
+
+export type ColorMap = typeof light
+export type Color = keyof ColorMap
 
 const getButtonStyles = (theme: MantineTheme, params: ButtonStylesParams): Record<string, CSSObject> => {
   const hoverStyles =
@@ -105,8 +110,8 @@ const spinKeyFrames = keyframes({
 const loaderClassName = 'mantine-loader-root'
 const loaderAnimation = `${spinKeyFrames} 1s linear infinite`
 
-export const theme: MantineThemeOverride = {
-  primaryColor: 'sky',
+const theme: MantineThemeOverride = {
+  primaryColor: 'carbon',
   primaryShade: 7,
   defaultRadius: 8,
   cursorType: 'pointer',
@@ -128,8 +133,8 @@ export const theme: MantineThemeOverride = {
   globalStyles(theme) {
     return {
       body: {
-        backgroundColor: theme.other.white,
-        color: theme.colors.gray[8],
+        color: theme.colors?.carbon[8],
+        backgroundColor: theme.colors?.carbon[1],
         MozOsxFontSmoothing: 'grayscale',
         WebkitFontSmoothing: 'antialiased'
       },
@@ -572,5 +577,22 @@ export const theme: MantineThemeOverride = {
         }
       }
     }
+  }
+}
+
+export type Theme = MantineThemeOverride & {
+  colors: ColorMap
+}
+
+export const useTheme = (colorScheme: 'light' | 'dark'): Theme => {
+  const isLight = colorScheme === 'light'
+  const colors = isLight ? light : dark
+
+  return {
+    ...theme,
+    colorScheme,
+    colors,
+    white: colors.carbon[0],
+    black: colors.carbon[8]
   }
 }

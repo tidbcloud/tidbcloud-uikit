@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useMemo } from 'react'
 import { useDarkMode, DARK_MODE_EVENT_NAME } from 'storybook-dark-mode'
 import { addons } from '@storybook/preview-api'
 import { MantineProvider, ColorSchemeProvider, NotificationsProvider, ColorScheme } from '@tidbcloud/uikit'
-import { Theme, themeColors, darkThemeColors } from '@tidbcloud/uikit/theme'
+import { useTheme } from '@tidbcloud/uikit/theme'
 import { Preview } from '@storybook/react'
 import { Title, Subtitle, Description, Primary, Controls, Stories, DocsContainer } from '@storybook/blocks'
 import { themes } from '@storybook/theming'
@@ -12,18 +12,23 @@ export const parameters = {
 }
 
 function ThemeWrapper(props: any) {
-  let colorScheme: ColorScheme = useDarkMode() ? 'dark' : 'light'
-  const curURL = window.location.href
-  if (curURL.indexOf('theme=') > -1) {
-    colorScheme = curURL.indexOf('theme=dark') > -1 ? 'dark' : 'light'
-  }
+  const isDarkMode = useDarkMode()
+  const colorScheme = useMemo(() => {
+    let colorScheme: ColorScheme = isDarkMode ? 'dark' : 'light'
+    const curURL = window.location.href
+    if (curURL.indexOf('theme=') > -1) {
+      colorScheme = curURL.indexOf('theme=dark') > -1 ? 'dark' : 'light'
+    }
+    return colorScheme
+  }, [isDarkMode])
+
+  const theme = useTheme(colorScheme)
 
   return (
     <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={() => {}}>
       <MantineProvider
         theme={{
-          ...Theme,
-          colors: colorScheme === 'dark' ? darkThemeColors : themeColors,
+          ...theme,
           colorScheme
         }}
         withGlobalStyles

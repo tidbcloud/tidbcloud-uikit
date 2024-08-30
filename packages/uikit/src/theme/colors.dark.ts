@@ -1,136 +1,249 @@
-import { MantineThemeOther } from '@mantine/core'
-import type { Tuple } from '@mantine/styles/lib/theme/types'
+import type { ShadingColor } from './colors.js'
 
-export type ShadingColor = Tuple<string, 10>
-
-// Colors refer to https://www.figma.com/file/O562Fj2W2zpG2jQsmjeFeB/Color?node-id=280%3A7160&t=y7XkeNLqQTK4SvXK-1
-
-export const gray = [
-  '#171717',
-  '#222222',
-  '#292929',
-  '#353535',
-  '#393939',
-  '#707070',
-  '#888888',
-  '#C6C6C6',
-  '#E8E8E8',
-  '#F4F4F4'
+// Colors refer to https://www.figma.com/design/WA4ToJ5lrk8phxnvfHA3xU/%E2%9A%AA%EF%B8%8F-TiDesign-Library?node-id=7222-252904&node-type=SECTION&t=2rq3zxbEaWLOtOZr-0
+export const carbon = [
+  '#171B1C',
+  '#0F1315',
+  '#1E2224',
+  '#262A2C',
+  '#303436',
+  '#494E50',
+  '#606A6C',
+  '#939B9F',
+  '#B9C3C6',
+  '#D1DCE0'
 ] as ShadingColor
 
-export const blue = [
-  '#021422',
-  '#032943',
-  '#04365A',
-  '#064470',
-  '#085F9D',
-  '#096CB4',
-  '#0B88E0',
-  '#0CA6F2',
-  '#54C0F5',
-  '#85D2F8'
+export const peacock = [
+  '#11171A',
+  '#101D24',
+  '#0F2936',
+  '#0E3549',
+  '#0D425B',
+  '#0B628D',
+  '#1480B8',
+  '#2D9CD2',
+  '#6CBAE0',
+  '#96CDE9'
 ] as ShadingColor
-
-/**
- * we do not have cyan for now
- */
-export const cyan = blue
-export const sky = blue
 
 export const red = [
-  '#1E0A0C',
-  '#3B1417',
-  '#4F1B1F',
-  '#622127',
-  '#8A2F37',
-  '#9E363E',
-  '#C5434E',
-  '#E65C5C',
-  '#F08D83',
-  '#F3AEAE'
+  '#1B1314',
+  '#271518',
+  '#3D181E',
+  '#531C25',
+  '#70202E',
+  '#931F33',
+  '#BF404B',
+  '#EB6565',
+  '#EE8D8D',
+  '#F3ADAD'
 ] as ShadingColor
 
 export const green = [
-  '#091A10',
-  '#123521',
-  '#18462C',
-  '#1D5737',
-  '#297B4C',
-  '#2F8C57',
-  '#3BAF6D',
+  '#131A17',
+  '#15241D',
+  '#183829',
+  '#1C4B35',
+  '#1F5E40',
+  '#1B7E4D',
+  '#3BAF6B',
   '#52CC7A',
-  '#7BE092',
-  '#A8E5BD'
-] as ShadingColor
-
-export const purple = [
-  '#F9F5FF',
-  '#F3E4FD',
-  '#E5CAFC',
-  '#D1ADF7',
-  '#BE96EF',
-  '#A273E5',
-  '#7D54C4',
-  '#5D39A4',
-  '#402484',
-  '#2B166D'
-] as ShadingColor
-
-export const slate = [
-  '#1A282D',
-  '#1A282D',
-  '#1D2F37',
-  '#203740',
-  '#274553',
-  '#2A4D5D',
-  '#305C70',
-  '#517889',
-  '#85A1AE',
-  '#CBD7DD'
+  '#86DBA2',
+  '#A8E5BC'
 ] as ShadingColor
 
 export const yellow = [
-  '#1F1503',
-  '#3E2905',
-  '#533707',
-  '#684508',
-  '#92610C',
-  '#A66E0E',
+  '#1E1911',
+  '#2E2311',
+  '#4A3511',
+  '#674711',
+  '#845A11',
+  '#AE6D0C',
   '#D08A11',
   '#F2AA18',
-  '#F7C550',
-  '#F9D48B'
+  '#F6C35D',
+  '#F9D58B'
 ] as ShadingColor
 
-export const themeColors = {
-  gray,
-  cyan,
-  red,
-  yellow,
-  green,
-  slate,
-  sky,
-  blue,
-  purple
-}
+export const aqua = [
+  '#131B1B',
+  '#152627',
+  '#1A3A3D',
+  '#1E4F53',
+  '#226369',
+  '#24868F',
+  '#29A3A3',
+  '#40BFBF',
+  '#79D2D2',
+  '#9FDFDF'
+] as ShadingColor
 
-export const Colors: MantineThemeOther = {
-  black: '#FFFFFF',
-  white: '#111111',
-  transparent: 'transparent',
-  red: themeColors.red[7],
-  yellow: themeColors.yellow[7],
-  green: themeColors.green[7],
-  blue: themeColors.blue[7],
-  purple: themeColors.purple[7],
-  gray: themeColors.gray[7],
-  cyan: themeColors.cyan[7],
+export const purple = [
+  '#19141D',
+  '#23182B',
+  '#351F45',
+  '#47265F',
+  '#5A2D7A',
+  '#6E3399',
+  '#8A40BF',
+  '#B96CE0',
+  '#CE98E9',
+  '#DCB5EF'
+] as ShadingColor
 
-  hover: themeColors.gray[2],
-  disabled: themeColors.gray[5],
-  /** primary theme color */
-  primary: themeColors.blue[7],
-  success: themeColors.green[7],
-  alert: themeColors.red[7],
-  warning: themeColors.yellow[7]
-}
+export const rosy = [
+  '#1E1318',
+  '#2D1620',
+  '#491B2E',
+  '#64203D',
+  '#80254B',
+  '#A02156',
+  '#CA3372',
+  '#EB477E',
+  '#F17EA5',
+  '#F5A3BE'
+] as ShadingColor
+
+export const violet = [
+  '#13131B',
+  '#161527',
+  '#1B183D',
+  '#201C53',
+  '#251F69',
+  '#383399',
+  '#4A40BF',
+  '#665CD6',
+  '#948DE2',
+  '#B2ADEB'
+] as ShadingColor
+
+export const thyme = [
+  '#161A19',
+  '#1B2422',
+  '#263733',
+  '#304A43',
+  '#3A5D54',
+  '#3A7864',
+  '#609F85',
+  '#7AB899',
+  '#A2CDB8',
+  '#BCDBCC'
+] as ShadingColor
+
+export const airy = [
+  '#15171B',
+  '#191E26',
+  '#212B3C',
+  '#283851',
+  '#304467',
+  '#385E94',
+  '#698CB7',
+  '#90B3D5',
+  '#B1CAE2',
+  '#C7D9EA'
+] as ShadingColor
+
+export const mauve = [
+  '#161519',
+  '#1B1A22',
+  '#252332',
+  '#302C43',
+  '#3A3553',
+  '#4A476B',
+  '#6F6699',
+  '#9A8FBC',
+  '#B8B1D0',
+  '#CDC7DD'
+] as ShadingColor
+
+export const navy = [
+  '#111216',
+  '#10131D',
+  '#101428',
+  '#0F1634',
+  '#0E1840',
+  '#0B195F',
+  '#10246E',
+  '#183384',
+  '#7A8AB8',
+  '#BFC6D9'
+] as ShadingColor
+
+export const sky = [
+  '#10191E',
+  '#10222E',
+  '#0E334A',
+  '#0D4367',
+  '#0C5484',
+  '#0967AA',
+  '#0881D0',
+  '#0CA6F2',
+  '#55C1F6',
+  '#B6E4FB'
+] as ShadingColor
+
+export const magenta = [
+  '#1C101A',
+  '#281024',
+  '#3F0F37',
+  '#560D4A',
+  '#6D0C5D',
+  '#8F0879',
+  '#AA098F',
+  '#C20A94',
+  '#D454B4',
+  '#E184C9'
+] as ShadingColor
+
+export const ocher = [
+  '#1C1612',
+  '#291C12',
+  '#412714',
+  '#593115',
+  '#723C16',
+  '#9F4C11',
+  '#C26522',
+  '#D97F26',
+  '#E4A567',
+  '#ECBF92'
+] as ShadingColor
+
+export const mustard = [
+  '#181D15',
+  '#202A19',
+  '#304321',
+  '#3F5D29',
+  '#4F7631',
+  '#5C9933',
+  '#78B946',
+  '#99D161',
+  '#B8DF90',
+  '#CCE8B0'
+] as ShadingColor
+
+export const blue = [
+  '#10131A',
+  '#101624',
+  '#0E1A37',
+  '#0D1F4B',
+  '#0B245E',
+  '#03247C',
+  '#0938A8',
+  '#0B47C0',
+  '#547ED3',
+  '#B6C8EC'
+] as ShadingColor
+
+export const gray = [
+  '#111111',
+  '#161616',
+  '#202020',
+  '#292929',
+  '#333333',
+  '#4D4D4D',
+  '#666666',
+  '#999999',
+  '#CCCCCC',
+  '#ECECEC'
+] as ShadingColor
