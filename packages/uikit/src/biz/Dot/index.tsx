@@ -1,10 +1,10 @@
 import React from 'react'
 
 import { Box, BoxProps } from '../../primitive/index.js'
-import { Colors } from '../../theme/index.js'
+import { Color } from '../../theme/index.js'
 
 export interface DotProps extends BoxProps {
-  color: keyof typeof Colors
+  color: Color
   size?: number
 }
 
