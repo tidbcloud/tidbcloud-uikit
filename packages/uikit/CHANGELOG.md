@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.8
+
+### Minor Changes
+
+- add new theming color
+
 ## 2.0.0-beta.7
 
 ### Patch Changes
