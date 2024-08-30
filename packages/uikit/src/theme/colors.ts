@@ -10,7 +10,7 @@ export const carbon = [
   '#EDF0F1',
   '#E3E8EA',
   '#C8CED0',
-  '#8D979A',
+  '#9FAAAD',
   '#6C7679',
   '#3D4143',
   '#262A2C'
