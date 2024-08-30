@@ -133,8 +133,8 @@ const theme: MantineThemeOverride = {
   globalStyles(theme) {
     return {
       body: {
-        backgroundColor: theme.white,
-        color: theme.black,
+        color: theme.colors?.carbon[8],
+        backgroundColor: theme.colors?.carbon[1],
         MozOsxFontSmoothing: 'grayscale',
         WebkitFontSmoothing: 'antialiased'
       },
@@ -593,6 +593,6 @@ export const useTheme = (colorScheme: 'light' | 'dark'): Theme => {
     colorScheme,
     colors,
     white: colors.carbon[0],
-    black: colors.carbon[9]
+    black: colors.carbon[8]
   }
 }
