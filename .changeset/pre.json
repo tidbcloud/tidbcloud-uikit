@@ -6,6 +6,7 @@
     "@tidbcloud/uikit": "1.17.1"
   },
   "changesets": [
+    "beige-olives-divide",
     "eighty-experts-occur",
     "healthy-pears-relate",
     "nasty-carrots-remain",

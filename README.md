@@ -3,9 +3,7 @@
 </p>
 <h1 align="center">TiUI</h1>
 
-This repo is hosted TiUI(TiDB Cloud UIKit) including primitive, biz and pro components
-
-[![Publish Github Packages](https://github.com/tidbcloud/tidbcloud-uikit/actions/workflows/publish-github-packages.yml/badge.svg)](https://github.com/tidbcloud/tidbcloud-uikit/actions/workflows/publish-github-packages.yml)
+This repo hosts TiUI (TiDB Cloud UIKit), including primitive, business, and pro components.
 
 ## Table of Contents
 
@@ -20,25 +18,10 @@ This repo is hosted TiUI(TiDB Cloud UIKit) including primitive, biz and pro comp
 
 ### Installation
 
-TiDBCloud UIKit was published to github registry as a private package, so you will need to setup that first:
-
-1. Change your registry. Paste following code into your `$HOME/.npmrc`, replace `${NPM_TOKEN}` with the token you get from github.
-
 ```bash
-@tidbcloud:registry=https://npm.pkg.github.com
-//npm.pkg.github.com/:_authToken=${NPM_TOKEN}
-```
-
-If you want to know how to generate the token, follow the [Setup the repo](#setup-the-repo)
-
-2. Install `@tidbcloud/uikit`
-
-```bash
-yarn add @tidbcloud/uikit
-
-# or
-
 npm i @tidbcloud/uikit
+pnpm add @tidbcloud/uikit
+yarn add @tidbcloud/uikit
 ```
 
 ### Usage
@@ -46,42 +29,8 @@ npm i @tidbcloud/uikit
 To start using the components, you just need to:
 
 ```typescript
-import { Card } from '@tidbcloud/uikit'
+import { Button } from '@tidbcloud/uikit'
 ```
-
-## Contributing
-
-### Setup the repo
-
-Before developing
-
-1. Make sure you've installed the [pnpm](https://pnpm.io/)
-2. Clone the project & install the depenceis
-3. Enter the root folder, and use below command
-
-```bash
-
-cd ./tidbcloud-uikit/
-cp .npmrc.sample .npmrc
-
-```
-
-4. Go to Github > Settings > Personal access token -> [Tokens(classic)](https://github.com/settings/tokens)
-
-   a. Generate a new token(classic).
-   <div>
-      <img src="media/token.png" style="display: block;" />
-   </div>
-
-   b. Give the token `read:packages`.
-   <div>
-     <img src="media/packages.png" style="display: block;" />
-   </div>
-
-   c. Replace the symbol called `${NPM_TOKEN}` with your github token residing in `.npmrc`.
-   <div>
-     <img src="media/npmrc.png" style="display: block;" />
-   </div>
 
 ### Development
 
@@ -131,7 +80,7 @@ When you create a commit, you should follow the convention category(scope or mod
 - refactor: any code related change that is not a fix nor a feature
 - chore: all changes to the repository that do not fit into any of the above categories
 
-### PR
+### Pull Request
 
 Once you've committed your message. You can do your PR
 
@@ -156,3 +105,18 @@ git commit -m 'feat(uikit): your message'
 - Commit the generated changeset file (a markfown file in `.changeset` folder), create a pull request to master branch.
 - After your pull request is merged, a new pull request will be created by a bot, you can review your release there.
 - After that pull request is merged, a new release will be published automatically to github registry.
+
+### Prerelease
+
+If you want to release a prerelease version, make sure you are in prerelease mode
+
+```bash
+pnpm changeset pre enter beta
+```
+
+Then you can bump version with
+
+```bash
+pnpm changeset
+pnpm changeset version
+```
