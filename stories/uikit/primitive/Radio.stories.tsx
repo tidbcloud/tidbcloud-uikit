@@ -90,13 +90,16 @@ export const AllSizes: Story = {
     <Stack>
       <Radio value="react" label="xs" size="xs" />
       <Radio value="react" label="sm" size="sm" />
+      <Radio value="react" label="md" size="md" />
+      <Radio value="react" label="lg" size="lg" />
+      <Radio value="react" label="xl" size="xl" />
 
       <Radio.Group
         name="favoriteFramework"
-        label="This is size xs"
+        label="This is size sm"
         description="This is anonymous"
         withAsterisk
-        size="xs"
+        size="sm"
       >
         <Radio value="react" label="React" />
         <Radio value="svelte" label="Svelte" />
@@ -106,10 +109,10 @@ export const AllSizes: Story = {
 
       <Radio.Group
         name="favoriteFramework"
-        label="This is size sm"
+        label="This is size md"
         description="This is anonymous"
         withAsterisk
-        size="sm"
+        size="md"
       >
         <Radio value="react" label="React" />
         <Radio value="svelte" label="Svelte" />

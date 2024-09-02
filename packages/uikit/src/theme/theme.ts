@@ -694,15 +694,41 @@ const theme: MantineThemeOverride = {
       }
     },
     Radio: {
-      defaultProps: {
-        size: 'xs'
-      },
       styles(theme, params) {
         const color = params.color ?? 'carbon'
         const shade = color === 'carbon' ? 9 : 7
+        const size = params.size ?? 'sm'
+
+        const sizes = {
+          xs: 14,
+          sm: 16,
+          md: 20,
+          lg: 24,
+          xl: 30
+        }
+
+        const iconSizes = {
+          xs: 5,
+          sm: 6,
+          md: 8,
+          lg: 10,
+          xl: 12
+        }
 
         return {
+          icon: {
+            width: theme.fn.size({ sizes: iconSizes, size }),
+            height: theme.fn.size({ sizes: iconSizes, size }),
+            top: `calc(50% - ${theme.fn.size({ sizes: iconSizes, size }) / 2}px)`,
+            left: `calc(50% - ${theme.fn.size({ sizes: iconSizes, size }) / 2}px)`
+          },
+          label: {
+            lineHeight: `${theme.fn.size({ sizes, size })}px`
+          },
           radio: {
+            width: theme.fn.size({ sizes, size }),
+            height: theme.fn.size({ sizes, size }),
+            borderRadius: theme.fn.size({ sizes, size }),
             borderColor: theme.colors[color][6],
 
             '&:checked:not(:disabled)': {
@@ -723,21 +749,6 @@ const theme: MantineThemeOverride = {
               cursor: 'not-allowed'
             }
           }
-        }
-      }
-    },
-    RadioGroup: {
-      defaultProps: {
-        size: 'xs',
-        labelProps: {
-          size: 'sm'
-        },
-        descriptionProps: {
-          size: 'sm'
-        },
-        errorProps: {
-          size: 'sm',
-          mt: 4
         }
       }
     }
