@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.9
+
+### Minor Changes
+
+- Update button styles and typography colors
+
 ## 2.0.0-beta.8
 
 ### Minor Changes

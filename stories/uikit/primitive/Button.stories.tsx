@@ -1,5 +1,5 @@
 import type { Meta, StoryObj, StoryFn } from '@storybook/react'
-import { Button, Stack } from '@tidbcloud/uikit'
+import { Button, Group, Stack } from '@tidbcloud/uikit'
 
 import { COLOR_LIST, VARIANT_LIST, SIZE_LIST } from '../../constants'
 
@@ -28,13 +28,10 @@ export const Primary: Story = {
     <Stack
       align="flex-start"
       sx={{
-        backgroundColor: (rest as any).variant === 'white' ? '#ddd' : 'transparent',
         padding: 16
       }}
     >
-      <Button color="blue" variant="filled" {...rest}>
-        Settings
-      </Button>
+      <Button {...rest}>Settings</Button>
     </Stack>
   ),
   parameters: {
@@ -138,7 +135,7 @@ export const Primary: Story = {
   }
 }
 
-export const Secondary: Story = {
+export const GroupedButtons: Story = {
   render: ({ ...rest }) => (
     <Stack align="flex-start">
       <Button.Group orientation="horizontal" buttonBorderWidth={1} {...rest}>
@@ -158,4 +155,52 @@ export const Secondary: Story = {
       control: { type: 'number' }
     }
   }
+}
+
+export const AllVariants: Story = {
+  render: () => (
+    <Group sx={(theme) => ({ backgroundColor: theme.white, padding: 32 })}>
+      {VARIANT_LIST.map((variant) => (
+        <Button key={variant} variant={variant}>
+          {variant}
+        </Button>
+      ))}
+    </Group>
+  )
+}
+
+export const AllSizes: Story = {
+  render: () => (
+    <Group>
+      {SIZE_LIST.map((size) => (
+        <Button key={size} size={size}>
+          size-{size}
+        </Button>
+      ))}
+    </Group>
+  )
+}
+
+export const AllColors: Story = {
+  render: () => (
+    <Group>
+      {COLOR_LIST.map((color) => (
+        <Button key={color} color={color}>
+          {color}
+        </Button>
+      ))}
+    </Group>
+  )
+}
+
+export const LoadingButton: Story = {
+  render: () => <Button loading>Loading</Button>
+}
+
+export const DisabledButton: Story = {
+  render: () => (
+    <Button disabled variant="light">
+      Disabled
+    </Button>
+  )
 }
