@@ -45,7 +45,7 @@ export const TYPOGRAPHY_STYLES_MAP: Record<
     weight: 700,
     size: 18,
     lh: '28px',
-    color: 'gray.8'
+    color: 'carbon.8'
   },
   display: {
     weight: 700,
@@ -61,31 +61,31 @@ export const TYPOGRAPHY_STYLES_MAP: Record<
     weight: 700,
     size: 16,
     lh: '24px',
-    color: 'gray.7'
+    color: 'carbon.7'
   },
   body1: {
     weight: 400,
     size: 14,
     lh: '20px',
-    color: 'gray.7'
+    color: 'carbon.7'
   },
   body2: {
     weight: 500,
     size: 14,
     lh: '20px',
-    color: 'gray.8'
+    color: 'carbon.8'
   },
   body3: {
     weight: 600,
     size: 14,
     lh: '20px',
-    color: 'gray.9'
+    color: 'carbon.9'
   },
   btn: {
     weight: 700,
     size: 14,
     lh: '20px',
-    color: 'gray.8'
+    color: 'carbon.8'
   },
   comment3: {
     size: 12,
@@ -97,103 +97,103 @@ export const TYPOGRAPHY_STYLES_MAP: Record<
     size: 24,
     lh: '32px',
     weight: 700,
-    color: 'gray.9'
+    color: 'carbon.9'
   },
   'headline-md': {
     size: 20,
     lh: '30px',
     weight: 700,
-    color: 'gray.9'
+    color: 'carbon.9'
   },
   'headline-sm': {
     size: 18,
     lh: '28px',
     weight: 700,
-    color: 'gray.9'
+    color: 'carbon.9'
   },
   'title-lg': {
     size: 16,
     lh: '24px',
     weight: 700,
-    color: 'gray.9'
+    color: 'carbon.9'
   },
   'title-md': {
     size: 14,
     lh: '20px',
     weight: 700,
-    color: 'gray.9'
+    color: 'carbon.9'
   },
   'title-sm': {
     size: 12,
     lh: '18px',
     weight: 700,
-    color: 'gray.9'
+    color: 'carbon.9'
   },
   'action-lg': {
     size: 16,
     lh: '24px',
     weight: 600,
-    color: 'cyan.7'
+    color: 'peacock.7'
   },
   'action-md': {
     size: 14,
     lh: '20px',
     weight: 600,
-    color: 'cyan.7'
+    color: 'peacock.7'
   },
   'action-sm': {
     size: 12,
     lh: '18px',
     weight: 600,
-    color: 'cyan.7'
+    color: 'peacock.7'
   },
   'label-lg': {
     size: 14,
     lh: '20px',
     weight: 500,
-    color: 'gray.8'
+    color: 'carbon.8'
   },
   'label-md': {
     size: 13,
     lh: '18px',
     weight: 500,
-    color: 'gray.8'
+    color: 'carbon.8'
   },
   'label-sm': {
     size: 12,
     lh: '18px',
     weight: 500,
-    color: 'gray.8'
+    color: 'carbon.8'
   },
   'label-xs': {
     size: 11,
     lh: '16px',
     weight: 500,
-    color: 'gray.8'
+    color: 'carbon.8'
   },
   'body-lg': {
     size: 14,
     lh: '20px',
     weight: 400,
-    color: 'gray.7'
+    color: 'carbon.8'
   },
   'body-md': {
     size: 13,
     lh: '18px',
     weight: 400,
-    color: 'gray.7'
+    color: 'carbon.8'
   },
   'body-sm': {
     size: 12,
     lh: '18px',
     weight: 400,
-    color: 'gray.7'
+    color: 'carbon.8'
   },
   'body-xs': {
     size: 11,
     lh: '16px',
     weight: 400,
-    color: 'gray.7'
+    color: 'carbon.8'
   }
 }
 
