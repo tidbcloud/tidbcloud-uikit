@@ -21,36 +21,140 @@ import { FONT_FAMILY } from './font.js'
 
 export type ColorMap = typeof light
 export type Color = keyof ColorMap
+export const Colors = Object.keys(light) as Color[]
 
 const getButtonStyles = (theme: MantineTheme, params: ButtonStylesParams): Record<string, CSSObject> => {
-  const hoverStyles =
-    params.variant === 'subtle'
-      ? theme.fn.hover({
-          backgroundColor: 'transparent'
-        })
-      : {}
+  const getFilledStyles = (): CSSObject => {
+    const color = params.color || theme.primaryColor
+    const bgColor = theme.colors[params.color || theme.primaryColor]
+    const bgColorShade = color === 'carbon' ? 9 : theme.fn.primaryShade()
+    const hoverBgColorShade = color === 'carbon' ? bgColorShade - 1 : bgColorShade + 1
 
-  const diffSizeStyles: Record<string, CSSObject> = {
-    sm: {
-      height: 40
+    return {
+      color: theme.white,
+      backgroundColor: bgColor[bgColorShade],
+
+      ...theme.fn.hover({
+        backgroundColor: bgColor[hoverBgColorShade]
+      }),
+
+      '&:disabled': {
+        color: theme.white,
+        backgroundColor: bgColor[5]
+      }
     }
   }
-  const matches = diffSizeStyles[params.size] || {}
-  const withBorder =
-    params.variant === 'light'
-      ? {
-          border: `1px solid ${theme.colors[params.color || 'blue'][4]}`
-        }
-      : {}
 
-  return {
+  const getLightStyles = (): CSSObject => {
+    const mainColor = theme.colors[params.color || 'peacock']
+    const fontColorShade = 7
+    const bgColorShade = 1
+    const borderColorShade = 4
+
+    return {
+      color: mainColor[fontColorShade],
+      backgroundColor: mainColor[bgColorShade],
+      borderWidth: 1,
+      borderStyle: 'solid',
+      borderColor: mainColor[borderColorShade],
+
+      ...theme.fn.hover({
+        color: mainColor[fontColorShade + 1],
+        borderColor: mainColor[borderColorShade + 1],
+        backgroundColor: mainColor[bgColorShade + 1]
+      }),
+
+      '&:disabled': {
+        color: theme.colors[theme.primaryColor][6],
+        borderColor: theme.colors[theme.primaryColor][borderColorShade + 1],
+        backgroundColor: theme.colors[theme.primaryColor][2]
+      }
+    }
+  }
+
+  const getDefaultStyles = (): CSSObject => {
+    const color = params.color || theme.primaryColor
+    const mainColor = theme.colors[color]
+    const fontColorShade = color === 'carbon' ? 8 : 7
+    const bgColorShade = 1
+    const borderColorShade = color === 'carbon' ? 5 : 4
+
+    return {
+      color: mainColor[fontColorShade],
+      backgroundColor: mainColor[bgColorShade],
+      borderColor: mainColor[borderColorShade],
+
+      ...theme.fn.hover({
+        color: mainColor[fontColorShade + 1],
+        borderColor: mainColor[borderColorShade + 1],
+        backgroundColor: mainColor[bgColorShade + 1]
+      }),
+
+      '&:disabled': {
+        color: theme.colors[theme.primaryColor][6],
+        borderColor: theme.colors[theme.primaryColor][borderColorShade + 1],
+        backgroundColor: theme.colors[theme.primaryColor][2]
+      }
+    }
+  }
+
+  const getSubtleStyles = (): CSSObject => {
+    const color = params.color || 'peacock'
+    const mainColor = theme.colors[color]
+    const fontColorShade = 7
+    const bgColorShade = 1
+
+    return {
+      color: mainColor[fontColorShade],
+      backgroundColor: theme.white,
+
+      ...theme.fn.hover({
+        color: mainColor[fontColorShade + 1],
+        backgroundColor: mainColor[bgColorShade + 1]
+      }),
+
+      '&:disabled': {
+        color: theme.colors[theme.primaryColor][6],
+        backgroundColor: theme.white
+      }
+    }
+  }
+
+  const variantStyles: Record<string, CSSObject> = {
+    filled: getFilledStyles(),
+    light: getLightStyles(),
+    default: getDefaultStyles(),
+    subtle: getSubtleStyles(),
+    outline: getDefaultStyles()
+  }
+
+  const sizeStyles: Record<string, CSSObject> = {
+    xs: {
+      height: 28
+    },
+    sm: {
+      height: 32
+    },
+    md: {
+      height: 40
+    },
+    lg: {
+      height: 48
+    },
+    xl: {
+      height: 56
+    }
+  }
+
+  const finalStyles = {
     root: {
       fontWeight: 700,
-      ...matches,
-      ...hoverStyles,
-      ...withBorder
+      ...variantStyles[params.variant],
+      ...sizeStyles[params.size]
     }
   }
+
+  return finalStyles
 }
 
 const getInputStyles = (theme: MantineTheme, params: InputStylesParams) => {
@@ -130,6 +234,13 @@ const theme: MantineThemeOverride = {
     lg: '0px 8px 64px rgba(0, 0, 0, 0.08)',
     xl: '0px 16px 64px rgba(0, 0, 0, 0.08)'
   },
+  fontSizes: {
+    xs: 12,
+    sm: 14,
+    md: 14,
+    lg: 18,
+    xl: 20
+  },
   globalStyles(theme) {
     return {
       body: {
@@ -145,6 +256,11 @@ const theme: MantineThemeOverride = {
   },
   components: {
     Button: {
+      defaultProps() {
+        return {
+          size: 'md'
+        }
+      },
       styles: getButtonStyles
     },
     Loader: {
