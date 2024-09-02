@@ -692,6 +692,54 @@ const theme: MantineThemeOverride = {
           }
         }
       }
+    },
+    Radio: {
+      defaultProps: {
+        size: 'xs'
+      },
+      styles(theme, params) {
+        const color = params.color ?? 'carbon'
+        const shade = color === 'carbon' ? 9 : 7
+
+        return {
+          radio: {
+            borderColor: theme.colors[color][6],
+
+            '&:checked:not(:disabled)': {
+              background: theme.colors[color][shade],
+              borderColor: theme.colors[color][shade]
+            },
+
+            '&:disabled:not(:checked)': {
+              background: theme.colors.carbon[4],
+              borderColor: theme.colors.carbon[6],
+              cursor: 'not-allowed'
+            },
+
+            '&:disabled:checked': {
+              color: theme.colors.carbon[2],
+              background: theme.colors.carbon[6],
+              borderColor: theme.colors.carbon[6],
+              cursor: 'not-allowed'
+            }
+          }
+        }
+      }
+    },
+    RadioGroup: {
+      defaultProps: {
+        size: 'xs',
+        labelProps: {
+          size: 'sm'
+        },
+        descriptionProps: {
+          size: 'sm'
+        },
+        errorProps: {
+          size: 'sm',
+          mt: 4
+        }
+      }
     }
   }
 }
