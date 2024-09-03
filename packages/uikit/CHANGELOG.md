@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.13
+
+### Patch Changes
+
+- map gray color to carbon
+
 ## 2.0.0-beta.12
 
 ### Minor Changes
