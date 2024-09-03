@@ -599,7 +599,7 @@ const theme: MantineThemeOverride = {
       },
       styles: (theme, params: PaperStylesParams) => ({
         root: {
-          backgroundColor: theme.colorScheme === 'dark' ? theme.colors.carbon[1] : theme.white,
+          backgroundColor: theme.colors.carbon[0],
           border: params.withBorder ? `1px solid ${theme.colors.carbon[3]}` : undefined
         }
       })

@@ -1,7 +1,7 @@
 import { MantineReactTable, MantineReactTableProps } from 'mantine-react-table'
 
 import { IconSwitchVertical02, IconArrowUp, IconArrowDown } from '../../../icons/index.js'
-import { Box, BoxProps } from '../../../primitive/index.js'
+import { Box, BoxProps, useMantineTheme } from '../../../primitive/index.js'
 import { TablePagination, TablePaginationProps } from '../TablePagination.js'
 
 import { mergeMProps } from './helpers.js'
@@ -35,6 +35,7 @@ export const ProTable = <T extends Record<string, any> = {}>({
   state,
   ...rest
 }: ProTableProps<T>) => {
+  const theme = useMantineTheme()
   const mPaperProps = mergeMProps<NonNullable<MantineReactTableProps<T>['mantinePaperProps']>>(
     {
       shadow: 'none',
@@ -66,18 +67,25 @@ export const ProTable = <T extends Record<string, any> = {}>({
         color: 'inherit',
         thead: {
           tr: {
-            boxShadow: 'none'
+            boxShadow: 'none',
+
+            th: {
+              color: theme.colors.carbon[7],
+              backgroundColor: theme.colors.carbon[1],
+              fontWeight: 500
+            }
           }
         },
-        'thead th': {
-          backgroundColor: 'inherit'
-        },
-        tr: {
-          transition: 'none',
-          backgroundColor: 'inherit',
-          ':last-of-type': {
-            td: {
-              borderBottom: 'none'
+        tbody: {
+          tr: {
+            transition: 'none',
+            backgroundColor: theme.colors.carbon[0],
+            color: theme.colors.carbon[8],
+
+            ':last-of-type': {
+              td: {
+                borderBottom: 'none'
+              }
             }
           }
         }

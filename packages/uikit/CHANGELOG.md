@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.14
+
+### Minor Changes
+
+- update ProTable style
+
 ## 2.0.0-beta.13
 
 ### Patch Changes
