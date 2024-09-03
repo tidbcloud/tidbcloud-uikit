@@ -69,7 +69,7 @@ const Item = ({ label, children, labelProps, valueProps, ...rest }: PropertyCard
 }
 
 const Divider = (props: DividerProps) => {
-  return <MantineDivider color="gray.3" my="xs" {...props} />
+  return <MantineDivider color="carbon.4" my="xs" {...props} />
 }
 
 PropertyCard.Item = Item

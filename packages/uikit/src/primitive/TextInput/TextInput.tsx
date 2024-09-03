@@ -25,13 +25,13 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>((props, re
             icon: {
               position: 'relative',
               width: 'fit-content',
-              border: `1px solid ${theme.colors.gray[4]}`,
+              border: `1px solid ${theme.colors.carbon[5]}`,
               borderRightWidth: 0,
               paddingLeft: 12,
               paddingRight: 12,
               borderTopLeftRadius: theme.defaultRadius,
               borderBottomLeftRadius: theme.defaultRadius,
-              backgroundColor: theme.colors.gray[1]
+              backgroundColor: theme.colors.carbon[2]
             },
             input: {
               flex: 1,
@@ -48,15 +48,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>((props, re
         },
         props.styles
       ])}
-      icon={
-        !!leftLabel ? (
-          <Typography variant="label-lg" c="gray.6">
-            {leftLabel}
-          </Typography>
-        ) : (
-          icon
-        )
-      }
+      icon={!!leftLabel ? <Typography variant="label-lg">{leftLabel}</Typography> : icon}
       ref={ref}
     />
   )

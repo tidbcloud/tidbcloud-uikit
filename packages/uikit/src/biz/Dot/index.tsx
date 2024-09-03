@@ -12,7 +12,7 @@ export const Dot: React.FC<DotProps> = ({ color, size = 8, ...rest }) => {
   return (
     <Box
       sx={(theme) => ({
-        backgroundColor: theme.colors[color]?.[5] ?? theme.colors.gray[5],
+        backgroundColor: theme.colors[color]?.[5] ?? theme.colors.carbon[6],
         height: size,
         width: size,
         borderRadius: '50%'

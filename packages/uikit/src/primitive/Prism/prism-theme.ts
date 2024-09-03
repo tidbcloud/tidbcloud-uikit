@@ -7,45 +7,45 @@ import { PrismTheme } from 'prism-react-renderer'
 
 export const dark = (theme: MantineTheme): PrismTheme => ({
   plain: {
-    color: theme.colors.gray[4],
-    backgroundColor: theme.colors.dark[8]
+    color: theme.colors.carbon[5],
+    backgroundColor: theme.colors.carbon[8]
   },
 
   styles: [
     {
       types: ['comment'],
       style: {
-        color: theme.colors.gray[6]
+        color: theme.colors.carbon[7]
       }
     },
     {
       types: ['string', 'inserted', 'selector', 'atrule'],
       style: {
-        color: theme.colors.teal[4]
+        color: theme.colors.aqua[4]
       }
     },
     {
       types: ['number'],
       style: {
-        color: theme.colors.blue[4]
+        color: theme.colors.peacock[4]
       }
     },
     {
       types: ['builtin', 'char', 'constant', 'function'],
       style: {
-        color: theme.colors.orange[5]
+        color: theme.colors.yellow[5]
       }
     },
     {
       types: ['punctuation'],
       style: {
-        color: theme.colors.gray[5]
+        color: theme.colors.carbon[6]
       }
     },
     {
       types: ['variable'],
       style: {
-        color: theme.colors.gray[5]
+        color: theme.colors.carbon[6]
       }
     },
     {
@@ -63,7 +63,7 @@ export const dark = (theme: MantineTheme): PrismTheme => ({
     {
       types: ['operator'],
       style: {
-        color: theme.colors.gray[5]
+        color: theme.colors.carbon[6]
       }
     },
     {
@@ -75,19 +75,19 @@ export const dark = (theme: MantineTheme): PrismTheme => ({
     {
       types: ['keyword'],
       style: {
-        color: theme.colors.indigo[3]
+        color: theme.colors.violet[3]
       }
     },
     {
       types: ['doctype'],
       style: {
-        color: theme.colors.gray[5]
+        color: theme.colors.carbon[6]
       }
     },
     {
       types: ['url'],
       style: {
-        color: theme.colors.gray[5]
+        color: theme.colors.carbon[6]
       }
     }
   ]
@@ -95,21 +95,21 @@ export const dark = (theme: MantineTheme): PrismTheme => ({
 
 export const light = (theme: MantineTheme): PrismTheme => ({
   plain: {
-    color: theme.colors.gray[9],
-    backgroundColor: theme.fn.rgba(theme.colors.gray[0], 0.65)
+    color: theme.colors.carbon[9],
+    backgroundColor: theme.fn.rgba(theme.colors.carbon[1], 0.65)
   },
 
   styles: [
     {
       types: ['comment'],
       style: {
-        color: theme.colors.gray[6]
+        color: theme.colors.carbon[7]
       }
     },
     {
       types: ['string', 'inserted'],
       style: {
-        color: theme.colors.indigo[9]
+        color: theme.colors.violet[9]
       }
     },
     {
@@ -121,13 +121,13 @@ export const light = (theme: MantineTheme): PrismTheme => ({
     {
       types: ['builtin', 'char', 'constant', 'function', 'selector', 'atrule'],
       style: {
-        color: theme.colors.lime[9]
+        color: theme.colors.thyme[9]
       }
     },
     {
       types: ['punctuation'],
       style: {
-        color: theme.colors.gray[7]
+        color: theme.colors.carbon[8]
       }
     },
     {
@@ -175,13 +175,13 @@ export const light = (theme: MantineTheme): PrismTheme => ({
     {
       types: ['doctype'],
       style: {
-        color: theme.colors.gray[7]
+        color: theme.colors.carbon[8]
       }
     },
     {
       types: ['url'],
       style: {
-        color: theme.colors.gray[7]
+        color: theme.colors.carbon[8]
       }
     }
   ]

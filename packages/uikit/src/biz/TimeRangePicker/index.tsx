@@ -148,7 +148,7 @@ export const TimeRangePicker: React.FC<React.PropsWithChildren<TimeRangePickerPr
                 <Menu.Item
                   key={seconds}
                   sx={(theme) => ({
-                    background: seconds === selectedRelativeItem ? theme.colors.gray[2] : ''
+                    background: seconds === selectedRelativeItem ? theme.colors.carbon[3] : ''
                   })}
                   onClick={() => onChange?.({ type: 'relative', value: seconds })}
                 >
@@ -169,8 +169,8 @@ const DurationBadge: React.FC<React.PropsWithChildren<unknown>> = ({ children })
       display="inline-block"
       w={35}
       py={3}
-      bg="gray.4"
-      c="gray.7"
+      bg="carbon.5"
+      c="carbon.8"
       fz={10}
       lh="14px"
       ta="center"

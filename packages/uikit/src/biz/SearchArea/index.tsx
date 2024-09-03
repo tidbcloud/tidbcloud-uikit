@@ -213,13 +213,13 @@ export function SearchArea<T extends object>(props: SearchAreaProps<T>) {
             ))}
             <Box sx={SX_Y_MID}>
               <Box sx={SX_Y_MID}>
-                <Button variant="subtle" color="gray.7" onClick={handleReset}>
+                <Button variant="subtle" color="carbon.8" onClick={handleReset}>
                   <IconEraser size={16} style={{ marginRight: 4 }} />
                   Clear Filters
                 </Button>
               </Box>
               <Box ml={16} sx={SX_Y_MID}>
-                <Button variant="subtle" color="gray.7" onClick={handleSubmit}>
+                <Button variant="subtle" color="carbon.8" onClick={handleSubmit}>
                   <IconRefreshCw01 size={16} />
                 </Button>
               </Box>

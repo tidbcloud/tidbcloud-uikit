@@ -32,8 +32,8 @@ export const FormCopyText: React.FC<FormCopyTextProps> = ({
               paddingRight: 8,
               height: 40,
               borderRadius: theme.defaultRadius,
-              backgroundColor: theme.colors.gray[1],
-              border: `1px solid ${theme.colors.gray[4]}`
+              backgroundColor: theme.colors.carbon[2],
+              border: `1px solid ${theme.colors.carbon[5]}`
             }),
             props.sx
           ])}
@@ -41,7 +41,7 @@ export const FormCopyText: React.FC<FormCopyTextProps> = ({
         >
           <Typography
             variant="body-lg"
-            c="gray.7"
+            c="carbon.8"
             sx={mergeSxList([
               () => ({
                 flex: '1',
@@ -57,7 +57,7 @@ export const FormCopyText: React.FC<FormCopyTextProps> = ({
             {value}
           </Typography>
           <Tooltip label={copied ? 'Copied' : 'Copy'} withArrow {...tooltipProps}>
-            <ActionIcon color="gray.7" variant="transparent" onClick={copy}>
+            <ActionIcon color="carbon.8" variant="transparent" onClick={copy}>
               <IconCopy01
                 size={size}
                 onClick={() => {

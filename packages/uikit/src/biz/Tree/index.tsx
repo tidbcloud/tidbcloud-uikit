@@ -139,7 +139,7 @@ export const Tree = React.forwardRef<RcTree, TreeProps>((props, ref) => {
           },
 
           '.tc-uikit-tree-title': {
-            color: theme.colors.gray[8]
+            color: theme.colors.carbon[8]
           },
 
           '.tc-uikit-tree .tc-uikit-tree-treenode': {
@@ -174,7 +174,7 @@ export const Tree = React.forwardRef<RcTree, TreeProps>((props, ref) => {
           },
 
           '.tc-uikit-tree-switcher > svg': {
-            color: theme.colors.gray[8],
+            color: theme.colors.carbon[8],
             transition: 'transform 0.3s',
             margin: 0,
             fontSize: 12,
@@ -203,7 +203,7 @@ export const Tree = React.forwardRef<RcTree, TreeProps>((props, ref) => {
             margin: 0,
             padding: 0,
             marginRight: 6,
-            color: theme.colors.dark[8],
+            color: theme.colors.carbon[8],
             fontSize: 14,
             fontVariant: 'tabular-nums',
             listStyle: 'none',
@@ -228,7 +228,7 @@ export const Tree = React.forwardRef<RcTree, TreeProps>((props, ref) => {
             height: 16,
             direction: 'ltr',
             backgroundColor: theme.white,
-            border: `1px solid ${theme.colors.gray[3]}`,
+            border: `1px solid ${theme.colors.carbon[4]}`,
             borderRadius: 2,
             borderCollapse: 'separate',
             transition: 'all 0.3s'
@@ -251,8 +251,8 @@ export const Tree = React.forwardRef<RcTree, TreeProps>((props, ref) => {
           },
 
           '.tc-uikit-tree-checkbox-checked .tc-uikit-tree-checkbox-inner': {
-            backgroundColor: theme.colors.blue[7],
-            borderColor: theme.colors.blue[7]
+            backgroundColor: theme.colors.carbon[8],
+            borderColor: theme.colors.carbon[8]
           },
 
           '.tc-uikit-tree-checkbox-checked .tc-uikit-tree-checkbox-inner:after': {
@@ -281,21 +281,21 @@ export const Tree = React.forwardRef<RcTree, TreeProps>((props, ref) => {
 
           '.tc-uikit-tree-checkbox-indeterminate .tc-uikit-tree-checkbox-inner': {
             backgroundColor: theme.white,
-            borderColor: theme.colors.gray[3]
+            borderColor: theme.colors.carbon[4]
           },
 
           '.tc-uikit-tree-checkbox-disabled .tc-uikit-tree-checkbox-inner': {
-            backgroundColor: theme.colors.gray[2],
-            borderColor: theme.colors.gray[3]
+            backgroundColor: theme.colors.carbon[3],
+            borderColor: theme.colors.carbon[4]
           },
 
           '.tc-uikit-tree-checkbox-disabled.tc-uikit-tree-checkbox-checked .tc-uikit-tree-checkbox-inner:after': {
-            borderColor: theme.colors.gray[5],
+            borderColor: theme.colors.carbon[6],
             animationName: 'none'
           },
 
           '.tc-uikit-tree-checkbox-disabled .tc-uikit-tree-checkbox-inner:after': {
-            borderColor: theme.colors.gray[3],
+            borderColor: theme.colors.carbon[4],
             borderCollapse: 'separate',
             animationName: 'none'
           }
