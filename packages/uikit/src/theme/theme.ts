@@ -185,7 +185,7 @@ const getInputStyles = (theme: MantineTheme, params: InputStylesParams) => {
     label: matches.label,
     input: {
       ...matches.input,
-      color: theme.colors.gray[8],
+      color: theme.colors.carbon[8],
       '&:disabled': {
         opacity: 1
       }
@@ -265,7 +265,7 @@ const theme: MantineThemeOverride = {
     },
     Loader: {
       defaultProps: {
-        color: 'gray.5'
+        color: 'carbon.5'
       }
     },
     Skeleton: {
@@ -282,7 +282,7 @@ const theme: MantineThemeOverride = {
         return {
           visible: {
             '&::after': {
-              backgroundImage: `linear-gradient(90deg,${theme.colors.gray[1]},${theme.colors.gray[3]},${theme.colors.gray[3]},${theme.colors.gray[1]})`,
+              backgroundImage: `linear-gradient(90deg,${theme.colors.carbon[2]},${theme.colors.carbon[4]},${theme.colors.carbon[4]},${theme.colors.carbon[2]})`,
               backgroundSize: '400% 100%',
               animation: params.animate ? `${animation} 5000ms ease-in-out infinite` : 'none'
             }
@@ -298,7 +298,7 @@ const theme: MantineThemeOverride = {
             border: 0
           },
           tab: {
-            color: theme.colors.gray[6],
+            color: theme.colors.carbon[7],
             fontWeight: 600,
             paddingLeft: 0,
             paddingRight: 0,
@@ -340,24 +340,24 @@ const theme: MantineThemeOverride = {
         },
         item: {
           transition: 'background 150ms ease-in-out',
-          color: theme.colors.gray[7],
+          color: theme.colors.carbon[8],
           '&[data-hovered], &:hover': {
-            color: theme.colors.gray[8],
-            backgroundColor: theme.colors.gray[2],
+            color: theme.colors.carbon[8],
+            backgroundColor: theme.colors.carbon[3],
             textDecoration: 'none'
           },
           '&[data-active]': {
             color: theme.colors.sky[7],
             '&:hover': {
-              backgroundColor: theme.colors.gray[2]
+              backgroundColor: theme.colors.carbon[3]
             }
           },
           '&[data-disabled]': {
-            color: theme.colors.gray[5],
+            color: theme.colors.carbon[6],
             userSelect: 'none',
             cursor: 'not-allowed',
             '&[data-hovered], &:hover': {
-              color: theme.colors.gray[5],
+              color: theme.colors.carbon[6],
               backgroundColor: 'transparent'
             }
           }
@@ -373,23 +373,23 @@ const theme: MantineThemeOverride = {
       styles: (theme, params: NavLinkStylesParams) => {
         const rootStyles: Record<string, CSSObject> = {
           light: {
-            color: theme.colors.gray[7],
+            color: theme.colors.carbon[8],
             '&:hover': {
-              color: theme.colors.gray[8],
-              backgroundColor: theme.colors.gray[2]
+              color: theme.colors.carbon[8],
+              backgroundColor: theme.colors.carbon[3]
             },
             '&:active': {
-              color: theme.colors.gray[8],
-              backgroundColor: theme.colors.gray[3]
+              color: theme.colors.carbon[8],
+              backgroundColor: theme.colors.carbon[4]
             },
             '&[data-active]': {
-              color: theme.colors.sky[7],
-              backgroundColor: theme.colors.sky[2],
+              color: theme.colors.peacock[7],
+              backgroundColor: theme.colors.peacock[2],
               '&:hover': {
-                backgroundColor: theme.colors.sky[2]
+                backgroundColor: theme.colors.peacock[2]
               },
               '&:active': {
-                backgroundColor: theme.colors.sky[2]
+                backgroundColor: theme.colors.peacock[2]
               }
             }
           }
@@ -424,9 +424,9 @@ const theme: MantineThemeOverride = {
 
         return {
           stepIcon: {
-            backgroundColor: theme.colors.gray[0],
-            borderColor: theme.colors.gray[3],
-            color: theme.colors.gray[7],
+            backgroundColor: theme.colors.carbon[1],
+            borderColor: theme.colors.carbon[4],
+            color: theme.colors.carbon[8],
             '&[data-progress]': {
               backgroundColor: filledColors.background,
               color: filledColors.color
@@ -444,10 +444,10 @@ const theme: MantineThemeOverride = {
             }
           },
           separator: {
-            borderColor: theme.colors.gray[3]
+            borderColor: theme.colors.carbon[4]
           },
           verticalSeparator: {
-            borderColor: theme.colors.gray[3]
+            borderColor: theme.colors.carbon[4]
           }
         }
       }
@@ -501,23 +501,23 @@ const theme: MantineThemeOverride = {
           label: matches.label,
           input: {
             ...matches.input,
-            color: theme.colors.gray[8],
+            color: theme.colors.carbon[8],
             '&:disabled': {
               opacity: 1
             }
           },
           item: {
             transition: 'background 150ms ease-in-out',
-            color: theme.colors.gray[7],
+            color: theme.colors.carbon[8],
             '&[data-hovered]': {
-              color: theme.colors.gray[8],
-              backgroundColor: theme.colors.gray[2]
+              color: theme.colors.carbon[8],
+              backgroundColor: theme.colors.carbon[3]
             },
             '&[data-selected]': {
-              color: theme.colors.sky[7],
+              color: theme.colors.peacock[7],
               backgroundColor: 'transparent',
               '&:hover': {
-                backgroundColor: theme.colors.gray[2]
+                backgroundColor: theme.colors.carbon[3]
               }
             }
           }
@@ -587,7 +587,7 @@ const theme: MantineThemeOverride = {
       styles(theme) {
         return {
           root: {
-            borderColor: theme.colors.gray[3]
+            borderColor: theme.colors.carbon[4]
           }
         }
       }
@@ -599,14 +599,14 @@ const theme: MantineThemeOverride = {
       },
       styles: (theme, params: PaperStylesParams) => ({
         root: {
-          backgroundColor: theme.colorScheme === 'dark' ? theme.colors.gray[0] : theme.white,
-          border: params.withBorder ? `1px solid ${theme.colors.gray[2]}` : undefined
+          backgroundColor: theme.colorScheme === 'dark' ? theme.colors.carbon[1] : theme.white,
+          border: params.withBorder ? `1px solid ${theme.colors.carbon[3]}` : undefined
         }
       })
     },
     Drawer: {
       defaultProps: (theme) => ({
-        overlayColor: theme.colors.gray[1],
+        overlayColor: theme.colors.carbon[2],
         overlayOpacity: 0.9,
         overlayBlur: 3
       })
@@ -616,26 +616,26 @@ const theme: MantineThemeOverride = {
         shadow: 'xl',
         padding: 0,
         exitTransitionDuration: 200,
-        overlayColor: theme.colors.gray[1],
+        overlayColor: theme.colors.carbon[2],
         overlayOpacity: 0.9,
         overlayBlur: 3
       }),
       styles: (theme) => ({
         modal: {
-          border: `1px solid ${theme.colors.gray[3]}`
+          border: `1px solid ${theme.colors.carbon[4]}`
         },
         header: {
           borderTopLeftRadius: theme.defaultRadius,
           borderTopRightRadius: theme.defaultRadius,
           padding: '16px 16px 16px 24px',
           margin: 0,
-          backgroundColor: theme.colors.gray[1]
+          backgroundColor: theme.colors.carbon[2]
         },
         title: {
           fontWeight: 700,
           fontSize: 16,
           lineHeight: 1.5,
-          color: theme.colors.gray[9]
+          color: theme.colors.carbon[9]
         },
         body: {
           padding: 24
@@ -668,7 +668,7 @@ const theme: MantineThemeOverride = {
         return {
           root: {
             thead: {
-              backgroundColor: theme.colors.gray[1]
+              backgroundColor: theme.colors.carbon[2]
             },
             ...borderStyles,
             ...colBorderStyles
@@ -686,8 +686,8 @@ const theme: MantineThemeOverride = {
               borderColor: color
             },
             '& input:disabled+*>.mantine-Switch-thumb': {
-              backgroundColor: theme.colorScheme === 'light' ? theme.white : theme.colors.gray[6],
-              borderColor: theme.colorScheme === 'light' ? theme.white : theme.colors.gray[6]
+              backgroundColor: theme.colorScheme === 'light' ? theme.white : theme.colors.carbon[7],
+              borderColor: theme.colorScheme === 'light' ? theme.white : theme.colors.carbon[7]
             }
           }
         }
