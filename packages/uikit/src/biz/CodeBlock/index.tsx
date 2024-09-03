@@ -68,9 +68,9 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
       <Box
         p="md"
         mah={mah}
-        bg="gray.1"
+        bg="carbon.2"
         sx={(theme) => ({
-          border: `1px solid ${theme.colors.gray[4]}`,
+          border: `1px solid ${theme.colors.carbon[5]}`,
           borderRadius: theme.defaultRadius,
           overflow: 'auto'
         })}
@@ -103,7 +103,7 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
         )}
       </Box>
 
-      <Group spacing={4} sx={(theme) => ({ position: 'absolute', top: 16, right: 16, color: theme.colors.gray[7] })}>
+      <Group spacing={4} sx={(theme) => ({ position: 'absolute', top: 16, right: 16, color: theme.colors.carbon[8] })}>
         {foldIconVisible && (
           <Tooltip label={folded ? 'Expand' : 'Collapse'} withArrow position="top">
             <ActionIcon
@@ -152,7 +152,7 @@ export interface CopyTextProps extends CodeProps {
 export const CopyText: React.FC<CopyTextProps> = ({ children, value, ...rest }) => {
   return (
     <Code
-      bg="gray.2"
+      bg="carbon.3"
       {...rest}
       p={8}
       sx={(theme) => {

@@ -7,7 +7,7 @@ import { getPrismTheme } from './prism-theme.js'
 export const MantinePrism: React.FC<PrismProps> = (props) => {
   const theme = useMantineTheme()
   return (
-    <MantineProvider theme={{ colorScheme: theme.colorScheme }}>
+    <MantineProvider theme={{ colorScheme: theme.colorScheme, colors: theme.colors }}>
       <Prism getPrismTheme={getPrismTheme} noCopy scrollAreaComponent="div" {...props} />
     </MantineProvider>
   )

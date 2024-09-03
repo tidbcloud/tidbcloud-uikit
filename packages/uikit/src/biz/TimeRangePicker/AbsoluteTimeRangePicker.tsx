@@ -41,7 +41,7 @@ const AbsoluteTimeRangePicker: React.FC<React.PropsWithChildren<AbsoluteTimeRang
   const theme = useMantineTheme()
   const dayStyle: MonthSettings['dayStyle'] = (_date, modifiers) =>
     (modifiers.weekend && !modifiers.disabled && !modifiers.selected && !modifiers.outside && !modifiers.selectedInRange
-      ? { color: theme.colors.gray[7] }
+      ? { color: theme.colors.carbon[8] }
       : null) as CSSProperties
 
   const [start, setStart] = useState(() => new Date(value[0] * 1000))

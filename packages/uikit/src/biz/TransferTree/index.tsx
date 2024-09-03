@@ -114,7 +114,7 @@ export const TransferTree: React.FC<TransferTreeProps> = ({
         {sourceHeader ? (
           sourceHeader
         ) : (
-          <Box component="header" p={16} sx={(theme) => ({ backgroundColor: theme.colors.gray[2] })}>
+          <Box component="header" p={16} sx={(theme) => ({ backgroundColor: theme.colors.carbon[3] })}>
             Source
           </Box>
         )}
@@ -140,7 +140,7 @@ export const TransferTree: React.FC<TransferTreeProps> = ({
         {targetHeader ? (
           targetHeader
         ) : (
-          <Box component="header" h={60} p={16} sx={(theme) => ({ backgroundColor: theme.colors.gray[2] })}>
+          <Box component="header" h={60} p={16} sx={(theme) => ({ backgroundColor: theme.colors.carbon[3] })}>
             Target
           </Box>
         )}

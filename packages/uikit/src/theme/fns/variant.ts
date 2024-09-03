@@ -55,10 +55,10 @@ export function getVariant(theme: MantineTheme) {
 
       case 'default': {
         return {
-          border: theme.colors.gray[4],
-          background: theme.colorScheme === 'dark' ? theme.colors.gray[1] : theme.white,
-          color: theme.colors.gray[8],
-          hover: theme.colors.gray[2]
+          border: theme.colors.carbon[5],
+          background: theme.colorScheme === 'dark' ? theme.colors.carbon[2] : theme.white,
+          color: theme.colors.carbon[8],
+          hover: theme.colors.carbon[3]
         }
       }
 

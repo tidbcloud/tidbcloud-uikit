@@ -138,10 +138,10 @@ export const PageShell = ({
   const leftSection = (!!withBack || !!headerBack) && (
     <ActionIcon
       variant="light"
-      bg="gray.2"
+      bg="carbon.3"
       sx={(theme) => ({
         ':hover': {
-          backgroundColor: theme.colors.gray[3]
+          backgroundColor: theme.colors.carbon[4]
         }
       })}
       onClick={() => {
@@ -154,7 +154,7 @@ export const PageShell = ({
         }
       }}
     >
-      <IconChevronLeft size={20} color="gray" />
+      <IconChevronLeft size={20} />
     </ActionIcon>
   )
 

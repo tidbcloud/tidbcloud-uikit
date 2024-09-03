@@ -32,7 +32,7 @@ export const FormActions: React.FC<FormActionsProps> = ({
   return (
     <Flex justify="flex-end" mt={24} {...rest}>
       {cancelText && (
-        <Button onClick={onCancel} mr={16} variant="default" fw={style.fw} fs={style.fs} c="gray.7" {...cancelProps}>
+        <Button onClick={onCancel} mr={16} variant="default" fw={style.fw} fs={style.fs} {...cancelProps}>
           {cancelText}
         </Button>
       )}

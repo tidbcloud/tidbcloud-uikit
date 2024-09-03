@@ -11,11 +11,11 @@ export const TablePagination: React.FC<TablePaginationProps> = ({ ...rest }) => 
         (theme) => ({
           item: {
             border: 'none',
-            color: theme.colors.gray[9],
+            color: theme.colors.carbon[9],
             borderRadius: theme.defaultRadius,
             '&[data-active]': {
-              color: theme.colors.gray[9],
-              background: theme.colors.gray[3]
+              color: theme.colors.carbon[9],
+              background: theme.colors.carbon[4]
             }
           }
         }),

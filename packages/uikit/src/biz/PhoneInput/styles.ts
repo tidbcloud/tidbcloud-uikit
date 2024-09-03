@@ -17,17 +17,17 @@ export const useStyles = createStyles((theme, params: { hasError?: boolean }) =>
       '&.react-tel-input': {
         '.form-control': {
           // see more https://github.com/mantinedev/mantine/blob/master/src/mantine-core/src/Input/Input.styles.ts#LL40C23-L40C89
-          backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.white,
+          backgroundColor: theme.colorScheme === 'dark' ? theme.colors.carbon[7] : theme.white,
 
           fontSize: 14,
-          color: theme.colorScheme === 'dark' ? theme.colors.gray[8] : theme.black,
+          color: theme.colorScheme === 'dark' ? theme.colors.carbon[8] : theme.black,
           width: '100%',
           height: 40,
           minHeight: 40,
           lineHeight: '38px',
           borderRadius: theme.defaultRadius,
           padding: '0 12px',
-          border: hasError ? `1px solid ${invalidColor}` : `1px solid ${theme.colors.gray[4]}`,
+          border: hasError ? `1px solid ${invalidColor}` : `1px solid ${theme.colors.carbon[5]}`,
           marginBottom: hasError ? 5 : undefined,
           outline: 'none',
 

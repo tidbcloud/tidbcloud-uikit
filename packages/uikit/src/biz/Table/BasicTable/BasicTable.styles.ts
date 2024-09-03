@@ -15,7 +15,7 @@ export const useStyles = createStyles((theme, _params: StyleParams, getRef) => {
       borderRadius: theme.defaultRadius,
       tfoot: {
         'tr th': {
-          backgroundColor: theme.colors.gray[0],
+          backgroundColor: theme.colors.carbon[1],
           ':first-of-type': {
             borderBottomLeftRadius: theme.defaultRadius
           },
@@ -27,7 +27,7 @@ export const useStyles = createStyles((theme, _params: StyleParams, getRef) => {
     },
     thead: {
       'tr th': {
-        backgroundColor: theme.colors.gray[0],
+        backgroundColor: theme.colors.carbon[1],
         ':first-of-type': {
           borderTopLeftRadius: theme.defaultRadius
         },
