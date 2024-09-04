@@ -13,7 +13,8 @@ import {
   ButtonStylesParams,
   PaperStylesParams,
   MantineTheme,
-  CheckboxStylesParams
+  CheckboxStylesParams,
+  BadgeStylesParams
 } from '@mantine/core'
 
 import * as dark from './colors.dark.js'
@@ -566,17 +567,24 @@ const theme: MantineThemeOverride = {
       }
     },
     Badge: {
-      styles(theme, params) {
-        if (params.variant === 'dot') {
-          return {
-            root: {
-              border: 'none',
-              textTransform: 'capitalize',
-              fontWeight: 500
-            }
+      styles(theme, params: BadgeStylesParams) {
+        const color = params.color ?? theme.primaryColor
+        const styles: Record<string, CSSObject> = {
+          dot: {
+            border: 'none',
+            textTransform: 'capitalize',
+            fontWeight: 500
+          },
+          outline: {
+            color: theme.colors[color][8],
+            borderColor: theme.colors[color][4]
           }
-        } else {
-          return { root: {} }
+        }
+
+        return {
+          root: {
+            ...styles[params.variant]
+          }
         }
       }
     },

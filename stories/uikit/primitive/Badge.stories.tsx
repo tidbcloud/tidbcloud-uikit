@@ -1,5 +1,5 @@
 import type { Meta, StoryObj, StoryFn } from '@storybook/react'
-import { Badge, BadgeProps, Group } from '@tidbcloud/uikit'
+import { Badge, BadgeProps, Group, useMantineTheme } from '@tidbcloud/uikit'
 
 import { SIZE_LIST } from '../../constants'
 
@@ -63,4 +63,20 @@ function Variants({ size, radius }: BadgeProps) {
 // More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
 export const Primary: Story = {
   render: Variants
+}
+
+export const AllOutlineColors: Story = {
+  render: () => {
+    const theme = useMantineTheme()
+
+    return (
+      <Group>
+        {Object.entries(theme.colors).map(([color, shades]) => (
+          <Badge key={color} variant="outline" color={color}>
+            {color}
+          </Badge>
+        ))}
+      </Group>
+    )
+  }
 }
