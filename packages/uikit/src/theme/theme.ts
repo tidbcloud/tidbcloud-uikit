@@ -12,7 +12,8 @@ import {
   SwitchStylesParams,
   ButtonStylesParams,
   PaperStylesParams,
-  MantineTheme
+  MantineTheme,
+  CheckboxStylesParams
 } from '@mantine/core'
 
 import * as dark from './colors.dark.js'
@@ -580,10 +581,21 @@ const theme: MantineThemeOverride = {
       }
     },
     Checkbox: {
-      styles() {
+      styles(theme, params: CheckboxStylesParams) {
+        const color = params.color ?? theme.primaryColor
         return {
           input: {
-            borderRadius: 4
+            borderRadius: 4,
+            borderColor: theme.colors[color][6],
+
+            '&:checked:not(:disabled)': {
+              backgroundColor: theme.colors[color][9],
+              borderColor: theme.colors[color][9]
+            },
+            '&:disabled:checked': {
+              backgroundColor: theme.colors[color][6],
+              borderColor: theme.colors[color][6]
+            }
           }
         }
       }
