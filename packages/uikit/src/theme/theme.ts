@@ -12,7 +12,9 @@ import {
   SwitchStylesParams,
   ButtonStylesParams,
   PaperStylesParams,
-  MantineTheme
+  MantineTheme,
+  CheckboxStylesParams,
+  BadgeStylesParams
 } from '@mantine/core'
 
 import * as dark from './colors.dark.js'
@@ -344,22 +346,15 @@ const theme: MantineThemeOverride = {
         item: {
           transition: 'background 150ms ease-in-out',
           color: theme.colors.carbon[8],
-          '&[data-hovered], &:hover': {
-            color: theme.colors.carbon[8],
-            backgroundColor: theme.colors.carbon[3],
+          '&:hover': {
+            backgroundColor: theme.colors.carbon[2],
             textDecoration: 'none'
           },
-          '&[data-active]': {
-            color: theme.colors.sky[7],
-            '&:hover': {
-              backgroundColor: theme.colors.carbon[3]
-            }
-          },
-          '&[data-disabled]': {
-            color: theme.colors.carbon[6],
+          '&:disabled': {
+            color: theme.colors.carbon[5],
             userSelect: 'none',
             cursor: 'not-allowed',
-            '&[data-hovered], &:hover': {
+            '&:hover': {
               color: theme.colors.carbon[6],
               backgroundColor: 'transparent'
             }
@@ -565,25 +560,50 @@ const theme: MantineThemeOverride = {
       }
     },
     Badge: {
-      styles(theme, params) {
-        if (params.variant === 'dot') {
-          return {
-            root: {
-              border: 'none',
-              textTransform: 'capitalize',
-              fontWeight: 500
-            }
+      styles(theme, params: BadgeStylesParams) {
+        const color = params.color ?? theme.primaryColor
+        const styles: Record<string, CSSObject> = {
+          dot: {
+            border: 'none',
+            textTransform: 'capitalize',
+            fontWeight: 500
+          },
+          outline: {
+            color: theme.colors[color][8],
+            borderColor: theme.colors[color][4]
           }
-        } else {
-          return { root: {} }
+        }
+
+        return {
+          root: {
+            ...styles[params.variant]
+          }
         }
       }
     },
     Checkbox: {
-      styles() {
+      styles(theme, params: CheckboxStylesParams) {
+        const color = params.color ?? theme.primaryColor
         return {
           input: {
-            borderRadius: 4
+            borderRadius: 4,
+            borderColor: theme.colors[color][6],
+
+            '&:checked:not(:disabled)': {
+              backgroundColor: theme.colors[color][9],
+              borderColor: theme.colors[color][9]
+            },
+            '&:disabled:checked': {
+              backgroundColor: theme.colors.carbon[6],
+              borderColor: theme.colors.carbon[6]
+            }
+          },
+          label: {
+            color: theme.colors[color][8],
+
+            '&[data-disabled]': {
+              color: theme.colors.carbon[6]
+            }
           }
         }
       }
@@ -611,10 +631,6 @@ const theme: MantineThemeOverride = {
       }
     },
     Paper: {
-      defaultProps: {
-        shadow: 'xs',
-        withBorder: true
-      },
       styles: (theme, params: PaperStylesParams) => {
         return {
           root: {

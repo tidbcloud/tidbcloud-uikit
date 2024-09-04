@@ -1,5 +1,5 @@
 import type { Meta, StoryObj, StoryFn } from '@storybook/react'
-import { Checkbox } from '@tidbcloud/uikit'
+import { Checkbox, Stack } from '@tidbcloud/uikit'
 
 import { COLOR_LIST, SIZE_LIST } from '../../constants'
 
@@ -73,4 +73,15 @@ export const Primary: Story = {
       control: 'text'
     }
   }
+}
+
+export const Disabled: Story = {
+  render: ({ ...rest }) => (
+    <Stack>
+      <Checkbox label="I agree to sell my privacy" {...rest} />
+      <Checkbox label="I agree to sell my privacy" {...rest} disabled />
+      <Checkbox label="I agree to sell my privacy" {...rest} disabled checked />
+    </Stack>
+  ),
+  args: {}
 }
