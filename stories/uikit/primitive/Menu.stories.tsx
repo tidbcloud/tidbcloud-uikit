@@ -47,6 +47,7 @@ function PrimaryDemo({ ...props }) {
 
           <Menu.Label>Danger zone</Menu.Label>
           <Menu.Item>Transfer my data</Menu.Item>
+          <Menu.Item disabled>Disabled</Menu.Item>
           <Menu.Item color="red">Delete my account</Menu.Item>
         </Menu.Dropdown>
       </Menu>

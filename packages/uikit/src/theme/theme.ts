@@ -346,22 +346,15 @@ const theme: MantineThemeOverride = {
         item: {
           transition: 'background 150ms ease-in-out',
           color: theme.colors.carbon[8],
-          '&[data-hovered], &:hover': {
-            color: theme.colors.carbon[8],
-            backgroundColor: theme.colors.carbon[3],
+          '&:hover': {
+            backgroundColor: theme.colors.carbon[2],
             textDecoration: 'none'
           },
-          '&[data-active]': {
-            color: theme.colors.sky[7],
-            '&:hover': {
-              backgroundColor: theme.colors.carbon[3]
-            }
-          },
-          '&[data-disabled]': {
-            color: theme.colors.carbon[6],
+          '&:disabled': {
+            color: theme.colors.carbon[5],
             userSelect: 'none',
             cursor: 'not-allowed',
-            '&[data-hovered], &:hover': {
+            '&:hover': {
               color: theme.colors.carbon[6],
               backgroundColor: 'transparent'
             }
