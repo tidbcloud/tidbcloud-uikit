@@ -71,7 +71,7 @@ export const ProTable = <T extends Record<string, any> = {}>({
 
             th: {
               color: theme.colors.carbon[7],
-              backgroundColor: theme.colors.carbon[1],
+              backgroundColor: theme.colors.carbon[2],
               fontWeight: 500
             }
           }
