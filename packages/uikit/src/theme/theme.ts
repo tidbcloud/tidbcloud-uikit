@@ -602,12 +602,27 @@ const theme: MantineThemeOverride = {
         shadow: 'xs',
         withBorder: true
       },
-      styles: (theme, params: PaperStylesParams) => ({
-        root: {
-          backgroundColor: theme.colors.carbon[0],
-          border: params.withBorder ? `1px solid ${theme.colors.carbon[3]}` : undefined
+      styles: (theme) => {
+        return {
+          root: {
+            backgroundColor: theme.colors.carbon[0]
+          }
         }
-      })
+      }
+    },
+    Paper: {
+      defaultProps: {
+        shadow: 'xs',
+        withBorder: true
+      },
+      styles: (theme, params: PaperStylesParams) => {
+        return {
+          root: {
+            backgroundColor: theme.colors.carbon[0],
+            borderColor: params.withBorder ? theme.colors.carbon[3] : 'transparent'
+          }
+        }
+      }
     },
     Drawer: {
       defaultProps: (theme) => ({
