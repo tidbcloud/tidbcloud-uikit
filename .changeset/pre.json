@@ -6,6 +6,7 @@
     "@tidbcloud/uikit": "1.17.1"
   },
   "changesets": [
+    "angry-taxis-impress",
     "beige-olives-divide",
     "blue-balloons-cry",
     "eight-tigers-wonder",
