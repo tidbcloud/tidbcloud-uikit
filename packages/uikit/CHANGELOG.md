@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.16
+
+### Patch Changes
+
+- adjust color and backgroundColor for NavLink
+
 ## 2.0.0-beta.15
 
 ### Minor Changes

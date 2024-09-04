@@ -378,10 +378,10 @@ const theme: MantineThemeOverride = {
 
         const rootStyles: Record<string, CSSObject> = {
           light: {
-            color: theme.colors.carbon[7],
+            color: theme.colors[color][8],
             '&:hover': {
-              color: theme.colors.carbon[7],
-              backgroundColor: theme.colors.carbon[2]
+              color: theme.colors[color][8],
+              backgroundColor: theme.colors[color][2]
             },
             '&:active': {
               color: theme.colors[color][8],
