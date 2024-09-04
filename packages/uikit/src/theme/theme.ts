@@ -754,6 +754,31 @@ const theme: MantineThemeOverride = {
           }
         }
       }
+    },
+    SegmentedControl: {
+      styles: (theme) => {
+        return {
+          root: {
+            backgroundColor: theme.colors.carbon[4]
+          },
+          active: {
+            borderRadius: 6,
+            backgroundColor: theme.colors.carbon[0]
+          },
+          labelActive: {
+            color: `${theme.colors.carbon[9]} !important`
+          },
+          label: {
+            color: `${theme.colors.carbon[7]} !important`
+          },
+          disabled: {
+            color: `${theme.colors.carbon[6]} !important`
+          },
+          control: {
+            borderColor: `${theme.colors.carbon[5]} !important`
+          }
+        }
+      }
     }
   }
 }
