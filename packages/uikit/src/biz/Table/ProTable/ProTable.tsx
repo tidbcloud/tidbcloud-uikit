@@ -43,6 +43,7 @@ export const ProTable = <T extends Record<string, any> = {}>({
       sx: (theme) => ({
         backgroundColor: 'inherit',
         borderRadius: withBorder ? theme.defaultRadius : 0,
+        borderColor: withBorder ? theme.colors.carbon[4] : 'transparent',
         overflow: 'hidden',
         transition: 'none',
 
@@ -71,7 +72,7 @@ export const ProTable = <T extends Record<string, any> = {}>({
 
             th: {
               color: theme.colors.carbon[7],
-              backgroundColor: theme.colors.carbon[1],
+              backgroundColor: theme.colors.carbon[2],
               fontWeight: 500
             }
           }
@@ -81,6 +82,10 @@ export const ProTable = <T extends Record<string, any> = {}>({
             transition: 'none',
             backgroundColor: theme.colors.carbon[0],
             color: theme.colors.carbon[8],
+
+            td: {
+              borderColor: theme.colors.carbon[2]
+            },
 
             ':last-of-type': {
               td: {
