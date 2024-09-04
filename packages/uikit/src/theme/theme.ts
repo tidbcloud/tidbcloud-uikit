@@ -611,10 +611,6 @@ const theme: MantineThemeOverride = {
       }
     },
     Paper: {
-      defaultProps: {
-        shadow: 'xs',
-        withBorder: true
-      },
       styles: (theme, params: PaperStylesParams) => {
         return {
           root: {
