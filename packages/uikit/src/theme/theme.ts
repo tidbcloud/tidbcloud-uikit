@@ -302,8 +302,11 @@ const theme: MantineThemeOverride = {
             fontWeight: 600,
             paddingLeft: 0,
             paddingRight: 0,
-            '&[data-active]': {},
+            '&[data-active]': {
+              color: theme.colors.carbon[9]
+            },
             '&:hover': {
+              color: theme.colors.carbon[9],
               background: 'transparent',
               borderColor: 'transparent'
             },
