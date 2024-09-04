@@ -601,8 +601,15 @@ const theme: MantineThemeOverride = {
               borderColor: theme.colors[color][9]
             },
             '&:disabled:checked': {
-              backgroundColor: theme.colors[color][6],
-              borderColor: theme.colors[color][6]
+              backgroundColor: theme.colors.carbon[6],
+              borderColor: theme.colors.carbon[6]
+            }
+          },
+          label: {
+            color: theme.colors[color][8],
+
+            '&[data-disabled]': {
+              color: theme.colors.carbon[6]
             }
           }
         }
