@@ -1,5 +1,5 @@
 import type { Meta, StoryObj, StoryFn } from '@storybook/react'
-import { Badge, Box, NavLink } from '@tidbcloud/uikit'
+import { Badge, Box, NavLink, Stack } from '@tidbcloud/uikit'
 
 type Story = StoryObj<typeof NavLink>
 
@@ -40,4 +40,16 @@ export const Primary: Story = {
     </Box>
   ),
   args: {}
+}
+
+export const List: Story = {
+  render: () => (
+    <Box bg="carbon.0" p={32}>
+      <Stack w={240} spacing={4}>
+        <NavLink label="Page 1" active />
+        <NavLink label="Page 2" />
+        <NavLink label="Page 3" />
+      </Stack>
+    </Box>
+  )
 }

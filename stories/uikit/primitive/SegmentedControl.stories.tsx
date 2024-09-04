@@ -23,7 +23,7 @@ const data = [
   { label: 'React', value: 'react' },
   { label: 'Angular', value: 'ng' },
   { label: 'Vue', value: 'vue' },
-  { label: 'Very long label', value: 'svelte' }
+  { label: 'Very long label', value: 'svelte', disabled: true }
 ]
 
 export function Usage() {

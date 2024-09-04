@@ -302,8 +302,11 @@ const theme: MantineThemeOverride = {
             fontWeight: 600,
             paddingLeft: 0,
             paddingRight: 0,
-            '&[data-active]': {},
+            '&[data-active]': {
+              color: theme.colors.carbon[9]
+            },
             '&:hover': {
+              color: theme.colors.carbon[9],
               background: 'transparent',
               borderColor: 'transparent'
             },
@@ -371,25 +374,27 @@ const theme: MantineThemeOverride = {
         fw: 500
       },
       styles: (theme, params: NavLinkStylesParams) => {
+        const color = params.color || theme.primaryColor
+
         const rootStyles: Record<string, CSSObject> = {
           light: {
-            color: theme.colors.carbon[8],
+            color: theme.colors.carbon[7],
             '&:hover': {
-              color: theme.colors.carbon[8],
-              backgroundColor: theme.colors.carbon[3]
+              color: theme.colors.carbon[7],
+              backgroundColor: theme.colors.carbon[2]
             },
             '&:active': {
-              color: theme.colors.carbon[8],
-              backgroundColor: theme.colors.carbon[4]
+              color: theme.colors[color][8],
+              backgroundColor: theme.colors[color][4]
             },
             '&[data-active]': {
-              color: theme.colors.peacock[7],
-              backgroundColor: theme.colors.peacock[2],
+              color: theme.colors[color][9],
+              backgroundColor: theme.colors[color][4],
               '&:hover': {
-                backgroundColor: theme.colors.peacock[2]
+                backgroundColor: theme.colors[color][4]
               },
               '&:active': {
-                backgroundColor: theme.colors.peacock[2]
+                backgroundColor: theme.colors[color][4]
               }
             }
           }
@@ -748,6 +753,31 @@ const theme: MantineThemeOverride = {
               borderColor: theme.colors.carbon[6],
               cursor: 'not-allowed'
             }
+          }
+        }
+      }
+    },
+    SegmentedControl: {
+      styles: (theme) => {
+        return {
+          root: {
+            backgroundColor: theme.colors.carbon[4]
+          },
+          active: {
+            borderRadius: 6,
+            backgroundColor: theme.colors.carbon[0]
+          },
+          labelActive: {
+            color: `${theme.colors.carbon[9]} !important`
+          },
+          label: {
+            color: `${theme.colors.carbon[7]} !important`
+          },
+          disabled: {
+            color: `${theme.colors.carbon[6]} !important`
+          },
+          control: {
+            borderColor: `${theme.colors.carbon[5]} !important`
           }
         }
       }
