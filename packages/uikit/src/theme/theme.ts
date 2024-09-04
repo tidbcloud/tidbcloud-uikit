@@ -374,25 +374,27 @@ const theme: MantineThemeOverride = {
         fw: 500
       },
       styles: (theme, params: NavLinkStylesParams) => {
+        const color = params.color || theme.primaryColor
+
         const rootStyles: Record<string, CSSObject> = {
           light: {
-            color: theme.colors.carbon[8],
+            color: theme.colors.carbon[7],
             '&:hover': {
-              color: theme.colors.carbon[8],
-              backgroundColor: theme.colors.carbon[3]
+              color: theme.colors.carbon[7],
+              backgroundColor: theme.colors.carbon[2]
             },
             '&:active': {
-              color: theme.colors.carbon[8],
-              backgroundColor: theme.colors.carbon[4]
+              color: theme.colors[color][8],
+              backgroundColor: theme.colors[color][4]
             },
             '&[data-active]': {
-              color: theme.colors.peacock[7],
-              backgroundColor: theme.colors.peacock[2],
+              color: theme.colors[color][9],
+              backgroundColor: theme.colors[color][4],
               '&:hover': {
-                backgroundColor: theme.colors.peacock[2]
+                backgroundColor: theme.colors[color][4]
               },
               '&:active': {
-                backgroundColor: theme.colors.peacock[2]
+                backgroundColor: theme.colors[color][4]
               }
             }
           }
