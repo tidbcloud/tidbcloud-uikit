@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.17
+
+### Patch Changes
+
+- Update Card/Paper/ProTable styles
+
 ## 2.0.0-beta.16
 
 ### Patch Changes
