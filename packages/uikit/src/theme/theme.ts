@@ -113,7 +113,7 @@ const getButtonStyles = (theme: MantineTheme, params: ButtonStylesParams): Recor
 
     return {
       color: mainColor[fontColorShade],
-      backgroundColor: theme.white,
+      backgroundColor: 'transparent',
 
       ...theme.fn.hover({
         color: mainColor[fontColorShade + 1],
