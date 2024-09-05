@@ -566,15 +566,41 @@ const theme: MantineThemeOverride = {
     },
     Badge: {
       styles(theme, params: BadgeStylesParams) {
+        const color = params.color ?? theme.primaryColor
+        const mainShade = color.includes('carbon') ? 9 : 7
+
+        const sizes = {
+          xs: 11,
+          sm: 12,
+          md: 13,
+          lg: 14,
+          xl: 16
+        }
+
         const styles: Record<string, CSSObject> = {
           dot: {
             border: 'none',
             textTransform: 'capitalize',
-            fontWeight: 500
+            fontWeight: 500,
+            fontSize: theme.fn.size({ sizes, size: params.size }),
+            backgroundColor: 'transparent',
+            color: theme.fn.themeColor(theme.primaryColor, 9),
+
+            '&:before': {
+              backgroundColor: theme.fn.themeColor(color, 7)
+            }
           },
           outline: {
-            color: theme.fn.themeColor(params.color ?? theme.primaryColor, 8),
-            borderColor: theme.fn.themeColor(params.color ?? theme.primaryColor, 4)
+            color: theme.fn.themeColor(color, mainShade),
+            borderColor: theme.fn.themeColor(color, 4)
+          },
+          light: {
+            backgroundColor: theme.fn.themeColor(color, 1),
+            color: theme.fn.themeColor(color, mainShade)
+          },
+          filled: {
+            backgroundColor: theme.fn.themeColor(color, mainShade),
+            color: theme.white
           }
         }
 
