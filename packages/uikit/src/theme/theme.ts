@@ -26,29 +26,34 @@ export type Color = keyof ColorMap
 export const Colors = Object.keys(light) as Color[]
 
 const getButtonStyles = (theme: MantineTheme, params: ButtonStylesParams): Record<string, CSSObject> => {
+  let color = params.color?.includes('.') ? params.color.split('.')[0] : params.color
+
   const getFilledStyles = (): CSSObject => {
-    const color = params.color || theme.primaryColor
-    const bgColor = theme.colors[params.color || theme.primaryColor]
-    const bgColorShade = color === 'carbon' ? 9 : theme.fn.primaryShade()
-    const hoverBgColorShade = color === 'carbon' ? bgColorShade - 1 : bgColorShade + 1
+    color = color || theme.primaryColor
+    const bgColorShade = color.includes('carbon') ? 9 : theme.fn.primaryShade()
+    const hoverBgColorShade = color.includes('carbon') ? bgColorShade - 1 : bgColorShade + 1
+
+    const bgColor = theme.fn.themeColor(color, bgColorShade)
+    const bgHoverColor = theme.fn.themeColor(color, hoverBgColorShade)
 
     return {
       color: theme.white,
-      backgroundColor: bgColor[bgColorShade],
+      backgroundColor: bgColor,
 
       ...theme.fn.hover({
-        backgroundColor: bgColor[hoverBgColorShade]
+        backgroundColor: bgHoverColor
       }),
 
       '&:disabled': {
         color: theme.white,
-        backgroundColor: bgColor[5]
+        backgroundColor: theme.fn.themeColor(color, 5)
       }
     }
   }
 
   const getLightStyles = (): CSSObject => {
-    const mainColor = theme.colors[params.color || 'peacock']
+    color = color || 'peacock'
+    const mainColor = theme.colors[color]
     const fontColorShade = 7
     const bgColorShade = 1
     const borderColorShade = 4
@@ -75,7 +80,7 @@ const getButtonStyles = (theme: MantineTheme, params: ButtonStylesParams): Recor
   }
 
   const getDefaultStyles = (): CSSObject => {
-    const color = params.color || theme.primaryColor
+    color = color || theme.primaryColor
     const mainColor = theme.colors[color]
     const fontColorShade = color === 'carbon' ? 8 : 7
     const bgColorShade = 1
@@ -101,7 +106,7 @@ const getButtonStyles = (theme: MantineTheme, params: ButtonStylesParams): Recor
   }
 
   const getSubtleStyles = (): CSSObject => {
-    const color = params.color || 'peacock'
+    color = color || 'peacock'
     const mainColor = theme.colors[color]
     const fontColorShade = 7
     const bgColorShade = 1
@@ -346,11 +351,11 @@ const theme: MantineThemeOverride = {
         item: {
           transition: 'background 150ms ease-in-out',
           color: theme.colors.carbon[8],
-          '&:hover': {
+          '&:hover, &[data-hovered]': {
             backgroundColor: theme.colors.carbon[2],
             textDecoration: 'none'
           },
-          '&:disabled': {
+          '&:disabled, &[data-disabled]': {
             color: theme.colors.carbon[5],
             userSelect: 'none',
             cursor: 'not-allowed',
