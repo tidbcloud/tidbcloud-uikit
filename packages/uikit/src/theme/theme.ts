@@ -463,6 +463,9 @@ const theme: MantineThemeOverride = {
       }
     },
     Alert: {
+      defaultProps: {
+        color: 'peacock'
+      },
       styles: (theme, params: AlertStylesParams) => {
         return {
           root: {
@@ -570,6 +573,9 @@ const theme: MantineThemeOverride = {
       }
     },
     Badge: {
+      defaultProps: {
+        color: 'peacock'
+      },
       styles(theme, params: BadgeStylesParams) {
         const color = params.color ?? theme.primaryColor
         const mainShade = color.includes('carbon') ? 9 : 7
