@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.19
+
+### Minor Changes
+
+- Adjust theme colors in components
+
 ## 2.0.0-beta.18
 
 ### Minor Changes
