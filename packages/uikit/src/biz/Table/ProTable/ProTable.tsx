@@ -83,6 +83,10 @@ export const ProTable = <T extends Record<string, any> = {}>({
             backgroundColor: theme.colors.carbon[0],
             color: theme.colors.carbon[8],
 
+            '&:hover': {
+              backgroundColor: `${theme.colors.carbon[3]} !important`
+            },
+
             td: {
               borderColor: theme.colors.carbon[2]
             },
