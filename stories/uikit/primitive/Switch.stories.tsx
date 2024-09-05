@@ -1,7 +1,7 @@
 import type { Meta, StoryObj, StoryFn } from '@storybook/react'
 import { Group, MantineProvider, Stack, Switch } from '@tidbcloud/uikit'
 
-import { COLOR_LIST, VARIANT_LIST, SIZE_LIST } from '../../constants'
+import { COLOR_LIST, SIZE_LIST } from '../../constants'
 
 type Story = StoryObj<typeof Switch>
 
@@ -24,8 +24,12 @@ export default meta
 
 // More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
 export const Primary: Story = {
-  render: () => <Switch></Switch>,
-  args: {},
+  render: (props) => <Switch {...props} />,
+  args: {
+    disabled: false,
+    onLabel: '',
+    offLabel: ''
+  },
   argTypes: {
     color: {
       options: COLOR_LIST,
@@ -39,6 +43,21 @@ export const Primary: Story = {
       options: SIZE_LIST,
       control: {
         type: 'select'
+      }
+    },
+    disabled: {
+      control: {
+        type: 'boolean'
+      }
+    },
+    onLabel: {
+      control: {
+        type: 'text'
+      }
+    },
+    offLabel: {
+      control: {
+        type: 'text'
       }
     }
   }

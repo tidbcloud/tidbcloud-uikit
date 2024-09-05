@@ -352,14 +352,19 @@ const theme: MantineThemeOverride = {
           transition: 'background 150ms ease-in-out',
           color: theme.colors.carbon[8],
           '&:hover, &[data-hovered]': {
+            color: theme.colors.carbon[8],
             backgroundColor: theme.colors.carbon[2],
             textDecoration: 'none'
+          },
+          '&:active, &[data-active]': {
+            color: theme.colors.carbon[8],
+            backgroundColor: theme.colors.carbon[3]
           },
           '&:disabled, &[data-disabled]': {
             color: theme.colors.carbon[5],
             userSelect: 'none',
             cursor: 'not-allowed',
-            '&:hover': {
+            '&:hover, &[data-hovered]': {
               color: theme.colors.carbon[6],
               backgroundColor: 'transparent'
             }
@@ -584,7 +589,7 @@ const theme: MantineThemeOverride = {
             fontWeight: 500,
             fontSize: theme.fn.size({ sizes, size: params.size }),
             backgroundColor: 'transparent',
-            color: theme.fn.themeColor(theme.primaryColor, 9),
+            color: theme.fn.themeColor(theme.primaryColor, 8),
 
             '&:before': {
               backgroundColor: theme.fn.themeColor(color, 7)
@@ -744,17 +749,36 @@ const theme: MantineThemeOverride = {
     },
     Switch: {
       styles: (theme, params: SwitchStylesParams) => {
-        const color = params.color ?? theme.colors.cyan[4]
+        const color = params.color ?? theme.primaryColor
+
         return {
           root: {
-            '& input:disabled:checked+.mantine-Switch-track': {
-              backgroundColor: color,
-              borderColor: color
+            '& input:checked+.mantine-Switch-track': {
+              backgroundColor: theme.fn.themeColor(color, 9),
+              borderColor: theme.fn.themeColor(color, 9)
             },
-            '& input:disabled+*>.mantine-Switch-thumb': {
-              backgroundColor: theme.colorScheme === 'light' ? theme.white : theme.colors.carbon[7],
-              borderColor: theme.colorScheme === 'light' ? theme.white : theme.colors.carbon[7]
+            '& input:disabled+.mantine-Switch-track': {
+              backgroundColor: theme.fn.themeColor(color, 4),
+              borderColor: theme.fn.themeColor(color, 4)
+            },
+            '& input:disabled:checked+.mantine-Switch-track': {
+              backgroundColor: theme.fn.themeColor(color, 7),
+              borderColor: theme.fn.themeColor(color, 7)
+            },
+
+            '& input+*>.mantine-Switch-trackLabel': {
+              color: theme.fn.themeColor(color, 8)
+            },
+            '& input:checked+*>.mantine-Switch-trackLabel': {
+              color: theme.fn.themeColor(color, 0)
             }
+          },
+          track: {
+            backgroundColor: theme.fn.themeColor(color, 5),
+            borderColor: theme.fn.themeColor(color, 5)
+          },
+          trackLabel: {
+            color: theme.fn.themeColor(color, 8)
           }
         }
       }
