@@ -873,6 +873,29 @@ const theme: MantineThemeOverride = {
           }
         }
       }
+    },
+    Tooltip: {
+      defaultProps: {
+        withArrow: true
+      },
+      styles(theme) {
+        const styles = {
+          dark: {
+            backgroundColor: theme.colors.carbon[8],
+            color: theme.colors.carbon[1]
+          },
+          light: {
+            backgroundColor: theme.colors.carbon[8],
+            color: theme.colors.carbon[1]
+          }
+        }
+
+        return {
+          tooltip: {
+            ...styles[theme.colorScheme]
+          }
+        }
+      }
     }
   }
 }
