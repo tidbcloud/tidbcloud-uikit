@@ -5,8 +5,8 @@ export type ShadingColor = Tuple<string, 10>
 // Colors refer to https://www.figma.com/design/WA4ToJ5lrk8phxnvfHA3xU/%E2%9A%AA%EF%B8%8F-TiDesign-Library?node-id=7222-252904&node-type=SECTION&t=2rq3zxbEaWLOtOZr-0
 export const carbon = [
   '#FFFFFF',
-  '#F9FAFB',
-  '#F3F5F7',
+  '#FBFDFD',
+  '#F5F8FA',
   '#EDF0F1',
   '#E3E8EA',
   '#C8CED0',
