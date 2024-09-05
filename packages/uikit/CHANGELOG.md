@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.23
+
+### Minor Changes
+
+- make PageShell back icon and CodeBlock Copy icon to subtle
+
 ## 2.0.0-beta.22
 
 ### Minor Changes

@@ -119,6 +119,7 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
             <HoverCard.Target>
               <ActionIcon
                 size="sm"
+                variant="subtle"
                 onClick={() => {
                   const v = !folded
                   setFolded(v)
@@ -142,6 +143,7 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
               <HoverCard.Target>
                 <ActionIcon
                   size="sm"
+                  variant="subtle"
                   onClick={() => {
                     copy()
                     onCopyClick?.()
@@ -187,7 +189,7 @@ export const CopyText: React.FC<CopyTextProps> = ({ children, value, ...rest }) 
         {({ copied, copy }) => (
           <Tooltip label={copied ? 'Copied' : 'Copy'} withArrow position="top">
             <ActionIcon
-              variant="transparent"
+              variant="subtle"
               size="sm"
               ml={8}
               display="inline-block"

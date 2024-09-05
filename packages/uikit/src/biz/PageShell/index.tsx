@@ -137,13 +137,7 @@ export const PageShell = ({
   const headerVisible = !!title || !!headerRightSection
   const leftSection = (!!withBack || !!headerBack) && (
     <ActionIcon
-      variant="light"
-      bg="carbon.3"
-      sx={(theme) => ({
-        ':hover': {
-          backgroundColor: theme.colors.carbon[4]
-        }
-      })}
+      variant="default"
       onClick={() => {
         if (onBackClick) {
           onBackClick()
