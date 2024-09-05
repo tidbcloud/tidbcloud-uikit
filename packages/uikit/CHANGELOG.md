@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.20
+
+### Minor Changes
+
+- Update badge styles
+
 ## 2.0.0-beta.19
 
 ### Minor Changes
