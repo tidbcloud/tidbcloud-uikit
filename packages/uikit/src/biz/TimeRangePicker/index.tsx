@@ -75,14 +75,17 @@ export const TimeRangePicker: React.FC<React.PropsWithChildren<TimeRangePickerPr
         <Tooltip label={formattedAbsDateTime} disabled={isRelativeRange} withArrow>
           <Button
             variant="default"
+            bg="carbon.0"
             styles={(theme) => ({
               root: {
                 paddingLeft: '12px',
                 paddingRight: '12px',
-                borderColor: opened ? theme.colors.blue[7] : '',
+                borderColor: opened ? theme.colors.carbon[9] : theme.colors.carbon[4],
                 '&:hover': {
-                  background: 'transparent'
-                }
+                  backgroundColor: theme.colors.carbon[0],
+                  borderColor: opened ? theme.colors.carbon[9] : theme.colors.carbon[4]
+                },
+                '&:active': { transform: 'none' }
               },
               inner: {
                 width: '100%'

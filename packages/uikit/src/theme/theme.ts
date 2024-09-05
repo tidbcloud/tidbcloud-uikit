@@ -977,6 +977,20 @@ const theme: MantineThemeOverride = {
           }
         }
       }
+    },
+    RangeCalendar: {
+      styles: (theme) => ({
+        day: {
+          '&[data-first-in-range]': {
+            borderTopLeftRadius: theme.defaultRadius,
+            borderBottomLeftRadius: theme.defaultRadius
+          },
+          '&[data-last-in-range]': {
+            borderTopRightRadius: theme.defaultRadius,
+            borderBottomRightRadius: theme.defaultRadius
+          }
+        }
+      })
     }
   }
 }
