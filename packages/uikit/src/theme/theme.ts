@@ -991,6 +991,20 @@ const theme: MantineThemeOverride = {
           }
         }
       })
+    },
+    Anchor: {
+      styles: (theme, params) => {
+        const color = params.color ?? 'peacock'
+        const shade = color.includes('carbon') ? 9 : theme.fn.primaryShade()
+        return {
+          root: {
+            color: theme.fn.themeColor(color, shade),
+            '&:hover': {
+              color: theme.fn.themeColor(color, shade)
+            }
+          }
+        }
+      }
     }
   }
 }
