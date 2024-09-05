@@ -463,6 +463,9 @@ const theme: MantineThemeOverride = {
       }
     },
     Alert: {
+      defaultProps: {
+        color: 'peacock'
+      },
       styles: (theme, params: AlertStylesParams) => {
         return {
           root: {
@@ -570,6 +573,9 @@ const theme: MantineThemeOverride = {
       }
     },
     Badge: {
+      defaultProps: {
+        color: 'peacock'
+      },
       styles(theme, params: BadgeStylesParams) {
         const color = params.color ?? theme.primaryColor
         const mainShade = color.includes('carbon') ? 9 : 7
@@ -700,7 +706,7 @@ const theme: MantineThemeOverride = {
           borderTopRightRadius: theme.defaultRadius,
           padding: '16px 16px 16px 24px',
           margin: 0,
-          backgroundColor: theme.colors.carbon[2]
+          backgroundColor: theme.colors.carbon[1]
         },
         title: {
           fontWeight: 700,
@@ -709,7 +715,8 @@ const theme: MantineThemeOverride = {
           color: theme.colors.carbon[9]
         },
         body: {
-          padding: 24
+          padding: 24,
+          backgroundColor: theme.colors.carbon[0]
         }
       })
     },
@@ -863,6 +870,110 @@ const theme: MantineThemeOverride = {
           },
           control: {
             borderColor: `${theme.colors.carbon[5]} !important`
+          }
+        }
+      }
+    },
+    Tooltip: {
+      defaultProps: {
+        withArrow: true
+      },
+      styles(theme) {
+        const styles = {
+          dark: {
+            backgroundColor: theme.colors.carbon[8],
+            color: theme.colors.carbon[1]
+          },
+          light: {
+            backgroundColor: theme.colors.carbon[8],
+            color: theme.colors.carbon[1]
+          }
+        }
+
+        return {
+          tooltip: {
+            ...styles[theme.colorScheme]
+          }
+        }
+      }
+    },
+
+    ActionIcon: {
+      defaultProps: {
+        variant: 'default',
+        color: 'carbon'
+      },
+      styles(theme, params) {
+        const color = params.color ?? theme.primaryColor
+        const shade = color.includes('carbon') ? 8 : 7
+
+        const variantStyles: Record<string, CSSObject> = {
+          default: {
+            color: theme.fn.themeColor(color, 8),
+            backgroundColor: theme.fn.themeColor(color, 2),
+            borderColor: theme.fn.themeColor(color, 5),
+
+            '&:hover': {
+              color: theme.fn.themeColor(color, 9),
+              backgroundColor: theme.fn.themeColor(color, 2),
+              borderColor: theme.fn.themeColor(color, 6)
+            },
+            '&:active': {
+              color: theme.fn.themeColor(color, 9),
+              backgroundColor: theme.fn.themeColor(color, 4),
+              borderColor: theme.fn.themeColor(color, 6)
+            },
+
+            '&:disabled': {
+              color: theme.fn.themeColor(color, 6),
+              backgroundColor: theme.fn.themeColor(color, 2),
+              borderColor: theme.fn.themeColor(color, 5)
+            }
+          },
+          transparent: {
+            backgroundColor: 'transparent',
+            color: theme.fn.themeColor(color, shade)
+          },
+          subtle: {
+            backgroundColor: 'transparent',
+            color: theme.fn.themeColor(color, 8),
+
+            '&:hover': {
+              backgroundColor: theme.fn.themeColor(color, 2)
+            },
+            '&:active': {
+              backgroundColor: theme.fn.themeColor(color, 4)
+            },
+            '&:disabled': {
+              color: theme.fn.themeColor(color, 6)
+            }
+          },
+          outline: {
+            backgroundColor: 'transparent',
+            color: theme.fn.themeColor(color, shade),
+            border: `1px solid ${theme.fn.themeColor(color, 4)}`,
+            '&:hover': {
+              backgroundColor: theme.fn.themeColor(color, 2)
+            }
+          },
+          filled: {
+            backgroundColor: theme.fn.themeColor(color, color.includes('carbon') ? 9 : 7),
+            color: theme.white
+          },
+          light: {
+            backgroundColor: theme.fn.themeColor(color, 3),
+            color: theme.fn.themeColor(color, 8),
+            '&:hover': {
+              backgroundColor: theme.fn.themeColor(color, 4)
+            },
+            '&:active': {
+              backgroundColor: theme.fn.themeColor(color, 5)
+            }
+          }
+        }
+        return {
+          root: {
+            ...variantStyles[params.variant]
           }
         }
       }
