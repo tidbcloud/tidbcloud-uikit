@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.21
+
+### Minor Changes
+
+- Update Badge/Switch style and fix menu data attributes style
+
 ## 2.0.0-beta.20
 
 ### Minor Changes
