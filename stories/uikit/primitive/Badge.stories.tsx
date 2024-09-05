@@ -65,15 +65,51 @@ export const Primary: Story = {
   render: Variants
 }
 
+const AllColors = ({ variant }: { variant: BadgeProps['variant'] }) => {
+  const theme = useMantineTheme()
+
+  return (
+    <Group>
+      {Object.entries(theme.colors).map(([color]) => (
+        <Badge key={color} variant={variant} color={color}>
+          {color}
+        </Badge>
+      ))}
+    </Group>
+  )
+}
+
 export const AllOutlineColors: Story = {
   render: () => {
-    const theme = useMantineTheme()
+    return <AllColors variant="outline" />
+  }
+}
 
+export const AllDotColors: Story = {
+  render: () => {
+    return <AllColors variant="dot" />
+  }
+}
+
+export const AllFilledColors: Story = {
+  render: () => {
+    return <AllColors variant="filled" />
+  }
+}
+
+export const AllLightColors: Story = {
+  render: () => {
+    return <AllColors variant="light" />
+  }
+}
+
+export const AllSizes: Story = {
+  render: () => {
     return (
       <Group>
-        {Object.entries(theme.colors).map(([color, shades]) => (
-          <Badge key={color} variant="outline" color={color}>
-            {color}
+        {SIZE_LIST.map((size) => (
+          <Badge key={size} variant="dot" color="green" size={size}>
+            Available
           </Badge>
         ))}
       </Group>
