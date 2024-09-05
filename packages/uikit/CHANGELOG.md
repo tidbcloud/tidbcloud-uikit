@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.22
+
+### Minor Changes
+
+- Update ActionIcon/Tooltip/Modal style set Badge/Alert default to peacock color
+
 ## 2.0.0-beta.21
 
 ### Minor Changes
