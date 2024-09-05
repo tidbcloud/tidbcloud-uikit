@@ -100,26 +100,88 @@ export const light = (theme: MantineTheme): PrismTheme => ({
   },
 
   styles: [
+    // from sql editor
     {
-      types: ['comment'],
+      types: ['comment', 'meta'],
       style: {
-        color: theme.colors.carbon[7]
+        color: theme.colors.green[8]
       }
     },
     {
-      types: ['string', 'inserted'],
+      types: ['keyword', 'strong'],
       style: {
-        color: theme.colors.violet[9]
+        color: theme.colors.sky[8]
       }
     },
     {
       types: ['number'],
       style: {
-        color: theme.colors.blue[7]
+        color: theme.colors.rosy[8]
       }
     },
     {
-      types: ['builtin', 'char', 'constant', 'function', 'selector', 'atrule'],
+      types: ['string'],
+      style: {
+        color: theme.colors.purple[8]
+      }
+    },
+    {
+      types: ['variable'],
+      style: {
+        color: theme.colors.airy[9]
+      }
+    },
+    {
+      types: ['escape'],
+      style: {
+        color: theme.colors.ocher[8]
+      }
+    },
+    {
+      types: ['tag'],
+      style: {
+        color: theme.colors.aqua[8]
+      }
+    },
+    {
+      types: ['heading'],
+      style: {
+        color: theme.colors.blue[8]
+      }
+    },
+    {
+      types: ['quote'],
+      style: {
+        color: theme.colors.carbon[8]
+      }
+    },
+    {
+      types: ['list'],
+      style: {
+        color: theme.colors.magenta[8]
+      }
+    },
+    {
+      types: ['documentMeta'],
+      style: {
+        color: theme.colors.gray[8]
+      }
+    },
+    {
+      types: ['function'],
+      style: {
+        color: theme.colors.mauve[8]
+      }
+    },
+    {
+      types: ['type', 'class-name'],
+      style: {
+        color: theme.colors.violet[8]
+      }
+    },
+    // other languages
+    {
+      types: ['builtin', 'char', 'constant', 'selector', 'atrule'],
       style: {
         color: theme.colors.thyme[9]
       }
@@ -131,25 +193,13 @@ export const light = (theme: MantineTheme): PrismTheme => ({
       }
     },
     {
-      types: ['variable'],
-      style: {
-        color: theme.colors.violet[9]
-      }
-    },
-    {
       types: ['attr-name'],
       style: {
         color: theme.colors.green[9]
       }
     },
     {
-      types: ['class-name'],
-      style: {
-        color: theme.colors.red[9]
-      }
-    },
-    {
-      types: ['tag', 'deleted'],
+      types: ['deleted'],
       style: {
         color: theme.colors.violet[9]
       }
@@ -162,12 +212,6 @@ export const light = (theme: MantineTheme): PrismTheme => ({
     },
     {
       types: ['boolean'],
-      style: {
-        color: theme.colors.red[9]
-      }
-    },
-    {
-      types: ['keyword'],
       style: {
         color: theme.colors.red[9]
       }
@@ -187,5 +231,4 @@ export const light = (theme: MantineTheme): PrismTheme => ({
   ]
 })
 
-export const getPrismTheme = (theme: MantineTheme, colorScheme: 'light' | 'dark') =>
-  colorScheme === 'dark' ? dark(theme) : light(theme)
+export const getPrismTheme = (theme: MantineTheme) => light(theme)
