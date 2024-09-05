@@ -83,7 +83,7 @@ const getButtonStyles = (theme: MantineTheme, params: ButtonStylesParams): Recor
     color = color || theme.primaryColor
     const mainColor = theme.colors[color]
     const fontColorShade = color === 'carbon' ? 8 : 7
-    const bgColorShade = 1
+    const bgColorShade = 2
     const borderColorShade = color === 'carbon' ? 5 : 4
 
     return {
@@ -374,27 +374,27 @@ const theme: MantineThemeOverride = {
         fw: 500
       },
       styles: (theme, params: NavLinkStylesParams) => {
-        const color = params.color || theme.primaryColor
+        const withThemeColor = (shade: number) => theme.fn.themeColor(params.color ?? theme.primaryColor, shade)
 
         const rootStyles: Record<string, CSSObject> = {
           light: {
-            color: theme.colors[color][8],
+            color: withThemeColor(8),
             '&:hover': {
-              color: theme.colors[color][8],
-              backgroundColor: theme.colors[color][2]
+              color: withThemeColor(8),
+              backgroundColor: withThemeColor(2)
             },
             '&:active': {
-              color: theme.colors[color][8],
-              backgroundColor: theme.colors[color][4]
+              color: withThemeColor(8),
+              backgroundColor: withThemeColor(4)
             },
             '&[data-active]': {
-              color: theme.colors[color][9],
-              backgroundColor: theme.colors[color][4],
+              color: withThemeColor(9),
+              backgroundColor: withThemeColor(4),
               '&:hover': {
-                backgroundColor: theme.colors[color][4]
+                backgroundColor: withThemeColor(4)
               },
               '&:active': {
-                backgroundColor: theme.colors[color][4]
+                backgroundColor: withThemeColor(4)
               }
             }
           }
@@ -566,7 +566,6 @@ const theme: MantineThemeOverride = {
     },
     Badge: {
       styles(theme, params: BadgeStylesParams) {
-        const color = params.color ?? theme.primaryColor
         const styles: Record<string, CSSObject> = {
           dot: {
             border: 'none',
@@ -574,8 +573,8 @@ const theme: MantineThemeOverride = {
             fontWeight: 500
           },
           outline: {
-            color: theme.colors[color][8],
-            borderColor: theme.colors[color][4]
+            color: theme.fn.themeColor(params.color ?? theme.primaryColor, 8),
+            borderColor: theme.fn.themeColor(params.color ?? theme.primaryColor, 4)
           }
         }
 
@@ -588,15 +587,15 @@ const theme: MantineThemeOverride = {
     },
     Checkbox: {
       styles(theme, params: CheckboxStylesParams) {
-        const color = params.color ?? theme.primaryColor
+        const withThemeColor = (shade: number) => theme.fn.themeColor(params.color ?? theme.primaryColor, shade)
         return {
           input: {
             borderRadius: 4,
-            borderColor: theme.colors[color][6],
+            borderColor: withThemeColor(6),
 
             '&:checked:not(:disabled)': {
-              backgroundColor: theme.colors[color][9],
-              borderColor: theme.colors[color][9]
+              backgroundColor: withThemeColor(9),
+              borderColor: withThemeColor(9)
             },
             '&:disabled:checked': {
               backgroundColor: theme.colors.carbon[6],
@@ -604,7 +603,7 @@ const theme: MantineThemeOverride = {
             }
           },
           label: {
-            color: theme.colors[color][8],
+            color: withThemeColor(8),
 
             '&[data-disabled]': {
               color: theme.colors.carbon[6]
@@ -736,8 +735,8 @@ const theme: MantineThemeOverride = {
     },
     Radio: {
       styles(theme, params) {
-        const color = params.color ?? 'carbon'
-        const shade = color === 'carbon' ? 9 : 7
+        const color = params.color?.includes('.') ? params.color.split('.')[0] : (params.color ?? 'carbon')
+        const shade = color.includes('carbon') ? 9 : 7
         const size = params.size ?? 'sm'
 
         const sizes = {
