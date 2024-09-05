@@ -1,6 +1,6 @@
 import type { Meta, StoryObj, StoryFn } from '@storybook/react'
-import { ActionIcon } from '@tidbcloud/uikit'
-import { IconMenu01 } from '@tidbcloud/uikit/icons'
+import { ActionIcon, Group, Stack } from '@tidbcloud/uikit'
+import { IconMenu01, IconRefreshCcw02 } from '@tidbcloud/uikit/icons'
 
 import { COLOR_LIST, VARIANT_LIST, SIZE_LIST } from '../../constants'
 
@@ -114,4 +114,65 @@ export const Primary: Story = {
       }
     }
   }
+}
+
+export const AllVariants: Story = {
+  render: ({ ...rest }) => (
+    <Group>
+      <Stack>
+        default
+        <ActionIcon>
+          <IconRefreshCcw02 size={16} />
+        </ActionIcon>
+      </Stack>
+
+      <Stack>
+        transparent
+        <ActionIcon variant="transparent">
+          <IconRefreshCcw02 size={16} />
+        </ActionIcon>
+      </Stack>
+
+      <Stack>
+        subtle
+        <ActionIcon variant="subtle">
+          <IconRefreshCcw02 size={16} />
+        </ActionIcon>
+        <ActionIcon variant="subtle" disabled>
+          <IconRefreshCcw02 size={16} />
+        </ActionIcon>
+      </Stack>
+
+      <Stack>
+        default
+        <ActionIcon variant="default">
+          <IconRefreshCcw02 size={16} />
+        </ActionIcon>
+        <ActionIcon variant="default" disabled>
+          <IconRefreshCcw02 size={16} />
+        </ActionIcon>
+      </Stack>
+
+      <Stack>
+        outline
+        <ActionIcon variant="outline">
+          <IconRefreshCcw02 size={16} />
+        </ActionIcon>
+      </Stack>
+
+      <Stack>
+        filled
+        <ActionIcon variant="filled">
+          <IconRefreshCcw02 size={16} />
+        </ActionIcon>
+      </Stack>
+
+      <Stack>
+        light
+        <ActionIcon variant="light">
+          <IconRefreshCcw02 size={16} />
+        </ActionIcon>
+      </Stack>
+    </Group>
+  )
 }
