@@ -700,7 +700,7 @@ const theme: MantineThemeOverride = {
           borderTopRightRadius: theme.defaultRadius,
           padding: '16px 16px 16px 24px',
           margin: 0,
-          backgroundColor: theme.colors.carbon[2]
+          backgroundColor: theme.colors.carbon[1]
         },
         title: {
           fontWeight: 700,
@@ -709,7 +709,8 @@ const theme: MantineThemeOverride = {
           color: theme.colors.carbon[9]
         },
         body: {
-          padding: 24
+          padding: 24,
+          backgroundColor: theme.colors.carbon[0]
         }
       })
     },
