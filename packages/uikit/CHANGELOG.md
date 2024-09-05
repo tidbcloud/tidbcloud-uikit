@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.25
+
+### Patch Changes
+
+- update table border
+
 ## 2.0.0-beta.24
 
 ### Minor Changes
