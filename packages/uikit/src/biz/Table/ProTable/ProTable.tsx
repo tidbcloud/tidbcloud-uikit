@@ -88,7 +88,7 @@ export const ProTable = <T extends Record<string, any> = {}>({
             },
 
             td: {
-              borderColor: theme.colors.carbon[2]
+              borderColor: theme.colors.carbon[3]
             },
 
             ':last-of-type': {
