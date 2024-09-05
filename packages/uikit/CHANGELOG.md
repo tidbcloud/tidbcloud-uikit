@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.24
+
+### Minor Changes
+
+- ActionIcon default to subtle, Anchor default to peacock, ProTable row hover to bg caron.3
+
 ## 2.0.0-beta.23
 
 ### Minor Changes
