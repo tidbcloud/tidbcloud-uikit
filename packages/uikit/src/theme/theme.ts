@@ -900,7 +900,6 @@ const theme: MantineThemeOverride = {
 
     ActionIcon: {
       defaultProps: {
-        variant: 'default',
         color: 'carbon'
       },
       styles(theme, params) {
