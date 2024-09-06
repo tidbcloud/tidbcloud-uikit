@@ -421,43 +421,41 @@ const theme: MantineThemeOverride = {
     },
     Stepper: {
       styles: (theme, params: StepperStylesParams) => {
-        const filledColors = theme.fn.variant({
-          variant: 'filled',
-          color: params.color || theme.primaryColor,
-          primaryFallback: false
-        })
-        const lightColors = theme.fn.variant({
-          variant: 'light',
-          color: params.color || theme.primaryColor,
-          primaryFallback: false
-        })
-
+        const color = params.color || theme.primaryColor
         return {
           stepIcon: {
-            backgroundColor: theme.colors.carbon[1],
-            borderColor: theme.colors.carbon[4],
-            color: theme.colors.carbon[8],
+            backgroundColor: theme.fn.themeColor(color, 0),
+            borderColor: theme.fn.themeColor(color, 4),
+            color: theme.fn.themeColor(color, 7),
             '&[data-progress]': {
-              backgroundColor: filledColors.background,
-              color: filledColors.color
+              backgroundColor: theme.fn.themeColor(color, 9),
+              color: theme.fn.themeColor(color, 0),
+              borderColor: theme.fn.themeColor(color, 9)
             },
             '&[data-completed]': {
-              backgroundColor: lightColors.background,
-              color: lightColors.color
+              backgroundColor: theme.fn.themeColor(color, 3),
+              color: theme.fn.themeColor(color, 9),
+              borderColor: theme.fn.themeColor(color, 9)
             }
           },
           stepCompletedIcon: {
-            color: lightColors.color,
+            color: theme.fn.themeColor(color, 9),
             '> svg': {
               width: 14,
               height: 14
             }
           },
           separator: {
-            borderColor: theme.colors.carbon[4]
+            backgroundColor: theme.fn.themeColor(color, 4)
+          },
+          separatorActive: {
+            backgroundColor: theme.fn.themeColor(color, 9)
           },
           verticalSeparator: {
-            borderColor: theme.colors.carbon[4]
+            backgroundColor: theme.fn.themeColor(color, 4)
+          },
+          verticalSeparatorActive: {
+            backgroundColor: theme.fn.themeColor(color, 9)
           }
         }
       }
@@ -592,7 +590,7 @@ const theme: MantineThemeOverride = {
           dot: {
             border: 'none',
             textTransform: 'capitalize',
-            fontWeight: 500,
+            fontWeight: 400,
             fontSize: theme.fn.size({ sizes, size: params.size }),
             backgroundColor: 'transparent',
             color: theme.fn.themeColor(theme.primaryColor, 8),

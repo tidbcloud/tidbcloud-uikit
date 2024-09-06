@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.27
+
+### Minor Changes
+
+- Update stepper styles and set dot badge to font weight 400
+
 ## 2.0.0-beta.26
 
 ### Patch Changes
