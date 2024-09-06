@@ -716,7 +716,9 @@ const theme: MantineThemeOverride = {
         },
         body: {
           padding: 24,
-          backgroundColor: theme.colors.carbon[0]
+          backgroundColor: theme.colors.carbon[0],
+          borderBottomLeftRadius: theme.defaultRadius,
+          borderBottomRightRadius: theme.defaultRadius
         }
       })
     },
