@@ -93,7 +93,7 @@ export const Primary: Story = {
   }
 }
 
-export const withGlobalProps: Story = {
+export const WithGlobalProps: Story = {
   parameters: {
     docs: {
       source: {
