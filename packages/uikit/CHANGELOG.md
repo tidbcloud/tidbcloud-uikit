@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.26
+
+### Patch Changes
+
+- fix modal border radius
+
 ## 2.0.0-beta.25
 
 ### Patch Changes
