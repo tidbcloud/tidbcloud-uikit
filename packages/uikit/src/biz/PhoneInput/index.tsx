@@ -8,7 +8,8 @@ import {
   Box,
   BoxProps,
   DefaultProps,
-  InputWrapperStylesNames
+  InputWrapperStylesNames,
+  useMantineTheme
 } from '../../primitive/index.js'
 import { mergeStylesList } from '../../utils/index.js'
 
@@ -51,9 +52,16 @@ export const PhoneInput: React.FC<PhoneInputProps> = (props) => {
     ...rest
   } = props
   const [isPhoneInputFocus, setIsPhoneInputFocus] = useState(false)
+  const theme = useMantineTheme()
   return (
     <Box {...boxProps}>
-      <Input.Wrapper {...wrapperProps} styles={mergeStylesList([wrapperProps.styles, { label: { marginBottom: 8 } }])}>
+      <Input.Wrapper
+        {...wrapperProps}
+        styles={mergeStylesList([
+          wrapperProps.styles,
+          { label: { color: theme.colors.carbon[8] }, description: { color: theme.colors.carbon[6] } }
+        ])}
+      >
         <ReactPhoneInput
           // controlled value
           value={value}

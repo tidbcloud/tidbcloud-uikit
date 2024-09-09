@@ -25,7 +25,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>((props, re
             icon: {
               position: 'relative',
               width: 'fit-content',
-              border: `1px solid ${theme.colors.carbon[5]}`,
+              border: `1px solid ${theme.colors.carbon[4]}`,
               borderRightWidth: 0,
               paddingLeft: 12,
               paddingRight: 12,
