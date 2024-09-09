@@ -206,7 +206,7 @@ const getInputStyles = (theme: MantineTheme, params: InputStylesParams) => {
     input: {
       ...matches.input,
       color: theme.colors.carbon[8],
-      border: `1px solid ${theme.colors.carbon[4]}`,
+      border: `1px solid ${theme.colors.carbon[5]}`,
       backgroundColor: theme.colors.carbon[0],
 
       '&:focus': {
@@ -530,8 +530,7 @@ const theme: MantineThemeOverride = {
         const diffSizeStyles: Record<string, Record<string, CSSObject>> = {
           sm: {
             label: {
-              lineHeight: '20px',
-              marginBottom: 8
+              lineHeight: '20px'
             },
             input: {
               height: 40,
@@ -543,13 +542,16 @@ const theme: MantineThemeOverride = {
         const matches = diffSizeStyles[params.size] || { label: {}, input: {} }
 
         return {
-          label: matches.label,
+          label: {
+            ...matches.label,
+            marginBottom: 4
+          },
+          description: {
+            color: theme.colors.carbon[6]
+          },
           input: {
             ...matches.input,
-            color: theme.colors.carbon[8],
-            '&:disabled': {
-              opacity: 1
-            }
+            color: theme.colors.carbon[8]
           },
           item: {
             transition: 'background 150ms ease-in-out',
@@ -564,6 +566,11 @@ const theme: MantineThemeOverride = {
               '&:hover': {
                 backgroundColor: theme.colors.carbon[3]
               }
+            }
+          },
+          rightSection: {
+            '& [data-chevron]': {
+              color: `${theme.colors.carbon[7]} !important`
             }
           }
         }
