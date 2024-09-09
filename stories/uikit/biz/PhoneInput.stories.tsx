@@ -26,8 +26,11 @@ export const Primary: Story = {
   args: {
     label: 'Phone Number',
     description: 'Phone Number Input',
+    placeholder: 'Please enter your phone number',
+    error: '',
     country: 'US',
     required: true,
+    disabled: false,
     withAsterisk: true,
     errorProps: {},
     labelProps: {}
@@ -38,6 +41,12 @@ export const Primary: Story = {
     },
     error: {
       type: 'string'
+    },
+    placeholder: {
+      type: 'string'
+    },
+    disabled: {
+      type: 'boolean'
     }
   }
 }

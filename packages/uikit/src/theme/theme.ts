@@ -197,8 +197,7 @@ const getInputStyles = (theme: MantineTheme, params: InputStylesParams) => {
   return {
     label: {
       ...matches.label,
-      color: theme.colors.carbon[8],
-      marginBottom: 4
+      color: theme.colors.carbon[8]
     },
     description: {
       color: theme.colors.carbon[6]
@@ -213,7 +212,9 @@ const getInputStyles = (theme: MantineTheme, params: InputStylesParams) => {
         borderColor: theme.colors.carbon[9]
       },
       '&:disabled': {
-        backgroundColor: theme.colors.carbon[2]
+        backgroundColor: theme.colors.carbon[2],
+        color: theme.colors.carbon[8],
+        opacity: 1
       },
       '&::placeholder': {
         color: theme.colors.carbon[6]
@@ -543,8 +544,7 @@ const theme: MantineThemeOverride = {
 
         return {
           label: {
-            ...matches.label,
-            marginBottom: 4
+            ...matches.label
           },
           description: {
             color: theme.colors.carbon[6]
