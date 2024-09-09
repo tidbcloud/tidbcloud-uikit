@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.28
+
+### Minor Changes
+
+- Update Input/Select/PhoneInput styles
+
 ## 2.0.0-beta.27
 
 ### Minor Changes
