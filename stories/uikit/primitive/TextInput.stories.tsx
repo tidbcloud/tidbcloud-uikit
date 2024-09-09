@@ -27,7 +27,38 @@ export const Primary: Story = {
   args: {
     leftLabel: 'prefix',
     label: 'Input',
-    icon: 'Icon'
+    icon: 'Icon',
+    placeholder: 'this is a placeholder',
+    disabled: false,
+    error: 'this is an error',
+    description: 'this is a description'
+  },
+  argTypes: {
+    label: {
+      control: {
+        type: 'text'
+      }
+    },
+    placeholder: {
+      control: {
+        type: 'text'
+      }
+    },
+    disabled: {
+      control: {
+        type: 'boolean'
+      }
+    },
+    error: {
+      control: {
+        type: 'text'
+      }
+    },
+    description: {
+      control: {
+        type: 'text'
+      }
+    }
   }
 }
 

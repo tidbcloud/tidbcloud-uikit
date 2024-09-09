@@ -173,8 +173,7 @@ const getInputStyles = (theme: MantineTheme, params: InputStylesParams) => {
   const diffSizeStyles: Record<string, Record<string, CSSObject>> = {
     sm: {
       label: {
-        lineHeight: '20px',
-        marginBottom: 8
+        lineHeight: '20px'
       },
       input: {
         ...inputStyle,
@@ -188,21 +187,56 @@ const getInputStyles = (theme: MantineTheme, params: InputStylesParams) => {
 
   const matches = diffSizeStyles[params.size] || { label: {}, input: {} }
 
+  const passwordInputSizeStyles: Record<string, CSSObject> = {
+    sm: {
+      height: 38,
+      lineHeight: '38px'
+    }
+  }
+
   return {
-    label: matches.label,
+    label: {
+      ...matches.label,
+      color: theme.colors.carbon[8],
+      marginBottom: 4
+    },
+    description: {
+      color: theme.colors.carbon[6]
+    },
     input: {
       ...matches.input,
       color: theme.colors.carbon[8],
+      border: `1px solid ${theme.colors.carbon[4]}`,
+      backgroundColor: theme.colors.carbon[0],
+
+      '&:focus': {
+        borderColor: theme.colors.carbon[9]
+      },
       '&:disabled': {
-        opacity: 1
+        backgroundColor: theme.colors.carbon[2]
+      },
+      '&::placeholder': {
+        color: theme.colors.carbon[6]
+      },
+
+      '& .mantine-PasswordInput-innerInput': {
+        ...passwordInputSizeStyles[params.size],
+        '&::placeholder': {
+          color: theme.colors.carbon[6]
+        }
       }
     },
     invalid: {
+      borderColor: theme.colors.red[4],
+
       '&:hover': {
-        borderColor: theme.colors.red[5]
+        borderColor: theme.colors.red[4]
       },
       '&:focus': {
-        borderColor: theme.colors.red[5]
+        borderColor: theme.colors.red[4]
+      },
+      '&::placeholder': {
+        color: theme.colors.carbon[6]
       }
     }
   }
@@ -553,6 +587,9 @@ const theme: MantineThemeOverride = {
           }
         }
       }
+    },
+    Input: {
+      styles: getInputStyles
     },
     TextInput: {
       styles: getInputStyles

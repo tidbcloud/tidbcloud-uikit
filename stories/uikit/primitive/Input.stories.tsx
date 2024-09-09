@@ -24,7 +24,19 @@ export default meta
 export const Primary: Story = {
   render: ({ ...props }) => <Input {...props}></Input>,
   args: {
-    placeholder: ''
+    placeholder: 'this is a placeholder',
+    disabled: false
   },
-  argTypes: {}
+  argTypes: {
+    placeholder: {
+      control: {
+        type: 'text'
+      }
+    },
+    disabled: {
+      control: {
+        type: 'boolean'
+      }
+    }
+  }
 }
