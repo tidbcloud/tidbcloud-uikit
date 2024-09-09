@@ -74,10 +74,17 @@ export const Primary: Story = {
           label="Password"
           icon={<IconLock01 size={16} stroke="1.5" />}
         />
-        <FormPhoneInput name="phone" label="Phone Number" />
+        <FormPhoneInput
+          name="phone"
+          label="Phone Number"
+          rules={{ required: 'Required' }}
+          placeholder="Your phone number"
+        />
         <FormPhoneInputV2
           countryKey="country"
           phoneKey="phone_number"
+          rules={{ required: 'Required' }}
+          placeholder="Your phone number"
           selectProps={{
             placeholder: 'Country/Region',
             maxDropdownHeight: 180,

@@ -158,7 +158,7 @@ export const ProTable = <T extends Record<string, any> = {}>({
         state={{ isLoading: loading, ...state }}
         {...rest}
       />
-      {!!pagination && <TablePagination size="sm" position="right" mt={16} {...pagination} />}
+      {!!pagination && <TablePagination size="sm" position="center" mt={16} {...pagination} />}
     </Box>
   )
 }
