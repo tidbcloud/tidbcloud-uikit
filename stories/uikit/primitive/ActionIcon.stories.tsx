@@ -33,7 +33,9 @@ export const Primary: Story = {
   parameters: {
     controls: { expanded: true }
   },
-  args: {},
+  args: {
+    size: 'md'
+  },
   argTypes: {
     color: {
       options: COLOR_LIST,
