@@ -154,8 +154,13 @@ const getButtonStyles = (theme: MantineTheme, params: ButtonStylesParams): Recor
   }
 
   const finalStyles = {
+    label: {
+      fontWeight: 500,
+      fontSize: params.size === 'xs' ? 12 : 14
+    },
     root: {
-      fontWeight: 700,
+      paddingLeft: 12,
+      paddingRight: 12,
       ...variantStyles[params.variant],
       ...sizeStyles[params.size]
     }
