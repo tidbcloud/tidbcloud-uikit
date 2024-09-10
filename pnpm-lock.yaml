@@ -8,6 +8,9 @@ patchedDependencies:
   '@mantine/core@5.10.4':
     hash: k3wzpm5n4esvq7igbvcsgyfoja
     path: patches/@mantine__core@5.10.4.patch
+  '@mantine/styles@5.10.4':
+    hash: gj5o633amdkv7b52vinsxkrrr4
+    path: patches/@mantine__styles@5.10.4.patch
 
 importers:
 
@@ -224,7 +227,7 @@ importers:
         version: 5.10.4(@mantine/core@5.10.4)(@mantine/hooks@5.10.4)(react-dom@18.3.1)(react@18.3.1)
       '@mantine/styles':
         specifier: 5.10.4
-        version: 5.10.4(@emotion/react@11.13.0)(react-dom@18.3.1)(react@18.3.1)
+        version: 5.10.4(patch_hash=gj5o633amdkv7b52vinsxkrrr4)(@emotion/react@11.13.0)(react-dom@18.3.1)(react@18.3.1)
       '@mantine/utils':
         specifier: 5.10.4
         version: 5.10.4(react@18.3.1)
@@ -2989,7 +2992,7 @@ packages:
     dependencies:
       '@floating-ui/react': 0.19.2(react-dom@18.3.1)(react@18.3.1)
       '@mantine/hooks': 5.10.4(react@18.3.1)
-      '@mantine/styles': 5.10.4(@emotion/react@11.13.0)(react-dom@18.3.1)(react@18.3.1)
+      '@mantine/styles': 5.10.4(patch_hash=gj5o633amdkv7b52vinsxkrrr4)(@emotion/react@11.13.0)(react-dom@18.3.1)(react@18.3.1)
       '@mantine/utils': 5.10.4(react@18.3.1)
       '@radix-ui/react-scroll-area': 1.0.2(react-dom@18.3.1)(react@18.3.1)
       react: 18.3.1
@@ -3113,7 +3116,7 @@ packages:
       react-dom: 18.3.1(react@18.3.1)
     dev: false
 
-  /@mantine/styles@5.10.4(@emotion/react@11.13.0)(react-dom@18.3.1)(react@18.3.1):
+  /@mantine/styles@5.10.4(patch_hash=gj5o633amdkv7b52vinsxkrrr4)(@emotion/react@11.13.0)(react-dom@18.3.1)(react@18.3.1):
     resolution: {integrity: sha512-THJ9biAFwh3mxRkmSGMf1SDcgDyeIA1obs53W/HEiHAgbkU8HwgoJo1Vrq4aYQfEACU7KNnoRn9ICaVjMjrF/A==}
     peerDependencies:
       '@emotion/react': '>=11.9.0'
@@ -3131,6 +3134,7 @@ packages:
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
     dev: false
+    patched: true
 
   /@mantine/utils@5.10.4(react@18.3.1):
     resolution: {integrity: sha512-Xrx7Pk+GOwk/0P0qa/JEknZ5AzUBRnD+Ghz1Wu3z4w32NwsNSgq/8YvFVhvxAP7FMbi7Z5xicHzHmhXy1BvZrw==}

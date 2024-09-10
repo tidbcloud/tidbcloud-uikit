@@ -3,7 +3,7 @@
  * otherwisw tsc will make guess from one of the packages when importing
  */
 export * from '@mantine/core'
-
+import { Box } from '@mantine/core'
 export { TextInput, type TextInputProps } from './TextInput/index.js'
 
 // Re-export @mantine/prims with custom theme
