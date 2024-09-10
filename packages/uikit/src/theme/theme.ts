@@ -985,6 +985,7 @@ const theme: MantineThemeOverride = {
           subtle: {
             backgroundColor: 'transparent',
             color: theme.fn.themeColor(color, 8),
+            borderColor: 'transparent',
 
             '&:hover': {
               backgroundColor: theme.fn.themeColor(color, 2)
@@ -993,7 +994,10 @@ const theme: MantineThemeOverride = {
               backgroundColor: theme.fn.themeColor(color, 4)
             },
             '&:disabled': {
-              color: theme.fn.themeColor(color, 6)
+              color: theme.fn.themeColor(color, 6),
+              backgroundColor: 'transparent',
+              borderColor: 'transparent',
+              cursor: 'not-allowed'
             }
           },
           outline: {
