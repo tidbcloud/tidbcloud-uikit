@@ -552,7 +552,7 @@ const theme: MantineThemeOverride = {
             ...matches.label
           },
           description: {
-            color: theme.colors.carbon[6]
+            color: theme.colors.carbon[7]
           },
           input: {
             ...matches.input,
