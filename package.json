@@ -53,10 +53,16 @@
   },
   "pnpm": {
     "peerDependencyRules": {
-      "ignoreMissing": ["react", "react-dom", "@tabler/icons-react", "@babel/*"]
+      "ignoreMissing": [
+        "react",
+        "react-dom",
+        "@tabler/icons-react",
+        "@babel/*"
+      ]
     },
     "patchedDependencies": {
-      "@mantine/core@5.10.4": "patches/@mantine__core@5.10.4.patch"
+      "@mantine/core@5.10.4": "patches/@mantine__core@5.10.4.patch",
+      "@mantine/styles@5.10.4": "patches/@mantine__styles@5.10.4.patch"
     }
   },
   "engines": {

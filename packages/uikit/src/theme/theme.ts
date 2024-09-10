@@ -1,11 +1,11 @@
-import {
+import { keyframes } from '@mantine/core'
+import type {
   CSSObject,
   MantineThemeOverride,
   NavLinkStylesParams,
   AlertStylesParams,
   InputStylesParams,
   SkeletonStylesParams,
-  keyframes,
   MultiSelectStylesParams,
   TableStylesParams,
   StepperStylesParams,
@@ -19,14 +19,21 @@ import {
 
 import * as dark from './colors.dark.js'
 import * as light from './colors.js'
+import type { ShadingColor } from './colors.js'
 import { FONT_FAMILY } from './font.js'
 
 export type ColorMap = typeof light
 export type Color = keyof ColorMap
 export const Colors = Object.keys(light) as Color[]
 
+declare module '@mantine/core' {
+  export interface MantineThemeColorsOverride {
+    colors: Record<Color | (string & {}), ShadingColor>
+  }
+}
+
 const getButtonStyles = (theme: MantineTheme, params: ButtonStylesParams): Record<string, CSSObject> => {
-  let color = params.color?.includes('.') ? params.color.split('.')[0] : params.color
+  let color = (params.color?.includes('.') ? params.color.split('.')[0] : params.color) as Color
 
   const getFilledStyles = (): CSSObject => {
     color = color || theme.primaryColor
@@ -841,7 +848,7 @@ const theme: MantineThemeOverride = {
     },
     Radio: {
       styles(theme, params) {
-        const color = params.color?.includes('.') ? params.color.split('.')[0] : (params.color ?? 'carbon')
+        const color = (params.color?.includes('.') ? params.color.split('.')[0] : (params.color ?? 'carbon')) as Color
         const shade = color.includes('carbon') ? 9 : 7
         const size = params.size ?? 'sm'
 
