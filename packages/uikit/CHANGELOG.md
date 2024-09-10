@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.31
+
+### Minor Changes
+
+- Update CodeBlock/TimeRangePicker color and ActionIcon size
+
 ## 2.0.0-beta.30
 
 ### Patch Changes

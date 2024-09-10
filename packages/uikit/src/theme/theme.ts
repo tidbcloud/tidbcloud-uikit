@@ -1019,9 +1019,23 @@ const theme: MantineThemeOverride = {
             }
           }
         }
+
+        const sizes = {
+          xs: 16,
+          sm: 20,
+          md: 28,
+          lg: 32,
+          xl: 40
+        }
+        const size = theme.fn.size({ size: params.size, sizes })
+
         return {
           root: {
-            ...variantStyles[params.variant]
+            ...variantStyles[params.variant],
+            width: size,
+            height: size,
+            minWidth: size,
+            minHeight: size
           }
         }
       }
