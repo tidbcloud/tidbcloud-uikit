@@ -205,7 +205,7 @@ const getInputStyles = (theme: MantineTheme, params: InputStylesParams) => {
       color: theme.colors.carbon[8]
     },
     description: {
-      color: theme.colors.carbon[6]
+      color: theme.colors.carbon[7]
     },
     input: {
       ...matches.input,
