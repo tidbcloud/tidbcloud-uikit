@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.33
+
+### Minor Changes
+
+- use interface augmentation to correct MantineThemeColor type
+
 ## 2.0.0-beta.32
 
 ### Minor Changes
