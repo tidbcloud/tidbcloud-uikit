@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.29
+
+### Minor Changes
+
+- Update Button padding and font weight, TextInput description use color carbon.7
+
 ## 2.0.0-beta.28
 
 ### Minor Changes
