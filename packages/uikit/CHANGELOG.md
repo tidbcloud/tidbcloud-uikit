@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.32
+
+### Minor Changes
+
+- Fix ActionIcon subtle color; Add icon component type declaration.
+
 ## 2.0.0-beta.31
 
 ### Minor Changes
