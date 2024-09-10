@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.30
+
+### Patch Changes
+
+- Select description use carbon.7
+
 ## 2.0.0-beta.29
 
 ### Minor Changes
