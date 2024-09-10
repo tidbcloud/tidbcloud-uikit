@@ -80,7 +80,7 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
         mah={mah}
         bg="carbon.2"
         sx={(theme) => ({
-          border: `1px solid ${theme.colors.carbon[5]}`,
+          border: `1px solid ${theme.colors.carbon[4]}`,
           borderRadius: theme.defaultRadius,
           overflow: 'auto'
         })}

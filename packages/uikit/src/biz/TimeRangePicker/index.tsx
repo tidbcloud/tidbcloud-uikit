@@ -80,10 +80,10 @@ export const TimeRangePicker: React.FC<React.PropsWithChildren<TimeRangePickerPr
               root: {
                 paddingLeft: '12px',
                 paddingRight: '12px',
-                borderColor: opened ? theme.colors.carbon[9] : theme.colors.carbon[4],
+                borderColor: opened ? theme.colors.carbon[9] : theme.colors.carbon[5],
                 '&:hover': {
                   backgroundColor: theme.colors.carbon[0],
-                  borderColor: opened ? theme.colors.carbon[9] : theme.colors.carbon[4]
+                  borderColor: opened ? theme.colors.carbon[9] : theme.colors.carbon[5]
                 },
                 '&:active': { transform: 'none' }
               },
@@ -172,7 +172,7 @@ const DurationBadge: React.FC<React.PropsWithChildren<unknown>> = ({ children })
       display="inline-block"
       w={35}
       py={3}
-      bg="carbon.5"
+      bg="carbon.3"
       c="carbon.8"
       fz={10}
       lh="14px"
