@@ -26,7 +26,7 @@ export default meta
 // More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
 export const Primary: Story = {
   render: ({ ...rest }) => (
-    <ActionIcon color="cyan" disabled={false} loading={false} variant="filled" {...rest}>
+    <ActionIcon disabled={false} loading={false} variant="filled" {...rest}>
       <IconMenu01 />
     </ActionIcon>
   ),
@@ -34,7 +34,10 @@ export const Primary: Story = {
     controls: { expanded: true }
   },
   args: {
-    size: 'md'
+    size: 'md',
+    color: 'carbon',
+    disabled: false,
+    variant: 'subtle'
   },
   argTypes: {
     color: {
