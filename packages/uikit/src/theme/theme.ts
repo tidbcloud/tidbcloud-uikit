@@ -217,9 +217,12 @@ const getInputStyles = (theme: MantineTheme, params: InputStylesParams) => {
     input: {
       ...matches.input,
       color: theme.colors.carbon[8],
-      border: `1px solid ${theme.colors.carbon[5]}`,
+      border: `1px solid ${theme.colors.carbon[4]}`,
       backgroundColor: theme.colors.carbon[0],
 
+      '&:hover:not(:disabled):not(:focus)': {
+        borderColor: theme.colors.carbon[5]
+      },
       '&:focus': {
         borderColor: theme.colors.carbon[9]
       },
