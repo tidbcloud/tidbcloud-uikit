@@ -44,6 +44,12 @@ export const Primary: Story = {
     disabled: false
   },
   argTypes: {
+    variant: {
+      options: ['default', 'unstyled', 'filled'],
+      control: {
+        type: 'select'
+      }
+    },
     error: {
       control: {
         type: 'text'

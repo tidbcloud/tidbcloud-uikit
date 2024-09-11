@@ -30,7 +30,7 @@ export const Primary: Story = {
     icon: 'Icon',
     placeholder: 'this is a placeholder',
     disabled: false,
-    error: 'this is an error',
+    error: '',
     description: 'this is a description'
   },
   argTypes: {

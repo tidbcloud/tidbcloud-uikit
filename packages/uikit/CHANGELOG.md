@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.35
+
+### Minor Changes
+
+- Update Select unstyled/filled variant styles and make input default border to carbon4
+
 ## 2.0.0-beta.34
 
 ### Patch Changes

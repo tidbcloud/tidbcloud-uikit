@@ -217,9 +217,12 @@ const getInputStyles = (theme: MantineTheme, params: InputStylesParams) => {
     input: {
       ...matches.input,
       color: theme.colors.carbon[8],
-      border: `1px solid ${theme.colors.carbon[5]}`,
+      border: `1px solid ${theme.colors.carbon[4]}`,
       backgroundColor: theme.colors.carbon[0],
 
+      '&:hover:not(:disabled):not(:focus)': {
+        borderColor: theme.colors.carbon[5]
+      },
       '&:focus': {
         borderColor: theme.colors.carbon[9]
       },
@@ -563,7 +566,23 @@ const theme: MantineThemeOverride = {
           },
           input: {
             ...matches.input,
-            color: theme.colors.carbon[8]
+            color: theme.colors.carbon[8],
+
+            ...(params.variant === 'unstyled' && {
+              border: 'none',
+              '&:disabled': {
+                color: theme.colors.carbon[7]
+              }
+            }),
+            ...(params.variant === 'filled' && {
+              backgroundColor: theme.colors.carbon[2],
+              borderColor: 'transparent',
+
+              '&:disabled': {
+                color: theme.colors.carbon[6],
+                cursor: 'not-allowed'
+              }
+            })
           },
           item: {
             transition: 'background 150ms ease-in-out',
@@ -573,7 +592,8 @@ const theme: MantineThemeOverride = {
               backgroundColor: theme.colors.carbon[3]
             },
             '&[data-selected]': {
-              color: theme.colors.peacock[7],
+              color: theme.colors.carbon[8],
+              fontWeight: 700,
               backgroundColor: 'transparent',
               '&:hover': {
                 backgroundColor: theme.colors.carbon[3]
