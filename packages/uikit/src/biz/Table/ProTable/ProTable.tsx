@@ -18,6 +18,7 @@ export interface ProTableProps<TData extends Record<string, any> = {}> extends M
 export const ProTable = <T extends Record<string, any> = {}>({
   mantineTableProps = {},
   mantinePaperProps = {},
+  mantineTableContainerProps = {},
   mantineTableBodyProps,
   mantineBottomToolbarProps = {},
   wrapperProps = {},
@@ -103,6 +104,15 @@ export const ProTable = <T extends Record<string, any> = {}>({
     mantineTableProps
   )
 
+  const mTableContainerProps = mergeMProps<NonNullable<MantineReactTableProps<T>['mantineTableContainerProps']>>(
+    () => ({
+      sx: {
+        overflow: 'unset'
+      }
+    }),
+    mantineTableContainerProps
+  )
+
   const mTableBodyProps = mergeMProps<NonNullable<MantineReactTableProps<T>['mantineTableBodyProps']>>((args) => {
     if (!data?.length) {
       return {
@@ -143,6 +153,7 @@ export const ProTable = <T extends Record<string, any> = {}>({
         mantinePaperProps={mPaperProps}
         mantineTableProps={mTableProps}
         mantineTableBodyProps={mTableBodyProps}
+        mantineTableContainerProps={mTableContainerProps}
         mantineBottomToolbarProps={mBottomToolbarProps}
         mantinePaginationProps={{}}
         data={data}
