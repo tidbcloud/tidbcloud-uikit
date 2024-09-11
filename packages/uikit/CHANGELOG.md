@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.36
+
+### Minor Changes
+
+- Update Input/Select size and styles
+
 ## 2.0.0-beta.35
 
 ### Minor Changes

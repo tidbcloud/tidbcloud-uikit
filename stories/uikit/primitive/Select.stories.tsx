@@ -1,5 +1,5 @@
 import type { Meta, StoryObj, StoryFn } from '@storybook/react'
-import { Select, Loader } from '@tidbcloud/uikit'
+import { Select, Loader, Stack, Group } from '@tidbcloud/uikit'
 
 import { SIZE_LIST } from '../../constants'
 
@@ -130,18 +130,22 @@ export function Scroll() {
 }
 
 export function Sizes() {
-  const sizes = SIZE_LIST.map((size) => (
-    <Select
-      data={data}
-      placeholder={`Select ${size}`}
-      size={size}
-      clearable
-      defaultValue={data[0]}
-      key={size}
-      mt="md"
-      styles={{ rightSection: { backgroundColor: 'pink' } }}
-    />
-  ))
-
-  return <div style={{ padding: 40 }}>{sizes}</div>
+  return (
+    <Stack style={{ padding: 40 }}>
+      {SIZE_LIST.map((size) => (
+        <Group>
+          {size}:
+          <Select
+            data={data}
+            placeholder={`Select ${size}`}
+            size={size}
+            clearable
+            defaultValue={data[0]}
+            key={size}
+            mt="md"
+          />
+        </Group>
+      ))}
+    </Stack>
+  )
 }
