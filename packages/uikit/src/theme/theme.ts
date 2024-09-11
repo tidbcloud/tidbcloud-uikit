@@ -176,57 +176,61 @@ const getButtonStyles = (theme: MantineTheme, params: ButtonStylesParams): Recor
   return finalStyles
 }
 
-const getInputStyles = (theme: MantineTheme, params: InputStylesParams) => {
-  const inputStyle = {
-    height: 40,
-    minHeight: 40,
-    lineHeight: '38px'
+const getInputStyles = (theme: MantineTheme, params: Partial<InputStylesParams>) => {
+  const sizes = {
+    xl: 48,
+    lg: 44,
+    md: 40,
+    sm: 32,
+    xs: 28
   }
-  const diffSizeStyles: Record<string, Record<string, CSSObject>> = {
-    sm: {
-      label: {
-        lineHeight: '20px'
-      },
-      input: {
-        ...inputStyle,
-
-        // This is for PasswordInput, is has different dom structure with normal input
-        // FIXME innerInput is not working in current v5.10.4, use that key after upgrade mantine
-        '& .mantine-PasswordInput-innerInput': inputStyle
-      }
-    }
+  const fontSizes = {
+    xl: 16,
+    lg: 14,
+    md: 14,
+    sm: 13,
+    xs: 12
   }
-
-  const matches = diffSizeStyles[params.size] || { label: {}, input: {} }
-
-  const passwordInputSizeStyles: Record<string, CSSObject> = {
-    sm: {
-      height: 38,
-      lineHeight: '38px'
-    }
+  const size = theme.fn.size({ size: params.size ?? 'md', sizes })
+  const inputFontSize = theme.fn.size({ size: params.size ?? 'md', sizes: fontSizes })
+  const inputSize = {
+    height: size,
+    minHeight: size,
+    lineHeight: `${size - 2}px`,
+    fontSize: inputFontSize
+  }
+  const passwordInnerInputSize = {
+    height: size - 2,
+    minHeight: size - 2,
+    lineHeight: `${size - 2}px`,
+    fontSize: inputFontSize
   }
 
   return {
     label: {
-      ...matches.label,
-      color: theme.colors.carbon[8]
+      color: theme.colors.carbon[8],
+      marginBottom: 6,
+      lineHeight: '20px',
+      fontSize: 14
     },
     description: {
-      color: theme.colors.carbon[7]
+      color: theme.colors.carbon[7],
+      fontSize: 12
     },
     input: {
-      ...matches.input,
+      ...inputSize,
       color: theme.colors.carbon[8],
       border: `1px solid ${theme.colors.carbon[4]}`,
       backgroundColor: theme.colors.carbon[0],
 
-      '&:hover:not(:disabled):not(:focus)': {
+      '&:hover': {
         borderColor: theme.colors.carbon[5]
       },
-      '&:focus': {
+      '&:focus, &:focus-within': {
         borderColor: theme.colors.carbon[9]
       },
       '&:disabled': {
+        borderColor: theme.colors.carbon[4],
         backgroundColor: theme.colors.carbon[2],
         color: theme.colors.carbon[8],
         opacity: 1
@@ -236,7 +240,7 @@ const getInputStyles = (theme: MantineTheme, params: InputStylesParams) => {
       },
 
       '& .mantine-PasswordInput-innerInput': {
-        ...passwordInputSizeStyles[params.size],
+        ...passwordInnerInputSize,
         '&::placeholder': {
           color: theme.colors.carbon[6]
         }
@@ -540,32 +544,24 @@ const theme: MantineThemeOverride = {
       defaultProps: {
         transition: 'fade',
         transitionDuration: 200,
-        transitionTimingFunction: 'ease'
+        transitionTimingFunction: 'ease',
+        size: 'md'
       },
       styles: (theme, params: InputStylesParams) => {
-        const diffSizeStyles: Record<string, Record<string, CSSObject>> = {
-          sm: {
-            label: {
-              lineHeight: '20px'
-            },
-            input: {
-              height: 40,
-              minHeight: 40,
-              lineHeight: '38px'
-            }
-          }
-        }
-        const matches = diffSizeStyles[params.size] || { label: {}, input: {} }
+        const styles = getInputStyles(theme, { size: params.size })
+        const height = styles.input.height
 
         return {
           label: {
-            ...matches.label
+            lineHeight: '20px',
+            marginBottom: 6
           },
           description: {
             color: theme.colors.carbon[7]
           },
           input: {
-            ...matches.input,
+            height: height,
+            minHeight: height,
             color: theme.colors.carbon[8],
 
             ...(params.variant === 'unstyled' && {
@@ -601,6 +597,9 @@ const theme: MantineThemeOverride = {
             }
           },
           rightSection: {
+            '& .mantine-ActionIcon-root': {
+              color: `${theme.colors.carbon[7]} !important`
+            },
             '& [data-chevron]': {
               color: `${theme.colors.carbon[7]} !important`
             }
@@ -609,34 +608,62 @@ const theme: MantineThemeOverride = {
       }
     },
     MultiSelect: {
+      defaultProps: {
+        size: 'md',
+        transition: 'fade',
+        transitionDuration: 200,
+        transitionTimingFunction: 'ease'
+      },
       styles: (theme, params: MultiSelectStylesParams) => {
-        const diffSizeStyles: Record<string, Record<string, CSSObject>> = {
-          sm: {
-            values: {
-              height: 38,
-              minHeight: 38,
-              lineHeight: '38px'
-            }
-          }
-        }
-        const matches = diffSizeStyles[params.size] || { values: {} }
+        const styles = getInputStyles(theme, { size: params.size })
+        const inputHeight = styles.input.height
         return {
+          label: {
+            fontSize: 14,
+            marginBottom: 6
+          },
+          wrapper: {
+            height: inputHeight + 2
+          },
           values: {
-            ...matches.values
+            height: inputHeight - 2,
+            minHeight: inputHeight - 2
+          },
+          value: {
+            height: inputHeight - 12,
+            backgroundColor: theme.colors.carbon[3],
+            color: theme.colors.carbon[8]
+          },
+          rightSection: {
+            '& [data-chevron]': {
+              color: `${theme.colors.carbon[7]} !important`
+            }
           }
         }
       }
     },
     Input: {
+      defaultProps: {
+        size: 'md'
+      },
       styles: getInputStyles
     },
     TextInput: {
+      defaultProps: {
+        size: 'md'
+      },
       styles: getInputStyles
     },
     PasswordInput: {
+      defaultProps: {
+        size: 'md'
+      },
       styles: getInputStyles
     },
     NumberInput: {
+      defaultProps: {
+        size: 'md'
+      },
       styles: getInputStyles
     },
     Textarea: {
@@ -973,7 +1000,6 @@ const theme: MantineThemeOverride = {
         }
       }
     },
-
     ActionIcon: {
       defaultProps: {
         color: 'carbon'

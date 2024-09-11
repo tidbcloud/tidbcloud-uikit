@@ -10,6 +10,13 @@ export interface TextInputProps extends MantineTextInputProps {
 
 export const TextInput = forwardRef<HTMLInputElement, TextInputProps>((props, ref) => {
   const { leftLabel, icon, ...rest } = props
+  const prefixFontSizes = {
+    xs: 12,
+    sm: 13,
+    md: 14,
+    lg: 14,
+    xl: 16
+  }
   return (
     <MantineTextInput
       {...rest}
@@ -31,7 +38,10 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>((props, re
               paddingRight: 12,
               borderTopLeftRadius: theme.defaultRadius,
               borderBottomLeftRadius: theme.defaultRadius,
-              backgroundColor: theme.colors.carbon[2]
+              backgroundColor: theme.colors.carbon[2],
+              '& > .mantine-Text-root': {
+                fontSize: theme.fn.size({ sizes: prefixFontSizes, size: props.size ?? 'md' })
+              }
             },
             input: {
               flex: 1,

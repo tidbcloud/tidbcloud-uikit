@@ -52,7 +52,8 @@ export const Primary: Story = {
     readOnly: false,
     disableSelectedItemFiltering: false,
     maxSelectedValues: 3,
-    dropdownPosition: 'flip'
+    dropdownPosition: 'flip',
+    withinPortal: true
   },
   argTypes: {
     searchable: {
@@ -79,6 +80,10 @@ export const Primary: Story = {
     dropdownPosition: {
       control: 'select',
       options: ['top', 'bottom', 'flip']
+    },
+    size: {
+      control: 'select',
+      options: ['xs', 'sm', 'md', 'lg', 'xl']
     }
   }
 }

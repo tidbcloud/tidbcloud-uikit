@@ -26,14 +26,19 @@ export const Primary: Story = {
   render: ({ ...args }) => <TextInput {...args}></TextInput>,
   args: {
     leftLabel: 'prefix',
-    label: 'Input',
+    label: 'Label',
     icon: 'Icon',
     placeholder: 'this is a placeholder',
     disabled: false,
     error: '',
-    description: 'this is a description'
+    description: 'this is a description',
+    size: 'lg'
   },
   argTypes: {
+    size: {
+      control: { type: 'select' },
+      options: ['xs', 'sm', 'md', 'lg', 'xl']
+    },
     label: {
       control: {
         type: 'text'
