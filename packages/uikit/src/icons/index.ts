@@ -1246,6 +1246,8 @@ import ZapOff from './react/ZapOff.jsx'
 import ZapSquare from './react/ZapSquare.jsx'
 import ZoomIn from './react/ZoomIn.jsx'
 import ZoomOut from './react/ZoomOut.jsx'
+import Block from './react/Block.jsx'
+import TableList from './react/TableList.jsx'
 export const IconActivity = Activity as React.FC<IconProps>
 export const IconActivityHeart = ActivityHeart as React.FC<IconProps>
 export const IconAiExplore01 = AiExplore01 as React.FC<IconProps>
@@ -2483,3 +2485,5 @@ export const IconZapOff = ZapOff as React.FC<IconProps>
 export const IconZapSquare = ZapSquare as React.FC<IconProps>
 export const IconZoomIn = ZoomIn as React.FC<IconProps>
 export const IconZoomOut = ZoomOut as React.FC<IconProps>
+export const IconBlock = Block as React.FC<IconProps>
+export const IconTableList = TableList as React.FC<IconProps>

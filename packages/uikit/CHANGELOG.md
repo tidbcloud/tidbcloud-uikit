@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.37
+
+### Major Changes
+
+- add tableList,block icon
+
 ## 2.0.0-beta.36
 
 ### Minor Changes
