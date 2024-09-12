@@ -1,5 +1,5 @@
 ---
-'@tidbcloud/uikit': major
+'@tidbcloud/uikit': minor
 ---
 
 add tableList,block icon

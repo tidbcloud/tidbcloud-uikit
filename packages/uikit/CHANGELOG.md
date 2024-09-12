@@ -2,7 +2,7 @@
 
 ## 2.0.0-beta.37
 
-### Major Changes
+### Minor Changes
 
 - add tableList,block icon
 
