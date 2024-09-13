@@ -1,7 +1,7 @@
 import { CSSObject, createStyles } from '@mantine/core'
 
 export const useStyles = createStyles((theme, params: { hasError?: boolean }) => {
-  const { hasError = true } = params
+  const { hasError } = params
 
   const invalidColor = theme.fn.variant({
     variant: 'filled',
@@ -10,16 +10,13 @@ export const useStyles = createStyles((theme, params: { hasError?: boolean }) =>
 
   const invalidStyles: CSSObject = {
     borderColor: theme.colors.red[4],
+    color: invalidColor,
 
     '&:hover': {
       borderColor: theme.colors.red[4]
     },
     '&:focus': {
       borderColor: theme.colors.red[4]
-    },
-    '&::placeholder': {
-      ...theme.fn.placeholderStyles(),
-      color: invalidColor
     }
   }
 

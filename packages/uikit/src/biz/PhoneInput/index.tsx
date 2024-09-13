@@ -59,7 +59,10 @@ export const PhoneInput: React.FC<PhoneInputProps> = (props) => {
         {...wrapperProps}
         styles={mergeStylesList([
           wrapperProps.styles,
-          { label: { color: theme.colors.carbon[8] }, description: { color: theme.colors.carbon[6] } }
+          {
+            label: { color: theme.colors.carbon[8], marginBottom: 6, fontSize: 14, lineHeight: '20px' },
+            description: { color: theme.colors.carbon[6] }
+          }
         ])}
       >
         <ReactPhoneInput
