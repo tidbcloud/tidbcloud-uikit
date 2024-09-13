@@ -61,6 +61,9 @@ export const Primary: Story = {
     enableSorting: false,
     columns,
     emptyMessage: 'No data',
+    mantineTableBodyCellProps: {
+      h: 48
+    },
     data
   },
   argTypes: {}

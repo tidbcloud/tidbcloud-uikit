@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.39
+
+### Patch Changes
+
+- update phone input style, update table height
+
 ## 2.0.0-beta.38
 
 ### Patch Changes
