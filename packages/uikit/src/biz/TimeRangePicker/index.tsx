@@ -80,7 +80,7 @@ export const TimeRangePicker: React.FC<React.PropsWithChildren<TimeRangePickerPr
               root: {
                 paddingLeft: '12px',
                 paddingRight: '12px',
-                borderColor: opened ? theme.colors.carbon[9] : theme.colors.carbon[5],
+                borderColor: opened ? theme.colors.carbon[9] : theme.colors.carbon[4],
                 '&:hover': {
                   backgroundColor: theme.colors.carbon[0],
                   borderColor: opened ? theme.colors.carbon[9] : theme.colors.carbon[5]
@@ -93,11 +93,11 @@ export const TimeRangePicker: React.FC<React.PropsWithChildren<TimeRangePickerPr
               label: {
                 display: 'flex',
                 justifyContent: 'space-between',
-                width: '100%'
+                width: '100%',
+                fontWeight: 400
               }
             })}
             w={disableAbsoluteRanges ? 200 : 280}
-            fw="normal"
             sx={sx}
             {...(loading ? { 'data-loading': true } : {})}
           >
