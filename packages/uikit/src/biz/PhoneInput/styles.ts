@@ -57,6 +57,7 @@ export const useStyles = createStyles((theme, params: { hasError?: boolean }) =>
 
           '&::placeholder': {
             ...theme.fn.placeholderStyles(),
+            color: theme.colors.carbon[6],
             opacity: 1
           },
           ...(hasError ? invalidStyles : undefined)
