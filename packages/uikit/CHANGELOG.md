@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.41
+
+### Patch Changes
+
+- fix phone input label style
+
 ## 2.0.0-beta.40
 
 ### Patch Changes
