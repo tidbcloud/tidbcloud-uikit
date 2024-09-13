@@ -20,6 +20,7 @@ export const ProTable = <T extends Record<string, any> = {}>({
   mantinePaperProps = {},
   mantineTableContainerProps = {},
   mantineTableBodyProps,
+  mantineTableBodyCellProps = {},
   mantineBottomToolbarProps = {},
   wrapperProps = {},
   pagination,
@@ -127,6 +128,12 @@ export const ProTable = <T extends Record<string, any> = {}>({
     return {}
   }, mantineTableBodyProps)
 
+  const mTableBodyCellProps = mergeMProps<NonNullable<MantineReactTableProps<T>['mantineTableBodyCellProps']>>(() => {
+    return {
+      h: 48
+    }
+  }, mantineTableBodyCellProps)
+
   const mBottomToolbarProps = mergeMProps<NonNullable<MantineReactTableProps<T>['mantineBottomToolbarProps']>>(
     {
       sx: (theme) => ({
@@ -155,6 +162,7 @@ export const ProTable = <T extends Record<string, any> = {}>({
         mantineTableBodyProps={mTableBodyProps}
         mantineTableContainerProps={mTableContainerProps}
         mantineBottomToolbarProps={mBottomToolbarProps}
+        mantineTableBodyCellProps={mTableBodyCellProps}
         mantinePaginationProps={{}}
         data={data}
         localization={{
