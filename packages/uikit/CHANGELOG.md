@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.40
+
+### Patch Changes
+
+- fix table pinning
+
 ## 2.0.0-beta.39
 
 ### Patch Changes
