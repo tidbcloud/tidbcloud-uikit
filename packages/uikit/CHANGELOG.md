@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.42
+
+### Patch Changes
+
+- fix phone input placeholder
+
 ## 2.0.0-beta.41
 
 ### Patch Changes
