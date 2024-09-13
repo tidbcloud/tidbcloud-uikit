@@ -35,6 +35,7 @@ export const ProTable = <T extends Record<string, any> = {}>({
   data,
   localization,
   state,
+  initialState,
   ...rest
 }: ProTableProps<T>) => {
   const theme = useMantineTheme()
@@ -59,6 +60,8 @@ export const ProTable = <T extends Record<string, any> = {}>({
     },
     mantinePaperProps
   )
+
+  const pinned = initialState && !!initialState.columnPinning
 
   const mTableProps = mergeMProps<NonNullable<MantineReactTableProps<T>['mantineTableProps']>>(
     {
@@ -108,7 +111,7 @@ export const ProTable = <T extends Record<string, any> = {}>({
   const mTableContainerProps = mergeMProps<NonNullable<MantineReactTableProps<T>['mantineTableContainerProps']>>(
     () => ({
       sx: {
-        overflow: 'unset'
+        overflow: pinned ? 'auto' : 'unset'
       }
     }),
     mantineTableContainerProps
@@ -174,6 +177,7 @@ export const ProTable = <T extends Record<string, any> = {}>({
           IconSortAscending: () => <IconArrowUp size={14} />,
           IconSortDescending: () => <IconArrowDown size={14} />
         }}
+        initialState={initialState}
         state={{ isLoading: loading, ...state }}
         {...rest}
       />
