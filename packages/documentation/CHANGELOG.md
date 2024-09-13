@@ -1,5 +1,13 @@
 # @tidbcloud/uikit-documentation
 
+## 0.1.30-beta.38
+
+### Patch Changes
+
+- update timerangepicker style
+- Updated dependencies
+  - @tidbcloud/uikit@2.0.0-beta.38
+
 ## 0.1.30-beta.37
 
 ### Patch Changes
