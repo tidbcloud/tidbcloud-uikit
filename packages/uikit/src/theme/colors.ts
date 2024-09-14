@@ -5,15 +5,15 @@ export type ShadingColor = Tuple<string, 10>
 // Colors refer to https://www.figma.com/design/WA4ToJ5lrk8phxnvfHA3xU/%E2%9A%AA%EF%B8%8F-TiDesign-Library?node-id=7222-252904&node-type=SECTION&t=2rq3zxbEaWLOtOZr-0
 export const carbon = [
   '#FFFFFF',
-  '#FBFDFD',
-  '#F5F8FA',
-  '#EDF0F1',
-  '#E3E8EA',
-  '#C8CED0',
-  '#9FAAAD',
-  '#6C7679',
-  '#3D4143',
-  '#262A2C'
+  '#FDFEFF',
+  '#F9FAFB',
+  '#EDF1F2',
+  '#DCE3E5',
+  '#C4CDD0',
+  '#9FA9AD',
+  '#6F787B',
+  '#383E40',
+  '#1E2426'
 ] as ShadingColor
 
 export const peacock = [
