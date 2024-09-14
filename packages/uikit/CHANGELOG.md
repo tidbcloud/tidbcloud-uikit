@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.43
+
+### Minor Changes
+
+- Update carbon color
+
 ## 2.0.0-beta.42
 
 ### Patch Changes
