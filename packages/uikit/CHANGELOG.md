@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.44
+
+### Patch Changes
+
+- update table skeleton
+
 ## 2.0.0-beta.43
 
 ### Minor Changes
