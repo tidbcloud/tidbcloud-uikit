@@ -19,6 +19,7 @@ export const ProTable = <T extends Record<string, any> = {}>({
   mantineTableProps = {},
   mantinePaperProps = {},
   mantineTableContainerProps = {},
+  mantineSkeletonProps = {},
   mantineTableBodyProps,
   mantineTableBodyCellProps = {},
   mantineBottomToolbarProps = {},
@@ -149,6 +150,17 @@ export const ProTable = <T extends Record<string, any> = {}>({
     mantineBottomToolbarProps
   )
 
+  const mTabelSkeletonProps = mergeMProps<NonNullable<MantineReactTableProps<T>['mantineSkeletonProps']>>(
+    {
+      sx: (theme) => ({
+        '&::after': {
+          backgroundImage: `linear-gradient(90deg, ${theme.colors.gray[4]},  ${theme.colors.gray[3]},  ${theme.colors.gray[3]}, ${theme.colors.gray[4]})`
+        }
+      })
+    },
+    mantineSkeletonProps
+  )
+
   return (
     <Box {...wrapperProps}>
       <MantineReactTable<T>
@@ -162,6 +174,7 @@ export const ProTable = <T extends Record<string, any> = {}>({
         enableSorting={enableSorting}
         mantinePaperProps={mPaperProps}
         mantineTableProps={mTableProps}
+        mantineSkeletonProps={mTabelSkeletonProps}
         mantineTableBodyProps={mTableBodyProps}
         mantineTableContainerProps={mTableContainerProps}
         mantineBottomToolbarProps={mBottomToolbarProps}
