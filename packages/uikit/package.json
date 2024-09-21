@@ -91,6 +91,7 @@
     "@types/react-window": "^1.8.5",
     "@vitejs/plugin-react": "^4.2.1",
     "cpy-cli": "^5.0.0",
+    "ora": "8.1.0",
     "typescript": "^5.4.2",
     "vite": "^4.5.2",
     "vite-plugin-dts": "^3.7.3"
