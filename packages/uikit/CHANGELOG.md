@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.47
+
+### Patch Changes
+
+- Fix scroll position adjust when controlled value change
+
 ## 2.0.0-beta.46
 
 ### Minor Changes

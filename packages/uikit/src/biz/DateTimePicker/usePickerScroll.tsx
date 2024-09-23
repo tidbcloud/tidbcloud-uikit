@@ -212,15 +212,14 @@ const usePickerScrollColumn = ({ min, max, curr, open, render }: Options) => {
 
   const adjustScrollTop = useMemoizedFn(() => {
     const i = numbers.findIndex((i) => i === val)
-
-    if (i !== -1 && open && ref.current) {
+    if (i !== -1 && open) {
       const s = i * CellHeight
-      ref.current.scrollTo({ top: s, behavior: 'auto' })
+      ref.current?.scrollTo({ top: s, behavior: 'auto' })
     }
   })
 
   useEffect(() => {
-    requestAnimationFrame(() => {
+    requestIdleCallback(() => {
       adjustScrollTop()
     })
   }, [open, val, adjustScrollTop])
