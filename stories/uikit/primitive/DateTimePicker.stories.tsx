@@ -1,4 +1,5 @@
 import { Meta, StoryFn } from '@storybook/react'
+import { Stack, Button } from '@tidbcloud/uikit'
 import { DateTimePicker } from '@tidbcloud/uikit/biz'
 import { useState } from 'react'
 
@@ -19,7 +20,12 @@ const meta: Meta<typeof DateTimePicker> = {
 
 export function Demo() {
   const [value, setValue] = useState<Date>(new Date())
-  return <DateTimePicker value={value} onChange={setValue} startDate={new Date()} />
+  return (
+    <Stack>
+      <DateTimePicker value={value} onChange={setValue} startDate={new Date()} />
+      <Button onClick={() => setValue(new Date(Date.now() + Math.random() * 10000000000))}>Set random date</Button>
+    </Stack>
+  )
 }
 
 export default meta
