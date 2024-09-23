@@ -14,37 +14,41 @@
  * npx tsx script/icon.ts --force
  * ```
  */
-import fs from 'node:fs'
+import { Buffer } from 'node:buffer'
+import fs from 'node:fs/promises'
 import path from 'node:path'
 import { argv } from 'node:process'
 
 import { transform, Config } from '@svgr/core'
 import { camelCase, upperFirst } from 'lodash-es'
+import ora, { Ora } from 'ora'
 
 const withForceFlag = argv.includes('--force')
 const rawIconInputPath = path.resolve(process.cwd(), './src/icons/raw')
 const reactIconOutput = path.resolve(process.cwd(), './src/icons/react')
 const indexOutput = path.join('./src/icons/index.ts')
 
-const getAllIcons = () =>
-  fs
-    .readdirSync(rawIconInputPath)
-    .filter((i) => path.extname(i) === '.svg')
-    .sort()
+async function getIconList(): Promise<string[]> {
+  const files = await fs.readdir(rawIconInputPath)
+  return files.filter((i) => path.extname(i) === '.svg').sort()
+}
 
-const pascalCase = (filename: string) => upperFirst(camelCase(path.basename(filename, '.svg')))
+function pascalCase(filename: string) {
+  return upperFirst(camelCase(path.basename(filename, '.svg')))
+}
 
-function prepare() {
-  const icons = getAllIcons()
-  icons.forEach((i) => {
+async function prepare() {
+  const icons = await getIconList()
+  for (const i of icons) {
     const name = pascalCase(i)
     if (!i.startsWith(name)) {
       const iconPath = path.resolve(rawIconInputPath, i)
-      const content = fs.readFileSync(iconPath, 'utf-8')
-      fs.unlinkSync(iconPath)
-      fs.writeFileSync(path.resolve(rawIconInputPath, `${name}.svg`), content)
+      const content = await fs.readFile(iconPath, 'utf-8')
+      await fs.unlink(iconPath)
+      await fs.writeFile(path.resolve(rawIconInputPath, `${name}.svg`), content)
     }
-  })
+  }
+  return icons.length
 }
 
 const template: Config['template'] = (variables, { tpl }) => {
@@ -67,61 +71,82 @@ ${variables.exports};
 `
 }
 
-function transformSvgIcon() {
-  const icons = getAllIcons()
-  icons.forEach((i) => {
-    const iconPath = path.resolve(rawIconInputPath, i)
-    const content = fs.readFileSync(iconPath, 'utf-8')
-    const name = pascalCase(i)
-    const jsCode = transform.sync(
-      content,
-      {
-        plugins: ['@svgr/plugin-svgo', '@svgr/plugin-jsx', '@svgr/plugin-prettier'],
-        icon: true,
-        ref: true,
-        replaceAttrValues: {
-          '#000': 'currentColor',
-          black: 'currentColor'
-        },
-        jsx: {
-          babelConfig: {
-            plugins: [
-              [
-                '@svgr/babel-plugin-remove-jsx-attribute',
-                {
-                  elements: ['path'],
-                  attributes: ['strokeWidth']
-                },
-                'remove strokeWidth on path tag'
-              ],
-              [
-                '@svgr/babel-plugin-add-jsx-attribute',
-                {
-                  elements: ['svg'],
-                  attributes: [{ name: 'strokeWidth', value: '1.5' }]
-                },
-                'add strokeWidth on svg tag'
-              ],
-              [
-                '@svgr/babel-plugin-add-jsx-attribute',
-                {
-                  elements: ['path'],
-                  attributes: [{ name: 'strokeWidth', value: 'inherit' }]
-                },
-                'add strokeWidth inherit on path tag'
-              ]
-            ]
-          }
-        },
-        template
+async function transformSvgToJSX(content: string, name: string): Promise<string> {
+  const jsCode = await transform(
+    content,
+    {
+      plugins: ['@svgr/plugin-svgo', '@svgr/plugin-jsx', '@svgr/plugin-prettier'],
+      icon: true,
+      ref: true,
+      replaceAttrValues: {
+        '#000': 'currentColor',
+        black: 'currentColor'
       },
-      { componentName: name }
+      jsx: {
+        babelConfig: {
+          plugins: [
+            [
+              '@svgr/babel-plugin-remove-jsx-attribute',
+              {
+                elements: ['path'],
+                attributes: ['strokeWidth']
+              },
+              'remove strokeWidth on path tag'
+            ],
+            [
+              '@svgr/babel-plugin-add-jsx-attribute',
+              {
+                elements: ['svg'],
+                attributes: [{ name: 'strokeWidth', value: '1.5' }]
+              },
+              'add strokeWidth on svg tag'
+            ],
+            [
+              '@svgr/babel-plugin-add-jsx-attribute',
+              {
+                elements: ['path'],
+                attributes: [{ name: 'strokeWidth', value: 'inherit' }]
+              },
+              'add strokeWidth inherit on path tag'
+            ]
+          ]
+        }
+      },
+      template
+    },
+    { componentName: name }
+  )
+
+  return jsCode
+}
+
+async function transformAllSvgIcon(spinner: Ora) {
+  const icons = await getIconList()
+  const total = icons.length
+  const chunkSize = 100
+
+  for (let i = 0; i < icons.length; i += chunkSize) {
+    const chunk = icons.slice(i, i + chunkSize)
+
+    await Promise.all(
+      chunk.map(async (icon) => {
+        const name = pascalCase(icon)
+        const iconPath = path.resolve(rawIconInputPath, icon)
+        const content = await fs.readFile(iconPath, 'utf-8')
+        const output = path.resolve(reactIconOutput, `${name}.jsx`)
+        const isExist = await fs.stat(output).catch(() => false)
+
+        // only do the transformation if the file not transformed yet or with force flag
+        if (!isExist || withForceFlag) {
+          const jsCode = await transformSvgToJSX(content, name)
+          await fs.writeFile(output, jsCode)
+        }
+      })
     )
-    const output = path.resolve(reactIconOutput, `${name}.jsx`)
-    if (!fs.existsSync(output) || withForceFlag) {
-      fs.writeFileSync(output, jsCode)
-    }
-  })
+
+    // Update progress after each chunk
+    spinner.text = `transformed icons: ${Math.min(i + chunkSize, total)}/${total}`
+  }
 }
 
 const noEdit = `/**
@@ -131,15 +156,9 @@ const noEdit = `/**
 /* eslint-disable */
 `
 
-function updateImportEntry() {
-  const icons = getAllIcons()
-  const typeImports = [
-    `import type { SVGProps } from 'react'`,
-    `export interface IconProps extends SVGProps<SVGSVGElement> {`,
-    `  size?: number | string`,
-    `  color?: string`,
-    `}`
-  ].join('\n')
+async function updateImportEntry() {
+  const icons = await getIconList()
+  const typeImports = [`import type { SVGProps } from 'react'`].join('\n')
 
   const iconImports = icons
     .map((i) => {
@@ -148,19 +167,54 @@ function updateImportEntry() {
     })
     .join('\n')
 
-  const typeDeclaration = icons
-    .map((i) => {
+  const iconPropsType = [
+    `export interface IconProps extends SVGProps<SVGSVGElement> {`,
+    `  size?: number | string`,
+    `  color?: string`,
+    `}`
+  ].join('\n')
+
+  const iconExportsWithType = await Promise.all(
+    icons.map(async (i) => {
       const name = pascalCase(i)
       const iconName = pascalCase('Icon' + name)
-      return `export const ${iconName} = ${name} as React.FC<IconProps>`
+      const svgContent = await fs.readFile(path.resolve(rawIconInputPath, i), 'utf-8')
+      return [
+        generateIconDoc(svgToBase64(svgContent)),
+        `export const ${iconName} = ${name} as React.FC<IconProps>\n`
+      ].join('\n')
     })
-    .join('\n')
+  )
 
-  fs.writeFileSync(indexOutput, [noEdit, typeImports, iconImports, typeDeclaration].join('\n') + '\n')
+  await fs.writeFile(
+    indexOutput,
+    [noEdit, typeImports, `${iconImports}\n`, `${iconPropsType}\n`, iconExportsWithType.join('\n')].join('\n')
+  )
 }
 
-;(function () {
-  prepare()
-  transformSvgIcon()
-  updateImportEntry()
-})()
+function generateIconDoc(preview: string) {
+  return [`/**`, ` * @preview ![img](${preview})`, ` */`].join('\n')
+}
+
+function svgToBase64(svgString: string): string {
+  const encoded = Buffer.from(svgString).toString('base64')
+  return `data:image/svg+xml;base64,${encoded}`
+}
+
+async function main() {
+  const spinner = ora('preprocessing all raw icons...').start()
+  const total = await prepare()
+  spinner.succeed(`preprocessing completed, found ${total} icons`)
+
+  spinner.start('transforming to react components...')
+  await transformAllSvgIcon(spinner)
+  spinner.succeed('transforming completed')
+
+  spinner.start('updating import entry file...')
+  await updateImportEntry()
+  spinner.succeed('import entry updated')
+
+  spinner.succeed('done')
+}
+
+main().catch(console.error)
