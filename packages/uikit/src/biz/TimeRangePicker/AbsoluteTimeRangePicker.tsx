@@ -38,26 +38,6 @@ const AbsoluteTimeRangePicker: React.FC<React.PropsWithChildren<AbsoluteTimeRang
   onCancel,
   onReturnClick
 }) => {
-  const theme = useMantineTheme()
-  const dayStyle: MonthSettings['dayStyle'] = (_date, modifiers) => {
-    let s: CSSProperties = {}
-
-    if (
-      modifiers.weekend &&
-      !modifiers.disabled &&
-      !modifiers.selected &&
-      !modifiers.outside &&
-      !modifiers.selectedInRange
-    ) {
-      s = { color: theme.colors.carbon[8] }
-    } else if (modifiers.inRange && !modifiers.selectedInRange) {
-      s = { backgroundColor: theme.colors.carbon[3] }
-    } else if (modifiers.firstInRange || modifiers.lastInRange) {
-      s = { backgroundColor: theme.colors.carbon[9] }
-    }
-    return s
-  }
-
   const [start, setStart] = useState(() => new Date(value[0] * 1000))
   const [end, setEnd] = useState(() => new Date(value[1] * 1000))
 
@@ -160,13 +140,7 @@ const AbsoluteTimeRangePicker: React.FC<React.PropsWithChildren<AbsoluteTimeRang
       </Group>
 
       <Flex justify="center" pt={8}>
-        <RangeCalendar
-          value={[start, end]}
-          onChange={updateDate}
-          maxDate={maxDateTime}
-          minDate={minDateTime}
-          dayStyle={dayStyle}
-        />
+        <RangeCalendar value={[start, end]} onChange={updateDate} maxDate={maxDateTime} minDate={minDateTime} />
       </Flex>
 
       {(startAfterEnd || beyondMin || beyondMax || beyondDuration) && (
