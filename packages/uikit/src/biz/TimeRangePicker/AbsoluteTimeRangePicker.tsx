@@ -119,7 +119,6 @@ const AbsoluteTimeRangePicker: React.FC<React.PropsWithChildren<AbsoluteTimeRang
           <DatePicker
             onClick={() => {}}
             w={116}
-            styles={{ input: { height: 36 } }}
             value={start}
             inputFormat="MMM D, YYYY"
             clearable={false}
@@ -128,7 +127,7 @@ const AbsoluteTimeRangePicker: React.FC<React.PropsWithChildren<AbsoluteTimeRang
           <TimeInput
             format="24"
             w={90}
-            styles={{ input: { paddingLeft: 4, paddingRight: 4, height: 36 } }}
+            styles={{ input: { paddingLeft: 4, paddingRight: 4 }, controls: { height: 30 } }}
             withSeconds
             value={start}
             onChange={(d) => updateTime(d, setStart)}
@@ -143,7 +142,6 @@ const AbsoluteTimeRangePicker: React.FC<React.PropsWithChildren<AbsoluteTimeRang
           <DatePicker
             onClick={() => {}}
             w={116}
-            styles={{ input: { height: 36 } }}
             value={end}
             inputFormat="MMM D, YYYY"
             clearable={false}
@@ -152,8 +150,7 @@ const AbsoluteTimeRangePicker: React.FC<React.PropsWithChildren<AbsoluteTimeRang
           <TimeInput
             format="24"
             w={90}
-            h={36}
-            styles={{ input: { paddingLeft: 4, paddingRight: 4, height: 36 } }}
+            styles={{ input: { paddingLeft: 4, paddingRight: 4 }, controls: { height: 30 } }}
             withSeconds
             value={end}
             onChange={(d) => updateTime(d, setEnd)}
