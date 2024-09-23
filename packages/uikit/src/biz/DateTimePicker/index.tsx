@@ -1,3 +1,9 @@
+import { useMemoizedFn, useUpdateEffect } from 'ahooks'
+import type { Dayjs } from 'dayjs'
+import { useState, useMemo } from 'react'
+
+import { useDisclosure } from '../../hooks/index.js'
+import { IconClock } from '../../icons/index.js'
 import {
   Box,
   Divider,
@@ -8,19 +14,11 @@ import {
   Stack,
   TextInput,
   Typography,
-  useMantineTheme,
   Sx,
   MantineSize,
   Calendar,
-  TimeInput,
-  MonthSettings
-} from '@tidbcloud/uikit'
-import { useDisclosure } from '@tidbcloud/uikit/hooks'
-import { IconClock } from '@tidbcloud/uikit/icons'
-import { useMemoizedFn, useUpdateEffect } from 'ahooks'
-import type { Dayjs } from 'dayjs'
-import { useState, CSSProperties, useMemo } from 'react'
-
+  TimeInput
+} from '../../primitive/index.js'
 import { dayjs } from '../../utils/dayjs.js'
 import { DEFAULT_TIME_FORMAT } from '../TimeRangePicker/helpers.js'
 
