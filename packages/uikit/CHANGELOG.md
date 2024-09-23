@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.45
+
+### Minor Changes
+
+- Update ActionIcon styles and added jsdoc preview for icon component
+
 ## 2.0.0-beta.44
 
 ### Patch Changes
