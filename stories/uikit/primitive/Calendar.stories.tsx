@@ -1,5 +1,6 @@
 import type { Meta, StoryObj, StoryFn } from '@storybook/react'
 import { Calendar } from '@tidbcloud/uikit'
+import { useState } from 'react'
 
 type Story = StoryObj<typeof Calendar>
 
@@ -20,8 +21,13 @@ const meta: Meta<typeof Calendar> = {
 
 export default meta
 
+function Demo() {
+  const [value, setValue] = useState<Date | null>(null)
+  return <Calendar value={value} onChange={setValue} minDate={new Date()} />
+}
+
 // More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
 export const Primary: Story = {
-  render: () => <Calendar></Calendar>,
+  render: () => <Demo />,
   args: {}
 }
