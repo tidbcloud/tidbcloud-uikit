@@ -39,10 +39,24 @@ const AbsoluteTimeRangePicker: React.FC<React.PropsWithChildren<AbsoluteTimeRang
   onReturnClick
 }) => {
   const theme = useMantineTheme()
-  const dayStyle: MonthSettings['dayStyle'] = (_date, modifiers) =>
-    (modifiers.weekend && !modifiers.disabled && !modifiers.selected && !modifiers.outside && !modifiers.selectedInRange
-      ? { color: theme.colors.carbon[8] }
-      : null) as CSSProperties
+  const dayStyle: MonthSettings['dayStyle'] = (_date, modifiers) => {
+    let s: CSSProperties = {}
+
+    if (
+      modifiers.weekend &&
+      !modifiers.disabled &&
+      !modifiers.selected &&
+      !modifiers.outside &&
+      !modifiers.selectedInRange
+    ) {
+      s = { color: theme.colors.carbon[8] }
+    } else if (modifiers.inRange && !modifiers.selectedInRange) {
+      s = { backgroundColor: theme.colors.carbon[3] }
+    } else if (modifiers.firstInRange || modifiers.lastInRange) {
+      s = { backgroundColor: theme.colors.carbon[9] }
+    }
+    return s
+  }
 
   const [start, setStart] = useState(() => new Date(value[0] * 1000))
   const [end, setEnd] = useState(() => new Date(value[1] * 1000))
@@ -105,6 +119,7 @@ const AbsoluteTimeRangePicker: React.FC<React.PropsWithChildren<AbsoluteTimeRang
           <DatePicker
             onClick={() => {}}
             w={116}
+            styles={{ input: { height: 36 } }}
             value={start}
             inputFormat="MMM D, YYYY"
             clearable={false}
@@ -113,7 +128,7 @@ const AbsoluteTimeRangePicker: React.FC<React.PropsWithChildren<AbsoluteTimeRang
           <TimeInput
             format="24"
             w={90}
-            styles={{ input: { paddingLeft: 4, paddingRight: 4 } }}
+            styles={{ input: { paddingLeft: 4, paddingRight: 4, height: 36 } }}
             withSeconds
             value={start}
             onChange={(d) => updateTime(d, setStart)}
@@ -128,6 +143,7 @@ const AbsoluteTimeRangePicker: React.FC<React.PropsWithChildren<AbsoluteTimeRang
           <DatePicker
             onClick={() => {}}
             w={116}
+            styles={{ input: { height: 36 } }}
             value={end}
             inputFormat="MMM D, YYYY"
             clearable={false}
@@ -136,7 +152,8 @@ const AbsoluteTimeRangePicker: React.FC<React.PropsWithChildren<AbsoluteTimeRang
           <TimeInput
             format="24"
             w={90}
-            styles={{ input: { paddingLeft: 4, paddingRight: 4 } }}
+            h={36}
+            styles={{ input: { paddingLeft: 4, paddingRight: 4, height: 36 } }}
             withSeconds
             value={end}
             onChange={(d) => updateTime(d, setEnd)}
