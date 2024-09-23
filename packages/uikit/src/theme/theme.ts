@@ -1010,25 +1010,25 @@ const theme: MantineThemeOverride = {
 
         const variantStyles: Record<string, CSSObject> = {
           default: {
-            color: theme.fn.themeColor(color, 8),
             backgroundColor: theme.fn.themeColor(color, 2),
             borderColor: theme.fn.themeColor(color, 5),
+            color: theme.fn.themeColor(color, 8),
 
             '&:hover': {
-              color: theme.fn.themeColor(color, 9),
-              backgroundColor: theme.fn.themeColor(color, 2),
-              borderColor: theme.fn.themeColor(color, 6)
+              backgroundColor: theme.fn.themeColor(color, 3),
+              borderColor: theme.fn.themeColor(color, 6),
+              color: theme.fn.themeColor(color, 9)
             },
             '&:active': {
-              color: theme.fn.themeColor(color, 9),
               backgroundColor: theme.fn.themeColor(color, 4),
-              borderColor: theme.fn.themeColor(color, 6)
+              borderColor: theme.fn.themeColor(color, 6),
+              color: theme.fn.themeColor(color, 9)
             },
 
             '&:disabled': {
-              color: theme.fn.themeColor(color, 6),
               backgroundColor: theme.fn.themeColor(color, 2),
-              borderColor: theme.fn.themeColor(color, 5)
+              borderColor: theme.fn.themeColor(color, 5),
+              color: theme.fn.themeColor(color, 6)
             }
           },
           transparent: {
@@ -1041,7 +1041,7 @@ const theme: MantineThemeOverride = {
             borderColor: 'transparent',
 
             '&:hover': {
-              backgroundColor: theme.fn.themeColor(color, 2)
+              backgroundColor: theme.fn.themeColor(color, 3)
             },
             '&:active': {
               backgroundColor: theme.fn.themeColor(color, 4)
