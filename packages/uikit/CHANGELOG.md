@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.46
+
+### Minor Changes
+
+- Add DateTimePicker and update Calendar styles
+
 ## 2.0.0-beta.45
 
 ### Minor Changes

@@ -1124,6 +1124,54 @@ const theme: MantineThemeOverride = {
           }
         }
       }
+    },
+    Calendar: {
+      styles: (theme) => {
+        const color = theme.primaryColor
+        return {
+          calendarHeaderLevel: {
+            color: theme.fn.themeColor(color, 7)
+          },
+          calendarHeaderLevelIcon: {
+            color: `${theme.fn.themeColor(color, 7)} !important`
+          },
+          calendarHeaderControl: {
+            color: `${theme.fn.themeColor(color, 7)} !important`
+          },
+          yearPickerControlActive: {
+            backgroundColor: theme.fn.themeColor(color, 9)
+          },
+          monthPickerControlActive: {
+            backgroundColor: theme.fn.themeColor(color, 9)
+          },
+          weekday: {
+            color: theme.fn.themeColor(color, 7)
+          },
+          day: {
+            color: theme.fn.themeColor(color, 8),
+            borderRadius: 8,
+            '&[data-selected]': {
+              backgroundColor: theme.fn.themeColor(color, 9),
+              color: theme.white
+            },
+            '&[data-weekend]': {
+              color: theme.fn.themeColor(color, 8),
+              '&[data-selected]': {
+                color: theme.white
+              },
+              '&[data-disabled], &:disabled': {
+                color: `${theme.fn.themeColor(color, 5)} !important`
+              }
+            },
+            '&[data-disabled], &:disabled': {
+              color: `${theme.fn.themeColor(color, 5)} !important`
+            },
+            '&[data-outside]': {
+              color: theme.fn.themeColor(color, 6)
+            }
+          }
+        }
+      }
     }
   }
 }
