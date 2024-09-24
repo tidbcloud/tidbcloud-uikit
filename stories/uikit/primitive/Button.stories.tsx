@@ -1,5 +1,6 @@
 import type { Meta, StoryObj, StoryFn } from '@storybook/react'
 import { Button, Group, Stack } from '@tidbcloud/uikit'
+import { IconSettings01 } from '@tidbcloud/uikit/icons'
 
 import { COLOR_LIST, VARIANT_LIST, SIZE_LIST } from '../../constants'
 
@@ -202,5 +203,27 @@ export const DisabledButton: Story = {
     <Button disabled variant="light">
       Disabled
     </Button>
+  )
+}
+
+export const WithIcon: Story = {
+  render: () => (
+    <Group>
+      <Button leftIcon={<IconSettings01 size={12} />} variant="default" size="xs">
+        Settings xs
+      </Button>
+
+      <Button rightIcon={<IconSettings01 size={12} />} variant="default" size="xs">
+        Settings xs
+      </Button>
+
+      <Button leftIcon={<IconSettings01 size={16} />} variant="default">
+        Settings
+      </Button>
+
+      <Button rightIcon={<IconSettings01 size={16} />} variant="default">
+        Settings
+      </Button>
+    </Group>
   )
 }
