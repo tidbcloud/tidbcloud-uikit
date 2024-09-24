@@ -170,6 +170,12 @@ const getButtonStyles = (theme: MantineTheme, params: ButtonStylesParams): Recor
       paddingRight: 12,
       ...variantStyles[params.variant],
       ...sizeStyles[params.size]
+    },
+    leftIcon: {
+      marginRight: 4
+    },
+    rightIcon: {
+      marginLeft: 4
     }
   }
 

@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.49
+
+### Minor Changes
+
+- set button left and right icon margin to 4
+
 ## 2.0.0-beta.48
 
 ### Patch Changes
