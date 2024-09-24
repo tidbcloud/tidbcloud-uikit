@@ -1098,18 +1098,62 @@ const theme: MantineThemeOverride = {
       }
     },
     RangeCalendar: {
-      styles: (theme) => ({
-        day: {
-          '&[data-first-in-range]': {
-            borderTopLeftRadius: theme.defaultRadius,
-            borderBottomLeftRadius: theme.defaultRadius
+      styles: (theme) => {
+        const color = theme.primaryColor
+        return {
+          calendarHeaderLevel: {
+            color: theme.fn.themeColor(color, 7)
           },
-          '&[data-last-in-range]': {
-            borderTopRightRadius: theme.defaultRadius,
-            borderBottomRightRadius: theme.defaultRadius
+          calendarHeaderLevelIcon: {
+            color: `${theme.fn.themeColor(color, 7)} !important`
+          },
+          calendarHeaderControl: {
+            color: `${theme.fn.themeColor(color, 7)} !important`
+          },
+          yearPickerControlActive: {
+            backgroundColor: theme.fn.themeColor(color, 9)
+          },
+          monthPickerControlActive: {
+            backgroundColor: theme.fn.themeColor(color, 9)
+          },
+          weekday: {
+            color: theme.fn.themeColor(color, 7)
+          },
+          day: {
+            color: theme.fn.themeColor(color, 8),
+            '&[data-in-range]': {
+              backgroundColor: theme.fn.themeColor(color, 3)
+            },
+            '&[data-first-in-range]': {
+              borderTopLeftRadius: theme.defaultRadius,
+              borderBottomLeftRadius: theme.defaultRadius
+            },
+            '&[data-last-in-range]': {
+              borderTopRightRadius: theme.defaultRadius,
+              borderBottomRightRadius: theme.defaultRadius
+            },
+            '&[data-selected]': {
+              backgroundColor: theme.fn.themeColor(color, 9),
+              color: theme.white
+            },
+            '&[data-weekend]': {
+              color: theme.fn.themeColor(color, 8),
+              '&[data-selected]': {
+                color: theme.white
+              },
+              '&[data-disabled], &:disabled': {
+                color: `${theme.fn.themeColor(color, 5)} !important`
+              }
+            },
+            '&[data-disabled], &:disabled': {
+              color: `${theme.fn.themeColor(color, 5)} !important`
+            },
+            '&[data-outside]': {
+              color: theme.fn.themeColor(color, 6)
+            }
           }
         }
-      })
+      }
     },
     Anchor: {
       styles: (theme, params) => {
