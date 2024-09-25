@@ -108,6 +108,18 @@ async function transformSvgToJSX(content: string, name: string): Promise<string>
                 attributes: [{ name: 'strokeWidth', value: 'inherit' }]
               },
               'add strokeWidth inherit on path tag'
+            ],
+            [
+              '@svgr/babel-plugin-add-jsx-attribute',
+              {
+                elements: ['path'],
+                attributes: [
+                  {
+                    name: 'stroke',
+                    value: 'currentColor'
+                  }
+                ]
+              }
             ]
           ]
         }
