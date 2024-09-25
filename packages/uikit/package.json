@@ -1,11 +1,17 @@
 {
   "name": "@tidbcloud/uikit",
-  "version": "2.0.0-beta.49",
+  "version": "2.0.0-beta.50",
   "description": "tidbcloud uikit",
   "type": "module",
   "main": "dist/primitive/index.cjs",
   "module": "dist/primitive/index.js",
   "types": "dist/primitive/index.d.ts",
+  "scripts": {
+    "test": "test",
+    "copy:raw-icon": "mkdir -p ./dist/icons/raw && cpy 'src/icons/raw/*.svg' ./dist/icons/raw/",
+    "build:icon": "tsx ./scripts/icon.ts",
+    "build": "vite build && pnpm run copy:raw-icon"
+  },
   "exports": {
     ".": {
       "import": "./dist/primitive/index.js",
@@ -33,12 +39,6 @@
     },
     "./dist/icons/raw/*": "./dist/icons/raw/*",
     "./package.json": "./package.json"
-  },
-  "scripts": {
-    "test": "test",
-    "copy:raw-icon": "mkdir -p ./dist/icons/raw && cpy 'src/icons/raw/*.svg' ./dist/icons/raw/",
-    "build:icon": "tsx ./scripts/icon.ts",
-    "build": "vite build && pnpm run copy:raw-icon"
   },
   "repository": {
     "type": "git",

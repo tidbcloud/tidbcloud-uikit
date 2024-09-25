@@ -703,6 +703,8 @@ const theme: MantineThemeOverride = {
             fontSize: theme.fn.size({ sizes, size: params.size }),
             backgroundColor: 'transparent',
             color: theme.fn.themeColor(theme.primaryColor, 8),
+            padding: 0,
+            borderRadius: 0,
 
             '&:before': {
               backgroundColor: theme.fn.themeColor(color, 7)
