@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.50
+
+### Minor Changes
+
+- Remove dot badge padding and add new icon
+
 ## 2.0.0-beta.49
 
 ### Minor Changes
