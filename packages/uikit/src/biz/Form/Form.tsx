@@ -30,6 +30,8 @@ export interface FormProps<T extends FieldValues = object> extends BoxProps {
   errorMessageProps?: Omit<FormErrorMessageProps, 'message'>
   layout?: FormLayoutType
   layoutProps?: Omit<FormLayoutProps, 'layout'>
+  stopPropagation?: boolean
+  preventDefault?: boolean
 
   onSubmit: SubmitHandler<T>
   onError?: () => any
@@ -52,6 +54,8 @@ const _Form = <T extends object = {}>({
   layout = 'vertical',
   layoutProps,
   onError,
+  stopPropagation,
+  preventDefault,
   ...rest
 }: FormProps<T>) => {
   const [submitError, setSubmitError] = useSafeState('')
@@ -86,7 +90,19 @@ const _Form = <T extends object = {}>({
 
   return (
     <FormProvider {...methods}>
-      <Box component="form" {...rest} onSubmit={handleSubmit(submit)}>
+      <Box
+        component="form"
+        {...rest}
+        onSubmit={(e) => {
+          if (stopPropagation) {
+            e?.stopPropagation()
+          }
+          if (preventDefault) {
+            e?.preventDefault()
+          }
+          return handleSubmit(submit)(e)
+        }}
+      >
         <FormLayout layout={layout} {...layoutProps}>
           {children}
         </FormLayout>
