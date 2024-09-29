@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.51
+
+### Patch Changes
+
+- update form
+
 ## 2.0.0-beta.50
 
 ### Minor Changes

@@ -41,11 +41,12 @@ export const Primary: Story = {
   render: ({ ...args }) => (
     <Center w={500} m="0 auto">
       <Form
+        {...args}
+        w={'100%'}
         formMode="onChange"
         onSubmit={() => {
           throw new Error('Test error')
         }}
-        w={'100%'}
       >
         <Group grow>
           <FormTextInput
