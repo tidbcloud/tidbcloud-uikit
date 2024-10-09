@@ -14,7 +14,7 @@ export const DotBadge: React.FC<DotBadgeProps> = ({ color = 'green', children, .
       variant="light"
       styles={(theme) => ({
         root: {
-          backgroundColor: theme.colors[color][0],
+          backgroundColor: theme.colors[color][1],
           borderRadius: theme.defaultRadius,
           textTransform: 'none',
           height: 28
@@ -23,7 +23,7 @@ export const DotBadge: React.FC<DotBadgeProps> = ({ color = 'green', children, .
       leftSection={<Dot color={color} size={8} />}
       {...rest}
     >
-      <Typography variant="body3" c={`${color}.6`}>
+      <Typography variant="body3" c={`${color}.8`}>
         {children}
       </Typography>
     </Badge>
