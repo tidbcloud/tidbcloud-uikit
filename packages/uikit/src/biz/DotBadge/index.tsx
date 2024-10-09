@@ -23,7 +23,7 @@ export const DotBadge: React.FC<DotBadgeProps> = ({ color = 'green', children, .
       leftSection={<Dot color={color} size={8} />}
       {...rest}
     >
-      <Typography variant="body3" c={`${color}.8`}>
+      <Typography size={14} fw={500} c={`${color}.8`}>
         {children}
       </Typography>
     </Badge>

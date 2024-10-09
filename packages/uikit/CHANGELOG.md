@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.52
+
+### Minor Changes
+
+- adjust Dot and DotBadge color
+
 ## 2.0.0-beta.51
 
 ### Patch Changes
