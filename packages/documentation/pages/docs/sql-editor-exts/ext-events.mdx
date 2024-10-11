@@ -30,7 +30,7 @@ import {
 // add extensions to your editor created by getting started
 const extensions = [
   // ...other extensions,
-  onDocChange((view: EditorView, doc: string) => {
+  onDocChange((view: EditorView, state: EditorState, doc: string) => {
     // doc is all the current SQL content
     console.log('doc change', doc)
   }),
@@ -39,7 +39,7 @@ const extensions = [
   *  You can get the selection data from & to by the selRanges params,
   *  it is the cursor position if from equals to
   */
-  onSelectionChange((view: EditorView, selRanges: SelectionRange[]) => {
+  onSelectionChange((view: EditorView, state: EditorState, selRanges: SelectionRange[]) => {
     console.log('selection change', selRanges)
     console.log(getNearbyStatement(view.state, selRanges[0].from))
     console.log(getSqlStatements(view.state))
