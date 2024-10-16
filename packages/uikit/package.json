@@ -53,6 +53,7 @@
     "@emotion/utils": "^1.4.1",
     "@hookform/error-message": "^2.0.1",
     "@mantine/carousel": "7.13.2",
+    "@mantine/code-highlight": "^7.13.2",
     "@mantine/core": "7.13.2",
     "@mantine/dates": "7.13.2",
     "@mantine/dropzone": "7.13.2",
