@@ -1,7 +1,6 @@
 import 'rc-tree/assets/index.css'
 
-import { Global } from '@mantine/core'
-import { clsx } from '@mantine/styles'
+import { Global, useCss } from '@mantine/emotion'
 import RcTree from 'rc-tree'
 import type { TreeProps as RcTreeProps, BasicDataNode } from 'rc-tree'
 import type { DataNode, Key } from 'rc-tree/lib/interface'
@@ -114,13 +113,15 @@ export const Tree = React.forwardRef<RcTree, TreeProps>((props, ref) => {
     showLine: Boolean(showLine)
   }
 
+  const { cx } = useCss()
+
   return (
     <>
       <RcTree
         {...newProps}
         itemHeight={20}
         ref={ref}
-        className={clsx(
+        className={cx(
           {
             [`${prefixCls}-icon-hide`]: !showIcon,
             [`${prefixCls}-block-node`]: blockNode,
