@@ -1,8 +1,8 @@
-import { MantineTheme } from '@mantine/core'
-import { CSSObject, EmotionHelpers, EmotionStyles, EmotionSx } from '@mantine/emotion'
+import { EmotionStyles, MantineTheme } from '@mantine/core'
+import { CSSObject, EmotionHelpers, EmotionSx } from '@mantine/emotion'
 import { merge } from 'lodash-es'
 
-function mergeSxValues(values: EmotionSx[], theme: MantineTheme, u: EmotionHelpers) {
+function mergeSxValues(values: (EmotionSx | undefined)[], theme: MantineTheme, u: EmotionHelpers) {
   const css: CSSObject = values.reduce<CSSObject>((ret, partial) => {
     if (!partial) {
       return ret
@@ -18,15 +18,22 @@ function mergeSxValues(values: EmotionSx[], theme: MantineTheme, u: EmotionHelpe
   return css
 }
 
-export function mergeSxList(sxList: EmotionSx[]) {
+export function mergeSxList(sxList: (EmotionSx | undefined)[]) {
   return (theme: MantineTheme, u: EmotionHelpers) => mergeSxValues(sxList, theme, u)
 }
 
 export function mergeStylesList<
   StylesNames extends string = never,
   StylesParams extends Record<string, any> = Record<string, any>
->(stylesList: EmotionStyles[]) {
-  return (theme: MantineTheme, u: EmotionHelpers, params: StylesParams) => {
+>(
+  stylesList: (
+    | EmotionStyles<{
+        stylesNames: string
+      }>
+    | undefined
+  )[]
+) {
+  return (theme: MantineTheme, params: StylesParams, u: EmotionHelpers) => {
     const css = stylesList.reduce<Partial<Record<StylesNames, CSSObject>>>(
       (prev, partial) =>
         typeof partial === 'function' ? merge(prev, partial(theme, params, u)) : merge(prev, partial),
