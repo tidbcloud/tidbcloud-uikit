@@ -6,11 +6,8 @@ export * from '@mantine/core'
 
 export { TextInput, type TextInputProps } from './TextInput/index.js'
 
-// Re-export @mantine/prims with custom theme
-export * from './Prism/index.js'
-
 // Re-export @mantine/notifications with custom theme
-export { notifier, NotificationsProvider, type NotificationProviderProps } from './notifier/index.js'
+export { notifier, Notifications } from './notifier/index.js'
 
 // Re-export @mantine/dropzone
 export {
@@ -26,12 +23,11 @@ export {
 export type {
   DropzoneAcceptProps,
   DropzoneFullScreenProps,
-  DropzoneFullScreenStylesName,
+  DropzoneFullScreenStylesNames,
   DropzoneIdleProps,
   DropzoneProps,
   DropzoneRejectProps,
-  DropzoneStylesNames,
-  DropzoneStylesParams
+  DropzoneStylesNames
 } from '@mantine/dropzone'
 
 // Re-export @mantine/carousel
@@ -51,38 +47,17 @@ export {
 export type { ModalsProviderProps, ContextModalProps } from '@mantine/modals'
 
 // Re-export @mantine/dates
-export {
-  DatePicker,
-  DatePickerBase,
-  DateRangePicker,
-  Calendar,
-  CalendarBase,
-  RangeCalendar,
-  Month,
-  TimeInput,
-  TimeRangeInput
-} from '@mantine/dates'
+export { DatePicker, DatePickerInput, Calendar, Month, TimeInput } from '@mantine/dates'
 export type {
   CalendarProps,
   CalendarBaseProps,
-  CalendarBaseStylesNames,
+  DatePickerType,
   DatePickerProps,
-  DatePickerBaseProps,
-  DatePickerBaseSharedProps,
+  DatePickerInputProps,
   DatePickerStylesNames,
-  DateRangePickerProps,
-  DateRangePickerValue,
-  RangeCalendarProps,
   MonthProps,
   TimeInputProps,
-  TimeInputStylesNames,
-  TimeInputStylesParams,
-  DayKeydownPayload,
-  DayModifiers,
-  MonthSettings,
-  TimeRangeInputProps,
-  TimeRangeInputStylesNames,
-  TimeRangeInputStylesParams
+  MonthSettings
 } from '@mantine/dates'
 
 export * from './Typography/index.js'
