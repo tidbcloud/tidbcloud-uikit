@@ -1,3 +1,4 @@
+import { CodeHighlight, type CodeHighlightProps } from '@mantine/code-highlight'
 import React, { useMemo, useState } from 'react'
 
 import { useLocalStorage } from '../../hooks/index.js'
@@ -13,7 +14,6 @@ import {
   CodeProps,
   HoverCard
 } from '../../primitive/index.js'
-import { Prism, PrismProps } from '../../primitive/Prism/index.js'
 import { mergeSxList, mergeStylesList } from '../../utils/index.js'
 
 function useFold(persistenceKey?: string) {
@@ -32,16 +32,11 @@ function useFold(persistenceKey?: string) {
 }
 
 export interface CodeBlockProps extends BoxProps {
-  language?: PrismProps['language']
-
+  language?: CodeHighlightProps['language']
   codeRender?: (content: string) => React.ReactNode
-  children: PrismProps['children']
-
   copyContent?: string
   onCopyClick?: () => void
-
-  prismProps?: Omit<PrismProps, 'language' | 'children'>
-
+  prismProps?: Omit<CodeHighlightProps, 'language' | 'children'>
   foldProps?: {
     defaultHeight?: number
     persistenceKey?: string
@@ -50,128 +45,132 @@ export interface CodeBlockProps extends BoxProps {
   }
 }
 
-export const CodeBlock: React.FC<CodeBlockProps> = ({
-  language = 'bash',
-  codeRender,
-  children,
-  copyContent,
-  onCopyClick,
-  prismProps,
-  foldProps,
-  ...rest
-}) => {
-  const { defaultHeight, persistenceKey, iconVisible: foldIconVisible, onIconClick: onFoldIconClick } = foldProps || {}
-  const { folded, setFolded } = useFold(persistenceKey)
+// export const CodeBlock = ({
+//   language = 'bash',
+//   codeRender,
+//   children,
+//   copyContent,
+//   onCopyClick,
+//   prismProps,
+//   foldProps,
+//   ...rest
+// }: React.PropsWithChildren<CodeBlockProps>) => {
+//   const { defaultHeight, persistenceKey, iconVisible: foldIconVisible, onIconClick: onFoldIconClick } = foldProps || {}
+//   const { folded, setFolded } = useFold(persistenceKey)
 
-  const mah = useMemo(() => {
-    if (defaultHeight) {
-      return folded ? defaultHeight : undefined
-    }
-    if (foldIconVisible) {
-      return folded ? 200 : undefined
-    }
-    return undefined
-  }, [foldIconVisible, folded, defaultHeight])
+//   const mah = useMemo(() => {
+//     if (defaultHeight) {
+//       return folded ? defaultHeight : undefined
+//     }
+//     if (foldIconVisible) {
+//       return folded ? 200 : undefined
+//     }
+//     return undefined
+//   }, [foldIconVisible, folded, defaultHeight])
 
-  return (
-    <Box {...rest} sx={mergeSxList([{ position: 'relative' }, rest?.sx])}>
-      <Box
-        p="md"
-        mah={mah}
-        bg="carbon.2"
-        sx={(theme) => ({
-          border: `1px solid ${theme.colors.carbon[4]}`,
-          borderRadius: theme.defaultRadius,
-          overflow: 'auto'
-        })}
-      >
-        {codeRender ? (
-          codeRender(children)
-        ) : (
-          <Prism
-            {...prismProps}
-            language={language}
-            styles={mergeStylesList([
-              {
-                code: {
-                  padding: 0,
-                  backgroundColor: `transparent !important`,
-                  wordBreak: 'break-all'
-                },
-                line: {
-                  paddingLeft: 0
-                },
-                lineContent: {
-                  whiteSpace: 'pre-wrap'
-                }
-              },
-              prismProps?.styles
-            ])}
-          >
-            {children}
-          </Prism>
-        )}
-      </Box>
+//   return (
+//     <Box {...rest} sx={mergeSxList([{ position: 'relative' }, rest?.sx])}>
+//       <Box
+//         p="md"
+//         mah={mah}
+//         bg="carbon.2"
+//         sx={(theme) => ({
+//           border: `1px solid ${theme.colors.carbon[4]}`,
+//           borderRadius: theme.defaultRadius,
+//           overflow: 'auto'
+//         })}
+//       >
+//         {codeRender ? (
+//           codeRender(children)
+//         ) : (
+//           <CodeHighlight
+//             {...prismProps}
+//             language={language}
+//             styles={mergeStylesList([
+//               {
+//                 code: {
+//                   padding: 0,
+//                   backgroundColor: `transparent !important`,
+//                   wordBreak: 'break-all'
+//                 },
+//                 line: {
+//                   paddingLeft: 0
+//                 },
+//                 lineContent: {
+//                   whiteSpace: 'pre-wrap'
+//                 }
+//               },
+//               prismProps?.styles
+//             ])}
+//           >
+//             {children}
+//           </CodeHighlight>
+//         )}
+//       </Box>
 
-      <Group spacing={4} sx={(theme) => ({ position: 'absolute', top: 16, right: 16, color: theme.colors.carbon[8] })}>
-        {foldIconVisible && (
-          <HoverCard withArrow position="top">
-            <HoverCard.Target>
-              <ActionIcon
-                size="sm"
-                variant="subtle"
-                onClick={() => {
-                  const v = !folded
-                  setFolded(v)
-                  onFoldIconClick?.(v)
-                }}
-              >
-                {folded ? (
-                  <IconChevronVerticalExpand size={14} strokeWidth={2.5} />
-                ) : (
-                  <IconChevronVerticalShrink size={14} strokeWidth={2.5} />
-                )}
-              </ActionIcon>
-            </HoverCard.Target>
-            <HoverCard.Dropdown>{folded ? 'Expand' : 'Collapse'}</HoverCard.Dropdown>
-          </HoverCard>
-        )}
+//       <Group gap={4} sx={(theme) => ({ position: 'absolute', top: 16, right: 16, color: theme.colors.carbon[8] })}>
+//         {foldIconVisible && (
+//           <HoverCard withArrow position="top">
+//             <HoverCard.Target>
+//               <ActionIcon
+//                 size="sm"
+//                 variant="subtle"
+//                 onClick={() => {
+//                   const v = !folded
+//                   setFolded(v)
+//                   onFoldIconClick?.(v)
+//                 }}
+//               >
+//                 {folded ? (
+//                   <IconChevronVerticalExpand size={14} strokeWidth={2.5} />
+//                 ) : (
+//                   <IconChevronVerticalShrink size={14} strokeWidth={2.5} />
+//                 )}
+//               </ActionIcon>
+//             </HoverCard.Target>
+//             <HoverCard.Dropdown>{folded ? 'Expand' : 'Collapse'}</HoverCard.Dropdown>
+//           </HoverCard>
+//         )}
 
-        <CopyButton value={copyContent ?? children} timeout={2000}>
-          {({ copied, copy }) => (
-            <HoverCard withArrow position="top">
-              <HoverCard.Target>
-                <ActionIcon
-                  size="sm"
-                  variant="subtle"
-                  onClick={() => {
-                    copy()
-                    onCopyClick?.()
-                  }}
-                >
-                  {copied ? <IconCheck size={14} /> : <IconCopy01 size={14} strokeWidth={2.5} />}
-                </ActionIcon>
-              </HoverCard.Target>
-              <HoverCard.Dropdown>{copied ? 'Copied' : 'Copy'}</HoverCard.Dropdown>
-            </HoverCard>
-          )}
-        </CopyButton>
-      </Group>
-    </Box>
-  )
+//         <CopyButton value={copyContent ?? children} timeout={2000}>
+//           {({ copied, copy }) => (
+//             <HoverCard withArrow position="top">
+//               <HoverCard.Target>
+//                 <ActionIcon
+//                   size="sm"
+//                   variant="subtle"
+//                   onClick={() => {
+//                     copy()
+//                     onCopyClick?.()
+//                   }}
+//                 >
+//                   {copied ? <IconCheck size={14} /> : <IconCopy01 size={14} strokeWidth={2.5} />}
+//                 </ActionIcon>
+//               </HoverCard.Target>
+//               <HoverCard.Dropdown>{copied ? 'Copied' : 'Copy'}</HoverCard.Dropdown>
+//             </HoverCard>
+//           )}
+//         </CopyButton>
+//       </Group>
+//     </Box>
+//   )
+// }
+
+export const CodeBlock = (props: CodeHighlightProps) => {
+  return <CodeHighlight {...props} />
 }
 
 export interface CopyTextProps extends CodeProps {
   value: string
 }
 
-export const CopyText: React.FC<CopyTextProps> = ({ children, value, ...rest }) => {
+export const CopyText = ({ children, value, ...rest }: React.PropsWithChildren<CopyTextProps>) => {
   return (
     <Code
       bg="carbon.3"
       {...rest}
       p={8}
-      sx={(theme) => {
+      sx={(theme, u) => {
         return mergeSxList([
           {
             display: 'inline-flex',
@@ -181,7 +180,7 @@ export const CopyText: React.FC<CopyTextProps> = ({ children, value, ...rest }) 
             borderRadius: theme.defaultRadius
           },
           rest?.sx
-        ])(theme)
+        ])(theme, u)
       }}
     >
       {children}
