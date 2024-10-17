@@ -1,4 +1,4 @@
-import { MantineTheme } from '@mantine/core'
+import { MantineTheme, StylesRecord } from '@mantine/core'
 import { CSSObject, EmotionHelpers, EmotionSx } from '@mantine/emotion'
 import { merge } from 'lodash-es'
 
@@ -43,6 +43,6 @@ export function mergeStylesList<
       {}
     )
 
-    return css
+    return css as StylesRecord<StylesNames, CSSObject>
   }
 }
