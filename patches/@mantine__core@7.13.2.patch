@@ -1,0 +1,20 @@
+diff --git a/lib/core/styles-api/styles-api.types.d.ts b/lib/core/styles-api/styles-api.types.d.ts
+index b153b4f19b28794e14bddd2d1c3a6e21073736a0..3c02ccba5e7ad9831646b9c354718e012808ddcf 100644
+--- a/lib/core/styles-api/styles-api.types.d.ts
++++ b/lib/core/styles-api/styles-api.types.d.ts
+@@ -24,12 +24,14 @@ export type Styles<Payload extends FactoryPayload> = StylesApiRecord<Payload, CS
+ export type ClassNames<Payload extends FactoryPayload> = StylesApiRecord<Payload, string>;
+ export type ClassNamesArray<Payload extends FactoryPayload> = (StylesApiRecord<Payload, string> | undefined)[];
+ export type StylesRecord<StylesNames extends string, Payload> = Partial<Record<StylesNames, Payload>>;
+-export interface StylesApiProps<Payload extends FactoryPayload> {
++export interface StylesApiBaseProps<Payload extends FactoryPayload> {
+     unstyled?: boolean;
+     variant?: Payload['variant'] extends string ? Payload['variant'] | (string & {}) : string;
+     classNames?: ClassNames<Payload>;
+     styles?: Styles<Payload>;
+     vars?: PartialVarsResolver<Payload>;
+ }
++export interface StylesApiPropsOverride<Payload extends FactoryPayload> {}
++export interface StylesApiProps<Payload extends FactoryPayload> extends StylesApiPropsOverride<Payload>, StylesApiBaseProps<Payload> {}
+ export interface CompoundStylesApiProps<Payload extends FactoryPayload> extends Omit<StylesApiProps<Payload>, 'unstyled'> {
+ }

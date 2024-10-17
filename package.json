@@ -59,6 +59,9 @@
         "@tabler/icons-react",
         "@babel/*"
       ]
+    },
+    "patchedDependencies": {
+      "@mantine/core@7.13.2": "patches/@mantine__core@7.13.2.patch"
     }
   },
   "engines": {
