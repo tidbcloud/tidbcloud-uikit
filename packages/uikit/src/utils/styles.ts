@@ -37,12 +37,12 @@ export function mergeStylesList<
   )[]
 ) {
   return (theme: MantineTheme, props: Props, helpers: EmotionHelpers) => {
-    const css = stylesList.reduce(
+    const css = stylesList.reduce<StylesRecord<StylesNames, CSSObject>>(
       (prev, partial) =>
         typeof partial === 'function' ? merge(prev, partial(theme, props, helpers)) : merge(prev, partial),
       {}
     )
 
-    return css as StylesRecord<StylesNames, CSSObject>
+    return css
   }
 }
