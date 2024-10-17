@@ -8,7 +8,7 @@ type EmotionStylesApiRecord<Payload extends FactoryPayload, DataType> = Payload[
           theme: MantineTheme,
           props: Payload['props'],
           helpers: EmotionHelpers
-        ) => StylesRecord<Payload['stylesNames'] | (string & {}), DataType>)
+        ) => StylesRecord<Payload['stylesNames'], DataType>)
   : never
 
 export type EmotionStyles<Payload extends FactoryPayload> = EmotionStylesApiRecord<Payload, CSSObject>
