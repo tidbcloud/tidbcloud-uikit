@@ -1,4 +1,4 @@
-import type { FactoryPayload, MantineTheme, StylesApiProps, StylesRecord } from '@mantine/core'
+import type { FactoryPayload, MantineTheme, StylesRecord } from '@mantine/core'
 import { CSSObject, EmotionHelpers } from '@mantine/emotion'
 
 type EmotionStylesApiRecord<Payload extends FactoryPayload, DataType> = Payload['stylesNames'] extends string
@@ -8,7 +8,7 @@ type EmotionStylesApiRecord<Payload extends FactoryPayload, DataType> = Payload[
           theme: MantineTheme,
           props: Payload['props'],
           helpers: EmotionHelpers
-        ) => StylesRecord<Payload['stylesNames'], DataType>)
+        ) => StylesRecord<Payload['stylesNames'] | (string & {}), DataType>)
   : never
 
 export type EmotionStyles<Payload extends FactoryPayload> = EmotionStylesApiRecord<Payload, CSSObject>
