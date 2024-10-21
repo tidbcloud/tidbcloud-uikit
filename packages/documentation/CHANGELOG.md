@@ -1,5 +1,12 @@
 # @tidbcloud/uikit-documentation
 
+## 0.1.30-beta.53
+
+### Patch Changes
+
+- Updated dependencies
+  - @tidbcloud/uikit@2.0.0-beta.53
+
 ## 0.1.30-beta.52
 
 ### Patch Changes
