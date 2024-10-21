@@ -73,6 +73,7 @@ export const Primary: Story = {
           required
           placeholder="Password"
           label="Password"
+          rules={{ minLength: { value: 8, message: 'min length is 8' } }}
           icon={<IconLock01 size={16} stroke="1.5" />}
         />
         <FormPhoneInput

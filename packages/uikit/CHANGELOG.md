@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.53
+
+### Patch Changes
+
+- Fix PasswordInput border style when validate fail
+
 ## 2.0.0-beta.52
 
 ### Minor Changes
