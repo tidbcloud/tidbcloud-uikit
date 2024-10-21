@@ -255,10 +255,13 @@ const getInputStyles = (theme: MantineTheme, params: Partial<InputStylesParams>)
     invalid: {
       borderColor: theme.colors.red[4],
 
+      '& .mantine-PasswordInput-innerInput': {
+        borderColor: 'transparent'
+      },
       '&:hover': {
         borderColor: theme.colors.red[4]
       },
-      '&:focus': {
+      '&:focus, &:focus-within': {
         borderColor: theme.colors.red[4]
       },
       '&::placeholder': {
