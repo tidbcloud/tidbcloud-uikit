@@ -62,8 +62,6 @@ export const ProTable = <T extends Record<string, any> = {}>({
     mantinePaperProps
   )
 
-  const pinned = initialState && !!initialState.columnPinning
-
   const mTableProps = mergeMProps<NonNullable<MantineReactTableProps<T>['mantineTableProps']>>(
     {
       highlightOnHover: true,
@@ -107,15 +105,6 @@ export const ProTable = <T extends Record<string, any> = {}>({
       }
     },
     mantineTableProps
-  )
-
-  const mTableContainerProps = mergeMProps<NonNullable<MantineReactTableProps<T>['mantineTableContainerProps']>>(
-    () => ({
-      sx: {
-        overflow: pinned ? 'auto' : 'unset'
-      }
-    }),
-    mantineTableContainerProps
   )
 
   const mTableBodyProps = mergeMProps<NonNullable<MantineReactTableProps<T>['mantineTableBodyProps']>>((args) => {
@@ -176,7 +165,7 @@ export const ProTable = <T extends Record<string, any> = {}>({
         mantineTableProps={mTableProps}
         mantineSkeletonProps={mTabelSkeletonProps}
         mantineTableBodyProps={mTableBodyProps}
-        mantineTableContainerProps={mTableContainerProps}
+        mantineTableContainerProps={mantineTableContainerProps}
         mantineBottomToolbarProps={mBottomToolbarProps}
         mantineTableBodyCellProps={mTableBodyCellProps}
         mantinePaginationProps={{}}

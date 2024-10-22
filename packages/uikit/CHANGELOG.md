@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.54
+
+### Patch Changes
+
+- fix table scroll
+
 ## 2.0.0-beta.53
 
 ### Patch Changes
