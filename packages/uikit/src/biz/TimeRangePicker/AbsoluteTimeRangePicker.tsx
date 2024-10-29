@@ -1,5 +1,5 @@
 import dayjs from 'dayjs'
-import { CSSProperties, MouseEventHandler, useMemo, useState } from 'react'
+import { MouseEventHandler, useMemo, useState } from 'react'
 
 import { IconChevronLeft, IconAlertCircle } from '../../icons/index.js'
 import {
@@ -10,11 +10,9 @@ import {
   Group,
   Text,
   Typography,
-  useMantineTheme,
   DatePicker,
-  MonthSettings,
-  RangeCalendar,
-  TimeInput
+  TimeInput,
+  DatePickerInput
 } from '../../primitive/index.js'
 
 import { AbsoluteTimeRange, TimeRangeValue, timeFormatter, formatDuration } from './helpers.js'
@@ -29,7 +27,7 @@ interface AbsoluteTimeRangePickerProps {
   onReturnClick?: MouseEventHandler<HTMLElement>
 }
 
-const AbsoluteTimeRangePicker: React.FC<React.PropsWithChildren<AbsoluteTimeRangePickerProps>> = ({
+const AbsoluteTimeRangePicker = ({
   value,
   maxDateTime,
   minDateTime,
@@ -37,9 +35,11 @@ const AbsoluteTimeRangePicker: React.FC<React.PropsWithChildren<AbsoluteTimeRang
   onChange,
   onCancel,
   onReturnClick
-}) => {
+}: AbsoluteTimeRangePickerProps) => {
   const [start, setStart] = useState(() => new Date(value[0] * 1000))
   const [end, setEnd] = useState(() => new Date(value[1] * 1000))
+  const startTime = dayjs(start).format('HH:mm:ss')
+  const endTime = dayjs(end).format('HH:mm:ss')
 
   const startAfterEnd = useMemo(() => {
     return start.valueOf() > end.valueOf()
@@ -75,8 +75,9 @@ const AbsoluteTimeRangePicker: React.FC<React.PropsWithChildren<AbsoluteTimeRang
     setEnd(newEnd)
   }
 
-  const updateTime = (d: Date, setter: ReturnType<typeof useState<Date>>[1]) => {
+  const updateTime = (v: string, setter: ReturnType<typeof useState<Date>>[1]) => {
     setter((old) => {
+      const d = dayjs(v, 'HH:mm:ss').toDate()
       const newD = new Date(old!)
       newD.setHours(d.getHours())
       newD.setMinutes(d.getMinutes())
@@ -93,71 +94,75 @@ const AbsoluteTimeRangePicker: React.FC<React.PropsWithChildren<AbsoluteTimeRang
         <Typography variant="body-lg">Back</Typography>
       </Group>
 
-      <Group spacing={0} pt={8} position="apart">
+      <Group gap={0} pt={8} justify="space-between">
         <Typography variant="label-sm">Start</Typography>
-        <Group spacing={8}>
-          <DatePicker
+        <Group gap={8}>
+          <DatePickerInput
             onClick={() => {}}
             w={116}
             value={start}
-            inputFormat="MMM D, YYYY"
+            valueFormat="MMM D, YYYY"
             clearable={false}
             error={beyondMin || startAfterEnd || beyondDuration}
           />
           <TimeInput
-            format="24"
             w={90}
-            styles={{ input: { paddingLeft: 4, paddingRight: 4 }, controls: { height: 30 } }}
+            styles={{ input: { paddingLeft: 4, paddingRight: 4, height: 30 } }}
             withSeconds
-            value={start}
-            onChange={(d) => updateTime(d, setStart)}
+            value={startTime}
+            onChange={(d) => updateTime(d.currentTarget.value, setStart)}
             error={beyondMin || startAfterEnd || beyondDuration}
           />
         </Group>
       </Group>
 
-      <Group spacing={0} pt={8} position="apart">
+      <Group gap={0} pt={8} justify="space-between">
         <Typography variant="label-sm">End</Typography>
-        <Group spacing={8}>
-          <DatePicker
+        <Group gap={8}>
+          <DatePickerInput
             onClick={() => {}}
             w={116}
             value={end}
-            inputFormat="MMM D, YYYY"
+            valueFormat="MMM D, YYYY"
             clearable={false}
             error={beyondMax || startAfterEnd || beyondDuration}
           />
           <TimeInput
-            format="24"
             w={90}
-            styles={{ input: { paddingLeft: 4, paddingRight: 4 }, controls: { height: 30 } }}
+            styles={{ input: { paddingLeft: 4, paddingRight: 4, height: 30 } }}
             withSeconds
-            value={end}
-            onChange={(d) => updateTime(d, setEnd)}
+            value={endTime}
+            onChange={(d) => updateTime(d.currentTarget.value, setEnd)}
             error={beyondMax || startAfterEnd || beyondDuration}
           />
         </Group>
       </Group>
 
       <Flex justify="center" pt={8}>
-        <RangeCalendar value={[start, end]} onChange={updateDate} maxDate={maxDateTime} minDate={minDateTime} />
+        <DatePicker
+          type="range"
+          value={[start, end]}
+          onChange={updateDate}
+          maxDate={maxDateTime}
+          minDate={minDateTime}
+        />
       </Flex>
 
       {(startAfterEnd || beyondMin || beyondMax || beyondDuration) && (
         <Alert icon={<IconAlertCircle size={16} />} color="red" pt={8}>
-          {startAfterEnd && <Text color="red">Please select an end time after the start time.</Text>}
+          {startAfterEnd && <Text c="red">Please select an end time after the start time.</Text>}
           {beyondMin && (
-            <Text color="red">
+            <Text c="red">
               Please select a start time after <>{timeFormatter(minDateTime!, null, 'MMM D, YYYY HH:mm:ss')}</>
             </Text>
           )}
           {beyondMax && (
-            <Text color="red">
+            <Text c="red">
               Please select an end time before <>{timeFormatter(maxDateTime!, null, 'MMM D, YYYY HH:mm:ss')}</>
             </Text>
           )}
           {beyondDuration && (
-            <Text color="red">
+            <Text c="red">
               The selection exceeds the {formatDuration(maxDuration!)} limit, please select a shorter time range.
             </Text>
           )}

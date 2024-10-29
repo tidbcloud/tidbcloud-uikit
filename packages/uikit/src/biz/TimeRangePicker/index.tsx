@@ -1,17 +1,7 @@
 import { useMemo, useState } from 'react'
 
 import { IconChevronRight } from '../../icons/index.js'
-import {
-  Button,
-  Menu,
-  SelectChevronIcon,
-  Text,
-  Box,
-  Tooltip,
-  Group,
-  Typography,
-  ButtonProps
-} from '../../primitive/index.js'
+import { Button, Menu, Text, Box, Tooltip, Group, Typography, ButtonProps } from '../../primitive/index.js'
 
 import AbsoluteTimeRangePicker from './AbsoluteTimeRangePicker.js'
 import { DEFAULT_QUICK_RANGES, TimeRange, formatDuration, toTimeRangeValue, timeFormatter } from './helpers.js'
@@ -117,9 +107,6 @@ export const TimeRangePicker = ({
               <Text px={8} sx={{ flex: '1 1', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis' }}>
                 {isRelativeRange ? `Past ${formatDuration(duration)}` : formattedAbsDateTime}
               </Text>
-              <Box sx={{ flex: 'none' }}>
-                <SelectChevronIcon size="md" error={false} />
-              </Box>
             </Group>
           </Button>
         </Tooltip>
@@ -175,7 +162,7 @@ export const TimeRangePicker = ({
   )
 }
 
-const DurationBadge: React.FC<React.PropsWithChildren<unknown>> = ({ children }) => {
+const DurationBadge = ({ children }: { children: React.ReactNode }) => {
   return (
     <Box
       display="inline-block"
