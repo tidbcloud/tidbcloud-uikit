@@ -63,6 +63,7 @@
     "@mantine/notifications": "^7.13.2",
     "@tabler/icons-react": "^2.30.0",
     "ahooks": "^3.7.8",
+    "clsx": "^2.1.1",
     "dayjs": "^1.11.5",
     "dompurify": "^3.0.3",
     "embla-carousel-react": "^7.0.5",
