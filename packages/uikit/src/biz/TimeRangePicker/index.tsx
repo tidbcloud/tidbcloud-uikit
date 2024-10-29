@@ -1,15 +1,24 @@
 import { useMemo, useState } from 'react'
 
 import { IconChevronRight } from '../../icons/index.js'
-import { Button, Menu, SelectChevronIcon, Text, Box, Tooltip, Group, Typography, Sx } from '../../primitive/index.js'
+import {
+  Button,
+  Menu,
+  SelectChevronIcon,
+  Text,
+  Box,
+  Tooltip,
+  Group,
+  Typography,
+  ButtonProps
+} from '../../primitive/index.js'
 
 import AbsoluteTimeRangePicker from './AbsoluteTimeRangePicker.js'
 import { DEFAULT_QUICK_RANGES, TimeRange, formatDuration, toTimeRangeValue, timeFormatter } from './helpers.js'
 
-export interface TimeRangePickerProps {
+export interface TimeRangePickerProps extends ButtonProps {
   value: TimeRange
   onChange?: (value: TimeRange) => void
-  sx?: Sx
 
   loading?: boolean
 
@@ -25,7 +34,7 @@ export interface TimeRangePickerProps {
   timezone?: number
 }
 
-export const TimeRangePicker: React.FC<React.PropsWithChildren<TimeRangePickerProps>> = ({
+export const TimeRangePicker = ({
   value,
   minDateTime,
   maxDateTime,
@@ -36,7 +45,7 @@ export const TimeRangePicker: React.FC<React.PropsWithChildren<TimeRangePickerPr
   loading,
   timezone,
   sx
-}) => {
+}: React.PropsWithChildren<TimeRangePickerProps>) => {
   const [opened, setOpened] = useState(false)
   const [customMode, setCustomMode] = useState(false)
   const isRelativeRange = value?.type === 'relative' || !value
@@ -101,7 +110,7 @@ export const TimeRangePicker: React.FC<React.PropsWithChildren<TimeRangePickerPr
             sx={sx}
             {...(loading ? { 'data-loading': true } : {})}
           >
-            <Group w="100%" spacing={0}>
+            <Group w="100%" gap={0}>
               <Box sx={{ flex: 'none' }}>
                 <DurationBadge>{formatDuration(duration, true)}</DurationBadge>
               </Box>
