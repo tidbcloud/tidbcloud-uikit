@@ -12,7 +12,7 @@ import {
   Typography,
   DatePicker,
   TimeInput,
-  DatePickerInput
+  Input
 } from '../../primitive/index.js'
 
 import { AbsoluteTimeRange, TimeRangeValue, timeFormatter, formatDuration } from './helpers.js'
@@ -101,12 +101,9 @@ const AbsoluteTimeRangePicker = ({
       <Group gap={0} pt={8} justify="space-between">
         <Typography variant="label-sm">Start</Typography>
         <Group gap={8}>
-          <DatePickerInput
-            onClick={() => {}}
+          <Input
             w={116}
-            value={start}
-            valueFormat="MMM D, YYYY"
-            clearable={false}
+            value={dayjs(start).format('MMM D, YYYY')}
             error={beyondMin || startAfterEnd || beyondDuration}
           />
           <TimeInput
@@ -122,12 +119,9 @@ const AbsoluteTimeRangePicker = ({
       <Group gap={0} pt={8} justify="space-between">
         <Typography variant="label-sm">End</Typography>
         <Group gap={8}>
-          <DatePickerInput
-            onClick={() => {}}
+          <Input
             w={116}
-            value={end}
-            valueFormat="MMM D, YYYY"
-            clearable={false}
+            value={dayjs(end).format('MMM D, YYYY')}
             error={beyondMax || startAfterEnd || beyondDuration}
           />
           <TimeInput
