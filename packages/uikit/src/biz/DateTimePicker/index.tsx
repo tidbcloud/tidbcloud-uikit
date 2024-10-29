@@ -14,17 +14,17 @@ import {
   Stack,
   TextInput,
   Typography,
-  Sx,
   MantineSize,
-  Calendar,
-  TimeInput
+  TimeInput,
+  TextInputProps,
+  DatePicker
 } from '../../primitive/index.js'
 import { dayjs } from '../../utils/dayjs.js'
 import { DEFAULT_TIME_FORMAT } from '../TimeRangePicker/helpers.js'
 
 import { useTimePickerScroll } from './usePickerScroll.js'
 
-export interface DateTimePickerProps {
+export interface DateTimePickerProps extends Omit<TextInputProps, 'value' | 'onChange' | 'defaultValue'> {
   placeholder?: string
   format?: string
 
@@ -37,12 +37,11 @@ export interface DateTimePickerProps {
 
   disable?: boolean
   withinPortal?: boolean
-  sx?: Sx
   loading?: boolean
   size?: MantineSize
 }
 
-export const DateTimePicker: React.FC<React.PropsWithChildren<DateTimePickerProps>> = ({
+export const DateTimePicker = ({
   placeholder = 'Select time',
   format = DEFAULT_TIME_FORMAT,
   defaultValue,
@@ -56,7 +55,7 @@ export const DateTimePicker: React.FC<React.PropsWithChildren<DateTimePickerProp
   sx,
   loading = false,
   size
-}) => {
+}: DateTimePickerProps) => {
   const [opened, { close, open }] = useDisclosure(false)
   const [currentValue, setCurrentValue] = useState<Dayjs>(
     defaultValue ? dayjs(defaultValue) : value ? dayjs(value) : dayjs()
@@ -85,7 +84,10 @@ export const DateTimePicker: React.FC<React.PropsWithChildren<DateTimePickerProp
     }
   })
 
-  const timeInputChange = useMemoizedFn((v: Date) => {
+  const timeInputChange = useMemoizedFn((e: React.ChangeEvent<HTMLInputElement>) => {
+    const originVal = e.currentTarget.value
+    const v = dayjs(originVal, 'HH:mm:ss').toDate()
+
     let next = currentValue
     next = next.utcOffset(utcOffset).hour(v.getHours()).minute(v.getMinutes()).second(v.getSeconds())
 
@@ -131,7 +133,7 @@ export const DateTimePicker: React.FC<React.PropsWithChildren<DateTimePickerProp
       <Popover.Dropdown>
         <Stack>
           <Group align="flex-start">
-            <Calendar
+            <DatePicker
               minDate={startDate}
               maxDate={endDate}
               value={currentValue.toDate()}
@@ -145,20 +147,18 @@ export const DateTimePicker: React.FC<React.PropsWithChildren<DateTimePickerProp
                   height: 32,
                   width: 32
                 },
-                weekdayCell: {
+                weekdaysRow: {
+                  display: 'flex',
+                  gap: 8
+                },
+                weekday: {
                   height: 32,
                   width: 32,
                   lineHeight: '32px'
                 },
-                month: {
-                  '& thead tr': {
-                    display: 'flex',
-                    gap: 8
-                  },
-                  '& tbody tr': {
-                    display: 'flex',
-                    gap: 8
-                  }
+                monthRow: {
+                  display: 'flex',
+                  gap: 8
                 },
                 day: {
                   height: 32,
@@ -172,13 +172,13 @@ export const DateTimePicker: React.FC<React.PropsWithChildren<DateTimePickerProp
 
             <Stack justify="flex-start">
               <TimeInput
-                w={112}
                 withSeconds
-                value={currentValue.toDate()}
+                value={currentValue.format('HH:mm:ss')}
                 onChange={timeInputChange}
                 size="sm"
+                w={112}
                 styles={{
-                  controls: {
+                  input: {
                     height: 30
                   }
                 }}
