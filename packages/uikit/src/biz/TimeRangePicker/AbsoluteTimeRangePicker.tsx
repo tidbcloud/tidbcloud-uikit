@@ -57,7 +57,11 @@ const AbsoluteTimeRangePicker = ({
     return false
   }, [maxDuration, start, end])
 
-  const updateDate = (dates: [Date, Date]) => {
+  const [displayRangeDate, setDisplayRangeDate] = useState<[Date | null, Date | null]>([start, end])
+
+  const updateRangeDate = (dates: [Date, Date]) => {
+    setDisplayRangeDate(dates)
+
     const newStart = new Date(dates[0])
     newStart.setHours(start.getHours())
     newStart.setMinutes(start.getMinutes())
@@ -139,8 +143,8 @@ const AbsoluteTimeRangePicker = ({
       <Flex justify="center" pt={8}>
         <DatePicker
           type="range"
-          value={[start, end]}
-          onChange={updateDate}
+          value={displayRangeDate}
+          onChange={updateRangeDate}
           maxDate={maxDateTime}
           minDate={minDateTime}
         />
