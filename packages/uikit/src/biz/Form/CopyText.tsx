@@ -12,14 +12,14 @@ export interface FormCopyTextProps extends BoxProps {
   size?: number
 }
 
-export const FormCopyText: React.FC<FormCopyTextProps> = ({
+export const FormCopyText = ({
   timeout = 3000,
   value,
   valueProps,
   tooltipProps,
   size = 16,
   ...props
-}) => {
+}: FormCopyTextProps) => {
   return (
     <CopyButton value={value} timeout={timeout}>
       {({ copied, copy }) => (
