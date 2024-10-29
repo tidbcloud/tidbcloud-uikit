@@ -3,13 +3,13 @@ import { mergeStylesList } from '../../utils/index.js'
 
 export interface TablePaginationProps extends PaginationProps {}
 
-export const TablePagination: React.FC<TablePaginationProps> = ({ ...rest }) => {
+export const TablePagination = ({ ...rest }: TablePaginationProps) => {
   return (
     <Pagination
       {...rest}
       styles={mergeStylesList([
         (theme) => ({
-          item: {
+          control: {
             border: 'none',
             color: theme.colors.carbon[9],
             borderRadius: theme.defaultRadius,
