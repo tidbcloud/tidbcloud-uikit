@@ -10,7 +10,7 @@ import {
   FieldValues
 } from 'react-hook-form'
 
-import { Box, BoxProps } from '../../primitive/index.js'
+import { Box, BoxProps, ElementProps } from '../../primitive/index.js'
 
 import { useHookFormContext } from './context.js'
 import { FormActions, FormActionsProps } from './FormActions.js'
@@ -19,7 +19,7 @@ import { FormLayout, FormLayoutProps, FormLayoutType } from './FormLayout.js'
 
 const getErrorMessage = (e: any) => e?.message
 
-export interface FormProps<T extends FieldValues = object> extends BoxProps {
+export interface FormProps<T extends FieldValues = object> extends BoxProps, Omit<ElementProps<'form'>, 'onSubmit'> {
   errorMessage?: string
   formMode?: Mode // mode param in options of useForm
   reValidateMode?: UseFormProps['reValidateMode']
