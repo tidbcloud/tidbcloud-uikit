@@ -1,11 +1,12 @@
-import { CSSObject, createStyles } from '@mantine/core'
+import { createStyles, CSSObject } from '@mantine/emotion'
 
-export const useStyles = createStyles((theme, params: { hasError?: boolean }) => {
+export const useStyles = createStyles((theme, params: { hasError?: boolean }, utils) => {
   const { hasError } = params
 
-  const invalidColor = theme.fn.variant({
+  const invalidColor = theme.variantColorResolver({
     variant: 'filled',
-    color: 'red'
+    color: 'red',
+    theme
   }).background
 
   const invalidStyles: CSSObject = {
@@ -28,9 +29,14 @@ export const useStyles = createStyles((theme, params: { hasError?: boolean }) =>
       // marginTop: 8,
       '&.react-tel-input': {
         '.form-control': {
-          ...theme.fn.fontStyles(),
+          fontFamily: theme.fontFamily,
           // see more https://github.com/mantinedev/mantine/blob/v6/src/mantine-core/src/Input/Input.styles.ts#L30-L187
-          backgroundColor: theme.colorScheme === 'dark' ? theme.colors.carbon[0] : theme.white,
+          [utils.dark]: {
+            backgroundColor: theme.colors.carbon[0]
+          },
+          [utils.light]: {
+            backgroundColor: theme.white
+          },
           transition: 'border-color 100ms ease',
 
           fontSize: 14,
@@ -56,7 +62,7 @@ export const useStyles = createStyles((theme, params: { hasError?: boolean }) =>
           },
 
           '&::placeholder': {
-            ...theme.fn.placeholderStyles(),
+            userSelect: 'none',
             color: theme.colors.carbon[6],
             opacity: 1
           },
