@@ -1,5 +1,3 @@
-import { CSSObject } from '@mantine/emotion'
-
 import { Pagination, PaginationProps } from '../../primitive/index.js'
 import { mergeStylesList } from '../../utils/index.js'
 
@@ -8,7 +6,10 @@ export interface TablePaginationProps extends PaginationProps {
 }
 
 export const TablePagination = ({ position = 'center', ...rest }: TablePaginationProps) => {
-  const justifyContentMaps: Record<NonNullable<TablePaginationProps['position']>, string> = {
+  const justifyContentMaps: Record<
+    NonNullable<TablePaginationProps['position']>,
+    React.CSSProperties['justifyContent']
+  > = {
     left: 'flex-start',
     right: 'flex-end',
     center: 'center',
