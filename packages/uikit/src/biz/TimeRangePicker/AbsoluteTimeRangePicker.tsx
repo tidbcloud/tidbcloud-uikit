@@ -107,7 +107,6 @@ const AbsoluteTimeRangePicker = ({
           />
           <TimeInput
             w={90}
-            styles={{ input: { paddingLeft: 4, paddingRight: 4, height: 30 } }}
             withSeconds
             value={startTime}
             onChange={(d) => updateTime(d.currentTarget.value, setStart)}
@@ -129,7 +128,6 @@ const AbsoluteTimeRangePicker = ({
           />
           <TimeInput
             w={90}
-            styles={{ input: { paddingLeft: 4, paddingRight: 4, height: 30 } }}
             withSeconds
             value={endTime}
             onChange={(d) => updateTime(d.currentTarget.value, setEnd)}
