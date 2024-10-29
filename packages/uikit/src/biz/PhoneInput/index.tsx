@@ -1,7 +1,16 @@
 import { useState } from 'react'
 import ReactPhoneInput2, { PhoneInputProps as ReactPhoneInputProps } from 'react-phone-input-2'
 
-import { Input, InputWrapperProps, useInputProps, Box, BoxProps, useMantineTheme } from '../../primitive/index.js'
+import {
+  Input,
+  useInputProps,
+  Box,
+  BoxProps,
+  useMantineTheme,
+  __InputWrapperProps,
+  StylesApiProps,
+  InputWrapperFactory
+} from '../../primitive/index.js'
 import { mergeStylesList } from '../../utils/index.js'
 
 import { useStyles } from './styles.js'
@@ -14,7 +23,9 @@ const ReactPhoneInput: typeof ReactPhoneInput2 = ReactPhoneInput2.default ? Reac
 
 export interface PhoneInputProps
   extends ReactPhoneInputProps,
-    Omit<InputWrapperProps, 'onBlur' | 'onChange' | 'onClick' | 'onFocus' | 'onKeyDown'> {
+    __InputWrapperProps,
+    BoxProps,
+    StylesApiProps<InputWrapperFactory> {
   rootProps?: BoxProps
   /**
    * only after the first time input focus, shows country dial code
@@ -23,7 +34,7 @@ export interface PhoneInputProps
   country?: string
 }
 
-export const PhoneInput: React.FC<PhoneInputProps> = (props) => {
+export const PhoneInput = (props: PhoneInputProps) => {
   const { wrapperProps } = useInputProps('TextInput', {}, props)
   const { classes, cx } = useStyles({ hasError: !!wrapperProps.error })
   const {
