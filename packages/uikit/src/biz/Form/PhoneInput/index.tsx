@@ -1,5 +1,5 @@
 import { ErrorMessage } from '@hookform/error-message'
-import { getPrimaryShade, useMantineColorScheme } from '@mantine/core'
+import { getThemeColor } from '@mantine/core'
 import { createStyles } from '@mantine/emotion'
 import { Controller, RegisterOptions, useFormContext } from 'react-hook-form'
 import { CountryData } from 'react-phone-input-2'
@@ -83,9 +83,7 @@ const countryOptions = rawCountries.map((raw) => {
 })
 
 const useStyles = createStyles((theme) => {
-  const colorScheme = useMantineColorScheme()
-  const primaryShader = getPrimaryShade(theme, colorScheme.colorScheme)
-  const errorColor = theme.colors.red[primaryShader]
+  const errorColor = getThemeColor('red', theme)
   return {
     phoneInputContainer: {
       borderTopLeftRadius: '0 !important',
@@ -153,11 +151,9 @@ export const FormPhoneInputV2: React.FC<FormPhoneInputV2Props> = ({
           rootProps={{ w: '100%', mb: 0 }}
           rules={rules}
           inputClass={classes.phoneInputContainer}
-          styles={(theme) => {
-            return {
-              error: {
-                display: 'none'
-              }
+          styles={{
+            error: {
+              display: 'none'
             }
           }}
           showContryCodeAfterFocus={false}
