@@ -1,4 +1,4 @@
-import { MantineReactTable, MantineReactTableProps } from 'mantine-react-table'
+import { MantineReactTable, MRT_TableInstance, MRT_TableOptions } from 'mantine-react-table'
 
 import { IconSwitchVertical02, IconArrowUp, IconArrowDown } from '../../../icons/index.js'
 import { Box, BoxProps, useMantineTheme } from '../../../primitive/index.js'
@@ -6,13 +6,14 @@ import { TablePagination, TablePaginationProps } from '../TablePagination.js'
 
 import { mergeMProps } from './helpers.js'
 
-export interface ProTableProps<TData extends Record<string, any> = {}> extends MantineReactTableProps<TData> {
+export interface ProTableProps<TData extends Record<string, any> = {}> extends MRT_TableOptions<TData> {
   withBorder?: boolean
   emptyMessage?: string
   errorMessage?: string
   loading?: boolean
   pagination?: TablePaginationProps
   wrapperProps?: BoxProps
+  table?: MRT_TableInstance<TData>
 }
 
 export const ProTable = <T extends Record<string, any> = {}>({
@@ -37,10 +38,11 @@ export const ProTable = <T extends Record<string, any> = {}>({
   localization,
   state,
   initialState,
+  table,
   ...rest
 }: ProTableProps<T>) => {
   const theme = useMantineTheme()
-  const mPaperProps = mergeMProps<NonNullable<MantineReactTableProps<T>['mantinePaperProps']>>(
+  const mPaperProps = mergeMProps<NonNullable<MRT_TableOptions<T>['mantinePaperProps']>>(
     {
       shadow: 'none',
       withBorder,
@@ -62,7 +64,9 @@ export const ProTable = <T extends Record<string, any> = {}>({
     mantinePaperProps
   )
 
-  const mTableProps = mergeMProps<NonNullable<MantineReactTableProps<T>['mantineTableProps']>>(
+  const pinned = initialState && !!initialState.columnPinning
+
+  const mTableProps = mergeMProps<NonNullable<MRT_TableOptions<T>['mantineTableProps']>>(
     {
       highlightOnHover: true,
       withColumnBorders: false,
@@ -107,7 +111,16 @@ export const ProTable = <T extends Record<string, any> = {}>({
     mantineTableProps
   )
 
-  const mTableBodyProps = mergeMProps<NonNullable<MantineReactTableProps<T>['mantineTableBodyProps']>>((args) => {
+  const mTableContainerProps = mergeMProps<NonNullable<MRT_TableOptions<T>['mantineTableContainerProps']>>(
+    () => ({
+      sx: {
+        overflow: pinned ? 'auto' : 'unset'
+      }
+    }),
+    mantineTableContainerProps
+  )
+
+  const mTableBodyProps = mergeMProps<NonNullable<MRT_TableOptions<T>['mantineTableBodyProps']>>((args) => {
     if (!data?.length) {
       return {
         sx: {
@@ -121,13 +134,13 @@ export const ProTable = <T extends Record<string, any> = {}>({
     return {}
   }, mantineTableBodyProps)
 
-  const mTableBodyCellProps = mergeMProps<NonNullable<MantineReactTableProps<T>['mantineTableBodyCellProps']>>(() => {
+  const mTableBodyCellProps = mergeMProps<NonNullable<MRT_TableOptions<T>['mantineTableBodyCellProps']>>(() => {
     return {
       h: 48
     }
   }, mantineTableBodyCellProps)
 
-  const mBottomToolbarProps = mergeMProps<NonNullable<MantineReactTableProps<T>['mantineBottomToolbarProps']>>(
+  const mBottomToolbarProps = mergeMProps<NonNullable<MRT_TableOptions<T>['mantineBottomToolbarProps']>>(
     {
       sx: (theme) => ({
         backgroundColor: 'inherit',
@@ -139,7 +152,7 @@ export const ProTable = <T extends Record<string, any> = {}>({
     mantineBottomToolbarProps
   )
 
-  const mTabelSkeletonProps = mergeMProps<NonNullable<MantineReactTableProps<T>['mantineSkeletonProps']>>(
+  const mTabelSkeletonProps = mergeMProps<NonNullable<MRT_TableOptions<T>['mantineSkeletonProps']>>(
     {
       sx: (theme) => ({
         '&::after': {
@@ -152,37 +165,44 @@ export const ProTable = <T extends Record<string, any> = {}>({
 
   return (
     <Box {...wrapperProps}>
-      <MantineReactTable<T>
-        enableColumnActions={false}
-        enableColumnFilters={false}
-        enableTopToolbar={false}
-        enableStickyHeader={enableStickyHeader}
-        // enable pagination should turn on bottom toolbar
-        enableBottomToolbar={enableBottomToolbar}
-        enablePagination={enablePagination}
-        enableSorting={enableSorting}
-        mantinePaperProps={mPaperProps}
-        mantineTableProps={mTableProps}
-        mantineSkeletonProps={mTabelSkeletonProps}
-        mantineTableBodyProps={mTableBodyProps}
-        mantineTableContainerProps={mantineTableContainerProps}
-        mantineBottomToolbarProps={mBottomToolbarProps}
-        mantineTableBodyCellProps={mTableBodyCellProps}
-        mantinePaginationProps={{}}
-        data={data}
-        localization={{
-          noRecordsToDisplay: errorMessage ? errorMessage : emptyMessage ? emptyMessage : undefined,
-          ...localization
-        }}
-        icons={{
-          IconArrowsSort: () => <IconSwitchVertical02 size={14} />,
-          IconSortAscending: () => <IconArrowUp size={14} />,
-          IconSortDescending: () => <IconArrowDown size={14} />
-        }}
-        initialState={initialState}
-        state={{ isLoading: loading, ...state }}
-        {...rest}
-      />
+      {/***
+       * see https://v2.mantine-react-table.com/docs/api/table-options
+       * ***/}
+      {table ? (
+        <MantineReactTable<T> table={table} />
+      ) : (
+        <MantineReactTable<T>
+          enableColumnActions={false}
+          enableColumnFilters={false}
+          enableTopToolbar={false}
+          enableStickyHeader={enableStickyHeader}
+          // enable pagination should turn on bottom toolbar
+          enableBottomToolbar={enableBottomToolbar}
+          enablePagination={enablePagination}
+          enableSorting={enableSorting}
+          mantinePaperProps={mPaperProps}
+          mantineTableProps={mTableProps}
+          mantineSkeletonProps={mTabelSkeletonProps}
+          mantineTableBodyProps={mTableBodyProps}
+          mantineTableContainerProps={mTableContainerProps}
+          mantineBottomToolbarProps={mBottomToolbarProps}
+          mantineTableBodyCellProps={mTableBodyCellProps}
+          mantinePaginationProps={{}}
+          data={data}
+          localization={{
+            noRecordsToDisplay: errorMessage ? errorMessage : emptyMessage ? emptyMessage : undefined,
+            ...localization
+          }}
+          icons={{
+            IconArrowsSort: () => <IconSwitchVertical02 size={14} />,
+            IconSortAscending: () => <IconArrowUp size={14} />,
+            IconSortDescending: () => <IconArrowDown size={14} />
+          }}
+          initialState={initialState}
+          state={{ isLoading: loading, ...state }}
+          {...rest}
+        />
+      )}
       {!!pagination && <TablePagination size="sm" position="center" mt={16} {...pagination} />}
     </Box>
   )
