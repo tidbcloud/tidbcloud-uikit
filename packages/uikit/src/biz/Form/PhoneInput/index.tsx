@@ -3,9 +3,9 @@ import { getThemeColor } from '@mantine/core'
 import { createStyles } from '@mantine/emotion'
 import { Controller, RegisterOptions, useFormContext } from 'react-hook-form'
 import { CountryData } from 'react-phone-input-2'
-import { mergeStylesList } from 'src/utils/styles.js'
 
 import { SelectProps, Box, BoxProps } from '../../../primitive/index.js'
+import { mergeStylesList } from '../../../utils/styles.js'
 import { PhoneInput, PhoneInputProps } from '../../PhoneInput/index.js'
 import { FormSelect } from '../Select.js'
 
