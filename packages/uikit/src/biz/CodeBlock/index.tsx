@@ -32,7 +32,6 @@ function useFold(persistenceKey?: string) {
 }
 
 export interface CodeBlockProps extends BoxProps {
-  raw?: boolean
   children: string
   language?: CodeHighlightProps['language']
   codeRender?: (content: string) => React.ReactNode
