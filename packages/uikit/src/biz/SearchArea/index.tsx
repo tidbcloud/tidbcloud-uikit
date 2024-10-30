@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { FieldValues, useForm } from 'react-hook-form'
+import { mergeSxList } from 'src/utils/styles.js'
 
 import { useURLQueryState } from '../../hooks/index.js'
 import { IconEraser, IconRefreshCw01, IconXClose } from '../../icons/index.js'
-import { Box, Button, Sx } from '../../primitive/index.js'
+import { Box, BoxProps, Button } from '../../primitive/index.js'
 import { FormDatePicker } from '../Form/DatePicker.js'
 import { FormTimeRangePicker } from '../Form/FormTimeRangePicker.js'
 import { Form, FormMultiSelect, FormProps, FormSelect, FormTextInput } from '../Form/index.js'
@@ -14,7 +15,7 @@ export type TSearchAreaValue = string | string[] | Date | TimeRange
 interface IFormItemBase {
   name: string
   placeholder?: string
-  sx?: Sx
+  sx?: BoxProps['sx']
 }
 
 interface IFormItemText extends IFormItemBase {
@@ -59,7 +60,7 @@ export interface SearchAreaProps<T extends FieldValues> extends FormProps<T> {
 }
 
 const SX_Y_MID = { display: 'flex', alignItems: 'center' }
-const FORM_ITEM_SX_BASE: Sx = { minWidth: '160px' }
+const FORM_ITEM_SX_BASE: BoxProps['sx'] = { minWidth: '160px' }
 
 function FormItemRender(props: {
   data: FormItem
@@ -99,7 +100,6 @@ function FormItemRender(props: {
           onChange={(e) => setKeyword(e.target.value)}
           placeholder={placeholder ?? ''}
           onKeyDown={onKeyDownHandler}
-          sx={{ ...FORM_ITEM_SX_BASE, ...(sx ?? {}) }}
           rightSection={
             !!keyword && (
               <IconXClose
@@ -111,6 +111,7 @@ function FormItemRender(props: {
               />
             )
           }
+          sx={mergeSxList([FORM_ITEM_SX_BASE, sx])}
         />
       )
     case 'select':
@@ -124,9 +125,9 @@ function FormItemRender(props: {
             setKeyword(val ?? '')
             triggerSubmit()
           }}
-          sx={{ ...FORM_ITEM_SX_BASE, ...(sx ?? {}) }}
           clearable
           searchable
+          sx={mergeSxList([FORM_ITEM_SX_BASE, sx])}
         />
       )
     case 'multiselect':
@@ -140,9 +141,9 @@ function FormItemRender(props: {
             setKeyword(val ?? [])
             triggerSubmit()
           }}
-          sx={{ ...FORM_ITEM_SX_BASE, ...(sx ?? {}) }}
           clearable
           searchable
+          sx={mergeSxList([FORM_ITEM_SX_BASE, sx])}
         />
       )
     case 'datepicker':
@@ -155,8 +156,8 @@ function FormItemRender(props: {
             setKeyword(val as Date)
             triggerSubmit()
           }}
-          sx={{ ...FORM_ITEM_SX_BASE, ...(sx ?? {}) }}
           clearable
+          sx={mergeSxList([FORM_ITEM_SX_BASE, sx])}
         />
       )
     case 'timerangepicker':
@@ -168,7 +169,7 @@ function FormItemRender(props: {
             setKeyword(val)
             triggerSubmit()
           }}
-          sx={{ ...FORM_ITEM_SX_BASE, ...(sx ?? {}) }}
+          sx={mergeSxList([FORM_ITEM_SX_BASE, sx])}
         />
       )
     default:
