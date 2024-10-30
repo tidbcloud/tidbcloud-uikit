@@ -1,1 +1,1 @@
-export * from './variant.js'
+export * from './variant-color-resolver.js'
