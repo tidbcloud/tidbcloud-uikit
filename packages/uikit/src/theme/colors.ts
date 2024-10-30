@@ -1,6 +1,6 @@
-import type { Tuple } from '@mantine/styles/lib/theme/types'
+import type { MantineColorsTuple } from '@mantine/core'
 
-export type ShadingColor = Tuple<string, 10>
+export type ShadingColor = MantineColorsTuple
 
 // Colors refer to https://www.figma.com/design/WA4ToJ5lrk8phxnvfHA3xU/%E2%9A%AA%EF%B8%8F-TiDesign-Library?node-id=7222-252904&node-type=SECTION&t=2rq3zxbEaWLOtOZr-0
 export const carbon = [
