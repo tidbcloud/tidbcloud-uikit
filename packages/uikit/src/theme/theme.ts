@@ -22,9 +22,13 @@ import {
   RadioProps,
   ActionIconProps,
   createTheme,
-  MantineThemeOverride
+  mergeMantineTheme,
+  DEFAULT_THEME,
+  FactoryPayload
 } from '@mantine/core'
-import { EmotionHelpers, keyframes } from '@mantine/emotion'
+import { EmotionHelpers, EmotionSx, keyframes } from '@mantine/emotion'
+
+import type { EmotionStyles } from '../utils/emotion.js'
 
 import * as dark from './colors.dark.js'
 import * as light from './colors.js'
@@ -38,6 +42,14 @@ export const Colors = Object.keys(light) as Color[]
 declare module '@mantine/core' {
   export interface MantineThemeColorsOverride {
     colors: Record<Color | (string & {}), ShadingColor>
+  }
+
+  export interface StylesApiPropsOverride<Payload extends FactoryPayload> {
+    styles?: EmotionStyles<Payload>
+  }
+
+  export interface BoxProps {
+    sx?: EmotionSx
   }
 }
 
@@ -1186,7 +1198,7 @@ const theme = createTheme({
   }
 })
 
-export type Theme = MantineThemeOverride & {
+export type Theme = MantineTheme & {
   colors: ColorMap
 }
 
@@ -1194,10 +1206,10 @@ export const useTheme = (colorScheme: 'light' | 'dark'): Theme => {
   const isLight = colorScheme === 'light'
   const colors = isLight ? light : dark
 
-  return {
+  return mergeMantineTheme(DEFAULT_THEME, {
     ...theme,
     colors,
     white: colors.carbon[0],
     black: colors.carbon[8]
-  }
+  })
 }
