@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.55
+
+### Patch Changes
+
+- Fix a issue that requestIdleCallback is missing in safari
+
 ## 2.0.0-beta.54
 
 ### Patch Changes
