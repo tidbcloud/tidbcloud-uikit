@@ -96,7 +96,7 @@ import { createEmotionCache } from '@tidbcloud/uikit/utils'
 const emotionCache = createEmotionCache({ key: 'css' })
 ```
 
-Then pass the emotion cache to `ThemeProvider`:
+Then pass the emotion cache to `ThemeProvider` and wrap your application root component in `_app.tsx`:
 
 ```tsx
 <ThemeProvider emotionCache={emotionCache} colorScheme="auto">
