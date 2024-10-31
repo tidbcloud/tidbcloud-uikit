@@ -1,6 +1,7 @@
 import { MantineProvider, MantineThemeOverride, mergeMantineTheme } from '@mantine/core'
 import { MantineEmotionProvider, emotionTransform } from '@mantine/emotion'
 import { useColorScheme } from '@mantine/hooks'
+import { Notifications } from '@mantine/notifications'
 
 import { useTheme } from '../../theme/theme.js'
 
@@ -23,7 +24,10 @@ export function ThemeProvider({ children, colorScheme, theme: themeOverride }: P
       stylesTransform={emotionTransform}
       theme={mergeMantineTheme(theme, themeOverride)}
     >
-      <MantineEmotionProvider>{children}</MantineEmotionProvider>
+      <MantineEmotionProvider>
+        <Notifications />
+        {children}
+      </MantineEmotionProvider>
     </MantineProvider>
   )
 }

@@ -1,3 +1,10 @@
+import '@mantine/core/styles.css'
+import '@mantine/dates/styles.css'
+import '@mantine/code-highlight/styles.css'
+import '@mantine/notifications/styles.css'
+import '@mantine/carousel/styles.css'
+import '@mantine/dropzone/styles.css'
+
 /**
  * Don't use multiple wildcard exports(`export *`) from other third party packages to avoid ambiguous external namespace resolution
  * otherwisw tsc will make guess from one of the packages when importing
