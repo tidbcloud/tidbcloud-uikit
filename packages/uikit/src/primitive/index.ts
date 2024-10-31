@@ -5,6 +5,25 @@ import '@mantine/notifications/styles.css'
 import '@mantine/carousel/styles.css'
 import '@mantine/dropzone/styles.css'
 
+import type { FactoryPayload } from '@mantine/core'
+import type { EmotionSx } from '@mantine/emotion'
+
+import type { ShadingColor } from '../theme/colors.js'
+import type { Color } from '../theme/theme.js'
+import type { EmotionStyles } from '../utils/emotion.js'
+
+declare module '@mantine/core' {
+  interface MantineThemeColorsOverride {
+    colors: Record<Color | (string & {}), ShadingColor>
+  }
+  interface StylesApiPropsOverride<Payload extends FactoryPayload> {
+    styles?: EmotionStyles<Payload>
+  }
+  interface BoxProps {
+    sx?: EmotionSx
+  }
+}
+
 /**
  * Don't use multiple wildcard exports(`export *`) from other third party packages to avoid ambiguous external namespace resolution
  * otherwisw tsc will make guess from one of the packages when importing

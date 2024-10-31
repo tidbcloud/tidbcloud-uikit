@@ -23,35 +23,17 @@ import {
   ActionIconProps,
   createTheme,
   mergeMantineTheme,
-  DEFAULT_THEME,
-  FactoryPayload
+  DEFAULT_THEME
 } from '@mantine/core'
-import { EmotionHelpers, EmotionSx, keyframes } from '@mantine/emotion'
-
-import type { EmotionStyles } from '../utils/emotion.js'
+import { EmotionHelpers, keyframes } from '@mantine/emotion'
 
 import * as dark from './colors.dark.js'
 import * as light from './colors.js'
-import type { ShadingColor } from './colors.js'
 import { FONT_FAMILY } from './font.js'
 
 export type ColorMap = typeof light
 export type Color = keyof ColorMap
 export const Colors = Object.keys(light) as Color[]
-
-declare module '@mantine/core' {
-  export interface MantineThemeColorsOverride {
-    colors: Record<Color | (string & {}), ShadingColor>
-  }
-
-  export interface StylesApiPropsOverride<Payload extends FactoryPayload> {
-    styles?: EmotionStyles<Payload>
-  }
-
-  export interface BoxProps {
-    sx?: EmotionSx
-  }
-}
 
 function themeColor(theme: MantineTheme, color: string, shade: number) {
   return getThemeColor([color, shade].join('.'), theme)
