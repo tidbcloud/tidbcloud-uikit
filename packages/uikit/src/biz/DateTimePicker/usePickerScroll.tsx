@@ -219,7 +219,8 @@ const usePickerScrollColumn = ({ min, max, curr, open, render }: Options) => {
   })
 
   useEffect(() => {
-    requestIdleCallback(() => {
+    const rIC = window.requestIdleCallback ?? window.setTimeout
+    rIC(() => {
       adjustScrollTop()
     })
   }, [open, val, adjustScrollTop])
