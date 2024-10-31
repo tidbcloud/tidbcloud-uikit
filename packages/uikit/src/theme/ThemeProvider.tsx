@@ -4,7 +4,7 @@ import { MantineEmotionProvider, emotionTransform } from '@mantine/emotion'
 import { useColorScheme } from '@mantine/hooks'
 import { Notifications } from '@mantine/notifications'
 
-import { useTheme } from '../../theme/theme.js'
+import { useTheme } from './theme.js'
 
 export interface ProviderProps {
   children: React.ReactNode

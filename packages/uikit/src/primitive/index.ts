@@ -29,8 +29,6 @@ declare module '@mantine/core' {
  * otherwisw tsc will make guess from one of the packages when importing
  */
 export * from '@mantine/core'
-export { keyframes, createStyles, createGetInitialProps } from '@mantine/emotion'
-export { default as createEmotionCache } from '@emotion/cache'
 
 export { TextInput, type TextInputProps } from './TextInput/index.js'
 
@@ -89,4 +87,4 @@ export type {
 } from '@mantine/dates'
 
 export * from './Typography/index.js'
-export * from './ThemeProvider/index.js'
+export * from '../theme/ThemeProvider.js'
