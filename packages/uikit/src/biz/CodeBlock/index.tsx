@@ -86,6 +86,7 @@ export const CodeBlock = ({
         ) : (
           <CodeHighlight
             {...codeHightlightProps}
+            withCopyButton={false}
             code={children}
             language={language}
             styles={mergeStylesList([
