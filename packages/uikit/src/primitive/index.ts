@@ -61,3 +61,4 @@ export type {
 } from '@mantine/dates'
 
 export * from './Typography/index.js'
+export * from './ThemeProvider/index.js'
