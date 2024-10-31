@@ -1,11 +1,11 @@
 import { type BoxProps, useMantineTheme } from '@mantine/core'
 import { isFunction } from 'lodash-es'
-import { type MRT_TableOptions, type MRT_RowData, useMantineReactTable } from 'mantine-react-table'
+import { type MRT_TableOptions, type MRT_RowData, useMantineReactTable, MRT_TableInstance } from 'mantine-react-table'
 
 import { IconSwitchVertical02, IconArrowUp, IconArrowDown } from '../../../icons/index.js'
 import { mergeSxList } from '../../../utils/index.js'
 
-import { ProTableOptions } from './types.js'
+import { ProTableExtraProps, ProTableOptions } from './types.js'
 
 export function mergeMProps<P extends BoxProps | ((...args: unknown[]) => BoxProps)>(preProps: P, mProps?: P) {
   type PropsResult = Extract<P, { className?: string }> | undefined
@@ -189,8 +189,10 @@ export function mergeProTableProps<T extends Record<string, any>>(props: ProTabl
   }
 }
 
-export function useProTable<T extends MRT_RowData>(options: ProTableOptions<T>) {
+export function useProTable<T extends MRT_RowData>(
+  options: ProTableOptions<T>
+): MRT_TableInstance<T> & ProTableExtraProps {
   const props = mergeProTableProps(options)
 
-  return { ...useMantineReactTable(props), ...props }
+  return { ...props, ...useMantineReactTable(props) }
 }

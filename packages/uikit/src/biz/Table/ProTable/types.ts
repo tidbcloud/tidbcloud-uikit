@@ -24,7 +24,7 @@ type TableInstanceProp<TData extends MRT_RowData> = {
   pagination?: TablePaginationProps
 }
 
-export interface ProTableOptions<TData extends Record<string, any> = {}> extends MRT_TableOptions<TData> {
+export interface ProTableExtraProps {
   withBorder?: boolean
   emptyMessage?: string
   errorMessage?: string
@@ -32,5 +32,9 @@ export interface ProTableOptions<TData extends Record<string, any> = {}> extends
   pagination?: TablePaginationProps
   wrapperProps?: BoxProps
 }
+
+export interface ProTableOptions<TData extends Record<string, any> = {}>
+  extends MRT_TableOptions<TData>,
+    ProTableExtraProps {}
 
 export type ProTableProps<TData extends MRT_RowData> = Xor<TableInstanceProp<TData>, ProTableOptions<TData>>
