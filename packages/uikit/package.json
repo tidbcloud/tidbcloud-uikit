@@ -38,6 +38,7 @@
       "require": "./dist/icons/index.cjs"
     },
     "./dist/icons/raw/*": "./dist/icons/raw/*",
+    "./style.css": "./dist/style.css",
     "./package.json": "./package.json"
   },
   "repository": {
