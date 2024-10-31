@@ -1,6 +1,6 @@
 import createEmotionServer from '@emotion/server/create-instance'
 import { emotionCache } from '@lib/emotion'
-import { ColorSchemeScript, createGetInitialProps } from '@tidbcloud/uikit'
+import { createGetInitialProps } from '@tidbcloud/uikit/utils'
 import NextDocument, { Html, Head, Main, NextScript } from 'next/document'
 
 export default function Document() {
@@ -19,7 +19,6 @@ export default function Document() {
         <meta property="og:description" content={meta.description} />
         <meta property="og:title" content={meta.title} />
         {/* <meta property="og:image" content={meta.image} /> */}
-        <ColorSchemeScript />
       </Head>
       <body>
         <Main />
