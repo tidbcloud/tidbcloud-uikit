@@ -41,7 +41,8 @@ export default defineConfig({
       external: [
         ...Object.keys(globals).filter((i) => {
           return !i.startsWith('@mantine') && !['mantine-react-table'].includes(i)
-        })
+        }),
+        'html-react-parser'
       ],
       output: [
         {
@@ -49,14 +50,16 @@ export default defineConfig({
           format: 'esm',
           preserveModules: true,
           preserveModulesRoot: 'src',
-          entryFileNames: '[name].js'
+          entryFileNames: '[name].js',
+          exports: 'named'
         },
         {
           dir: 'dist',
           format: 'cjs',
           preserveModules: true,
           preserveModulesRoot: 'src',
-          entryFileNames: '[name].cjs'
+          entryFileNames: '[name].cjs',
+          exports: 'named'
         }
       ]
     }
