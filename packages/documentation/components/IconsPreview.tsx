@@ -4,7 +4,6 @@ import { Input } from '@components/ui/input'
 import { Box, CopyButton, Flex, Typography, Center, Stack, Modal, Tooltip } from '@tidbcloud/uikit'
 import { useDisclosure } from '@tidbcloud/uikit/hooks'
 import * as icons from '@tidbcloud/uikit/icons'
-import { IconCopy01, IconSearchLg } from '@tidbcloud/uikit/icons'
 import { useInfiniteScroll, useMemoizedFn, useInViewport } from 'ahooks'
 import { useState, useDeferredValue, useRef, useEffect } from 'react'
 

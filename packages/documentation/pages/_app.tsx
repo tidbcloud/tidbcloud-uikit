@@ -1,4 +1,6 @@
 import { ThemeProvider } from '@components/ThemeProvider'
+import { emotionCache } from '@lib/emotion'
+import { ThemeProvider as TidbCloudThemeProvider } from '@tidbcloud/uikit'
 import { useMount } from 'ahooks'
 import { AppProps } from 'next/app'
 import { useTheme } from 'next-themes'
@@ -6,7 +8,8 @@ import { useTheme } from 'next-themes'
 import '../globals.css'
 
 export default function App({ Component, pageProps }: AppProps) {
-  const { setTheme } = useTheme()
+  const { setTheme, theme } = useTheme()
+  console.log(1, theme)
 
   useMount(() => {
     const targetNode = document.querySelector('html')
@@ -26,8 +29,10 @@ export default function App({ Component, pageProps }: AppProps) {
   })
 
   return (
-    <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-      <Component {...pageProps} />
-    </ThemeProvider>
+    <TidbCloudThemeProvider emotionCache={emotionCache} colorScheme="light">
+      <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+        <Component {...pageProps} />
+      </ThemeProvider>
+    </TidbCloudThemeProvider>
   )
 }
