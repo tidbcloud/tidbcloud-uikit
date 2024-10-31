@@ -1140,14 +1140,15 @@ const theme = createTheme({
           day: {
             color: themeColor(theme, color, 8),
             '&[data-in-range]': {
-              backgroundColor: themeColor(theme, color, 3),
-              borderRadius: theme.defaultRadius
+              backgroundColor: themeColor(theme, color, 3)
             },
             '&[data-first-in-range]': {
-              borderRadius: theme.defaultRadius
+              borderStartStartRadius: theme.defaultRadius,
+              borderEndStartRadius: theme.defaultRadius
             },
             '&[data-last-in-range]': {
-              borderRadius: theme.defaultRadius
+              borderEndEndRadius: theme.defaultRadius,
+              borderStartEndRadius: theme.defaultRadius
             },
             '&[data-selected]': {
               backgroundColor: themeColor(theme, color, 9),
