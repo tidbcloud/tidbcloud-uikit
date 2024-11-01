@@ -91,9 +91,11 @@ export const CodeBlock = ({
             language={language}
             styles={mergeStylesList([
               {
-                code: {
+                root: {
+                  backgroundColor: `transparent !important`
+                },
+                pre: {
                   padding: 0,
-                  backgroundColor: `transparent !important`,
                   wordBreak: 'break-all'
                 }
                 // line: {
