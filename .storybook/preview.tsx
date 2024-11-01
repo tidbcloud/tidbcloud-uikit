@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react'
 import { useDarkMode, DARK_MODE_EVENT_NAME } from 'storybook-dark-mode'
 import { addons } from '@storybook/preview-api'
-import { MantineProvider, ColorSchemeProvider, NotificationsProvider, ColorScheme } from '@tidbcloud/uikit'
-import { useTheme } from '@tidbcloud/uikit/theme'
+import { ThemeProvider } from '@tidbcloud/uikit/theme'
 import { Preview } from '@storybook/react'
 import { Title, Subtitle, Description, Primary, Controls, Stories, DocsContainer } from '@storybook/blocks'
 import { themes } from '@storybook/theming'
@@ -14,7 +13,7 @@ export const parameters = {
 function ThemeWrapper(props: any) {
   const isDarkMode = useDarkMode()
   const colorScheme = useMemo(() => {
-    let colorScheme: ColorScheme = isDarkMode ? 'dark' : 'light'
+    let colorScheme: 'dark' | 'light' | 'auto' = isDarkMode ? 'dark' : 'light'
     const curURL = window.location.href
     if (curURL.indexOf('theme=') > -1) {
       colorScheme = curURL.indexOf('theme=dark') > -1 ? 'dark' : 'light'
@@ -22,24 +21,7 @@ function ThemeWrapper(props: any) {
     return colorScheme
   }, [isDarkMode])
 
-  const theme = useTheme(colorScheme)
-
-  return (
-    <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={() => {}}>
-      <MantineProvider
-        theme={{
-          ...theme,
-          colorScheme
-        }}
-        withGlobalStyles
-        withNormalizeCSS
-      >
-        <NotificationsProvider position="top-center">
-          <div>{props.children}</div>
-        </NotificationsProvider>
-      </MantineProvider>
-    </ColorSchemeProvider>
-  )
+  return <ThemeProvider colorScheme={colorScheme}>{props.children}</ThemeProvider>
 }
 
 export const decorators = [(renderStory: any) => <ThemeWrapper>{renderStory()}</ThemeWrapper>]
