@@ -1,10 +1,10 @@
-import { clsx } from '@mantine/styles'
+import { createStyles } from '@mantine/emotion'
 import { useMemoizedFn } from 'ahooks'
 import type { Dayjs } from 'dayjs'
 import { padStart, range } from 'lodash-es'
 import { useRef, useMemo, useState, useEffect } from 'react'
 
-import { Box, createStyles, ScrollArea } from '../../primitive/index.js'
+import { Box, ScrollArea } from '../../primitive/index.js'
 import { dayjs } from '../../utils/dayjs.js'
 
 import { CellHeight, CellStyle } from './constant.js'
@@ -148,7 +148,7 @@ interface Options {
 type Range = Pick<Options, 'max' | 'min'>
 
 const usePickerScrollColumn = ({ min, max, curr, open, render }: Options) => {
-  const { classes } = useStyles()
+  const { classes, cx } = useStyles()
   const ref = useRef<HTMLDivElement>(null)
   const timeoutRef = useRef<number>()
   const [val, setVal] = useState(curr)
@@ -194,7 +194,7 @@ const usePickerScrollColumn = ({ min, max, curr, open, render }: Options) => {
         {numbers.map((i, index) => (
           <div
             key={i}
-            className={clsx(classes.cell, i === curr && classes.bold)}
+            className={cx(classes.cell, i === curr && classes.bold)}
             onClick={(e) => handleClickCell(e, index)}
             style={CellStyle}
           >
@@ -204,7 +204,7 @@ const usePickerScrollColumn = ({ min, max, curr, open, render }: Options) => {
 
         {/* cellPlaceholder */}
         {range(6).map((i) => (
-          <Box key={i} className={clsx(classes.cell, classes.cellPlaceholder)} style={CellStyle} />
+          <Box key={i} className={cx(classes.cell, classes.cellPlaceholder)} style={CellStyle} />
         ))}
       </ScrollArea>
     )

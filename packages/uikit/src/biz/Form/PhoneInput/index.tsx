@@ -1,14 +1,17 @@
 import { ErrorMessage } from '@hookform/error-message'
+import { getThemeColor } from '@mantine/core'
+import { createStyles } from '@mantine/emotion'
 import { Controller, RegisterOptions, useFormContext } from 'react-hook-form'
 import { CountryData } from 'react-phone-input-2'
 
-import { SelectProps, Box, BoxProps, createStyles } from '../../../primitive/index.js'
+import { SelectProps, Box, BoxProps } from '../../../primitive/index.js'
+import { mergeStylesList } from '../../../utils/styles.js'
 import { PhoneInput, PhoneInputProps } from '../../PhoneInput/index.js'
 import { FormSelect } from '../Select.js'
 
 import rawCountries from './rawCountries.js'
 
-export interface FormPhoneInputProps extends PhoneInputProps {
+export interface FormPhoneInputProps extends Omit<PhoneInputProps, 'onSelect'> {
   name: string
   defaultCountry?: string
   rules?: RegisterOptions
@@ -53,7 +56,7 @@ export const FormPhoneInput: React.FC<FormPhoneInputProps> = ({
   )
 }
 
-export interface FormPhoneInputV2Props extends PhoneInputProps {
+export interface FormPhoneInputV2Props extends Omit<PhoneInputProps, 'onSelect'> {
   countryKey: string
   phoneKey: string
   defaultCountry?: string
@@ -61,7 +64,7 @@ export interface FormPhoneInputV2Props extends PhoneInputProps {
   countryRules?: RegisterOptions
   onSelect?: (value: string, country: CountryData | {}) => void
   selectProps: Omit<SelectProps, 'data'> & {
-    onFilter?: (
+    filter?: (
       data: { value: string; label: string },
       index: number,
       array: { value: string; label: string }[]
@@ -80,8 +83,7 @@ const countryOptions = rawCountries.map((raw) => {
 })
 
 const useStyles = createStyles((theme) => {
-  const primaryShader = theme.fn.primaryShade()
-  const errorColor = theme.colors.red[primaryShader]
+  const errorColor = getThemeColor('red', theme)
   return {
     phoneInputContainer: {
       borderTopLeftRadius: '0 !important',
@@ -106,7 +108,7 @@ export const FormPhoneInputV2: React.FC<FormPhoneInputV2Props> = ({
   ...rest
 }) => {
   const { watch, formState, getFieldState } = useFormContext()
-  const { onFilter, ...restProps } = selectProps
+  const { filter: onFilter, ...restProps } = selectProps
   const { error: countryError } = getFieldState(countryKey, formState)
   const { error: phoneError } = getFieldState(phoneKey, formState)
   const country = watch(countryKey, '')
@@ -120,43 +122,38 @@ export const FormPhoneInputV2: React.FC<FormPhoneInputV2Props> = ({
           {...restProps}
           name={countryKey}
           rules={countryRules}
-          styles={(theme, params) => {
-            const styles =
-              typeof restProps.styles === 'function' ? restProps.styles(theme, params) : restProps.styles || {}
-            return {
-              ...styles,
-              wrapper: {
-                ...(styles.wrapper || {}),
-                ':hover': {
-                  zIndex: 1
+          styles={mergeStylesList([
+            () => {
+              return {
+                wrapper: {
+                  ':hover': {
+                    zIndex: 1
+                  },
+                  ':focus-within': {
+                    zIndex: 1
+                  },
+                  zIndex: countryError ? 1 : undefined
                 },
-                ':focus-within': {
-                  zIndex: 1
+                error: {
+                  display: 'none'
                 },
-                zIndex: countryError ? 1 : undefined
-              },
-              error: {
-                ...(styles.error || {}),
-                display: 'none'
-              },
-              input: {
-                ...(styles.input || {}),
-                borderTopRightRadius: 0,
-                borderBottomRightRadius: 0
+                input: {
+                  borderTopRightRadius: 0,
+                  borderBottomRightRadius: 0
+                }
               }
-            }
-          }}
+            },
+            restProps.styles
+          ])}
         ></FormSelect>
         <FormPhoneInput
           country={country}
           rootProps={{ w: '100%', mb: 0 }}
           rules={rules}
           inputClass={classes.phoneInputContainer}
-          styles={(theme) => {
-            return {
-              error: {
-                display: 'none'
-              }
+          styles={{
+            error: {
+              display: 'none'
             }
           }}
           showContryCodeAfterFocus={false}

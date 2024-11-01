@@ -1,3 +1,4 @@
+import { CodeHighlight, type CodeHighlightProps } from '@mantine/code-highlight'
 import React, { useMemo, useState } from 'react'
 
 import { useLocalStorage } from '../../hooks/index.js'
@@ -13,7 +14,6 @@ import {
   CodeProps,
   HoverCard
 } from '../../primitive/index.js'
-import { Prism, PrismProps } from '../../primitive/Prism/index.js'
 import { mergeSxList, mergeStylesList } from '../../utils/index.js'
 
 function useFold(persistenceKey?: string) {
@@ -32,16 +32,12 @@ function useFold(persistenceKey?: string) {
 }
 
 export interface CodeBlockProps extends BoxProps {
-  language?: PrismProps['language']
-
+  children: string
+  language?: CodeHighlightProps['language']
   codeRender?: (content: string) => React.ReactNode
-  children: PrismProps['children']
-
   copyContent?: string
   onCopyClick?: () => void
-
-  prismProps?: Omit<PrismProps, 'language' | 'children'>
-
+  codeHightlightProps?: Omit<CodeHighlightProps, 'language' | 'children'>
   foldProps?: {
     defaultHeight?: number
     persistenceKey?: string
@@ -50,16 +46,16 @@ export interface CodeBlockProps extends BoxProps {
   }
 }
 
-export const CodeBlock: React.FC<CodeBlockProps> = ({
+export const CodeBlock = ({
   language = 'bash',
   codeRender,
   children,
   copyContent,
   onCopyClick,
-  prismProps,
+  codeHightlightProps,
   foldProps,
   ...rest
-}) => {
+}: React.PropsWithChildren<CodeBlockProps>) => {
   const { defaultHeight, persistenceKey, iconVisible: foldIconVisible, onIconClick: onFoldIconClick } = foldProps || {}
   const { folded, setFolded } = useFold(persistenceKey)
 
@@ -88,32 +84,34 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
         {codeRender ? (
           codeRender(children)
         ) : (
-          <Prism
-            {...prismProps}
+          <CodeHighlight
+            {...codeHightlightProps}
+            withCopyButton={false}
+            code={children}
             language={language}
             styles={mergeStylesList([
               {
-                code: {
+                root: {
+                  backgroundColor: `transparent !important`
+                },
+                pre: {
                   padding: 0,
-                  backgroundColor: `transparent !important`,
                   wordBreak: 'break-all'
-                },
-                line: {
-                  paddingLeft: 0
-                },
-                lineContent: {
-                  whiteSpace: 'pre-wrap'
                 }
+                // line: {
+                //   paddingLeft: 0
+                // },
+                // lineContent: {
+                //   whiteSpace: 'pre-wrap'
+                // }
               },
-              prismProps?.styles
+              codeHightlightProps?.styles
             ])}
-          >
-            {children}
-          </Prism>
+          />
         )}
       </Box>
 
-      <Group spacing={4} sx={(theme) => ({ position: 'absolute', top: 16, right: 16, color: theme.colors.carbon[8] })}>
+      <Group gap={4} sx={(theme) => ({ position: 'absolute', top: 16, right: 16, color: theme.colors.carbon[8] })}>
         {foldIconVisible && (
           <HoverCard withArrow position="top">
             <HoverCard.Target>
@@ -161,17 +159,67 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
   )
 }
 
+// export const CodeBlock = ({
+//   language = 'bash',
+//   codeRender,
+//   children,
+//   copyContent,
+//   onCopyClick,
+//   prismProps,
+//   foldProps,
+//   ...rest
+// }: CodeBlockProps) => {
+//   return (
+//     <Box
+//       {...rest}
+//       p="md"
+//       bg="carbon.2"
+//       sx={(theme) => ({
+//         border: `1px solid ${theme.colors.carbon[4]}`,
+//         borderRadius: theme.defaultRadius,
+//         overflow: 'auto'
+//       })}
+//     >
+//       {codeRender ? (
+//         codeRender(children)
+//       ) : (
+//         <CodeHighlight
+//           {...prismProps}
+//           code={children}
+//           language={language}
+//           styles={mergeStylesList([
+//             {
+//               code: {
+//                 padding: 0,
+//                 backgroundColor: `transparent !important`,
+//                 wordBreak: 'break-all'
+//               },
+//               line: {
+//                 paddingLeft: 0
+//               },
+//               lineContent: {
+//                 whiteSpace: 'pre-wrap'
+//               }
+//             },
+//             prismProps?.styles
+//           ])}
+//         />
+//       )}
+//     </Box>
+//   )
+// }
+
 export interface CopyTextProps extends CodeProps {
   value: string
 }
 
-export const CopyText: React.FC<CopyTextProps> = ({ children, value, ...rest }) => {
+export const CopyText = ({ children, value, ...rest }: React.PropsWithChildren<CopyTextProps>) => {
   return (
     <Code
       bg="carbon.3"
       {...rest}
       p={8}
-      sx={(theme) => {
+      sx={(theme, u) => {
         return mergeSxList([
           {
             display: 'inline-flex',
@@ -181,7 +229,7 @@ export const CopyText: React.FC<CopyTextProps> = ({ children, value, ...rest }) 
             borderRadius: theme.defaultRadius
           },
           rest?.sx
-        ])(theme)
+        ])(theme, u)
       }}
     >
       {children}

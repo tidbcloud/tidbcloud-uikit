@@ -1,3 +1,29 @@
+import '@mantine/core/styles.css'
+import '@mantine/dates/styles.css'
+import '@mantine/code-highlight/styles.css'
+import '@mantine/notifications/styles.css'
+import '@mantine/carousel/styles.css'
+import '@mantine/dropzone/styles.css'
+
+import type { FactoryPayload } from '@mantine/core'
+import type { EmotionSx } from '@mantine/emotion'
+
+import type { ShadingColor } from '../theme/colors.js'
+import type { Color } from '../theme/theme.js'
+import type { EmotionStyles } from '../utils/emotion.js'
+
+declare module '@mantine/core' {
+  interface MantineThemeColorsOverride {
+    colors: Record<Color | (string & {}), ShadingColor>
+  }
+  interface StylesApiPropsOverride<Payload extends FactoryPayload> {
+    styles?: EmotionStyles<Payload>
+  }
+  interface BoxProps {
+    sx?: EmotionSx
+  }
+}
+
 /**
  * Don't use multiple wildcard exports(`export *`) from other third party packages to avoid ambiguous external namespace resolution
  * otherwisw tsc will make guess from one of the packages when importing
@@ -6,11 +32,8 @@ export * from '@mantine/core'
 
 export { TextInput, type TextInputProps } from './TextInput/index.js'
 
-// Re-export @mantine/prims with custom theme
-export * from './Prism/index.js'
-
 // Re-export @mantine/notifications with custom theme
-export { notifier, NotificationsProvider, type NotificationProviderProps } from './notifier/index.js'
+export { notifier, Notifications } from './notifier/index.js'
 
 // Re-export @mantine/dropzone
 export {
@@ -26,12 +49,11 @@ export {
 export type {
   DropzoneAcceptProps,
   DropzoneFullScreenProps,
-  DropzoneFullScreenStylesName,
+  DropzoneFullScreenStylesNames,
   DropzoneIdleProps,
   DropzoneProps,
   DropzoneRejectProps,
-  DropzoneStylesNames,
-  DropzoneStylesParams
+  DropzoneStylesNames
 } from '@mantine/dropzone'
 
 // Re-export @mantine/carousel
@@ -51,38 +73,18 @@ export {
 export type { ModalsProviderProps, ContextModalProps } from '@mantine/modals'
 
 // Re-export @mantine/dates
-export {
-  DatePicker,
-  DatePickerBase,
-  DateRangePicker,
-  Calendar,
-  CalendarBase,
-  RangeCalendar,
-  Month,
-  TimeInput,
-  TimeRangeInput
-} from '@mantine/dates'
+export { DatePicker, DatePickerInput, Calendar, Month, TimeInput } from '@mantine/dates'
 export type {
   CalendarProps,
   CalendarBaseProps,
-  CalendarBaseStylesNames,
+  DatePickerType,
   DatePickerProps,
-  DatePickerBaseProps,
-  DatePickerBaseSharedProps,
+  DatePickerInputProps,
   DatePickerStylesNames,
-  DateRangePickerProps,
-  DateRangePickerValue,
-  RangeCalendarProps,
   MonthProps,
   TimeInputProps,
-  TimeInputStylesNames,
-  TimeInputStylesParams,
-  DayKeydownPayload,
-  DayModifiers,
-  MonthSettings,
-  TimeRangeInputProps,
-  TimeRangeInputStylesNames,
-  TimeRangeInputStylesParams
+  MonthSettings
 } from '@mantine/dates'
 
 export * from './Typography/index.js'
+export * from '../theme/ThemeProvider.js'

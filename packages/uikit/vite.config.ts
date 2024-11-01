@@ -41,7 +41,9 @@ export default defineConfig({
       external: [
         ...Object.keys(globals).filter((i) => {
           return !i.startsWith('@mantine') && !['mantine-react-table'].includes(i)
-        })
+        }),
+        // this has to be external, see https://github.com/remarkablemark/html-react-parser/issues/1427#issuecomment-2220703546
+        'html-react-parser'
       ],
       output: [
         {
@@ -49,14 +51,16 @@ export default defineConfig({
           format: 'esm',
           preserveModules: true,
           preserveModulesRoot: 'src',
-          entryFileNames: '[name].js'
+          entryFileNames: '[name].js',
+          exports: 'named'
         },
         {
           dir: 'dist',
           format: 'cjs',
           preserveModules: true,
           preserveModulesRoot: 'src',
-          entryFileNames: '[name].cjs'
+          entryFileNames: '[name].cjs',
+          exports: 'named'
         }
       ]
     }

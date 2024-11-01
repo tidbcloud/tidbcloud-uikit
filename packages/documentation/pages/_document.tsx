@@ -1,4 +1,7 @@
-import { Html, Head, Main, NextScript } from 'next/document'
+import createEmotionServer from '@emotion/server/create-instance'
+import { emotionCache } from '@lib/emotion'
+import { createGetInitialProps } from '@tidbcloud/uikit/utils'
+import NextDocument, { Html, Head, Main, NextScript } from 'next/document'
 
 export default function Document() {
   const meta = {
@@ -24,3 +27,7 @@ export default function Document() {
     </Html>
   )
 }
+
+const stylesServer = createEmotionServer(emotionCache)
+
+Document.getInitialProps = createGetInitialProps(NextDocument, stylesServer)

@@ -1,5 +1,3 @@
-import { ErrorMessage } from '@hookform/error-message'
-import { Sx } from '@mantine/styles'
 import { Controller, RegisterOptions, useFormContext } from 'react-hook-form'
 
 import { TimeRangePicker, TimeRangePickerProps } from '../TimeRangePicker/index.js'
@@ -7,10 +5,9 @@ import { TimeRangePicker, TimeRangePickerProps } from '../TimeRangePicker/index.
 export interface FormTimeRangePickerProps extends TimeRangePickerProps {
   name: string
   rules?: RegisterOptions
-  sx?: Sx
 }
 
-export const FormTimeRangePicker: React.FC<FormTimeRangePickerProps> = ({ name, rules, onChange, ...rest }) => {
+export const FormTimeRangePicker = ({ name, rules, onChange, ...rest }: FormTimeRangePickerProps) => {
   const { control } = useFormContext()
 
   return (

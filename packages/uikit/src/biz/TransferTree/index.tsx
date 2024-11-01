@@ -1,4 +1,4 @@
-import { clsx, createStyles } from '@mantine/styles'
+import { createStyles } from '@mantine/emotion'
 import { useMemoizedFn, useMount, useUpdateEffect } from 'ahooks'
 import React, { ReactNode, useMemo, useState } from 'react'
 
@@ -53,7 +53,7 @@ export const TransferTree: React.FC<TransferTreeProps> = ({
   onMoveLeft,
   initialTargetKeys
 }) => {
-  const { classes } = useStyles()
+  const { classes, cx } = useStyles()
   const [source, setSource] = useState<TreeDataNode[]>(dataSource)
   const [checkedSource, setCheckedSource] = useState<Set<string>>(new Set())
   const [checkedTarget, setCheckedTarget] = useState<Set<string>>(new Set())
@@ -109,7 +109,7 @@ export const TransferTree: React.FC<TransferTreeProps> = ({
   })
 
   return (
-    <Card withBorder className={clsx(classes.transferTree, className)}>
+    <Card withBorder className={cx(classes.transferTree, className)}>
       <div className={classes.transfer}>
         {sourceHeader ? (
           sourceHeader

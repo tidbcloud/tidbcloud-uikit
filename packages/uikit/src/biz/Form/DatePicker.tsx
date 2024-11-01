@@ -1,14 +1,14 @@
 import { ErrorMessage } from '@hookform/error-message'
 import { Controller, RegisterOptions, useFormContext } from 'react-hook-form'
 
-import { DatePicker, DatePickerProps } from '../../primitive/index.js'
+import { DatePickerInputProps, DatePickerInput, DatePickerType } from '../../primitive/index.js'
 
-export interface FormDatePickerProps extends DatePickerProps {
+export interface FormDatePickerProps extends DatePickerInputProps<DatePickerType> {
   name: string
   rules?: RegisterOptions
 }
 
-export const FormDatePicker: React.FC<FormDatePickerProps> = ({ name, rules, onChange, ...rest }) => {
+export const FormDatePicker = ({ name, rules, onChange, ...rest }: FormDatePickerProps) => {
   const { control, formState, getFieldState } = useFormContext()
   const { error } = getFieldState(name, formState)
 
@@ -20,7 +20,7 @@ export const FormDatePicker: React.FC<FormDatePickerProps> = ({ name, rules, onC
       render={({ field }) => {
         const { onChange: handleChange, ...restField } = field
         return (
-          <DatePicker
+          <DatePickerInput
             onChange={(e) => {
               handleChange(e)
               onChange?.(e)

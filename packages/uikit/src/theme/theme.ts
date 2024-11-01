@@ -1,188 +1,45 @@
-import { keyframes } from '@mantine/core'
-import type {
-  CSSObject,
-  MantineThemeOverride,
-  NavLinkStylesParams,
-  AlertStylesParams,
-  InputStylesParams,
-  SkeletonStylesParams,
-  MultiSelectStylesParams,
-  TableStylesParams,
-  StepperStylesParams,
-  SwitchStylesParams,
-  ButtonStylesParams,
-  PaperStylesParams,
+import {
+  ButtonProps,
   MantineTheme,
-  CheckboxStylesParams,
-  BadgeStylesParams
+  getPrimaryShade,
+  getThemeColor,
+  rem,
+  SkeletonProps,
+  MenuProps,
+  NavLinkProps,
+  StepperProps,
+  AlertProps,
+  TabsProps,
+  SelectProps,
+  InputProps,
+  TextareaProps,
+  MultiSelectProps,
+  BadgeProps,
+  CheckboxProps,
+  PaperProps,
+  TableProps,
+  SwitchProps,
+  RadioProps,
+  ActionIconProps,
+  createTheme,
+  mergeMantineTheme,
+  DEFAULT_THEME
 } from '@mantine/core'
+import { EmotionHelpers, keyframes } from '@mantine/emotion'
 
 import * as dark from './colors.dark.js'
 import * as light from './colors.js'
-import type { ShadingColor } from './colors.js'
 import { FONT_FAMILY } from './font.js'
 
 export type ColorMap = typeof light
 export type Color = keyof ColorMap
 export const Colors = Object.keys(light) as Color[]
 
-declare module '@mantine/core' {
-  export interface MantineThemeColorsOverride {
-    colors: Record<Color | (string & {}), ShadingColor>
-  }
+function themeColor(theme: MantineTheme, color: string, shade: number) {
+  return getThemeColor([color, shade].join('.'), theme)
 }
 
-const getButtonStyles = (theme: MantineTheme, params: ButtonStylesParams): Record<string, CSSObject> => {
-  let color = (params.color?.includes('.') ? params.color.split('.')[0] : params.color) as Color
-
-  const getFilledStyles = (): CSSObject => {
-    color = color || theme.primaryColor
-    const bgColorShade = color.includes('carbon') ? 9 : theme.fn.primaryShade()
-    const hoverBgColorShade = color.includes('carbon') ? bgColorShade - 1 : bgColorShade + 1
-
-    const bgColor = theme.fn.themeColor(color, bgColorShade)
-    const bgHoverColor = theme.fn.themeColor(color, hoverBgColorShade)
-
-    return {
-      color: theme.white,
-      backgroundColor: bgColor,
-
-      ...theme.fn.hover({
-        backgroundColor: bgHoverColor
-      }),
-
-      '&:disabled': {
-        color: theme.white,
-        backgroundColor: theme.fn.themeColor(color, 5)
-      }
-    }
-  }
-
-  const getLightStyles = (): CSSObject => {
-    color = color || 'peacock'
-    const mainColor = theme.colors[color]
-    const fontColorShade = 7
-    const bgColorShade = 1
-    const borderColorShade = 4
-
-    return {
-      color: mainColor[fontColorShade],
-      backgroundColor: mainColor[bgColorShade],
-      borderWidth: 1,
-      borderStyle: 'solid',
-      borderColor: mainColor[borderColorShade],
-
-      ...theme.fn.hover({
-        color: mainColor[fontColorShade + 1],
-        borderColor: mainColor[borderColorShade + 1],
-        backgroundColor: mainColor[bgColorShade + 1]
-      }),
-
-      '&:disabled': {
-        color: theme.colors[theme.primaryColor][6],
-        borderColor: theme.colors[theme.primaryColor][borderColorShade + 1],
-        backgroundColor: theme.colors[theme.primaryColor][2]
-      }
-    }
-  }
-
-  const getDefaultStyles = (): CSSObject => {
-    color = color || theme.primaryColor
-    const mainColor = theme.colors[color]
-    const fontColorShade = color === 'carbon' ? 8 : 7
-    const bgColorShade = 2
-    const borderColorShade = color === 'carbon' ? 5 : 4
-
-    return {
-      color: mainColor[fontColorShade],
-      backgroundColor: mainColor[bgColorShade],
-      borderColor: mainColor[borderColorShade],
-
-      ...theme.fn.hover({
-        color: mainColor[fontColorShade + 1],
-        borderColor: mainColor[borderColorShade + 1],
-        backgroundColor: mainColor[bgColorShade + 1]
-      }),
-
-      '&:disabled': {
-        color: theme.colors[theme.primaryColor][6],
-        borderColor: theme.colors[theme.primaryColor][borderColorShade + 1],
-        backgroundColor: theme.colors[theme.primaryColor][2]
-      }
-    }
-  }
-
-  const getSubtleStyles = (): CSSObject => {
-    color = color || 'peacock'
-    const mainColor = theme.colors[color]
-    const fontColorShade = 7
-    const bgColorShade = 1
-
-    return {
-      color: mainColor[fontColorShade],
-      backgroundColor: 'transparent',
-
-      ...theme.fn.hover({
-        color: mainColor[fontColorShade + 1],
-        backgroundColor: mainColor[bgColorShade + 1]
-      }),
-
-      '&:disabled': {
-        color: theme.colors[theme.primaryColor][6],
-        backgroundColor: theme.white
-      }
-    }
-  }
-
-  const variantStyles: Record<string, CSSObject> = {
-    filled: getFilledStyles(),
-    light: getLightStyles(),
-    default: getDefaultStyles(),
-    subtle: getSubtleStyles(),
-    outline: getDefaultStyles()
-  }
-
-  const sizeStyles: Record<string, CSSObject> = {
-    xs: {
-      height: 28
-    },
-    sm: {
-      height: 32
-    },
-    md: {
-      height: 40
-    },
-    lg: {
-      height: 48
-    },
-    xl: {
-      height: 56
-    }
-  }
-
-  const finalStyles = {
-    label: {
-      fontWeight: 500,
-      fontSize: params.size === 'xs' ? 12 : 14
-    },
-    root: {
-      paddingLeft: 12,
-      paddingRight: 12,
-      ...variantStyles[params.variant],
-      ...sizeStyles[params.size]
-    },
-    leftIcon: {
-      marginRight: 4
-    },
-    rightIcon: {
-      marginLeft: 4
-    }
-  }
-
-  return finalStyles
-}
-
-const getInputStyles = (theme: MantineTheme, params: Partial<InputStylesParams>) => {
+function getInputStyles(theme: MantineTheme, props: Pick<InputProps, 'size'>) {
   const sizes = {
     xl: 48,
     lg: 44,
@@ -197,8 +54,11 @@ const getInputStyles = (theme: MantineTheme, params: Partial<InputStylesParams>)
     sm: 13,
     xs: 12
   }
-  const size = theme.fn.size({ size: params.size ?? 'md', sizes })
-  const inputFontSize = theme.fn.size({ size: params.size ?? 'md', sizes: fontSizes })
+  // @ts-ignore
+  const size = sizes[props.size ?? 'md']
+  // @ts-ignore
+  const inputFontSize = fontSizes[props.size ?? 'md']
+
   const inputSize = {
     height: size,
     minHeight: size,
@@ -214,88 +74,86 @@ const getInputStyles = (theme: MantineTheme, params: Partial<InputStylesParams>)
 
   return {
     label: {
-      color: theme.colors.carbon[8],
+      color: themeColor(theme, 'carbon', 8),
       marginBottom: 6,
       lineHeight: '20px',
       fontSize: 14
     },
     description: {
-      color: theme.colors.carbon[7],
+      color: themeColor(theme, 'carbon', 7),
       fontSize: 12
     },
     input: {
       ...inputSize,
       color: theme.colors.carbon[8],
-      border: `1px solid ${theme.colors.carbon[4]}`,
-      backgroundColor: theme.colors.carbon[0],
+      border: `1px solid ${themeColor(theme, 'carbon', 4)}`,
+      backgroundColor: themeColor(theme, 'carbon', 0),
 
       '&:hover': {
-        borderColor: theme.colors.carbon[5]
+        borderColor: themeColor(theme, 'carbon', 5)
       },
       '&:focus, &:focus-within': {
-        borderColor: theme.colors.carbon[9]
+        borderColor: themeColor(theme, 'carbon', 9)
       },
       '&:disabled': {
-        borderColor: theme.colors.carbon[4],
-        backgroundColor: theme.colors.carbon[2],
-        color: theme.colors.carbon[8],
+        borderColor: themeColor(theme, 'carbon', 4),
+        backgroundColor: themeColor(theme, 'carbon', 2),
+        color: themeColor(theme, 'carbon', 8),
         opacity: 1
       },
       '&::placeholder': {
-        color: theme.colors.carbon[6]
+        color: themeColor(theme, 'carbon', 6)
       },
 
       '& .mantine-PasswordInput-innerInput': {
         ...passwordInnerInputSize,
         '&::placeholder': {
-          color: theme.colors.carbon[6]
+          color: themeColor(theme, 'carbon', 6)
         }
       }
     },
-    invalid: {
-      borderColor: theme.colors.red[4],
+    error: {
+      color: themeColor(theme, 'red', 7)
+    },
+    wrapper: {
+      '&[data-error]': {
+        '.mantine-Input-input, .mantine-TextInput-input, .mantine-PasswordInput-innerInput': {
+          color: themeColor(theme, 'red', 7),
+          borderColor: themeColor(theme, 'red', 4),
 
-      '& .mantine-PasswordInput-innerInput': {
-        borderColor: 'transparent'
-      },
-      '&:hover': {
-        borderColor: theme.colors.red[4]
-      },
-      '&:focus, &:focus-within': {
-        borderColor: theme.colors.red[4]
-      },
-      '&::placeholder': {
-        color: theme.colors.carbon[6]
+          '& .mantine-PasswordInput-innerInput': {
+            borderColor: 'transparent'
+          },
+          '&:hover': {
+            borderColor: themeColor(theme, 'red', 4)
+          },
+          '&:focus, &:focus-within': {
+            borderColor: themeColor(theme, 'red', 4)
+          },
+          '&::placeholder': {
+            color: themeColor(theme, 'carbon', 6)
+          }
+        }
       }
+    },
+    section: {
+      overflow: 'hidden'
     }
   }
 }
 
-const spinKeyFrames = keyframes({
-  '0%': {
-    transform: 'rotate(0deg)'
-  },
-  '100%': {
-    transform: 'rotate(360deg)'
-  }
-})
-
-// DO NOT CHANGE, THE PATCH FOR LOADER RELIES ON THIS NAME
-const loaderClassName = 'mantine-loader-root'
-const loaderAnimation = `${spinKeyFrames} 1s linear infinite`
-
-const theme: MantineThemeOverride = {
+const theme = createTheme({
   primaryColor: 'carbon',
   primaryShade: 7,
   defaultRadius: 8,
   cursorType: 'pointer',
   fontFamily: FONT_FAMILY,
   breakpoints: {
-    xs: 576,
-    sm: 768,
-    md: 960,
-    lg: 1200,
-    xl: 1440
+    xs: '36em',
+    sm: '48em',
+    md: '60em',
+    lg: '75em',
+    xl: '90em'
   },
   shadows: {
     xs: '0px 2px 4px rgba(0, 0, 0, 0.04)',
@@ -305,33 +163,167 @@ const theme: MantineThemeOverride = {
     xl: '0px 16px 64px rgba(0, 0, 0, 0.08)'
   },
   fontSizes: {
-    xs: 12,
-    sm: 14,
-    md: 14,
-    lg: 18,
-    xl: 20
-  },
-  globalStyles(theme) {
-    return {
-      body: {
-        color: theme.colors?.carbon[8],
-        backgroundColor: theme.colors?.carbon[1],
-        MozOsxFontSmoothing: 'grayscale',
-        WebkitFontSmoothing: 'antialiased'
-      },
-      [`.${loaderClassName}`]: {
-        animation: loaderAnimation
-      }
-    }
+    xs: '12px',
+    sm: '14px',
+    md: '14px',
+    lg: '18px',
+    xl: '20px'
   },
   components: {
     Button: {
-      defaultProps() {
-        return {
-          size: 'md'
-        }
+      defaultProps: {
+        size: 'md',
+        variant: 'filled'
       },
-      styles: getButtonStyles
+      styles: (theme: MantineTheme, props: ButtonProps, u: EmotionHelpers) => {
+        let color = props.color || theme.primaryColor
+
+        const getFilledStyles = () => {
+          const bgColorShade = color.includes('carbon') ? 9 : getPrimaryShade(theme, 'light')
+          const hoverBgColorShade = color.includes('carbon') ? bgColorShade - 1 : bgColorShade + 1
+
+          const bgColor = themeColor(theme, color, bgColorShade)
+          const bgHoverColor = themeColor(theme, color, hoverBgColorShade)
+
+          return {
+            color: theme.white,
+            backgroundColor: bgColor,
+
+            '&:hover': {
+              backgroundColor: bgHoverColor
+            },
+
+            '&:disabled': {
+              color: theme.white,
+              backgroundColor: themeColor(theme, color, 5)
+            }
+          }
+        }
+
+        const getLightStyles = () => {
+          color = color || 'peacock'
+          const fontColorShade = 7
+          const bgColorShade = 1
+          const borderColorShade = 4
+
+          return {
+            color: themeColor(theme, color, fontColorShade),
+            backgroundColor: themeColor(theme, color, bgColorShade),
+            borderWidth: 1,
+            borderStyle: 'solid',
+            borderColor: themeColor(theme, color, borderColorShade),
+
+            '&:hover': {
+              color: themeColor(theme, color, fontColorShade + 1),
+              borderColor: themeColor(theme, color, borderColorShade + 1),
+              backgroundColor: themeColor(theme, color, bgColorShade + 1)
+            },
+
+            '&:disabled': {
+              color: themeColor(theme, theme.primaryColor, 6),
+              borderColor: themeColor(theme, theme.primaryColor, borderColorShade + 1),
+              backgroundColor: themeColor(theme, theme.primaryColor, 2)
+            }
+          }
+        }
+
+        const getDefaultStyles = () => {
+          const fontColorShade = color === 'carbon' ? 8 : 7
+          const bgColorShade = 2
+          const borderColorShade = color === 'carbon' ? 5 : 4
+
+          return {
+            color: themeColor(theme, color, fontColorShade),
+            backgroundColor: themeColor(theme, color, bgColorShade),
+            borderColor: themeColor(theme, color, borderColorShade),
+
+            '&:hover': {
+              color: themeColor(theme, color, fontColorShade + 1),
+              borderColor: themeColor(theme, color, borderColorShade + 1),
+              backgroundColor: themeColor(theme, color, bgColorShade + 1)
+            },
+
+            '&:disabled': {
+              color: themeColor(theme, theme.primaryColor, 6),
+              borderColor: themeColor(theme, theme.primaryColor, borderColorShade + 1),
+              backgroundColor: themeColor(theme, theme.primaryColor, 2)
+            }
+          }
+        }
+
+        const getSubtleStyles = () => {
+          color = color || 'peacock'
+          const fontColorShade = 7
+          const bgColorShade = 1
+
+          return {
+            color: themeColor(theme, color, fontColorShade),
+            backgroundColor: 'transparent',
+
+            '&:hover': {
+              color: themeColor(theme, color, fontColorShade + 1),
+              backgroundColor: themeColor(theme, color, bgColorShade + 1)
+            },
+
+            '&:disabled': {
+              color: themeColor(theme, theme.primaryColor, 6),
+              backgroundColor: theme.white
+            }
+          }
+        }
+
+        const variantStyles = {
+          filled: getFilledStyles(),
+          light: getLightStyles(),
+          default: getDefaultStyles(),
+          subtle: getSubtleStyles(),
+          outline: getDefaultStyles()
+        }
+
+        const sizeStyles = {
+          xs: {
+            height: 28
+          },
+          sm: {
+            height: 32
+          },
+          md: {
+            height: 40
+          },
+          lg: {
+            height: 48
+          },
+          xl: {
+            height: 56
+          }
+        }
+
+        // @ts-ignore
+        const variantStyle = variantStyles[props.variant!]
+        // @ts-ignore
+        const sizeStyle = sizeStyles[props.size!]
+
+        const finalStyles = {
+          label: {
+            fontWeight: 500,
+            fontSize: props.size === 'xs' ? 12 : 14
+          },
+          root: {
+            paddingLeft: 12,
+            paddingRight: 12,
+            ...variantStyle,
+            ...sizeStyle
+          },
+          leftIcon: {
+            marginRight: 4
+          },
+          rightIcon: {
+            marginLeft: 4
+          }
+        }
+
+        return finalStyles
+      }
     },
     Loader: {
       defaultProps: {
@@ -339,7 +331,7 @@ const theme: MantineThemeOverride = {
       }
     },
     Skeleton: {
-      styles(theme, params: SkeletonStylesParams) {
+      styles(theme: MantineTheme, props: SkeletonProps) {
         const animation = keyframes({
           '0%': {
             backgroundPosition: '200% 0'
@@ -348,37 +340,36 @@ const theme: MantineThemeOverride = {
             backgroundPosition: '-200% 0'
           }
         })
-
+        const c1 = themeColor(theme, 'carbon', 2)
+        const c2 = themeColor(theme, 'carbon', 4)
         return {
-          visible: {
+          root: {
             '&::after': {
-              backgroundImage: `linear-gradient(90deg,${theme.colors.carbon[2]},${theme.colors.carbon[4]},${theme.colors.carbon[4]},${theme.colors.carbon[2]})`,
+              backgroundImage: `linear-gradient(90deg,${c1},${c2},${c1},${c2})`,
               backgroundSize: '400% 100%',
-              animation: params.animate ? `${animation} 5000ms ease-in-out infinite` : 'none'
+              animation: props.animate ? `${animation} 5000ms ease-in-out infinite` : 'none'
             }
           }
         }
       }
     },
     Tabs: {
-      styles(theme) {
+      styles(theme: MantineTheme, props: TabsProps) {
         return {
-          tabsList: {
-            gap: 32,
+          list: {
+            gap: props.orientation === 'vertical' ? 8 : 32,
             border: 0
           },
           tab: {
-            color: theme.colors.carbon[7],
+            color: themeColor(theme, 'carbon', 7),
             fontWeight: 600,
             paddingLeft: 0,
-            paddingRight: 0,
+            paddingRight: props.orientation === 'vertical' ? 8 : 0,
             '&[data-active]': {
-              color: theme.colors.carbon[9]
+              color: themeColor(theme, 'carbon', 9)
             },
             '&:hover': {
-              color: theme.colors.carbon[9],
-              background: 'transparent',
-              borderColor: 'transparent'
+              color: themeColor(theme, 'carbon', 9)
             },
             '&:focus': { outlineColor: 'transparent' }
           }
@@ -386,65 +377,80 @@ const theme: MantineThemeOverride = {
       }
     },
     Notification: {
-      styles: {
-        root: {
-          padding: 8,
-          paddingLeft: 28,
+      styles: (theme: MantineTheme) => {
+        return {
+          root: {
+            padding: 8,
+            paddingLeft: 28,
 
-          '&:before': {
-            top: 8,
-            bottom: 8,
-            left: 8,
-            width: 4
+            '&:before': {
+              top: 8,
+              bottom: 8,
+              left: 8,
+              width: 4
+            }
+          },
+          body: {
+            marginRight: 8,
+            lineHeight: 20,
+            fontSize: 16
+          },
+          title: {
+            fontWeight: 600,
+            color: themeColor(theme, 'carbon', 8)
+          },
+          description: {
+            color: themeColor(theme, 'carbon', 7)
           }
-        },
-        body: {
-          marginRight: 8,
-          fontWeight: 600,
-          lineHeight: 20,
-          fontSize: 16
         }
       }
     },
     Menu: {
-      styles: (theme) => ({
-        dropdown: {
-          boxShadow: theme.shadows.md
-        },
-        item: {
-          transition: 'background 150ms ease-in-out',
-          color: theme.colors.carbon[8],
-          '&:hover, &[data-hovered]': {
-            color: theme.colors.carbon[8],
-            backgroundColor: theme.colors.carbon[2],
-            textDecoration: 'none'
+      styles: (theme: MantineTheme, props: MenuProps) => {
+        const textColor = themeColor(theme, 'carbon', 8)
+        const bgHoverColor = themeColor(theme, 'carbon', 2)
+        const bgActiveColor = themeColor(theme, 'carbon', 3)
+        const disabledColor = themeColor(theme, 'carbon', 6)
+        return {
+          dropdown: {
+            boxShadow: theme.shadows.md
           },
-          '&:active, &[data-active]': {
-            color: theme.colors.carbon[8],
-            backgroundColor: theme.colors.carbon[3]
-          },
-          '&:disabled, &[data-disabled]': {
-            color: theme.colors.carbon[5],
-            userSelect: 'none',
-            cursor: 'not-allowed',
+          item: {
+            transition: 'background 150ms ease-in-out',
+            color: textColor,
             '&:hover, &[data-hovered]': {
-              color: theme.colors.carbon[6],
-              backgroundColor: 'transparent'
+              color: textColor,
+              backgroundColor: bgHoverColor,
+              textDecoration: 'none'
+            },
+            '&:active, &[data-active]': {
+              color: textColor,
+              backgroundColor: bgActiveColor
+            },
+            '&:disabled, &[data-disabled]': {
+              color: disabledColor,
+              userSelect: 'none',
+              cursor: 'not-allowed',
+              '&:hover, &[data-hovered]': {
+                color: disabledColor,
+                backgroundColor: 'transparent'
+              }
             }
           }
         }
-      })
+      }
     },
     NavLink: {
       defaultProps: {
         px: 10,
         lh: 1.5,
-        fw: 500
+        fw: 500,
+        variant: 'light'
       },
-      styles: (theme, params: NavLinkStylesParams) => {
-        const withThemeColor = (shade: number) => theme.fn.themeColor(params.color ?? theme.primaryColor, shade)
+      styles: (theme: MantineTheme, props: NavLinkProps) => {
+        const withThemeColor = (shade: number) => themeColor(theme, props.color ?? theme.primaryColor, shade)
 
-        const rootStyles: Record<string, CSSObject> = {
+        const rootStyles = {
           light: {
             color: withThemeColor(8),
             '&:hover': {
@@ -468,7 +474,8 @@ const theme: MantineThemeOverride = {
           }
         }
 
-        const matchedStyle = rootStyles[params.variant] || {}
+        // @ts-ignore
+        const matchedStyle = rootStyles[props.variant] || {}
 
         return {
           root: {
@@ -476,49 +483,49 @@ const theme: MantineThemeOverride = {
             borderRadius: theme.defaultRadius,
             transition: 'background 150ms ease-in-out'
           },
-          icon: {
+          section: {
             marginRight: 10
           }
         }
       }
     },
     Stepper: {
-      styles: (theme, params: StepperStylesParams) => {
-        const color = params.color || theme.primaryColor
+      styles: (theme: MantineTheme, props: StepperProps) => {
+        const color = props.color || theme.primaryColor
         return {
           stepIcon: {
-            backgroundColor: theme.fn.themeColor(color, 0),
-            borderColor: theme.fn.themeColor(color, 4),
-            color: theme.fn.themeColor(color, 7),
+            backgroundColor: themeColor(theme, color, 0),
+            borderColor: themeColor(theme, color, 4),
+            color: themeColor(theme, color, 7),
             '&[data-progress]': {
-              backgroundColor: theme.fn.themeColor(color, 9),
-              color: theme.fn.themeColor(color, 0),
-              borderColor: theme.fn.themeColor(color, 9)
+              backgroundColor: themeColor(theme, color, 9),
+              color: themeColor(theme, color, 0),
+              borderColor: themeColor(theme, color, 9)
             },
             '&[data-completed]': {
-              backgroundColor: theme.fn.themeColor(color, 3),
-              color: theme.fn.themeColor(color, 9),
-              borderColor: theme.fn.themeColor(color, 9)
+              backgroundColor: themeColor(theme, color, 3),
+              color: themeColor(theme, color, 9),
+              borderColor: themeColor(theme, color, 9)
             }
           },
           stepCompletedIcon: {
-            color: theme.fn.themeColor(color, 9),
-            '> svg': {
-              width: 14,
-              height: 14
+            color: themeColor(theme, color, 9),
+            '& > svg': {
+              width: '14px !important',
+              height: '14px !important'
             }
           },
           separator: {
-            backgroundColor: theme.fn.themeColor(color, 4)
+            backgroundColor: themeColor(theme, color, 4)
           },
           separatorActive: {
-            backgroundColor: theme.fn.themeColor(color, 9)
+            backgroundColor: themeColor(theme, color, 9)
           },
           verticalSeparator: {
-            backgroundColor: theme.fn.themeColor(color, 4)
+            backgroundColor: themeColor(theme, color, 4)
           },
           verticalSeparatorActive: {
-            backgroundColor: theme.fn.themeColor(color, 9)
+            backgroundColor: themeColor(theme, color, 9)
           }
         }
       }
@@ -527,14 +534,15 @@ const theme: MantineThemeOverride = {
       defaultProps: {
         color: 'peacock'
       },
-      styles: (theme, params: AlertStylesParams) => {
+      styles: (theme: MantineTheme, props: AlertProps) => {
+        const color = props.color || theme.primaryColor
         return {
           root: {
             borderRadius: 0,
             border: 'none',
-            borderLeft: `2px solid ${theme.fn.themeColor(params.color, 7)}`,
-            color: theme.fn.themeColor(params.color, 9),
-            backgroundColor: theme.fn.themeColor(params.color, 1)
+            borderLeft: `2px solid ${themeColor(theme, color, 7)}`,
+            color: themeColor(theme, color, 9),
+            backgroundColor: themeColor(theme, color, 1)
           },
           title: {
             color: 'inherit'
@@ -554,10 +562,11 @@ const theme: MantineThemeOverride = {
         transition: 'fade',
         transitionDuration: 200,
         transitionTimingFunction: 'ease',
-        size: 'md'
+        size: 'md',
+        withCheckIcon: false
       },
-      styles: (theme, params: InputStylesParams) => {
-        const styles = getInputStyles(theme, { size: params.size })
+      styles: (theme: MantineTheme, props: SelectProps) => {
+        const styles = getInputStyles(theme, { size: props.size })
         const height = styles.input.height
 
         return {
@@ -566,51 +575,48 @@ const theme: MantineThemeOverride = {
             marginBottom: 6
           },
           description: {
-            color: theme.colors.carbon[7]
+            color: themeColor(theme, 'carbon', 7)
           },
           input: {
             height: height,
             minHeight: height,
-            color: theme.colors.carbon[8],
+            color: themeColor(theme, 'carbon', 8),
 
-            ...(params.variant === 'unstyled' && {
+            ...(props.variant === 'unstyled' && {
               border: 'none',
               '&:disabled': {
-                color: theme.colors.carbon[7]
+                color: themeColor(theme, 'carbon', 7)
               }
             }),
-            ...(params.variant === 'filled' && {
-              backgroundColor: theme.colors.carbon[2],
+            ...(props.variant === 'filled' && {
+              backgroundColor: themeColor(theme, 'carbon', 2),
               borderColor: 'transparent',
 
               '&:disabled': {
-                color: theme.colors.carbon[6],
+                color: themeColor(theme, 'carbon', 6),
                 cursor: 'not-allowed'
               }
             })
           },
-          item: {
+          option: {
             transition: 'background 150ms ease-in-out',
-            color: theme.colors.carbon[8],
-            '&[data-hovered]': {
-              color: theme.colors.carbon[8],
-              backgroundColor: theme.colors.carbon[3]
+            color: themeColor(theme, 'carbon', 8),
+            '&:hover': {
+              color: themeColor(theme, 'carbon', 8),
+              backgroundColor: themeColor(theme, 'carbon', 3)
             },
-            '&[data-selected]': {
-              color: theme.colors.carbon[8],
+            '&[data-checked]': {
+              color: themeColor(theme, 'carbon', 8),
               fontWeight: 700,
               backgroundColor: 'transparent',
               '&:hover': {
-                backgroundColor: theme.colors.carbon[3]
+                backgroundColor: themeColor(theme, 'carbon', 3)
               }
             }
           },
-          rightSection: {
-            '& .mantine-ActionIcon-root': {
-              color: `${theme.colors.carbon[7]} !important`
-            },
-            '& [data-chevron]': {
-              color: `${theme.colors.carbon[7]} !important`
+          section: {
+            '& > svg': {
+              color: `${themeColor(theme, 'carbon', 7)} !important`
             }
           }
         }
@@ -621,31 +627,37 @@ const theme: MantineThemeOverride = {
         size: 'md',
         transition: 'fade',
         transitionDuration: 200,
-        transitionTimingFunction: 'ease'
+        transitionTimingFunction: 'ease',
+        withCheckIcon: false
       },
-      styles: (theme, params: MultiSelectStylesParams) => {
-        const styles = getInputStyles(theme, { size: params.size })
+      styles: (theme: MantineTheme, props: MultiSelectProps) => {
+        const styles = getInputStyles(theme, { size: props.size })
         const inputHeight = styles.input.height
         return {
           label: {
             fontSize: 14,
             marginBottom: 6
           },
+          input: {
+            paddingTop: 8,
+            paddingBottom: 8
+          },
+          inputField: {
+            '&::placeholder': {
+              color: themeColor(theme, 'carbon', 6)
+            }
+          },
           wrapper: {
             height: inputHeight + 2
           },
-          values: {
-            height: inputHeight - 2,
-            minHeight: inputHeight - 2
+          pill: {
+            backgroundColor: themeColor(theme, 'carbon', 3),
+            color: themeColor(theme, 'carbon', 8),
+            borderRadius: theme.radius.sm
           },
-          value: {
-            height: inputHeight - 12,
-            backgroundColor: theme.colors.carbon[3],
-            color: theme.colors.carbon[8]
-          },
-          rightSection: {
-            '& [data-chevron]': {
-              color: `${theme.colors.carbon[7]} !important`
+          section: {
+            '& > svg': {
+              color: `${themeColor(theme, 'carbon', 7)} !important`
             }
           }
         }
@@ -659,7 +671,8 @@ const theme: MantineThemeOverride = {
     },
     TextInput: {
       defaultProps: {
-        size: 'md'
+        size: 'md',
+        inputWrapperOrder: ['label', 'input', 'description', 'error']
       },
       styles: getInputStyles
     },
@@ -676,18 +689,19 @@ const theme: MantineThemeOverride = {
       styles: getInputStyles
     },
     Textarea: {
-      styles: (theme, params) => {
-        const styles = getInputStyles(theme, params)
+      styles: (theme: MantineTheme, props: TextareaProps) => {
+        const styles = getInputStyles(theme, props)
         styles.input.height = undefined
         return styles
       }
     },
     Badge: {
       defaultProps: {
-        color: 'peacock'
+        color: 'peacock',
+        size: 'md'
       },
-      styles(theme, params: BadgeStylesParams) {
-        const color = params.color ?? theme.primaryColor
+      styles(theme: MantineTheme, props: BadgeProps) {
+        const color = props.color ?? theme.primaryColor
         const mainShade = color.includes('carbon') ? 9 : 7
 
         const sizes = {
@@ -698,45 +712,49 @@ const theme: MantineThemeOverride = {
           xl: 16
         }
 
-        const styles: Record<string, CSSObject> = {
+        // @ts-ignore
+        const fontSize = sizes[props.size]
+
+        const styles = {
           dot: {
             border: 'none',
             textTransform: 'capitalize',
             fontWeight: 400,
-            fontSize: theme.fn.size({ sizes, size: params.size }),
+            fontSize,
             backgroundColor: 'transparent',
-            color: theme.fn.themeColor(theme.primaryColor, 8),
+            color: themeColor(theme, theme.primaryColor, 8),
             padding: 0,
             borderRadius: 0,
 
             '&:before': {
-              backgroundColor: theme.fn.themeColor(color, 7)
+              backgroundColor: themeColor(theme, color, 7)
             }
           },
           outline: {
-            color: theme.fn.themeColor(color, mainShade),
-            borderColor: theme.fn.themeColor(color, 4)
+            color: themeColor(theme, color, mainShade),
+            borderColor: themeColor(theme, color, 4)
           },
           light: {
-            backgroundColor: theme.fn.themeColor(color, 1),
-            color: theme.fn.themeColor(color, mainShade)
+            backgroundColor: themeColor(theme, color, 1),
+            color: themeColor(theme, color, mainShade)
           },
           filled: {
-            backgroundColor: theme.fn.themeColor(color, mainShade),
+            backgroundColor: themeColor(theme, color, mainShade),
             color: theme.white
           }
         }
 
         return {
           root: {
-            ...styles[params.variant]
+            // @ts-ignore
+            ...styles[props.variant]
           }
         }
       }
     },
     Checkbox: {
-      styles(theme, params: CheckboxStylesParams) {
-        const withThemeColor = (shade: number) => theme.fn.themeColor(params.color ?? theme.primaryColor, shade)
+      styles(theme: MantineTheme, props: CheckboxProps) {
+        const withThemeColor = (shade: number) => themeColor(theme, props.color ?? theme.primaryColor, shade)
         return {
           input: {
             borderRadius: 4,
@@ -747,27 +765,23 @@ const theme: MantineThemeOverride = {
               borderColor: withThemeColor(9)
             },
             '&:disabled:checked': {
-              backgroundColor: theme.colors.carbon[6],
-              borderColor: theme.colors.carbon[6]
+              backgroundColor: themeColor(theme, 'carbon', 6),
+              borderColor: themeColor(theme, 'carbon', 6)
             }
           },
           label: {
-            color: withThemeColor(8),
+            color: themeColor(theme, 'carbon', 8),
 
             '&[data-disabled]': {
-              color: theme.colors.carbon[6]
+              color: themeColor(theme, 'carbon', 6)
             }
           }
         }
       }
     },
     Divider: {
-      styles(theme) {
-        return {
-          root: {
-            borderColor: theme.colors.carbon[4]
-          }
-        }
+      defaultProps: {
+        color: 'carbon.4'
       }
     },
     Card: {
@@ -775,7 +789,7 @@ const theme: MantineThemeOverride = {
         shadow: 'xs',
         withBorder: true
       },
-      styles: (theme) => {
+      styles: (theme: MantineTheme) => {
         return {
           root: {
             backgroundColor: theme.colors.carbon[0]
@@ -784,68 +798,68 @@ const theme: MantineThemeOverride = {
       }
     },
     Paper: {
-      styles: (theme, params: PaperStylesParams) => {
+      styles: (theme: MantineTheme, props: PaperProps) => {
         return {
           root: {
-            backgroundColor: theme.colors.carbon[0],
-            borderColor: params.withBorder ? theme.colors.carbon[3] : 'transparent'
+            backgroundColor: themeColor(theme, 'carbon', 0),
+            borderColor: props.withBorder ? themeColor(theme, 'carbon', 3) : 'transparent'
           }
         }
       }
     },
     Drawer: {
-      defaultProps: (theme) => ({
-        overlayColor: theme.colors.carbon[2],
-        overlayOpacity: 0.9,
-        overlayBlur: 3
+      defaultProps: (theme: MantineTheme) => ({
+        overlayProps: {
+          backgroundOpacity: 0.9,
+          blur: 3,
+          color: themeColor(theme, 'carbon', 2)
+        }
       })
     },
     Modal: {
-      defaultProps: (theme) => ({
+      defaultProps: (theme: MantineTheme) => ({
         shadow: 'xl',
         padding: 0,
-        exitTransitionDuration: 200,
-        overlayColor: theme.colors.carbon[2],
-        overlayOpacity: 0.9,
-        overlayBlur: 3
+        centered: true,
+        transitionProps: {
+          duration: 200
+        },
+        overlayProps: {
+          backgroundOpacity: 0.9,
+          blur: 3,
+          color: themeColor(theme, 'carbon', 2)
+        }
       }),
-      styles: (theme) => ({
-        modal: {
-          border: `1px solid ${theme.colors.carbon[4]}`
+      styles: (theme: MantineTheme) => ({
+        content: {
+          border: `1px solid ${themeColor(theme, 'carbon', 4)} !important`
         },
         header: {
           borderTopLeftRadius: theme.defaultRadius,
           borderTopRightRadius: theme.defaultRadius,
           padding: '16px 16px 16px 24px',
           margin: 0,
-          backgroundColor: theme.colors.carbon[1]
+          backgroundColor: themeColor(theme, 'carbon', 1)
         },
         title: {
           fontWeight: 700,
           fontSize: 16,
           lineHeight: 1.5,
-          color: theme.colors.carbon[9]
+          color: themeColor(theme, 'carbon', 9)
         },
         body: {
           padding: 24,
-          backgroundColor: theme.colors.carbon[0],
+          backgroundColor: themeColor(theme, 'carbon', 0),
           borderBottomLeftRadius: theme.defaultRadius,
           borderBottomRightRadius: theme.defaultRadius
         }
       })
     },
     Table: {
-      styles: (theme, params: TableStylesParams) => {
-        const colBorderStyles: CSSObject = params.withColumnBorders
+      styles: (theme: MantineTheme, props: TableProps) => {
+        const borderStyles = props.withTableBorder
           ? {
-              'thead th:last-of-type, tbody td:last-of-type': {
-                borderLeft: 'none'
-              }
-            }
-          : {}
-        const borderStyles: CSSObject = params.withBorder
-          ? {
-              borderCollapse: 'initial',
+              borderCollapse: 'separate',
               borderSpacing: 0,
               borderRadius: theme.defaultRadius,
               'thead tr:first-of-type th:first-of-type': {
@@ -858,57 +872,68 @@ const theme: MantineThemeOverride = {
           : {}
 
         return {
-          root: {
-            thead: {
-              backgroundColor: theme.colors.carbon[2]
-            },
+          table: {
             ...borderStyles,
-            ...colBorderStyles
+            '--table-border-color': themeColor(theme, 'carbon', 3)
+          },
+          thead: {
+            backgroundColor: themeColor(theme, 'carbon', 2)
+          },
+          tr: {
+            '&:where([data-with-row-border]):not(:last-of-type)': {
+              td: {
+                borderBottom: `1px solid ${themeColor(theme, 'carbon', 3)} !important`
+              }
+            }
           }
         }
       }
     },
     Switch: {
-      styles: (theme, params: SwitchStylesParams) => {
-        const color = params.color ?? theme.primaryColor
+      styles: (theme: MantineTheme, props: SwitchProps) => {
+        const color = props.color ?? theme.primaryColor
 
         return {
           root: {
             '& input:checked+.mantine-Switch-track': {
-              backgroundColor: theme.fn.themeColor(color, 9),
-              borderColor: theme.fn.themeColor(color, 9)
+              backgroundColor: themeColor(theme, color, 9),
+              borderColor: themeColor(theme, color, 9)
             },
             '& input:disabled+.mantine-Switch-track': {
-              backgroundColor: theme.fn.themeColor(color, 4),
-              borderColor: theme.fn.themeColor(color, 4)
+              backgroundColor: themeColor(theme, color, 4),
+              borderColor: themeColor(theme, color, 4)
             },
             '& input:disabled:checked+.mantine-Switch-track': {
-              backgroundColor: theme.fn.themeColor(color, 7),
-              borderColor: theme.fn.themeColor(color, 7)
+              backgroundColor: themeColor(theme, color, 7),
+              borderColor: themeColor(theme, color, 7)
             },
 
             '& input+*>.mantine-Switch-trackLabel': {
-              color: theme.fn.themeColor(color, 8)
+              color: themeColor(theme, color, 8)
             },
             '& input:checked+*>.mantine-Switch-trackLabel': {
-              color: theme.fn.themeColor(color, 0)
+              color: themeColor(theme, color, 0)
+            }
+          },
+          label: {
+            '&[data-disabled]': {
+              color: themeColor(theme, color, 6)
             }
           },
           track: {
-            backgroundColor: theme.fn.themeColor(color, 5),
-            borderColor: theme.fn.themeColor(color, 5)
+            backgroundColor: themeColor(theme, color, 5),
+            borderColor: themeColor(theme, color, 5)
           },
           trackLabel: {
-            color: theme.fn.themeColor(color, 8)
+            color: themeColor(theme, color, 8)
           }
         }
       }
     },
     Radio: {
-      styles(theme, params) {
-        const color = (params.color?.includes('.') ? params.color.split('.')[0] : (params.color ?? 'carbon')) as Color
+      styles(theme: MantineTheme, props: RadioProps) {
+        const color = (props.color?.includes('.') ? props.color.split('.')[0] : (props.color ?? 'carbon')) as Color
         const shade = color.includes('carbon') ? 9 : 7
-        const size = params.size ?? 'sm'
 
         const sizes = {
           xs: 14,
@@ -926,37 +951,35 @@ const theme: MantineThemeOverride = {
           xl: 12
         }
 
+        // @ts-ignore
+        const size = sizes[props.size ?? 'sm']
+        // @ts-ignore
+        const iconSize = iconSizes[props.size ?? 'sm']
+
         return {
-          icon: {
-            width: theme.fn.size({ sizes: iconSizes, size }),
-            height: theme.fn.size({ sizes: iconSizes, size }),
-            top: `calc(50% - ${theme.fn.size({ sizes: iconSizes, size }) / 2}px)`,
-            left: `calc(50% - ${theme.fn.size({ sizes: iconSizes, size }) / 2}px)`
+          root: {
+            '--radio-size': rem(size),
+            '--radio-icon-size': rem(iconSize),
+            '--radio-color': themeColor(theme, color, shade) + ' !important',
+            '--radio-icon-color':
+              props.variant === 'outline' ? themeColor(theme, color, shade) : theme.white + ' !important'
           },
           label: {
-            lineHeight: `${theme.fn.size({ sizes, size })}px`
+            lineHeight: `${size}px`
+          },
+          icon: {
+            transform: 'var(--radio-icon-transform, scale(0.2))'
           },
           radio: {
-            width: theme.fn.size({ sizes, size }),
-            height: theme.fn.size({ sizes, size }),
-            borderRadius: theme.fn.size({ sizes, size }),
-            borderColor: theme.colors[color][6],
-
-            '&:checked:not(:disabled)': {
-              background: theme.colors[color][shade],
-              borderColor: theme.colors[color][shade]
-            },
-
             '&:disabled:not(:checked)': {
-              background: theme.colors.carbon[4],
-              borderColor: theme.colors.carbon[6],
+              background: themeColor(theme, 'carbon', 4),
+              borderColor: themeColor(theme, 'carbon', 6),
               cursor: 'not-allowed'
             },
-
             '&:disabled:checked': {
-              color: theme.colors.carbon[2],
-              background: theme.colors.carbon[6],
-              borderColor: theme.colors.carbon[6],
+              color: themeColor(theme, 'carbon', 2),
+              background: themeColor(theme, 'carbon', 6),
+              borderColor: themeColor(theme, 'carbon', 6),
               cursor: 'not-allowed'
             }
           }
@@ -964,26 +987,26 @@ const theme: MantineThemeOverride = {
       }
     },
     SegmentedControl: {
-      styles: (theme) => {
+      styles: (theme: MantineTheme) => {
         return {
           root: {
-            backgroundColor: theme.colors.carbon[4]
+            backgroundColor: themeColor(theme, 'carbon', 4)
           },
-          active: {
-            borderRadius: 6,
-            backgroundColor: theme.colors.carbon[0]
-          },
-          labelActive: {
-            color: `${theme.colors.carbon[9]} !important`
+          indicator: {
+            backgroundColor: themeColor(theme, 'carbon', 0)
           },
           label: {
-            color: `${theme.colors.carbon[7]} !important`
+            color: themeColor(theme, 'carbon', 7) + ' !important',
+            '&[data-active]': {
+              color: themeColor(theme, 'carbon', 9) + ' !important'
+            },
+            '&[data-disabled]': {
+              color: themeColor(theme, 'carbon', 6) + ' !important'
+            }
           },
-          disabled: {
-            color: `${theme.colors.carbon[6]} !important`
-          },
+
           control: {
-            borderColor: `${theme.colors.carbon[5]} !important`
+            '--separator-color': themeColor(theme, 'carbon', 5)
           }
         }
       }
@@ -992,21 +1015,11 @@ const theme: MantineThemeOverride = {
       defaultProps: {
         withArrow: true
       },
-      styles(theme) {
-        const styles = {
-          dark: {
-            backgroundColor: theme.colors.carbon[8],
-            color: theme.colors.carbon[1]
-          },
-          light: {
-            backgroundColor: theme.colors.carbon[8],
-            color: theme.colors.carbon[1]
-          }
-        }
-
+      styles(theme: MantineTheme) {
         return {
           tooltip: {
-            ...styles[theme.colorScheme]
+            backgroundColor: themeColor(theme, 'carbon', 8),
+            color: themeColor(theme, 'carbon', 1)
           }
         }
       }
@@ -1015,50 +1028,50 @@ const theme: MantineThemeOverride = {
       defaultProps: {
         color: 'carbon'
       },
-      styles(theme, params) {
-        const color = params.color ?? theme.primaryColor
+      styles(theme: MantineTheme, props: ActionIconProps) {
+        const color = props.color ?? theme.primaryColor
         const shade = color.includes('carbon') ? 8 : 7
 
-        const variantStyles: Record<string, CSSObject> = {
+        const variantStyles = {
           default: {
-            backgroundColor: theme.fn.themeColor(color, 2),
-            borderColor: theme.fn.themeColor(color, 5),
-            color: theme.fn.themeColor(color, 8),
+            backgroundColor: themeColor(theme, color, 2),
+            borderColor: themeColor(theme, color, 5),
+            color: themeColor(theme, color, 8),
 
             '&:hover': {
-              backgroundColor: theme.fn.themeColor(color, 3),
-              borderColor: theme.fn.themeColor(color, 6),
-              color: theme.fn.themeColor(color, 9)
+              backgroundColor: themeColor(theme, color, 3),
+              borderColor: themeColor(theme, color, 6),
+              color: themeColor(theme, color, 9)
             },
             '&:active': {
-              backgroundColor: theme.fn.themeColor(color, 4),
-              borderColor: theme.fn.themeColor(color, 6),
-              color: theme.fn.themeColor(color, 9)
+              backgroundColor: themeColor(theme, color, 4),
+              borderColor: themeColor(theme, color, 6),
+              color: themeColor(theme, color, 9)
             },
 
             '&:disabled': {
-              backgroundColor: theme.fn.themeColor(color, 2),
-              borderColor: theme.fn.themeColor(color, 5),
-              color: theme.fn.themeColor(color, 6)
+              backgroundColor: themeColor(theme, color, 2),
+              borderColor: themeColor(theme, color, 5),
+              color: themeColor(theme, color, 6)
             }
           },
           transparent: {
             backgroundColor: 'transparent',
-            color: theme.fn.themeColor(color, shade)
+            color: themeColor(theme, color, shade)
           },
           subtle: {
             backgroundColor: 'transparent',
-            color: theme.fn.themeColor(color, 8),
+            color: themeColor(theme, color, 8),
             borderColor: 'transparent',
 
             '&:hover': {
-              backgroundColor: theme.fn.themeColor(color, 3)
+              backgroundColor: themeColor(theme, color, 3)
             },
             '&:active': {
-              backgroundColor: theme.fn.themeColor(color, 4)
+              backgroundColor: themeColor(theme, color, 4)
             },
             '&:disabled': {
-              color: theme.fn.themeColor(color, 6),
+              color: themeColor(theme, color, 6),
               backgroundColor: 'transparent',
               borderColor: 'transparent',
               cursor: 'not-allowed'
@@ -1066,24 +1079,24 @@ const theme: MantineThemeOverride = {
           },
           outline: {
             backgroundColor: 'transparent',
-            color: theme.fn.themeColor(color, shade),
-            border: `1px solid ${theme.fn.themeColor(color, 4)}`,
+            color: themeColor(theme, color, shade),
+            border: `1px solid ${themeColor(theme, color, 4)}`,
             '&:hover': {
-              backgroundColor: theme.fn.themeColor(color, 2)
+              backgroundColor: themeColor(theme, color, 2)
             }
           },
           filled: {
-            backgroundColor: theme.fn.themeColor(color, color.includes('carbon') ? 9 : 7),
+            backgroundColor: themeColor(theme, color, color.includes('carbon') ? 9 : 7),
             color: theme.white
           },
           light: {
-            backgroundColor: theme.fn.themeColor(color, 3),
-            color: theme.fn.themeColor(color, 8),
+            backgroundColor: themeColor(theme, color, 3),
+            color: themeColor(theme, color, 8),
             '&:hover': {
-              backgroundColor: theme.fn.themeColor(color, 4)
+              backgroundColor: themeColor(theme, color, 4)
             },
             '&:active': {
-              backgroundColor: theme.fn.themeColor(color, 5)
+              backgroundColor: themeColor(theme, color, 5)
             }
           }
         }
@@ -1095,11 +1108,14 @@ const theme: MantineThemeOverride = {
           lg: 32,
           xl: 40
         }
-        const size = theme.fn.size({ size: params.size, sizes })
+        // @ts-ignore
+        const size = sizes[props.size ?? 'md']
+        // @ts-ignore
+        const variantStyle = variantStyles[props.variant ?? 'default']
 
         return {
           root: {
-            ...variantStyles[params.variant],
+            ...variantStyle,
             width: size,
             height: size,
             minWidth: size,
@@ -1108,130 +1124,64 @@ const theme: MantineThemeOverride = {
         }
       }
     },
-    RangeCalendar: {
-      styles: (theme) => {
+    DatePicker: {
+      styles: (theme: MantineTheme) => {
         const color = theme.primaryColor
         return {
           calendarHeaderLevel: {
-            color: theme.fn.themeColor(color, 7)
-          },
-          calendarHeaderLevelIcon: {
-            color: `${theme.fn.themeColor(color, 7)} !important`
+            color: themeColor(theme, color, 7)
           },
           calendarHeaderControl: {
-            color: `${theme.fn.themeColor(color, 7)} !important`
-          },
-          yearPickerControlActive: {
-            backgroundColor: theme.fn.themeColor(color, 9)
-          },
-          monthPickerControlActive: {
-            backgroundColor: theme.fn.themeColor(color, 9)
+            color: `${themeColor(theme, color, 7)} !important`
           },
           weekday: {
-            color: theme.fn.themeColor(color, 7)
+            color: themeColor(theme, color, 7)
           },
           day: {
-            color: theme.fn.themeColor(color, 8),
+            color: themeColor(theme, color, 8),
             '&[data-in-range]': {
-              backgroundColor: theme.fn.themeColor(color, 3)
+              backgroundColor: themeColor(theme, color, 3)
             },
             '&[data-first-in-range]': {
-              borderTopLeftRadius: theme.defaultRadius,
-              borderBottomLeftRadius: theme.defaultRadius
+              borderStartStartRadius: theme.defaultRadius,
+              borderEndStartRadius: theme.defaultRadius
             },
             '&[data-last-in-range]': {
-              borderTopRightRadius: theme.defaultRadius,
-              borderBottomRightRadius: theme.defaultRadius
+              borderEndEndRadius: theme.defaultRadius,
+              borderStartEndRadius: theme.defaultRadius
             },
             '&[data-selected]': {
-              backgroundColor: theme.fn.themeColor(color, 9),
+              backgroundColor: themeColor(theme, color, 9),
               color: theme.white
             },
             '&[data-weekend]': {
-              color: theme.fn.themeColor(color, 8),
+              color: themeColor(theme, color, 8),
               '&[data-selected]': {
                 color: theme.white
               },
               '&[data-disabled], &:disabled': {
-                color: `${theme.fn.themeColor(color, 5)} !important`
+                color: `${themeColor(theme, color, 5)} !important`
               }
             },
             '&[data-disabled], &:disabled': {
-              color: `${theme.fn.themeColor(color, 5)} !important`
+              color: `${themeColor(theme, color, 5)} !important`
             },
             '&[data-outside]': {
-              color: theme.fn.themeColor(color, 6)
+              color: themeColor(theme, color, 6)
             }
           }
         }
       }
     },
     Anchor: {
-      styles: (theme, params) => {
-        const color = params.color ?? 'peacock'
-        const shade = color.includes('carbon') ? 9 : theme.fn.primaryShade()
-        return {
-          root: {
-            color: theme.fn.themeColor(color, shade),
-            '&:hover': {
-              color: theme.fn.themeColor(color, shade)
-            }
-          }
-        }
-      }
-    },
-    Calendar: {
-      styles: (theme) => {
-        const color = theme.primaryColor
-        return {
-          calendarHeaderLevel: {
-            color: theme.fn.themeColor(color, 7)
-          },
-          calendarHeaderLevelIcon: {
-            color: `${theme.fn.themeColor(color, 7)} !important`
-          },
-          calendarHeaderControl: {
-            color: `${theme.fn.themeColor(color, 7)} !important`
-          },
-          yearPickerControlActive: {
-            backgroundColor: theme.fn.themeColor(color, 9)
-          },
-          monthPickerControlActive: {
-            backgroundColor: theme.fn.themeColor(color, 9)
-          },
-          weekday: {
-            color: theme.fn.themeColor(color, 7)
-          },
-          day: {
-            color: theme.fn.themeColor(color, 8),
-            borderRadius: 8,
-            '&[data-selected]': {
-              backgroundColor: theme.fn.themeColor(color, 9),
-              color: theme.white
-            },
-            '&[data-weekend]': {
-              color: theme.fn.themeColor(color, 8),
-              '&[data-selected]': {
-                color: theme.white
-              },
-              '&[data-disabled], &:disabled': {
-                color: `${theme.fn.themeColor(color, 5)} !important`
-              }
-            },
-            '&[data-disabled], &:disabled': {
-              color: `${theme.fn.themeColor(color, 5)} !important`
-            },
-            '&[data-outside]': {
-              color: theme.fn.themeColor(color, 6)
-            }
-          }
-        }
+      defaultProps: {
+        c: 'peacock.7'
       }
     }
   }
-}
+})
 
-export type Theme = MantineThemeOverride & {
+export type Theme = MantineTheme & {
   colors: ColorMap
 }
 
@@ -1239,11 +1189,10 @@ export const useTheme = (colorScheme: 'light' | 'dark'): Theme => {
   const isLight = colorScheme === 'light'
   const colors = isLight ? light : dark
 
-  return {
+  return mergeMantineTheme(DEFAULT_THEME, {
     ...theme,
-    colorScheme,
     colors,
     white: colors.carbon[0],
     black: colors.carbon[8]
-  }
+  })
 }

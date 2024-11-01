@@ -61,13 +61,12 @@
       ]
     },
     "patchedDependencies": {
-      "@mantine/core@5.10.4": "patches/@mantine__core@5.10.4.patch",
-      "@mantine/styles@5.10.4": "patches/@mantine__styles@5.10.4.patch"
+      "@mantine/core@7.13.2": "patches/@mantine__core@7.13.2.patch"
     }
   },
   "engines": {
     "node": ">= 20",
     "pnpm": ">= 8"
   },
-  "packageManager": "pnpm@8.15.8"
+  "packageManager": "pnpm@9.12.1"
 }

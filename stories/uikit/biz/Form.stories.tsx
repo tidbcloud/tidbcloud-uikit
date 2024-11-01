@@ -92,7 +92,7 @@ export const Primary: Story = {
             maxDropdownHeight: 180,
             searchable: true,
             onChange: (val) => {},
-            onFilter(data, index, array) {
+            filter(data, index, array) {
               if (data.value === 'kp') {
                 return false
               }

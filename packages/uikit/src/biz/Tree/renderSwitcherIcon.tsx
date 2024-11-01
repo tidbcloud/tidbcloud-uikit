@@ -1,4 +1,4 @@
-import { clsx } from '@mantine/styles'
+import clsx from 'clsx'
 import { isValidElement, cloneElement } from 'react'
 
 import { IconFile02, IconMinus, IconPlus, IconChevronDownFill } from '../../icons/index.js'

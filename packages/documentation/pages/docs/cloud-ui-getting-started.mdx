@@ -4,24 +4,26 @@ import { Tabs, Tab } from 'nextra-theme-docs'
 
 ## Cloud UI Components
 
-Cloud UI has 4 layers of components: Cloud UI Primitive, Cloud UI Business, Cloud UI Pro(WIP)  and Cloud UI Icons.
+Cloud UI has 4 layers of components: Cloud UI Primitive, Cloud UI Business, Cloud UI Pro(WIP) and Cloud UI Icons.
 
 ### Cloud UI Primitive
+
 The fundamental UI library for TiDB Cloud, including layout, typography, color, and so on. Encapsulate the basic UI elements and styles based on [Mantine](https://mantine.dev/). We'll customize the styles and components to meet the requirements of TiDB Cloud.
 
 [Read More](/docs/cloud-ui-getting-started)
 
-
 ### Cloud UI Business
+
 Abstracted business UI components for TiDB Cloud, including Form, Search Area, PhoneInput, TablePro, etc. These components are based on Cloud UI Primitive and encapsulate the business logic and interaction experience of TiDB Cloud.
 
 [Read More](/docs/biz/CodeBlock)
 
 ### Cloud UI Pro(WIP)
+
 Cloud UI Pro is a sample pages centering on the business scenarios of TiDB Cloud. It includes a series of business components and pages, such as the Database Console, Database Management, and Database Monitoring. These components are based on Cloud UI Business and encapsulate the business logic and interaction experience of TiDB Cloud. This part is still under development.
 
-
 ### Cloud UI Icons
+
 Cloud UI Icons are designed originally by TiDB Cloud design team which includes a set of icons for TiDB Cloud. The icons are SVG format and can be used in any project.
 
 [Read More](/docs/icons)
@@ -36,26 +38,92 @@ npm install @tidbcloud/uikit
 
 ## Quick Start
 
-Wrap your application root component with `MantineProvider`:
+Wrap your application root component with `ThemeProvider` and import the styles:
 
 ```js
-import { MantineProvider } from '@tidbcloud/uikit';
+import { ThemeProvider } from '@tidbcloud/uikit/theme'
+import '@tidbcloud/uikit/style.css'
 
 function Main() {
   return (
-    <MantineProvider withGlobalStyles withNormalizeCSS>
+    <ThemeProvider colorScheme="auto">
       <App />
-    </MantineProvider>
-  );
+    </ThemeProvider>
+  )
 }
 ```
 
 You can now import and use any components anywhere in your application:
 
 ```js
-import { Button } from '@tidbcloud/uikit';
+import { Button } from '@tidbcloud/uikit'
 
 function Demo() {
-  return <Button>Click me!</Button>;
+  return <Button>Click me!</Button>
 }
+```
+
+### Color Scheme
+
+If you want to customize the color scheme, you can declare a `colorScheme` state and pass it to `ThemeProvider`:
+
+```tsx
+import { ThemeProvider } from '@tidbcloud/uikit/theme'
+
+function useColorScheme() {
+  const [colorScheme, setColorScheme] = useState<'light' | 'dark' | 'auto'>('auto')
+  return { colorScheme, setColorScheme }
+}
+
+function Main() {
+  const { colorScheme, setColorScheme } = useColorScheme()
+
+  return (
+    <ThemeProvider colorScheme={colorScheme}>
+      <App />
+    </ThemeProvider>
+  )
+}
+```
+
+### Usage with Next.js Pages router
+
+Create a emotion cache with `createEmotionCache` function:
+
+```js
+import { createEmotionCache } from '@tidbcloud/uikit/utils'
+
+const emotionCache = createEmotionCache({ key: 'css' })
+```
+
+Then pass the emotion cache to `ThemeProvider` and wrap your application root component in `_app.tsx`:
+
+```tsx
+<ThemeProvider emotionCache={emotionCache} colorScheme="auto">
+  <App />
+</ThemeProvider>
+```
+
+Create a emotion server with `createEmotionServer` function in `_document.tsx`:
+
+```tsx
+import createEmotionServer from '@emotion/server/create-instance'
+import { emotionCache } from '@lib/emotion'
+import { createGetInitialProps } from '@tidbcloud/uikit/utils'
+import NextDocument from 'next/document'
+
+export default function Document() {
+  return (
+    <Html lang="en">
+      <Head />
+      <body>
+        <Main />
+        <NextScript />
+      </body>
+    </Html>
+  )
+}
+
+const stylesServer = createEmotionServer(emotionCache)
+Document.getInitialProps = createGetInitialProps(NextDocument, stylesServer)
 ```

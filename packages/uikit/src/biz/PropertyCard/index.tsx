@@ -1,4 +1,4 @@
-import { ReactNode, Children, cloneElement } from 'react'
+import { Children, cloneElement } from 'react'
 
 import {
   Card,
@@ -44,7 +44,7 @@ const PropertyCard = ({ title, children, labelProps, valueProps, ...rest }: Prop
       <Typography variant="headline-sm" mb={16}>
         {title}
       </Typography>
-      <Stack spacing={16}>{renderChildren()}</Stack>
+      <Stack gap={16}>{renderChildren()}</Stack>
     </Card>
   )
 }
@@ -57,7 +57,7 @@ export interface PropertyCardItemProps extends GroupProps {
 
 const Item = ({ label, children, labelProps, valueProps, ...rest }: PropertyCardItemProps) => {
   return (
-    <Group spacing="md" noWrap {...rest}>
+    <Group gap="md" wrap="nowrap" {...rest}>
       <Typography variant="label-lg" miw={128} {...labelProps}>
         {label}
       </Typography>

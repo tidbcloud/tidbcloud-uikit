@@ -1,33 +1,45 @@
-import { CSSObject, DefaultProps, MantineTheme } from '@mantine/core'
+import { MantineTheme, StylesRecord } from '@mantine/core'
+import { CSSObject, EmotionHelpers, EmotionSx } from '@mantine/emotion'
 import { merge } from 'lodash-es'
 
-function mergeSxValues(values: DefaultProps['sx'][], theme: MantineTheme) {
+import type { EmotionStyles } from './emotion.js'
+
+function mergeSxValues(values: (EmotionSx | undefined)[], theme: MantineTheme, helpers: EmotionHelpers) {
   const css: CSSObject = values.reduce<CSSObject>((ret, partial) => {
     if (!partial) {
       return ret
     }
 
     if (Array.isArray(partial)) {
-      return mergeSxValues(partial, theme)
+      return mergeSxValues(partial, theme, helpers)
     }
 
-    return merge(ret, typeof partial === 'function' ? partial(theme) : partial)
+    return merge(ret, typeof partial === 'function' ? partial(theme, helpers) : partial)
   }, {})
 
   return css
 }
 
-export function mergeSxList(sxList: DefaultProps['sx'][]) {
-  return (theme: MantineTheme) => mergeSxValues(sxList, theme)
+export function mergeSxList(sxList: (EmotionSx | undefined)[]) {
+  return (theme: MantineTheme, helpers: EmotionHelpers) => mergeSxValues(sxList, theme, helpers)
 }
 
 export function mergeStylesList<
   StylesNames extends string = never,
-  StylesParams extends Record<string, any> = Record<string, any>
->(stylesList: DefaultProps<StylesNames, StylesParams>['styles'][]) {
-  return (theme: MantineTheme, params: StylesParams) => {
-    const css = stylesList.reduce<Partial<Record<StylesNames, CSSObject>>>(
-      (prev, partial) => (typeof partial === 'function' ? merge(prev, partial(theme, params)) : merge(prev, partial)),
+  Props extends Record<string, any> = Record<string, any>
+>(
+  stylesList: (
+    | EmotionStyles<{
+        props: Props
+        stylesNames: StylesNames
+      }>
+    | undefined
+  )[]
+) {
+  return (theme: MantineTheme, props: Props, helpers: EmotionHelpers) => {
+    const css = stylesList.reduce<StylesRecord<StylesNames, CSSObject>>(
+      (prev, partial) =>
+        typeof partial === 'function' ? merge(prev, partial(theme, props, helpers)) : merge(prev, partial),
       {}
     )
 

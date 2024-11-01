@@ -1,7 +1,7 @@
 import { ReactNode } from 'react'
 
 import { IconChevronLeft } from '../../icons/index.js'
-import { ActionIcon, Box, DefaultProps, Group, GroupProps, Typography } from '../../primitive/index.js'
+import { ActionIcon, Box, BoxProps, Group, GroupProps, Typography } from '../../primitive/index.js'
 import { mergeSxList } from '../../utils/index.js'
 
 export interface PageHeaderProps extends GroupProps {
@@ -19,9 +19,9 @@ export const PageHeader = ({ sticky, leftSection, rightSection, children, ...res
 
   return (
     <Group
-      noWrap
-      position="apart"
-      spacing="xl"
+      wrap="nowrap"
+      justify="space-between"
+      gap="xl"
       h={56}
       px={24}
       {...restProps}
@@ -34,18 +34,18 @@ export const PageHeader = ({ sticky, leftSection, rightSection, children, ...res
               left: 0,
               background: theme.other.white
             })
-          : void 0,
+          : undefined,
         restProps.sx
       ])}
     >
-      <Group noWrap>
+      <Group wrap="nowrap">
         {leftSection}
         <Typography variant="title-lg" sx={{ flex: 1 }}>
           {children}
         </Typography>
       </Group>
       {rightExisted && (
-        <Group spacing={0} noWrap>
+        <Group gap={0} wrap="nowrap">
           {rightSection}
         </Group>
       )}
@@ -96,7 +96,7 @@ export interface PageShellProps {
    * Default: false
    */
   wrapped?: boolean
-  wrapperProps?: DefaultProps & { component?: any }
+  wrapperProps?: BoxProps & { component?: any }
   headerProps?: GroupProps & {
     /**
      * Determines whether the header should be sticky,
@@ -116,7 +116,7 @@ export interface PageShellProps {
      */
     onBackClick?: () => void
   }
-  bodyProps?: DefaultProps & { component?: any }
+  bodyProps?: BoxProps & { component?: any }
   children?: ReactNode
 }
 
