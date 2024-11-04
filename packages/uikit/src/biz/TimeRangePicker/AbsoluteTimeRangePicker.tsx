@@ -1,4 +1,3 @@
-import dayjs from 'dayjs'
 import { MouseEventHandler, useMemo, useState } from 'react'
 
 import { IconChevronLeft, IconAlertCircle } from '../../icons/index.js'
@@ -14,6 +13,7 @@ import {
   TimeInput,
   Input
 } from '../../primitive/index.js'
+import { dayjs } from '../../utils/dayjs.js'
 
 import { AbsoluteTimeRange, TimeRangeValue, timeFormatter, formatDuration } from './helpers.js'
 
