@@ -10,7 +10,6 @@ import '@tidbcloud/uikit/style.css'
 
 export default function App({ Component, pageProps }: AppProps) {
   const { setTheme, theme } = useTheme()
-  console.log(1, theme)
 
   useMount(() => {
     const targetNode = document.querySelector('html')
