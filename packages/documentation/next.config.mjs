@@ -1,14 +1,16 @@
-const withNextra = require('nextra')({
+import nextra from 'nextra'
+
+const withNextra = nextra({
   theme: 'nextra-theme-docs',
   themeConfig: './theme.config.tsx',
-  flexsearch: {
+  search: {
     codeblocks: false
   },
   defaultShowCopyCode: true
 })
 
 /** @type {import('next').NextConfig} */
-module.exports = withNextra({
+export default withNextra({
   reactStrictMode: true,
   experimental: {
     esmExternals: 'loose'

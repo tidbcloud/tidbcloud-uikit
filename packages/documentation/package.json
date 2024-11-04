@@ -5,8 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "postinstall": "tsx scripts/postinstall.ts"
+    "start": "next start"
   },
   "dependencies": {
     "@emotion/server": "11.11.0",
@@ -15,8 +14,8 @@
     "@tidbcloud/uikit": "workspace:*",
     "ahooks": "^3.7.8",
     "next": "^14.2.3",
-    "nextra": "^2.13.4",
-    "nextra-theme-docs": "^2.13.4",
+    "nextra": "^3.2.0",
+    "nextra-theme-docs": "^3.2.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-window": "^1.8.9",
