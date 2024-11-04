@@ -1,6 +1,7 @@
-import dayjs from 'dayjs'
 import { trim } from 'lodash-es'
 import prettyMs from 'pretty-ms'
+
+import { dayjs } from '../../utils/dayjs.js'
 
 export type TimeRange = RelativeTimeRange | AbsoluteTimeRange
 

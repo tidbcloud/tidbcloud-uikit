@@ -1,3 +1,81 @@
-export * from '@mantine/hooks'
+export type * from '@mantine/hooks'
+export {
+  // dom and ui
+  useClickOutside,
+  useColorScheme as useSystemColorScheme,
+  useElementSize,
+  useEventListener,
+  useFocusReturn,
+  useFocusTrap,
+  useFocusWithin,
+  useFullscreen,
+  useHotkeys,
+  useHover,
+  useInViewport,
+  useIntersection,
+  useMediaQuery,
+  useMouse,
+  useMove,
+  useMutationObserver,
+  useOrientation,
+  useReducedMotion,
+  useResizeObserver,
+  useScrollIntoView,
+  useViewportSize,
+  useWindowEvent,
+  useWindowScroll,
+
+  // State management
+  useCounter,
+  useDebouncedCallback,
+  useDebouncedState,
+  useDebouncedValue,
+  useDisclosure,
+  useId,
+  useInputState,
+  useListState,
+  useLocalStorage,
+  useMap,
+  usePagination,
+  usePrevious,
+  useQueue,
+  useSet,
+  useSetState,
+  useStateHistory,
+  useThrottledCallback,
+  useThrottledState,
+  useThrottledValue,
+  useToggle,
+  useUncontrolled,
+  useValidatedState,
+
+  // Utilities
+  useClipboard,
+  useDocumentTitle,
+  useDocumentVisibility,
+  useEyeDropper,
+  useFavicon,
+  useFetch,
+  useHash,
+  useHeadroom,
+  useIdle,
+  useInterval,
+  useMergedRef,
+  useNetwork,
+  useOs,
+  usePageLeave,
+  useTextSelection,
+  useTimeout,
+
+  // Lifecycle
+  useDidUpdate,
+  useForceUpdate,
+  useIsFirstRender,
+  useIsomorphicEffect,
+  useLogger,
+  useMounted,
+  useShallowEffect
+} from '@mantine/hooks'
 
 export { useURLQueryState } from './useURLQueryState.js'
+export { useColorScheme } from './useColorScheme.js'
