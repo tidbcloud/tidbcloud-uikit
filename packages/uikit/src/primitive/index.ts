@@ -24,11 +24,126 @@ declare module '@mantine/core' {
   }
 }
 
-/**
- * Don't use multiple wildcard exports(`export *`) from other third party packages to avoid ambiguous external namespace resolution
- * otherwisw tsc will make guess from one of the packages when importing
- */
-export * from '@mantine/core'
+export type * from '@mantine/core'
+export {
+  // Layout
+  AppShell,
+  AspectRatio,
+  Center,
+  Container,
+  Flex,
+  Grid,
+  Group,
+  SimpleGrid,
+  Space,
+  Stack,
+
+  // Inputs
+  Checkbox,
+  Chip,
+  ColorInput,
+  ColorPicker,
+  Fieldset,
+  FileInput,
+  Input,
+  JsonInput,
+  NativeSelect,
+  NumberInput,
+  PasswordInput,
+  PinInput,
+  Radio,
+  Rating,
+  SegmentedControl,
+  Slider,
+  Switch,
+  Textarea,
+
+  // Combobox
+  Autocomplete,
+  Combobox,
+  MultiSelect,
+  Pill,
+  PillsInput,
+  Select,
+  TagsInput,
+
+  // Buttons
+  ActionIcon,
+  Button,
+  CloseButton,
+  CopyButton,
+  FileButton,
+  UnstyledButton,
+
+  // Navigation
+  Anchor,
+  Breadcrumbs,
+  Burger,
+  NavLink,
+  Pagination,
+  Stepper,
+  Tabs,
+  Tree,
+
+  // Feedback
+  Alert,
+  Loader,
+  Notification,
+  Progress,
+  RingProgress,
+  SemiCircleProgress,
+  Skeleton,
+
+  // Overlays
+  Affix,
+  Dialog,
+  Drawer,
+  FloatingIndicator,
+  HoverCard,
+  LoadingOverlay,
+  Menu,
+  Modal,
+  Overlay,
+  Popover,
+  Tooltip,
+
+  // Data display
+  Accordion,
+  Avatar,
+  BackgroundImage,
+  Badge,
+  Card,
+  ColorSwatch,
+  Image,
+  Indicator,
+  Kbd,
+  NumberFormatter,
+  Spoiler,
+  ThemeIcon,
+  Timeline,
+
+  // Typography
+  Blockquote,
+  Code,
+  Highlight,
+  List,
+  Mark,
+  Table,
+  Text,
+  Title,
+  TypographyStylesProvider,
+
+  // Misc
+  Box,
+  Collapse,
+  Divider,
+  FocusTrap,
+  Paper,
+  Portal,
+  ScrollArea,
+  Transition,
+  VisuallyHidden
+} from '@mantine/core'
 
 export { TextInput, type TextInputProps } from './TextInput/index.js'
 
@@ -86,5 +201,5 @@ export type {
   MonthSettings
 } from '@mantine/dates'
 
-export * from './Typography/index.js'
-export * from '../theme/ThemeProvider.js'
+export { Typography, type TypographyProps } from './Typography/index.js'
+export { ThemeProvider, type ThemeProviderProps } from '../theme/ThemeProvider.js'
