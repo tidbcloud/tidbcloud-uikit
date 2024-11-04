@@ -12,7 +12,7 @@ const decorator = (Story: StoryFn) => {
 }
 
 const meta: Meta<typeof Carousel> = {
-  title: 'Primitive/Carousel',
+  title: 'Primitive/Carousel/Carousel',
   component: Carousel,
   decorators: [decorator],
   parameters: {}

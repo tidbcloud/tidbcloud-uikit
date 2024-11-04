@@ -12,7 +12,7 @@ const decorator = (Story: StoryFn) => {
 }
 
 const meta: Meta<typeof Divider> = {
-  title: 'Primitive/Divider',
+  title: 'Primitive/Misc/Divider',
   component: Divider,
   decorators: [decorator],
   parameters: {}

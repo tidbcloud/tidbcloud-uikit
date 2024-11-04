@@ -12,7 +12,7 @@ const decorator = (Story: StoryFn) => {
 }
 
 const meta: Meta<typeof Blockquote> = {
-  title: 'Primitive/Blockquote',
+  title: 'Primitive/Typography/Blockquote',
   component: Blockquote,
   decorators: [decorator],
   parameters: {}

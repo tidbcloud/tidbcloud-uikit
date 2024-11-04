@@ -1,7 +1,6 @@
 import type { Meta, StoryObj, StoryFn } from '@storybook/react'
-import { AppShell, Navbar, Header } from '@tidbcloud/uikit'
-
-type Story = StoryObj<typeof AppShell>
+import { AppShell, Burger } from '@tidbcloud/uikit'
+import { useDisclosure } from '@tidbcloud/uikit/hooks'
 
 const decorator = (Story: StoryFn) => {
   return (
@@ -12,7 +11,7 @@ const decorator = (Story: StoryFn) => {
 }
 
 const meta: Meta<typeof AppShell> = {
-  title: 'Primitive/AppShell',
+  title: 'Primitive/Layout/AppShell',
   component: AppShell,
   decorators: [decorator],
   parameters: {}
@@ -20,27 +19,27 @@ const meta: Meta<typeof AppShell> = {
 
 export default meta
 
-// More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
-export const Primary: Story = {
-  render: () => (
+export function Primary() {
+  const [opened, { toggle }] = useDisclosure()
+
+  return (
     <AppShell
+      header={{ height: 60 }}
+      navbar={{
+        width: 300,
+        breakpoint: 'sm',
+        collapsed: { mobile: !opened }
+      }}
       padding="md"
-      navbar={
-        <Navbar width={{ base: 300 }} height={500} p="xs">
-          Navbar content
-        </Navbar>
-      }
-      header={
-        <Header height={60} p="xs">
-          Header content
-        </Header>
-      }
-      styles={(theme) => ({
-        main: { backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[0] }
-      })}
     >
-      {/* Your application here */}
+      <AppShell.Header>
+        <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
+        <div>Logo</div>
+      </AppShell.Header>
+
+      <AppShell.Navbar p="md">Navbar</AppShell.Navbar>
+
+      <AppShell.Main>Main</AppShell.Main>
     </AppShell>
-  ),
-  args: {}
+  )
 }

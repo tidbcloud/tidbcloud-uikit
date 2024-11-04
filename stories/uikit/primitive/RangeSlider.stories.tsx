@@ -12,7 +12,7 @@ const decorator = (Story: StoryFn) => {
 }
 
 const meta: Meta<typeof RangeSlider> = {
-  title: 'Primitive/RangeSlider',
+  title: 'Primitive/Inputs/RangeSlider',
   component: RangeSlider,
   decorators: [decorator],
   parameters: {}

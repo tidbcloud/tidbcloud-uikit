@@ -13,7 +13,7 @@ const decorator = (Story: StoryFn) => {
 }
 
 const meta: Meta<typeof Overlay> = {
-  title: 'Primitive/Overlay',
+  title: 'Primitive/Overlays/Overlay',
   component: Overlay,
   decorators: [decorator],
   parameters: {}
@@ -31,7 +31,7 @@ function Demo() {
         <Button color={visible ? 'red' : 'teal'}>{!visible ? 'Click as much as you like' : "Won't click, haha"}</Button>
       </Center>
 
-      <Group position="center">
+      <Group justify="center">
         <Button onClick={() => setVisible((v) => !v)}>Toggle overlay</Button>
       </Group>
     </>

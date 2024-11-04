@@ -12,7 +12,7 @@ const decorator = (Story: StoryFn) => {
 }
 
 const meta: Meta<typeof DatePicker> = {
-  title: 'Primitive/DatePicker',
+  title: 'Primitive/Dates/DatePicker',
   component: DatePicker,
   decorators: [decorator],
   parameters: {}

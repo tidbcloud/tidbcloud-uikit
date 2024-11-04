@@ -12,7 +12,7 @@ const decorator = (Story: StoryFn) => {
 }
 
 const meta: Meta<typeof Group> = {
-  title: 'Primitive/Group',
+  title: 'Primitive/Layout/Group',
   component: Group,
   decorators: [decorator],
   parameters: {}
@@ -33,11 +33,11 @@ export const Primary: Story = {
     grow: false
   },
   argTypes: {
-    position: {
-      options: ['left', 'right', 'center', 'apart'],
+    justify: {
+      options: ['flex-start', 'flex-end', 'center', 'space-between', 'space-around', 'space-evenly'],
       control: { type: 'select' }
     },
-    spacing: {
+    gap: {
       options: ['xs', 'sm', 'md', 'lg', 'xl'],
       control: { type: 'select' }
     }

@@ -13,7 +13,7 @@ const decorator = (Story: StoryFn) => {
 }
 
 const meta: Meta<typeof Skeleton> = {
-  title: 'Primitive/Skeleton',
+  title: 'Primitive/Feedback/Skeleton',
   component: Skeleton,
   decorators: [decorator],
   parameters: {}
@@ -39,7 +39,7 @@ function Demo() {
         </Typography>
       </Skeleton>
 
-      <Group position="center" mt="xs">
+      <Group justify="center" mt="xs">
         <Button onClick={() => setLoading((l) => !l)}>Toggle Skeleton</Button>
       </Group>
     </>

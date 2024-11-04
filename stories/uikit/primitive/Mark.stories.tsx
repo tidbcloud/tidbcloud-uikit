@@ -12,7 +12,7 @@ const decorator = (Story: StoryFn) => {
 }
 
 const meta: Meta<typeof Mark> = {
-  title: 'Primitive/Mark',
+  title: 'Primitive/Typography/Mark',
   component: Mark,
   decorators: [decorator],
   parameters: {}

@@ -12,7 +12,7 @@ const decorator = (Story: StoryFn) => {
 }
 
 const meta: Meta<typeof Highlight> = {
-  title: 'Primitive/Highlight',
+  title: 'Primitive/Typography/Highlight',
   component: Highlight,
   decorators: [decorator],
   parameters: {}
@@ -24,7 +24,7 @@ export default meta
 export const Primary: Story = {
   render: ({ color, highlight, children }: HighlightProps) => (
     <Highlight
-      highlightColor={color}
+      color={color}
       highlight={highlight}
       sx={(theme) => ({
         '& [data-highlight="this"]': { backgroundColor: theme.colors.grape[4] },

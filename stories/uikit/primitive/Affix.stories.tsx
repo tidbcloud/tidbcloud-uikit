@@ -12,7 +12,7 @@ const decorator = (Story: StoryFn) => {
 }
 
 const meta: Meta<typeof Affix> = {
-  title: 'Primitive/Affix',
+  title: 'Primitive/Overlays/Affix',
   component: Affix,
   decorators: [decorator],
   parameters: {}

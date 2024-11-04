@@ -76,13 +76,13 @@ export const Primary: Story = {
         <PropertyCard.Divider />
 
         <PropertyCard.Item label="TiDB" align="flex-start">
-          <Stack spacing={0}>
+          <Stack gap={0}>
             <Typography>2 Nodes</Typography>
             <Typography>2 vCPU, 4GiB</Typography>
           </Stack>
         </PropertyCard.Item>
         <PropertyCard.Item label="TiKV" align="flex-start">
-          <Stack spacing={0}>
+          <Stack gap={0}>
             <Typography>3 Nodes</Typography>
             <Typography>2 vCPU, 4GiB</Typography>
             <Typography>10 GiB Storage</Typography>

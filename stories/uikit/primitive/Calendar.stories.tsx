@@ -13,7 +13,7 @@ const decorator = (Story: StoryFn) => {
 }
 
 const meta: Meta<typeof Calendar> = {
-  title: 'Primitive/Calendar',
+  title: 'Primitive/Dates/Calendar',
   component: Calendar,
   decorators: [decorator],
   parameters: {}
@@ -22,8 +22,11 @@ const meta: Meta<typeof Calendar> = {
 export default meta
 
 function Demo() {
-  const [value, setValue] = useState<Date | null>(null)
-  return <Calendar value={value} onChange={setValue} minDate={new Date()} />
+  const [value, setValue] = useState<Date>(new Date())
+  const onChange = (date: Date) => {
+    setValue(date)
+  }
+  return <Calendar date={value} onDateChange={onChange} minDate={new Date()} />
 }
 
 // More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing

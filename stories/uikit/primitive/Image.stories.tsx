@@ -14,7 +14,7 @@ const decorator = (Story: StoryFn) => {
 }
 
 const meta: Meta<typeof Image> = {
-  title: 'Primitive/Image',
+  title: 'Primitive/Data display/Image',
   component: Image,
   decorators: [decorator],
   parameters: {}

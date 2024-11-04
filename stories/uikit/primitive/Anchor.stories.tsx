@@ -12,7 +12,7 @@ const decorator = (Story: StoryFn) => {
 }
 
 const meta: Meta<typeof Anchor> = {
-  title: 'Primitive/Anchor',
+  title: 'Primitive/Navigation/Anchor',
   component: Anchor,
   decorators: [decorator],
   parameters: {}
@@ -47,7 +47,7 @@ export function CustomComponent() {
 export function WithTextProps() {
   return (
     <div style={{ padding: 40 }}>
-      <Anchor size="lg" weight={700} color="red">
+      <Anchor size="lg" fw={700} color="red">
         Text props
       </Anchor>
     </div>
@@ -65,9 +65,15 @@ export function InheritFontSize() {
 export function WithUnderlineProp() {
   return (
     <div style={{ padding: 40 }}>
-      <Anchor href="/">Underline should be ENABLED</Anchor>
+      <Anchor href="/" underline="always">
+        Underline should be always enabled
+      </Anchor>
       <br />
-      <Anchor href="/" underline={false}>
+      <Anchor href="/" underline="hover">
+        Underline should be enabled on hover
+      </Anchor>
+      <br />
+      <Anchor href="/" underline="never">
         Underline should be DISABLED
       </Anchor>
     </div>

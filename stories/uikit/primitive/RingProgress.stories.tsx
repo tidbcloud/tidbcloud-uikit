@@ -12,7 +12,7 @@ const decorator = (Story: StoryFn) => {
 }
 
 const meta: Meta<typeof RingProgress> = {
-  title: 'Primitive/RingProgress',
+  title: 'Primitive/Feedback/RingProgress',
   component: RingProgress,
   decorators: [decorator],
   parameters: {}

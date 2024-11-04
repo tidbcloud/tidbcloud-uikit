@@ -1,5 +1,6 @@
 import type { Meta, StoryObj, StoryFn } from '@storybook/react'
-import { AlphaSlider } from '@tidbcloud/uikit'
+import { AlphaSlider, Text } from '@tidbcloud/uikit'
+import { useState } from 'react'
 
 type Story = StoryObj<typeof AlphaSlider>
 
@@ -12,7 +13,7 @@ const decorator = (Story: StoryFn) => {
 }
 
 const meta: Meta<typeof AlphaSlider> = {
-  title: 'Primitive/AlphaSlider',
+  title: 'Primitive/Inputs/AlphaSlider',
   component: AlphaSlider,
   decorators: [decorator],
   parameters: {}
@@ -20,8 +21,19 @@ const meta: Meta<typeof AlphaSlider> = {
 
 export default meta
 
+function Demo() {
+  const [value, onChange] = useState(0.55)
+
+  return (
+    <>
+      <Text>Alpha value: {value}</Text>
+      <AlphaSlider color="#1c7ed6" value={value} onChange={onChange} />
+    </>
+  )
+}
+
 // More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
 export const Primary: Story = {
-  render: () => <AlphaSlider></AlphaSlider>,
+  render: () => <Demo></Demo>,
   args: {}
 }

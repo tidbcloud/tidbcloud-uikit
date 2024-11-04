@@ -12,7 +12,7 @@ const decorator = (Story: StoryFn) => {
 }
 
 const meta: Meta<typeof UnstyledButton> = {
-  title: 'Primitive/UnstyledButton',
+  title: 'Primitive/Buttons/UnstyledButton',
   component: UnstyledButton,
   decorators: [decorator],
   parameters: {}

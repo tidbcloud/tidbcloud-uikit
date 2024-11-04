@@ -14,7 +14,7 @@ const decorator = (Story: StoryFn) => {
 }
 
 const meta: Meta<typeof Chip> = {
-  title: 'Primitive/Chip',
+  title: 'Primitive/Inputs/Chip',
   component: Chip,
   decorators: [decorator],
   parameters: {}

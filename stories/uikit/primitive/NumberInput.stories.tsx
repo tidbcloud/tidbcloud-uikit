@@ -12,7 +12,7 @@ const decorator = (Story: StoryFn) => {
 }
 
 const meta: Meta<typeof NumberInput> = {
-  title: 'Primitive/NumberInput',
+  title: 'Primitive/Inputs/NumberInput',
   component: NumberInput,
   decorators: [decorator],
   parameters: {}
@@ -29,9 +29,7 @@ export const Primary: Story = {
     stepHoldDelay: 500,
     stepHoldInterval: 100,
     step: 0.05,
-    precision: 2,
     decimalSeparator: ',',
-    thousandsSeparator: '.',
     disabled: false
   }
 }

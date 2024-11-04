@@ -14,7 +14,7 @@ const decorator = (Story: StoryFn) => {
 }
 
 const meta: Meta<typeof Checkbox> = {
-  title: 'Primitive/Checkbox',
+  title: 'Primitive/Inputs/Checkbox',
   component: Checkbox,
   decorators: [decorator],
   parameters: {}
@@ -65,9 +65,6 @@ export const Primary: Story = {
     size: {
       control: 'select',
       options: SIZE_LIST
-    },
-    transitionDuration: {
-      control: 'number'
     },
     wrapperProps: {
       control: 'text'

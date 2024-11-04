@@ -14,7 +14,7 @@ const decorator = (Story: StoryFn) => {
 }
 
 const meta: Meta<typeof LoadingOverlay> = {
-  title: 'Primitive/LoadingOverlay',
+  title: 'Primitive/Overlays/LoadingOverlay',
   component: LoadingOverlay,
   decorators: [decorator],
   parameters: {}
@@ -50,15 +50,5 @@ function PrimaryDemo({ ...props }) {
 // More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
 export const Primary: Story = {
   render: PrimaryDemo,
-  args: {
-    overlayBlur: 2
-  },
-  argTypes: {
-    overlayBlur: {
-      control: 'number'
-    },
-    overlayColor: {
-      control: 'text'
-    }
-  }
+  args: {}
 }

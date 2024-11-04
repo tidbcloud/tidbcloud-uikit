@@ -12,7 +12,7 @@ const decorator = (Story: StoryFn) => {
 }
 
 const meta: Meta<typeof MultiSelect> = {
-  title: 'Primitive/MultiSelect',
+  title: 'Primitive/Combobox/MultiSelect',
   component: MultiSelect,
   decorators: [decorator],
   parameters: {}
@@ -47,13 +47,8 @@ export const Primary: Story = {
   args: {
     searchable: false,
     clearable: false,
-    creatable: false,
     disabled: false,
-    readOnly: false,
-    disableSelectedItemFiltering: false,
-    maxSelectedValues: 3,
-    dropdownPosition: 'flip',
-    withinPortal: true
+    readOnly: false
   },
   argTypes: {
     searchable: {
@@ -62,24 +57,11 @@ export const Primary: Story = {
     clearable: {
       control: 'boolean'
     },
-    creatable: {
-      control: 'boolean'
-    },
     disabled: {
       control: 'boolean'
     },
     readOnly: {
       control: 'boolean'
-    },
-    disableSelectedItemFiltering: {
-      control: 'boolean'
-    },
-    maxSelectedValues: {
-      control: 'number'
-    },
-    dropdownPosition: {
-      control: 'select',
-      options: ['top', 'bottom', 'flip']
     },
     size: {
       control: 'select',

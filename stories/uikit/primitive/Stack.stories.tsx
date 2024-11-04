@@ -12,7 +12,7 @@ const decorator = (Story: StoryFn) => {
 }
 
 const meta: Meta<typeof Stack> = {
-  title: 'Primitive/Stack',
+  title: 'Primitive/Layout/Stack',
   component: Stack,
   decorators: [decorator],
   parameters: {}
@@ -23,11 +23,7 @@ export default meta
 // More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
 export const Primary: Story = {
   render: ({ ...rest }) => (
-    <Stack
-      h={300}
-      sx={(theme) => ({ backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[0] })}
-      {...rest}
-    >
+    <Stack h={300} {...rest}>
       <Button variant="outline">1</Button>
       <Button variant="outline">2</Button>
       <Button variant="outline">3</Button>
@@ -39,7 +35,7 @@ export const Primary: Story = {
       options: ['stretch', 'flex-start', 'flex-end', 'center'],
       control: { type: 'select' }
     },
-    spacing: {
+    gap: {
       options: ['xs', 'sm', 'md', 'lg', 'xl'],
       control: { type: 'select' }
     },

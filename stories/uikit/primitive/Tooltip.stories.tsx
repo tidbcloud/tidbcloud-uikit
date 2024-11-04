@@ -12,7 +12,7 @@ const decorator = (Story: StoryFn) => {
 }
 
 const meta: Meta<typeof Tooltip> = {
-  title: 'Primitive/Tooltip',
+  title: 'Primitive/Overlays/Tooltip',
   component: Tooltip,
   decorators: [decorator],
   parameters: {}

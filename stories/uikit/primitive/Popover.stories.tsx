@@ -13,7 +13,7 @@ const decorator = (Story: StoryFn) => {
 }
 
 const meta: Meta<typeof Popover> = {
-  title: 'Primitive/Popover',
+  title: 'Primitive/Overlays/Popover',
   component: Popover,
   decorators: [decorator],
   parameters: {}

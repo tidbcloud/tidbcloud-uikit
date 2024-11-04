@@ -12,7 +12,7 @@ const decorator = (Story: StoryFn) => {
 }
 
 const meta: Meta<typeof SimpleGrid> = {
-  title: 'Primitive/SimpleGrid',
+  title: 'Primitive/Layout/SimpleGrid',
   component: SimpleGrid,
   decorators: [decorator],
   parameters: {}

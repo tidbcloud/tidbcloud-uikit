@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react'
-import { useDarkMode, DARK_MODE_EVENT_NAME } from 'storybook-dark-mode'
+import { DARK_MODE_EVENT_NAME } from 'storybook-dark-mode'
 import { addons } from '@storybook/preview-api'
 import { ThemeProvider } from '@tidbcloud/uikit/theme'
 import { Preview } from '@storybook/react'
@@ -11,7 +11,14 @@ export const parameters = {
 }
 
 function ThemeWrapper(props: any) {
-  const isDarkMode = useDarkMode()
+  const [isDarkMode, setDark] = useState(false)
+
+  useEffect(() => {
+    // listen to DARK_MODE event
+    channel.on(DARK_MODE_EVENT_NAME, setDark)
+    return () => channel.off(DARK_MODE_EVENT_NAME, setDark)
+  }, [channel, setDark])
+
   const colorScheme = useMemo(() => {
     let colorScheme: 'dark' | 'light' | 'auto' = isDarkMode ? 'dark' : 'light'
     const curURL = window.location.href
@@ -55,7 +62,8 @@ const preview: Preview = {
     },
     docs: {
       container: (props) => {
-        const [isDark, setDark] = useState(useDarkMode())
+        const [isDark, setDark] = useState(false)
+
         let darkModeEnabled = isDark
         const curURL = window.location.href
         if (curURL.indexOf('theme=') > -1) {

@@ -16,7 +16,7 @@ const decorator = (Story: StoryFn) => {
 }
 
 const meta: Meta<typeof Dialog> = {
-  title: 'Primitive/Dialog',
+  title: 'Primitive/Overlays/Dialog',
   component: Dialog,
   decorators: [decorator],
   parameters: {}
@@ -29,12 +29,12 @@ function Demo({ ...rest }) {
 
   return (
     <>
-      <Group position="center">
+      <Group justify="center">
         <Button onClick={() => setOpened((o) => !o)}>Toggle dialog</Button>
       </Group>
 
       <Dialog opened={opened} withCloseButton onClose={() => setOpened(false)} size="lg" radius="md" {...rest}>
-        <Text size="sm" style={{ marginBottom: 10 }} weight={500}>
+        <Text size="sm" style={{ marginBottom: 10 }} fw={500}>
           Subscribe to email newsletter
         </Text>
 

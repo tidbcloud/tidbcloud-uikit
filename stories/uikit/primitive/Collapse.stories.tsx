@@ -13,7 +13,7 @@ const decorator = (Story: StoryFn) => {
 }
 
 const meta: Meta<typeof Collapse> = {
-  title: 'Primitive/Collapse',
+  title: 'Primitive/Misc/Collapse',
   component: Collapse,
   decorators: [decorator],
   parameters: {}

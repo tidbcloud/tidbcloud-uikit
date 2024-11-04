@@ -12,7 +12,7 @@ const decorator = (Story: StoryFn) => {
 }
 
 const meta: Meta<typeof Tabs> = {
-  title: 'Primitive/Tabs',
+  title: 'Primitive/Navigation/Tabs',
   component: Tabs,
   decorators: [decorator],
   parameters: {},

@@ -15,7 +15,7 @@ const decorator = (Story: StoryFn) => {
 }
 
 const meta: Meta<typeof Stepper> = {
-  title: 'Primitive/Stepper',
+  title: 'Primitive/Navigation/Stepper',
   component: Stepper,
   decorators: [decorator],
   parameters: {},
@@ -36,7 +36,7 @@ function PrimaryDemo({ ...props }) {
 
   return (
     <>
-      <Stepper active={active} onStepClick={setActive} breakpoint="sm" {...props}>
+      <Stepper active={active} onStepClick={setActive} {...props}>
         <Stepper.Step label="First step" description="Create an account">
           Step 1 content: Create an account
         </Stepper.Step>
@@ -49,7 +49,7 @@ function PrimaryDemo({ ...props }) {
         <Stepper.Completed>Completed, click back button to get to previous step</Stepper.Completed>
       </Stepper>
 
-      <Group position="center" mt="xl">
+      <Group justify="center" mt="xl">
         <Button variant="default" onClick={prevStep}>
           Back
         </Button>

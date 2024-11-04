@@ -14,7 +14,7 @@ const decorator = (Story: StoryFn) => {
 }
 
 const meta: Meta<typeof Badge> = {
-  title: 'Primitive/Badge',
+  title: 'Primitive/Data display/Badge',
   component: Badge,
   decorators: [decorator],
   parameters: {},

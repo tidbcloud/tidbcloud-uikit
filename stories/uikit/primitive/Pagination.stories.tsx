@@ -15,7 +15,7 @@ const decorator = (Story: StoryFn) => {
 }
 
 const meta: Meta<typeof Pagination> = {
-  title: 'Primitive/Pagination',
+  title: 'Primitive/Navigation/Pagination',
   component: Pagination,
   decorators: [decorator],
   parameters: {},
@@ -34,7 +34,7 @@ function Controlled({ ...props }) {
   return (
     <>
       Current page: {value}
-      <Pagination total={20} page={value} onChange={setValue} {...props} />
+      <Pagination total={20} value={value} onChange={setValue} {...props} />
     </>
   )
 }

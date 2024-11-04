@@ -14,7 +14,7 @@ const decorator = (Story: StoryFn) => {
 }
 
 const meta: Meta<typeof CloseButton> = {
-  title: 'Primitive/CloseButton',
+  title: 'Primitive/Buttons/CloseButton',
   component: CloseButton,
   decorators: [decorator],
   parameters: {}
@@ -68,17 +68,6 @@ export const Primary: Story = {
       options: SIZE_LIST,
       control: {
         type: 'select'
-      }
-    },
-    iconSize: {
-      control: {
-        type: 'number' || 'string'
-      },
-      description: 'Width and height of X icon',
-      table: {
-        type: {
-          summary: 'number | string'
-        }
       }
     },
     size: {

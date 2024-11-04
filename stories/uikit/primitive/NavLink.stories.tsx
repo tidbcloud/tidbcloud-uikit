@@ -12,7 +12,7 @@ const decorator = (Story: StoryFn) => {
 }
 
 const meta: Meta<typeof NavLink> = {
-  title: 'Primitive/NavLink',
+  title: 'Primitive/Navigation/NavLink',
   component: NavLink,
   decorators: [decorator],
   parameters: {}
@@ -28,7 +28,7 @@ export const Primary: Story = {
       <NavLink
         label="With description"
         description="Additional information"
-        icon={
+        leftSection={
           <Badge size="xs" variant="filled" color="red" sx={{ width: 16, height: 16, padding: 0 }}>
             3
           </Badge>
@@ -45,7 +45,7 @@ export const Primary: Story = {
 export const List: Story = {
   render: () => (
     <Box bg="carbon.0" p={32}>
-      <Stack w={240} spacing={4}>
+      <Stack w={240} gap={4}>
         <NavLink label="Page 1" active />
         <NavLink label="Page 2" />
         <NavLink label="Page 3" />

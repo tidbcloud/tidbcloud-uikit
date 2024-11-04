@@ -14,7 +14,7 @@ const decorator = (Story: StoryFn) => {
 }
 
 const meta: Meta<typeof ColorInput> = {
-  title: 'Primitive/ColorInput',
+  title: 'Primitive/Inputs/ColorInput',
   component: ColorInput,
   decorators: [decorator],
   parameters: {}

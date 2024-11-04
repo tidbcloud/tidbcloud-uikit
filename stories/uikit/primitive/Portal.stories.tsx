@@ -12,7 +12,7 @@ const decorator = (Story: StoryFn) => {
 }
 
 const meta: Meta<typeof Portal> = {
-  title: 'Primitive/Portal',
+  title: 'Primitive/Misc/Portal',
   component: Portal,
   decorators: [decorator],
   parameters: {}

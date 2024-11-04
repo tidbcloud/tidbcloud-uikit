@@ -12,7 +12,7 @@ const decorator = (Story: StoryFn) => {
 }
 
 const meta: Meta<typeof Textarea> = {
-  title: 'Primitive/Textarea',
+  title: 'Primitive/Inputs/Textarea',
   component: Textarea,
   decorators: [decorator],
   parameters: {}

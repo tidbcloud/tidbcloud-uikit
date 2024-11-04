@@ -1,6 +1,6 @@
 import type { Meta, StoryObj, StoryFn } from '@storybook/react'
 import { Transition, useMantineTheme, Button, Paper } from '@tidbcloud/uikit'
-import { useClickOutside } from '@tidbcloud/uikit/hooks'
+import { useClickOutside, useColorScheme } from '@tidbcloud/uikit/hooks'
 import { useState } from 'react'
 
 type Story = StoryObj<typeof Transition>
@@ -14,7 +14,7 @@ const decorator = (Story: StoryFn) => {
 }
 
 const meta: Meta<typeof Transition> = {
-  title: 'Primitive/Transition',
+  title: 'Primitive/Misc/Transition',
   component: Transition,
   decorators: [decorator],
   parameters: {}
@@ -33,6 +33,7 @@ function PrimaryDemo() {
   const [opened, setOpened] = useState(false)
   const clickOutsideRef = useClickOutside(() => setOpened(false))
   const theme = useMantineTheme()
+  const { colorScheme } = useColorScheme('light')
 
   return (
     <div
@@ -58,7 +59,7 @@ function PrimaryDemo() {
               right: 0,
               height: '200px',
               padding: theme.spacing.xl,
-              backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.white
+              backgroundColor: colorScheme === 'dark' ? theme.colors.dark[6] : theme.white
             }}
           >
             Dropdown
