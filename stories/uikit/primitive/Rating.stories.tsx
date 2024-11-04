@@ -11,7 +11,7 @@ const decorator = (Story: StoryFn) => {
 }
 
 const meta: Meta<typeof Rating> = {
-  title: 'Primitive/Rating',
+  title: 'Primitive/Inputs/Rating',
   component: Rating,
   decorators: [decorator],
   parameters: {}

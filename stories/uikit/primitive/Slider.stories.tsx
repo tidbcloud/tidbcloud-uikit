@@ -13,7 +13,7 @@ const decorator = (Story: StoryFn) => {
 }
 
 const meta: Meta<typeof Slider> = {
-  title: 'Primitive/Slider',
+  title: 'Primitive/Inputs/Slider',
   component: Slider,
   decorators: [decorator],
   parameters: {}

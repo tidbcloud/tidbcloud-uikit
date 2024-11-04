@@ -15,7 +15,7 @@ const decorator = (Story: StoryFn) => {
 }
 
 const meta: Meta<typeof Timeline> = {
-  title: 'Primitive/Timeline',
+  title: 'Primitive/Data display/Timeline',
   component: Timeline,
   decorators: [decorator],
   parameters: {}

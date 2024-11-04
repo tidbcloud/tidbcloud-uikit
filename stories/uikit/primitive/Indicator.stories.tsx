@@ -14,7 +14,7 @@ const decorator = (Story: StoryFn) => {
 }
 
 const meta: Meta<typeof Indicator> = {
-  title: 'Primitive/Indicator',
+  title: 'Primitive/Data display/Indicator',
   component: Indicator,
   decorators: [decorator],
   parameters: {}
@@ -25,7 +25,7 @@ export default meta
 // More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
 export const Primary: Story = {
   render: ({ ...rest }) => (
-    <Group position="center">
+    <Group justify="center">
       <Indicator {...rest}>
         <Avatar size="lg" />
       </Indicator>
@@ -35,9 +35,7 @@ export const Primary: Story = {
     size: 12,
     inline: false,
     label: '',
-    processing: false,
-    dot: false,
-    showZero: true
+    processing: false
   },
   argTypes: {
     color: {

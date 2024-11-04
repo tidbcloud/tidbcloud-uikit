@@ -14,7 +14,7 @@ const decorator = (Story: StoryFn) => {
 }
 
 const meta: Meta<typeof Autocomplete> = {
-  title: 'Primitive/Autocomplete',
+  title: 'Primitive/Combobox/Autocomplete',
   component: Autocomplete,
   decorators: [decorator],
   parameters: {}
@@ -68,14 +68,6 @@ export const Primary: Story = {
     disabled: {
       control: 'boolean'
     },
-    dropdownComponent: {
-      control: { type: 'text' },
-      ...getDescriptionItem('Change dropdown component, can be used to add native scrollbars', 'any')
-    },
-    dropdownPosition: {
-      control: { type: 'select' },
-      options: ['bottom', 'top', 'flip']
-    },
     error: {
       control: { type: 'text' },
       ...getDescriptionItem('Displays error message after input', 'ReactNode')
@@ -91,18 +83,7 @@ export const Primary: Story = {
         '(value: string, item: AutocompleteItem) => boolean'
       )
     },
-    hoverOnSearchChange: {
-      description: 'Hovers the first result when input changes',
-      control: { type: 'boolean' }
-    },
-    icon: {
-      control: { type: 'text' },
-      ...getDescriptionItem('Adds icon on the left side of input', 'ReactNode')
-    },
-    iconWidth: {
-      control: { type: 'text' }
-    },
-    initiallyOpened: {
+    defaultDropdownOpened: {
       control: 'boolean'
     },
     inputContainer: {
@@ -118,10 +99,6 @@ export const Primary: Story = {
         'Controls order of the Input.Wrapper elements',
         '("input" | "label" | "error" | "description")[]'
       )
-    },
-    itemComponent: {
-      control: { type: 'text' },
-      ...getDescriptionItem('Change item renderer', 'FC<any>')
     },
     label: {
       control: { type: 'text' },
@@ -139,10 +116,6 @@ export const Primary: Story = {
       control: { type: 'text' },
       ...getDescriptionItem('Max dropdown height', 'string | number')
     },
-    nothingFound: {
-      control: { type: 'text' },
-      ...getDescriptionItem('Nothing found label', 'ReactNode')
-    },
     onChange: {
       control: { type: 'text' },
       ...getDescriptionItem('Controlled input onChange handler', '(value: string) => void')
@@ -154,14 +127,6 @@ export const Primary: Story = {
     onDropdownOpen: {
       control: { type: 'text' },
       ...getDescriptionItem('Called when dropdown is opened', '() => void')
-    },
-    onItemSubmit: {
-      control: { type: 'text' },
-      ...getDescriptionItem('Called when item is selected', '(item: AutocompleteItem) => void')
-    },
-    positionDependencies: {
-      control: { type: 'text' },
-      ...getDescriptionItem('useEffect dependencies to force update dropdown position', 'any[]')
     },
     radius: {
       control: { type: 'select' },
@@ -180,23 +145,9 @@ export const Primary: Story = {
       control: { type: 'number' },
       ...getDescriptionItem('Width of right section, is used to calculate input padding-right', 'Record<string, any>')
     },
-    shadow: {
-      control: { type: 'text' },
-      ...getDescriptionItem('Dropdown shadow from theme or any value to set box-shadow', 'MantineShadow')
-    },
     size: {
       control: { type: 'select' },
       options: SIZE_LIST
-    },
-    switchDirectionOnFlip: {
-      control: { type: 'boolean' }
-    },
-    transitionProps: {
-      control: { type: 'text' },
-      ...getDescriptionItem(
-        "Props added to Transition component that used to animate dropdown presence, use to configure duration and animation type, { duration: 0, transition: 'fade' } by default",
-        'Partial<Omit<TransitionProps, "mounted">>'
-      )
     },
     value: {
       control: { type: 'text' }
@@ -208,15 +159,9 @@ export const Primary: Story = {
     withAsterisk: {
       control: { type: 'boolean' }
     },
-    withinPortal: {
-      control: { type: 'boolean' }
-    },
     wrapperProps: {
       control: { type: 'text' },
       ...getDescriptionItem('Props spread to root element', 'Record<string, any>')
-    },
-    zIndex: {
-      control: { type: 'number' }
     }
   }
 }

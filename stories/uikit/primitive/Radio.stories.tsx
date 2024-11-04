@@ -12,7 +12,7 @@ const decorator = (Story: StoryFn) => {
 }
 
 const meta: Meta<typeof Radio> = {
-  title: 'Primitive/Radio',
+  title: 'Primitive/Inputs/Radio',
   component: Radio,
   decorators: [decorator],
   parameters: {}

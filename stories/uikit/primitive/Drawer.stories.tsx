@@ -16,7 +16,7 @@ const decorator = (Story: StoryFn) => {
 }
 
 const meta: Meta<typeof Drawer> = {
-  title: 'Primitive/Drawer',
+  title: 'Primitive/Overlays/Drawer',
   component: Drawer,
   decorators: [decorator],
   parameters: {}
@@ -33,7 +33,7 @@ function Demo({ ...rest }) {
         <AuthenticationForm />
       </Drawer>
 
-      <Group position="center">
+      <Group justify="center">
         <Button onClick={() => setOpened(true)}>Open Drawer</Button>
       </Group>
     </>
@@ -45,7 +45,6 @@ export const Primary: Story = {
   render: ({ ...rest }) => <Demo {...rest} />,
   args: {
     title: 'Register',
-    closeButtonLabel: '',
     closeOnClickOutside: true,
     closeOnEscape: true,
     lockScroll: false,
@@ -62,16 +61,6 @@ export const Primary: Story = {
     size: {
       options: SIZE_LIST,
       control: { type: 'select' }
-    },
-    overlayOpacity: {
-      control: {
-        type: 'number'
-      }
-    },
-    overlayBlur: {
-      control: {
-        type: 'number'
-      }
     },
     padding: {
       options: SIZE_LIST,

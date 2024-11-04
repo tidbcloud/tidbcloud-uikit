@@ -15,7 +15,7 @@ const decorator = (Story: StoryFn) => {
 }
 
 const meta: Meta<typeof ThemeIcon> = {
-  title: 'Primitive/ThemeIcon',
+  title: 'Primitive/Data display/ThemeIcon',
   component: ThemeIcon,
   decorators: [decorator],
   parameters: {}

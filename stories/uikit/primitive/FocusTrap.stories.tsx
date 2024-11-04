@@ -13,7 +13,7 @@ const decorator = (Story: StoryFn) => {
 }
 
 const meta: Meta<typeof FocusTrap> = {
-  title: 'Primitive/FocusTrap',
+  title: 'Primitive/Misc/FocusTrap',
   component: FocusTrap,
   decorators: [decorator],
   parameters: {}

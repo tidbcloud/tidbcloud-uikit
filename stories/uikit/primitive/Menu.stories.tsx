@@ -12,7 +12,7 @@ const decorator = (Story: StoryFn) => {
 }
 
 const meta: Meta<typeof Menu> = {
-  title: 'Primitive/Menu',
+  title: 'Primitive/Overlays/Menu',
   component: Menu,
   decorators: [decorator],
   parameters: {}
@@ -22,7 +22,7 @@ export default meta
 
 function PrimaryDemo({ ...props }) {
   return (
-    <Group position="center" h={500}>
+    <Group justify="center" h={500}>
       <Menu shadow="md" width={200} {...props}>
         <Menu.Target>
           <Button>Toggle menu</Button>

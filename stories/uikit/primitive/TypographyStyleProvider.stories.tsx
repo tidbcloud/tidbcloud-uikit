@@ -12,7 +12,7 @@ const decorator = (Story: StoryFn) => {
 }
 
 const meta: Meta<typeof TypographyStylesProvider> = {
-  title: 'Primitive/TypographyStylesProvider',
+  title: 'Primitive/Typography/TypographyStylesProvider',
   component: TypographyStylesProvider,
   decorators: [decorator],
   parameters: {}

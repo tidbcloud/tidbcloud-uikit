@@ -12,7 +12,7 @@ const decorator = (Story: StoryFn) => {
 }
 
 const meta: Meta<typeof Accordion> = {
-  title: 'Primitive/Accordion',
+  title: 'Primitive/Data display/Accordion',
   component: Accordion,
   decorators: [decorator],
   parameters: {}

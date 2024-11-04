@@ -12,7 +12,7 @@ const decorator = (Story: StoryFn) => {
 }
 
 const meta: Meta<typeof Spoiler> = {
-  title: 'Primitive/Spoiler',
+  title: 'Primitive/Data display/Spoiler',
   component: Spoiler,
   decorators: [decorator],
   parameters: {}

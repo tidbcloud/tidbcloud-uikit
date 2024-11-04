@@ -12,7 +12,7 @@ const decorator = (Story: StoryFn) => {
 }
 
 const meta: Meta<typeof Grid> = {
-  title: 'Primitive/Grid',
+  title: 'Primitive/Layout/Grid',
   component: Grid,
   decorators: [decorator],
   parameters: {}

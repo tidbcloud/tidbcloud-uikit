@@ -13,7 +13,7 @@ const decorator = (Story: StoryFn) => {
 }
 
 const meta: Meta<typeof TextInput> = {
-  title: 'Primitive/TextInput',
+  title: 'Primitive/Inputs/TextInput',
   component: TextInput,
   decorators: [decorator],
   parameters: {}
@@ -27,7 +27,6 @@ export const Primary: Story = {
   args: {
     leftLabel: 'prefix',
     label: 'Label',
-    icon: 'Icon',
     placeholder: 'this is a placeholder',
     disabled: false,
     error: '',

@@ -14,7 +14,7 @@ const decorator = (Story: StoryFn) => {
 }
 
 const meta: Meta<typeof Alert> = {
-  title: 'Primitive/Alert',
+  title: 'Primitive/Feedback/Alert',
   component: Alert,
   decorators: [decorator],
   parameters: {}

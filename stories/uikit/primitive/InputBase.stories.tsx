@@ -12,7 +12,7 @@ const decorator = (Story: StoryFn) => {
 }
 
 const meta: Meta<typeof InputBase> = {
-  title: 'Primitive/InputBase',
+  title: 'Primitive/Inputs/InputBase',
   component: InputBase,
   decorators: [decorator],
   parameters: {}

@@ -14,7 +14,7 @@ const decorator = (Story: StoryFn) => {
 }
 
 const meta: Meta<typeof Loader> = {
-  title: 'Primitive/Loader',
+  title: 'Primitive/Feedback/Loader',
   component: Loader,
   decorators: [decorator],
   parameters: {}

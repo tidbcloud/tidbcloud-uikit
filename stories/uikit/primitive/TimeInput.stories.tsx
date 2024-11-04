@@ -12,7 +12,7 @@ const decorator = (Story: StoryFn) => {
 }
 
 const meta: Meta<typeof TimeInput> = {
-  title: 'Primitive/TimeInput',
+  title: 'Primitive/Dates/TimeInput',
   component: TimeInput,
   decorators: [decorator],
   parameters: {}

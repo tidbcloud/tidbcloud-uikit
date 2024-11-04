@@ -11,7 +11,7 @@ const decorator = (Story: StoryFn) => {
 }
 
 const meta: Meta<typeof SegmentedControl> = {
-  title: 'Primitive/SegmentedControl',
+  title: 'Primitive/Inputs/SegmentedControl',
   component: SegmentedControl,
   decorators: [decorator],
   parameters: {}

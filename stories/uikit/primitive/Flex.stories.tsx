@@ -12,7 +12,7 @@ const decorator = (Story: StoryFn) => {
 }
 
 const meta: Meta<typeof Flex> = {
-  title: 'Primitive/Flex',
+  title: 'Primitive/Layout/Flex',
   component: Flex,
   decorators: [decorator],
   parameters: {}

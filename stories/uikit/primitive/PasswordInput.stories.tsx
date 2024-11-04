@@ -12,7 +12,7 @@ const decorator = (Story: StoryFn) => {
 }
 
 const meta: Meta<typeof PasswordInput> = {
-  title: 'Primitive/PasswordInput',
+  title: 'Primitive/Inputs/PasswordInput',
   component: PasswordInput,
   decorators: [decorator],
   parameters: {}

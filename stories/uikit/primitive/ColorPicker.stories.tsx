@@ -14,7 +14,7 @@ const decorator = (Story: StoryFn) => {
 }
 
 const meta: Meta<typeof ColorPicker> = {
-  title: 'Primitive/ColorPicker',
+  title: 'Primitive/Inputs/ColorPicker',
   component: ColorPicker,
   decorators: [decorator],
   parameters: {}

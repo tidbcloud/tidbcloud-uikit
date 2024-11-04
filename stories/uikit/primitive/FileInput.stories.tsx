@@ -12,7 +12,7 @@ const decorator = (Story: StoryFn) => {
 }
 
 const meta: Meta<typeof FileInput> = {
-  title: 'Primitive/FileInput',
+  title: 'Primitive/Inputs/FileInput',
   component: FileInput,
   decorators: [decorator],
   parameters: {}

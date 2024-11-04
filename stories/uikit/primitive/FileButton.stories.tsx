@@ -12,7 +12,7 @@ const decorator = (Story: StoryFn) => {
 }
 
 const meta: Meta<typeof FileButton> = {
-  title: 'Primitive/FileButton',
+  title: 'Primitive/Buttons/FileButton',
   component: FileButton,
   decorators: [decorator],
   parameters: {}
@@ -23,7 +23,7 @@ export default meta
 // More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
 export const Primary: Story = {
   render: ({ ...rest }) => (
-    <Group position="center">
+    <Group justify="center">
       <FileButton accept="image/png,image/jpeg" {...rest}>
         {(props) => <Button {...props}>Upload image</Button>}
       </FileButton>

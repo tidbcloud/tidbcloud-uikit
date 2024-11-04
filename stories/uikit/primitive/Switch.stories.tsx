@@ -14,7 +14,7 @@ const decorator = (Story: StoryFn) => {
 }
 
 const meta: Meta<typeof Switch> = {
-  title: 'Primitive/Switch',
+  title: 'Primitive/Inputs/Switch',
   component: Switch,
   decorators: [decorator],
   parameters: {}
@@ -61,14 +61,6 @@ export const Primary: Story = {
       }
     }
   }
-}
-
-export function CursorPointer() {
-  return (
-    <MantineProvider theme={{ cursorType: 'pointer' }}>
-      <Switch label="Hello" value="1" />
-    </MantineProvider>
-  )
 }
 
 export function WithLabels() {

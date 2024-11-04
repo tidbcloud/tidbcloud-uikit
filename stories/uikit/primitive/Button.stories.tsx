@@ -15,7 +15,7 @@ const decorator = (Story: StoryFn) => {
 }
 
 const meta: Meta<typeof Button> = {
-  title: 'Primitive/Button',
+  title: 'Primitive/Buttons/Button',
   component: Button,
   decorators: [decorator],
   parameters: {}
@@ -110,7 +110,7 @@ export const Primary: Story = {
     fullWidth: {
       control: 'boolean'
     },
-    leftIcon: {
+    leftSection: {
       control: { type: 'text' },
       description: 'Adds icon before button label',
       table: {
@@ -119,7 +119,7 @@ export const Primary: Story = {
         }
       }
     },
-    rightIcon: {
+    rightSection: {
       control: { type: 'text' },
       description: 'Adds icon after button label',
       table: {
@@ -139,7 +139,7 @@ export const Primary: Story = {
 export const GroupedButtons: Story = {
   render: ({ ...rest }) => (
     <Stack align="flex-start">
-      <Button.Group orientation="horizontal" buttonBorderWidth={1} {...rest}>
+      <Button.Group orientation="horizontal" borderWidth={1} {...rest}>
         <Button variant="default">First</Button>
         <Button variant="default">Second</Button>
         <Button variant="default">Third</Button>
@@ -209,19 +209,19 @@ export const DisabledButton: Story = {
 export const WithIcon: Story = {
   render: () => (
     <Group>
-      <Button leftIcon={<IconSettings01 size={12} />} variant="default" size="xs">
+      <Button leftSection={<IconSettings01 size={12} />} variant="default" size="xs">
         Settings xs
       </Button>
 
-      <Button rightIcon={<IconSettings01 size={12} />} variant="default" size="xs">
+      <Button rightSection={<IconSettings01 size={12} />} variant="default" size="xs">
         Settings xs
       </Button>
 
-      <Button leftIcon={<IconSettings01 size={16} />} variant="default">
+      <Button leftSection={<IconSettings01 size={16} />} variant="default">
         Settings
       </Button>
 
-      <Button rightIcon={<IconSettings01 size={16} />} variant="default">
+      <Button rightSection={<IconSettings01 size={16} />} variant="default">
         Settings
       </Button>
     </Group>

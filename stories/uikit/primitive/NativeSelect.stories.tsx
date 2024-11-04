@@ -12,7 +12,7 @@ const decorator = (Story: StoryFn) => {
 }
 
 const meta: Meta<typeof NativeSelect> = {
-  title: 'Primitive/NativeSelect',
+  title: 'Primitive/Inputs/NativeSelect',
   component: NativeSelect,
   decorators: [decorator],
   parameters: {}

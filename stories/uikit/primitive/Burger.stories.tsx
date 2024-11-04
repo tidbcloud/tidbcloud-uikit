@@ -15,7 +15,7 @@ const decorator = (Story: StoryFn) => {
 }
 
 const meta: Meta<typeof Burger> = {
-  title: 'Primitive/Burger',
+  title: 'Primitive/Navigation/Burger',
   component: Burger,
   decorators: [decorator],
   parameters: {},

@@ -12,7 +12,7 @@ const decorator = (Story: StoryFn) => {
 }
 
 const meta: Meta<typeof Kbd> = {
-  title: 'Primitive/Kbd',
+  title: 'Primitive/Data display/Kbd',
   component: Kbd,
   decorators: [decorator],
   parameters: {}

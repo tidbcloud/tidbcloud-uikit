@@ -12,7 +12,7 @@ const decorator = (Story: StoryFn) => {
 }
 
 const meta: Meta<typeof Table> = {
-  title: 'Primitive/Table',
+  title: 'Primitive/Typography/Table',
   component: Table,
   decorators: [decorator],
   parameters: {}
@@ -59,7 +59,7 @@ export const Primary: Story = {
   args: {
     striped: false,
     highlightOnHover: false,
-    withBorder: false,
+    withTableBorder: false,
     withColumnBorders: false
   },
   argTypes: {
@@ -72,10 +72,6 @@ export const Primary: Story = {
       control: { type: 'select' }
     },
     verticalSpacing: {
-      options: ['xs', 'sm', 'md', 'lg', 'xl'],
-      control: { type: 'select' }
-    },
-    fontSize: {
       options: ['xs', 'sm', 'md', 'lg', 'xl'],
       control: { type: 'select' }
     }

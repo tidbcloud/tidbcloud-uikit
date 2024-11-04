@@ -12,7 +12,7 @@ const decorator = (Story: StoryFn) => {
 }
 
 const meta: Meta<typeof BackgroundImage> = {
-  title: 'Primitive/BackgroundImage',
+  title: 'Primitive/Data display/BackgroundImage',
   component: BackgroundImage,
   decorators: [decorator],
   parameters: {}

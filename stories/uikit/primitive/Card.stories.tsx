@@ -12,7 +12,7 @@ const decorator = (Story: StoryFn) => {
 }
 
 const meta: Meta<typeof Card> = {
-  title: 'Primitive/Card',
+  title: 'Primitive/Data display/Card',
   component: Card,
   decorators: [decorator],
   parameters: {}

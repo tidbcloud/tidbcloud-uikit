@@ -13,7 +13,7 @@ const decorator = (Story: StoryFn) => {
 }
 
 const meta: Meta<typeof ScrollArea> = {
-  title: 'Primitive/ScrollArea',
+  title: 'Primitive/Misc/ScrollArea',
   component: ScrollArea,
   decorators: [decorator],
   parameters: {}

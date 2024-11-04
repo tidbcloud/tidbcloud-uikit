@@ -13,7 +13,7 @@ const decorator = (Story: StoryFn) => {
 }
 
 const meta: Meta<typeof Modal> = {
-  title: 'Primitive/Modal',
+  title: 'Primitive/Overlays/Modal',
   component: Modal,
   decorators: [decorator],
   parameters: {}
@@ -30,7 +30,7 @@ function PrimaryDemo() {
         Modal with header, press escape or click on overlay to close
       </Modal>
 
-      <Group position="center">
+      <Group justify="center">
         <Button onClick={open}>Open modal</Button>
       </Group>
     </>

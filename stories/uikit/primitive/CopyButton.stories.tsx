@@ -12,7 +12,7 @@ const decorator = (Story: StoryFn) => {
 }
 
 const meta: Meta<typeof CopyButton> = {
-  title: 'Primitive/CopyButton',
+  title: 'Primitive/Buttons/CopyButton',
   component: CopyButton,
   decorators: [decorator],
   parameters: {}

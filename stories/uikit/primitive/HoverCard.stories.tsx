@@ -1,5 +1,5 @@
-import type { Meta, StoryObj, StoryFn, ArgTypes } from '@storybook/react'
-import { Button, Group, HoverCard, HoverCardProps } from '@tidbcloud/uikit'
+import type { Meta, StoryObj, StoryFn } from '@storybook/react'
+import { Button, Group, HoverCard } from '@tidbcloud/uikit'
 
 type Story = StoryObj<typeof HoverCard>
 
@@ -12,7 +12,7 @@ const decorator = (Story: StoryFn) => {
 }
 
 const meta: Meta<typeof HoverCard> = {
-  title: 'Primitive/HoverCard',
+  title: 'Primitive/Overlays/HoverCard',
   component: HoverCard,
   decorators: [decorator],
   parameters: {}
@@ -22,7 +22,7 @@ export default meta
 
 function PrimaryDemo({ ...props }) {
   return (
-    <Group position="center">
+    <Group justify="center">
       <HoverCard width={280} shadow="md" {...props}>
         <HoverCard.Target>
           <Button>Hover to reveal the card</Button>

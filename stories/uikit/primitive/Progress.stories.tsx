@@ -1,5 +1,5 @@
 import type { Meta, StoryObj, StoryFn } from '@storybook/react'
-import { Progress, Stack } from '@tidbcloud/uikit'
+import { Progress, Stack, Tooltip } from '@tidbcloud/uikit'
 
 type Story = StoryObj<typeof Progress>
 
@@ -12,7 +12,7 @@ const decorator = (Story: StoryFn) => {
 }
 
 const meta: Meta<typeof Progress> = {
-  title: 'Primitive/Progress',
+  title: 'Primitive/Feedback/Progress',
   component: Progress,
   decorators: [decorator],
   parameters: {}
@@ -28,25 +28,25 @@ export const Primary: Story = {
       <Progress value={50} />
 
       <div>multiple sections</div>
-      <Progress
-        size="xl"
-        sections={[
-          { value: 40, color: 'cyan' },
-          { value: 20, color: 'blue' },
-          { value: 15, color: 'indigo' }
-        ]}
-      />
+      <Progress.Root size={40}>
+        <Tooltip label="Documents – 33Gb">
+          <Progress.Section value={33} color="cyan">
+            <Progress.Label>Documents</Progress.Label>
+          </Progress.Section>
+        </Tooltip>
 
-      <div>multiple sections</div>
-      <Progress
-        radius="xl"
-        size="xl"
-        sections={[
-          { value: 33, color: 'pink', label: 'Documents', tooltip: 'Document – 33 Gb' },
-          { value: 28, color: 'grape', label: 'Apps', tooltip: 'Apps – 28 Gb' },
-          { value: 25, color: 'violet', label: 'Other', tooltip: 'Other – 25 Gb' }
-        ]}
-      />
+        <Tooltip label="Photos – 28Gb">
+          <Progress.Section value={28} color="pink">
+            <Progress.Label>Photos</Progress.Label>
+          </Progress.Section>
+        </Tooltip>
+
+        <Tooltip label="Other – 15Gb">
+          <Progress.Section value={15} color="orange">
+            <Progress.Label>Other</Progress.Label>
+          </Progress.Section>
+        </Tooltip>
+      </Progress.Root>
     </Stack>
   ),
   args: {}

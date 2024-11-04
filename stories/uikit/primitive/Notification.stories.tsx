@@ -14,7 +14,7 @@ const decorator = (Story: StoryFn) => {
 }
 
 const meta: Meta<typeof Notification> = {
-  title: 'Primitive/Notification',
+  title: 'Primitive/Feedback/Notification',
   component: Notification,
   decorators: [decorator],
   parameters: {}
@@ -33,7 +33,7 @@ function PrimaryDemo({ ...rest }) {
 
       <Notification color="red">Bummer! Notification without title</Notification>
 
-      <Notification loading title="Uploading data to the server" disallowClose>
+      <Notification loading title="Uploading data to the server" withCloseButton={false}>
         Please wait until data is uploaded, you cannot close this notification yet
       </Notification>
 
@@ -49,7 +49,7 @@ export const Primary: Story = {
     loading: false,
     title: 'Success!',
     children: 'Data was successfully uploaded to the server',
-    disallowClose: false
+    withCloseButton: false
   },
   argTypes: {
     color: {

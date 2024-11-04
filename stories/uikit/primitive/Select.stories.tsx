@@ -14,7 +14,7 @@ const decorator = (Story: StoryFn) => {
 }
 
 const meta: Meta<typeof Select> = {
-  title: 'Primitive/Select',
+  title: 'Primitive/Combobox/Select',
   component: Select,
   decorators: [decorator],
   parameters: {}
@@ -27,7 +27,6 @@ export const Primary: Story = {
   render: (props) => (
     <Select
       {...props}
-      withinPortal
       data={[
         { value: 'react', label: 'React' },
         { value: 'ng', label: 'Angular' },
@@ -83,30 +82,10 @@ export function ReadOnly() {
   )
 }
 
-export function CreatableWithNoFilter() {
-  return (
-    <div style={{ padding: 40 }}>
-      <Select
-        creatable
-        searchable
-        getCreateLabel={() => 'createLabel'}
-        shouldCreate={() => true}
-        data={['8.0.0', '8.1.0']}
-        value="8.0.0"
-      />
-    </div>
-  )
-}
-
 export function OverrideDropdownPadding() {
   return (
     <div style={{ padding: 40 }}>
       <Select
-        styles={{
-          itemsWrapper: {
-            padding: 40
-          }
-        }}
         data={Array(100)
           .fill(0)
           .map((_, index) => `Item ${index}`)}
