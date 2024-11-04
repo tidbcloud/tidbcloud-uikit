@@ -43,9 +43,12 @@ export {
   Chip,
   ColorInput,
   ColorPicker,
+  HueSlider,
+  AlphaSlider,
   Fieldset,
   FileInput,
   Input,
+  InputBase,
   JsonInput,
   NativeSelect,
   NumberInput,
@@ -55,6 +58,7 @@ export {
   Rating,
   SegmentedControl,
   Slider,
+  RangeSlider,
   Switch,
   Textarea,
 
@@ -142,12 +146,16 @@ export {
   Portal,
   ScrollArea,
   Transition,
-  VisuallyHidden
+  VisuallyHidden,
+
+  // Utils
+  rgba,
+  rem
 } from '@mantine/core'
 
 // should be for internal usage only
 export { useInputProps } from '@mantine/core'
-export { useMantineTheme } from '@mantine/core'
+export { useMantineTheme, useCombobox } from '@mantine/core'
 
 // Re-export @mantine/dropzone
 export {
