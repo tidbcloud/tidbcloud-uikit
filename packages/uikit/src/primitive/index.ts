@@ -145,10 +145,9 @@ export {
   VisuallyHidden
 } from '@mantine/core'
 
-export { TextInput, type TextInputProps } from './TextInput/index.js'
-
-// Re-export @mantine/notifications with custom theme
-export { notifier, Notifications } from './notifier/index.js'
+// should be for internal usage only
+export { useInputProps } from '@mantine/core'
+export { useMantineTheme } from '@mantine/core'
 
 // Re-export @mantine/dropzone
 export {
@@ -201,5 +200,8 @@ export type {
   MonthSettings
 } from '@mantine/dates'
 
+// Re-export wrapped components
+export { TextInput, type TextInputProps } from './TextInput/index.js'
+export { notifier, Notifications } from './notifier/index.js'
 export { Typography, type TypographyProps } from './Typography/index.js'
 export { ThemeProvider, type ThemeProviderProps } from '../theme/ThemeProvider.js'
