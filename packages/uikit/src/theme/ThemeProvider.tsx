@@ -7,7 +7,7 @@ import { Notifications, NotificationsProps } from '@mantine/notifications'
 
 import { useTheme } from './theme.js'
 
-export interface ProviderProps {
+export interface ThemeProviderProps {
   children: React.ReactNode
   colorScheme: 'light' | 'dark' | 'auto'
   theme?: MantineThemeOverride
@@ -23,7 +23,7 @@ export function ThemeProvider({
   emotionCache,
   notifications,
   modals
-}: ProviderProps) {
+}: ThemeProviderProps) {
   const systemColorScheme = useColorScheme('light', {
     getInitialValueInEffect: false
   })
