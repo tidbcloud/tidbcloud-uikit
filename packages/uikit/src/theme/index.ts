@@ -1,4 +1,4 @@
-export * from './fns/index.js'
+export * from './fns.js'
 
 export { FONT_FAMILY, MONOSPANCED_FONT_FAMILY } from './font.js'
 

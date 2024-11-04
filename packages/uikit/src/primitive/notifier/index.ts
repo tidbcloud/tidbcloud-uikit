@@ -1,7 +1,5 @@
 import { showNotification, cleanNotifications, NotificationData } from '@mantine/notifications'
 
-export * from '@mantine/notifications'
-
 export const notifier = {
   success: (message: NotificationData['message'], props?: Omit<NotificationData, 'message'>) =>
     showNotification({ message, color: 'green', ...props }),

@@ -55,6 +55,14 @@ module.exports = {
           }
         ]
       }
+    ],
+    'no-restricted-syntax': [
+      'error',
+      {
+        selector: 'ExportAllDeclaration[exportKind!="type"][source.value!=/^[\\.]/]',
+        message:
+          'export * is only allowed from relative paths or for types (export type *). Use named exports for third-party libraries.'
+      }
     ]
   }
 }
