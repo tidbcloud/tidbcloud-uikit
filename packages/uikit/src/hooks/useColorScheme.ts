@@ -1,7 +1,7 @@
 import { useLocalStorage, useColorScheme as useSystemColorScheme } from '@mantine/hooks'
 
 export const useColorScheme = (
-  defaultValue: 'light' | 'dark',
+  defaultValue: 'light' | 'dark' | 'auto',
   options: {
     getInitialValueInEffect: boolean
     key: string
@@ -12,7 +12,7 @@ export const useColorScheme = (
     defaultValue,
     getInitialValueInEffect: options.getInitialValueInEffect
   })
-  const systemColorScheme = useSystemColorScheme(defaultValue, {
+  const systemColorScheme = useSystemColorScheme(defaultValue === 'auto' ? undefined : defaultValue, {
     getInitialValueInEffect: options.getInitialValueInEffect
   })
   return { colorScheme: colorScheme === 'auto' ? systemColorScheme : colorScheme, setColorScheme, systemColorScheme }
