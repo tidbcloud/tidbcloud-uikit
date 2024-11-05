@@ -149,14 +149,14 @@ export {
   VisuallyHidden,
 
   // Utils
-  rgba,
-  rem,
-  ColorSchemeScript
-} from '@mantine/core'
+  ColorSchemeScript,
 
-// should be for internal usage only
-export { useInputProps } from '@mantine/core'
-export { useMantineTheme, useCombobox } from '@mantine/core'
+  // Better only for internal usage but exceptions are allowed
+  useInputProps,
+  useMantineTheme,
+  useCombobox,
+  useComputedColorScheme
+} from '@mantine/core'
 
 // Re-export @mantine/dropzone
 export {

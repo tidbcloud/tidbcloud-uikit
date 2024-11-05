@@ -1,4 +1,4 @@
-export type * from '@mantine/emotion'
+export type { CSSObject, CSSProperties } from '@mantine/emotion'
 
 import type { FactoryPayload, MantineTheme, StylesRecord } from '@mantine/core'
 import type { CSSObject, EmotionHelpers } from '@mantine/emotion'
