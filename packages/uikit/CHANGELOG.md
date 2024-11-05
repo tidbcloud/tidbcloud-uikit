@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.57
+
+### Patch Changes
+
+- Fix TYPOGRAPHY_STYLES_MAP export and build external
+
 ## 2.0.0-beta.56
 
 ### Patch Changes
