@@ -43,7 +43,6 @@ export default defineConfig({
           return !i.startsWith('@mantine') && !['mantine-react-table'].includes(i)
         }),
         // this has to be external, see https://github.com/remarkablemark/html-react-parser/issues/1427#issuecomment-2220703546
-        '@mantine/emotion',
         'html-react-parser'
       ],
       output: [
