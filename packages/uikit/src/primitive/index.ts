@@ -150,7 +150,8 @@ export {
 
   // Utils
   rgba,
-  rem
+  rem,
+  ColorSchemeScript
 } from '@mantine/core'
 
 // should be for internal usage only
