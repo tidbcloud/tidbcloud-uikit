@@ -5,6 +5,7 @@ import { ThemeProvider } from '@tidbcloud/uikit/theme'
 import { Preview } from '@storybook/react'
 import { Title, Subtitle, Description, Primary, Controls, Stories, DocsContainer } from '@storybook/blocks'
 import { themes } from '@storybook/theming'
+import '@tidbcloud/uikit/style.css'
 
 export const parameters = {
   layout: 'fullscreen'

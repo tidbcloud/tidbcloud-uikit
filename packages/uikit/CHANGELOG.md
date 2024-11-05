@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.59
+
+### Patch Changes
+
+- Re-export emotion types
+
 ## 2.0.0-beta.58
 
 ### Patch Changes
