@@ -1,7 +1,4 @@
-import { Button } from '@components/ui/button'
-import { Card } from '@components/ui/card'
-import { Input } from '@components/ui/input'
-import { Box, CopyButton, Flex, Typography, Center, Stack, Modal, Tooltip } from '@tidbcloud/uikit'
+import { Input, Button, Card, Box, CopyButton, Flex, Typography, Center, Stack, Modal, Tooltip } from '@tidbcloud/uikit'
 import { useDisclosure } from '@tidbcloud/uikit/hooks'
 import * as icons from '@tidbcloud/uikit/icons'
 import { useInfiniteScroll, useMemoizedFn, useInViewport } from 'ahooks'
@@ -142,12 +139,12 @@ export default function IconsPreview() {
             <CopyButton value={`import { ${iconName} } from '@tidbcloud/uikit/icons'`}>
               {({ copied, copy }) => (
                 <Button onClick={copy} variant="default">
-                  {copied ? 'Copied!' : 'Copy Import'}
+                  {copied ? 'Copied!' : 'Copy Import Statement'}
                 </Button>
               )}
             </CopyButton>
             <CopyButton value={`<${iconName} />`}>
-              {({ copied, copy }) => <Button onClick={copy}>{copied ? 'Copied!' : 'Copy JSX'}</Button>}
+              {({ copied, copy }) => <Button onClick={copy}>{copied ? 'Copied!' : `Copy <${iconName} />`}</Button>}
             </CopyButton>
           </Stack>
         </Flex>
