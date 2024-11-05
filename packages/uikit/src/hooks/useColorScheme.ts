@@ -15,5 +15,15 @@ export const useColorScheme = (
   const systemColorScheme = useSystemColorScheme(defaultValue === 'auto' ? undefined : defaultValue, {
     getInitialValueInEffect: options.getInitialValueInEffect
   })
-  return { colorScheme: colorScheme === 'auto' ? systemColorScheme : colorScheme, setColorScheme, systemColorScheme }
+
+  const toggleColorScheme = () => {
+    setColorScheme((prev) => (prev === 'light' ? 'dark' : 'light'))
+  }
+
+  return {
+    colorScheme: colorScheme === 'auto' ? systemColorScheme : colorScheme,
+    setColorScheme,
+    systemColorScheme,
+    toggleColorScheme
+  }
 }
