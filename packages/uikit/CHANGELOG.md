@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.60
+
+### Minor Changes
+
+- Update exports and fix typings
+
 ## 2.0.0-beta.59
 
 ### Patch Changes
