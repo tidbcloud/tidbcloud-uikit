@@ -94,12 +94,12 @@
     "@types/react-dom": "^18.2.18",
     "@types/react-table": "^7.7.12",
     "@types/react-window": "^1.8.5",
-    "@vitejs/plugin-react": "^4.2.1",
+    "@vitejs/plugin-react": "^4.3.3",
     "cpy-cli": "^5.0.0",
     "ora": "8.1.0",
     "typescript": "^5.4.2",
-    "vite": "^4.5.2",
-    "vite-plugin-dts": "^3.7.3"
+    "vite": "^5.4.10",
+    "vite-plugin-dts": "^4.3.0"
   },
   "typesVersions": {
     "*": {
