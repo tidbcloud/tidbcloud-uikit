@@ -1,6 +1,6 @@
 {
   "name": "@tidbcloud/uikit",
-  "version": "2.0.0-beta.57",
+  "version": "2.0.0-beta.58",
   "description": "tidbcloud uikit",
   "type": "module",
   "main": "dist/primitive/index.cjs",
@@ -69,6 +69,7 @@
     "dompurify": "^3.0.3",
     "embla-carousel-react": "^7.0.5",
     "google-libphonenumber": "^3.2.30",
+    "html-react-parser": "5.1.18",
     "lodash-es": "^4.17.21",
     "mantine-react-table": "2.0.0-beta.7",
     "pretty-ms": "^9.1.0",

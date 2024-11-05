@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.58
+
+### Patch Changes
+
+- Fix build external
+
 ## 2.0.0-beta.57
 
 ### Patch Changes

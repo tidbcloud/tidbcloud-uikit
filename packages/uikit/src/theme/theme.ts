@@ -1137,18 +1137,24 @@ const theme = createTheme({
           weekday: {
             color: themeColor(theme, color, 7)
           },
+          calendarHeader: {
+            maxWidth: '100%'
+          },
+          monthCell: {
+            '--mantine-scale': 8
+          },
           day: {
+            '--day-size-sm': '32px',
             color: themeColor(theme, color, 8),
             '&[data-in-range]': {
-              backgroundColor: themeColor(theme, color, 3)
+              backgroundColor: themeColor(theme, color, 3),
+              borderRadius: theme.defaultRadius
             },
             '&[data-first-in-range]': {
-              borderStartStartRadius: theme.defaultRadius,
-              borderEndStartRadius: theme.defaultRadius
+              borderRadius: theme.defaultRadius
             },
             '&[data-last-in-range]': {
-              borderEndEndRadius: theme.defaultRadius,
-              borderStartEndRadius: theme.defaultRadius
+              borderRadius: theme.defaultRadius
             },
             '&[data-selected]': {
               backgroundColor: themeColor(theme, color, 9),

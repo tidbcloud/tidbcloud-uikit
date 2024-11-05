@@ -1,5 +1,6 @@
 import type { Meta, StoryObj, StoryFn } from '@storybook/react'
 import { DatePicker } from '@tidbcloud/uikit'
+import { useState } from 'react'
 
 type Story = StoryObj<typeof DatePicker>
 
@@ -24,4 +25,14 @@ export default meta
 export const Primary: Story = {
   render: () => <DatePicker></DatePicker>,
   args: {}
+}
+
+export function MultipleDates() {
+  const [value, setValue] = useState<Date[]>([])
+  return <DatePicker type="multiple" value={value} onChange={setValue} />
+}
+
+export function DateRange() {
+  const [value, setValue] = useState<[Date | null, Date | null]>([null, null])
+  return <DatePicker type="range" value={value} onChange={setValue} size="sm" />
 }
