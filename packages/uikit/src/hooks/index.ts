@@ -78,4 +78,3 @@ export {
 } from '@mantine/hooks'
 
 export { useURLQueryState } from './useURLQueryState.js'
-export { useColorScheme } from './useColorScheme.js'
