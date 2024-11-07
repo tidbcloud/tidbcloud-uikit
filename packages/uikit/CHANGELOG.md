@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.61
+
+### Minor Changes
+
+- Update build config with types bunddled
+
 ## 2.0.0-beta.60
 
 ### Minor Changes
