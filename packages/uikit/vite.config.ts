@@ -1,5 +1,6 @@
 import { readFileSync, writeFileSync } from 'node:fs'
-import { resolve } from 'node:path'
+import { cp } from 'node:fs/promises'
+import { resolve, relative, dirname } from 'node:path'
 
 import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
@@ -14,13 +15,46 @@ const globals = {
   ...(packageJson?.peerDependencies || {})
 }
 
+const mantineCoreSrc = resolve(__dirname, 'node_modules/@mantine/core/lib')
+const mantineCoreDest = resolve(
+  __dirname,
+  // this path is generate when rollup `perserveModule` set to true
+  'dist/node_modules/.pnpm/@mantine_core@7.13.2_patch_hash_v5k5cxye7xaihpcgowhgciky7a_@mantine_hooks@7.13.2_react@18.3.1_hlfamvk7n3o6ychyvm5cyru4yu/node_modules/@mantine/core/lib'
+)
+function replaceMantineCoreWithRelativePath(filePath: string, content: string) {
+  return content.replace(new RegExp(`'@mantine/core'`, 'g'), `'${relative(dirname(filePath), mantineCoreDest)}'`)
+}
+
+function readMantiOverride() {
+  return readFileSync(resolve(__dirname, 'src/primitive/mantineoverride.d.ts'), { encoding: 'utf-8' })
+}
+
 export default defineConfig({
   plugins: [
     react(),
     dts({
+      copyDtsFiles: false,
       beforeWriteFile: (filePath, content) => {
+        if (filePath.endsWith('primitive/index.d.ts')) {
+          content = replaceMantineCoreWithRelativePath(filePath, readMantiOverride() + '\n' + content)
+        }
+
+        content = replaceMantineCoreWithRelativePath(filePath, content)
+
+        // generate .d.cts file for cjs build
         writeFileSync(filePath.replace('.d.ts', '.d.cts'), content)
-        return { filePath, content }
+
+        return {
+          filePath,
+          content
+        }
+      },
+      async afterBuild() {
+        try {
+          await cp(mantineCoreSrc, mantineCoreDest, { recursive: true })
+        } catch (err) {
+          console.error('Failed to copy Mantine core lib:', err)
+        }
       }
     })
   ],
