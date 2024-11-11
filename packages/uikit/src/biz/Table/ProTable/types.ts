@@ -1,6 +1,6 @@
-import { BoxProps } from '@mantine/core'
 import type { MRT_TableInstance, MRT_TableOptions, MRT_RowData } from 'mantine-react-table'
 
+import { BoxProps } from '../../../primitive/index.js'
 import { TablePaginationProps } from '../TablePagination.js'
 
 type Prettify<T> = {

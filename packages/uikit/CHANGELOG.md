@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.63
+
+### Patch Changes
+
+- fix protable sx missing
+
 ## 2.0.0-beta.62
 
 ### Patch Changes
