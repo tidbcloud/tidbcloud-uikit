@@ -21,7 +21,6 @@ type Xor<A, B> =
 
 type TableInstanceProp<TData extends MRT_RowData> = {
   table: MRT_TableInstance<TData>
-  pagination?: TablePaginationProps
 }
 
 export interface ProTableExtraProps {
