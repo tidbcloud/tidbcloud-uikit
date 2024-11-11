@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.62
+
+### Patch Changes
+
+- fix form actions type
+
 ## 2.0.0-beta.61
 
 ### Minor Changes

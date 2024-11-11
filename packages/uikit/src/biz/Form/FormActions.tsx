@@ -1,9 +1,10 @@
-import { Button, ButtonProps, Flex, FlexProps } from '../../primitive/index.js'
+import { Button, ButtonProps, ElementProps, Flex, FlexProps } from '../../primitive/index.js'
 import { TYPOGRAPHY_STYLES_MAP } from '../../primitive/Typography/index.js'
 
-type ActionButtonProps = Omit<ButtonProps, 'children'> & {
-  [p: `data-${string}`]: string
-}
+type ActionButtonProps = Omit<ButtonProps, 'children'> &
+  ElementProps<'button'> & {
+    [p: `data-${string}`]: string
+  }
 
 export interface FormActionsProps extends FlexProps {
   loading?: boolean
