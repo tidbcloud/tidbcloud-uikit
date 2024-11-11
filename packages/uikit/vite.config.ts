@@ -26,7 +26,15 @@ function replaceMantineCoreWithRelativePath(filePath: string, content: string) {
 }
 
 function readMantiOverride() {
-  return readFileSync(resolve(__dirname, 'src/primitive/mantineoverride.d.ts'), { encoding: 'utf-8' })
+  const content = readFileSync(resolve(__dirname, 'src/primitive/mantineoverride.d.ts'), { encoding: 'utf-8' })
+  const match = content.match(/declare module ['"].*?['"] {[\s\S]*?^}/m)
+
+  if (!match) return null
+
+  return {
+    content,
+    declare: match[0]
+  }
 }
 
 export default defineConfig({
@@ -36,10 +44,19 @@ export default defineConfig({
       copyDtsFiles: false,
       beforeWriteFile: (filePath, content) => {
         if (filePath.endsWith('primitive/index.d.ts')) {
-          content = replaceMantineCoreWithRelativePath(filePath, readMantiOverride() + '\n' + content)
-        }
+          const typeOverride = readMantiOverride()
+          if (!typeOverride) return
 
-        content = replaceMantineCoreWithRelativePath(filePath, content)
+          const { declare: overrideDeclare, content: overrideContent } = typeOverride
+
+          content = [
+            // add both declare statement for '@mantine/core' and the bundled mantine core (imported by relative path) in case someone in the dependency tree import '@mantine/core' directly
+            replaceMantineCoreWithRelativePath(filePath, overrideContent),
+            overrideDeclare,
+
+            replaceMantineCoreWithRelativePath(filePath, content)
+          ].join('\n')
+        }
 
         // generate .d.cts file for cjs build
         writeFileSync(filePath.replace('.d.ts', '.d.cts'), content)
