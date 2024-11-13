@@ -370,8 +370,7 @@ const theme = createTheme({
             },
             '&:hover': {
               color: themeColor(theme, 'carbon', 9)
-            },
-            '&:focus': { outlineColor: 'transparent' }
+            }
           }
         }
       }
