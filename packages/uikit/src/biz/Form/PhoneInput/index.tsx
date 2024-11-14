@@ -64,7 +64,7 @@ export interface FormPhoneInputV2Props extends Omit<PhoneInputProps, 'onSelect'>
   countryRules?: RegisterOptions
   onSelect?: (value: string, country: CountryData | {}) => void
   selectProps: Omit<SelectProps, 'data'> & {
-    filter?: (
+    filterData?: (
       data: { value: string; label: string },
       index: number,
       array: { value: string; label: string }[]
@@ -108,7 +108,7 @@ export const FormPhoneInputV2: React.FC<FormPhoneInputV2Props> = ({
   ...rest
 }) => {
   const { watch, formState, getFieldState } = useFormContext()
-  const { filter: onFilter, ...restProps } = selectProps
+  const { filterData: onFilter, ...restProps } = selectProps
   const { error: countryError } = getFieldState(countryKey, formState)
   const { error: phoneError } = getFieldState(phoneKey, formState)
   const country = watch(countryKey, '')
