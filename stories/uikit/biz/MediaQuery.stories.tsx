@@ -1,13 +1,5 @@
 import type { Meta, StoryObj, StoryFn } from '@storybook/react'
-import {
-  Stack,
-  Typography,
-  MediaQuery,
-  useMantineTheme,
-  useColorScheme,
-  useComputedColorScheme,
-  Box
-} from '@tidbcloud/uikit'
+import { Stack, Typography, MediaQuery, useMantineTheme, useComputedColorScheme, Box } from '@tidbcloud/uikit'
 import { CSSObject, rem, rgba } from '@tidbcloud/uikit/utils'
 
 type Story = StoryObj<typeof Typography>
