@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.65
+
+### Patch Changes
+
+- add MediaQuery
+
 ## 2.0.0-beta.64
 
 ### Patch Changes

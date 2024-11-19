@@ -1,5 +1,13 @@
 # @tidbcloud/uikit-documentation
 
+## 0.1.30-beta.65
+
+### Patch Changes
+
+- add MediaQuery
+- Updated dependencies
+  - @tidbcloud/uikit@2.0.0-beta.65
+
 ## 0.1.30-beta.64
 
 ### Patch Changes
