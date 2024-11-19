@@ -249,6 +249,8 @@ export {
 
   // Utils
   ColorSchemeScript,
+  rgba,
+  rem,
 
   // Better only for internal usage but exceptions are allowed
   useInputProps,
