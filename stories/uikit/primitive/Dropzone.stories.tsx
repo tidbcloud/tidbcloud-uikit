@@ -1,6 +1,7 @@
 import type { Meta, StoryObj, StoryFn } from '@storybook/react'
-import { Dropzone, DropzoneProps, IMAGE_MIME_TYPE, Group, Text, rem } from '@tidbcloud/uikit'
+import { Dropzone, DropzoneProps, IMAGE_MIME_TYPE, Group, Text } from '@tidbcloud/uikit'
 import { IconUpload01, IconImage01, IconX } from '@tidbcloud/uikit/icons'
+import { rem } from '@tidbcloud/uikit/utils'
 
 type Story = StoryObj<typeof Dropzone>
 
