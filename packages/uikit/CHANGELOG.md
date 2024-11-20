@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.67
+
+### Major Changes
+
+- Re-export code-highlight
+
 ## 2.0.0-beta.66
 
 ### Patch Changes
