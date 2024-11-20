@@ -37,7 +37,7 @@ export interface CodeBlockProps extends BoxProps {
   codeRender?: (content: string) => React.ReactNode
   copyContent?: string
   onCopyClick?: () => void
-  codeHighlightProps?: Omit<CodeHighlightProps, 'language' | 'children'>
+  codeHighlightProps?: Omit<CodeHighlightProps, 'language' | 'children' | 'code'>
   foldProps?: {
     defaultHeight?: number
     persistenceKey?: string
