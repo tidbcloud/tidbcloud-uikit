@@ -2,7 +2,7 @@
 
 ## 2.0.0-beta.67
 
-### Major Changes
+### Minor Changes
 
 - Re-export code-highlight
 

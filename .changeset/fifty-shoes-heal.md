@@ -1,5 +1,5 @@
 ---
-'@tidbcloud/uikit': major
+'@tidbcloud/uikit': minor
 ---
 
 Re-export code-highlight
