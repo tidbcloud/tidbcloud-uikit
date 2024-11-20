@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.66
+
+### Patch Changes
+
+- fix MediaQuery type error
+
 ## 2.0.0-beta.65
 
 ### Patch Changes
