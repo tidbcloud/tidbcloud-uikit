@@ -1,5 +1,6 @@
 import type { Meta, StoryObj, StoryFn } from '@storybook/react'
-import { ColorSwatch, Group, Stack, useMantineTheme, rgba } from '@tidbcloud/uikit'
+import { ColorSwatch, Group, Stack, useMantineTheme } from '@tidbcloud/uikit'
+import { rgba } from '@tidbcloud/uikit/utils'
 
 type Story = StoryObj<typeof ColorSwatch>
 

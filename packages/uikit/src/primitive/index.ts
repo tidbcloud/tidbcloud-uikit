@@ -313,3 +313,4 @@ export type {
 export { TextInput, type TextInputProps } from './TextInput/index.js'
 export { notifier } from './notifier/index.js'
 export { Typography, TYPOGRAPHY_STYLES_MAP, type TypographyProps } from './Typography/index.js'
+export { MediaQuery, type MediaQueryProps } from './MediaQuery/index.js'

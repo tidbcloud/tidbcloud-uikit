@@ -1,6 +1,6 @@
 import type { Meta, StoryObj, StoryFn } from '@storybook/react'
-import { Transition, useMantineTheme, Button, Paper } from '@tidbcloud/uikit'
-import { useClickOutside, useColorScheme } from '@tidbcloud/uikit/hooks'
+import { Transition, useMantineTheme, Button, Paper, useColorScheme } from '@tidbcloud/uikit'
+import { useClickOutside } from '@tidbcloud/uikit/hooks'
 import { useState } from 'react'
 
 type Story = StoryObj<typeof Transition>
