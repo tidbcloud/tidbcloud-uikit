@@ -37,7 +37,7 @@ export interface CodeBlockProps extends BoxProps {
   codeRender?: (content: string) => React.ReactNode
   copyContent?: string
   onCopyClick?: () => void
-  codeHightlightProps?: Omit<CodeHighlightProps, 'language' | 'children'>
+  codeHighlightProps?: Omit<CodeHighlightProps, 'language' | 'children' | 'code'>
   foldProps?: {
     defaultHeight?: number
     persistenceKey?: string
@@ -52,7 +52,7 @@ export const CodeBlock = ({
   children,
   copyContent,
   onCopyClick,
-  codeHightlightProps,
+  codeHighlightProps,
   foldProps,
   ...rest
 }: React.PropsWithChildren<CodeBlockProps>) => {
@@ -85,7 +85,7 @@ export const CodeBlock = ({
           codeRender(children)
         ) : (
           <CodeHighlight
-            {...codeHightlightProps}
+            {...codeHighlightProps}
             withCopyButton={false}
             code={children}
             language={language}
@@ -105,7 +105,7 @@ export const CodeBlock = ({
                 //   whiteSpace: 'pre-wrap'
                 // }
               },
-              codeHightlightProps?.styles
+              codeHighlightProps?.styles
             ])}
           />
         )}
