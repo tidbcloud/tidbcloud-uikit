@@ -30,10 +30,10 @@ export function MediaQuery(props: MediaQueryProps) {
   const { classes, cx } = useStyles({ smallerThan, largerThan, query, styles })
 
   if (children === undefined) {
-    return undefined
+    return null
   }
 
-  const child = Children.only(children)
+  const child = Children.only(children) as React.ReactElement
 
   if (typeof child === 'object' && child !== null && 'props' in child) {
     return React.cloneElement(child, {
