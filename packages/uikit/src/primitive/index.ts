@@ -53,6 +53,7 @@ export type {
   PillProps,
   PillsInputProps,
   SelectProps,
+  OptionsFilter,
   TagsInputProps,
   ActionIconProps,
   ButtonProps,
