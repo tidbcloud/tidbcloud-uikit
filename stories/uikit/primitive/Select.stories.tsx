@@ -1,5 +1,6 @@
 import type { Meta, StoryObj, StoryFn } from '@storybook/react'
-import { Select, Loader, Stack, Group } from '@tidbcloud/uikit'
+import { Select, Stack, Group } from '@tidbcloud/uikit'
+import { useState } from 'react'
 
 import { SIZE_LIST } from '../../constants'
 
@@ -97,7 +98,7 @@ export function OverrideDropdownPadding() {
 export function Scroll() {
   const content = Array(20)
     .fill(0)
-    .map((_, index) => <p key={index}>`Item ${index}`</p>)
+    .map((_, index) => <p key={index}>Item ${index}</p>)
 
   return (
     <div>
@@ -108,7 +109,7 @@ export function Scroll() {
   )
 }
 
-export function Sizes() {
+export function AllSizes() {
   return (
     <Stack style={{ padding: 40 }}>
       {SIZE_LIST.map((size) => (
@@ -127,4 +128,120 @@ export function Sizes() {
       ))}
     </Stack>
   )
+}
+
+const CustomRenderOptionWithDataMapCode = `const data: Record<string, { label: string; url: string }> = {
+  react: {
+    label: 'React',
+    url: 'https://react.dev/'
+  },
+  angular: {
+    label: 'Angular',
+    url: 'https://angular.io/'
+  },
+  vue: {
+    label: 'Vue',
+    url: 'https://vuejs.org/'
+  },
+  svelte: {
+    label: 'Svelte',
+    url: 'https://svelte.dev/'
+  }
+}
+
+return (
+  <Select
+    data={Object.entries(data).map(([k, v]) => ({ value: k, label: v.label }))}
+    placeholder="Select a framework"
+    renderOption={(item) => data[item.option.value].url}
+  />
+)`
+
+export const CustomRenderOptionWithDataMap: Story = {
+  render: () => {
+    const data: Record<string, { label: string; url: string }> = {
+      react: {
+        label: 'React',
+        url: 'https://react.dev/'
+      },
+      angular: {
+        label: 'Angular',
+        url: 'https://angular.io/'
+      },
+      vue: {
+        label: 'Vue',
+        url: 'https://vuejs.org/'
+      },
+      svelte: {
+        label: 'Svelte',
+        url: 'https://svelte.dev/'
+      }
+    }
+
+    return (
+      <Select
+        data={Object.entries(data).map(([k, v]) => ({ value: k, label: v.label }))}
+        placeholder="Select a framework"
+        renderOption={(item) => data[item.option.value].url}
+      />
+    )
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: CustomRenderOptionWithDataMapCode,
+        language: 'tsx'
+      }
+    }
+  }
+}
+
+const CustomRenderOptionWithDataArrayCode = `const data = [
+  { value: 'react', label: 'React', url: 'https://react.dev/' },
+  { value: 'angular', label: 'Angular', url: 'https://angular.io/' },
+  { value: 'vue', label: 'Vue', url: 'https://vuejs.org/' },
+  { value: 'svelte', label: 'Svelte', url: 'https://svelte.dev/' }
+]
+
+type DataItem = (typeof data)[number]
+
+return <Select data={data} renderOption={(item: { option: DataItem }) => item.option.url} />`
+
+export const CustomRenderOptionWithDataArray: Story = {
+  render: () => {
+    const data = [
+      { value: 'react', label: 'React', url: 'https://react.dev/' },
+      { value: 'angular', label: 'Angular', url: 'https://angular.io/' },
+      { value: 'vue', label: 'Vue', url: 'https://vuejs.org/' },
+      { value: 'svelte', label: 'Svelte', url: 'https://svelte.dev/' }
+    ]
+
+    type DataItem = (typeof data)[number]
+
+    return <Select data={data} renderOption={(item: { option: DataItem }) => item.option.url} />
+  },
+  parameters: {
+    docs: {
+      source: {
+        language: 'tsx',
+        code: CustomRenderOptionWithDataArrayCode
+      }
+    }
+  }
+}
+
+export const Creatable: Story = {
+  render: () => {
+    const [data, setData] = useState(['react', 'angular', 'vue', 'svelte'])
+    return (
+      <Select
+        creatable
+        data={data}
+        onCreate={(value) => {
+          setData([...data, value])
+          return { value, label: value }
+        }}
+      />
+    )
+  }
 }

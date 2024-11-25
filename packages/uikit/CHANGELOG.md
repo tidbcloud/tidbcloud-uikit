@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.68
+
+### Minor Changes
+
+- Add `creatable` prop to `Select` component and re-export more types
+
 ## 2.0.0-beta.67
 
 ### Minor Changes
