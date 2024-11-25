@@ -318,9 +318,6 @@ export type {
   MonthSettings
 } from '@mantine/dates'
 
-// Re-export @mantine/emotion
-export { keyframes } from '@mantine/emotion'
-
 // Re-export wrapped components
 export { TextInput, type TextInputProps } from './TextInput/index.js'
 export { notifier } from './notifier/index.js'
