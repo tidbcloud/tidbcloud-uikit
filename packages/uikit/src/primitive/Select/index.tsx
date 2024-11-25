@@ -24,6 +24,10 @@ export function Select(props: SelectProps) {
     ...rest
   } = props
 
+  if (creatable && typeof onCreate !== 'function') {
+    throw new Error('`onCreate` is required when `creatable` is true')
+  }
+
   const [dropdownOpened, setDropdownOpened] = useUncontrolled({
     value: props.dropdownOpened,
     onChange: (value) => setDropdownOpened(value),
