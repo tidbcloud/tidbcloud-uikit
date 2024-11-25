@@ -9,6 +9,12 @@ export type ColorScheme = 'light' | 'dark'
 
 export type {
   AppShellProps,
+  AppShellNavbarProps,
+  AppShellMainProps,
+  AppShellFooterProps,
+  AppShellAsideProps,
+  AppShellHeaderProps,
+  AppShellSectionProps,
   AspectRatioProps,
   CenterProps,
   ContainerProps,
@@ -49,6 +55,8 @@ export type {
   TextareaProps,
   AutocompleteProps,
   ComboboxProps,
+  ComboboxItem,
+  ComboboxData,
   MultiSelectProps,
   PillProps,
   PillsInputProps,
