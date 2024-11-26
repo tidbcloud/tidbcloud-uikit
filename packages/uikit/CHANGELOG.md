@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.69
+
+### Minor Changes
+
+- Re-export CardSectionProps/PolymorphicComponentProps
+
 ## 2.0.0-beta.68
 
 ### Minor Changes
