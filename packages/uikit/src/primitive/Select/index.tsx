@@ -6,7 +6,7 @@ import { useCallback, useState } from 'react'
 export interface SelectProps extends MantineSelectProps {
   creatable?: boolean
   getCreateLabel?: (query: string) => string
-  onCreate?: (query: string) => ComboboxItem
+  onCreate?: (query: string) => ComboboxItem | null | undefined
 }
 
 const defaultGetCreateLabel = (query: string) => `+ Create ${query}`
@@ -68,10 +68,14 @@ export function Select(props: SelectProps) {
   const handleOptionSubmit = useCallback((value: string) => {
     if (creatable && value.startsWith(CREATE_VALUE_PREFIX) && typeof onCreate === 'function') {
       const createdItem = onCreate(value.slice(CREATE_VALUE_PREFIX.length))
-      setValue(createdItem.value, createdItem)
-
-      setSearchValue('')
-      close()
+      if (createdItem) {
+        setValue(createdItem.value, createdItem)
+        setSearchValue('')
+        close()
+        props.onOptionSubmit?.(createdItem.value)
+      }
+    } else {
+      props.onOptionSubmit?.(value)
     }
   }, [])
 
