@@ -57,7 +57,6 @@ export type {
   ComboboxProps,
   ComboboxItem,
   ComboboxData,
-  MultiSelectProps,
   PillProps,
   PillsInputProps,
   OptionsFilter,
@@ -173,7 +172,6 @@ export {
   // Combobox
   Autocomplete,
   Combobox,
-  MultiSelect,
   Pill,
   PillsInput,
   TagsInput,
@@ -322,7 +320,7 @@ export { TextInput, type TextInputProps } from './TextInput/index.js'
 export { notifier } from './notifier/index.js'
 export { Typography, TYPOGRAPHY_STYLES_MAP, type TypographyProps } from './Typography/index.js'
 export { MediaQuery, type MediaQueryProps } from './MediaQuery/index.js'
-export { Select, type SelectProps } from './Select/index.js'
+export { Select, type SelectProps, MultiSelect, type MultiSelectProps } from './Select/index.js'
 
 // Re-export @mantine/code-highlight
 export { CodeHighlight, CodeHighlightTabs } from '@mantine/code-highlight'
