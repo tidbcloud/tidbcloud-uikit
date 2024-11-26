@@ -1,5 +1,6 @@
 import type { Meta, StoryObj, StoryFn } from '@storybook/react'
 import { MultiSelect } from '@tidbcloud/uikit'
+import { useState } from 'react'
 
 type Story = StoryObj<typeof MultiSelect>
 
@@ -67,5 +68,24 @@ export const Primary: Story = {
       control: 'select',
       options: ['xs', 'sm', 'md', 'lg', 'xl']
     }
+  }
+}
+
+export const Creatable = {
+  render: () => {
+    const [data, setData] = useState(['react', 'angular', 'vue', 'svelte'])
+    return (
+      <MultiSelect
+        data={data}
+        label="Your favorite frameworks/libraries"
+        placeholder="Pick all that you like"
+        creatable
+        dropdownOpened={true}
+        onCreate={(value) => {
+          setData([...data, value])
+          return { value, label: value }
+        }}
+      />
+    )
   }
 }

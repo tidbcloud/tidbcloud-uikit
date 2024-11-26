@@ -658,6 +658,11 @@ const theme = createTheme({
             '& > svg': {
               color: `${themeColor(theme, 'carbon', 7)} !important`
             }
+          },
+          option: {
+            '&[data-checked]': {
+              fontWeight: 700
+            }
           }
         }
       }
