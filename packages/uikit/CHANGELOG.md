@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.70
+
+### Patch Changes
+
+- Update creatable select and multi-select
+
 ## 2.0.0-beta.69
 
 ### Patch Changes
