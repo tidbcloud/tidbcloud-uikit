@@ -99,6 +99,7 @@ export type {
   BackgroundImageProps,
   BadgeProps,
   CardProps,
+  CardSectionProps,
   ColorSwatchProps,
   ImageProps,
   IndicatorProps,

@@ -1,5 +1,13 @@
 # @tidbcloud/uikit-documentation
 
+## 0.1.30-beta.69
+
+### Patch Changes
+
+- re-export card section props
+- Updated dependencies
+  - @tidbcloud/uikit@2.0.0-beta.69
+
 ## 0.1.30-beta.68
 
 ### Patch Changes
