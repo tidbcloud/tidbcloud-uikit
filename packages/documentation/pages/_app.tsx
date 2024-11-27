@@ -4,12 +4,19 @@ import { ThemeProvider as TidbCloudThemeProvider } from '@tidbcloud/uikit/theme'
 import { useMount } from 'ahooks'
 import { AppProps } from 'next/app'
 import { useTheme } from 'next-themes'
-
+import { useState } from 'react'
 import '../globals.css'
 import '@tidbcloud/uikit/style.css'
 
 export default function App({ Component, pageProps }: AppProps) {
-  const { setTheme, theme } = useTheme()
+  const { setTheme } = useTheme()
+  const [theme, _setTheme] = useState('light')
+
+  const handleThemeChange = (theme: string) => {
+    setTheme(theme)
+    _setTheme(theme)
+    console.log(2, theme)
+  }
 
   useMount(() => {
     const targetNode = document.querySelector('html')
@@ -18,9 +25,9 @@ export default function App({ Component, pageProps }: AppProps) {
       for (const mutation of mutationList) {
         if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
           if (targetNode!.classList.contains('light')) {
-            setTheme('light')
+            handleThemeChange('light')
           } else if (targetNode!.classList.contains('dark')) {
-            setTheme('dark')
+            handleThemeChange('dark')
           }
         }
       }
@@ -29,7 +36,7 @@ export default function App({ Component, pageProps }: AppProps) {
   })
 
   return (
-    <TidbCloudThemeProvider emotionCache={emotionCache} colorScheme="light">
+    <TidbCloudThemeProvider emotionCache={emotionCache} colorScheme={(theme as any) ?? 'light'}>
       <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
         <Component {...pageProps} />
       </ThemeProvider>
