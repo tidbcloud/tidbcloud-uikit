@@ -21,7 +21,7 @@ import { Callout } from 'nextra/components'
 
 ### `packages/uikit`
 
-- `pnpm build:icons`: generate react components from all svg files in `packages/uikit/src/icons/raw` and save to `packages/uikit/src/icons/react`.
+- `pnpm build:icon`: generate react components from all svg files in `packages/uikit/src/icons/raw` and save to `packages/uikit/src/icons/react`.
 
 ### `packages/documentation`
 
@@ -36,7 +36,7 @@ Your working area is uikit and stories. Once you finish your coding in the uikit
 
 ### Icons
 
-To add new icons, you can put the svg file to `packages/uikit/src/icons/raw` folder then run `pnpm build:icons` under `packages/uikit` directory to generate the react component.
+To add new icons, you can put the svg file to `packages/uikit/src/icons/raw` folder then run `pnpm build:icon` under `packages/uikit` directory to generate the react component.
 
 It will also update the import entry in `packages/uikit/src/icons/index.ts`. Note that you should always use the script to update it and avoid manually modifing the import entry file.
 
