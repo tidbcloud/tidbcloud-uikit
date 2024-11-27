@@ -88,7 +88,7 @@ export default function IconsPreview() {
         placeholder={`Search all ${iconCount} icons`}
         value={value}
         onChange={(e: any) => setValue(e.target.value)}
-        className="mb-8"
+        mb={16}
       />
 
       <Flex wrap="wrap" gap={16}>
