@@ -13,7 +13,7 @@ const decorator = (Story: StoryFn) => {
 }
 
 const meta: Meta<typeof MediaQuery> = {
-  title: 'Primitive/MediaQuery',
+  title: 'Primitive/Layout/MediaQuery',
   component: MediaQuery,
   decorators: [decorator],
   tags: ['autodocs'],
