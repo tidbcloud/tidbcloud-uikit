@@ -19,24 +19,28 @@ export default function App({ Component, pageProps }: AppProps) {
 
   useMount(() => {
     const targetNode = document.querySelector('html')
+    const check = () => {
+      if (targetNode!.classList.contains('light')) {
+        handleThemeChange('light')
+      } else if (targetNode!.classList.contains('dark')) {
+        handleThemeChange('dark')
+      }
+    }
     const config = { attributes: true }
     const observer = new MutationObserver((mutationList) => {
       for (const mutation of mutationList) {
         if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
-          if (targetNode!.classList.contains('light')) {
-            handleThemeChange('light')
-          } else if (targetNode!.classList.contains('dark')) {
-            handleThemeChange('dark')
-          }
+          check()
         }
       }
     })
     observer.observe(targetNode!, config)
+    check()
   })
 
   return (
     <TidbCloudThemeProvider emotionCache={emotionCache} colorScheme={theme as any}>
-      <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+      <ThemeProvider attribute="class" defaultTheme={theme} enableSystem disableTransitionOnChange>
         <Component {...pageProps} />
       </ThemeProvider>
     </TidbCloudThemeProvider>
