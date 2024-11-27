@@ -19,6 +19,9 @@ export default {
   icons: {
     title: 'Cloud UI Icons'
   },
+  contribution: {
+    title: 'Contribution'
+  },
   'mantine-link': {
     title: 'Mantine Docs ↗',
     href: 'https://mantine.dev/',
