@@ -1,3 +1,5 @@
+import { Callout } from 'nextra/components'
+
 # How to contribute
 
 ## Prerequisites
@@ -45,6 +47,11 @@ The icon script will
 - Use svgr to generate correspondent react jsx code to `packages/uikit/src/icons/react` folder
 - Use a custom code template to support other props such as `size`
 - By default, it will skip if there are already a jsx file with same name, unless you pass a `--force` flag
+
+<Callout emoji="💡">
+  Note that the svg file should be aligned with our design standard. It should be 24x24 by default and no hard-coded
+  color or stroke in all attributes otherwise we wouldn't be able to customize it via css.
+</Callout>
 
 ### Developing documentation
 
