@@ -15,7 +15,6 @@ export default function App({ Component, pageProps }: AppProps) {
   const handleThemeChange = (theme: string) => {
     setTheme(theme)
     _setTheme(theme)
-    console.log(2, theme)
   }
 
   useMount(() => {
@@ -36,7 +35,7 @@ export default function App({ Component, pageProps }: AppProps) {
   })
 
   return (
-    <TidbCloudThemeProvider emotionCache={emotionCache} colorScheme={(theme as any) ?? 'light'}>
+    <TidbCloudThemeProvider emotionCache={emotionCache} colorScheme={theme as any}>
       <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
         <Component {...pageProps} />
       </ThemeProvider>
