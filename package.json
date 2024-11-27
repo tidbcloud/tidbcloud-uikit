@@ -9,7 +9,8 @@
     "prepare": "node ./scripts/prepare.js",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "gen:storybook": "tsx ./.storybook/genStories.ts"
+    "gen:storybook": "tsx ./.storybook/genStories.ts",
+    "gen:embedded-story": "tsx ./scripts/generateEmbeddedStory.ts"
   },
   "dependencies": {
     "@tidbcloud/uikit": "workspace:*",
