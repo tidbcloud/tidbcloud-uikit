@@ -1,3 +1,4 @@
+import 'mantine-react-table/styles.css'
 import { MantineReactTable } from 'mantine-react-table'
 
 import { Box } from '../../../primitive/index.js'

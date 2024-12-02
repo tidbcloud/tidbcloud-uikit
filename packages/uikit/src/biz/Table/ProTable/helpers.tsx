@@ -42,6 +42,7 @@ export function mergeProTableProps<T extends Record<string, any>>(props: ProTabl
     mantineBottomToolbarProps = {},
     withBorder = true,
     loading = false,
+    enableExpanding = false,
     enableStickyHeader,
     emptyMessage,
     errorMessage,
@@ -184,7 +185,11 @@ export function mergeProTableProps<T extends Record<string, any>>(props: ProTabl
       noRecordsToDisplay: errorMessage ? errorMessage : emptyMessage ? emptyMessage : undefined,
       ...localization
     },
-    state: { isLoading: loading, ...state },
+    state: {
+      isLoading: loading,
+      columnVisibility: { ...(enableExpanding ? { 'mrt-row-expand': false } : undefined), ...state?.columnVisibility },
+      ...state
+    },
     ...rest
   }
 }
