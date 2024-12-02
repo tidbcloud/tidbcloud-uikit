@@ -558,9 +558,6 @@ const theme = createTheme({
     },
     Select: {
       defaultProps: {
-        transition: 'fade',
-        transitionDuration: 200,
-        transitionTimingFunction: 'ease',
         size: 'md',
         withCheckIcon: false
       },
@@ -624,9 +621,6 @@ const theme = createTheme({
     MultiSelect: {
       defaultProps: {
         size: 'md',
-        transition: 'fade',
-        transitionDuration: 200,
-        transitionTimingFunction: 'ease',
         withCheckIcon: false
       },
       styles: (theme: MantineTheme, props: MultiSelectProps) => {
