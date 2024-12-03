@@ -116,6 +116,7 @@ export const CodeBlock = ({
           <HoverCard withArrow position="top">
             <HoverCard.Target>
               <ActionIcon
+                aria-hidden
                 size="sm"
                 variant="subtle"
                 onClick={() => {
@@ -140,6 +141,7 @@ export const CodeBlock = ({
             <HoverCard withArrow position="top">
               <HoverCard.Target>
                 <ActionIcon
+                  aria-label="Copy"
                   size="sm"
                   variant="subtle"
                   onClick={() => {
@@ -237,6 +239,7 @@ export const CopyText = ({ children, value, ...rest }: React.PropsWithChildren<C
         {({ copied, copy }) => (
           <Tooltip label={copied ? 'Copied' : 'Copy'} withArrow position="top">
             <ActionIcon
+              aria-label="Copy"
               variant="subtle"
               size="sm"
               ml={8}

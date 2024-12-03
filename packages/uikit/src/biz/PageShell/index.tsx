@@ -137,6 +137,7 @@ export const PageShell = ({
   const headerVisible = !!title || !!headerRightSection
   const leftSection = (!!withBack || !!headerBack) && (
     <ActionIcon
+      aria-label="Navigate Back"
       variant="default"
       onClick={() => {
         if (onBackClick) {

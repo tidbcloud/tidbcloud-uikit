@@ -57,7 +57,7 @@ export const FormCopyText = ({
             {value}
           </Typography>
           <Tooltip label={copied ? 'Copied' : 'Copy'} withArrow {...tooltipProps}>
-            <ActionIcon color="carbon.8" variant="transparent" onClick={copy}>
+            <ActionIcon aria-label="Copy" color="carbon.8" variant="transparent" onClick={copy}>
               <IconCopy01
                 size={size}
                 onClick={() => {
