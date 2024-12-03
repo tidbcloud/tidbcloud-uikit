@@ -40,6 +40,8 @@ export function mergeProTableProps<T extends Record<string, any>>(props: ProTabl
     mantineTableBodyProps,
     mantineTableBodyCellProps = {},
     mantineBottomToolbarProps = {},
+    mantineTableFooterCellProps = {},
+    mantineTableFooterRowProps = {},
     withBorder = true,
     loading = false,
     enableExpanding = false,
@@ -163,18 +165,37 @@ export function mergeProTableProps<T extends Record<string, any>>(props: ProTabl
     mantineSkeletonProps
   )
 
+  const mTableFooterCellProps = mergeMProps<NonNullable<MRT_TableOptions<T>['mantineTableFooterCellProps']>>(
+    {
+      p: 8
+    },
+    mantineTableFooterCellProps
+  )
+
+  const mTableFooterRowProps = mergeMProps<NonNullable<MRT_TableOptions<T>['mantineTableFooterRowProps']>>(
+    {
+      sx: { borderBottom: 'none' }
+    },
+    mantineTableFooterRowProps
+  )
+
   return {
     enableColumnActions: false,
     enableColumnFilters: false,
     enableTopToolbar: false,
     enableSorting: false,
     enablePagination: false,
+    enableBottomToolbar: false,
+    enableExpanding,
+    enableStickyHeader,
     mantinePaperProps: mPaperProps,
     mantineTableProps: mTableProps,
     mantineSkeletonProps: mTabelSkeletonProps,
     mantineTableBodyProps: mTableBodyProps,
     mantineBottomToolbarProps: mBottomToolbarProps,
     mantineTableBodyCellProps: mTableBodyCellProps,
+    mantineTableFooterCellProps: mTableFooterCellProps,
+    mantineTableFooterRowProps: mTableFooterRowProps,
     data,
     icons: {
       IconArrowsSort: () => <IconSwitchVertical02 size={14} />,

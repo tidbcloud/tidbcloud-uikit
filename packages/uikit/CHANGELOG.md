@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.72
+
+### Patch Changes
+
+- fix ProTable footer style
+
 ## 2.0.0-beta.71
 
 ### Patch Changes
