@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.72
+
+### Patch Changes
+
+- Some fix & vpat update
+
 ## 2.0.0-beta.71
 
 ### Patch Changes
