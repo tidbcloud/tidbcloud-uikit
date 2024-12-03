@@ -1,5 +1,13 @@
 # @tidbcloud/uikit-documentation
 
+## 0.1.30-beta.71
+
+### Patch Changes
+
+- fix ProTable Expaned styles
+- Updated dependencies
+  - @tidbcloud/uikit@2.0.0-beta.71
+
 ## 0.1.30-beta.70
 
 ### Patch Changes

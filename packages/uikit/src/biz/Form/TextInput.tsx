@@ -18,9 +18,10 @@ export const FormTextInput: React.FC<FormTextInputProps> = ({ name, rules, onCha
       name={name}
       rules={rules}
       render={({ field }) => {
-        const { onChange: handleChange, ...restField } = field
+        const { value = '', onChange: handleChange, ...restField } = field
         return (
           <TextInput
+            value={value}
             onChange={(e) => {
               handleChange(e)
               onChange?.(e)
