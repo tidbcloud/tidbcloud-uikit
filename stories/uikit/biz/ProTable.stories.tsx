@@ -1,5 +1,5 @@
 import type { Meta, StoryObj, StoryFn } from '@storybook/react'
-import { ProTable } from '@tidbcloud/uikit/biz'
+import { MRT_ColumnDef, ProTable, renderExpandCell } from '@tidbcloud/uikit/biz'
 
 type Story = StoryObj<typeof ProTable>
 
@@ -26,7 +26,16 @@ const data = [
     position: 6,
     mass: 12.011,
     symbol: 'C',
-    name: 'Carbon'
+    name: 'Carbon',
+    subRows: [
+      {
+        id: 2,
+        name: 'Jane Doe',
+        position: 6,
+        mass: 12.011,
+        symbol: 'C'
+      }
+    ]
   },
   { position: 7, mass: 14.007, symbol: 'N', name: 'Nitrogen' },
   { position: 39, mass: 88.906, symbol: 'Y', name: 'Yttrium' },
@@ -34,18 +43,22 @@ const data = [
   { position: 58, mass: 140.12, symbol: 'Ce', name: 'Cerium' }
 ]
 
-const columns = [
+const columns: MRT_ColumnDef<{}>[] = [
   {
     header: 'Position',
-    accessorKey: 'position'
+    accessorKey: 'position',
+    Cell: renderExpandCell,
+    footer: 'Position'
   },
   {
     header: 'Name',
-    accessorKey: 'name'
+    accessorKey: 'name',
+    footer: 'Position'
   },
   {
     header: 'Symbol',
-    accessorKey: 'symbol'
+    accessorKey: 'symbol',
+    footer: 'Symbol'
   },
   {
     header: 'Mass',
@@ -55,7 +68,11 @@ const columns = [
     },
     mantineTableBodyCellProps: {
       align: 'right'
-    }
+    },
+    mantineTableFooterCellProps: {
+      align: 'right'
+    },
+    footer: 'Mass'
   }
 ]
 
@@ -67,14 +84,18 @@ export const Primary: Story = {
   args: {
     withBorder: true,
     loading: false,
-    enableStickyHeader: false,
+    enableStickyHeader: true,
+    enableStickyFooter: true,
     enableBottomToolbar: false,
+    enableExpanding: true,
+    enablePinning: true,
     enableSorting: false,
     columns,
     emptyMessage: 'No data',
     mantineTableBodyCellProps: {
       h: 48
     },
+    mantineTableContainerProps: { sx: { maxHeight: '400px' } },
     data
   },
   argTypes: {}
