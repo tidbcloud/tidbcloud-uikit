@@ -1,5 +1,13 @@
 # @tidbcloud/uikit-documentation
 
+## 0.1.30-beta.74
+
+### Patch Changes
+
+- fix text input with left label padding
+- Updated dependencies
+  - @tidbcloud/uikit@2.0.0-beta.74
+
 ## 0.1.30-beta.73
 
 ### Patch Changes

@@ -22,11 +22,16 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>((props, re
 
           return {
             wrapper: {
-              display: 'flex'
+              display: 'flex',
+              // see https://github.com/mantinedev/mantine/blob/master/packages/%40mantine/core/src/components/Input/Input.module.css#L70C4-L70C33I
+              // correct input left padding
+              '&[data-with-left-section]': {
+                '--input-padding-inline-start': 'var(--input-padding)'
+              }
             },
             section: {
               '&[data-position="left"]': {
-                position: 'relative',
+                position: 'initial',
                 width: 'fit-content',
                 border: `1px solid ${theme.colors.carbon[4]}`,
                 borderRightWidth: 0,
