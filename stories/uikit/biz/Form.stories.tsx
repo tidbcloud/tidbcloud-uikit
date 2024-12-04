@@ -1,5 +1,5 @@
 import type { Meta, StoryObj, StoryFn } from '@storybook/react'
-import { Group, Center } from '@tidbcloud/uikit'
+import { Group, Center, Box } from '@tidbcloud/uikit'
 import {
   Form,
   FormTextInput,
@@ -14,7 +14,7 @@ import {
   FormPhoneInputV2,
   FormCopyText
 } from '@tidbcloud/uikit/biz'
-import { IconAtom01, IconLock01 } from '@tidbcloud/uikit/icons'
+import { IconAtom01, IconLock01, IconZoomIn } from '@tidbcloud/uikit/icons'
 
 type Story = StoryObj<typeof Form>
 
@@ -64,9 +64,16 @@ export const Primary: Story = {
           required
           placeholder="Your email"
           label="Email"
-          icon={<IconAtom01 size={16} stroke="1.5" />}
+          leftSection={<IconAtom01 size={16} stroke="1.5" />}
         />
-        <FormTextInput name="url" mt="md" required placeholder="Your url" label="url" leftLabel="https://www.test." />
+        <FormTextInput
+          name="url"
+          mt="md"
+          required
+          placeholder="Your url"
+          label="url"
+          leftLabel="https://www.test.com"
+        />
         <FormPasswordInput
           name="password"
           mt="md"
@@ -74,7 +81,7 @@ export const Primary: Story = {
           placeholder="Password"
           label="Password"
           rules={{ minLength: { value: 8, message: 'min length is 8' } }}
-          icon={<IconLock01 size={16} stroke="1.5" />}
+          leftSection={<IconLock01 size={16} stroke="1.5" />}
         />
         <FormPhoneInput
           name="phone"
@@ -92,7 +99,7 @@ export const Primary: Story = {
             maxDropdownHeight: 180,
             searchable: true,
             onChange: (val) => {},
-            filter(data, index, array) {
+            filterData(data, index, array) {
               if (data.value === 'kp') {
                 return false
               }
