@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.75
+
+### Patch Changes
+
+- Fix `NavLink` styles
+
 ## 2.0.0-beta.74
 
 ### Patch Changes
