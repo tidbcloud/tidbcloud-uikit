@@ -88,6 +88,7 @@ export const Primary: Story = {
     enableStickyFooter: true,
     enableBottomToolbar: false,
     enableExpanding: true,
+    enableRowVirtualization: true,
     enablePinning: true,
     enableSorting: false,
     columns,

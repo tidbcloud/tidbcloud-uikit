@@ -1,5 +1,13 @@
 # @tidbcloud/uikit-documentation
 
+## 0.1.30-beta.73
+
+### Patch Changes
+
+- fix protable sticky & rowVirtualization style
+- Updated dependencies
+  - @tidbcloud/uikit@2.0.0-beta.73
+
 ## 0.1.30-beta.72
 
 ### Patch Changes

@@ -38,14 +38,20 @@ export function mergeProTableProps<T extends Record<string, any>>(props: ProTabl
     mantinePaperProps = {},
     mantineSkeletonProps = {},
     mantineTableBodyProps,
+    mantineTableHeadCellProps = {},
     mantineTableBodyCellProps = {},
+    mantineTableBodyRowProps = {},
     mantineBottomToolbarProps = {},
     mantineTableFooterCellProps = {},
     mantineTableFooterRowProps = {},
+    mantineTableFooterProps = {},
+    mantineLoadingOverlayProps = {},
     withBorder = true,
     loading = false,
     enableExpanding = false,
+    enableRowVirtualization = false,
     enableStickyHeader,
+    enableStickyFooter,
     emptyMessage,
     errorMessage,
     data,
@@ -136,11 +142,38 @@ export function mergeProTableProps<T extends Record<string, any>>(props: ProTabl
     return {}
   }, mantineTableBodyProps)
 
+  const mTableHeaderCellProps = mergeMProps<NonNullable<MRT_TableOptions<T>['mantineTableHeadCellProps']>>(() => {
+    return {
+      sx: {
+        '.mrt-table-head-sort-button': {
+          height: 'auto',
+          width: 'auto',
+          backgroundColor: 'transparent',
+          borderColor: 'transparent',
+          minWidth: 20,
+          minHeight: 20
+        }
+      }
+    }
+  }, mantineTableHeadCellProps)
+
   const mTableBodyCellProps = mergeMProps<NonNullable<MRT_TableOptions<T>['mantineTableBodyCellProps']>>(() => {
     return {
       h: 48
     }
   }, mantineTableBodyCellProps)
+
+  const mTableBodyRowProps = mergeMProps<NonNullable<MRT_TableOptions<T>['mantineTableBodyRowProps']>>(() => {
+    return {
+      sx: {
+        '&:where([data-with-row-border]):not(:last-of-type)': {
+          td: {
+            borderBottom: enableRowVirtualization ? 'none !important' : undefined
+          }
+        }
+      }
+    }
+  }, mantineTableBodyRowProps)
 
   const mBottomToolbarProps = mergeMProps<NonNullable<MRT_TableOptions<T>['mantineBottomToolbarProps']>>(
     {
@@ -152,6 +185,13 @@ export function mergeProTableProps<T extends Record<string, any>>(props: ProTabl
       })
     },
     mantineBottomToolbarProps
+  )
+
+  const mLoadingOverlayProps = mergeMProps<NonNullable<MRT_TableOptions<T>['mantineLoadingOverlayProps']>>(
+    () => ({
+      visible: false
+    }),
+    mantineLoadingOverlayProps
   )
 
   const mTabelSkeletonProps = mergeMProps<NonNullable<MRT_TableOptions<T>['mantineSkeletonProps']>>(
@@ -174,9 +214,16 @@ export function mergeProTableProps<T extends Record<string, any>>(props: ProTabl
 
   const mTableFooterRowProps = mergeMProps<NonNullable<MRT_TableOptions<T>['mantineTableFooterRowProps']>>(
     {
-      sx: { borderBottom: 'none' }
+      sx: { borderBottom: 'none', outline: enableStickyFooter ? 'none' : undefined }
     },
     mantineTableFooterRowProps
+  )
+
+  const mTableFooterProps = mergeMProps<NonNullable<MRT_TableOptions<T>['mantineTableFooterProps']>>(
+    {
+      sx: { outline: enableStickyFooter ? 'none' : undefined }
+    },
+    mantineTableFooterProps
   )
 
   return {
@@ -188,19 +235,25 @@ export function mergeProTableProps<T extends Record<string, any>>(props: ProTabl
     enableBottomToolbar: false,
     enableExpanding,
     enableStickyHeader,
+    enableStickyFooter,
+    enableRowVirtualization,
     mantinePaperProps: mPaperProps,
     mantineTableProps: mTableProps,
+    mantineTableHeadCellProps: mTableHeaderCellProps,
     mantineSkeletonProps: mTabelSkeletonProps,
+    mantineLoadingOverlayProps: mLoadingOverlayProps,
     mantineTableBodyProps: mTableBodyProps,
     mantineBottomToolbarProps: mBottomToolbarProps,
+    mantineTableBodyRowProps: mTableBodyRowProps,
     mantineTableBodyCellProps: mTableBodyCellProps,
     mantineTableFooterCellProps: mTableFooterCellProps,
     mantineTableFooterRowProps: mTableFooterRowProps,
+    mantineTableFooterProps: mTableFooterProps,
     data,
     icons: {
-      IconArrowsSort: () => <IconSwitchVertical02 size={14} />,
-      IconSortAscending: () => <IconArrowUp size={14} />,
-      IconSortDescending: () => <IconArrowDown size={14} />
+      IconArrowsSort: (props: any) => <IconSwitchVertical02 size={14} {...props} />,
+      IconSortAscending: (props: any) => <IconArrowUp size={14} {...props} />,
+      IconSortDescending: (props: any) => <IconArrowDown size={14} {...props} />
     },
     localization: {
       noRecordsToDisplay: errorMessage ? errorMessage : emptyMessage ? emptyMessage : undefined,
