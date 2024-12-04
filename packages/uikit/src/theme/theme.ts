@@ -482,8 +482,8 @@ const theme = createTheme({
             borderRadius: theme.defaultRadius,
             transition: 'background 150ms ease-in-out'
           },
-          section: {
-            marginRight: 10
+          label: {
+            lineHeight: '24px'
           }
         }
       }
