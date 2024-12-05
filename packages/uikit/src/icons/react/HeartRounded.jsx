@@ -1,14 +1,7 @@
+import { Box as MantineBox } from '@mantine/core'
 import * as React from 'react'
 import { forwardRef } from 'react'
-const HeartRounded = (props, ref) => {
-  if (typeof props.size === 'number') {
-    const { size, ...rest } = props
-    props = {
-      ...rest,
-      height: size,
-      width: size
-    }
-  }
+const IconHeartRounded = (props, ref) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -24,11 +17,23 @@ const HeartRounded = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M16.111 3C19.633 3 22 6.353 22 9.48 22 15.814 12.178 21 12 21c-.178 0-10-5.186-10-11.52C2 6.352 4.367 3 7.889 3 9.91 3 11.233 4.024 12 4.924 12.767 4.024 14.089 3 16.111 3Z"
+        d="M16.111 3C19.633 3 22 6.353 22 9.48 22 15.814 12.178 21 12 21S2 15.814 2 9.48C2 6.352 4.367 3 7.889 3 9.91 3 11.233 4.024 12 4.924 12.767 4.024 14.089 3 16.111 3"
         strokeWidth="inherit"
       />
     </svg>
   )
 }
-const ForwardRef = forwardRef(HeartRounded)
-export default ForwardRef
+const ForwardRef = forwardRef(IconHeartRounded)
+const HeartRounded = forwardRef((props, ref) => {
+  if (typeof props.size === 'number') {
+    const { size, ...rest } = props
+    props = {
+      ...rest,
+      w: size,
+      h: size
+    }
+  }
+  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+})
+HeartRounded.displayName = 'IconHeartRounded'
+export default HeartRounded

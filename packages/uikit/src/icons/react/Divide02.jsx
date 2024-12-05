@@ -1,14 +1,7 @@
+import { Box as MantineBox } from '@mantine/core'
 import * as React from 'react'
 import { forwardRef } from 'react'
-const Divide02 = (props, ref) => {
-  if (typeof props.size === 'number') {
-    const { size, ...rest } = props
-    props = {
-      ...rest,
-      height: size,
-      width: size
-    }
-  }
+const IconDivide02 = (props, ref) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -24,11 +17,23 @@ const Divide02 = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M4 12h16m-6-6a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm0 12a2 2 0 1 1-4 0 2 2 0 0 1 4 0Z"
+        d="M4 12h16m-6-6a2 2 0 1 1-4 0 2 2 0 0 1 4 0m0 12a2 2 0 1 1-4 0 2 2 0 0 1 4 0"
         strokeWidth="inherit"
       />
     </svg>
   )
 }
-const ForwardRef = forwardRef(Divide02)
-export default ForwardRef
+const ForwardRef = forwardRef(IconDivide02)
+const Divide02 = forwardRef((props, ref) => {
+  if (typeof props.size === 'number') {
+    const { size, ...rest } = props
+    props = {
+      ...rest,
+      w: size,
+      h: size
+    }
+  }
+  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+})
+Divide02.displayName = 'IconDivide02'
+export default Divide02

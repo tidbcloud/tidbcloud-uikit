@@ -1,14 +1,7 @@
+import { Box as MantineBox } from '@mantine/core'
 import * as React from 'react'
 import { forwardRef } from 'react'
-const ChevronDown = (props, ref) => {
-  if (typeof props.size === 'number') {
-    const { size, ...rest } = props
-    props = {
-      ...rest,
-      height: size,
-      width: size
-    }
-  }
+const IconChevronDown = (props, ref) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -24,5 +17,17 @@ const ChevronDown = (props, ref) => {
     </svg>
   )
 }
-const ForwardRef = forwardRef(ChevronDown)
-export default ForwardRef
+const ForwardRef = forwardRef(IconChevronDown)
+const ChevronDown = forwardRef((props, ref) => {
+  if (typeof props.size === 'number') {
+    const { size, ...rest } = props
+    props = {
+      ...rest,
+      w: size,
+      h: size
+    }
+  }
+  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+})
+ChevronDown.displayName = 'IconChevronDown'
+export default ChevronDown

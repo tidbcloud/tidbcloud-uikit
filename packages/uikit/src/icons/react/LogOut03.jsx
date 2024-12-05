@@ -1,14 +1,7 @@
+import { Box as MantineBox } from '@mantine/core'
 import * as React from 'react'
 import { forwardRef } from 'react'
-const LogOut03 = (props, ref) => {
-  if (typeof props.size === 'number') {
-    const { size, ...rest } = props
-    props = {
-      ...rest,
-      height: size,
-      width: size
-    }
-  }
+const IconLogOut03 = (props, ref) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -30,5 +23,17 @@ const LogOut03 = (props, ref) => {
     </svg>
   )
 }
-const ForwardRef = forwardRef(LogOut03)
-export default ForwardRef
+const ForwardRef = forwardRef(IconLogOut03)
+const LogOut03 = forwardRef((props, ref) => {
+  if (typeof props.size === 'number') {
+    const { size, ...rest } = props
+    props = {
+      ...rest,
+      w: size,
+      h: size
+    }
+  }
+  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+})
+LogOut03.displayName = 'IconLogOut03'
+export default LogOut03

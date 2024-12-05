@@ -1,14 +1,7 @@
+import { Box as MantineBox } from '@mantine/core'
 import * as React from 'react'
 import { forwardRef } from 'react'
-const MenuLeft = (props, ref) => {
-  if (typeof props.size === 'number') {
-    const { size, ...rest } = props
-    props = {
-      ...rest,
-      height: size,
-      width: size
-    }
-  }
+const IconMenuLeft = (props, ref) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -30,5 +23,17 @@ const MenuLeft = (props, ref) => {
     </svg>
   )
 }
-const ForwardRef = forwardRef(MenuLeft)
-export default ForwardRef
+const ForwardRef = forwardRef(IconMenuLeft)
+const MenuLeft = forwardRef((props, ref) => {
+  if (typeof props.size === 'number') {
+    const { size, ...rest } = props
+    props = {
+      ...rest,
+      w: size,
+      h: size
+    }
+  }
+  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+})
+MenuLeft.displayName = 'IconMenuLeft'
+export default MenuLeft

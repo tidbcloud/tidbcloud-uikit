@@ -1,14 +1,7 @@
+import { Box as MantineBox } from '@mantine/core'
 import * as React from 'react'
 import { forwardRef } from 'react'
-const Info2 = (props, ref) => {
-  if (typeof props.size === 'number') {
-    const { size, ...rest } = props
-    props = {
-      ...rest,
-      height: size,
-      width: size
-    }
-  }
+const IconInfo2 = (props, ref) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -22,11 +15,24 @@ const Info2 = (props, ref) => {
     >
       <path
         fill="currentColor"
-        d="M11.5 11.5v7h2v-7h-2Zm1 7v-7h-2v7h2ZM12 18a.5.5 0 0 1 .5.5h-2A1.5 1.5 0 0 0 12 20v-2Zm-.5.5a.5.5 0 0 1 .5-.5v2a1.5 1.5 0 0 0 1.5-1.5h-2ZM12 12a.5.5 0 0 1-.5-.5h2A1.5 1.5 0 0 0 12 10v2Zm0-2a1.5 1.5 0 0 0-1.5 1.5h2a.5.5 0 0 1-.5.5v-2Zm0-4v2a2 2 0 0 0 2-2h-2Zm0 0h-2a2 2 0 0 0 2 2V6Zm0 0V4a2 2 0 0 0-2 2h2Zm0 0h2a2 2 0 0 0-2-2v2Z"
+        d="M11.5 11.5v7h2v-7zm1 7v-7h-2v7zM12 18a.5.5 0 0 1 .5.5h-2A1.5 1.5 0 0 0 12 20zm-.5.5a.5.5 0 0 1 .5-.5v2a1.5 1.5 0 0 0 1.5-1.5zM12 12a.5.5 0 0 1-.5-.5h2A1.5 1.5 0 0 0 12 10zm0-2a1.5 1.5 0 0 0-1.5 1.5h2a.5.5 0 0 1-.5.5zm0-4v2a2 2 0 0 0 2-2zm0 0h-2a2 2 0 0 0 2 2zm0 0V4a2 2 0 0 0-2 2zm0 0h2a2 2 0 0 0-2-2z"
         strokeWidth="inherit"
+        stroke="currentColor"
       />
     </svg>
   )
 }
-const ForwardRef = forwardRef(Info2)
-export default ForwardRef
+const ForwardRef = forwardRef(IconInfo2)
+const Info2 = forwardRef((props, ref) => {
+  if (typeof props.size === 'number') {
+    const { size, ...rest } = props
+    props = {
+      ...rest,
+      w: size,
+      h: size
+    }
+  }
+  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+})
+Info2.displayName = 'IconInfo2'
+export default Info2

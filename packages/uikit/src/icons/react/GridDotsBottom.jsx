@@ -1,14 +1,7 @@
+import { Box as MantineBox } from '@mantine/core'
 import * as React from 'react'
 import { forwardRef } from 'react'
-const GridDotsBottom = (props, ref) => {
-  if (typeof props.size === 'number') {
-    const { size, ...rest } = props
-    props = {
-      ...rest,
-      height: size,
-      width: size
-    }
-  }
+const IconGridDotsBottom = (props, ref) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -30,5 +23,17 @@ const GridDotsBottom = (props, ref) => {
     </svg>
   )
 }
-const ForwardRef = forwardRef(GridDotsBottom)
-export default ForwardRef
+const ForwardRef = forwardRef(IconGridDotsBottom)
+const GridDotsBottom = forwardRef((props, ref) => {
+  if (typeof props.size === 'number') {
+    const { size, ...rest } = props
+    props = {
+      ...rest,
+      w: size,
+      h: size
+    }
+  }
+  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+})
+GridDotsBottom.displayName = 'IconGridDotsBottom'
+export default GridDotsBottom

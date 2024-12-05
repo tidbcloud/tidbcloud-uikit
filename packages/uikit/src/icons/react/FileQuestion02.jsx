@@ -1,14 +1,7 @@
+import { Box as MantineBox } from '@mantine/core'
 import * as React from 'react'
 import { forwardRef } from 'react'
-const FileQuestion02 = (props, ref) => {
-  if (typeof props.size === 'number') {
-    const { size, ...rest } = props
-    props = {
-      ...rest,
-      height: size,
-      width: size
-    }
-  }
+const IconFileQuestion02 = (props, ref) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -30,5 +23,17 @@ const FileQuestion02 = (props, ref) => {
     </svg>
   )
 }
-const ForwardRef = forwardRef(FileQuestion02)
-export default ForwardRef
+const ForwardRef = forwardRef(IconFileQuestion02)
+const FileQuestion02 = forwardRef((props, ref) => {
+  if (typeof props.size === 'number') {
+    const { size, ...rest } = props
+    props = {
+      ...rest,
+      w: size,
+      h: size
+    }
+  }
+  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+})
+FileQuestion02.displayName = 'IconFileQuestion02'
+export default FileQuestion02

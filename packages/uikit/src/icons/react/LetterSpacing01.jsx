@@ -1,14 +1,7 @@
+import { Box as MantineBox } from '@mantine/core'
 import * as React from 'react'
 import { forwardRef } from 'react'
-const LetterSpacing01 = (props, ref) => {
-  if (typeof props.size === 'number') {
-    const { size, ...rest } = props
-    props = {
-      ...rest,
-      height: size,
-      width: size
-    }
-  }
+const IconLetterSpacing01 = (props, ref) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -30,5 +23,17 @@ const LetterSpacing01 = (props, ref) => {
     </svg>
   )
 }
-const ForwardRef = forwardRef(LetterSpacing01)
-export default ForwardRef
+const ForwardRef = forwardRef(IconLetterSpacing01)
+const LetterSpacing01 = forwardRef((props, ref) => {
+  if (typeof props.size === 'number') {
+    const { size, ...rest } = props
+    props = {
+      ...rest,
+      w: size,
+      h: size
+    }
+  }
+  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+})
+LetterSpacing01.displayName = 'IconLetterSpacing01'
+export default LetterSpacing01

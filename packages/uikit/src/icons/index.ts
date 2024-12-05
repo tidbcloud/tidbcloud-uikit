@@ -5,6 +5,7 @@
 /* eslint-disable */
 
 import type { SVGProps } from 'react'
+import type { BoxProps } from '@mantine/core'
 import Activity from './react/Activity.jsx'
 import ActivityHeart from './react/ActivityHeart.jsx'
 import AiExplore01 from './react/AiExplore01.jsx'
@@ -1246,9 +1247,8 @@ import ZapSquare from './react/ZapSquare.jsx'
 import ZoomIn from './react/ZoomIn.jsx'
 import ZoomOut from './react/ZoomOut.jsx'
 
-export interface IconProps extends SVGProps<SVGSVGElement> {
-  size?: number | string
-  color?: string
+export interface IconProps extends Omit<SVGProps<SVGSVGElement>, keyof BoxProps>, BoxProps {
+  size?: number
 }
 
 /**

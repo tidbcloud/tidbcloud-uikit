@@ -1,14 +1,7 @@
+import { Box as MantineBox } from '@mantine/core'
 import * as React from 'react'
 import { forwardRef } from 'react'
-const Toggle03Left = (props, ref) => {
-  if (typeof props.size === 'number') {
-    const { size, ...rest } = props
-    props = {
-      ...rest,
-      height: size,
-      width: size
-    }
-  }
+const IconToggle03Left = (props, ref) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -24,18 +17,30 @@ const Toggle03Left = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M2 12a6 6 0 0 1 6-6h8a6 6 0 0 1 0 12H8a6 6 0 0 1-6-6Z"
+        d="M2 12a6 6 0 0 1 6-6h8a6 6 0 0 1 0 12H8a6 6 0 0 1-6-6"
         strokeWidth="inherit"
       />
       <path
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M8 14.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"
+        d="M8 14.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5"
         strokeWidth="inherit"
       />
     </svg>
   )
 }
-const ForwardRef = forwardRef(Toggle03Left)
-export default ForwardRef
+const ForwardRef = forwardRef(IconToggle03Left)
+const Toggle03Left = forwardRef((props, ref) => {
+  if (typeof props.size === 'number') {
+    const { size, ...rest } = props
+    props = {
+      ...rest,
+      w: size,
+      h: size
+    }
+  }
+  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+})
+Toggle03Left.displayName = 'IconToggle03Left'
+export default Toggle03Left

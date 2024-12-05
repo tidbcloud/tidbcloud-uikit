@@ -1,14 +1,7 @@
+import { Box as MantineBox } from '@mantine/core'
 import * as React from 'react'
 import { forwardRef } from 'react'
-const FileLock03 = (props, ref) => {
-  if (typeof props.size === 'number') {
-    const { size, ...rest } = props
-    props = {
-      ...rest,
-      height: size,
-      width: size
-    }
-  }
+const IconFileLock03 = (props, ref) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -24,11 +17,23 @@ const FileLock03 = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M14 2H8.8c-1.68 0-2.52 0-3.162.327a3 3 0 0 0-1.311 1.311C4 4.28 4 5.12 4 6.8v10.4c0 1.68 0 2.52.327 3.162a3 3 0 0 0 1.311 1.311C6.28 22 7.12 22 8.8 22h6.4c1.68 0 2.52 0 3.162-.327a3 3 0 0 0 1.311-1.311C20 19.72 20 18.88 20 17.2V8m-6-6 6 6m-6-6v6h6m-6.25 6v-1.75a1.75 1.75 0 1 0-3.5 0V14m-.15 4h3.8c.56 0 .84 0 1.054-.109a1 1 0 0 0 .437-.437c.109-.214.109-.494.109-1.054v-.8c0-.56 0-.84-.109-1.054a1 1 0 0 0-.437-.437C14.74 14 14.46 14 13.9 14h-3.8c-.56 0-.84 0-1.054.109a1 1 0 0 0-.437.437C8.5 14.76 8.5 15.04 8.5 15.6v.8c0 .56 0 .84.109 1.054a1 1 0 0 0 .437.437C9.26 18 9.54 18 10.1 18Z"
+        d="M14 2H8.8c-1.68 0-2.52 0-3.162.327a3 3 0 0 0-1.311 1.311C4 4.28 4 5.12 4 6.8v10.4c0 1.68 0 2.52.327 3.162a3 3 0 0 0 1.311 1.311C6.28 22 7.12 22 8.8 22h6.4c1.68 0 2.52 0 3.162-.327a3 3 0 0 0 1.311-1.311C20 19.72 20 18.88 20 17.2V8m-6-6 6 6m-6-6v6h6m-6.25 6v-1.75a1.75 1.75 0 1 0-3.5 0V14m-.15 4h3.8c.56 0 .84 0 1.054-.109a1 1 0 0 0 .437-.437c.109-.214.109-.494.109-1.054v-.8c0-.56 0-.84-.109-1.054a1 1 0 0 0-.437-.437C14.74 14 14.46 14 13.9 14h-3.8c-.56 0-.84 0-1.054.109a1 1 0 0 0-.437.437C8.5 14.76 8.5 15.04 8.5 15.6v.8c0 .56 0 .84.109 1.054a1 1 0 0 0 .437.437C9.26 18 9.54 18 10.1 18"
         strokeWidth="inherit"
       />
     </svg>
   )
 }
-const ForwardRef = forwardRef(FileLock03)
-export default ForwardRef
+const ForwardRef = forwardRef(IconFileLock03)
+const FileLock03 = forwardRef((props, ref) => {
+  if (typeof props.size === 'number') {
+    const { size, ...rest } = props
+    props = {
+      ...rest,
+      w: size,
+      h: size
+    }
+  }
+  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+})
+FileLock03.displayName = 'IconFileLock03'
+export default FileLock03
