@@ -1024,6 +1024,7 @@ const theme = createTheme({
     },
     ActionIcon: {
       defaultProps: {
+        variant: 'subtle',
         color: 'carbon'
       },
       styles(theme: MantineTheme, props: ActionIconProps) {
