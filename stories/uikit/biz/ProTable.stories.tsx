@@ -89,7 +89,7 @@ export const Primary: Story = {
     enableBottomToolbar: false,
     enableExpanding: true,
     enableRowVirtualization: true,
-    enablePinning: true,
+    enableColumnPinning: false,
     enableSorting: false,
     columns,
     emptyMessage: 'No data',
@@ -97,7 +97,12 @@ export const Primary: Story = {
       h: 48
     },
     mantineTableContainerProps: { sx: { maxHeight: '400px' } },
-    data
+    data,
+    layoutMode: 'grid',
+    state: {
+      columnVisibility: {},
+      columnPinning: { right: ['mass'] }
+    }
   },
   argTypes: {}
 }

@@ -98,7 +98,10 @@ export function mergeProTableProps<T extends Record<string, any>>(props: ProTabl
             th: {
               color: theme.colors.carbon[7],
               backgroundColor: theme.colors.carbon[2],
-              fontWeight: 500
+              fontWeight: 500,
+              '&[data-column-pinned]': {
+                backgroundColor: theme.colors.carbon[2]
+              }
             }
           }
         },
@@ -261,8 +264,8 @@ export function mergeProTableProps<T extends Record<string, any>>(props: ProTabl
     },
     state: {
       isLoading: loading,
-      columnVisibility: { ...(enableExpanding ? { 'mrt-row-expand': false } : undefined), ...state?.columnVisibility },
-      ...state
+      ...state,
+      columnVisibility: { ...(enableExpanding ? { 'mrt-row-expand': false } : undefined), ...state?.columnVisibility }
     },
     ...rest
   }
