@@ -10,8 +10,8 @@
  *
  * Usage:
  * ```sh
- * npx tsx script/icon.ts
- * npx tsx script/icon.ts --force
+ * npx tsx scripts/icon.ts
+ * npx tsx scripts/icon.ts --force
  * ```
  */
 import { Buffer } from 'node:buffer'
@@ -52,22 +52,33 @@ async function prepare() {
 }
 
 const template: Config['template'] = (variables, { tpl }) => {
+  const { componentName, props, jsx, imports } = variables
+  const innerComponentName = 'Icon' + componentName
   return tpl`
-${variables.imports};
+import { Box as MantineBox } from '@mantine/core';
+${imports}
 
-${variables.interfaces};
-
-const ${variables.componentName} = (${variables.props}) => {
-  if (typeof props.size === 'number') {
-    const { size, ...rest } = props;
-    props = { ...rest, height: size, width: size };
-  }
+const ${innerComponentName} = (${props}) => {
   return (
-    ${variables.jsx}
+    ${jsx}
   )
 };
 
-${variables.exports};
+const ForwardRef = forwardRef(${innerComponentName})
+
+const ${componentName} = forwardRef((props, ref) => {
+  if (typeof props.size === 'number') {
+    const { size, ...rest } = props;
+    props = { ...rest, w: size, h: size };
+  }
+  return (
+    <MantineBox ref={ref} {...props} component={ForwardRef} />
+  )
+})
+
+${componentName}.displayName = '${innerComponentName}';
+
+export default ${componentName};
 `
 }
 
@@ -170,7 +181,9 @@ const noEdit = `/**
 
 async function updateImportEntry() {
   const icons = await getIconList()
-  const typeImports = [`import type { SVGProps } from 'react'`].join('\n')
+  const typeImports = [`import type { SVGProps } from 'react'`, `import type { BoxProps } from '@mantine/core'`].join(
+    '\n'
+  )
 
   const iconImports = icons
     .map((i) => {
@@ -180,9 +193,8 @@ async function updateImportEntry() {
     .join('\n')
 
   const iconPropsType = [
-    `export interface IconProps extends SVGProps<SVGSVGElement> {`,
-    `  size?: number | string`,
-    `  color?: string`,
+    `export interface IconProps extends Omit<SVGProps<SVGSVGElement>, keyof BoxProps>, BoxProps {`,
+    `  size?: number`,
     `}`
   ].join('\n')
 
@@ -217,16 +229,20 @@ async function main() {
   const spinner = ora('preprocessing all raw icons...').start()
   const total = await prepare()
   spinner.succeed(`preprocessing completed, found ${total} icons`)
+  try {
+    spinner.start('transforming to react components...')
+    await transformAllSvgIcon(spinner)
+    spinner.succeed('transforming completed')
 
-  spinner.start('transforming to react components...')
-  await transformAllSvgIcon(spinner)
-  spinner.succeed('transforming completed')
+    spinner.start('updating import entry file...')
+    await updateImportEntry()
+    spinner.succeed('import entry updated')
 
-  spinner.start('updating import entry file...')
-  await updateImportEntry()
-  spinner.succeed('import entry updated')
-
-  spinner.succeed('done')
+    spinner.succeed('done')
+  } catch (err) {
+    spinner.fail('transforming failed')
+    throw err
+  }
 }
 
 main().catch(console.error)

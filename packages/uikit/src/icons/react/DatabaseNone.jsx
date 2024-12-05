@@ -1,14 +1,7 @@
+import { Box as MantineBox } from '@mantine/core'
 import * as React from 'react'
 import { forwardRef } from 'react'
-const DatabaseNone = (props, ref) => {
-  if (typeof props.size === 'number') {
-    const { size, ...rest } = props
-    props = {
-      ...rest,
-      height: size,
-      width: size
-    }
-  }
+const IconDatabaseNone = (props, ref) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -22,14 +15,26 @@ const DatabaseNone = (props, ref) => {
     >
       <path
         stroke="currentColor"
+        strokeDasharray="2 2"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M21 5C21 6.65685 16.9706 8 12 8C7.02944 8 3 6.65685 3 5M21 5C21 3.34315 16.9706 2 12 2C7.02944 2 3 3.34315 3 5M21 5L21 19C21 20.66 17 22 12 22C7 22 3 20.66 3 19L3 5M21 12C21 13.66 17 15 12 15C7 15 3 13.66 3 12"
+        d="M21 5c0 1.657-4.03 3-9 3S3 6.657 3 5m18 0c0-1.657-4.03-3-9-3S3 3.343 3 5m18 0v14c0 1.66-4 3-9 3s-9-1.34-9-3V5m18 7c0 1.66-4 3-9 3s-9-1.34-9-3"
         strokeWidth="inherit"
-        strokeDasharray="2 2"
       />
     </svg>
   )
 }
-const ForwardRef = forwardRef(DatabaseNone)
-export default ForwardRef
+const ForwardRef = forwardRef(IconDatabaseNone)
+const DatabaseNone = forwardRef((props, ref) => {
+  if (typeof props.size === 'number') {
+    const { size, ...rest } = props
+    props = {
+      ...rest,
+      w: size,
+      h: size
+    }
+  }
+  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+})
+DatabaseNone.displayName = 'IconDatabaseNone'
+export default DatabaseNone

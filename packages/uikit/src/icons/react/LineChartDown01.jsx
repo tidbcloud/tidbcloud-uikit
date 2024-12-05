@@ -1,14 +1,7 @@
+import { Box as MantineBox } from '@mantine/core'
 import * as React from 'react'
 import { forwardRef } from 'react'
-const LineChartDown01 = (props, ref) => {
-  if (typeof props.size === 'number') {
-    const { size, ...rest } = props
-    props = {
-      ...rest,
-      height: size,
-      width: size
-    }
-  }
+const IconLineChartDown01 = (props, ref) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -30,5 +23,17 @@ const LineChartDown01 = (props, ref) => {
     </svg>
   )
 }
-const ForwardRef = forwardRef(LineChartDown01)
-export default ForwardRef
+const ForwardRef = forwardRef(IconLineChartDown01)
+const LineChartDown01 = forwardRef((props, ref) => {
+  if (typeof props.size === 'number') {
+    const { size, ...rest } = props
+    props = {
+      ...rest,
+      w: size,
+      h: size
+    }
+  }
+  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+})
+LineChartDown01.displayName = 'IconLineChartDown01'
+export default LineChartDown01

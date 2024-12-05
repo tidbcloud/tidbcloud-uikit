@@ -1,14 +1,7 @@
+import { Box as MantineBox } from '@mantine/core'
 import * as React from 'react'
 import { forwardRef } from 'react'
-const UsersEdit = (props, ref) => {
-  if (typeof props.size === 'number') {
-    const { size, ...rest } = props
-    props = {
-      ...rest,
-      height: size,
-      width: size
-    }
-  }
+const IconUsersEdit = (props, ref) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -24,11 +17,23 @@ const UsersEdit = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M11 15H8c-1.864 0-2.796 0-3.53.305a4 4 0 0 0-2.166 2.164C2 18.204 2 19.136 2 21M15.5 3.29A4.001 4.001 0 0 1 18 7m-6 14.5 2.025-.405c.176-.035.265-.053.347-.085a.994.994 0 0 0 .207-.111c.073-.05.136-.114.264-.242L21.5 14a1.414 1.414 0 1 0-2-2l-6.658 6.657c-.127.128-.19.191-.241.264a1.001 1.001 0 0 0-.11.207c-.033.082-.05.17-.086.347L12 21.5ZM13.5 7a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z"
+        d="M11 15H8c-1.864 0-2.796 0-3.53.305a4 4 0 0 0-2.166 2.164C2 18.204 2 19.136 2 21M15.5 3.29A4 4 0 0 1 18 7m-6 14.5 2.025-.405c.176-.035.265-.053.347-.085a1 1 0 0 0 .207-.111c.073-.05.136-.114.264-.242L21.5 14a1.414 1.414 0 1 0-2-2l-6.658 6.657c-.127.128-.19.191-.241.264a1 1 0 0 0-.11.207c-.033.082-.05.17-.086.347zM13.5 7a4 4 0 1 1-8 0 4 4 0 0 1 8 0"
         strokeWidth="inherit"
       />
     </svg>
   )
 }
-const ForwardRef = forwardRef(UsersEdit)
-export default ForwardRef
+const ForwardRef = forwardRef(IconUsersEdit)
+const UsersEdit = forwardRef((props, ref) => {
+  if (typeof props.size === 'number') {
+    const { size, ...rest } = props
+    props = {
+      ...rest,
+      w: size,
+      h: size
+    }
+  }
+  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+})
+UsersEdit.displayName = 'IconUsersEdit'
+export default UsersEdit

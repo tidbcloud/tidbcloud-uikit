@@ -1,14 +1,7 @@
+import { Box as MantineBox } from '@mantine/core'
 import * as React from 'react'
 import { forwardRef } from 'react'
-const OrientationVerticalFill = (props, ref) => {
-  if (typeof props.size === 'number') {
-    const { size, ...rest } = props
-    props = {
-      ...rest,
-      height: size,
-      width: size
-    }
-  }
+const IconOrientationVerticalFill = (props, ref) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -20,9 +13,21 @@ const OrientationVerticalFill = (props, ref) => {
       ref={ref}
       {...props}
     >
-      <path d="M4 13h4v7H4v-7ZM10 9h4v11h-4V9ZM16 4h4v16h-4V4Z" strokeWidth="inherit" />
+      <path d="M4 13h4v7H4zM10 9h4v11h-4zM16 4h4v16h-4z" strokeWidth="inherit" stroke="currentColor" />
     </svg>
   )
 }
-const ForwardRef = forwardRef(OrientationVerticalFill)
-export default ForwardRef
+const ForwardRef = forwardRef(IconOrientationVerticalFill)
+const OrientationVerticalFill = forwardRef((props, ref) => {
+  if (typeof props.size === 'number') {
+    const { size, ...rest } = props
+    props = {
+      ...rest,
+      w: size,
+      h: size
+    }
+  }
+  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+})
+OrientationVerticalFill.displayName = 'IconOrientationVerticalFill'
+export default OrientationVerticalFill

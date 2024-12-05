@@ -1,14 +1,7 @@
+import { Box as MantineBox } from '@mantine/core'
 import * as React from 'react'
 import { forwardRef } from 'react'
-const Cryptocurrency02 = (props, ref) => {
-  if (typeof props.size === 'number') {
-    const { size, ...rest } = props
-    props = {
-      ...rest,
-      height: size,
-      width: size
-    }
-  }
+const IconCryptocurrency02 = (props, ref) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -24,11 +17,23 @@ const Cryptocurrency02 = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M17.878 20.09a10 10 0 0 1-11.756 0M16.384 3.012a10 10 0 0 1 5.519 10.38m-19.806 0a10 10 0 0 1 5.52-10.38m3.817 3.553-4.868 4.87c-.198.197-.297.296-.334.41a.5.5 0 0 0 0 .31c.037.113.136.212.334.41l4.868 4.87c.198.197.297.296.412.333a.5.5 0 0 0 .309 0c.114-.037.213-.136.41-.334l4.87-4.869c.197-.198.296-.297.333-.41a.5.5 0 0 0 0-.31c-.037-.114-.136-.213-.334-.41l-4.868-4.87c-.198-.198-.297-.297-.412-.334a.5.5 0 0 0-.309 0c-.114.037-.213.136-.41.334Z"
+        d="M17.878 20.09a10 10 0 0 1-11.756 0M16.384 3.012a10 10 0 0 1 5.519 10.38m-19.806 0a10 10 0 0 1 5.52-10.38m3.817 3.553-4.868 4.87c-.198.197-.297.296-.334.41a.5.5 0 0 0 0 .31c.037.113.136.212.334.41l4.868 4.87c.198.197.297.296.412.333a.5.5 0 0 0 .309 0c.114-.037.213-.136.41-.334l4.87-4.869c.197-.198.296-.297.333-.41a.5.5 0 0 0 0-.31c-.037-.114-.136-.213-.334-.41l-4.868-4.87c-.198-.198-.297-.297-.412-.334a.5.5 0 0 0-.309 0c-.114.037-.213.136-.41.334"
         strokeWidth="inherit"
       />
     </svg>
   )
 }
-const ForwardRef = forwardRef(Cryptocurrency02)
-export default ForwardRef
+const ForwardRef = forwardRef(IconCryptocurrency02)
+const Cryptocurrency02 = forwardRef((props, ref) => {
+  if (typeof props.size === 'number') {
+    const { size, ...rest } = props
+    props = {
+      ...rest,
+      w: size,
+      h: size
+    }
+  }
+  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+})
+Cryptocurrency02.displayName = 'IconCryptocurrency02'
+export default Cryptocurrency02

@@ -1,14 +1,7 @@
+import { Box as MantineBox } from '@mantine/core'
 import * as React from 'react'
 import { forwardRef } from 'react'
-const FilterFunnel02 = (props, ref) => {
-  if (typeof props.size === 'number') {
-    const { size, ...rest } = props
-    props = {
-      ...rest,
-      height: size,
-      width: size
-    }
-  }
+const IconFilterFunnel02 = (props, ref) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -24,11 +17,23 @@ const FilterFunnel02 = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M3.386 5.667C2.63 4.822 2.25 4.399 2.237 4.04a1 1 0 0 1 .363-.811C2.877 3 3.444 3 4.578 3h14.843c1.134 0 1.702 0 1.979.229a1 1 0 0 1 .362.81c-.014.36-.392.783-1.148 1.628l-5.707 6.377c-.15.169-.226.253-.28.35a1 1 0 0 0-.103.27c-.024.108-.024.221-.024.447v5.347c0 .196 0 .294-.032.378a.5.5 0 0 1-.132.196c-.067.06-.158.096-.34.17l-3.4 1.36c-.367.146-.55.22-.698.189a.5.5 0 0 1-.315-.213c-.083-.126-.083-.324-.083-.72v-6.707c0-.226 0-.339-.024-.446a1 1 0 0 0-.104-.272c-.054-.096-.13-.18-.28-.349L3.386 5.667Z"
+        d="M3.386 5.667C2.63 4.822 2.25 4.399 2.237 4.04a1 1 0 0 1 .363-.811C2.877 3 3.444 3 4.578 3h14.843c1.134 0 1.702 0 1.979.229a1 1 0 0 1 .362.81c-.014.36-.392.783-1.148 1.628l-5.707 6.377c-.15.169-.226.253-.28.35a1 1 0 0 0-.103.27c-.024.108-.024.221-.024.447v5.347c0 .196 0 .294-.032.378a.5.5 0 0 1-.132.196c-.067.06-.158.096-.34.17l-3.4 1.36c-.367.146-.55.22-.698.189a.5.5 0 0 1-.315-.213c-.083-.126-.083-.324-.083-.72v-6.707c0-.226 0-.339-.024-.446a1 1 0 0 0-.104-.272c-.054-.096-.13-.18-.28-.349z"
         strokeWidth="inherit"
       />
     </svg>
   )
 }
-const ForwardRef = forwardRef(FilterFunnel02)
-export default ForwardRef
+const ForwardRef = forwardRef(IconFilterFunnel02)
+const FilterFunnel02 = forwardRef((props, ref) => {
+  if (typeof props.size === 'number') {
+    const { size, ...rest } = props
+    props = {
+      ...rest,
+      w: size,
+      h: size
+    }
+  }
+  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+})
+FilterFunnel02.displayName = 'IconFilterFunnel02'
+export default FilterFunnel02

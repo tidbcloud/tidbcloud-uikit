@@ -1,14 +1,7 @@
+import { Box as MantineBox } from '@mantine/core'
 import * as React from 'react'
 import { forwardRef } from 'react'
-const CornerDownLeft = (props, ref) => {
-  if (typeof props.size === 'number') {
-    const { size, ...rest } = props
-    props = {
-      ...rest,
-      height: size,
-      width: size
-    }
-  }
+const IconCornerDownLeft = (props, ref) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -30,5 +23,17 @@ const CornerDownLeft = (props, ref) => {
     </svg>
   )
 }
-const ForwardRef = forwardRef(CornerDownLeft)
-export default ForwardRef
+const ForwardRef = forwardRef(IconCornerDownLeft)
+const CornerDownLeft = forwardRef((props, ref) => {
+  if (typeof props.size === 'number') {
+    const { size, ...rest } = props
+    props = {
+      ...rest,
+      w: size,
+      h: size
+    }
+  }
+  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+})
+CornerDownLeft.displayName = 'IconCornerDownLeft'
+export default CornerDownLeft

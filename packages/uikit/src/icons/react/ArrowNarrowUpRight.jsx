@@ -1,14 +1,7 @@
+import { Box as MantineBox } from '@mantine/core'
 import * as React from 'react'
 import { forwardRef } from 'react'
-const ArrowNarrowUpRight = (props, ref) => {
-  if (typeof props.size === 'number') {
-    const { size, ...rest } = props
-    props = {
-      ...rest,
-      height: size,
-      width: size
-    }
-  }
+const IconArrowNarrowUpRight = (props, ref) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -30,5 +23,17 @@ const ArrowNarrowUpRight = (props, ref) => {
     </svg>
   )
 }
-const ForwardRef = forwardRef(ArrowNarrowUpRight)
-export default ForwardRef
+const ForwardRef = forwardRef(IconArrowNarrowUpRight)
+const ArrowNarrowUpRight = forwardRef((props, ref) => {
+  if (typeof props.size === 'number') {
+    const { size, ...rest } = props
+    props = {
+      ...rest,
+      w: size,
+      h: size
+    }
+  }
+  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+})
+ArrowNarrowUpRight.displayName = 'IconArrowNarrowUpRight'
+export default ArrowNarrowUpRight
