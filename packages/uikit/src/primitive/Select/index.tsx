@@ -35,8 +35,14 @@ export function Select(props: SelectProps) {
 
   const [dropdownOpened, setDropdownOpened] = useUncontrolled({
     value: props.dropdownOpened,
-    onChange: (value) => setDropdownOpened(value),
-    defaultValue: false
+    defaultValue: false,
+    onChange: (value) => {
+      if (value) {
+        props.onDropdownOpen?.()
+      } else {
+        props.onDropdownClose?.()
+      }
+    }
   })
   const close = useCallback(() => setDropdownOpened(false), [])
   const open = useCallback(() => setDropdownOpened(true), [])
@@ -124,7 +130,13 @@ export function MultiSelect(props: MultiSelectProps) {
 
   const [dropdownOpened, setDropdownOpened] = useUncontrolled({
     value: props.dropdownOpened,
-    onChange: (value) => setDropdownOpened(value),
+    onChange: (value) => {
+      if (value) {
+        props.onDropdownOpen?.()
+      } else {
+        props.onDropdownClose?.()
+      }
+    },
     defaultValue: false
   })
   const close = useCallback(() => setDropdownOpened(false), [])
