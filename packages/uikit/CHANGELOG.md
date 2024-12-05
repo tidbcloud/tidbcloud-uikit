@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.76
+
+### Patch Changes
+
+- fix protable column pinning style
+
 ## 2.0.0-beta.75
 
 ### Patch Changes
