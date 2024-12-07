@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.78
+
+### Patch Changes
+
+- fix(theme): revert default component to 'button' for NavLink consistency
+
 ## 2.0.0-beta.77
 
 ### Minor Changes

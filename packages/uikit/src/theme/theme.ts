@@ -444,7 +444,12 @@ const theme = createTheme({
         px: 10,
         lh: 1.5,
         fw: 500,
-        variant: 'light'
+        variant: 'light',
+        /**
+         * mantine changed the default component to `a` instead of `button` in v7
+         * we need to set it back to `button` to keep the same behavior as before
+         */
+        component: 'button'
       },
       styles: (theme: MantineTheme, props: NavLinkProps) => {
         const withThemeColor = (shade: number) => themeColor(theme, props.color ?? theme.primaryColor, shade)
