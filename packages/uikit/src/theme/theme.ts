@@ -701,7 +701,8 @@ const theme = createTheme({
     Badge: {
       defaultProps: {
         color: 'peacock',
-        size: 'md'
+        size: 'md',
+        variant: 'light'
       },
       styles(theme: MantineTheme, props: BadgeProps) {
         const color = props.color ?? theme.primaryColor
