@@ -12,7 +12,8 @@ import {
   FormTextareaInput,
   FormPhoneInput,
   FormPhoneInputV2,
-  FormCopyText
+  FormCopyText,
+  FormRadioGroup
 } from '@tidbcloud/uikit/biz'
 import { IconAtom01, IconLock01, IconZoomIn } from '@tidbcloud/uikit/icons'
 
@@ -147,6 +148,24 @@ export const Primary: Story = {
         <FormSwitch name="Checked" label="Checked" />
         <FormTextareaInput name="message" label="Messasge" placeholder="Your message" minRows={2} />
         <FormCopyText value={'This is an example'} />
+        <FormRadioGroup
+          name="radio"
+          data={[
+            { label: 'React', value: 'react' },
+            { label: 'Vue', value: 'vue' },
+            { label: 'Angular', value: 'angular' },
+            {
+              label: 'Svelte',
+              value: 'svelte',
+              disabled: true,
+              tooltip: 'Svelte is a JavaScript framework for building user interfaces.',
+              tooltipProps: {
+                useTooltip: true
+              }
+            }
+          ]}
+          label="Your favorite framework"
+        />
       </Form>
     </Center>
   ),
