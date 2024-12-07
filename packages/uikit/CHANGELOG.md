@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.79
+
+### Patch Changes
+
+- fix(theme): set default variant to light for Badge component
+
 ## 2.0.0-beta.78
 
 ### Patch Changes
