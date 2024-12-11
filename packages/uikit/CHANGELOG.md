@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.80
+
+### Patch Changes
+
+- update xl -> 24px
+
 ## 2.0.0-beta.79
 
 ### Patch Changes
