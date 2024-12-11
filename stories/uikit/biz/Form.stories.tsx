@@ -40,11 +40,12 @@ export default meta
 // More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
 export const Primary: Story = {
   render: ({ ...args }) => (
-    <Center w={500} m="0 auto">
+    <Center w={500} m="0 auto" p="sm">
       <Form
         {...args}
         w={'100%'}
         formMode="onChange"
+        layoutProps={{ gap: 'xs' }}
         onSubmit={() => {
           throw new Error('Test error')
         }}

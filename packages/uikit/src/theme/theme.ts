@@ -169,6 +169,13 @@ const theme = createTheme({
     lg: '18px',
     xl: '20px'
   },
+  spacing: {
+    xs: rem(10),
+    sm: rem(12),
+    md: rem(16),
+    lg: rem(20),
+    xl: rem(24)
+  },
   components: {
     Button: {
       defaultProps: {
