@@ -316,6 +316,7 @@ const theme = createTheme({
             fontSize: props.size === 'xs' ? 12 : 14
           },
           root: {
+            overflow: 'unset',
             paddingLeft: 12,
             paddingRight: 12,
             ...variantStyle,
