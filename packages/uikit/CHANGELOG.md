@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.81
+
+### Patch Changes
+
+- fix(theme): set overflow to unset in button style
+
 ## 2.0.0-beta.80
 
 ### Patch Changes
