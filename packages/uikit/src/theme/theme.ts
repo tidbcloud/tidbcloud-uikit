@@ -377,7 +377,8 @@ const theme = createTheme({
               color: themeColor(theme, 'carbon', 9)
             },
             '&:hover': {
-              color: themeColor(theme, 'carbon', 9)
+              color: themeColor(theme, 'carbon', 9),
+              backgroundColor: 'transparent'
             }
           }
         }

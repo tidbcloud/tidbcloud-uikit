@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.82
+
+### Patch Changes
+
+- fix tabs hover dark style & protabe row dark theme style
+
 ## 2.0.0-beta.81
 
 ### Patch Changes
