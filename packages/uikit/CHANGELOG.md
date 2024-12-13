@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.83
+
+### Patch Changes
+
+- fix DateTimePicker with refactored scroll picker
+
 ## 2.0.0-beta.82
 
 ### Patch Changes
