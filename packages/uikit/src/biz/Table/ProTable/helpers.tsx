@@ -173,6 +173,9 @@ export function mergeProTableProps<T extends Record<string, any>>(props: ProTabl
           td: {
             borderBottom: enableRowVirtualization ? 'none !important' : undefined
           }
+        },
+        "&:not([data-striped], [data-striped='false'])": {
+          backgroundColor: theme.colors.carbon[0]
         }
       }
     }
