@@ -1,8 +1,8 @@
-import { useMemoizedFn, useUpdateEffect } from 'ahooks'
+import { useMemoizedFn } from 'ahooks'
 import type { Dayjs } from 'dayjs'
-import { useState, useMemo } from 'react'
+import { useMemo, useState } from 'react'
 
-import { useDisclosure } from '../../hooks/index.js'
+import { useDisclosure, useUncontrolled } from '../../hooks/index.js'
 import { IconClock } from '../../icons/index.js'
 import {
   Box,
@@ -22,7 +22,7 @@ import {
 import { dayjs } from '../../utils/dayjs.js'
 import { DEFAULT_TIME_FORMAT } from '../TimeRangePicker/helpers.js'
 
-import { useTimePickerScroll } from './usePickerScroll.js'
+import { TimeScollerPicker, CurrentValueChangedBy } from './TimeScollerPicker.js'
 
 export interface DateTimePickerProps {
   placeholder?: string
@@ -42,7 +42,7 @@ export interface DateTimePickerProps {
   size?: MantineSize
 }
 
-export const DateTimePicker: React.FC<React.PropsWithChildren<DateTimePickerProps>> = ({
+export const DateTimePicker = ({
   placeholder = 'Select time',
   format = DEFAULT_TIME_FORMAT,
   defaultValue,
@@ -56,15 +56,40 @@ export const DateTimePicker: React.FC<React.PropsWithChildren<DateTimePickerProp
   sx,
   loading = false,
   size
-}) => {
+}: DateTimePickerProps) => {
   const [opened, { close, open }] = useDisclosure(false)
-  const [currentValue, setCurrentValue] = useState<Dayjs>(
-    defaultValue ? dayjs(defaultValue) : value ? dayjs(value) : dayjs()
-  )
+  const [currentValue, setCurrentValue] = useUncontrolled({
+    value: value ? dayjs(value) : undefined,
+    defaultValue: defaultValue ? dayjs(defaultValue) : undefined,
+    onChange: (v) => {
+      onChange?.(v.toDate())
+    }
+  })
+  const [currentValueChangedBy, setCurrentValueChangedBy] = useState<CurrentValueChangedBy | null>(null)
 
-  const updateCurrentValue = useMemoizedFn((val: Dayjs) => {
-    setCurrentValue(val)
-    onChange?.(val.toDate())
+  const updateCurrentValue = useMemoizedFn((val: Dayjs, from: typeof currentValueChangedBy) => {
+    let next = val
+
+    if (currentValue?.unix() === next.unix()) {
+      console.log('same')
+      return
+    }
+
+    if (startDate && next.valueOf() < startDate.valueOf()) {
+      console.log('use start data', startDate)
+      next = dayjs(startDate)
+    } else if (endDate && next.valueOf() > endDate.valueOf()) {
+      console.log('use end data', endDate)
+      next = dayjs(endDate)
+    }
+
+    console.log('save next from', from, next.toDate())
+    setCurrentValue(next)
+    setCurrentValueChangedBy(from)
+    onChange?.(next.toDate())
+    setTimeout(() => {
+      setCurrentValueChangedBy(null)
+    }, 20)
   })
 
   const inputStr = currentValue.format(format)
@@ -75,44 +100,27 @@ export const DateTimePicker: React.FC<React.PropsWithChildren<DateTimePickerProp
     return `UTC${h >= 0 ? '+' : '-'}${Math.abs(h)}:${m < 10 ? '0' : ''}${m}`
   }, [utcOffset])
 
-  const scroll = useTimePickerScroll(currentValue, opened, startDate, endDate, utcOffset)
-
   const calendarChange = useMemoizedFn((v: Date) => {
     let next = currentValue
     next = next.utcOffset(utcOffset).year(v.getFullYear()).month(v.getMonth()).date(v.getDate())
-    if (currentValue?.unix() !== next.unix()) {
-      updateCurrentValue(next)
-    }
+
+    updateCurrentValue(next, 'calendar')
   })
 
   const timeInputChange = useMemoizedFn((v: Date) => {
     let next = currentValue
     next = next.utcOffset(utcOffset).hour(v.getHours()).minute(v.getMinutes()).second(v.getSeconds())
 
-    if (startDate && next.valueOf() < startDate.valueOf()) {
-      updateCurrentValue(dayjs(startDate))
-    } else if (endDate && next.valueOf() > endDate.valueOf()) {
-      updateCurrentValue(dayjs(endDate))
-    } else if (currentValue?.unix() !== next.unix()) {
-      updateCurrentValue(next)
-    }
+    updateCurrentValue(next, 'timeInput')
   })
 
-  // user make changes from scroll picker
-  useUpdateEffect(() => {
+  const timeScrollPickerChange = useMemoizedFn((v: [number, number, number]) => {
+    const [h, m, s] = v
+    console.log('scroll change', v)
     let next = currentValue
-    const [h, m, s] = scroll.value
     next = next.utcOffset(utcOffset).hour(h).minute(m).second(s)
-    if (currentValue?.unix() !== next.unix()) {
-      updateCurrentValue(next)
-    }
-  }, [scroll.value])
-
-  useUpdateEffect(() => {
-    if (value && dayjs(value).unix() !== currentValue.unix()) {
-      updateCurrentValue(dayjs(value))
-    }
-  }, [value])
+    updateCurrentValue(next, 'timeScroller')
+  })
 
   return (
     <Popover position="bottom-end" opened={opened} withinPortal={withinPortal} shadow="md" onClose={close}>
@@ -220,9 +228,14 @@ export const DateTimePicker: React.FC<React.PropsWithChildren<DateTimePickerProp
                     sx={(theme) => ({ zIndex: -1, borderRadius: theme.defaultRadius, pointerEvents: 'none' })}
                   />
                 </Flex>
-                <Flex mah="100%" gap={8}>
-                  {scroll.content}
-                </Flex>
+                <TimeScollerPicker
+                  currentValue={currentValue}
+                  currentValueChangedBy={currentValueChangedBy}
+                  onChange={timeScrollPickerChange}
+                  start={startDate}
+                  end={endDate}
+                  utcOffset={utcOffset}
+                />
               </Box>
             </Stack>
           </Group>

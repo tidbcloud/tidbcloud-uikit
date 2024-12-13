@@ -18,11 +18,14 @@ const meta: Meta<typeof DateTimePicker> = {
   parameters: {}
 }
 
+const startDate = new Date()
+const endDate = new Date(Date.now() + 1000 * 60 * 60 * 24 * 30)
+
 export function Demo() {
   const [value, setValue] = useState<Date>(new Date())
   return (
     <Stack>
-      <DateTimePicker value={value} onChange={setValue} startDate={new Date()} />
+      <DateTimePicker value={value} onChange={setValue} startDate={startDate} endDate={endDate} />
       <Button onClick={() => setValue(new Date(Date.now() + Math.random() * 10000000000))}>Set random date</Button>
     </Stack>
   )
