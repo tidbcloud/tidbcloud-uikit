@@ -31,4 +31,8 @@ export function Demo() {
   )
 }
 
+export function Uncontrolled() {
+  return <DateTimePicker defaultValue={new Date()} onChange={console.log} />
+}
+
 export default meta

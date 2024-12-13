@@ -60,7 +60,7 @@ export const DateTimePicker = ({
   const [opened, { close, open }] = useDisclosure(false)
   const [currentValue, setCurrentValue] = useUncontrolled({
     value: value ? dayjs(value) : undefined,
-    defaultValue: defaultValue ? dayjs(defaultValue) : undefined,
+    defaultValue: defaultValue ? dayjs(defaultValue) : dayjs(),
     onChange: (v) => {
       onChange?.(v.toDate())
     }
@@ -71,22 +71,17 @@ export const DateTimePicker = ({
     let next = val
 
     if (currentValue?.unix() === next.unix()) {
-      console.log('same')
       return
     }
 
     if (startDate && next.valueOf() < startDate.valueOf()) {
-      console.log('use start data', startDate)
       next = dayjs(startDate)
     } else if (endDate && next.valueOf() > endDate.valueOf()) {
-      console.log('use end data', endDate)
       next = dayjs(endDate)
     }
 
-    console.log('save next from', from, next.toDate())
     setCurrentValue(next)
     setCurrentValueChangedBy(from)
-    onChange?.(next.toDate())
     setTimeout(() => {
       setCurrentValueChangedBy(null)
     }, 20)
@@ -116,7 +111,6 @@ export const DateTimePicker = ({
 
   const timeScrollPickerChange = useMemoizedFn((v: [number, number, number]) => {
     const [h, m, s] = v
-    console.log('scroll change', v)
     let next = currentValue
     next = next.utcOffset(utcOffset).hour(h).minute(m).second(s)
     updateCurrentValue(next, 'timeScroller')
