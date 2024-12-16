@@ -1,5 +1,13 @@
 # @tidbcloud/uikit-documentation
 
+## 0.1.30-beta.85
+
+### Patch Changes
+
+- export InlineCodeHighlight
+- Updated dependencies
+  - @tidbcloud/uikit@2.0.0-beta.85
+
 ## 0.1.30-beta.84
 
 ### Patch Changes
