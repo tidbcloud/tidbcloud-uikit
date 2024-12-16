@@ -1,6 +1,7 @@
 import type { Meta, StoryObj, StoryFn } from '@storybook/react'
-import { Button, Group, Stack } from '@tidbcloud/uikit'
+import { Button, Group, Loader, Stack, Switch } from '@tidbcloud/uikit'
 import { IconSettings01 } from '@tidbcloud/uikit/icons'
+import { useState } from 'react'
 
 import { COLOR_LIST, VARIANT_LIST, SIZE_LIST } from '../../constants'
 
@@ -80,14 +81,6 @@ export const Primary: Story = {
     loading: {
       control: 'boolean'
     },
-    loaderPosition: {
-      options: ['left', 'right', 'center'],
-      control: { type: 'select' },
-      if: {
-        arg: 'loading',
-        truthy: true
-      }
-    },
     loaderProps: {
       control: 'object',
       if: {
@@ -100,12 +93,6 @@ export const Primary: Story = {
           summary: 'LoaderProps'
         }
       }
-    },
-    compact: {
-      control: 'boolean'
-    },
-    uppercase: {
-      control: 'boolean'
     },
     fullWidth: {
       control: 'boolean'
@@ -127,16 +114,11 @@ export const Primary: Story = {
           summary: 'ReactNode'
         }
       }
-    },
-    type: {
-      options: ['button', 'submit', 'reset'],
-      control: { type: 'select' },
-      defaultValue: 'button'
     }
   }
 }
 
-export const GroupedButtons: Story = {
+export const GroupedButtons: StoryObj<typeof Button.Group> = {
   render: ({ ...rest }) => (
     <Stack align="flex-start">
       <Button.Group orientation="horizontal" borderWidth={1} {...rest}>
@@ -151,9 +133,6 @@ export const GroupedButtons: Story = {
     orientation: {
       options: ['horizontal', 'vertical'],
       control: { type: 'select' }
-    },
-    buttonBorderWidth: {
-      control: { type: 'number' }
     }
   }
 }
@@ -171,31 +150,66 @@ export const AllVariants: Story = {
 }
 
 export const AllSizes: Story = {
-  render: () => (
-    <Group>
-      {SIZE_LIST.map((size) => (
-        <Button key={size} size={size}>
-          size-{size}
-        </Button>
-      ))}
-    </Group>
-  )
+  render: () => {
+    return (
+      <Group>
+        {SIZE_LIST.map((size) => (
+          <Button key={size} size={size}>
+            size-{size}
+          </Button>
+        ))}
+      </Group>
+    )
+  }
 }
 
 export const AllColors: Story = {
-  render: () => (
-    <Group>
-      {COLOR_LIST.map((color) => (
-        <Button key={color} color={color}>
-          {color}
+  render: () => {
+    const [disabled, setDisabled] = useState(false)
+
+    return (
+      <Group>
+        <Button disabled={disabled} variant="light">
+          Light
         </Button>
-      ))}
-    </Group>
-  )
+        <Button disabled={disabled} variant="outline">
+          Outline
+        </Button>
+        <Button disabled={disabled} variant="filled">
+          Filled
+        </Button>
+        <Button disabled={disabled} variant="subtle">
+          Subtle
+        </Button>
+        {COLOR_LIST.map((color) => (
+          <Button key={color} color={color} disabled={disabled}>
+            {color}
+          </Button>
+        ))}
+
+        <Switch checked={disabled} onChange={() => setDisabled(!disabled)} label="toggle disabled" />
+      </Group>
+    )
+  }
 }
 
 export const LoadingButton: Story = {
-  render: () => <Button loading>Loading</Button>
+  render: () => {
+    const [loading, setLoading] = useState(false)
+    return (
+      <Stack align="flex-start" p={32}>
+        <Button loading={loading}>Submit</Button>
+        <Button loading={loading} variant="default" leftSection={<IconSettings01 size={16} />}>
+          Edit Settings
+        </Button>
+        <Button loading={loading} color="red" variant="light">
+          I understand the consequences, delete
+        </Button>
+
+        <Switch checked={loading} onChange={() => setLoading(!loading)} label="toggle loading" />
+      </Stack>
+    )
+  }
 }
 
 export const DisabledButton: Story = {
