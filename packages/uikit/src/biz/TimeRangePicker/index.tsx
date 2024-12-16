@@ -104,7 +104,16 @@ export const TimeRangePicker = ({
               <Box sx={{ flex: 'none' }}>
                 <DurationBadge>{formatDuration(duration, true)}</DurationBadge>
               </Box>
-              <Text px={8} sx={{ flex: '1 1', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis' }}>
+              <Text
+                px={8}
+                sx={{
+                  flex: '1 1',
+                  overflow: 'hidden',
+                  whiteSpace: 'nowrap',
+                  textOverflow: 'ellipsis',
+                  textAlign: 'left'
+                }}
+              >
                 {isRelativeRange ? `Past ${formatDuration(duration)}` : formattedAbsDateTime}
               </Text>
             </Group>
