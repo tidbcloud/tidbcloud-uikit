@@ -323,5 +323,5 @@ export { MediaQuery, type MediaQueryProps } from './MediaQuery/index.js'
 export { Select, type SelectProps, MultiSelect, type MultiSelectProps } from './Select/index.js'
 
 // Re-export @mantine/code-highlight
-export { CodeHighlight, CodeHighlightTabs } from '@mantine/code-highlight'
-export type { CodeHighlightProps, CodeHighlightTabsProps } from '@mantine/code-highlight'
+export { CodeHighlight, CodeHighlightTabs, InlineCodeHighlight } from '@mantine/code-highlight'
+export type { CodeHighlightProps, CodeHighlightTabsProps, InlineCodeHighlightProps } from '@mantine/code-highlight'
