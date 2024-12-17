@@ -46,6 +46,7 @@ export function mergeProTableProps<T extends Record<string, any>>(props: ProTabl
     mantineTableFooterRowProps = {},
     mantineTableFooterProps = {},
     mantineLoadingOverlayProps = {},
+    layoutMode,
     withBorder = true,
     loading = false,
     enableExpanding = false,
@@ -171,7 +172,13 @@ export function mergeProTableProps<T extends Record<string, any>>(props: ProTabl
       sx: {
         '&:where([data-with-row-border]):not(:last-of-type)': {
           td: {
-            borderBottom: enableRowVirtualization ? 'none !important' : undefined
+            borderBottom:
+              enableRowVirtualization || (layoutMode && layoutMode !== 'semantic') ? 'none !important' : undefined
+          }
+        },
+        '&[data-hover]': {
+          '&:hover': {
+            '--mrt-row-hover-background-color': theme.colors.carbon[3]
           }
         },
         "&:not([data-striped], [data-striped='false'])": {
@@ -227,7 +234,7 @@ export function mergeProTableProps<T extends Record<string, any>>(props: ProTabl
 
   const mTableFooterProps = mergeMProps<NonNullable<MRT_TableOptions<T>['mantineTableFooterProps']>>(
     {
-      sx: { outline: enableStickyFooter ? 'none' : undefined }
+      sx: { outline: enableStickyFooter ? 'none !important' : undefined }
     },
     mantineTableFooterProps
   )
@@ -255,6 +262,7 @@ export function mergeProTableProps<T extends Record<string, any>>(props: ProTabl
     mantineTableFooterCellProps: mTableFooterCellProps,
     mantineTableFooterRowProps: mTableFooterRowProps,
     mantineTableFooterProps: mTableFooterProps,
+    layoutMode,
     data,
     icons: {
       IconArrowsSort: (props: any) => <IconSwitchVertical02 size={14} {...props} />,

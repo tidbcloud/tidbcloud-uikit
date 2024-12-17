@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.86
+
+### Patch Changes
+
+- fix protable layout mode style
+
 ## 2.0.0-beta.85
 
 ### Patch Changes
