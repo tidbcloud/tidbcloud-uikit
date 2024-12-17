@@ -201,7 +201,6 @@ function MultipleDemo() {
   const [value, setValue] = useState<string[]>([])
   return (
     <TreeSelect
-      searchInputProps={{ onChange: (e) => console.log(e.target.value) }}
       comboboxProps={{ width: 'target' }}
       value={value}
       options={getTreeData()}
