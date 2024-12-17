@@ -57,6 +57,7 @@ export type {
   ComboboxProps,
   ComboboxItem,
   ComboboxData,
+  ComboboxStore,
   PillProps,
   PillsInputProps,
   OptionsFilter,

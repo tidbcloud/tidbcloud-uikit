@@ -12,3 +12,6 @@ export * from './PropertyCard/index.js'
 export * from './PageShell/index.js'
 export * from './TimeRangePicker/index.js'
 export * from './DateTimePicker/index.js'
+export * from './TreeSelect/index.js'
+
+export type * from './TreeSelect/types'
