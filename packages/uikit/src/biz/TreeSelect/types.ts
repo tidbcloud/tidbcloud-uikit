@@ -11,6 +11,10 @@ export interface TreeSelectOption<T extends SelectionProtectType = string> {
   renderSelectItem?: (options: TreeSelectOption<T>) => React.ReactNode
 }
 
+export interface SelectOption<T extends SelectionProtectType = string> extends Omit<TreeSelectOption<T>, 'children'> {
+  parent?: T
+}
+
 export type StatusChangeType = 'check' | 'showChildren'
 
 export interface OnStatusChangeEvent<T extends SelectionProtectType = string> {

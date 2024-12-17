@@ -23,16 +23,16 @@ import type {
   LoadData,
   OnStatusChange,
   OnStatusChangeEvent,
-  OnValueChange,
   RenderSelectItem,
   SelectionProtectType,
+  SelectOption,
   StatusChangeType,
   TreeSelectOption
 } from './types'
-import { checkAll, checkOptionsByValue, treeToFlatArray } from './utils.js'
+import { checkAll, checkOptionsByValue, flatArrayToTree, isSelectOptionChecked, treeToLeafArray } from './utils.js'
 
 export interface TreeSelectProps<T extends SelectionProtectType = string, R = any> {
-  options: TreeSelectOption<T>[]
+  options: TreeSelectOption<T>[] | SelectOption<T>[]
   value?: T[]
   onChange?: (value: T[]) => void
   onStatusChange?: OnStatusChange<T>
@@ -81,13 +81,17 @@ export const TreeSelect = <T extends SelectionProtectType = string>({
   const { disabled, invalid, placeholder } = defaultTargetProps || {}
   const combobox = useCombobox()
   const [_options, setOptions] = useState<TreeSelectOption<T>[] | undefined>(undefined)
-  const internalOptions = useMemo(() => {
+  const internalOptions = useMemo<TreeSelectOption<T>[]>(() => {
     if (!!_options) {
       return _options
     }
+
+    if (isSelectOptionChecked(options[0])) {
+      return flatArrayToTree(options)
+    }
     return options
   }, [options, _options])
-  const flatOptions = useMemo(() => treeToFlatArray(internalOptions), [internalOptions])
+  const flatOptions = useMemo(() => treeToLeafArray(internalOptions), [internalOptions])
   const itemCount = flatOptions.length
   const isCheckAll = value && (allWithEmpty ? !value.length || value.length === itemCount : value.length === itemCount)
   const selectedTips =
@@ -98,7 +102,7 @@ export const TreeSelect = <T extends SelectionProtectType = string>({
   const isArray = internalOptions.every((n) => !n.children?.length)
 
   const _onValueChange = (v: TreeSelectOption<T>[]) => {
-    const flatOptions = treeToFlatArray(v)
+    const flatOptions = treeToLeafArray(v)
     const isCheckAll = flatOptions.every((n) => n.isChecked)
     onChange?.(isCheckAll && allWithEmpty ? [] : flatOptions.filter((n) => n.isChecked).map((n) => n.value))
   }
@@ -114,7 +118,7 @@ export const TreeSelect = <T extends SelectionProtectType = string>({
       _onValueChange(evt.options!)
     }
     if (!multiple) {
-      const flatOptions = treeToFlatArray([evt.target!])
+      const flatOptions = treeToLeafArray([evt.target!])
       onChange?.(flatOptions.map((n) => n.value))
       combobox.closeDropdown()
     }
@@ -178,7 +182,12 @@ export const TreeSelect = <T extends SelectionProtectType = string>({
                 isChecked={everyInternalChecked}
                 indeterminate={someInternalChecked && !everyInternalChecked}
                 onCheckStatusChange={(v) => {
-                  const evt: OnStatusChangeEvent<T> = { type: 'check', options: checkAll(internalOptions, v) }
+                  const allOptions = checkAll(internalOptions, v)
+                  const evt: OnStatusChangeEvent<T> = {
+                    type: 'check',
+                    options: allOptions,
+                    target: { label: 'All', value: 'all' as T, children: allOptions }
+                  }
                   _onStatusChange(evt)
                   afterCheckStatusChange(evt)
                 }}
@@ -307,8 +316,8 @@ const SelectItemWithChildren = <T extends SelectionProtectType = string>({
   renderSelectItem,
   ...rest
 }: SelectItemWithChildrenProps<T>) => {
-  const someChildrenChecked = treeToFlatArray(value.children || []).some((c) => c.isChecked)
-  const everyChildrenChecked = treeToFlatArray(value.children || []).every((c) => c.isChecked)
+  const someChildrenChecked = treeToLeafArray(value.children || []).some((c) => c.isChecked)
+  const everyChildrenChecked = treeToLeafArray(value.children || []).every((c) => c.isChecked)
   return (
     <>
       <SelectItem<T>

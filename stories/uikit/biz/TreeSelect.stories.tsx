@@ -1,10 +1,5 @@
-import { resolve } from 'path'
-
 import type { Meta, StoryObj } from '@storybook/react'
 import { TreeSelect, TreeSelectOption } from '@tidbcloud/uikit/biz'
-import { IconChevronSelectorVertical } from '@tidbcloud/uikit/icons'
-import { Input } from 'packages/uikit/dist/primitive'
-import { useEffect, useRef } from 'react'
 
 type Story = StoryObj<typeof TreeSelect>
 
@@ -200,7 +195,7 @@ function getTreeData(): TreeSelectOption[] {
   ]
 }
 
-function Demo() {
+function MultipleDemo() {
   return (
     <TreeSelect
       comboboxProps={{ width: 'target' }}
@@ -208,8 +203,20 @@ function Demo() {
       options={getTreeData()}
       onChange={(args) => console.log(`checked:`, args)}
       multiple
-      // triggerChangeMode="onStatusChange"
       loadData={() => new Promise((resolve) => setTimeout(() => resolve([]), 1000))}
+    />
+  )
+}
+
+function SingleDemo() {
+  return (
+    <TreeSelect
+      comboboxProps={{ width: 'target' }}
+      value={[]}
+      options={getTreeData()}
+      onChange={(args) => console.log(`checked:`, args)}
+      loadData={() => new Promise((resolve) => setTimeout(() => resolve([]), 1000))}
+      showCheckAll={false}
     />
   )
 }
@@ -401,12 +408,19 @@ function getTreeData(): TreeSelectOption[] {
 }
 
 function Demo() {
-  return <TreeSelect value={[]} options={getTreeData()} />
+  return
+    <TreeSelect
+      comboboxProps={{ width: 'target' }}
+      value={[]}
+      options={getTreeData()}
+      multiple
+      loadData={() => new Promise((resolve) => setTimeout(() => resolve([]), 1000))}
+    />
 }
 `
 
 // More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
-export const Primary: Story = {
+export const Multiple: Story = {
   parameters: {
     controls: { expanded: true },
     docs: {
@@ -416,6 +430,20 @@ export const Primary: Story = {
       }
     }
   },
-  render: () => <Demo />,
+  render: () => <MultipleDemo />,
+  args: {}
+}
+
+export const Single: Story = {
+  parameters: {
+    controls: { expanded: true },
+    docs: {
+      source: {
+        language: 'jsx',
+        code
+      }
+    }
+  },
+  render: () => <SingleDemo />,
   args: {}
 }

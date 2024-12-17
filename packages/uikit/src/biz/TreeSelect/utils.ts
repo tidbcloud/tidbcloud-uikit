@@ -1,4 +1,4 @@
-import type { SelectionProtectType, TreeSelectOption } from './types'
+import type { SelectionProtectType, SelectOption, TreeSelectOption } from './types'
 
 /**
  * Check or uncheck all the options in the given TreeSelectOption array.
@@ -56,13 +56,82 @@ export const checkOptionsByValue = <T extends SelectionProtectType = string>(
  * @param value - TreeSelectOption array
  * @returns An array of leaf nodes
  */
-export const treeToFlatArray = <T extends SelectionProtectType = string>(value: TreeSelectOption<T>[]) =>
+export const treeToLeafArray = <T extends SelectionProtectType = string>(
+  value: TreeSelectOption<T>[],
+  parent?: TreeSelectOption<T>
+) =>
   value.reduce((prev, cur) => {
+    const { children, ...rest } = cur
     if (cur.isLeaf && !cur.disabled) {
-      prev.push(cur)
+      prev.push({ ...rest, parent: parent?.value })
     }
-    if (cur.children) {
-      prev.push(...treeToFlatArray(cur.children))
+    if (children) {
+      prev.push(...treeToLeafArray(children, rest))
     }
     return prev
-  }, [] as TreeSelectOption<T>[])
+  }, [] as SelectOption<T>[])
+
+/**
+ * Flatten a TreeSelectOption array into a plain array of SelectOption.
+ *
+ * This function will traverse the tree recursively and return all the leaf
+ * nodes in a single array. Each leaf node will have a parent field pointing to
+ * its parent node's value.
+ *
+ * @param value - The TreeSelectOption array to be flattened
+ * @param parent - The parent node of the current node
+ * @returns An array of SelectOption
+ */
+export const treeToFlatArray = <T extends SelectionProtectType = string>(
+  value: TreeSelectOption<T>[],
+  parent?: TreeSelectOption<T>
+) => {
+  return value.reduce((prev, cur) => {
+    const { children, ...rest } = cur
+    prev.push({ ...rest, parent: parent?.value })
+    if (children) {
+      prev.push(...treeToFlatArray(children, rest))
+    }
+    return prev
+  }, [] as SelectOption<T>[])
+}
+
+/**
+ * Converts a flat array of SelectOption items into a tree structure of TreeSelectOption.
+ *
+ * This function organizes the flat array by mapping each option to its parent based on the parent field.
+ * Options without a parent are considered root nodes and are directly added to the tree array.
+ * Children are recursively added to their respective parent nodes.
+ *
+ * @param value - The flat array of SelectOption items to be converted into a tree structure.
+ * @returns A TreeSelectOption array representing the hierarchical tree structure.
+ */
+
+export const flatArrayToTree = <T extends SelectionProtectType = string>(value: SelectOption<T>[]) => {
+  const treeArr: TreeSelectOption<T>[] = []
+  const treeMap = new Map<T, TreeSelectOption<T>>()
+  value.forEach((v) => {
+    const { parent, ...rest } = v
+    treeMap.set(v.value, { ...rest, children: [] })
+  })
+  value.forEach((v) => {
+    const node = treeMap.get(v.value)!
+    if (!v.parent) {
+      treeArr.push(node)
+      return
+    }
+
+    const parent = treeMap.get(v.parent)
+    if (!parent) {
+      return
+    }
+
+    parent.children!.push(node)
+  })
+
+  return treeArr
+}
+
+export const isSelectOptionChecked = <T extends SelectionProtectType = string>(
+  option: SelectOption<T> | TreeSelectOption<T>
+): option is SelectOption<T> => !!(option as SelectOption<T>).parent
