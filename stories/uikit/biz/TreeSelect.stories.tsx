@@ -21,21 +21,21 @@ function getTreeData(): TreeSelectOption[] {
       value: 'TiDB Serverless',
       isLeaf: false,
       children: [
-        {
-          label: 'Row-based Storage',
-          value: 'TiDB Serverless - Row-based Storage',
-          isLeaf: true
-        },
-        {
-          label: 'Columnar Storage',
-          value: 'TiDB Serverless - Columnar Storage',
-          isLeaf: true
-        },
-        {
-          label: 'Request Units',
-          value: 'TiDB Serverless - Request Units',
-          isLeaf: true
-        }
+        // {
+        //   label: 'Row-based Storage',
+        //   value: 'TiDB Serverless - Row-based Storage',
+        //   isLeaf: true
+        // },
+        // {
+        //   label: 'Columnar Storage',
+        //   value: 'TiDB Serverless - Columnar Storage',
+        //   isLeaf: true
+        // },
+        // {
+        //   label: 'Request Units',
+        //   value: 'TiDB Serverless - Request Units',
+        //   isLeaf: true
+        // }
       ]
     },
     {
@@ -201,6 +201,7 @@ function MultipleDemo() {
   const [value, setValue] = useState<string[]>([])
   return (
     <TreeSelect
+      searchInputProps={{ onChange: (e) => console.log(e.target.value) }}
       comboboxProps={{ width: 'target' }}
       value={value}
       options={getTreeData()}

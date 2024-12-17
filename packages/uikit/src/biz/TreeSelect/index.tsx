@@ -16,7 +16,10 @@ import {
   ComboboxProps,
   useCombobox,
   ComboboxStore,
-  ActionIcon
+  ActionIcon,
+  LoadingOverlay,
+  InputProps,
+  ElementProps
 } from '../../primitive/index.js'
 
 import type {
@@ -63,7 +66,7 @@ export interface TreeSelectProps<T extends SelectionProtectType = string, R = an
   loading?: boolean
 
   showSearch?: boolean
-  onSearchChange?: (value: string) => void
+  searchInputProps?: InputProps & ElementProps<'input'>
 }
 
 export const TreeSelect = <T extends SelectionProtectType = string>({
@@ -85,7 +88,7 @@ export const TreeSelect = <T extends SelectionProtectType = string>({
   multiple,
   loading,
   showSearch,
-  onSearchChange
+  searchInputProps
 }: TreeSelectProps<T>) => {
   const { disabled, invalid, placeholder } = defaultTargetProps || {}
   const combobox = useCombobox()
@@ -95,7 +98,7 @@ export const TreeSelect = <T extends SelectionProtectType = string>({
       return _options
     }
 
-    if (isSelectOptionChecked(options[0])) {
+    if (!!options.length && isSelectOptionChecked(options[0])) {
       return flatArrayToTree(options)
     }
     return options
@@ -183,80 +186,89 @@ export const TreeSelect = <T extends SelectionProtectType = string>({
         )}
       </Combobox.Target>
       <Combobox.Dropdown p={0}>
-        {internalOptions.length ? (
-          showCheckAll ? (
+        {showSearch && (
+          <Box>
+            <Input px="sm" {...searchInputProps} variant="unstyled" />
+            <Divider color="carbon.3" />
+          </Box>
+        )}
+        <Box pos="relative">
+          <LoadingOverlay visible={loading} zIndex={1000} overlayProps={{ radius: 'sm', blur: 2 }} />
+          {internalOptions.length ? (
             <>
-              <SelectItem
-                label={selectedTips}
-                value="all"
-                isLeaf
-                isArray={isArray}
-                isChecked={everyInternalChecked}
-                indeterminate={someInternalChecked && !everyInternalChecked}
-                onCheckStatusChange={(v) => {
-                  const allOptions = checkAll(internalOptions, v)
-                  const evt: OnStatusChangeEvent<T> = {
-                    type: 'check',
-                    options: allOptions,
-                    target: { label: 'All', value: 'all' as T, children: allOptions }
-                  }
-                  _onStatusChange(evt)
-                  afterCheckStatusChange(evt)
-                }}
-                multiple={multiple}
-                {...selectItemProps}
-              />
-              <Divider color="carbon.3" />
+              {showCheckAll && (
+                <>
+                  <SelectItem
+                    label={selectedTips}
+                    value="all"
+                    isLeaf
+                    isArray={isArray}
+                    isChecked={everyInternalChecked}
+                    indeterminate={someInternalChecked && !everyInternalChecked}
+                    onCheckStatusChange={(v) => {
+                      const allOptions = checkAll(internalOptions, v)
+                      const evt: OnStatusChangeEvent<T> = {
+                        type: 'check',
+                        options: allOptions,
+                        target: { label: 'All', value: 'all' as T, children: allOptions }
+                      }
+                      _onStatusChange(evt)
+                      afterCheckStatusChange(evt)
+                    }}
+                    multiple={multiple}
+                    {...selectItemProps}
+                  />
+                  <Divider color="carbon.3" />
+                </>
+              )}
+              <Box mah={240} sx={{ overflow: 'auto' }}>
+                <SelectItems<T>
+                  value={internalOptions}
+                  renderSelectItem={renderSelectItem}
+                  onChange={(evt) => {
+                    _onStatusChange(evt)
+                    afterCheckStatusChange(evt)
+                  }}
+                  loadData={loadData}
+                  multiple={multiple}
+                  isArray={isArray}
+                  {...selectItemProps}
+                />
+              </Box>
+              {multiple && triggerChangeMode === 'onConfirm' && (
+                <>
+                  <Divider color="carbon.3" />
+                  <Group p="md" gap={8} justify="flex-end">
+                    <Button
+                      variant="default"
+                      size="xs"
+                      onClick={() => {
+                        resetCheckedStatus()
+                        combobox.closeDropdown()
+                      }}
+                    >
+                      Cancel
+                    </Button>
+                    <Button
+                      size="xs"
+                      onClick={() => {
+                        _onValueChange(internalOptions, null)
+                        combobox.closeDropdown()
+                      }}
+                      disabled={everInternalNotChecked}
+                    >
+                      Apply
+                    </Button>
+                  </Group>
+                </>
+              )}
             </>
           ) : (
-            <></>
-          )
-        ) : (
-          <Flex my={16} justify="center">
-            {emptyMessage}
-          </Flex>
-        )}
-        <Box mah={240} sx={{ overflow: 'auto' }}>
-          <SelectItems<T>
-            value={internalOptions}
-            renderSelectItem={renderSelectItem}
-            onChange={(evt) => {
-              _onStatusChange(evt)
-              afterCheckStatusChange(evt)
-            }}
-            loadData={loadData}
-            multiple={multiple}
-            isArray={isArray}
-            {...selectItemProps}
-          />
+            <Flex my={16} justify="center">
+              {emptyMessage}
+            </Flex>
+          )}
         </Box>
-        {multiple && triggerChangeMode === 'onConfirm' && (
-          <>
-            <Divider color="carbon.3" />
-            <Group p="md" gap={8} justify="flex-end">
-              <Button
-                variant="default"
-                size="xs"
-                onClick={() => {
-                  resetCheckedStatus()
-                  combobox.closeDropdown()
-                }}
-              >
-                Cancel
-              </Button>
-              <Button
-                size="xs"
-                onClick={() => {
-                  _onValueChange(internalOptions, null)
-                  combobox.closeDropdown()
-                }}
-                disabled={everInternalNotChecked}
-              >
-                Apply
-              </Button>
-            </Group>
-          </>
-        )}
       </Combobox.Dropdown>
     </Combobox>
   )
