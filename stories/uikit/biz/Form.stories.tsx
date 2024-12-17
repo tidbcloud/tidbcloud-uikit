@@ -13,7 +13,8 @@ import {
   FormPhoneInput,
   FormPhoneInputV2,
   FormCopyText,
-  FormRadioGroup
+  FormRadioGroup,
+  FormSegmentedControl
 } from '@tidbcloud/uikit/biz'
 import { IconAtom01, IconLock01, IconZoomIn } from '@tidbcloud/uikit/icons'
 
@@ -50,7 +51,7 @@ export const Primary: Story = {
           throw new Error('Test error')
         }}
       >
-        <Group grow>
+        <Group grow align="flex-start">
           <FormTextInput
             name="first_name"
             rules={{ minLength: { value: 10, message: 'min length is 10' } }}
@@ -75,6 +76,26 @@ export const Primary: Story = {
           placeholder="Your url"
           label="url"
           leftLabel="https://www.test.com"
+          rules={{ required: 'Required' }}
+        />
+        <FormTextInput
+          name="speed"
+          mt="md"
+          required
+          placeholder=""
+          label="Speed"
+          rightLabel="MiB/s"
+          rules={{ required: 'Required' }}
+        />
+        <FormTextInput
+          name="domain"
+          mt="md"
+          required
+          placeholder="Your domain"
+          label="url"
+          leftLabel="https://www."
+          rightLabel=".com"
+          rules={{ required: 'Required' }}
         />
         <FormPasswordInput
           name="password"
@@ -84,6 +105,14 @@ export const Primary: Story = {
           label="Password"
           rules={{ minLength: { value: 8, message: 'min length is 8' } }}
           leftSection={<IconLock01 size={16} stroke="1.5" />}
+        />
+        <FormSegmentedControl
+          name="option"
+          mt="md"
+          data={[
+            { value: 'react', label: 'React' },
+            { value: 'vue', label: 'Vue' }
+          ]}
         />
         <FormPhoneInput
           name="phone"

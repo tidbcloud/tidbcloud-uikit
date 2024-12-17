@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.87
+
+### Patch Changes
+
+- add right label to textinput
+
 ## 2.0.0-beta.86
 
 ### Patch Changes
