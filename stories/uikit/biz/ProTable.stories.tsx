@@ -90,6 +90,7 @@ export const Primary: Story = {
     enableExpanding: true,
     enableRowVirtualization: true,
     enableColumnPinning: false,
+    enableColumnResizing: false,
     enableSorting: false,
     columns,
     emptyMessage: 'No data',
