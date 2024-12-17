@@ -1,3 +1,6 @@
+import { ReactNode, Ref, useEffect, useImperativeHandle, useMemo, useState } from 'react'
+
+import { IconChevronDown, IconChevronRight, IconChevronSelectorVertical } from '../../icons/index.js'
 import {
   Box,
   Button,
@@ -14,10 +17,7 @@ import {
   useCombobox,
   ComboboxStore,
   ActionIcon
-} from '@mantine/core'
-import { ReactNode, Ref, useEffect, useImperativeHandle, useMemo, useState } from 'react'
-
-import { IconChevronDown, IconChevronRight, IconChevronSelectorVertical } from '../../icons/index.js'
+} from '../../primitive/index.js'
 
 import type {
   LoadData,
@@ -34,7 +34,7 @@ import { checkAll, checkOptionsByValue, flatArrayToTree, isSelectOptionChecked, 
 export interface TreeSelectProps<T extends SelectionProtectType = string, R = any> {
   options: TreeSelectOption<T>[] | SelectOption<T>[]
   value?: T[]
-  onChange?: (value: T[]) => void
+  onChange?: (value: T[], target: TreeSelectOption<T> | null) => void
   onStatusChange?: OnStatusChange<T>
   // works when multiple is true
   triggerChangeMode?: 'onStatusChange' | 'onConfirm'
@@ -53,11 +53,17 @@ export interface TreeSelectProps<T extends SelectionProtectType = string, R = an
   selectItemProps?: SelectItemWrapperProps
   renderSelectItem?: RenderSelectItem<T>
 
+  // multi-selection or single-selection
   multiple?: boolean
   emptyMessage?: string
+  // should the empty array be check all status
   allWithEmpty?: boolean
+  // whether to show check all option
   showCheckAll?: boolean
   loading?: boolean
+
+  showSearch?: boolean
+  onSearchChange?: (value: string) => void
 }
 
 export const TreeSelect = <T extends SelectionProtectType = string>({
@@ -76,7 +82,10 @@ export const TreeSelect = <T extends SelectionProtectType = string>({
   allWithEmpty = true,
   emptyMessage = 'No data.',
   showCheckAll = true,
-  multiple
+  multiple,
+  loading,
+  showSearch,
+  onSearchChange
 }: TreeSelectProps<T>) => {
   const { disabled, invalid, placeholder } = defaultTargetProps || {}
   const combobox = useCombobox()
@@ -101,10 +110,10 @@ export const TreeSelect = <T extends SelectionProtectType = string>({
   const everInternalNotChecked = flatOptions.every((o) => !o.isChecked)
   const isArray = internalOptions.every((n) => !n.children?.length)
 
-  const _onValueChange = (v: TreeSelectOption<T>[]) => {
+  const _onValueChange = (v: TreeSelectOption<T>[], target: TreeSelectOption<T> | null) => {
     const flatOptions = treeToLeafArray(v)
     const isCheckAll = flatOptions.every((n) => n.isChecked)
-    onChange?.(isCheckAll && allWithEmpty ? [] : flatOptions.filter((n) => n.isChecked).map((n) => n.value))
+    onChange?.(isCheckAll && allWithEmpty ? [] : flatOptions.filter((n) => n.isChecked).map((n) => n.value), target)
   }
   const _onStatusChange: OnStatusChange<T> = (evt) => {
     setOptions(evt.options)
@@ -115,11 +124,14 @@ export const TreeSelect = <T extends SelectionProtectType = string>({
       return
     }
     if (multiple && triggerChangeMode === 'onStatusChange') {
-      _onValueChange(evt.options!)
+      _onValueChange(evt.options!, evt.target!)
     }
     if (!multiple) {
       const flatOptions = treeToLeafArray([evt.target!])
-      onChange?.(flatOptions.map((n) => n.value))
+      onChange?.(
+        flatOptions.map((n) => n.value),
+        evt.target!
+      )
       combobox.closeDropdown()
     }
   }
@@ -235,7 +247,7 @@ export const TreeSelect = <T extends SelectionProtectType = string>({
               <Button
                 size="xs"
                 onClick={() => {
-                  _onValueChange(internalOptions)
+                  _onValueChange(internalOptions, null)
                   combobox.closeDropdown()
                 }}
                 disabled={everInternalNotChecked}
@@ -399,7 +411,7 @@ const SelectItem = <T extends SelectionProtectType = string>({
 
   return (
     <Box pl={32 * level} {...wrapperProps}>
-      <Group px="sm" gap={8} sx={{ userSelect: 'none' }}>
+      <Group px="sm" gap={8} wrap="nowrap" sx={{ userSelect: 'none' }}>
         {!isArray &&
           (!isLeaf ? (
             <ActionIcon
@@ -429,7 +441,7 @@ const SelectItem = <T extends SelectionProtectType = string>({
             onCheckStatusChange(checkStatus)
           }}
         >
-          <Group gap={8}>
+          <Group gap={8} wrap="nowrap">
             {multiple && (
               <Checkbox
                 indeterminate={(!isLeaf && someChildrenChecked && !everyChildrenChecked) || indeterminate}

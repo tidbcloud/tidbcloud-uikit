@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
+import { Button, ComboboxStore, Stack, Text } from '@tidbcloud/uikit'
 import { TreeSelect, TreeSelectOption } from '@tidbcloud/uikit/biz'
+import { useRef, useState } from 'react'
 
 type Story = StoryObj<typeof TreeSelect>
 
@@ -196,12 +198,16 @@ function getTreeData(): TreeSelectOption[] {
 }
 
 function MultipleDemo() {
+  const [value, setValue] = useState<string[]>([])
   return (
     <TreeSelect
       comboboxProps={{ width: 'target' }}
-      value={[]}
+      value={value}
       options={getTreeData()}
-      onChange={(args) => console.log(`checked:`, args)}
+      onChange={(v) => {
+        console.log(`checked:`, v)
+        setValue(v)
+      }}
       multiple
       loadData={() => new Promise((resolve) => setTimeout(() => resolve([]), 1000))}
     />
@@ -209,15 +215,26 @@ function MultipleDemo() {
 }
 
 function SingleDemo() {
+  const [value, setValue] = useState<string[]>([])
+  const treeSelectRef = useRef<ComboboxStore>(null)
+
   return (
-    <TreeSelect
-      comboboxProps={{ width: 'target' }}
-      value={[]}
-      options={getTreeData()}
-      onChange={(args) => console.log(`checked:`, args)}
-      loadData={() => new Promise((resolve) => setTimeout(() => resolve([]), 1000))}
-      showCheckAll={false}
-    />
+    <Stack>
+      <Text>Selected: {value.join(', ')}</Text>
+      <TreeSelect
+        comboboxRef={treeSelectRef}
+        comboboxProps={{ width: 'target' }}
+        value={value}
+        options={getTreeData()}
+        onChange={(v, target) => {
+          console.log(`checked:`, v, target)
+          setValue(v)
+        }}
+        loadData={() => new Promise((resolve) => setTimeout(() => resolve([]), 1000))}
+        showCheckAll={false}
+        target={<Button onClick={() => treeSelectRef.current?.toggleDropdown()}>Single Select</Button>}
+      />
+    </Stack>
   )
 }
 
