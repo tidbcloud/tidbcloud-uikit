@@ -234,7 +234,7 @@ export function mergeProTableProps<T extends Record<string, any>>(props: ProTabl
 
   const mTableFooterProps = mergeMProps<NonNullable<MRT_TableOptions<T>['mantineTableFooterProps']>>(
     {
-      sx: { outline: enableStickyFooter ? 'none' : undefined }
+      sx: { outline: enableStickyFooter ? 'none !important' : undefined }
     },
     mantineTableFooterProps
   )
