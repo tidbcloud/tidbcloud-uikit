@@ -4,6 +4,7 @@ import { type MRT_TableOptions, type MRT_RowData, useMantineReactTable, MRT_Tabl
 import { IconSwitchVertical02, IconArrowUp, IconArrowDown } from '../../../icons/index.js'
 import { type BoxProps, useMantineTheme } from '../../../primitive/index.js'
 import { mergeSxList } from '../../../utils/index.js'
+import { ProTablePagination } from '../TablePagination.js'
 
 import { ProTableExtraProps, ProTableOptions } from './types.js'
 
@@ -47,11 +48,14 @@ export function mergeProTableProps<T extends Record<string, any>>(props: ProTabl
     mantineTableFooterRowProps = {},
     mantineTableFooterProps = {},
     mantineLoadingOverlayProps = {},
+    enablePagination,
+    enableBottomToolbar,
     layoutMode,
     withBorder = true,
     loading = false,
     enableExpanding = false,
     enableRowVirtualization = false,
+    pagination,
     enableStickyHeader,
     enableStickyFooter,
     emptyMessage,
@@ -68,7 +72,7 @@ export function mergeProTableProps<T extends Record<string, any>>(props: ProTabl
       shadow: 'none',
       withBorder,
       sx: (theme) => ({
-        backgroundColor: 'inherit',
+        backgroundColor: 'transparent',
         borderRadius: withBorder ? theme.defaultRadius : 0,
         borderColor: withBorder ? theme.colors.carbon[4] : 'transparent',
         overflow: 'hidden',
@@ -252,13 +256,18 @@ export function mergeProTableProps<T extends Record<string, any>>(props: ProTabl
     mantineTableFooterProps
   )
 
+  const withPagination = !!pagination
+
   return {
     enableColumnActions: false,
     enableColumnFilters: false,
     enableTopToolbar: false,
     enableSorting: false,
-    enablePagination: false,
-    enableBottomToolbar: false,
+    enablePagination: withPagination || enablePagination,
+    enableBottomToolbar: withPagination || enableBottomToolbar,
+    renderBottomToolbar: () => {
+      return <></>
+    },
     enableExpanding,
     enableStickyHeader,
     enableStickyFooter,
