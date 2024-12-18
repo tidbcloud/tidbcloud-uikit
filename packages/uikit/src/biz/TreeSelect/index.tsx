@@ -172,7 +172,6 @@ export const TreeSelect = <T extends SelectionProtectType = string>({
               lineHeight: '1.55'
             }}
             value={selectedTips}
-            disabled={disabled}
             readOnly
             rightSection={<IconChevronSelectorVertical size={16} />}
             onClick={() => combobox.toggleDropdown()}
