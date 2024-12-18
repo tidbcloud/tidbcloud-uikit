@@ -32,8 +32,7 @@ const meta: Meta<typeof Form> = {
   title: 'Biz/Form',
   component: Form,
   decorators: [decorator],
-  tags: ['autodocs'],
-  parameters: {}
+  tags: ['autodocs']
 }
 
 export default meta
@@ -51,6 +50,13 @@ export const Primary: Story = {
           throw new Error('Test error')
         }}
       >
+        <p>
+          Form component base on{' '}
+          <a href="https://react-hook-form.com/docs" target="_blank">
+            react-hook-form
+          </a>
+          .
+        </p>
         <Group grow align="flex-start">
           <FormTextInput
             name="first_name"
@@ -199,5 +205,71 @@ export const Primary: Story = {
       </Form>
     </Center>
   ),
-  args: {}
+  args: {
+    withActions: true,
+    layout: 'vertical',
+    layoutProps: {},
+    actionsProps: {
+      loading: false,
+      disabled: false,
+      onCancel: () => {},
+      onConfirm: () => {},
+      cancelText: 'Cancel',
+      confirmText: 'Confirm',
+      cancelProps: {},
+      confirmProps: {}
+    },
+    errorMessageProps: {
+      onDismiss: () => {},
+      autoScroll: false,
+      closable: true
+    },
+    stopPropagation: false,
+    preventDefault: false,
+    defaultValues: {},
+    formMode: 'all',
+    reValidateMode: 'onChange',
+    onSubmit: (data, event) => {}
+  },
+  argTypes: {
+    withActions: {
+      description: 'Hide or show action buttons'
+    },
+    actionsProps: {
+      description: 'Props for actions buttons'
+    },
+    layout: {
+      type: 'string',
+      description: 'Layout for form, can be `vertical`, `vertical` or `none`'
+    },
+    layoutProps: {
+      description: 'Layout props, same as `FlexProps`'
+    },
+    errorMessageProps: {
+      description: 'Props for error message, extends from `AlertProps`'
+    },
+    stopPropagation: {
+      description: 'Prevents further propagation of the current submit event'
+    },
+    preventDefault: {
+      description: 'Prevent default form event behaviors'
+    },
+    form: {
+      description: 'Form instance for `useForm`, with this props to have full control of form'
+    },
+    defaultValues: {
+      description:
+        'Default values for the form, note: if `form` is provided, this props will not work and you should set it in `form`'
+    },
+    formMode: {
+      description: 'Same as `react-hook-form` -> `Mode`'
+    },
+    reValidateMode: {
+      description: 'Same as `react-hook-form` -> `reValidateMode`'
+    },
+    onSubmit: {
+      description: 'Submit Event handler'
+    }
+  },
+  parameters: {}
 }
