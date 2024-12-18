@@ -40,18 +40,14 @@ export interface TreeSelectProps<T extends SelectionProtectType = string, R = an
   onChange?: (value: T[], target: TreeSelectOption<T> | null) => void
   onStatusChange?: OnStatusChange<T>
   // works when multiple is true
-  triggerChangeMode?: 'onStatusChange' | 'onConfirm'
+  changeTrigger?: 'onSelect' | 'onConfirm'
   loadData?: LoadData<T, R>
 
   comboboxProps?: Omit<ComboboxProps, 'children'>
   comboboxRef?: Ref<ComboboxStore>
 
   target?: ReactNode
-  defaultTargetProps?: {
-    disabled?: boolean
-    invalid?: boolean
-    placeholder?: string
-  }
+  defaultTargetProps?: InputProps & ElementProps<'input'>
 
   selectItemProps?: SelectItemWrapperProps
   renderSelectItem?: RenderSelectItem<T>
@@ -62,10 +58,10 @@ export interface TreeSelectProps<T extends SelectionProtectType = string, R = an
   // should the empty array be check all status
   allWithEmpty?: boolean
   // whether to show check all option
-  showCheckAll?: boolean
+  allowSelectAll?: boolean
   loading?: boolean
 
-  showSearch?: boolean
+  searchable?: boolean
   searchInputProps?: InputProps & ElementProps<'input'>
 }
 
@@ -74,7 +70,7 @@ export const TreeSelect = <T extends SelectionProtectType = string>({
   value,
   onChange,
   onStatusChange,
-  triggerChangeMode = 'onConfirm',
+  changeTrigger = 'onConfirm',
   loadData,
   comboboxProps,
   comboboxRef,
@@ -84,13 +80,13 @@ export const TreeSelect = <T extends SelectionProtectType = string>({
   renderSelectItem,
   allWithEmpty = true,
   emptyMessage = 'No data.',
-  showCheckAll = true,
+  allowSelectAll = true,
   multiple,
   loading,
-  showSearch,
+  searchable,
   searchInputProps
 }: TreeSelectProps<T>) => {
-  const { disabled, invalid, placeholder } = defaultTargetProps || {}
+  const { disabled } = defaultTargetProps || {}
   const combobox = useCombobox()
   const [_options, setOptions] = useState<TreeSelectOption<T>[] | undefined>(undefined)
   const internalOptions = useMemo<TreeSelectOption<T>[]>(() => {
@@ -126,7 +122,7 @@ export const TreeSelect = <T extends SelectionProtectType = string>({
     if (evt.type !== 'check') {
       return
     }
-    if (multiple && triggerChangeMode === 'onStatusChange') {
+    if (multiple && changeTrigger === 'onSelect') {
       _onValueChange(evt.options!, evt.target!)
     }
     if (!multiple) {
@@ -177,16 +173,15 @@ export const TreeSelect = <T extends SelectionProtectType = string>({
             }}
             value={selectedTips}
             disabled={disabled}
-            placeholder={placeholder}
             readOnly
             rightSection={<IconChevronSelectorVertical size={16} />}
             onClick={() => combobox.toggleDropdown()}
-            data-invalid={invalid}
+            {...defaultTargetProps}
           />
         )}
       </Combobox.Target>
       <Combobox.Dropdown p={0}>
-        {showSearch && (
+        {searchable && (
           <Box>
             <Input px="sm" {...searchInputProps} variant="unstyled" />
             <Divider color="carbon.3" />
@@ -196,7 +191,7 @@ export const TreeSelect = <T extends SelectionProtectType = string>({
           <LoadingOverlay visible={loading} zIndex={1000} overlayProps={{ radius: 'sm', blur: 2 }} />
           {internalOptions.length ? (
             <>
-              {showCheckAll && (
+              {allowSelectAll && (
                 <>
                   <SelectItem
                     label={selectedTips}
@@ -235,7 +230,7 @@ export const TreeSelect = <T extends SelectionProtectType = string>({
                   {...selectItemProps}
                 />
               </Box>
-              {multiple && triggerChangeMode === 'onConfirm' && (
+              {multiple && changeTrigger === 'onConfirm' && (
                 <>
                   <Divider color="carbon.3" />
                   <Group p="md" gap={8} justify="flex-end">

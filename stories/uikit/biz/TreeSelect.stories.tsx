@@ -231,7 +231,7 @@ function SingleDemo() {
           setValue(v)
         }}
         loadData={() => new Promise((resolve) => setTimeout(() => resolve([]), 1000))}
-        showCheckAll={false}
+        allowSelectAll={false}
         target={<Button onClick={() => treeSelectRef.current?.toggleDropdown()}>Single Select</Button>}
       />
     </Stack>

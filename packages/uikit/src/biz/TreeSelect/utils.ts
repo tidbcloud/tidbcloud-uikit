@@ -134,4 +134,4 @@ export const flatArrayToTree = <T extends SelectionProtectType = string>(value: 
 
 export const isSelectOptionChecked = <T extends SelectionProtectType = string>(
   option: SelectOption<T> | TreeSelectOption<T>
-): option is SelectOption<T> => !!(option as SelectOption<T>).parent
+): option is SelectOption<T> => !!(option as SelectOption<T>).parent && !(option as TreeSelectOption<T>).children
