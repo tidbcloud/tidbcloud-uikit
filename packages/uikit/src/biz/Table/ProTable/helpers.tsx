@@ -36,6 +36,7 @@ export function mergeProTableProps<T extends Record<string, any>>(props: ProTabl
   const {
     mantineTableProps = {},
     mantinePaperProps = {},
+    mantineTableContainerProps = {},
     mantineSkeletonProps = {},
     mantineTableBodyProps,
     mantineTableHeadCellProps = {},
@@ -132,6 +133,15 @@ export function mergeProTableProps<T extends Record<string, any>>(props: ProTabl
     mantineTableProps
   )
 
+  const mTableContainerProps = mergeMProps<NonNullable<MRT_TableOptions<T>['mantineTableContainerProps']>>(
+    {
+      sx: {
+        backgroundColor: 'transparent'
+      }
+    },
+    mantineTableContainerProps
+  )
+
   const mTableBodyProps = mergeMProps<NonNullable<MRT_TableOptions<T>['mantineTableBodyProps']>>((args) => {
     if (!data?.length) {
       return {
@@ -183,6 +193,9 @@ export function mergeProTableProps<T extends Record<string, any>>(props: ProTabl
         },
         "&:not([data-striped], [data-striped='false'])": {
           backgroundColor: theme.colors.carbon[0]
+        },
+        '&:not([data-selected], [data-row-pinned]) td[data-column-pinned]::before': {
+          backgroundColor: 'transparent'
         }
       }
     }
@@ -256,6 +269,7 @@ export function mergeProTableProps<T extends Record<string, any>>(props: ProTabl
     mantineSkeletonProps: mTabelSkeletonProps,
     mantineLoadingOverlayProps: mLoadingOverlayProps,
     mantineTableBodyProps: mTableBodyProps,
+    mantineTableContainerProps: mTableContainerProps,
     mantineBottomToolbarProps: mBottomToolbarProps,
     mantineTableBodyRowProps: mTableBodyRowProps,
     mantineTableBodyCellProps: mTableBodyCellProps,
