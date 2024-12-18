@@ -2,4 +2,5 @@
 '@tidbcloud/uikit': patch
 ---
 
-add right label to textinput
+- add right label to textinput
+- add FormSegmentControl
