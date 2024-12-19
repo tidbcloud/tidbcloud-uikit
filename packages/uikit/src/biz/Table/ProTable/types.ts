@@ -28,7 +28,6 @@ export interface ProTableExtraProps {
   emptyMessage?: string
   errorMessage?: string
   loading?: boolean
-  // @deprecated please use mantine default
   pagination?: TablePaginationProps
   wrapperProps?: BoxProps
 }

@@ -21,7 +21,7 @@ export const ProTable = <T extends Record<string, any> = {}>(props: ProTableProp
        * see https://v2.mantine-react-table.com/docs/api/table-options
        * ***/}
       <MantineReactTable<T> table={table} />
-      {table.options.enablePagination && <ProTablePagination table={table} />}
+      {table.options.enablePagination && <ProTablePagination table={table} {...props.pagination} />}
     </Box>
   )
 }
