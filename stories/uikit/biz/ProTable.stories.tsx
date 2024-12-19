@@ -122,15 +122,15 @@ export const Primary: Story = {
       columnVisibility: {},
       columnPinning: { right: ['mass'] }
     },
-    enablePagination: true
-    // manualPagination: false,
-    // pagination: {
-    //   showRowsPerPage: true,
-    //   showTotal: true,
-    //   localization: {
-    //     total: 'Total'
-    //   }
-    // }
+    enablePagination: true,
+    manualPagination: false,
+    pagination: {
+      showRowsPerPage: true,
+      showTotal: true,
+      localization: {
+        total: 'Total'
+      }
+    }
   },
   argTypes: {}
 }
