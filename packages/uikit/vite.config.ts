@@ -15,14 +15,14 @@ const globals = {
   ...(packageJson?.peerDependencies || {})
 }
 
-const mantineCoreSrc = resolve(__dirname, 'node_modules/@mantine/core/lib')
-const mantineCoreDest = resolve(
+const mantineCoreTypingsSrc = resolve(__dirname, 'node_modules/@mantine/core/lib')
+const mantineCoreTypingsDest = resolve(
   __dirname,
   // this path is generate when rollup `perserveModule` set to true
   'dist/node_modules/.pnpm/@mantine_core@7.13.2_patch_hash_v5k5cxye7xaihpcgowhgciky7a_@mantine_hooks@7.13.2_react@18.3.1_hlfamvk7n3o6ychyvm5cyru4yu/node_modules/@mantine/core/lib'
 )
 function replaceMantineCoreWithRelativePath(filePath: string, content: string) {
-  return content.replace(new RegExp(`'@mantine/core'`, 'g'), `'${relative(dirname(filePath), mantineCoreDest)}'`)
+  return content.replace(new RegExp(`'@mantine/core'`, 'g'), `'${relative(dirname(filePath), mantineCoreTypingsDest)}'`)
 }
 
 function readMantiOverride() {
@@ -47,7 +47,9 @@ export default defineConfig({
       beforeWriteFile: (filePath, content) => {
         if (!typeOverride) return
 
-        if (filePath.endsWith('primitive/index.d.ts')) {
+        if (
+          ['primitive', 'biz', 'hooks', 'theme', 'utils'].some((folder) => filePath.endsWith(`${folder}/index.d.ts`))
+        ) {
           const { declare: overrideDeclare, content: overrideContent } = typeOverride
           content = [
             // add both declare statement for '@mantine/core' and the bundled mantine core (imported by relative path) in case someone in the dependency tree import '@mantine/core' directly
@@ -56,7 +58,7 @@ export default defineConfig({
 
             replaceMantineCoreWithRelativePath(filePath, content)
           ].join('\n')
-        } else if (/primitive\/[^/]+\/[^/]+\.d\.ts$/.test(filePath)) {
+        } else if (/(?:primitive|biz|hooks|theme|utils)\/[^/]+\/[^/]+\.d\.ts$/.test(filePath)) {
           content = replaceMantineCoreWithRelativePath(filePath, content)
         }
 
@@ -70,7 +72,7 @@ export default defineConfig({
       },
       async afterBuild() {
         try {
-          await cp(mantineCoreSrc, mantineCoreDest, { recursive: true })
+          await cp(mantineCoreTypingsSrc, mantineCoreTypingsDest, { recursive: true })
         } catch (err) {
           console.error('Failed to copy Mantine core lib:', err)
         }

@@ -1,4 +1,5 @@
 import { EmotionCache } from '@emotion/cache'
+// eslint-disable-next-line no-restricted-imports
 import { MantineProvider, MantineThemeOverride, mergeMantineTheme } from '@mantine/core'
 import { MantineEmotionProvider, emotionTransform } from '@mantine/emotion'
 import { useColorScheme } from '@mantine/hooks'

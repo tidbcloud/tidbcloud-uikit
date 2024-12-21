@@ -1,8 +1,8 @@
-import { type BoxProps, useMantineTheme } from '@mantine/core'
 import { isFunction } from 'lodash-es'
 import { type MRT_TableOptions, type MRT_RowData, useMantineReactTable, MRT_TableInstance } from 'mantine-react-table'
 
 import { IconSwitchVertical02, IconArrowUp, IconArrowDown } from '../../../icons/index.js'
+import { type BoxProps, useMantineTheme } from '../../../primitive/index.js'
 import { mergeSxList } from '../../../utils/index.js'
 
 import { ProTableExtraProps, ProTableOptions } from './types.js'

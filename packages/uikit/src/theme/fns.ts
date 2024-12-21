@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-restricted-imports
 import { defaultVariantColorsResolver, getPrimaryShade, parseThemeColor, VariantColorsResolver } from '@mantine/core'
 
 export const variantColorResolver: VariantColorsResolver = (input) => {

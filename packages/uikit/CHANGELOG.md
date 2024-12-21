@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.90
+
+### Patch Changes
+
+- Fix build script with better typings override
+
 ## 2.0.0-beta.89
 
 ### Patch Changes
