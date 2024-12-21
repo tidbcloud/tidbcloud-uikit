@@ -1,5 +1,6 @@
 export type { CSSObject, CSSProperties } from '@mantine/emotion'
 
+// eslint-disable-next-line no-restricted-imports
 import type { FactoryPayload, MantineTheme, StylesRecord } from '@mantine/core'
 import type { CSSObject, EmotionHelpers } from '@mantine/emotion'
 

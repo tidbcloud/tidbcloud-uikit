@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-restricted-imports
 import type { MantineColorsTuple } from '@mantine/core'
 
 export type ShadingColor = MantineColorsTuple

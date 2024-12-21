@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-restricted-imports
 import { MantineTheme, StylesRecord } from '@mantine/core'
 import { CSSObject, EmotionHelpers, EmotionSx } from '@mantine/emotion'
 import { merge } from 'lodash-es'

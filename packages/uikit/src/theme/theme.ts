@@ -1,9 +1,9 @@
+// eslint-disable-next-line no-restricted-imports
+import { MantineTheme, createTheme, mergeMantineTheme, DEFAULT_THEME } from '@mantine/core'
+import { EmotionHelpers, keyframes } from '@mantine/emotion'
+
 import {
   ButtonProps,
-  MantineTheme,
-  getPrimaryShade,
-  getThemeColor,
-  rem,
   SkeletonProps,
   MenuProps,
   NavLinkProps,
@@ -20,12 +20,9 @@ import {
   TableProps,
   SwitchProps,
   RadioProps,
-  ActionIconProps,
-  createTheme,
-  mergeMantineTheme,
-  DEFAULT_THEME
-} from '@mantine/core'
-import { EmotionHelpers, keyframes } from '@mantine/emotion'
+  ActionIconProps
+} from '../primitive/index.js'
+import { getPrimaryShade, getThemeColor, rem } from '../utils/index.js'
 
 import * as dark from './colors.dark.js'
 import * as light from './colors.js'
