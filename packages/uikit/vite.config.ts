@@ -37,18 +37,18 @@ function readMantiOverride() {
   }
 }
 
+const typeOverride = readMantiOverride()
+
 export default defineConfig({
   plugins: [
     react(),
     dts({
       copyDtsFiles: false,
       beforeWriteFile: (filePath, content) => {
+        if (!typeOverride) return
+
         if (filePath.endsWith('primitive/index.d.ts')) {
-          const typeOverride = readMantiOverride()
-          if (!typeOverride) return
-
           const { declare: overrideDeclare, content: overrideContent } = typeOverride
-
           content = [
             // add both declare statement for '@mantine/core' and the bundled mantine core (imported by relative path) in case someone in the dependency tree import '@mantine/core' directly
             replaceMantineCoreWithRelativePath(filePath, overrideContent),
@@ -56,6 +56,8 @@ export default defineConfig({
 
             replaceMantineCoreWithRelativePath(filePath, content)
           ].join('\n')
+        } else if (/primitive\/[^/]+\/[^/]+\.d\.ts$/.test(filePath)) {
+          content = replaceMantineCoreWithRelativePath(filePath, content)
         }
 
         // generate .d.cts file for cjs build

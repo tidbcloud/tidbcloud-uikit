@@ -5,8 +5,8 @@ type Button = typeof MantineButton
 
 const _Button = forwardRef<HTMLButtonElement, MantineButtonProps>((props, ref) => {
   const theme = useMantineTheme()
-  const { leftSection, loading, disabled, ...rest } = props
-  const loader = <Loader size={16} color={`${props.color ?? theme.primaryColor}.6`} />
+  const { leftSection, loading, disabled, loaderProps, ...rest } = props
+  const loader = <Loader size={16} color={`${props.color ?? theme.primaryColor}.6`} {...loaderProps} />
 
   return (
     <MantineButton {...rest} ref={ref} leftSection={loading ? loader : leftSection} disabled={disabled || loading} />

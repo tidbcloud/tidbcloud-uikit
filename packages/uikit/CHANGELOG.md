@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.89
+
+### Patch Changes
+
+- Fix type override handling for other TypeScript declaration files under primitive folder and pass `loaderProps` to `Button` component
+
 ## 2.0.0-beta.88
 
 ### Patch Changes
