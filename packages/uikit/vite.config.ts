@@ -47,7 +47,9 @@ export default defineConfig({
       beforeWriteFile: (filePath, content) => {
         if (!typeOverride) return
 
-        if (filePath.endsWith('primitive/index.d.ts')) {
+        if (
+          ['primitive', 'biz', 'hooks', 'theme', 'utils'].some((folder) => filePath.endsWith(`${folder}/index.d.ts`))
+        ) {
           const { declare: overrideDeclare, content: overrideContent } = typeOverride
           content = [
             // add both declare statement for '@mantine/core' and the bundled mantine core (imported by relative path) in case someone in the dependency tree import '@mantine/core' directly
