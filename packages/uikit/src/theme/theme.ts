@@ -227,9 +227,9 @@ const theme = createTheme({
             },
 
             '&:disabled': {
-              color: themeColor(theme, theme.primaryColor, 6),
-              borderColor: themeColor(theme, theme.primaryColor, borderColorShade + 1),
-              backgroundColor: themeColor(theme, theme.primaryColor, 2)
+              color: themeColor(theme, color, 6),
+              borderColor: themeColor(theme, color, borderColorShade + 1),
+              backgroundColor: themeColor(theme, color, 2)
             }
           }
         }
@@ -251,9 +251,9 @@ const theme = createTheme({
             },
 
             '&:disabled': {
-              color: themeColor(theme, theme.primaryColor, 6),
-              borderColor: themeColor(theme, theme.primaryColor, borderColorShade + 1),
-              backgroundColor: themeColor(theme, theme.primaryColor, 2)
+              color: themeColor(theme, color, 6),
+              borderColor: themeColor(theme, color, borderColorShade + 1),
+              backgroundColor: themeColor(theme, color, 2)
             }
           }
         }
@@ -273,8 +273,7 @@ const theme = createTheme({
             },
 
             '&:disabled': {
-              color: themeColor(theme, theme.primaryColor, 6),
-              backgroundColor: theme.white
+              color: themeColor(theme, color, 6)
             }
           }
         }

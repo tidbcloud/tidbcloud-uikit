@@ -178,7 +178,6 @@ export {
 
   // Buttons
   ActionIcon,
-  Button,
   CloseButton,
   CopyButton,
   FileButton,
@@ -264,6 +263,14 @@ export {
 } from '@mantine/core'
 export { useColorScheme } from '../hooks/useColorScheme.js'
 
+// Re-export wrapped components
+export { TextInput, type TextInputProps } from './TextInput/index.js'
+export { notifier } from './notifier/index.js'
+export { Typography, TYPOGRAPHY_STYLES_MAP, type TypographyProps } from './Typography/index.js'
+export { MediaQuery, type MediaQueryProps } from './MediaQuery/index.js'
+export { Select, type SelectProps, MultiSelect, type MultiSelectProps } from './Select/index.js'
+export { Button } from './Button/index.js'
+
 // Re-export @mantine/dropzone
 export {
   Dropzone,
@@ -314,13 +321,6 @@ export type {
   TimeInputProps,
   MonthSettings
 } from '@mantine/dates'
-
-// Re-export wrapped components
-export { TextInput, type TextInputProps } from './TextInput/index.js'
-export { notifier } from './notifier/index.js'
-export { Typography, TYPOGRAPHY_STYLES_MAP, type TypographyProps } from './Typography/index.js'
-export { MediaQuery, type MediaQueryProps } from './MediaQuery/index.js'
-export { Select, type SelectProps, MultiSelect, type MultiSelectProps } from './Select/index.js'
 
 // Re-export @mantine/code-highlight
 export { CodeHighlight, CodeHighlightTabs, InlineCodeHighlight } from '@mantine/code-highlight'
