@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.91
+
+### Patch Changes
+
+- useColorScheme returning value includes auto now for easier manage
+
 ## 2.0.0-beta.90
 
 ### Patch Changes
