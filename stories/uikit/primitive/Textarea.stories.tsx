@@ -1,6 +1,8 @@
 import type { Meta, StoryObj, StoryFn } from '@storybook/react'
 import { Textarea } from '@tidbcloud/uikit'
 
+import { SIZE_LIST } from '../../constants'
+
 type Story = StoryObj<typeof Textarea>
 
 const decorator = (Story: StoryFn) => {
@@ -35,4 +37,16 @@ function Asterisk() {
 export const Primary: Story = {
   render: () => <Asterisk />,
   args: {}
+}
+
+export const AllSizes: Story = {
+  render: () => {
+    return (
+      <div>
+        {SIZE_LIST.map((size) => (
+          <Textarea key={size} size={size} placeholder="this is a placeholder" mb="md" />
+        ))}
+      </div>
+    )
+  }
 }

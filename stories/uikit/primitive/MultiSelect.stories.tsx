@@ -2,6 +2,8 @@ import type { Meta, StoryObj, StoryFn } from '@storybook/react'
 import { MultiSelect } from '@tidbcloud/uikit'
 import { useState } from 'react'
 
+import { SIZE_LIST } from '../../constants'
+
 type Story = StoryObj<typeof MultiSelect>
 
 const decorator = (Story: StoryFn) => {
@@ -86,6 +88,18 @@ export const Creatable = {
           return { value, label: value }
         }}
       />
+    )
+  }
+}
+
+export const AllSizes: Story = {
+  render: () => {
+    return (
+      <div>
+        {SIZE_LIST.map((size) => (
+          <MultiSelect key={size} size={size} placeholder="this is a placeholder" mb="md" />
+        ))}
+      </div>
     )
   }
 }

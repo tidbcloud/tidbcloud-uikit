@@ -28,3 +28,16 @@ export const Primary: Story = {
     disabled: false
   }
 }
+
+export const AllSizes: Story = {
+  render: () => {
+    const sizes = ['xs', 'sm', 'md', 'lg', 'xl']
+    return (
+      <div>
+        {sizes.map((size) => (
+          <PasswordInput key={size} size={size} placeholder="password" mb="md" />
+        ))}
+      </div>
+    )
+  }
+}

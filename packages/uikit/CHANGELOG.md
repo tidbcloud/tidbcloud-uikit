@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.92
+
+### Patch Changes
+
+- fix unstyled input and clean sizes check
+
 ## 2.0.0-beta.91
 
 ### Patch Changes
