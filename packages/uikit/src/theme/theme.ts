@@ -36,37 +36,74 @@ function themeColor(theme: MantineTheme, color: string, shade: number) {
   return getThemeColor([color, shade].join('.'), theme)
 }
 
-function getInputStyles(theme: MantineTheme, props: Pick<InputProps, 'size'>) {
-  const sizes = {
-    xl: 48,
-    lg: 44,
-    md: 40,
-    sm: 32,
-    xs: 28
-  }
-  const fontSizes = {
-    xl: 16,
-    lg: 14,
-    md: 14,
-    sm: 13,
-    xs: 12
-  }
-  // @ts-ignore
-  const size = sizes[props.size ?? 'md']
-  // @ts-ignore
-  const inputFontSize = fontSizes[props.size ?? 'md']
+const InputSizes = {
+  xl: 48,
+  lg: 44,
+  md: 40,
+  sm: 32,
+  xs: 28
+}
+const InputFontSizes = {
+  xl: 16,
+  lg: 14,
+  md: 14,
+  sm: 13,
+  xs: 12
+}
 
-  const inputSize = {
-    height: size,
-    minHeight: size,
-    lineHeight: `${size - 2}px`,
-    fontSize: inputFontSize
+function getInputStyles(theme: MantineTheme, props: Pick<InputProps, 'size' | 'variant'>) {
+  const size = InputSizes[(props.size as keyof typeof InputSizes) ?? 'md']
+  const inputFontSize = InputFontSizes[(props.size as keyof typeof InputFontSizes) ?? 'md']
+
+  const inputSize = size
+    ? {
+        '--input-size': `${size}px`,
+        '--input-height': `${size}px`,
+        '--input-line-height': `${size - 2}px`,
+        '--input-fz': `${inputFontSize}px`
+      }
+    : {}
+  const passwordInnerInputSize = size
+    ? {
+        height: size - 2,
+        minHeight: size - 2,
+        lineHeight: `${size - 2}px`,
+        fontSize: inputFontSize
+      }
+    : {}
+
+  if (props.variant === 'unstyled') {
+    return {
+      input: {
+        '&:not(.mantine-Textarea-input)': {
+          ...inputSize
+        },
+        '& .mantine-PasswordInput-innerInput': {
+          ...passwordInnerInputSize
+        },
+        '&::placeholder': {
+          color: themeColor(theme, 'carbon', 6)
+        }
+      }
+    }
   }
-  const passwordInnerInputSize = {
-    height: size - 2,
-    minHeight: size - 2,
-    lineHeight: `${size - 2}px`,
-    fontSize: inputFontSize
+
+  if (props.variant === 'filled') {
+    return {
+      input: {
+        '--input-bg': themeColor(theme, 'carbon', 3),
+        '--input-bd-focus': themeColor(theme, 'carbon', 9),
+        '&:not(.mantine-Textarea-input)': {
+          ...inputSize
+        },
+        '& .mantine-PasswordInput-innerInput': {
+          ...passwordInnerInputSize
+        },
+        '&::placeholder': {
+          color: themeColor(theme, 'carbon', 6)
+        }
+      }
+    }
   }
 
   return {
@@ -81,10 +118,13 @@ function getInputStyles(theme: MantineTheme, props: Pick<InputProps, 'size'>) {
       fontSize: 12
     },
     input: {
-      ...inputSize,
       color: theme.colors.carbon[8],
       border: `1px solid ${themeColor(theme, 'carbon', 4)}`,
       backgroundColor: themeColor(theme, 'carbon', 0),
+
+      '&:not(.mantine-Textarea-input)': {
+        ...inputSize
+      },
 
       '&:hover': {
         borderColor: themeColor(theme, 'carbon', 5)
@@ -128,13 +168,17 @@ function getInputStyles(theme: MantineTheme, props: Pick<InputProps, 'size'>) {
             borderColor: themeColor(theme, 'red', 4)
           },
           '&::placeholder': {
-            color: themeColor(theme, 'carbon', 6)
+            color: themeColor(theme, 'carbon', 2)
           }
         }
       }
     },
     section: {
-      overflow: 'hidden'
+      overflow: 'hidden',
+
+      '& .mantine-PasswordInput-visibilityToggle svg': {
+        color: themeColor(theme, 'carbon', 6)
+      }
     }
   }
 }
@@ -572,9 +616,6 @@ const theme = createTheme({
         withCheckIcon: false
       },
       styles: (theme: MantineTheme, props: SelectProps) => {
-        const styles = getInputStyles(theme, { size: props.size })
-        const height = styles.input.height
-
         return {
           label: {
             lineHeight: '20px',
@@ -584,8 +625,6 @@ const theme = createTheme({
             color: themeColor(theme, 'carbon', 7)
           },
           input: {
-            height: height,
-            minHeight: height,
             color: themeColor(theme, 'carbon', 8),
 
             ...(props.variant === 'unstyled' && {
@@ -634,8 +673,6 @@ const theme = createTheme({
         withCheckIcon: false
       },
       styles: (theme: MantineTheme, props: MultiSelectProps) => {
-        const styles = getInputStyles(theme, { size: props.size })
-        const inputHeight = styles.input.height
         return {
           label: {
             fontSize: 14,
@@ -649,9 +686,6 @@ const theme = createTheme({
             '&::placeholder': {
               color: themeColor(theme, 'carbon', 6)
             }
-          },
-          wrapper: {
-            height: inputHeight + 2
           },
           pill: {
             backgroundColor: themeColor(theme, 'carbon', 3),
@@ -697,11 +731,7 @@ const theme = createTheme({
       styles: getInputStyles
     },
     Textarea: {
-      styles: (theme: MantineTheme, props: TextareaProps) => {
-        const styles = getInputStyles(theme, props)
-        styles.input.height = undefined
-        return styles
-      }
+      styles: getInputStyles
     },
     Badge: {
       defaultProps: {
