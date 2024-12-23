@@ -1,4 +1,3 @@
-export type * from '@mantine/hooks'
 export {
   // dom and ui
   useClickOutside,
