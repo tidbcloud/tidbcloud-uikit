@@ -2,9 +2,10 @@ import { EmotionCache } from '@emotion/cache'
 // eslint-disable-next-line no-restricted-imports
 import { MantineProvider, MantineThemeOverride, mergeMantineTheme } from '@mantine/core'
 import { MantineEmotionProvider, emotionTransform } from '@mantine/emotion'
-import { useColorScheme } from '@mantine/hooks'
 import { ModalsProvider, ModalsProviderProps } from '@mantine/modals'
 import { Notifications, NotificationsProps } from '@mantine/notifications'
+
+import { useSystemColorScheme } from '../hooks/index.js'
 
 import { useTheme } from './theme.js'
 
@@ -25,7 +26,7 @@ export function ThemeProvider({
   notifications,
   modals
 }: ThemeProviderProps) {
-  const systemColorScheme = useColorScheme('light', {
+  const systemColorScheme = useSystemColorScheme(colorScheme === 'auto' ? undefined : colorScheme, {
     getInitialValueInEffect: false
   })
   const colorSchemeResult = colorScheme === 'auto' ? systemColorScheme : colorScheme

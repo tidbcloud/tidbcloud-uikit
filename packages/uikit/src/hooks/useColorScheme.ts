@@ -21,7 +21,7 @@ export const useColorScheme = (
   }
 
   return {
-    colorScheme: colorScheme === 'auto' ? systemColorScheme : colorScheme,
+    colorScheme,
     setColorScheme,
     systemColorScheme,
     toggleColorScheme
