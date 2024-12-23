@@ -75,14 +75,7 @@ export function mergeProTableProps<T extends Record<string, any>>(props: ProTabl
         borderRadius: withBorder ? theme.defaultRadius : 0,
         borderColor: withBorder ? theme.colors.carbon[4] : 'transparent',
         overflow: 'hidden',
-        transition: 'none',
-
-        '& ::-webkit-scrollbar': enableStickyHeader
-          ? {
-              width: 0,
-              height: 0
-            }
-          : undefined
+        transition: 'none'
       })
     },
     mantinePaperProps
