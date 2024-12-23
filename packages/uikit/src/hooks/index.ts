@@ -78,4 +78,4 @@ export {
 } from '@mantine/hooks'
 
 export { useURLQueryState } from './useURLQueryState.js'
-export * from './useUrlState.js'
+export { useUrlState, UrlStateProvider } from './useUrlState.js'

@@ -1,4 +1,4 @@
-import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react'
+import { createContext, useCallback, useContext, useMemo, useState } from 'react'
 
 type UrlStateCtxValue = {
   urlQuery: string
@@ -31,11 +31,6 @@ export function UrlStateProvider(props: { children: React.ReactNode; value?: Url
   const val: UrlStateCtxValue = props.value || defCtxVal()
 
   const [urlQuery, _setUrlQuery] = useState(val.urlQuery)
-
-  // sync external urlQuery changes
-  useEffect(() => {
-    _setUrlQuery(val.urlQuery)
-  }, [val.urlQuery])
 
   const ctxValue = useMemo(
     () => ({
