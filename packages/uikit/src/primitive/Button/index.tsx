@@ -3,14 +3,23 @@ import { forwardRef } from 'react'
 
 type Button = typeof MantineButton
 
-const _Button = forwardRef<HTMLButtonElement, MantineButtonProps>((props, ref) => {
+const _Button = forwardRef<HTMLButtonElement, MantineButtonProps & { 'data-loading'?: boolean }>((props, ref) => {
   const theme = useMantineTheme()
-  const { leftSection, loading, disabled, loaderProps, ...rest } = props
-  const loader = <Loader size={16} color={`${props.color ?? theme.primaryColor}.6`} {...loaderProps} />
+  const {
+    leftSection,
+    loading,
+    disabled,
+    loaderProps,
+    ['data-disabled']: dataDisabled,
+    ['data-loading']: dataLoading,
+    ...rest
+  } = props
 
-  return (
-    <MantineButton {...rest} ref={ref} leftSection={loading ? loader : leftSection} disabled={disabled || loading} />
-  )
+  const loader = <Loader size={16} color={`${props.color ?? theme.primaryColor}.6`} {...loaderProps} />
+  const isLoading = loading || dataLoading
+  const isDisabled = disabled || dataDisabled || isLoading
+
+  return <MantineButton {...rest} ref={ref} leftSection={isLoading ? loader : leftSection} disabled={isDisabled} />
 })
 
 export const Button = _Button as any as Button
