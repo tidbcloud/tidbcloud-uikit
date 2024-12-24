@@ -241,7 +241,7 @@ const theme = createTheme({
               backgroundColor: bgHoverColor
             },
 
-            '&:disabled': {
+            '&:disabled, &[data-disabled]': {
               color: theme.white,
               backgroundColor: themeColor(theme, color, 5)
             }
@@ -267,7 +267,7 @@ const theme = createTheme({
               backgroundColor: themeColor(theme, color, bgColorShade + 1)
             },
 
-            '&:disabled': {
+            '&:disabled, &[data-disabled]': {
               color: themeColor(theme, color, 6),
               borderColor: themeColor(theme, color, borderColorShade + 1),
               backgroundColor: themeColor(theme, color, 2)
@@ -291,7 +291,7 @@ const theme = createTheme({
               backgroundColor: themeColor(theme, color, bgColorShade + 1)
             },
 
-            '&:disabled': {
+            '&:disabled, &[data-disabled]': {
               color: themeColor(theme, color, 6),
               borderColor: themeColor(theme, color, borderColorShade + 1),
               backgroundColor: themeColor(theme, color, 2)
@@ -313,7 +313,7 @@ const theme = createTheme({
               backgroundColor: themeColor(theme, color, bgColorShade + 1)
             },
 
-            '&:disabled': {
+            '&:disabled, &[data-disabled]': {
               color: themeColor(theme, color, 6)
             }
           }

@@ -241,3 +241,7 @@ export const WithIcon: Story = {
     </Group>
   )
 }
+
+export const DataDisabled: Story = {
+  render: () => <Button data-disabled>With data-disabled</Button>
+}

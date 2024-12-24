@@ -63,3 +63,21 @@ export const Primary: Story = {
     }
   }
 }
+
+export const DisabledButton: Story = {
+  render: ({ ...props }) => (
+    <Tooltip {...props} label="Tooltip">
+      <Button disabled>Disabled button</Button>
+    </Tooltip>
+  ),
+  parameters: {
+    docs: {
+      source: {
+        language: 'jsx',
+        code: `<Tooltip label="Tooltip">
+  <Button disabled>Disabled button</Button>
+</Tooltip>`
+      }
+    }
+  }
+}
