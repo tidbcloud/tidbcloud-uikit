@@ -108,15 +108,12 @@ export function mergeProTableProps<T extends Record<string, any>>(props: ProTabl
             transition: 'none',
             backgroundColor: theme.colors.carbon[0],
             color: theme.colors.carbon[8],
-
             '&:hover': {
               backgroundColor: `${theme.colors.carbon[3]} !important`
             },
-
             td: {
               borderColor: theme.colors.carbon[3]
             },
-
             ':last-of-type': {
               td: {
                 borderBottom: 'none'
@@ -162,6 +159,9 @@ export function mergeProTableProps<T extends Record<string, any>>(props: ProTabl
           borderColor: 'transparent',
           minWidth: 20,
           minHeight: 20
+        },
+        '.mrt-table-head-cell-resize-handle': {
+          marginRight: -7
         }
       }
     }

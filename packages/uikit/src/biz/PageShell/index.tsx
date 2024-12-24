@@ -198,3 +198,5 @@ export const PageShell = ({
 
   return page
 }
+
+PageShell.Header = PageHeader
