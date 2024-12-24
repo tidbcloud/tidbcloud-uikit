@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "build": "pnpm -r run build",
-    "changeset": "changeset",
+    "changeset": "tsx scripts/customChangeset.ts",
     "release": "changeset publish",
     "prepare": "node ./scripts/prepare.js",
     "storybook": "storybook dev -p 6006",
@@ -16,8 +16,14 @@
     "@tidbcloud/uikit": "workspace:*",
     "lodash-es": "^4.17.21"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tidbcloud/tidbcloud-uikit.git"
+  },
   "devDependencies": {
     "@changesets/cli": "^2.26.1",
+    "@changesets/write": "0.3.2",
+    "@manypkg/get-packages": "2.2.2",
     "@storybook/addon-essentials": "^8.4.1",
     "@storybook/addon-interactions": "^8.4.1",
     "@storybook/addon-links": "^8.4.1",
@@ -33,6 +39,7 @@
     "@svgr/plugin-svgo": "^8.0.1",
     "@types/lodash-es": "^4.17.8",
     "@types/node": "^20.4.2",
+    "@types/prompts": "2.4.9",
     "@types/react": "^18.2.21",
     "@types/react-dom": "^18.2.7",
     "@typescript-eslint/parser": "^7.3.1",
@@ -44,6 +51,7 @@
     "is-ci": "^3.0.1",
     "lint-staged": "^13.2.2",
     "prettier": "^3.0.3",
+    "prompts": "2.4.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "storybook": "^8.4.1",
