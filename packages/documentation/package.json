@@ -1,6 +1,6 @@
 {
   "name": "@tidbcloud/uikit-documentation",
-  "version": "0.1.30-beta.94",
+  "version": "0.1.30-beta.95",
   "private": true,
   "scripts": {
     "dev": "next dev",

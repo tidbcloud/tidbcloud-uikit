@@ -1,5 +1,18 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.95
+
+### Patch Changes
+
+- feat(ProTable): update version
+- fix(ProTable): invalid use hook
+- feat(ProTable): update version
+- feat(ProTable): enable scrollbar
+- fix(ProTable): typo
+- feat(ProTable): update storybook
+- refactor(ProTable): add new pagination
+- feat: add protablepagination
+
 ## 2.0.0-beta.94
 
 ### Patch Changes
