@@ -273,7 +273,7 @@ export const Tree = React.forwardRef<RcTree, TreeProps>((props, ref) => {
             left: '50%',
             width: 8,
             height: 8,
-            backgroundColor: theme.colors.blue[7],
+            backgroundColor: theme.colors.carbon[8],
             border: 0,
             transform: 'translate(-50%, -50%) scale(1)',
             opacity: 1,
