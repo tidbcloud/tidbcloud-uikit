@@ -5,16 +5,16 @@ export type ShadingColor = MantineColorsTuple
 
 // Colors refer to https://www.figma.com/design/WA4ToJ5lrk8phxnvfHA3xU/%E2%9A%AA%EF%B8%8F-TiDesign-Library?node-id=7222-252904&node-type=SECTION&t=2rq3zxbEaWLOtOZr-0
 export const carbon = [
-  '#FFFFFF',
-  '#FDFEFF',
-  '#F9FAFB',
-  '#EDF1F2',
-  '#DCE3E5',
-  '#C4CDD0',
-  '#9FA9AD',
-  '#6F787B',
-  '#383E40',
-  '#1E2426'
+  '#FFFFFF', // 0
+  '#FDFEFF', // 1
+  '#F9FAFB', // 2
+  '#EDF1F2', // 3
+  '#DCE3E5', // 4
+  '#C4CDD0', // 5
+  '#9FA9AD', // 6
+  '#6F787B', // 7
+  '#383E40', // 8
+  '#1E2426' // 9
 ] as ShadingColor
 
 export const peacock = [

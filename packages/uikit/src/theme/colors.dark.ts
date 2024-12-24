@@ -2,16 +2,16 @@ import type { ShadingColor } from './colors.js'
 
 // Colors refer to https://www.figma.com/design/WA4ToJ5lrk8phxnvfHA3xU/%E2%9A%AA%EF%B8%8F-TiDesign-Library?node-id=7222-252904&node-type=SECTION&t=2rq3zxbEaWLOtOZr-0
 export const carbon = [
-  '#14181A',
-  '#111517',
-  '#1F2426',
-  '#25292B',
-  '#313638',
-  '#43494D',
-  '#50585C',
-  '#79848A',
-  '#ACB9BF',
-  '#DAE2E5'
+  '#14181A', // 0
+  '#111517', // 1
+  '#1F2426', // 2
+  '#25292B', // 3
+  '#313638', // 4
+  '#43494D', // 5
+  '#50585C', // 6
+  '#79848A', // 7
+  '#ACB9BF', // 8
+  '#DAE2E5' // 9
 ] as ShadingColor
 
 export const peacock = [
