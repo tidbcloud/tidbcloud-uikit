@@ -58,7 +58,8 @@ const columns: MRT_ColumnDef<{}>[] = [
     header: 'Position',
     accessorKey: 'position',
     Cell: renderExpandCell,
-    footer: 'Position'
+    footer: 'Position',
+    enableResizing: true
   },
   {
     header: 'Name',
@@ -101,17 +102,17 @@ export const Primary: Story = {
     enableBottomToolbar: false,
     enableExpanding: true,
     enableRowVirtualization: true,
-    enableColumnPinning: false,
-    enableColumnResizing: false,
+    enableColumnPinning: true,
+    enableColumnResizing: true,
     enableSorting: false,
     columns,
     emptyMessage: 'No data',
     mantineTableBodyCellProps: {
       h: 48
     },
-    mantineTableContainerProps: { sx: { maxHeight: '400px' } },
+    // mantineTableContainerProps: { sx: { maxHeight: '400px' } },
     data,
-    layoutMode: 'grid',
+    layoutMode: 'semantic',
     initialState: {
       pagination: {
         pageIndex: 0,
@@ -120,7 +121,7 @@ export const Primary: Story = {
     },
     state: {
       columnVisibility: {},
-      columnPinning: { right: ['mass'] }
+      columnPinning: { left: ['position'] }
     },
     enablePagination: true,
     manualPagination: false,
