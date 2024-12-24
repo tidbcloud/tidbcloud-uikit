@@ -14,7 +14,7 @@ export interface PageHeaderProps extends GroupProps {
   rightSection?: React.ReactNode
 }
 
-export const PageHeader = ({ sticky, leftSection, rightSection, children, ...restProps }: PageHeaderProps) => {
+const PageHeader = ({ sticky, leftSection, rightSection, children, ...restProps }: PageHeaderProps) => {
   const rightExisted = !!rightSection
 
   return (
@@ -22,10 +22,13 @@ export const PageHeader = ({ sticky, leftSection, rightSection, children, ...res
       wrap="nowrap"
       justify="space-between"
       gap="xl"
-      h={56}
-      px={24}
       {...restProps}
       sx={mergeSxList([
+        {
+          paddingLeft: 24,
+          paddingRight: 24,
+          marginBottom: 12
+        },
         sticky
           ? (theme) => ({
               position: 'sticky',
