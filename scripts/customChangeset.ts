@@ -5,6 +5,8 @@ import create from '@changesets/write'
 import { getPackages } from '@manypkg/get-packages'
 import prompts from 'prompts'
 
+import packageJson from '../package.json'
+
 async function main() {
   if (process.argv.includes('version')) {
     execSync('npx changeset version', { stdio: 'inherit' })
@@ -19,7 +21,10 @@ async function main() {
 
   // Get commits since last tag with links
   const lastTag = execSync('git describe --tags --abbrev=0').toString().trim()
-  const changelog = execSync(`git log ${lastTag}..HEAD --pretty=format:"- %s"`).toString()
+  const repoUrl = packageJson.repository.url.replace(/\.git$/, '')
+  const changelog = execSync(
+    `git log ${lastTag}..HEAD --pretty=format:"- %s" | sed -E 's|#([0-9]+)| ([#\\1](${repoUrl}/pull/\\1))|g'`
+  ).toString()
 
   console.log('')
   console.log('Generated changelog:')
