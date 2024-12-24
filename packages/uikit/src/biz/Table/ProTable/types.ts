@@ -19,7 +19,7 @@ type Xor<A, B> =
       }
     >
 
-type TableInstanceProp<TData extends MRT_RowData> = {
+export type TableInstanceProp<TData extends MRT_RowData> = {
   table: MRT_TableInstance<TData>
 }
 

@@ -1,22 +1,30 @@
 import 'mantine-react-table/styles.css'
-import { MantineReactTable } from 'mantine-react-table'
+import { type MRT_TableInstance, MantineReactTable, type MRT_RowData } from 'mantine-react-table'
 
 import { Box } from '../../../primitive/index.js'
-import { TablePagination } from '../TablePagination.js'
+import { ProTablePagination } from '../TablePagination.js'
 
-import { mergeProTableProps } from './helpers.js'
-import { ProTableProps } from './types.js'
+import { useProTable } from './helpers.js'
+import { ProTableProps, TableInstanceProp } from './types.js'
+
+const isTableInstanceProp = <TData extends MRT_RowData>(
+  props: ProTableProps<TData>
+): props is TableInstanceProp<TData> => (props as TableInstanceProp<TData>).table !== undefined
 
 export const ProTable = <T extends Record<string, any> = {}>(props: ProTableProps<T>) => {
-  const { wrapperProps, pagination, ...restProps } = 'table' in props ? props : mergeProTableProps(props)
+  const isInstance = isTableInstanceProp(props)
+  let table = useProTable<T>(isInstance ? { columns: [], data: [] } : props)
+  if (isInstance) {
+    table = props.table
+  }
 
   return (
-    <Box {...wrapperProps}>
+    <Box {...props.wrapperProps}>
       {/***
        * see https://v2.mantine-react-table.com/docs/api/table-options
        * ***/}
-      <MantineReactTable<T> {...restProps} />
-      {!!pagination && <TablePagination size="sm" position="center" mt={16} {...pagination} />}
+      <MantineReactTable<T> table={table} />
+      {table.options.enablePagination && <ProTablePagination table={table} {...props.pagination} />}
     </Box>
   )
 }

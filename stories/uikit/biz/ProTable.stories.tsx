@@ -40,6 +40,16 @@ const data = [
   { position: 7, mass: 14.007, symbol: 'N', name: 'Nitrogen' },
   { position: 39, mass: 88.906, symbol: 'Y', name: 'Yttrium' },
   { position: 56, mass: 137.33, symbol: 'Ba', name: 'Barium' },
+  { position: 58, mass: 140.12, symbol: 'Ce', name: 'Cerium' },
+  { position: 39, mass: 88.906, symbol: 'Y', name: 'Yttrium' },
+  { position: 56, mass: 137.33, symbol: 'Ba', name: 'Barium' },
+  { position: 58, mass: 140.12, symbol: 'Ce', name: 'Cerium' },
+  { position: 7, mass: 14.007, symbol: 'N', name: 'Nitrogen' },
+  { position: 39, mass: 88.906, symbol: 'Y', name: 'Yttrium' },
+  { position: 56, mass: 137.33, symbol: 'Ba', name: 'Barium' },
+  { position: 58, mass: 140.12, symbol: 'Ce', name: 'Cerium' },
+  { position: 39, mass: 88.906, symbol: 'Y', name: 'Yttrium' },
+  { position: 56, mass: 137.33, symbol: 'Ba', name: 'Barium' },
   { position: 58, mass: 140.12, symbol: 'Ce', name: 'Cerium' }
 ]
 
@@ -76,6 +86,8 @@ const columns: MRT_ColumnDef<{}>[] = [
   }
 ]
 
+//store pagination state in your own state
+
 // More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
 export const Primary: Story = {
   parameters: {
@@ -100,9 +112,24 @@ export const Primary: Story = {
     mantineTableContainerProps: { sx: { maxHeight: '400px' } },
     data,
     layoutMode: 'grid',
+    initialState: {
+      pagination: {
+        pageIndex: 0,
+        pageSize: 5
+      }
+    },
     state: {
       columnVisibility: {},
       columnPinning: { right: ['mass'] }
+    },
+    enablePagination: true,
+    manualPagination: false,
+    pagination: {
+      showRowsPerPage: true,
+      showTotal: true,
+      localization: {
+        total: 'Total'
+      }
     }
   },
   argTypes: {}

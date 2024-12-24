@@ -47,11 +47,14 @@ export function mergeProTableProps<T extends Record<string, any>>(props: ProTabl
     mantineTableFooterRowProps = {},
     mantineTableFooterProps = {},
     mantineLoadingOverlayProps = {},
+    enablePagination = false,
+    enableBottomToolbar,
     layoutMode,
     withBorder = true,
     loading = false,
     enableExpanding = false,
     enableRowVirtualization = false,
+    pagination,
     enableStickyHeader,
     enableStickyFooter,
     emptyMessage,
@@ -68,18 +71,11 @@ export function mergeProTableProps<T extends Record<string, any>>(props: ProTabl
       shadow: 'none',
       withBorder,
       sx: (theme) => ({
-        backgroundColor: 'inherit',
+        backgroundColor: 'transparent',
         borderRadius: withBorder ? theme.defaultRadius : 0,
         borderColor: withBorder ? theme.colors.carbon[4] : 'transparent',
         overflow: 'hidden',
-        transition: 'none',
-
-        '& ::-webkit-scrollbar': enableStickyHeader
-          ? {
-              width: 0,
-              height: 0
-            }
-          : undefined
+        transition: 'none'
       })
     },
     mantinePaperProps
@@ -252,13 +248,18 @@ export function mergeProTableProps<T extends Record<string, any>>(props: ProTabl
     mantineTableFooterProps
   )
 
+  const withPagination = !!pagination
+
   return {
     enableColumnActions: false,
     enableColumnFilters: false,
     enableTopToolbar: false,
     enableSorting: false,
-    enablePagination: false,
-    enableBottomToolbar: false,
+    enablePagination: withPagination || enablePagination,
+    enableBottomToolbar: withPagination || enableBottomToolbar,
+    renderBottomToolbar: () => {
+      return <></>
+    },
     enableExpanding,
     enableStickyHeader,
     enableStickyFooter,
