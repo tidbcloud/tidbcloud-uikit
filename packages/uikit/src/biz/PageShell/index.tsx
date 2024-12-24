@@ -2,7 +2,7 @@ import { ReactNode } from 'react'
 
 import { IconChevronLeft } from '../../icons/index.js'
 import { ActionIcon, Box, BoxProps, Group, GroupProps, Typography } from '../../primitive/index.js'
-import { mergeSxList } from '../../utils/index.js'
+import { clsx, mergeSxList } from '../../utils/index.js'
 
 export interface PageHeaderProps extends GroupProps {
   /**
@@ -14,18 +14,22 @@ export interface PageHeaderProps extends GroupProps {
   rightSection?: React.ReactNode
 }
 
-export const PageHeader = ({ sticky, leftSection, rightSection, children, ...restProps }: PageHeaderProps) => {
+const PageHeader = ({ sticky, leftSection, rightSection, children, ...restProps }: PageHeaderProps) => {
   const rightExisted = !!rightSection
 
   return (
     <Group
+      {...restProps}
+      className={clsx(restProps?.className, 'pageshell-header')}
       wrap="nowrap"
       justify="space-between"
       gap="xl"
-      h={56}
-      px={24}
-      {...restProps}
       sx={mergeSxList([
+        {
+          paddingLeft: 24,
+          paddingRight: 24,
+          marginBottom: 12
+        },
         sticky
           ? (theme) => ({
               position: 'sticky',
@@ -166,7 +170,19 @@ export const PageShell = ({
           {title}
         </PageHeader>
       )}
-      <Box className={bodyClassName} px={24} pb={16} pt={headerVisible ? 0 : 16} {...bodyProps}>
+      <Box
+        {...bodyProps}
+        className={clsx(bodyClassName, bodyProps?.className, 'pageshell-body')}
+        sx={mergeSxList([
+          {
+            paddingLeft: 24,
+            paddingRight: 24,
+            paddingBottom: 16,
+            paddingTop: headerVisible ? 0 : 16
+          },
+          bodyProps?.sx
+        ])}
+      >
         {children}
       </Box>
     </>
@@ -174,7 +190,7 @@ export const PageShell = ({
 
   if (wrapped) {
     return (
-      <Box className={className} {...wrapperProps}>
+      <Box {...wrapperProps} className={clsx(className, wrapperProps?.className, 'pageshell-wrapper')}>
         {page}
       </Box>
     )
