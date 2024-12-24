@@ -98,7 +98,7 @@ export const TimeRangePicker = ({
             })}
             w={disableAbsoluteRanges ? 200 : 280}
             sx={sx}
-            {...(loading ? { 'data-loading': true } : {})}
+            loading={loading}
           >
             <Group w="100%" gap={0}>
               <Box sx={{ flex: 'none' }}>
