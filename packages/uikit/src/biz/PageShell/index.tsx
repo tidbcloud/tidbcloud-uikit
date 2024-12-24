@@ -2,7 +2,7 @@ import { ReactNode } from 'react'
 
 import { IconChevronLeft } from '../../icons/index.js'
 import { ActionIcon, Box, BoxProps, Group, GroupProps, Typography } from '../../primitive/index.js'
-import { mergeSxList } from '../../utils/index.js'
+import { clsx, mergeSxList } from '../../utils/index.js'
 
 export interface PageHeaderProps extends GroupProps {
   /**
@@ -166,7 +166,19 @@ export const PageShell = ({
           {title}
         </PageHeader>
       )}
-      <Box className={bodyClassName} px={24} pb={16} pt={headerVisible ? 0 : 16} {...bodyProps}>
+      <Box
+        {...bodyProps}
+        className={clsx(bodyClassName, bodyProps?.className, 'pageshell-body')}
+        sx={mergeSxList([
+          {
+            paddingLeft: 24,
+            paddingRight: 24,
+            paddingBottom: 16,
+            paddingTop: headerVisible ? 0 : 16
+          },
+          bodyProps?.sx
+        ])}
+      >
         {children}
       </Box>
     </>
@@ -174,7 +186,7 @@ export const PageShell = ({
 
   if (wrapped) {
     return (
-      <Box className={className} {...wrapperProps}>
+      <Box {...wrapperProps} className={clsx(className, wrapperProps?.className, 'pageshell-wrapper')}>
         {page}
       </Box>
     )
