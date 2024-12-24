@@ -32,11 +32,11 @@ export interface TablePaginationProps extends Partial<PaginationProps> {
   localization?: Localization
 }
 
-interface Props<TData extends MRT_RowData> extends TablePaginationProps {
+interface ProTablePaginationProps<TData extends MRT_RowData> extends TablePaginationProps {
   table: MRT_TableInstance<TData>
 }
 
-export const ProTablePagination = <TData extends MRT_RowData>({ table, ...props }: Props<TData>) => {
+export const ProTablePagination = <TData extends MRT_RowData>({ table, ...props }: ProTablePaginationProps<TData>) => {
   const {
     getPrePaginationRowModel,
     getState,
