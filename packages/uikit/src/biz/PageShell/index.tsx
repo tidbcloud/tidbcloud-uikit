@@ -19,10 +19,11 @@ const PageHeader = ({ sticky, leftSection, rightSection, children, ...restProps 
 
   return (
     <Group
+      {...restProps}
+      className={clsx(restProps?.className, 'pageshell-header')}
       wrap="nowrap"
       justify="space-between"
       gap="xl"
-      {...restProps}
       sx={mergeSxList([
         {
           paddingLeft: 24,
