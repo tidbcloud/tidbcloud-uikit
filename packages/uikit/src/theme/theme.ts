@@ -613,7 +613,8 @@ const theme = createTheme({
     Select: {
       defaultProps: {
         size: 'md',
-        withCheckIcon: false
+        withCheckIcon: true,
+        checkIconPosition: 'right'
       },
       styles: (theme: MantineTheme, props: SelectProps) => {
         return {
@@ -656,6 +657,11 @@ const theme = createTheme({
               backgroundColor: 'transparent',
               '&:hover': {
                 backgroundColor: themeColor(theme, 'carbon', 3)
+              },
+              // check icon color
+              '& > svg': {
+                color: themeColor(theme, 'carbon', 9),
+                opacity: 1
               }
             }
           },
@@ -663,6 +669,10 @@ const theme = createTheme({
             '& > svg': {
               color: `${themeColor(theme, 'carbon', 7)} !important`
             }
+          },
+          dropdown: {
+            '--popover-border-color': themeColor(theme, 'carbon', 3),
+            '--popover-shadow': '0px 8px 32px 0px #00000014'
           }
         }
       }
