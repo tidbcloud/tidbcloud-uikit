@@ -28,7 +28,7 @@ const PageHeader = ({ sticky, leftSection, rightSection, children, ...restProps 
         {
           paddingLeft: 24,
           paddingRight: 24,
-          marginBottom: 12
+          height: 56
         },
         sticky
           ? (theme) => ({
