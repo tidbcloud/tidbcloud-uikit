@@ -177,7 +177,7 @@ function FormItemRender(props: {
   }
 }
 
-const FORM_STATE_KEY = '__fs__'
+export const FORM_STATE_KEY = '__fs__'
 
 export function SearchArea<T extends object>(props: SearchAreaProps<T>) {
   const { data, onSubmit, recoverFromURLEnabled, defaultValues, formStateQueryKey, ...rest } = props
@@ -198,6 +198,13 @@ export function SearchArea<T extends object>(props: SearchAreaProps<T>) {
     recoverFromURLEnabled && setFormState(defaultValues as any)
   }
 
+  useEffect(() => {
+    if (recoverFromURLEnabled) {
+      // trigger submit when recover from URL
+      handleSubmit()
+    }
+  }, [])
+
   return (
     <Box>
       <Form<T> onSubmit={onSubmit} {...rest} form={form} errorMessageProps={{ mx: 16 }} withActions={false}>
@@ -214,13 +221,13 @@ export function SearchArea<T extends object>(props: SearchAreaProps<T>) {
             ))}
             <Box sx={SX_Y_MID}>
               <Box sx={SX_Y_MID}>
-                <Button variant="subtle" color="carbon.8" onClick={handleReset}>
+                <Button variant="subtle" onClick={handleReset}>
                   <IconEraser size={16} style={{ marginRight: 4 }} />
                   Clear Filters
                 </Button>
               </Box>
               <Box ml={16} sx={SX_Y_MID}>
-                <Button variant="subtle" color="carbon.8" onClick={handleSubmit}>
+                <Button variant="subtle" onClick={handleSubmit}>
                   <IconRefreshCw01 size={16} />
                 </Button>
               </Box>
@@ -230,7 +237,9 @@ export function SearchArea<T extends object>(props: SearchAreaProps<T>) {
         {props.debugEnabled && (
           <Box sx={{ height: 320 }}>
             <pre>result = {JSON.stringify(form.getValues(), null, 4)}</pre>
-            <Button onClick={() => window.location.reload()}>Refresh Page</Button>
+            <Button variant="light" onClick={() => window.location.reload()}>
+              Refresh Page
+            </Button>
           </Box>
         )}
       </Form>
