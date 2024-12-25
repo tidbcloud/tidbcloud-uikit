@@ -214,13 +214,13 @@ export function SearchArea<T extends object>(props: SearchAreaProps<T>) {
             ))}
             <Box sx={SX_Y_MID}>
               <Box sx={SX_Y_MID}>
-                <Button variant="subtle" color="carbon.8" onClick={handleReset}>
+                <Button variant="subtle" onClick={handleReset}>
                   <IconEraser size={16} style={{ marginRight: 4 }} />
                   Clear Filters
                 </Button>
               </Box>
               <Box ml={16} sx={SX_Y_MID}>
-                <Button variant="subtle" color="carbon.8" onClick={handleSubmit}>
+                <Button variant="subtle" onClick={handleSubmit}>
                   <IconRefreshCw01 size={16} />
                 </Button>
               </Box>
@@ -230,7 +230,9 @@ export function SearchArea<T extends object>(props: SearchAreaProps<T>) {
         {props.debugEnabled && (
           <Box sx={{ height: 320 }}>
             <pre>result = {JSON.stringify(form.getValues(), null, 4)}</pre>
-            <Button onClick={() => window.location.reload()}>Refresh Page</Button>
+            <Button variant="light" onClick={() => window.location.reload()}>
+              Refresh Page
+            </Button>
           </Box>
         )}
       </Form>
