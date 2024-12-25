@@ -1,5 +1,5 @@
 import type { Meta, StoryObj, StoryFn } from '@storybook/react'
-import { MRT_ColumnDef, ProTable, renderExpandCell } from '@tidbcloud/uikit/biz'
+import { MRT_ColumnDef, ProTable, renderExpandCell, useProTable } from '@tidbcloud/uikit/biz'
 
 type Story = StoryObj<typeof ProTable>
 
@@ -91,6 +91,13 @@ const columns: MRT_ColumnDef<{}>[] = [
 
 // More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
 export const Primary: Story = {
+  render: (args) => {
+    let table = useProTable(args.table ? { columns: [], data: [] } : args)
+    if (args.table) {
+      table = args.table
+    }
+    return <ProTable table={table} />
+  },
   parameters: {
     controls: { expanded: true }
   },

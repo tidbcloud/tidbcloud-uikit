@@ -293,6 +293,7 @@ export function mergeProTableProps<T extends Record<string, any>>(props: ProTabl
       ...state,
       columnVisibility: { ...(enableExpanding ? { 'mrt-row-expand': false } : undefined), ...state?.columnVisibility }
     },
+    pagination,
     ...rest
   }
 }
