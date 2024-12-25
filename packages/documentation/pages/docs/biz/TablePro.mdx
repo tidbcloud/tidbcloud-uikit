@@ -21,7 +21,13 @@ excepts `manualPagination`, `paginationDisplayMode` and `positionPagination`
 | pagination.value       | `number`                                                                                                                                                                  | current page of pagination      | `deprecated`, please use `state.pagination.pageIndex`                                      |
 | pagination.total       | `number`                                                                                                                                                                  | current page size of pagination | `deprecated`, please use `state.pagination.rowCount`, table will calculate size internally |
 
-For client side pagination:
+###### `pagination` vs `state.pagination`
+
+In general, use the `pagintaion` to control the style of paginations, such as layout, show or hide total pages. Use `state.pagination` to control the state of pagination such as changing pageIndex or pageSize
+
+##### Usage
+
+1. For client side pagination:
 
 ```typescript
 const table = useProTable({
@@ -30,11 +36,13 @@ const table = useProTable({
   enablePagination: true,
 })
 
+<ProTable table={table} />
+
 // or
 <ProTable data={columns} data={data} enabolePagination />
 ```
 
-For manual or server-side pagination
+2. For manual or server-side pagination
 
 ```typescript
 //store pagination state in your own state
@@ -52,9 +60,12 @@ const table = useProTable({
   enablePagination: true,
   state: { pagination }, //pass the pagination state to the table
 })
+
+<ProTable table={table} />
+
 ```
 
-For pagination UI
+3. For pagination UI
 
 ```typescript
 const table = useProTable({
@@ -71,6 +82,8 @@ const table = useProTable({
     }
   }
 })
+
+<ProTable table={table} />
 ```
 
 <EmbeddedStory
