@@ -177,7 +177,7 @@ function FormItemRender(props: {
   }
 }
 
-export const FORM_STATE_KEY = '__fs__'
+const FORM_STATE_KEY = '__fs__'
 
 export function SearchArea<T extends object>(props: SearchAreaProps<T>) {
   const { data, onSubmit, recoverFromURLEnabled, defaultValues, formStateQueryKey, ...rest } = props
