@@ -888,7 +888,8 @@ const theme = createTheme({
           borderTopRightRadius: theme.defaultRadius,
           padding: '16px 16px 16px 24px',
           margin: 0,
-          backgroundColor: themeColor(theme, 'carbon', 1)
+          backgroundColor: themeColor(theme, 'carbon', 1),
+          borderBottom: `1px solid ${themeColor(theme, 'carbon', 4)}`
         },
         title: {
           fontWeight: 700,
