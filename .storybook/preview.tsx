@@ -12,7 +12,7 @@ export const parameters = {
 }
 
 function ThemeWrapper(props: any) {
-  const [isDarkMode, setDark] = useState(false)
+  const [isDarkMode, setDark] = useState(() => document.body.classList.contains('dark'))
 
   useEffect(() => {
     // listen to DARK_MODE event
