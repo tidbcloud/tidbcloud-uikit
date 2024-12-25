@@ -1077,7 +1077,8 @@ const theme = createTheme({
     ActionIcon: {
       defaultProps: {
         variant: 'subtle',
-        color: 'carbon'
+        color: 'carbon',
+        size: 'md'
       },
       styles(theme: MantineTheme, props: ActionIconProps) {
         const color = props.color ?? theme.primaryColor
@@ -1108,7 +1109,11 @@ const theme = createTheme({
           },
           transparent: {
             backgroundColor: 'transparent',
-            color: themeColor(theme, color, shade)
+            color: themeColor(theme, color, shade),
+
+            '&:hover': {
+              color: themeColor(theme, color, shade)
+            }
           },
           subtle: {
             backgroundColor: 'transparent',
@@ -1116,7 +1121,8 @@ const theme = createTheme({
             borderColor: 'transparent',
 
             '&:hover': {
-              backgroundColor: themeColor(theme, color, 3)
+              backgroundColor: themeColor(theme, color, 3),
+              color: themeColor(theme, color, 8)
             },
             '&:active': {
               backgroundColor: themeColor(theme, color, 4)
@@ -1133,18 +1139,23 @@ const theme = createTheme({
             color: themeColor(theme, color, shade),
             border: `1px solid ${themeColor(theme, color, 4)}`,
             '&:hover': {
-              backgroundColor: themeColor(theme, color, 2)
+              backgroundColor: themeColor(theme, color, 2),
+              color: themeColor(theme, color, shade)
             }
           },
           filled: {
             backgroundColor: themeColor(theme, color, color.includes('carbon') ? 9 : 7),
-            color: theme.white
+            color: theme.white,
+            '&:hover': {
+              color: theme.white
+            }
           },
           light: {
             backgroundColor: themeColor(theme, color, 3),
             color: themeColor(theme, color, 8),
             '&:hover': {
-              backgroundColor: themeColor(theme, color, 4)
+              backgroundColor: themeColor(theme, color, 4),
+              color: themeColor(theme, color, 8)
             },
             '&:active': {
               backgroundColor: themeColor(theme, color, 5)
@@ -1167,10 +1178,7 @@ const theme = createTheme({
         return {
           root: {
             ...variantStyle,
-            width: size,
-            height: size,
-            minWidth: size,
-            minHeight: size
+            '--ai-size': size
           }
         }
       }
