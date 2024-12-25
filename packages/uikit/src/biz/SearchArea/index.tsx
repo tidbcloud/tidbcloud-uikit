@@ -177,7 +177,7 @@ function FormItemRender(props: {
   }
 }
 
-const FORM_STATE_KEY = '__fs__'
+export const FORM_STATE_KEY = '__fs__'
 
 export function SearchArea<T extends object>(props: SearchAreaProps<T>) {
   const { data, onSubmit, recoverFromURLEnabled, defaultValues, formStateQueryKey, ...rest } = props
@@ -197,6 +197,13 @@ export function SearchArea<T extends object>(props: SearchAreaProps<T>) {
     form.reset(defaultValues)
     recoverFromURLEnabled && setFormState(defaultValues as any)
   }
+
+  useEffect(() => {
+    if (recoverFromURLEnabled) {
+      // trigger submit when recover from URL
+      handleSubmit()
+    }
+  }, [])
 
   return (
     <Box>
