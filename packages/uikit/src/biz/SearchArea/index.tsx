@@ -177,12 +177,15 @@ function FormItemRender(props: {
   }
 }
 
-const FORM_STATE_KEY = '__fs__'
+/**
+ * Please use `formStateQueryKey` instead if you have multiple <SearchArea /> components in the same page
+ */
+export const DEFAULT_FORM_STATE_KEY = '__fs__'
 
 export function SearchArea<T extends object>(props: SearchAreaProps<T>) {
   const { data, onSubmit, recoverFromURLEnabled, defaultValues, formStateQueryKey, ...rest } = props
   const [resetSeed, setResetSeed] = useState(0)
-  const [formState, setFormState] = useURLQueryState(formStateQueryKey ?? FORM_STATE_KEY, defaultValues)
+  const [formState, setFormState] = useURLQueryState(formStateQueryKey ?? DEFAULT_FORM_STATE_KEY, defaultValues)
   const state = recoverFromURLEnabled ? formState : defaultValues
   const form = useForm<T>({ defaultValues: state as any })
 
