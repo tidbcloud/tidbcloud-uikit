@@ -54,6 +54,7 @@ export type {
   TextareaProps,
   AutocompleteProps,
   ComboboxProps,
+  ComboboxSearchProps,
   ComboboxItem,
   ComboboxData,
   PillProps,
