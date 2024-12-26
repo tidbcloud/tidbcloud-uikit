@@ -12,29 +12,37 @@ with some style changes. So you can refer its documentation directly.
 Refer to [Mantine React Table Pagination](https://www.mantine-react-table.com/docs/guides/pagination). Basically, you can directly use the props listed on the documentation
 excepts `manualPagination`, `paginationDisplayMode` and `positionPagination`
 
-| Name                  | Type                                                                                                                                                                      | Description                     | Usage                                                                                      |
-| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------- | ------------------------------------------------------------------------------------------ |
-| manualPagination      | `PaginationProps & { rowsPerPageOptions?: string[], showRowsPerPage?: boolean; }`                                                                                         | props for pagination            | `deprecated`, please use `pagination`                                                      |
-| paginationDisplayMode | 'default', 'pages', 'custom'                                                                                                                                              |                                 | `deprecated`                                                                               |
-| positionPagination    | 'bottom', 'top', 'both'                                                                                                                                                   |                                 |                                                                                            |
-| pagination            | `PaginationProps & { rowsPerPageOptions?: ComboboxData[], showRowsPerPage?: boolean; showTotal?: boolean, localization?: { total?: string }, wrapperProps?: FlexProps  }` | props for pagination            |                                                                                            |
-| pagination.value      | `number`                                                                                                                                                                  | current page of pagination      | `deprecated`, please use `state.pagination.pageIndex`                                      |
-| pagination.total      | `number`                                                                                                                                                                  | current page size of pagination | `deprecated`, please use `state.pagination.rowCount`, table will calculate size internally |
+| Name                   | Type                                                                                                                                                                      | Description                     | Usage                                                                                      |
+| ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------- | ------------------------------------------------------------------------------------------ |
+| mantinePaginationProps | `PaginationProps & { rowsPerPageOptions?: string[], showRowsPerPage?: boolean; }`                                                                                         | props for pagination            | `deprecated`, please use `pagination`                                                      |
+| paginationDisplayMode  | 'default', 'pages', 'custom'                                                                                                                                              |                                 | `deprecated`                                                                               |
+| positionPagination     | 'bottom', 'top', 'both'                                                                                                                                                   |                                 |                                                                                            |
+| pagination             | `PaginationProps & { rowsPerPageOptions?: ComboboxData[], showRowsPerPage?: boolean; showTotal?: boolean, localization?: { total?: string }, wrapperProps?: FlexProps  }` | props for pagination            |                                                                                            |
+| pagination.value       | `number`                                                                                                                                                                  | current page of pagination      | `deprecated`, please use `state.pagination.pageIndex`                                      |
+| pagination.total       | `number`                                                                                                                                                                  | current page size of pagination | `deprecated`, please use `state.pagination.rowCount`, table will calculate size internally |
 
-For client side pagination:
+###### `pagination` vs `state.pagination`
+
+In general, use the `pagintaion` to control the style of paginations, such as layout, show or hide total pages. Use `state.pagination` to control the state of pagination such as changing pageIndex or pageSize
+
+##### Usage
+
+1. For client side pagination:
 
 ```typescript
 const table = useProTable({
   columns,
   data,
   enablePagination: true,
-})  // or
+})
 
+<ProTable table={table} />
 
+// or
 <ProTable data={columns} data={data} enabolePagination />
 ```
 
-For manual or server-side pagination
+2. For manual or server-side pagination
 
 ```typescript
 //store pagination state in your own state
@@ -46,19 +54,24 @@ const [pagination, setPagination] = useState({
 const table = useProTable({
   columns,
   data,
-  manualPagination: true,
+  manualPagination: true, // set this true
   onPaginationChange: setPagination,
   rowCount: data.meta.totalDBRowCount // you can tell the pagination how many rows there are in your back-end data,
+  enablePagination: true,
   state: { pagination }, //pass the pagination state to the table
 })
+
+<ProTable table={table} />
+
 ```
 
-For pagination UI
+3. For pagination UI
 
 ```typescript
 const table = useProTable({
   columns,
   data,
+  enablePagination: true,
   pagination: {
     wrapperProps: {}, // Props for pagination container
     rowsPerPageOptions: [] // configure rows per page options
@@ -69,6 +82,8 @@ const table = useProTable({
     }
   }
 })
+
+<ProTable table={table} />
 ```
 
 <EmbeddedStory
