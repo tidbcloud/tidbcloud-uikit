@@ -8,18 +8,17 @@ import { getAllLeafNodes } from './utils.js'
 
 import type { OptionProps, RenderOption } from './index.js'
 
-export interface CascaderPanelProps {
+export const DEFAULT_PANEL_HEIGHT = 240
+export const DEFAULT_PANEL_WIDTH = 260
+
+export interface CascaderPanelProps extends Omit<CascaderItemProps, 'option'> {
   fixedGroup: number
-  multiple?: boolean
   optionGroupTitle?: (index: number) => ReactNode
-  optionProps?: OptionProps
-  renderOption?: RenderOption
-  onClick?: (target: TreeSelectOption, newValue: string[]) => void
 }
 
 export const CascaderPanel = (props: CascaderPanelProps) => {
   const { options } = useTreeContext()
-  const { optionGroupTitle, fixedGroup } = props
+  const { optionGroupTitle, fixedGroup, optionProps } = props
   const optionGroups = useMemo(() => {
     const groups: TreeSelectOption[][] = [options]
     const walk = (tree: TreeSelectOption[]) => {
@@ -45,7 +44,15 @@ export const CascaderPanel = (props: CascaderPanelProps) => {
       {optionGroups.map((group, index) => (
         <>
           {index > 0 && <Divider orientation="vertical" color="carbon.3" />}
-          <Stack key={index} gap={8} w={260} align="flex-start" sx={{ height: 240, overflow: 'auto' }}>
+          <Stack
+            key={index}
+            py="xs"
+            gap={8}
+            w={optionProps?.panelWidth || DEFAULT_PANEL_WIDTH}
+            h={optionProps?.panelHeight || DEFAULT_PANEL_HEIGHT}
+            align="flex-start"
+            sx={{ overflow: 'auto' }}
+          >
             {!!optionGroupTitle && optionGroupTitle(index)}
             {group.map((option) => (
               <CascaderItem key={option.value} option={option} {...props} />
@@ -57,8 +64,12 @@ export const CascaderPanel = (props: CascaderPanelProps) => {
   )
 }
 
-interface CascaderItemProps<T = string> extends CascaderPanelProps {
+export interface CascaderItemProps<T = string> {
+  multiple?: boolean
   option: TreeSelectOption<T>
+  optionProps?: OptionProps
+  renderOption?: RenderOption
+  onClick?: (target: TreeSelectOption, newValue: string[]) => void
 }
 
 const CascaderItem = ({ multiple, option, optionProps, renderOption, onClick }: CascaderItemProps) => {

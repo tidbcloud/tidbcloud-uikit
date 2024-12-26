@@ -12,7 +12,7 @@ import type {
   UpdateChildren,
   ToggleCheck
 } from './useTreeStore.js'
-import { flatArrayToTree, getAllLeafNodes, treeToFlatArray } from './utils.js'
+import { flatArrayToTree, getAllLeafNodes } from './utils.js'
 
 export const useCascader = <T extends SelectionProtectType = string>({
   options,
@@ -29,7 +29,6 @@ export const useCascader = <T extends SelectionProtectType = string>({
     postprocess?: (node: TreeSelectOption<T>) => TreeSelectOption<T>
   ): TreeSelectOption<T>[] => {
     return tree.map((opt) => {
-      debugger
       let _opt = opt
       if (preprocess) {
         _opt = preprocess(opt)

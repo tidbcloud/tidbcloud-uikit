@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { Box, Button, ComboboxStore, Stack, Text } from '@tidbcloud/uikit'
+import { Box } from '@tidbcloud/uikit'
 import { Cascader, TreeSelectOption, treeToFlatArray, useCascader } from '@tidbcloud/uikit/biz'
-import { useRef, useState } from 'react'
+import { useState } from 'react'
 
 type Story = StoryObj<typeof Cascader>
 
@@ -220,10 +220,11 @@ function MultipleDemo() {
       fixedGroup={2}
       multiple
       searchable
+      searchOptions={treeToFlatArray(getTreeData())}
       allWithEmpty
       changeTrigger="onConfirm"
       optionGroupTitle={(index) => (
-        <Box p="sm" c="carbon.7">
+        <Box px="sm" c="carbon.7">
           {TITLES[index]}
         </Box>
       )}

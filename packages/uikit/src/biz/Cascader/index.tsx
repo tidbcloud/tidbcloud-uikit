@@ -1,6 +1,7 @@
-import { ReactNode, Ref, useEffect, useImperativeHandle } from 'react'
+import { IconSearch } from '@tabler/icons-react'
+import { ReactNode, Ref, useEffect, useImperativeHandle, useState } from 'react'
 
-import { IconChevronSelectorVertical } from '../../icons/index.js'
+import { IconChevronSelectorVertical, IconXCircle } from '../../icons/index.js'
 import {
   Box,
   BoxProps,
@@ -17,10 +18,12 @@ import {
   LoadingOverlay,
   TextProps,
   ComboboxSearchProps,
-  useCombobox
+  useCombobox,
+  ActionIcon
 } from '../../primitive/index.js'
 
-import { CascaderPanel } from './CascaderPanel.js'
+import { CascaderPanel, DEFAULT_PANEL_HEIGHT } from './CascaderPanel.js'
+import { SearchPanel } from './SearchPanel.js'
 import { useCascader } from './useCascader.js'
 import { SelectionProtectType, SelectOption, TreeProvider, TreeSelectOption, TreeStore } from './useTreeStore.js'
 import { getAllLeafNodes } from './utils.js'
@@ -58,12 +61,16 @@ export interface CascaderProps<T extends SelectionProtectType = string> {
 
   // search
   searchable?: boolean
-  searchProps?: ComboboxSearchProps & ElementProps<'input'>
+  searchProps?: ComboboxSearchProps & ElementProps<'input', 'onChange'> & { onChange?: (search: string) => void }
+  searchOptions?: SelectOption<T>[]
+  renderSearchOption?: RenderOption<T>
 }
 
 export interface OptionProps {
   wrapperProps?: BoxProps
   textProps?: TextProps
+  panelHeight?: number
+  panelWidth?: number
 }
 
 export interface RenderOption<T = string> {
@@ -95,7 +102,9 @@ export const Cascader = <T extends SelectionProtectType = string>({
   renderOption,
 
   searchable,
-  searchProps
+  searchProps,
+  searchOptions,
+  renderSearchOption
 }: CascaderProps<T>) => {
   let cascader = useCascader({ options })
   if (store) {
@@ -118,6 +127,13 @@ export const Cascader = <T extends SelectionProtectType = string>({
     }
   })
   useImperativeHandle(comboboxRef, () => combobox, [combobox])
+
+  const [search, setSearch] = useState('')
+  const { onChange: onSearchChange } = searchProps || {}
+  const onSearch = (search: string) => {
+    setSearch(search)
+    onSearchChange?.(search)
+  }
 
   useEffect(() => {
     if (!multiple) {
@@ -169,7 +185,29 @@ export const Cascader = <T extends SelectionProtectType = string>({
         <Combobox.Dropdown p={0}>
           {searchable && (
             <Box>
-              <Combobox.Search {...searchProps} />
+              <Combobox.Search
+                {...searchProps}
+                value={search}
+                onChange={(event) => {
+                  onSearch(event.currentTarget.value)
+                }}
+                leftSection={<IconSearch size={16} />}
+                rightSectionPointerEvents="all"
+                rightSection={
+                  !!search && (
+                    <ActionIcon
+                      size="sm"
+                      radius="lg"
+                      onClick={() => {
+                        onSearch('')
+                        combobox.focusSearchInput()
+                      }}
+                    >
+                      <IconXCircle size={16} />
+                    </ActionIcon>
+                  )
+                }
+              />
               <Divider color="carbon.3" />
             </Box>
           )}
@@ -177,22 +215,40 @@ export const Cascader = <T extends SelectionProtectType = string>({
             <LoadingOverlay visible={loading} zIndex={1000} overlayProps={{ radius: 'sm', blur: 2 }} />
             {treeOptions.length ? (
               <>
-                <Box h={240} sx={{ overflow: 'auto' }}>
-                  <CascaderPanel
-                    fixedGroup={fixedGroup}
-                    multiple={multiple}
-                    optionProps={optionProps}
-                    renderOption={renderOption as RenderOption<string>}
-                    optionGroupTitle={optionGroupTitle}
-                    onClick={(target, newValue) => {
-                      if (changeTrigger === 'onSelect' || !multiple) {
-                        onChange?.(target as TreeSelectOption<T>, newValue as T[])
-                      }
-                      if (!multiple) {
-                        combobox.closeDropdown()
-                      }
-                    }}
-                  />
+                <Box h={optionProps?.panelHeight || DEFAULT_PANEL_HEIGHT} sx={{ overflow: 'auto' }}>
+                  {searchable && search && searchOptions?.length ? (
+                    <SearchPanel
+                      currentValue={value as string[]}
+                      searchOptions={searchOptions as SelectOption<string>[]}
+                      multiple={multiple}
+                      optionProps={optionProps}
+                      renderOption={renderSearchOption as RenderOption<string>}
+                      onClick={(target, newValue) => {
+                        if (changeTrigger === 'onSelect' || !multiple) {
+                          onChange?.(target as TreeSelectOption<T>, newValue as T[])
+                        }
+                        if (!multiple) {
+                          combobox.closeDropdown()
+                        }
+                      }}
+                    />
+                  ) : (
+                    <CascaderPanel
+                      fixedGroup={fixedGroup}
+                      multiple={multiple}
+                      optionProps={optionProps}
+                      renderOption={renderOption as RenderOption<string>}
+                      optionGroupTitle={optionGroupTitle}
+                      onClick={(target, newValue) => {
+                        if (changeTrigger === 'onSelect' || !multiple) {
+                          onChange?.(target as TreeSelectOption<T>, newValue as T[])
+                        }
+                        if (!multiple) {
+                          combobox.closeDropdown()
+                        }
+                      }}
+                    />
+                  )}
                 </Box>
                 {multiple && changeTrigger === 'onConfirm' && (
                   <>
