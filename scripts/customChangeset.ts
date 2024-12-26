@@ -1,11 +1,21 @@
 import { execSync } from 'node:child_process'
-import { readFileSync } from 'node:fs'
 
 import create from '@changesets/write'
 import { getPackages } from '@manypkg/get-packages'
 import prompts from 'prompts'
 
 import packageJson from '../package.json'
+
+function generateChangelogFromTags() {
+  execSync('git fetch --all --tags')
+  const lastTag = execSync('git describe --tags --abbrev=0').toString().trim()
+  const repoUrl = packageJson.repository.url.replace(/\.git$/, '')
+  const changelog = execSync(
+    `git log ${lastTag}..HEAD --pretty=format:"- %s" | sed -E 's|#([0-9]+)|[#\\1](${repoUrl}/pull/\\1)|g'`
+  ).toString()
+
+  return changelog
+}
 
 async function main() {
   if (process.argv.includes('version')) {
@@ -16,28 +26,19 @@ async function main() {
   // Get all packages
   const { packages } = await getPackages(process.cwd())
 
-  // Fetch all tags first
-  execSync('git fetch --all --tags')
-
-  // Get commits since last tag with links
-  const lastTag = execSync('git describe --tags --abbrev=0').toString().trim()
-  const repoUrl = packageJson.repository.url.replace(/\.git$/, '')
-  const changelog = execSync(
-    `git log ${lastTag}..HEAD --pretty=format:"- %s" | sed -E 's|#([0-9]+)|[#\\1](${repoUrl}/pull/\\1)|g'`
-  ).toString()
-
-  console.log('')
-  console.log('Generated changelog:')
-  console.log(changelog)
-  console.log('')
-
   // Prompt for package selection
   const { selectedPackages } = (await prompts({
     type: 'multiselect',
     name: 'selectedPackages',
     message: 'Which packages would you like to include?',
-    choices: packages.map((pkg) => ({ title: pkg.packageJson.name, value: pkg.packageJson.name }))
+    choices: packages.map((pkg) => ({ title: pkg.packageJson.name, value: pkg.packageJson.name })),
+    min: 1
   })) as { selectedPackages: string[] }
+
+  if (!selectedPackages || selectedPackages.length === 0) {
+    console.log('Cancelled...')
+    return
+  }
 
   // Prompt for bump type
   const { bumpType } = await prompts({
@@ -51,10 +52,15 @@ async function main() {
     ]
   })
 
+  if (!bumpType) {
+    console.log('Cancelled...')
+    return
+  }
+
   // Create changeset
   await create(
     {
-      summary: changelog,
+      summary: generateChangelogFromTags(),
       releases: selectedPackages.map((pkgName) => ({
         name: pkgName,
         type: bumpType
