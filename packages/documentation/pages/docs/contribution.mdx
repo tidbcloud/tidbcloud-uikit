@@ -97,7 +97,7 @@ git commit -m 'feat(uikit): your message'
 
 3. Push the changes, request a PR. Waiting for the review and merged with the master
 
-### Release
+### Release Process
 
 Each pull request that includes user-facing changes or API modifications should include a changeset:
 
@@ -111,19 +111,28 @@ pnpm changeset
 
    - Select the packages that have changed
    - Choose the type of change (major/minor/patch)
-   - Write a description of your changes
 
-3. Commit the generated `.changeset/*.md` file along with your changes
+3. The changeset summary will be generated automatically from commit history. Commit the generated `.changeset/*.md` file along with your changes.
 
-The release process will be handled automatically:
+The changeset bot will also check your PR and comment if a changeset is missing in your PR. You can also use the link provided by the bot to create a changeset directly through GitHub's UI.
 
-- When PRs with changesets are merged, a Release PR that will bump the version and update the changelog will be created by the changeset bot
-- Once the Release PR is approved and merged, packages will be published to the registry automatically
+Then the release process will be handled automatically:
+
+- When PRs with changesets are merged, a Release PR that will bump the version and update the changelog will be created by the changeset bot.
+- Once the Release PR is approved and merged, packages will be published to the registry automatically.
 
 ### Prerelease
 
 For beta versions, you can use the following command to enter prerelease mode, then follow the instructions just like the normal release process to include a changeset in every PR:
 
 ```bash
-pnpm changeset pre enter beta
+npx changeset pre enter beta
 ```
+
+After you are done with your beta changes, you can exit the prerelease mode by running:
+
+```bash
+npx changeset pre exit
+```
+
+Then run `changeset version` to version packages with normal versions.
