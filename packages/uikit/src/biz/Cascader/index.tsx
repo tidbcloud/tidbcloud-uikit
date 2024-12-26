@@ -224,9 +224,7 @@ export const Cascader = <T extends SelectionProtectType = string>({
                       optionProps={optionProps}
                       renderOption={renderSearchOption as RenderOption<string>}
                       onClick={(target, newValue) => {
-                        if (changeTrigger === 'onSelect' || !multiple) {
-                          onChange?.(target as TreeSelectOption<T>, newValue as T[])
-                        }
+                        onChange?.(target as TreeSelectOption<T>, newValue as T[])
                         if (!multiple) {
                           combobox.closeDropdown()
                         }

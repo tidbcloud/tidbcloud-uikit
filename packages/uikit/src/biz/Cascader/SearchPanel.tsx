@@ -3,8 +3,8 @@ import { useMemo } from 'react'
 import { Box, Checkbox, Group, Stack, Text, useMantineTheme } from '../../primitive/index.js'
 
 import { CascaderItemProps, DEFAULT_PANEL_HEIGHT, DEFAULT_PANEL_WIDTH } from './CascaderPanel.js'
-import { SelectOption, useTreeContext } from './useTreeStore.js'
-import { getAllLeafNodes, treeToFlatArray } from './utils.js'
+import { SelectOption, TreeSelectOption, useTreeContext } from './useTreeStore.js'
+import { getAllLeafNodes } from './utils.js'
 
 interface SearchPanelProps extends Omit<CascaderItemProps, 'option'> {
   currentValue: string[]
@@ -15,14 +15,29 @@ export const SearchPanel = (props: SearchPanelProps) => {
   const { options } = useTreeContext()
   const { searchOptions = [], optionProps, currentValue } = props
   const displayedOptions = useMemo(() => {
-    const currentOptionMap = new Map(treeToFlatArray(options).map((o) => [o.value, o]))
+    const currentOptionMap = new Map()
+    const walk = (tree: TreeSelectOption[]) => {
+      tree.forEach((option) => {
+        currentOptionMap.set(option.value, option)
+        walk(option.children || [])
+      })
+    }
+
+    walk(options)
 
     return searchOptions.map((opt) => {
+      // value not in options(lazy load)
+      const currentValueChecked = currentValue.includes(opt.value)
+
+      // leaf
       const currentOpt = currentOptionMap.get(opt.value)
       const currentChecked = currentOpt?.isChecked
+
+      // all children checked
       const allChildren = !!currentOpt && getAllLeafNodes([currentOpt])
-      const allChildrenChecked = allChildren && allChildren.every((n) => n.isChecked)
-      return { ...opt, isChecked: currentChecked || allChildrenChecked || false }
+      const allChildrenChecked = allChildren && !!allChildren.length && allChildren.every((n) => n.isChecked)
+
+      return { ...opt, isChecked: currentValueChecked || currentChecked || allChildrenChecked }
     })
   }, [currentValue, optionProps])
 
