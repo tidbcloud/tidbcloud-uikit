@@ -99,23 +99,31 @@ git commit -m 'feat(uikit): your message'
 
 ### Release
 
-- Checkout from the latest master branch.
-- Run `pnpm changeset` and follow the instructions, you will need to tell it the version and changelogs.
-- Commit the generated changeset file (a markfown file in `.changeset` folder), create a pull request to master branch.
-- After your pull request is merged, a new pull request will be created by a bot, you can review your release there.
-- After that pull request is merged, a new release will be published automatically to github registry.
+Each pull request that includes user-facing changes or API modifications should include a changeset:
 
-### Prerelease
-
-If you want to release a prerelease version, make sure you are in prerelease mode
-
-```bash
-pnpm changeset pre enter beta
-```
-
-Then you can bump version with
+1. Generate a changeset file:
 
 ```bash
 pnpm changeset
-pnpm changeset version
+```
+
+2. Follow the interactive prompts to:
+
+   - Select the packages that have changed
+   - Choose the type of change (major/minor/patch)
+   - Write a description of your changes
+
+3. Commit the generated `.changeset/*.md` file along with your changes
+
+The release process will be handled automatically:
+
+- When PRs with changesets are merged, a Release PR that will bump the version and update the changelog will be created by the changeset bot
+- Once the Release PR is approved and merged, packages will be published to the registry automatically
+
+### Prerelease
+
+For beta versions, you can use the following command to enter prerelease mode, then follow the instructions just like the normal release process to include a changeset in every PR:
+
+```bash
+pnpm changeset pre enter beta
 ```
