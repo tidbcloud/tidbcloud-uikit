@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.99
+
+### Patch Changes
+
+- fix(MultiSelect): remove padding from input styles in MultiSelect ([#373](https://github.com/tidbcloud/tidbcloud-uikit/pull/373))
+
 ## 2.0.0-beta.98
 
 ### Patch Changes
