@@ -688,10 +688,6 @@ const theme = createTheme({
             fontSize: 14,
             marginBottom: 6
           },
-          input: {
-            paddingTop: 8,
-            paddingBottom: 8
-          },
           inputField: {
             '&::placeholder': {
               color: themeColor(theme, 'carbon', 6)
