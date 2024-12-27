@@ -1,5 +1,15 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.98
+
+### Patch Changes
+
+- fix(TextInput): fix a typo that uses rightLabel, should be rightSection ([#371](https://github.com/tidbcloud/tidbcloud-uikit/pull/371))
+- docs(contribution): refine release process and changeset instructions ([#370](https://github.com/tidbcloud/tidbcloud-uikit/pull/370))
+- docs(contribution): update contribution guidelines for changeset usage ([#369](https://github.com/tidbcloud/tidbcloud-uikit/pull/369))
+- fix(changeset): enhance changelog generation from git tags ([#368](https://github.com/tidbcloud/tidbcloud-uikit/pull/368))
+- fix(ProTable): pagination missing in hook ([#360](https://github.com/tidbcloud/tidbcloud-uikit/pull/360))
+
 ## 2.0.0-beta.97
 
 ### Patch Changes
