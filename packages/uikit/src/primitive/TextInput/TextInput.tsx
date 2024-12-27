@@ -103,7 +103,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>((props, re
             {rightLabel}
           </Typography>
         ) : (
-          rightLabel
+          rightSection
         )
       }
       ref={ref}
