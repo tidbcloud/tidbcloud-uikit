@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.106
+
+### Patch Changes
+
+- fix(build): fix Mantine core path resolution and remove unused code ([#388](https://github.com/tidbcloud/tidbcloud-uikit/pull/388))
+
 ## 2.0.0-beta.105
 
 ### Patch Changes
