@@ -14,6 +14,16 @@ const globals = {
   ...(packageJson?.dependencies || {}),
   ...(packageJson?.peerDependencies || {})
 }
+const external = [
+  ...Object.keys(globals).filter((i) => {
+    return !i.startsWith('@mantine') && !['mantine-react-table'].includes(i)
+  }),
+  // this has to be external, see https://github.com/remarkablemark/html-react-parser/issues/1427#issuecomment-2220703546
+  'html-react-parser',
+  '@emotion/server/create-instance'
+]
+
+console.log(1, external)
 
 const mantineCoreTypingsSrc = resolve(__dirname, 'node_modules/@mantine/core/lib')
 const mantineCoreTypingsDest = resolve(
@@ -93,13 +103,7 @@ export default defineConfig({
     },
 
     rollupOptions: {
-      external: [
-        ...Object.keys(globals).filter((i) => {
-          return !i.startsWith('@mantine') && !['mantine-react-table'].includes(i)
-        }),
-        // this has to be external, see https://github.com/remarkablemark/html-react-parser/issues/1427#issuecomment-2220703546
-        'html-react-parser'
-      ],
+      external,
       output: [
         {
           dir: 'dist',
