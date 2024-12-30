@@ -12,7 +12,6 @@ import {
   TabsProps,
   SelectProps,
   InputProps,
-  TextareaProps,
   MultiSelectProps,
   BadgeProps,
   CheckboxProps,
@@ -24,6 +23,7 @@ import {
 } from '../primitive/index.js'
 import { getPrimaryShade, getThemeColor, rem } from '../utils/index.js'
 
+import { getCodeHighlightTheme } from './code.js'
 import * as dark from './colors.dark.js'
 import * as light from './colors.js'
 import { FONT_FAMILY } from './font.js'
@@ -1250,10 +1250,14 @@ export const useTheme = (colorScheme: 'light' | 'dark'): Theme => {
   const isLight = colorScheme === 'light'
   const colors = isLight ? light : dark
 
-  return mergeMantineTheme(DEFAULT_THEME, {
+  const mergedTheme = mergeMantineTheme(DEFAULT_THEME, {
     ...theme,
     colors,
     white: colors.carbon[0],
     black: colors.carbon[8]
+  })
+
+  return mergeMantineTheme(mergedTheme, {
+    ...getCodeHighlightTheme(mergedTheme, colorScheme)
   })
 }
