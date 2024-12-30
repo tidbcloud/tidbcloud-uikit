@@ -61,7 +61,7 @@ export const ProTablePagination = <TData extends MRT_RowData>({ table, ...props 
 
   const totalRowCount = rowCount ?? getPrePaginationRowModel().rows.length
   const numberOfPages = Math.ceil(totalRowCount / pageSize)
-  const showFirstLastPageButtons = numberOfPages > 2
+  const showFirstLastPageButtons = (paginationProps?.total || numberOfPages) > 2
 
   const {
     rowsPerPageOptions = defaultRowsPerPage,
@@ -109,7 +109,7 @@ export const ProTablePagination = <TData extends MRT_RowData>({ table, ...props 
           ])}
           {...rest}
         />
-        {paginationProps?.showRowsPerPage !== false && (
+        {showRowsPerPage && (
           <Select
             w={114}
             size="sm"
