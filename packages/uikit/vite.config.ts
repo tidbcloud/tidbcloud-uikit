@@ -1,4 +1,4 @@
-import { readFileSync, writeFileSync } from 'node:fs'
+import { readFileSync, writeFileSync, readdirSync } from 'node:fs'
 import { cp } from 'node:fs/promises'
 import { resolve, relative, dirname } from 'node:path'
 
@@ -15,12 +15,24 @@ const globals = {
   ...(packageJson?.peerDependencies || {})
 }
 
+function getMantineCoreDistPath() {
+  const distNodeModulesDir = resolve(__dirname, 'dist/node_modules/.pnpm')
+  const mantineVersion = packageJson.dependencies['@mantine/core'] || packageJson.devDependencies['@mantine/core']
+
+  try {
+    const files = readdirSync(distNodeModulesDir)
+    const mantineDir = files.find((f) => f.startsWith(`@mantine_core@${mantineVersion.replace('^', '')}`))
+    if (!mantineDir) throw new Error('Mantine core directory not found')
+
+    return resolve(distNodeModulesDir, mantineDir, 'node_modules/@mantine/core/lib')
+  } catch (err) {
+    console.error('Failed to find Mantine core dist path:', err)
+    return resolve(__dirname, 'dist/node_modules/@mantine/core/lib')
+  }
+}
+
 const mantineCoreTypingsSrc = resolve(__dirname, 'node_modules/@mantine/core/lib')
-const mantineCoreTypingsDest = resolve(
-  __dirname,
-  // this path is generate when rollup `perserveModule` set to true
-  'dist/node_modules/.pnpm/@mantine_core@7.13.2_patch_hash_v5k5cxye7xaihpcgowhgciky7a_@mantine_hooks@7.13.2_react@18.3.1_hlfamvk7n3o6ychyvm5cyru4yu/node_modules/@mantine/core/lib'
-)
+const mantineCoreTypingsDest = getMantineCoreDistPath()
 function replaceMantineCoreWithRelativePath(filePath: string, content: string) {
   return content.replace(new RegExp(`'@mantine/core'`, 'g'), `'${relative(dirname(filePath), mantineCoreTypingsDest)}'`)
 }
