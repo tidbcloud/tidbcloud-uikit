@@ -1,5 +1,13 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.102
+
+### Minor Changes
+
+- release: bump versions (beta) ([#380](https://github.com/tidbcloud/tidbcloud-uikit/pull/380))
+- chore: update dependencies to version 7.15.2 for Mantine packages and Emotion libraries ([#379](https://github.com/tidbcloud/tidbcloud-uikit/pull/379))
+- feat(ProTable): default hide per page ([#378](https://github.com/tidbcloud/tidbcloud-uikit/pull/378))
+
 ## 2.0.0-beta.101
 
 ### Patch Changes
