@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.104
+
+### Minor Changes
+
+- chore: add @emotion/server dependency and export it in utils ([#384](https://github.com/tidbcloud/tidbcloud-uikit/pull/384))
+
 ## 2.0.0-beta.103
 
 ### Minor Changes
