@@ -1,5 +1,12 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.108
+
+### Patch Changes
+
+- fix(build): update TypeScript configuration to use 'bundler' module resolution for improved compatibility ([#393](https://github.com/tidbcloud/tidbcloud-uikit/pull/393))
+- fix(build): fix cjs/mjs output and external packages ([#392](https://github.com/tidbcloud/tidbcloud-uikit/pull/392))
+
 ## 2.0.0-beta.107
 
 ### Patch Changes
