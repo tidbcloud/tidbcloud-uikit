@@ -20,10 +20,9 @@ const external = [
   }),
   // this has to be external, see https://github.com/remarkablemark/html-react-parser/issues/1427#issuecomment-2220703546
   'html-react-parser',
-  '@emotion/server/create-instance'
+  '@emotion/server/create-instance',
+  'react-textarea-autosize'
 ]
-
-console.log(1, external)
 
 const mantineCoreTypingsSrc = resolve(__dirname, 'node_modules/@mantine/core/lib')
 const mantineCoreTypingsDest = resolve(
