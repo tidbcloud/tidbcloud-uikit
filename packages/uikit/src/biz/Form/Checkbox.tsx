@@ -52,6 +52,7 @@ export const FormCheckboxGroup = ({
   onChange,
   direction,
   gap = 'sm',
+  label,
   ...rest
 }: FormCheckboxGroupProps) => {
   const { control, formState, getFieldState } = useFormContext()
@@ -67,6 +68,7 @@ export const FormCheckboxGroup = ({
         return (
           <Checkbox.Group
             {...rest}
+            label={label}
             value={value}
             onChange={(val) => {
               handleChange(val)
@@ -75,7 +77,7 @@ export const FormCheckboxGroup = ({
             {...restField}
             error={error ? <ErrorMessage errors={formState.errors} name={name} /> : undefined}
           >
-            <Flex direction={direction} gap={gap} mt="xs">
+            <Flex direction={direction} gap={gap} mt={label ? 'xs' : undefined}>
               {data.map((i) => (
                 <Checkbox {...i} key={i.value as string} />
               ))}
