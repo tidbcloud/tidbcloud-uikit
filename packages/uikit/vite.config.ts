@@ -23,6 +23,7 @@ const external = [
   'html-react-parser',
   '@emotion/server/create-instance',
   // this is a peer dependency of @mantine/core and we bundle all mantine packages, this one needs to be external to avoid ssr error
+  // also this should be added to dependencies and use same version with the one in the @mantine/core's dependency in package.json to avoid phantom dependency
   'react-textarea-autosize',
   'react/jsx-runtime'
 ]
