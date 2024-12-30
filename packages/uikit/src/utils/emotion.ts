@@ -18,3 +18,4 @@ export type EmotionStyles<Payload extends FactoryPayload> = EmotionStylesApiReco
 
 export { keyframes, createStyles, createGetInitialProps } from '@mantine/emotion'
 export { default as createEmotionCache } from '@emotion/cache'
+export { default as createEmotionServer } from '@emotion/server/create-instance'
