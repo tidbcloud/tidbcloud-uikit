@@ -1,5 +1,12 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.100
+
+### Minor Changes
+
+- feat(FormCheckboxGroup): add Flex layout support and accept gap/direction prop ([#375](https://github.com/tidbcloud/tidbcloud-uikit/pull/375))
+- fix: code highlight styles ([#376](https://github.com/tidbcloud/tidbcloud-uikit/pull/376))
+
 ## 2.0.0-beta.99
 
 ### Patch Changes
