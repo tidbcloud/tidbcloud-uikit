@@ -1,5 +1,5 @@
 import type { Meta, StoryObj, StoryFn } from '@storybook/react'
-import { Group, Center, Box } from '@tidbcloud/uikit'
+import { Group, Center, Divider } from '@tidbcloud/uikit'
 import {
   Form,
   FormTextInput,
@@ -14,9 +14,11 @@ import {
   FormPhoneInputV2,
   FormCopyText,
   FormRadioGroup,
-  FormSegmentedControl
+  FormSegmentedControl,
+  FormCheckboxGroup,
+  FormCheckbox
 } from '@tidbcloud/uikit/biz'
-import { IconAtom01, IconLock01, IconZoomIn } from '@tidbcloud/uikit/icons'
+import { IconAtom01, IconLock01 } from '@tidbcloud/uikit/icons'
 
 type Story = StoryObj<typeof Form>
 
@@ -202,6 +204,33 @@ export const Primary: Story = {
           ]}
           label="Your favorite framework"
         />
+        <FormCheckboxGroup
+          name="checkboxGroup1"
+          data={[
+            { label: 'React', value: 'react' },
+            { label: 'Vue', value: 'vue' },
+            { label: 'Angular', value: 'angular' },
+            { label: 'Svelte', value: 'svelte' }
+          ]}
+          label="Your favorite framework"
+          direction="column"
+        />
+
+        <FormCheckboxGroup
+          name="checkboxGroup2"
+          data={[
+            { label: 'React', value: 'react' },
+            { label: 'Vue', value: 'vue' },
+            { label: 'Angular', value: 'angular' },
+            { label: 'Svelte', value: 'svelte' }
+          ]}
+          label="Your favorite framework"
+          direction="row"
+        />
+
+        <Divider />
+
+        <FormCheckbox name="checkbox" label="I agree to the terms and conditions" />
       </Form>
     </Center>
   ),
