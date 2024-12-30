@@ -14,6 +14,7 @@ const globals = {
   ...(packageJson?.dependencies || {}),
   ...(packageJson?.peerDependencies || {})
 }
+
 const external = [
   ...Object.keys(globals).filter((i) => {
     return !i.startsWith('@mantine') && !['mantine-react-table'].includes(i)
@@ -32,6 +33,7 @@ const mantineCoreTypingsDest = resolve(
   // this path is generate when rollup `perserveModule` set to true
   'dist/node_modules/.pnpm/@mantine_core@7.15.2_patch_hash_jclkxeaefn6uz54h34k3r3yjsq_@mantine_hooks@7.15.2_react@18.3.1_sx7emryda53tomnuogmu74guza/node_modules/@mantine/core/lib'
 )
+
 function replaceMantineCoreWithRelativePath(filePath: string, content: string) {
   return content.replace(new RegExp(`'@mantine/core'`, 'g'), `'${relative(dirname(filePath), mantineCoreTypingsDest)}'`)
 }
@@ -49,6 +51,10 @@ function readMantiOverride() {
 }
 
 const typeOverride = readMantiOverride()
+
+function updateImportExtensions(content: string, targetExt: '.mjs' | '.cjs') {
+  return content.replace(/(from\s+['"]\.\.?\/.*?)\.js(['"'])/g, (_, start, end) => `${start}${targetExt}${end}`)
+}
 
 export default defineConfig({
   plugins: [
@@ -74,11 +80,11 @@ export default defineConfig({
         }
 
         // generate .d.cts file for cjs build
-        writeFileSync(filePath.replace('.d.ts', '.d.cts'), content)
+        writeFileSync(filePath.replace('.d.ts', '.d.cts'), updateImportExtensions(content, '.cjs'))
 
         return {
-          filePath,
-          content
+          filePath: filePath.replace('.d.ts', '.d.mts'),
+          content: updateImportExtensions(content, '.mjs')
         }
       },
       async afterBuild() {
