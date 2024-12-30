@@ -33,7 +33,7 @@ Cloud UI Icons are designed originally by TiDB Cloud design team which includes 
 Inside your React project directory, run the following command to install the package:
 
 ```sh npm2yarn
-npm install @tidbcloud/uikit
+npm install @tidbcloud/uikit@latest
 ```
 
 ## Quick Start
@@ -86,37 +86,65 @@ function Main() {
 }
 ```
 
+For convenience, we provide a `useColorScheme` hook to help you manage the color scheme and it will also persist the state in the local storage.
+
+```ts
+import { useColorScheme } from '@tidbcloud/uikit'
+
+const { colorScheme, setColorScheme } = useColorScheme()
+```
+
+Since the color scheme can be set to `auto`, you can use the `useComputedColorScheme` hook to get the final color scheme:
+
+```ts
+import { useComputedColorScheme } from '@tidbcloud/uikit'
+
+const computedColorScheme = useComputedColorScheme()
+```
+
 ### Usage with Next.js Pages router
 
-Create a emotion cache with `createEmotionCache` function:
+Assuming you are using the `src` directory structure, create a emotion cache with `createEmotionCache` function in your `src/lib/emotion.ts`:
 
-```js
+```ts
 import { createEmotionCache } from '@tidbcloud/uikit/utils'
 
-const emotionCache = createEmotionCache({ key: 'css' })
+export const emotionCache = createEmotionCache({ key: 'css' })
 ```
 
 Then pass the emotion cache to `ThemeProvider` and wrap your application root component in `_app.tsx`:
 
 ```tsx
-<ThemeProvider emotionCache={emotionCache} colorScheme="auto">
-  <App />
-</ThemeProvider>
+import '@/styles/globals.css'
+import '@tidbcloud/uikit/style.css'
+import type { AppProps } from 'next/app'
+import { ThemeProvider } from '@tidbcloud/uikit/theme'
+import { emotionCache } from '@/lib/emotion'
+
+export default function App({ Component, pageProps }: AppProps) {
+  return (
+    <ThemeProvider emotionCache={emotionCache} colorScheme="auto">
+      <Component {...pageProps} />
+    </ThemeProvider>
+  )
+}
 ```
 
 Create a emotion server with `createEmotionServer` function in `_document.tsx`:
 
 ```tsx
-import createEmotionServer from '@emotion/server/create-instance'
-import { emotionCache } from '@lib/emotion'
-import { createGetInitialProps } from '@tidbcloud/uikit/utils'
-import NextDocument from 'next/document'
+import NextDocument, { Html, Head, Main, NextScript } from 'next/document'
+import { ColorSchemeScript } from '@tidbcloud/uikit'
+import { createGetInitialProps, createEmotionServer } from '@tidbcloud/uikit/utils'
+import { emotionCache } from '@/lib/emotion'
 
 export default function Document() {
   return (
     <Html lang="en">
-      <Head />
-      <body>
+      <Head>
+        <ColorSchemeScript defaultColorScheme="auto" />
+      </Head>
+      <body className="antialiased">
         <Main />
         <NextScript />
       </body>
@@ -127,3 +155,5 @@ export default function Document() {
 const stylesServer = createEmotionServer(emotionCache)
 Document.getInitialProps = createGetInitialProps(NextDocument, stylesServer)
 ```
+
+Done! You can now use any components in your pages and using `sx`, `styles` props to customize the styles.
