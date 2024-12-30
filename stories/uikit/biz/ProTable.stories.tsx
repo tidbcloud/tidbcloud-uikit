@@ -135,6 +135,9 @@ export const Primary: Story = {
     pagination: {
       showRowsPerPage: true,
       showTotal: true,
+      onChange: (pageIndex) => {
+        console.log(pageIndex)
+      },
       localization: {
         total: 'Total'
       }
