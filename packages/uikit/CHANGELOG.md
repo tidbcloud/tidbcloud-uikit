@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.101
+
+### Patch Changes
+
+- feat(ProTable): default hide per page ([#378](https://github.com/tidbcloud/tidbcloud-uikit/pull/378))
+
 ## 2.0.0-beta.100
 
 ### Minor Changes
