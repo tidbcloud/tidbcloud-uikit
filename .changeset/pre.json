@@ -3,7 +3,9 @@
   "tag": "beta",
   "initialVersions": {
     "@tidbcloud/uikit-documentation": "0.1.29",
-    "@tidbcloud/uikit": "1.17.1"
+    "@tidbcloud/uikit": "1.17.1",
+    "@tidbcloud/uikit-example-with-nextjs-pages-router": "0.1.0",
+    "@tidbcloud/uikit-example-with-vitejs": "0.0.0"
   },
   "changesets": [
     "angry-taxis-impress",
@@ -107,6 +109,7 @@
     "thin-impalas-exercise",
     "thirty-cups-pull",
     "thirty-ties-crash",
+    "three-buckets-grab",
     "three-pianos-double",
     "tidy-clocks-yell",
     "tidy-lizards-applaud",
