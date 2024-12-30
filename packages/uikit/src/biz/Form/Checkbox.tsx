@@ -2,7 +2,7 @@ import { ErrorMessage } from '@hookform/error-message'
 import React from 'react'
 import { Controller, RegisterOptions, useFormContext } from 'react-hook-form'
 
-import { Checkbox, CheckboxProps, CheckboxGroupProps } from '../../primitive/index.js'
+import { Checkbox, CheckboxProps, CheckboxGroupProps, Flex, FlexProps } from '../../primitive/index.js'
 
 export interface FormCheckboxProps extends CheckboxProps {
   name: string
@@ -41,9 +41,19 @@ export interface FormCheckboxGroupProps extends Omit<CheckboxGroupProps, 'childr
   name: string
   rules?: RegisterOptions
   data: CheckboxProps[]
+  direction?: FlexProps['direction']
+  gap?: FlexProps['gap']
 }
 
-export const FormCheckboxGroup = ({ name, rules, data, onChange, ...rest }: FormCheckboxGroupProps) => {
+export const FormCheckboxGroup = ({
+  name,
+  rules,
+  data,
+  onChange,
+  direction,
+  gap = 'sm',
+  ...rest
+}: FormCheckboxGroupProps) => {
   const { control, formState, getFieldState } = useFormContext()
   const { error } = getFieldState(name, formState)
 
@@ -65,9 +75,11 @@ export const FormCheckboxGroup = ({ name, rules, data, onChange, ...rest }: Form
             {...restField}
             error={error ? <ErrorMessage errors={formState.errors} name={name} /> : undefined}
           >
-            {data.map((i) => (
-              <Checkbox {...i} key={i.value as string} />
-            ))}
+            <Flex direction={direction} gap={gap} mt="xs">
+              {data.map((i) => (
+                <Checkbox {...i} key={i.value as string} />
+              ))}
+            </Flex>
           </Checkbox.Group>
         )
       }}
