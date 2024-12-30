@@ -4,7 +4,7 @@
   "description": "tidbcloud uikit",
   "type": "module",
   "main": "dist/primitive/index.cjs",
-  "module": "dist/primitive/index.js",
+  "module": "dist/primitive/index.mjs",
   "types": "dist/primitive/index.d.ts",
   "scripts": {
     "test": "test",
@@ -14,27 +14,27 @@
   },
   "exports": {
     ".": {
-      "import": "./dist/primitive/index.js",
+      "import": "./dist/primitive/index.mjs",
       "require": "./dist/primitive/index.cjs"
     },
     "./biz": {
-      "import": "./dist/biz/index.js",
+      "import": "./dist/biz/index.mjs",
       "require": "./dist/biz/index.cjs"
     },
     "./hooks": {
-      "import": "./dist/hooks/index.js",
+      "import": "./dist/hooks/index.mjs",
       "require": "./dist/hooks/index.cjs"
     },
     "./theme": {
-      "import": "./dist/theme/index.js",
+      "import": "./dist/theme/index.mjs",
       "require": "./dist/theme/index.cjs"
     },
     "./utils": {
-      "import": "./dist/utils/index.js",
+      "import": "./dist/utils/index.mjs",
       "require": "./dist/utils/index.cjs"
     },
     "./icons": {
-      "import": "./dist/icons/index.js",
+      "import": "./dist/icons/index.mjs",
       "require": "./dist/icons/index.cjs"
     },
     "./dist/icons/raw/*": "./dist/icons/raw/*",

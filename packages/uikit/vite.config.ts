@@ -21,7 +21,9 @@ const external = [
   // this has to be external, see https://github.com/remarkablemark/html-react-parser/issues/1427#issuecomment-2220703546
   'html-react-parser',
   '@emotion/server/create-instance',
-  'react-textarea-autosize'
+  // this is a peer dependency of @mantine/core and we bundle all mantine packages, this one needs to be external to avoid ssr error
+  'react-textarea-autosize',
+  'react/jsx-runtime'
 ]
 
 const mantineCoreTypingsSrc = resolve(__dirname, 'node_modules/@mantine/core/lib')
@@ -109,7 +111,7 @@ export default defineConfig({
           format: 'esm',
           preserveModules: true,
           preserveModulesRoot: 'src',
-          entryFileNames: '[name].js',
+          entryFileNames: '[name].mjs',
           exports: 'named'
         },
         {
