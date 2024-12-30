@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.107
+
+### Patch Changes
+
+- fix(build): update external dependencies in Vite config for improved … ([#390](https://github.com/tidbcloud/tidbcloud-uikit/pull/390))
+
 ## 2.0.0-beta.106
 
 ### Patch Changes
