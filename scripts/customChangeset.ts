@@ -23,19 +23,15 @@ async function main() {
     return
   }
 
-  // Get all packages
-  const { packages } = await getPackages(process.cwd())
-
   // Prompt for package selection
-  const { selectedPackages } = (await prompts({
-    type: 'multiselect',
+  const { selectedPackages } = await prompts({
+    type: 'select',
     name: 'selectedPackages',
     message: 'Which packages would you like to include?',
-    choices: packages.map((pkg) => ({ title: pkg.packageJson.name, value: pkg.packageJson.name })),
-    min: 1
-  })) as { selectedPackages: string[] }
+    choices: [{ title: '@tidbcloud/uikit', value: '@tidbcloud/uikit' }]
+  })
 
-  if (!selectedPackages || selectedPackages.length === 0) {
+  if (!selectedPackages) {
     console.log('Cancelled...')
     return
   }
@@ -61,10 +57,12 @@ async function main() {
   await create(
     {
       summary: generateChangelogFromTags(),
-      releases: selectedPackages.map((pkgName) => ({
-        name: pkgName,
-        type: bumpType
-      }))
+      releases: [
+        {
+          name: selectedPackages,
+          type: bumpType
+        }
+      ]
     },
     process.cwd()
   )
