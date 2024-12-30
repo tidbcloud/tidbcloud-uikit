@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.105
+
+### Patch Changes
+
+- fix(build): enhance Mantine core path resolution and improve e… ([#386](https://github.com/tidbcloud/tidbcloud-uikit/pull/386))
+
 ## 2.0.0-beta.104
 
 ### Minor Changes
