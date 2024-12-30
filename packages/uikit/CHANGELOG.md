@@ -1,5 +1,14 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.109
+
+### Minor Changes
+
+- docs: update docs and changeset script ([#398](https://github.com/tidbcloud/tidbcloud-uikit/pull/398))
+- fix(build): fix typings version conflict and ignore eslint error in build ([#397](https://github.com/tidbcloud/tidbcloud-uikit/pull/397))
+- chore: add examples ([#396](https://github.com/tidbcloud/tidbcloud-uikit/pull/396))
+- fix(build): add 'react-textarea-autosize' to package.json and Vite config for improved dependency management ([#395](https://github.com/tidbcloud/tidbcloud-uikit/pull/395))
+
 ## 2.0.0-beta.108
 
 ### Patch Changes
