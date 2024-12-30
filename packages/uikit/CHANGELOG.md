@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.103
+
+### Minor Changes
+
+- refactor: fix code highlight theme and upgrade @tabler icon ([#382](https://github.com/tidbcloud/tidbcloud-uikit/pull/382))
+
 ## 2.0.0-beta.102
 
 ### Minor Changes
