@@ -6,3 +6,4 @@ build/
 *.json
 *.yaml
 *.lock
+examples/
