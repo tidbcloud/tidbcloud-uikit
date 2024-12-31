@@ -9,6 +9,7 @@ const alias = [
   { find: /^@tidbcloud\/uikit\/icons$/, replacement: path.resolve(process.cwd(), './packages/uikit/src/icons') },
   { find: /^@tidbcloud\/uikit\/biz$/, replacement: path.resolve(process.cwd(), './packages/uikit/src/biz') },
   { find: /^@tidbcloud\/uikit\/utils$/, replacement: path.resolve(process.cwd(), './packages/uikit/src/utils') },
+  { find: /^@tidbcloud\/uikit\/emotion$/, replacement: path.resolve(process.cwd(), './packages/uikit/src/emotion') },
   { find: /^@tidbcloud\/uikit$/, replacement: path.resolve(process.cwd(), './packages/uikit/src/primitive') }
 ]
 

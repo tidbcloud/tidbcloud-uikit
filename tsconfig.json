@@ -36,7 +36,8 @@
       "@tidbcloud/uikit/hooks": ["packages/uikit/src/hooks"],
       "@tidbcloud/uikit/biz": ["packages/uikit/src/biz"],
       "@tidbcloud/uikit/utils": ["packages/uikit/src/utils"],
-      "@tidbcloud/uikit": ["packages/uikit/src/primitive"],
+      "@tidbcloud/uikit/emotion": ["packages/uikit/src/emotion"],
+      "@tidbcloud/uikit": ["packages/uikit/src/primitive"]
     }
   },
   "exclude": ["node_modules", "dist"]
