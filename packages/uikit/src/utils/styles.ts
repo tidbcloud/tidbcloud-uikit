@@ -3,7 +3,7 @@ import { MantineTheme, StylesRecord } from '@mantine/core'
 import { CSSObject, EmotionHelpers, EmotionSx } from '@mantine/emotion'
 import { merge } from 'lodash-es'
 
-import type { EmotionStyles } from './emotion.js'
+import type { EmotionStyles } from '../emotion/index.js'
 
 function mergeSxValues(values: (EmotionSx | undefined)[], theme: MantineTheme, helpers: EmotionHelpers) {
   const css: CSSObject = values.reduce<CSSObject>((ret, partial) => {
