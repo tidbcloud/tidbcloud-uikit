@@ -1,5 +1,6 @@
 import type { Meta, StoryFn } from '@storybook/react'
 import { FloatingIndicator, UnstyledButton } from '@tidbcloud/uikit'
+import { createStyles } from '@tidbcloud/uikit/emotion'
 import {
   IconArrowDown,
   IconArrowDownLeft,
@@ -11,7 +12,6 @@ import {
   IconArrowUpRight,
   IconCircle
 } from '@tidbcloud/uikit/icons'
-import { createStyles } from '@tidbcloud/uikit/utils'
 import { useState } from 'react'
 
 const decorator = (Story: StoryFn) => {
