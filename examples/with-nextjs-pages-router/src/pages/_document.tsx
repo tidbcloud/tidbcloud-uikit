@@ -1,6 +1,7 @@
 import NextDocument, { Html, Head, Main, NextScript } from 'next/document'
 import { ColorSchemeScript } from '@tidbcloud/uikit'
-import { createGetInitialProps, createEmotionServer } from '@tidbcloud/uikit/utils'
+import { createGetInitialProps } from '@tidbcloud/uikit/emotion'
+import { createEmotionServer } from '@tidbcloud/uikit/emotion/server'
 import { emotionCache } from '@/lib/emotion'
 
 export default function Document() {
