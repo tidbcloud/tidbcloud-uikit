@@ -2,6 +2,7 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import { Button } from '@tidbcloud/uikit'
+import { rgba } from '@tidbcloud/uikit/utils'
 
 import './App.css'
 
@@ -20,7 +21,9 @@ function App() {
       </div>
       <h1>Vite + React</h1>
       <div className="card">
-        <Button onClick={() => setCount((count) => count + 1)}>count is {count}</Button>
+        <Button bg={rgba('#ff00ff', 0.8)} onClick={() => setCount((count) => count + 1)}>
+          count is {count}
+        </Button>
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>

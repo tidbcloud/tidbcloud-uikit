@@ -106,7 +106,9 @@ export default defineConfig({
         resolve(__dirname, 'src/icons/index.ts'),
         resolve(__dirname, 'src/primitive/index.ts'),
         resolve(__dirname, 'src/theme/index.ts'),
-        resolve(__dirname, 'src/utils/index.ts')
+        resolve(__dirname, 'src/utils/index.ts'),
+        resolve(__dirname, 'src/emotion/index.ts'),
+        resolve(__dirname, 'src/emotion/server.ts')
       ]
     },
 

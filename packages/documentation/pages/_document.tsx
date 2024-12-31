@@ -1,6 +1,6 @@
-import createEmotionServer from '@emotion/server/create-instance'
 import { emotionCache } from '@lib/emotion'
-import { createGetInitialProps } from '@tidbcloud/uikit/utils'
+import { createGetInitialProps } from '@tidbcloud/uikit/emotion'
+import { createEmotionServer } from '@tidbcloud/uikit/emotion/server'
 import NextDocument, { Html, Head, Main, NextScript } from 'next/document'
 
 export default function Document() {

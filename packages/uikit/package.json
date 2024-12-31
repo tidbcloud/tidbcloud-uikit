@@ -33,6 +33,14 @@
       "import": "./dist/utils/index.mjs",
       "require": "./dist/utils/index.cjs"
     },
+    "./emotion": {
+      "import": "./dist/emotion/index.mjs",
+      "require": "./dist/emotion/index.cjs"
+    },
+    "./emotion/server": {
+      "import": "./dist/emotion/server.mjs",
+      "require": "./dist/emotion/server.cjs"
+    },
     "./icons": {
       "import": "./dist/icons/index.mjs",
       "require": "./dist/icons/index.cjs"

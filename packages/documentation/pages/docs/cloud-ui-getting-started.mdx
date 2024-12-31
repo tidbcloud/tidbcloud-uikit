@@ -107,7 +107,7 @@ const computedColorScheme = useComputedColorScheme()
 Assuming you are using the `src` directory structure, create a emotion cache with `createEmotionCache` function in your `src/lib/emotion.ts`:
 
 ```ts
-import { createEmotionCache } from '@tidbcloud/uikit/utils'
+import { createEmotionCache } from '@tidbcloud/uikit/emotion'
 
 export const emotionCache = createEmotionCache({ key: 'css' })
 ```
@@ -135,7 +135,8 @@ Create a emotion server with `createEmotionServer` function in `_document.tsx`:
 ```tsx
 import NextDocument, { Html, Head, Main, NextScript } from 'next/document'
 import { ColorSchemeScript } from '@tidbcloud/uikit'
-import { createGetInitialProps, createEmotionServer } from '@tidbcloud/uikit/utils'
+import { createGetInitialProps } from '@tidbcloud/uikit/emotion'
+import { createEmotionServer } from '@tidbcloud/uikit/emotion/server'
 import { emotionCache } from '@/lib/emotion'
 
 export default function Document() {
