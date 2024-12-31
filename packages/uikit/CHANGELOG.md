@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.110
+
+### Minor Changes
+
+- feat(emotion): add emotion support with new entry and server files ([#400](https://github.com/tidbcloud/tidbcloud-uikit/pull/400))
+
 ## 2.0.0-beta.109
 
 ### Minor Changes
