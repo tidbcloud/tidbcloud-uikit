@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.112
+
+### Patch Changes
+
+- fix(select): enhance creatable select functionality ([#405](https://github.com/tidbcloud/tidbcloud-uikit/pull/405))
+
 ## 2.0.0-beta.111
 
 ### Patch Changes
