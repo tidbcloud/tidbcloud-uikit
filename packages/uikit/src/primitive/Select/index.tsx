@@ -1,12 +1,11 @@
-import { Select as MantineSelect, MultiSelect as MantineMultiSelect } from '@mantine/core'
+import { Select as MantineSelect, MultiSelect as MantineMultiSelect, getParsedComboboxData } from '@mantine/core'
 import type {
   SelectProps as MantineSelectProps,
   MultiSelectProps as MantineMultiSelectProps,
-  ComboboxItem,
-  OptionsFilter
+  ComboboxItem
 } from '@mantine/core'
 import { useUncontrolled } from '@mantine/hooks'
-import { useCallback } from 'react'
+import { useCallback, useMemo } from 'react'
 
 export interface SelectProps extends MantineSelectProps {
   creatable?: boolean
@@ -18,39 +17,26 @@ const defaultGetCreateLabel = (query: string) => `+ Create ${query}`
 const CREATE_VALUE_PREFIX = '$create:'
 const defaultGetCreateValue = (query: string) => `${CREATE_VALUE_PREFIX}${query}`
 
-export function Select(props: SelectProps) {
-  const {
-    creatable = false,
-    getCreateLabel = defaultGetCreateLabel,
-    searchable,
-    onCreate,
-    filter,
-    onChange,
-    ...rest
-  } = props
+function useCreateableSelect<
+  T extends Pick<
+    SelectProps,
+    'creatable' | 'getCreateLabel' | 'onCreate' | 'data' | 'searchValue' | 'searchable' | 'onSearchChange'
+  > & {
+    onChange?: (value: SelectProps['value'] | MultiSelectProps['value'], option: ComboboxItem) => void
+    value?: SelectProps['value'] | MultiSelectProps['value']
+    defaultValue?: SelectProps['defaultValue'] | MultiSelectProps['defaultValue']
+  }
+>(props: T): T {
+  const { creatable = false, getCreateLabel = defaultGetCreateLabel, onCreate, searchable, ...rest } = props
 
   if (creatable && typeof onCreate !== 'function') {
     throw new Error('`onCreate` is required when `creatable` is true')
   }
 
-  const [dropdownOpened, setDropdownOpened] = useUncontrolled({
-    value: props.dropdownOpened,
-    defaultValue: false,
-    onChange: (value) => {
-      if (value) {
-        props.onDropdownOpen?.()
-      } else {
-        props.onDropdownClose?.()
-      }
-    }
-  })
-  const close = useCallback(() => setDropdownOpened(false), [])
-  const open = useCallback(() => setDropdownOpened(true), [])
-
-  const [value, setValue] = useUncontrolled<string | null | undefined>({
+  const [value, setValue] = useUncontrolled<string | string[] | null>({
     value: props.value,
     onChange: props.onChange,
-    defaultValue: ''
+    defaultValue: props.defaultValue
   })
   const [searchValue, setSearchValue] = useUncontrolled<string | undefined>({
     value: props.searchValue,
@@ -58,53 +44,74 @@ export function Select(props: SelectProps) {
     defaultValue: ''
   })
 
-  const defaultOptionsFilter: OptionsFilter = useCallback(({ options, search }) => {
-    const splittedSearch = search.toLowerCase().trim().split(' ')
-    const nextItems = (options as ComboboxItem[]).filter((option) => {
-      const words = option.label.toLowerCase().trim().split(' ')
-      return splittedSearch.every((searchWord) => words.some((word) => word.includes(searchWord)))
-    })
-
-    if (nextItems.length === 0) {
-      return [
-        {
-          label: getCreateLabel(search),
-          value: defaultGetCreateValue(search)
+  const parsedData = useMemo(() => {
+    const parsedData = getParsedComboboxData(props.data)
+    if (!creatable || !searchValue) {
+      return parsedData
+    }
+    const placeholder = {
+      label: getCreateLabel(searchValue),
+      value: defaultGetCreateValue(searchValue)
+    }
+    if (
+      parsedData.findIndex((item) => {
+        if ('value' in item) {
+          return item.value === placeholder.value.slice(CREATE_VALUE_PREFIX.length)
         }
-      ]
+        return false
+      }) === -1
+    ) {
+      parsedData.push(placeholder)
     }
-    return nextItems
-  }, [])
+    return parsedData
+  }, [props.data, searchValue])
 
-  const handleOptionSubmit = useCallback((value: string) => {
-    if (creatable && value.startsWith(CREATE_VALUE_PREFIX) && typeof onCreate === 'function') {
-      const createdItem = onCreate(value.slice(CREATE_VALUE_PREFIX.length))
-      if (createdItem) {
-        setValue(createdItem.value, createdItem)
-        setSearchValue('')
-        close()
-        props.onOptionSubmit?.(createdItem.value)
+  const handleChange = useCallback(
+    (value: SelectProps['value'] | MultiSelectProps['value'], option: ComboboxItem) => {
+      if (creatable) {
+        const isMultiSelect = Array.isArray(value)
+        const values = Array.isArray(value) ? value : [value]
+        const clickedCreateItem = values.some((i) => typeof i === 'string' && i.startsWith(CREATE_VALUE_PREFIX))
+
+        if (clickedCreateItem) {
+          const newItemValue = isMultiSelect
+            ? values.find((i) => typeof i === 'string' && i.startsWith(CREATE_VALUE_PREFIX))
+            : value
+          if (newItemValue) {
+            const createdItem = onCreate!(newItemValue?.slice(CREATE_VALUE_PREFIX.length))
+            if (createdItem) {
+              const nextValue = isMultiSelect
+                ? ([...values.filter((i) => !i?.startsWith(CREATE_VALUE_PREFIX)), createdItem.value] as string[])
+                : createdItem.value
+              setValue(nextValue)
+              setSearchValue('')
+              props.onChange?.(nextValue, option)
+              return
+            }
+          }
+        }
       }
-    } else {
-      props.onOptionSubmit?.(value)
-    }
-  }, [])
 
-  return (
-    <MantineSelect
-      {...rest}
-      value={value}
-      onChange={setValue}
-      searchable={searchable || creatable}
-      searchValue={searchValue}
-      onSearchChange={setSearchValue}
-      filter={creatable ? defaultOptionsFilter : filter}
-      onOptionSubmit={handleOptionSubmit}
-      dropdownOpened={dropdownOpened}
-      onDropdownClose={close}
-      onDropdownOpen={open}
-    />
+      setValue(value as any)
+      props.onChange?.(value, option)
+    },
+    [searchValue]
   )
+
+  return {
+    ...rest,
+    data: parsedData,
+    value,
+    onChange: handleChange,
+    searchable: searchable || creatable,
+    searchValue,
+    onSearchChange: setSearchValue
+  } as T
+}
+
+export function Select(props: SelectProps) {
+  const allProps = useCreateableSelect(props)
+  return <MantineSelect {...allProps} />
 }
 
 export interface MultiSelectProps extends MantineMultiSelectProps {
@@ -114,93 +121,6 @@ export interface MultiSelectProps extends MantineMultiSelectProps {
 }
 
 export function MultiSelect(props: MultiSelectProps) {
-  const {
-    creatable = false,
-    getCreateLabel = defaultGetCreateLabel,
-    searchable,
-    onCreate,
-    filter,
-    onChange,
-    ...rest
-  } = props
-
-  if (creatable && typeof onCreate !== 'function') {
-    throw new Error('`onCreate` is required when `creatable` is true')
-  }
-
-  const [dropdownOpened, setDropdownOpened] = useUncontrolled({
-    value: props.dropdownOpened,
-    onChange: (value) => {
-      if (value) {
-        props.onDropdownOpen?.()
-      } else {
-        props.onDropdownClose?.()
-      }
-    },
-    defaultValue: false
-  })
-  const close = useCallback(() => setDropdownOpened(false), [])
-  const open = useCallback(() => setDropdownOpened(true), [])
-
-  const [value, setValue] = useUncontrolled<string[]>({
-    value: props.value,
-    onChange: props.onChange,
-    defaultValue: []
-  })
-  const [searchValue, setSearchValue] = useUncontrolled<string | undefined>({
-    value: props.searchValue,
-    onChange: props.onSearchChange,
-    defaultValue: ''
-  })
-
-  const defaultOptionsFilter: OptionsFilter = useCallback(({ options, search }) => {
-    const splittedSearch = search.toLowerCase().trim().split(' ')
-    const nextItems = (options as ComboboxItem[]).filter((option) => {
-      const words = option.label.toLowerCase().trim().split(' ')
-      return splittedSearch.every((searchWord) => words.some((word) => word.includes(searchWord)))
-    })
-
-    if (nextItems.length === 0) {
-      return [
-        {
-          label: getCreateLabel(search),
-          value: defaultGetCreateValue(search)
-        }
-      ]
-    }
-    return nextItems
-  }, [])
-
-  const handleOptionSubmit = useCallback(
-    (val: string) => {
-      if (creatable && val.startsWith(CREATE_VALUE_PREFIX) && typeof onCreate === 'function') {
-        const createdItem = onCreate(val.slice(CREATE_VALUE_PREFIX.length))
-        if (createdItem) {
-          setValue([...value, createdItem.value])
-          setSearchValue('')
-          close()
-          props.onOptionSubmit?.(createdItem.value)
-        }
-      } else {
-        props.onOptionSubmit?.(val)
-      }
-    },
-    [value]
-  )
-
-  return (
-    <MantineMultiSelect
-      {...rest}
-      value={value}
-      onChange={setValue}
-      searchable={searchable || creatable}
-      searchValue={searchValue}
-      onSearchChange={setSearchValue}
-      filter={creatable ? defaultOptionsFilter : filter}
-      onOptionSubmit={handleOptionSubmit}
-      dropdownOpened={dropdownOpened}
-      onDropdownClose={close}
-      onDropdownOpen={open}
-    />
-  )
+  const allProps = useCreateableSelect(props)
+  return <MantineMultiSelect {...allProps} />
 }
