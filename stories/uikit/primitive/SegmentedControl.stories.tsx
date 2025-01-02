@@ -1,5 +1,5 @@
 import type { Meta, StoryFn } from '@storybook/react'
-import { Button, SegmentedControl } from '@tidbcloud/uikit'
+import { Button, Modal, SegmentedControl, Stack } from '@tidbcloud/uikit'
 import { useState } from 'react'
 
 const decorator = (Story: StoryFn) => {
@@ -53,4 +53,18 @@ export function EmptyStringValue() {
 
 export function ColorsIndexReference() {
   return <SegmentedControl color="cyan.9" data={data} />
+}
+
+export function WithinModal() {
+  const [open, setOpen] = useState(false)
+  return (
+    <div>
+      <Button onClick={() => setOpen(true)}>Open Modal</Button>
+      <Modal opened={open} onClose={() => setOpen(false)}>
+        <Stack>
+          <SegmentedControl data={data} />
+        </Stack>
+      </Modal>
+    </div>
+  )
 }

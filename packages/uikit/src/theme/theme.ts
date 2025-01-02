@@ -867,7 +867,8 @@ const theme = createTheme({
         padding: 0,
         centered: true,
         transitionProps: {
-          duration: 200
+          duration: 200,
+          transition: 'fade-down'
         },
         overlayProps: {
           backgroundOpacity: 0.9,
