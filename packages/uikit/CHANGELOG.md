@@ -1,5 +1,12 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.111
+
+### Patch Changes
+
+- fix(theme): update default transition property to 'fade-down' to them… ([#403](https://github.com/tidbcloud/tidbcloud-uikit/pull/403))
+- fix: storybook emotion support to uikit and update imports ([#402](https://github.com/tidbcloud/tidbcloud-uikit/pull/402))
+
 ## 2.0.0-beta.110
 
 ### Minor Changes
