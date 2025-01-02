@@ -95,7 +95,7 @@ function useCreateableSelect<
       setValue(value as any)
       props.onChange?.(value, option)
     },
-    [searchValue]
+    [searchValue, creatable]
   )
 
   return {
