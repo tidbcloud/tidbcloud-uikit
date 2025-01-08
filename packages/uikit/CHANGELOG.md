@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.113
+
+### Patch Changes
+
+- fix(TransferTree): update layout to use row flex direction for improv… ([#407](https://github.com/tidbcloud/tidbcloud-uikit/pull/407))
+
 ## 2.0.0-beta.112
 
 ### Patch Changes
