@@ -23,6 +23,7 @@ export interface TransferTreeProps {
 const useStyles = createStyles({
   transferTree: {
     display: 'flex',
+    flexDirection: 'row',
     gap: '2rem',
     alignItems: 'stretch'
   },
