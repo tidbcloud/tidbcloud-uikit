@@ -68,8 +68,8 @@ function useCreateableSelect<
 
   const handleChange = useCallback(
     (value: SelectProps['value'] | MultiSelectProps['value'], option: ComboboxItem) => {
+      const isMultiSelect = Array.isArray(value)
       if (creatable) {
-        const isMultiSelect = Array.isArray(value)
         const values = Array.isArray(value) ? value : [value]
         const clickedCreateItem = values.some((i) => typeof i === 'string' && i.startsWith(CREATE_VALUE_PREFIX))
 
@@ -83,17 +83,15 @@ function useCreateableSelect<
               const nextValue = isMultiSelect
                 ? ([...values.filter((i) => !i?.startsWith(CREATE_VALUE_PREFIX)), createdItem.value] as string[])
                 : createdItem.value
-              setValue(nextValue)
+              setValue(nextValue, isMultiSelect ? undefined : option)
               setSearchValue('')
-              props.onChange?.(nextValue, option)
               return
             }
           }
         }
       }
 
-      setValue(value as any)
-      props.onChange?.(value, option)
+      setValue(value as any, isMultiSelect ? undefined : option)
     },
     [searchValue, creatable]
   )
