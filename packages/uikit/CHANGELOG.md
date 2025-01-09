@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.115
+
+### Patch Changes
+
+- fix(select): remove redundant onChange call in useCreateableSelect hook ([#411](https://github.com/tidbcloud/tidbcloud-uikit/pull/411))
+
 ## 2.0.0-beta.114
 
 ### Patch Changes
