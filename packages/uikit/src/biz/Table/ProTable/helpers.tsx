@@ -249,9 +249,7 @@ export function mergeProTableProps<T extends Record<string, any>>(props: ProTabl
     mantineTableFooterProps
   )
 
-  // loading does not show pagination
-  const withPagination =
-    !loading && (!!pagination || enablePagination) && ((rowCount ?? 0) || (pagination?.total ?? 0)) > 0
+  const withPagination = (!!pagination || enablePagination) && ((rowCount ?? 0) || (pagination?.total ?? 0)) > 0
 
   return {
     enableColumnActions: false,
