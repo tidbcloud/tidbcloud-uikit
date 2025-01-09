@@ -62,6 +62,7 @@ export function mergeProTableProps<T extends Record<string, any>>(props: ProTabl
     data,
     localization,
     state,
+    rowCount,
     ...rest
   } = props
 
@@ -248,14 +249,15 @@ export function mergeProTableProps<T extends Record<string, any>>(props: ProTabl
     mantineTableFooterProps
   )
 
-  const withPagination = !!pagination
+  const withPagination = (!!pagination || enablePagination) && ((rowCount ?? 0) || (pagination?.total ?? 0)) > 0
 
   return {
     enableColumnActions: false,
     enableColumnFilters: false,
     enableTopToolbar: false,
     enableSorting: false,
-    enablePagination: withPagination || enablePagination,
+    rowCount,
+    enablePagination: withPagination,
     enableBottomToolbar: withPagination || enableBottomToolbar,
     renderBottomToolbar: () => {
       return <></>

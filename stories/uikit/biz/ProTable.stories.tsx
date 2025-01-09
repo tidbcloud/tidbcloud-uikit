@@ -131,7 +131,11 @@ export const Primary: Story = {
       columnPinning: { left: ['position'] }
     },
     enablePagination: true,
+    rowCount: 0,
     manualPagination: false,
+    onPaginationChange: (page) => {
+      console.log('onPaginationChange Called')
+    },
     pagination: {
       showRowsPerPage: true,
       showTotal: true,
