@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.114
+
+### Patch Changes
+
+- feat(protable): hide pagination when rowCount is 0 ([#409](https://github.com/tidbcloud/tidbcloud-uikit/pull/409))
+
 ## 2.0.0-beta.113
 
 ### Patch Changes
