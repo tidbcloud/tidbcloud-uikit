@@ -57,7 +57,6 @@ export const DateTimePicker = ({
   size
 }: DateTimePickerProps) => {
   const [opened, { close, open }] = useDisclosure(false)
-  console.log('opened', opened)
   const [currentValue, setCurrentValue] = useUncontrolled({
     value: value ? dayjs(value) : undefined,
     defaultValue: defaultValue ? dayjs(defaultValue) : dayjs(),
