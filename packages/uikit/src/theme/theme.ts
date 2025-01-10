@@ -1185,22 +1185,20 @@ const theme = createTheme({
         const color = theme.primaryColor
         return {
           calendarHeaderLevel: {
-            color: themeColor(theme, color, 7)
+            color: themeColor(theme, color, 8)
           },
           calendarHeaderControl: {
-            color: `${themeColor(theme, color, 7)} !important`
+            color: themeColor(theme, color, 8)
           },
           weekday: {
-            color: themeColor(theme, color, 7)
+            color: themeColor(theme, color, 8)
           },
           calendarHeader: {
             maxWidth: '100%'
           },
-          monthCell: {
-            '--mantine-scale': 8
-          },
           day: {
             '--day-size-sm': '32px',
+            '--day-size-md': '40px',
             color: themeColor(theme, color, 8),
             '&[data-in-range]': {
               backgroundColor: themeColor(theme, color, 3),
@@ -1222,11 +1220,11 @@ const theme = createTheme({
                 color: theme.white
               },
               '&[data-disabled], &:disabled': {
-                color: `${themeColor(theme, color, 5)} !important`
+                color: themeColor(theme, color, 6)
               }
             },
             '&[data-disabled], &:disabled': {
-              color: `${themeColor(theme, color, 5)} !important`
+              color: themeColor(theme, color, 6)
             },
             '&[data-outside]': {
               color: themeColor(theme, color, 6)

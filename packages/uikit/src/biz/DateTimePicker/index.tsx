@@ -57,6 +57,7 @@ export const DateTimePicker = ({
   size
 }: DateTimePickerProps) => {
   const [opened, { close, open }] = useDisclosure(false)
+  console.log('opened', opened)
   const [currentValue, setCurrentValue] = useUncontrolled({
     value: value ? dayjs(value) : undefined,
     defaultValue: defaultValue ? dayjs(defaultValue) : dayjs(),
@@ -119,7 +120,7 @@ export const DateTimePicker = ({
   })
 
   return (
-    <Popover position="bottom-end" opened={opened} withinPortal={withinPortal} shadow="md" onClose={close}>
+    <Popover position="bottom-end" opened={opened} withinPortal={withinPortal} shadow="md">
       <Popover.Target>
         <TextInput
           readOnly
@@ -127,9 +128,10 @@ export const DateTimePicker = ({
           placeholder={placeholder}
           value={inputStr}
           rightSection={loading ? <Loader size="xs" /> : <Box component={IconClock} size={18} c="carbon.6" />}
-          onClick={open}
           sx={sx}
           size={size}
+          onFocus={open}
+          onBlur={close}
         />
       </Popover.Target>
       <Popover.Dropdown>
@@ -140,34 +142,8 @@ export const DateTimePicker = ({
               maxDate={endDate}
               value={currentValue.toDate()}
               onChange={calendarChange}
-              size="sm"
-              styles={() => ({
-                calendarHeaderLevel: {
-                  height: 32
-                },
-                calendarHeaderControl: {
-                  height: 32,
-                  width: 32
-                },
-                weekdaysRow: {
-                  display: 'flex',
-                  gap: 8
-                },
-                weekday: {
-                  height: 32,
-                  width: 32,
-                  lineHeight: '32px'
-                },
-                monthRow: {
-                  display: 'flex',
-                  gap: 8
-                },
-                day: {
-                  height: 32,
-                  width: 32,
-                  lineHeight: '32px'
-                }
-              })}
+              withCellSpacing={false}
+              size="md"
             />
 
             <Divider orientation="vertical" mt={-12} mb={-16} />
