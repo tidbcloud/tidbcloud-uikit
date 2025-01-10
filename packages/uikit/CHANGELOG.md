@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.116
+
+### Patch Changes
+
+- feat(DateTimePicker): enhance user interaction and styling ([#413](https://github.com/tidbcloud/tidbcloud-uikit/pull/413))
+
 ## 2.0.0-beta.115
 
 ### Patch Changes
