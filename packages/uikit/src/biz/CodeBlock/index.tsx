@@ -25,12 +25,11 @@ export interface CodeBlockProps extends BoxProps {
   children: PrismProps['children']
   language?: PrismProps['language']
 
-  codeRender?: (content: string) => React.ReactNode
-
   copyContent?: string
   onCopyClick?: () => void
 
-  highlightProps?: Omit<PrismProps, 'language' | 'children'>
+  codeRender?: (content: string) => React.ReactNode
+  codeHighlightProps?: Omit<PrismProps, 'language' | 'children'>
 
   foldProps?: {
     defaultHeight?: number
@@ -46,7 +45,7 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
   children,
   copyContent,
   onCopyClick,
-  highlightProps,
+  codeHighlightProps,
   foldProps,
   ...rest
 }) => {
@@ -79,7 +78,7 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
           codeRender(children)
         ) : (
           <Prism
-            {...highlightProps}
+            {...codeHighlightProps}
             noCopy
             language={language}
             styles={mergeStylesList([
@@ -96,7 +95,7 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
                   whiteSpace: 'pre-wrap'
                 }
               },
-              highlightProps?.styles
+              codeHighlightProps?.styles
             ])}
           >
             {children}
