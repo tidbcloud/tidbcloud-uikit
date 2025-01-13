@@ -613,7 +613,8 @@ const theme = createTheme({
       defaultProps: {
         size: 'md',
         withCheckIcon: true,
-        checkIconPosition: 'right'
+        checkIconPosition: 'right',
+        allowDeselect: false
       },
       styles: (theme: MantineTheme, props: SelectProps) => {
         return {
