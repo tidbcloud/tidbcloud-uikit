@@ -73,17 +73,18 @@ export const CodeBlock = ({
   }, [foldIconVisible, folded, defaultHeight])
 
   return (
-    <Box {...rest} sx={mergeSxList([{ position: 'relative' }, rest?.sx])}>
-      <Box
-        p="md"
-        mah={mah}
-        bg="carbon.2"
-        sx={(theme) => ({
-          border: `1px solid ${theme.colors.carbon[4]}`,
-          borderRadius: theme.defaultRadius,
-          overflow: 'auto'
-        })}
-      >
+    <Box
+      p="md"
+      mah={mah}
+      bg="carbon.2"
+      sx={(theme) => ({
+        display: 'flex',
+        border: `1px solid ${theme.colors.carbon[4]}`,
+        borderRadius: theme.defaultRadius,
+        overflow: 'auto'
+      })}
+    >
+      <Box sx={{ flexGrow: 1 }}>
         {codeRender ? (
           codeRender(children)
         ) : (
@@ -113,7 +114,7 @@ export const CodeBlock = ({
         )}
       </Box>
 
-      <Group gap={4} sx={(theme) => ({ position: 'absolute', top: 16, right: 16, color: theme.colors.carbon[8] })}>
+      <Group gap={4} sx={(theme) => ({ flexShrink: 0, alignContent: 'flex-start', color: theme.colors.carbon[8] })}>
         {foldIconVisible && (
           <HoverCard withArrow position="top" shadow="xs">
             <HoverCard.Target>
