@@ -39,7 +39,7 @@ export interface CodeBlockProps extends BoxProps {
   }
 }
 
-export const CodeBlock: React.FC<CodeBlockProps> = ({
+export const CodeBlock = ({
   language = 'bash',
   codeRender,
   children,
@@ -48,7 +48,7 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
   codeHighlightProps,
   foldProps,
   ...rest
-}) => {
+}: React.PropsWithChildren<CodeBlockProps>) => {
   const { defaultHeight, persistenceKey, iconVisible: foldIconVisible, onIconClick: onFoldIconClick } = foldProps || {}
   const { folded, setFolded } = useFold(persistenceKey)
 
@@ -67,9 +67,9 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
       <Box
         p="md"
         mah={mah}
-        bg="gray.1"
+        bg="carbon.2"
         sx={(theme) => ({
-          border: `1px solid ${theme.colors.gray[4]}`,
+          border: `1px solid ${theme.colors.carbon[4]}`,
           borderRadius: theme.defaultRadius,
           overflow: 'auto'
         })}
@@ -103,12 +103,13 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
         )}
       </Box>
 
-      <Group gap={4} sx={(theme) => ({ position: 'absolute', top: 16, right: 16, color: theme.colors.gray[7] })}>
+      <Group gap={4} sx={(theme) => ({ position: 'absolute', top: 16, right: 16, color: theme.colors.carbon[8] })}>
         {foldIconVisible && (
           <Tooltip label={folded ? 'Expand' : 'Collapse'} withArrow position="top">
             <ActionIcon
-              variant="transparent"
+              aria-hidden
               size="sm"
+              variant="subtle"
               onClick={() => {
                 const v = !folded
                 setFolded(v)
@@ -128,8 +129,9 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
           {({ copied, copy }) => (
             <Tooltip label={copied ? 'Copied' : 'Copy'} withArrow position="top">
               <ActionIcon
-                variant="transparent"
+                aria-label="Copy"
                 size="sm"
+                variant="subtle"
                 onClick={() => {
                   copy()
                   onCopyClick?.()
@@ -152,7 +154,7 @@ export interface CopyTextProps extends CodeProps {
 export const CopyText: React.FC<CopyTextProps> = ({ children, value, ...rest }) => {
   return (
     <Code
-      bg="gray.2"
+      bg="carbon.3"
       {...rest}
       p={8}
       sx={(theme, u) => {
@@ -173,7 +175,8 @@ export const CopyText: React.FC<CopyTextProps> = ({ children, value, ...rest }) 
         {({ copied, copy }) => (
           <Tooltip label={copied ? 'Copied' : 'Copy'} withArrow position="top">
             <ActionIcon
-              variant="transparent"
+              aria-label="Copy"
+              variant="subtle"
               size="sm"
               ml={8}
               display="inline-block"
