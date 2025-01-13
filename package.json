@@ -23,7 +23,6 @@
   "devDependencies": {
     "@changesets/cli": "^2.26.1",
     "@changesets/write": "0.3.2",
-    "@manypkg/get-packages": "2.2.2",
     "@storybook/addon-essentials": "^8.4.1",
     "@storybook/addon-interactions": "^8.4.1",
     "@storybook/addon-links": "^8.4.1",
