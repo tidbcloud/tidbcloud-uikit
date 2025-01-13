@@ -1,4 +1,3 @@
-import { CodeHighlight, type CodeHighlightProps } from '@mantine/code-highlight'
 import React, { useMemo, useState } from 'react'
 
 import { useLocalStorage } from '../../hooks/index.js'
@@ -14,6 +13,7 @@ import {
   CodeProps,
   HoverCard
 } from '../../primitive/index.js'
+import { Prism, PrismProps } from '../../primitive/Prism/index.js'
 import { mergeSxList, mergeStylesList } from '../../utils/index.js'
 
 function useFold(persistenceKey?: string) {
@@ -32,12 +32,15 @@ function useFold(persistenceKey?: string) {
 }
 
 export interface CodeBlockProps extends BoxProps {
-  children: string
-  language?: CodeHighlightProps['language']
-  codeRender?: (content: string) => React.ReactNode
+  children: PrismProps['children']
+  language?: PrismProps['language']
+
   copyContent?: string
   onCopyClick?: () => void
-  codeHighlightProps?: Omit<CodeHighlightProps, 'language' | 'children' | 'code'>
+
+  codeRender?: (content: string) => React.ReactNode
+  codeHighlightProps?: Omit<PrismProps, 'language' | 'children'>
+
   foldProps?: {
     defaultHeight?: number
     persistenceKey?: string
@@ -70,50 +73,50 @@ export const CodeBlock = ({
   }, [foldIconVisible, folded, defaultHeight])
 
   return (
-    <Box {...rest} sx={mergeSxList([{ position: 'relative' }, rest?.sx])}>
-      <Box
-        p="md"
-        mah={mah}
-        bg="carbon.2"
-        sx={(theme) => ({
-          border: `1px solid ${theme.colors.carbon[4]}`,
-          borderRadius: theme.defaultRadius,
-          overflow: 'auto'
-        })}
-      >
+    <Box
+      p="md"
+      mah={mah}
+      bg="carbon.2"
+      sx={(theme) => ({
+        display: 'flex',
+        border: `1px solid ${theme.colors.carbon[4]}`,
+        borderRadius: theme.defaultRadius,
+        overflow: 'auto'
+      })}
+    >
+      <Box sx={{ flexGrow: 1 }}>
         {codeRender ? (
           codeRender(children)
         ) : (
-          <CodeHighlight
+          <Prism
             {...codeHighlightProps}
-            withCopyButton={false}
-            code={children}
+            noCopy
             language={language}
             styles={mergeStylesList([
               {
-                root: {
-                  backgroundColor: `transparent !important`
-                },
-                pre: {
+                code: {
                   padding: 0,
+                  backgroundColor: `transparent !important`,
                   wordBreak: 'break-all'
+                },
+                line: {
+                  paddingLeft: 0
+                },
+                lineContent: {
+                  whiteSpace: 'pre-wrap'
                 }
-                // line: {
-                //   paddingLeft: 0
-                // },
-                // lineContent: {
-                //   whiteSpace: 'pre-wrap'
-                // }
               },
               codeHighlightProps?.styles
             ])}
-          />
+          >
+            {children}
+          </Prism>
         )}
       </Box>
 
-      <Group gap={4} sx={(theme) => ({ position: 'absolute', top: 16, right: 16, color: theme.colors.carbon[8] })}>
+      <Group gap={4} sx={(theme) => ({ flexShrink: 0, alignContent: 'flex-start', color: theme.colors.carbon[8] })}>
         {foldIconVisible && (
-          <HoverCard withArrow position="top">
+          <HoverCard withArrow position="top" shadow="xs">
             <HoverCard.Target>
               <ActionIcon
                 aria-hidden
@@ -132,13 +135,13 @@ export const CodeBlock = ({
                 )}
               </ActionIcon>
             </HoverCard.Target>
-            <HoverCard.Dropdown>{folded ? 'Expand' : 'Collapse'}</HoverCard.Dropdown>
+            <HoverCard.Dropdown p="xs">{folded ? 'Expand' : 'Collapse'}</HoverCard.Dropdown>
           </HoverCard>
         )}
 
         <CopyButton value={copyContent ?? children} timeout={2000}>
           {({ copied, copy }) => (
-            <HoverCard withArrow position="top">
+            <HoverCard withArrow position="top" shadow="xs">
               <HoverCard.Target>
                 <ActionIcon
                   aria-label="Copy"
@@ -152,7 +155,7 @@ export const CodeBlock = ({
                   {copied ? <IconCheck size={14} /> : <IconCopy01 size={14} strokeWidth={2.5} />}
                 </ActionIcon>
               </HoverCard.Target>
-              <HoverCard.Dropdown>{copied ? 'Copied' : 'Copy'}</HoverCard.Dropdown>
+              <HoverCard.Dropdown p="xs">{copied ? 'Copied' : 'Copy'}</HoverCard.Dropdown>
             </HoverCard>
           )}
         </CopyButton>
@@ -160,56 +163,6 @@ export const CodeBlock = ({
     </Box>
   )
 }
-
-// export const CodeBlock = ({
-//   language = 'bash',
-//   codeRender,
-//   children,
-//   copyContent,
-//   onCopyClick,
-//   prismProps,
-//   foldProps,
-//   ...rest
-// }: CodeBlockProps) => {
-//   return (
-//     <Box
-//       {...rest}
-//       p="md"
-//       bg="carbon.2"
-//       sx={(theme) => ({
-//         border: `1px solid ${theme.colors.carbon[4]}`,
-//         borderRadius: theme.defaultRadius,
-//         overflow: 'auto'
-//       })}
-//     >
-//       {codeRender ? (
-//         codeRender(children)
-//       ) : (
-//         <CodeHighlight
-//           {...prismProps}
-//           code={children}
-//           language={language}
-//           styles={mergeStylesList([
-//             {
-//               code: {
-//                 padding: 0,
-//                 backgroundColor: `transparent !important`,
-//                 wordBreak: 'break-all'
-//               },
-//               line: {
-//                 paddingLeft: 0
-//               },
-//               lineContent: {
-//                 whiteSpace: 'pre-wrap'
-//               }
-//             },
-//             prismProps?.styles
-//           ])}
-//         />
-//       )}
-//     </Box>
-//   )
-// }
 
 export interface CopyTextProps extends CodeProps {
   value: string
@@ -237,20 +190,23 @@ export const CopyText = ({ children, value, ...rest }: React.PropsWithChildren<C
       {children}
       <CopyButton value={value} timeout={2000}>
         {({ copied, copy }) => (
-          <Tooltip label={copied ? 'Copied' : 'Copy'} withArrow position="top">
-            <ActionIcon
-              aria-label="Copy"
-              variant="subtle"
-              size="sm"
-              ml={8}
-              display="inline-block"
-              onClick={() => {
-                copy()
-              }}
-            >
-              {copied ? <IconCheck size={14} /> : <IconCopy01 size={14} strokeWidth={2.5} />}
-            </ActionIcon>
-          </Tooltip>
+          <HoverCard withArrow position="top" shadow="xs">
+            <HoverCard.Target>
+              <ActionIcon
+                aria-label="Copy"
+                variant="subtle"
+                size="sm"
+                ml={8}
+                display="inline-block"
+                onClick={() => {
+                  copy()
+                }}
+              >
+                {copied ? <IconCheck size={14} /> : <IconCopy01 size={14} strokeWidth={2.5} />}
+              </ActionIcon>
+            </HoverCard.Target>
+            <HoverCard.Dropdown p="xs">{copied ? 'Copied' : 'Copy'}</HoverCard.Dropdown>
+          </HoverCard>
         )}
       </CopyButton>
     </Code>

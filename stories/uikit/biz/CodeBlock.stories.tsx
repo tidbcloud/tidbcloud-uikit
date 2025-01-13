@@ -30,7 +30,7 @@ function Demo() {
 // More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
 export const Primary: Story = {
   args: {
-    language: 'javascript',
+    language: 'jsx',
     children: code
   },
   argTypes: {

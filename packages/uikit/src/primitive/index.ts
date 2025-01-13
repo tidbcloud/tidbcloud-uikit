@@ -1,6 +1,5 @@
 import '@mantine/core/styles.css'
 import '@mantine/dates/styles.css'
-import '@mantine/code-highlight/styles.css'
 import '@mantine/notifications/styles.css'
 import '@mantine/carousel/styles.css'
 import '@mantine/dropzone/styles.css'
@@ -270,6 +269,7 @@ export { Typography, TYPOGRAPHY_STYLES_MAP, type TypographyProps } from './Typog
 export { MediaQuery, type MediaQueryProps } from './MediaQuery/index.js'
 export { Select, type SelectProps, MultiSelect, type MultiSelectProps } from './Select/index.js'
 export { Button } from './Button/index.js'
+export * from './Prism/index.js'
 
 // Re-export @mantine/dropzone
 export {
@@ -321,7 +321,3 @@ export type {
   TimeInputProps,
   MonthSettings
 } from '@mantine/dates'
-
-// Re-export @mantine/code-highlight
-export { CodeHighlight, CodeHighlightTabs, InlineCodeHighlight } from '@mantine/code-highlight'
-export type { CodeHighlightProps, CodeHighlightTabsProps, InlineCodeHighlightProps } from '@mantine/code-highlight'
