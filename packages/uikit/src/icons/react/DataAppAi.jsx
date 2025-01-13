@@ -21,10 +21,11 @@ const IconDataAppAi = (props, ref) => {
         strokeWidth="inherit"
       />
       <path
-        fill="currentColor"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
         d="M15.97 18.281a.75.75 0 0 0 0 1.5zm3.394 1.5a.75.75 0 0 0 0-1.5zm-5.069.837a.75.75 0 1 0 1.41.511zm3.245-6.745.696-.278a.75.75 0 0 0-1.401.023zm2.097 7.278a.75.75 0 1 0 1.393-.556zm3.113-7.278a.75.75 0 0 0-1.5 0zm-1.5 7a.75.75 0 0 0 1.5 0zm-5.28-1.092h3.394v-1.5H15.97zm-.265 1.348 2.54-7-1.41-.511-2.54 7zm1.138-6.978 2.794 7 1.393-.556-2.794-7zm4.407-.278v7h1.5v-7z"
         strokeWidth="inherit"
-        stroke="currentColor"
       />
     </svg>
   )
