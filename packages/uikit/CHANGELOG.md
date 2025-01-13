@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.118
+
+### Patch Changes
+
+- chore: export language type of prism ([#418](https://github.com/tidbcloud/tidbcloud-uikit/pull/418))
+
 ## 2.0.0-beta.117
 
 ### Patch Changes
