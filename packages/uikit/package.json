@@ -1,6 +1,6 @@
 {
   "name": "@tidbcloud/uikit",
-  "version": "2.0.0-beta.116",
+  "version": "2.0.0-beta.117",
   "description": "tidbcloud uikit",
   "type": "module",
   "main": "dist/primitive/index.cjs",
