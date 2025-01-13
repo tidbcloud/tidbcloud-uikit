@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.117
+
+### Patch Changes
+
+- feat(primitive): prism ([#416](https://github.com/tidbcloud/tidbcloud-uikit/pull/416))
+
 ## 2.0.0-beta.116
 
 ### Patch Changes
