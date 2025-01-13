@@ -1,5 +1,12 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.119
+
+### Patch Changes
+
+- refactor(theme/select): set default `allowDeselect` to `false` ([#421](https://github.com/tidbcloud/tidbcloud-uikit/pull/421))
+- Revert "chore: export language type of prism" ([#420](https://github.com/tidbcloud/tidbcloud-uikit/pull/420))
+
 ## 2.0.0-beta.118
 
 ### Patch Changes
