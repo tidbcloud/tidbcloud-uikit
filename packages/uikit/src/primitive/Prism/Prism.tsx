@@ -162,7 +162,7 @@ export const Prism = factory<PrismFactory>((_props, ref) => {
                   }
 
                   const lineNumber = index + 1
-                  const lineProps = getLineProps({ line, key: index })
+                  const { key, ...lineProps } = getLineProps({ line, key: index })
                   const shouldHighlight = lineNumber in highlightLines!
                   const lineThemeColor = getThemeColor(highlightLines?.[lineNumber]?.color, theme)
                   const lineColor = lineThemeColor
@@ -172,6 +172,7 @@ export const Prism = factory<PrismFactory>((_props, ref) => {
 
                   return (
                     <div
+                      key={key}
                       {...lineProps}
                       {...getStyles('line', {
                         className: lineProps.className,
@@ -190,9 +191,10 @@ export const Prism = factory<PrismFactory>((_props, ref) => {
 
                       <div {...getStyles('lineContent')}>
                         {line.map((token, key) => {
-                          const tokenProps = getTokenProps({ token, key })
+                          const { key: tokenKey, ...tokenProps } = getTokenProps({ token, key })
                           return (
                             <span
+                              key={tokenKey}
                               {...tokenProps}
                               style={{
                                 ...tokenProps.style,
