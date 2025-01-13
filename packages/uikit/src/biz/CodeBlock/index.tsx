@@ -2,17 +2,7 @@ import React, { useMemo, useState } from 'react'
 
 import { useLocalStorage } from '../../hooks/index.js'
 import { IconChevronVerticalExpand, IconChevronVerticalShrink, IconCheck, IconCopy01 } from '../../icons/index.js'
-import {
-  ActionIcon,
-  Box,
-  BoxProps,
-  CopyButton,
-  Group,
-  Tooltip,
-  Code,
-  CodeProps,
-  HoverCard
-} from '../../primitive/index.js'
+import { ActionIcon, Box, BoxProps, CopyButton, Group, Code, CodeProps, HoverCard } from '../../primitive/index.js'
 import { Prism, PrismProps } from '../../primitive/Prism/index.js'
 import { mergeSxList, mergeStylesList } from '../../utils/index.js'
 
@@ -47,6 +37,8 @@ export interface CodeBlockProps extends BoxProps {
     iconVisible?: boolean
     onIconClick?: (folded: boolean) => void
   }
+
+  withBorder?: boolean
 }
 
 export const CodeBlock = ({
@@ -57,8 +49,9 @@ export const CodeBlock = ({
   onCopyClick,
   codeHighlightProps,
   foldProps,
+  withBorder = true,
   ...rest
-}: React.PropsWithChildren<CodeBlockProps>) => {
+}: CodeBlockProps) => {
   const { defaultHeight, persistenceKey, iconVisible: foldIconVisible, onIconClick: onFoldIconClick } = foldProps || {}
   const { folded, setFolded } = useFold(persistenceKey)
 
@@ -74,14 +67,15 @@ export const CodeBlock = ({
 
   return (
     <Box
-      p="md"
       mah={mah}
+      p="md"
       bg="carbon.2"
+      {...rest}
       sx={(theme) => ({
         display: 'flex',
-        border: `1px solid ${theme.colors.carbon[4]}`,
-        borderRadius: theme.defaultRadius,
-        overflow: 'auto'
+        overflow: 'auto',
+        border: `1px solid ${withBorder ? theme.colors.carbon[4] : 'transparent'}`,
+        borderRadius: theme.defaultRadius
       })}
     >
       <Box sx={{ flexGrow: 1 }}>

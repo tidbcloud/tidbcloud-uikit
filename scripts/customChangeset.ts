@@ -1,7 +1,6 @@
 import { execSync } from 'node:child_process'
 
 import create from '@changesets/write'
-import { getPackages } from '@manypkg/get-packages'
 import prompts from 'prompts'
 
 import packageJson from '../package.json'
