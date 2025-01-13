@@ -39,6 +39,9 @@ export const Primary: Story = {
     },
     children: {
       control: 'text'
+    },
+    withBorder: {
+      control: 'boolean'
     }
   }
 }
