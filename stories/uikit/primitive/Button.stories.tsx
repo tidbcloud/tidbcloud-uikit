@@ -243,5 +243,9 @@ export const WithIcon: Story = {
 }
 
 export const DataDisabled: Story = {
-  render: () => <Button data-disabled>With data-disabled</Button>
+  render: () => (
+    <Button data-disabled variant="default" color="peacock">
+      With data-disabled
+    </Button>
+  )
 }
