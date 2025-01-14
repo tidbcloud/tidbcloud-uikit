@@ -5,7 +5,7 @@ import type {
   ComboboxItem
 } from '@mantine/core'
 import { useUncontrolled } from '@mantine/hooks'
-import { useCallback, useMemo } from 'react'
+import { useMemo } from 'react'
 
 export interface SelectProps extends MantineSelectProps {
   creatable?: boolean
@@ -66,35 +66,32 @@ function useCreateableSelect<
     return parsedData
   }, [props.data, searchValue])
 
-  const handleChange = useCallback(
-    (value: SelectProps['value'] | MultiSelectProps['value'], option: ComboboxItem) => {
-      const isMultiSelect = Array.isArray(value)
-      if (creatable) {
-        const values = Array.isArray(value) ? value : [value]
-        const clickedCreateItem = values.some((i) => typeof i === 'string' && i.startsWith(CREATE_VALUE_PREFIX))
+  const handleChange = (value: SelectProps['value'] | MultiSelectProps['value'], option: ComboboxItem) => {
+    const isMultiSelect = Array.isArray(value)
+    if (creatable) {
+      const values = Array.isArray(value) ? value : [value]
+      const clickedCreateItem = values.some((i) => typeof i === 'string' && i.startsWith(CREATE_VALUE_PREFIX))
 
-        if (clickedCreateItem) {
-          const newItemValue = isMultiSelect
-            ? values.find((i) => typeof i === 'string' && i.startsWith(CREATE_VALUE_PREFIX))
-            : value
-          if (newItemValue) {
-            const createdItem = onCreate!(newItemValue?.slice(CREATE_VALUE_PREFIX.length))
-            if (createdItem) {
-              const nextValue = isMultiSelect
-                ? ([...values.filter((i) => !i?.startsWith(CREATE_VALUE_PREFIX)), createdItem.value] as string[])
-                : createdItem.value
-              setValue(nextValue, isMultiSelect ? undefined : option)
-              setSearchValue('')
-              return
-            }
+      if (clickedCreateItem) {
+        const newItemValue = isMultiSelect
+          ? values.find((i) => typeof i === 'string' && i.startsWith(CREATE_VALUE_PREFIX))
+          : value
+        if (newItemValue) {
+          const createdItem = onCreate!(newItemValue?.slice(CREATE_VALUE_PREFIX.length))
+          if (createdItem) {
+            const nextValue = isMultiSelect
+              ? ([...values.filter((i) => !i?.startsWith(CREATE_VALUE_PREFIX)), createdItem.value] as string[])
+              : createdItem.value
+            setValue(nextValue, isMultiSelect ? undefined : option)
+            setSearchValue('')
+            return
           }
         }
       }
+    }
 
-      setValue(value as any, isMultiSelect ? undefined : option)
-    },
-    [searchValue, creatable]
-  )
+    setValue(value as any, isMultiSelect ? undefined : option)
+  }
 
   return {
     ...rest,

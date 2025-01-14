@@ -258,7 +258,8 @@ export {
   useInputProps,
   useMantineTheme,
   useCombobox,
-  useComputedColorScheme
+  useComputedColorScheme,
+  Select as MantineSelectDontUseUnlessYouKnowWhatYouAreDoing
 } from '@mantine/core'
 export { useColorScheme } from '../hooks/useColorScheme.js'
 
