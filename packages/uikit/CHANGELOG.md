@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.124
+
+### Patch Changes
+
+- fix(Select): refactor handleChange function and update imports ([#432](https://github.com/tidbcloud/tidbcloud-uikit/pull/432))
+
 ## 2.0.0-beta.123
 
 ### Patch Changes
