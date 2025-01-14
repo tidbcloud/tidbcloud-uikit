@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.121
+
+### Patch Changes
+
+- fix: code block scroll area ([#424](https://github.com/tidbcloud/tidbcloud-uikit/pull/424))
+
 ## 2.0.0-beta.120
 
 ### Patch Changes
