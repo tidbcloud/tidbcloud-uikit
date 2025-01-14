@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.122
+
+### Patch Changes
+
+- Fix/system endpoint icon ([#428](https://github.com/tidbcloud/tidbcloud-uikit/pull/428))
+
 ## 2.0.0-beta.121
 
 ### Patch Changes
