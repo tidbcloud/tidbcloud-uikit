@@ -291,9 +291,9 @@ const theme = createTheme({
             },
 
             '&:disabled, &[data-disabled]': {
-              color: themeColor(theme, color, 6),
-              borderColor: themeColor(theme, color, borderColorShade + 1),
-              backgroundColor: themeColor(theme, color, 2)
+              color: themeColor(theme, 'carbon', 6),
+              borderColor: themeColor(theme, 'carbon', borderColorShade + 1),
+              backgroundColor: themeColor(theme, 'carbon', 2)
             }
           }
         }
