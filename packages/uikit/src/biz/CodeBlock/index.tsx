@@ -78,7 +78,7 @@ export const CodeBlock = ({
         borderRadius: theme.defaultRadius
       })}
     >
-      <Box sx={{ flexGrow: 1 }}>
+      <Box sx={{ flexGrow: 1, maxWidth: '100%', overflow: 'auto' }}>
         {codeRender ? (
           codeRender(children)
         ) : (
