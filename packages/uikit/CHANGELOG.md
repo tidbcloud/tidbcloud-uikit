@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.123
+
+### Patch Changes
+
+- fix(Button): update default variant's disabled state colors to use 'c… ([#430](https://github.com/tidbcloud/tidbcloud-uikit/pull/430))
+
 ## 2.0.0-beta.122
 
 ### Patch Changes
