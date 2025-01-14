@@ -56,7 +56,6 @@ export const Fold: Story = {
 
 export const CustomRender: Story = {
   args: {
-    language: 'jsx',
     children: `	id                   	task     	estRows	operator info                                         	actRows	execution info                                                                                                                                                                             	memory   	disk
 	Sort_5               	root     	10     	mysql.user.user                                       	1      	time:1.15ms, loops:2                                                                                                                                                                       	2.49 KB  	0 Bytes
 	└─TableReader_10     	root     	10     	data:Selection_9                                      	1      	time:1.13ms, loops:2, cop_task: {num: 1, max: 1.01ms, proc_keys: 105, rpc_num: 1, rpc_time: 978.4µs, copr_cache_hit_ratio: 0.00, build_task_duration: 9.51µs, max_distsql_concurrency: 1}	387 Bytes	N/A
