@@ -62,7 +62,7 @@ export const CustomRender: Story = {
 	  └─Selection_9      	cop[tikv]	10     	eq(mysql.user.user, "VX9mVDBzijeLcGn.suhaih_42iouWR1")	1      	tikv_task:{time:0s, loops:3}, scan_detail: {total_process_keys: 105, total_process_keys_size: 32531, total_keys: 106, get_snapshot_time: 17.7µs, rocksdb: {block: {}}}                    	N/A      	N/A
 	    └─TableFullScan_8	cop[tikv]	10000  	table:user, keep order:false, stats:pseudo            	105    	tikv_task:{time:0s, loops:3}                                                                                                                                                               	N/A      	N/A`,
     foldProps: {
-      defaultHeight: 100,
+      defaultHeight: 300,
       iconVisible: true
     },
     codeRender: (content) => <pre>{content}</pre>
