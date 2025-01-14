@@ -8,7 +8,7 @@ const IconSystemDatabase = (props, ref) => {
       width="1em"
       height="1em"
       fill="none"
-      viewBox="0 0 16 16"
+      viewBox="0 0 24 24"
       strokeWidth="1.5"
       ref={ref}
       {...props}
