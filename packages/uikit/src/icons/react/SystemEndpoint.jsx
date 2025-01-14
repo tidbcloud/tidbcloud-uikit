@@ -8,7 +8,7 @@ const IconSystemEndpoint = (props, ref) => {
       width="1em"
       height="1em"
       fill="none"
-      viewBox="0 0 14 14"
+      viewBox="0 0 24 24"
       strokeWidth="1.5"
       ref={ref}
       {...props}
@@ -24,7 +24,7 @@ const IconSystemEndpoint = (props, ref) => {
       <path
         d="M15.4287 18.5143C15.4287 19.177 15.9404 19.7143 16.5716 19.7143H17.6328C18.3091 19.7143 18.8573 19.1386 18.8573 18.4286C18.8573 17.7185 18.3091 17.1428 17.6328 17.1428H16.6532C15.9769 17.1428 15.4287 16.5672 15.4287 15.8571C15.4287 15.147 15.9769 14.5714 16.6532 14.5714H17.7144C18.3456 14.5714 18.8573 15.1087 18.8573 15.7714"
         stroke="currentColor"
-        stroke-width="1.5"
+        stroke-width="inherit"
         stroke-linecap="round"
         stroke-linejoin="round"
       />
