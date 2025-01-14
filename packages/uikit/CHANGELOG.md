@@ -1,5 +1,12 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.120
+
+### Patch Changes
+
+- Fix/ai icon ([#414](https://github.com/tidbcloud/tidbcloud-uikit/pull/414))
+- feat(CodeBlock): add withBorder prop and improve styling ([#423](https://github.com/tidbcloud/tidbcloud-uikit/pull/423))
+
 ## 2.0.0-beta.119
 
 ### Patch Changes
