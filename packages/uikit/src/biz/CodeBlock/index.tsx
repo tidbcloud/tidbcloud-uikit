@@ -65,55 +65,56 @@ export const CodeBlock = ({
     return undefined
   }, [foldIconVisible, folded, defaultHeight])
 
+  const codeScrollAreaPadding = foldIconVisible ? 48 : 24
+
   return (
-    <Box
-      mah={mah}
-      p="md"
-      bg="carbon.2"
-      {...rest}
-      sx={(theme) => ({
-        display: 'flex',
-        overflow: 'auto',
-        border: `1px solid ${withBorder ? theme.colors.carbon[4] : 'transparent'}`,
-        borderRadius: theme.defaultRadius
-      })}
-    >
-      <Box sx={{ flexGrow: 1, maxWidth: '100%', overflow: 'auto' }}>
-        {codeRender ? (
-          codeRender(children)
-        ) : (
-          <Prism
-            {...codeHighlightProps}
-            noCopy
-            language={language}
-            styles={mergeStylesList([
-              {
-                code: {
-                  padding: 0,
-                  backgroundColor: `transparent !important`,
-                  wordBreak: 'break-all'
+    <Box {...rest} sx={mergeSxList([{ position: 'relative' }, rest?.sx])}>
+      <Box
+        p="md"
+        mah={mah}
+        bg="carbon.2"
+        sx={(theme) => ({
+          border: `1px solid ${withBorder ? theme.colors.carbon[4] : 'transparent'}`,
+          borderRadius: theme.defaultRadius,
+          overflow: 'auto'
+        })}
+      >
+        <Box sx={{ paddingRight: codeScrollAreaPadding }}>
+          {codeRender ? (
+            codeRender(children)
+          ) : (
+            <Prism
+              {...codeHighlightProps}
+              noCopy
+              language={language}
+              styles={mergeStylesList([
+                {
+                  code: {
+                    padding: 0,
+                    backgroundColor: `transparent !important`,
+                    wordBreak: 'break-all'
+                  },
+                  line: {
+                    paddingLeft: 0
+                  },
+                  lineContent: {
+                    whiteSpace: 'pre-wrap'
+                  }
                 },
-                line: {
-                  paddingLeft: 0
-                },
-                lineContent: {
-                  whiteSpace: 'pre-wrap'
-                }
-              },
-              codeHighlightProps?.styles
-            ])}
-          >
-            {children}
-          </Prism>
-        )}
+                codeHighlightProps?.styles
+              ])}
+            >
+              {children}
+            </Prism>
+          )}
+        </Box>
       </Box>
 
-      <Group gap={4} sx={(theme) => ({ flexShrink: 0, alignContent: 'flex-start', color: theme.colors.carbon[8] })}>
+      <Group gap={4} sx={(theme) => ({ position: 'absolute', top: 16, right: 16, color: theme.colors.carbon[8] })}>
         {foldIconVisible && (
           <HoverCard withArrow position="top" shadow="xs">
             <HoverCard.Target>
               <ActionIcon
-                aria-hidden
                 size="sm"
                 variant="subtle"
                 onClick={() => {
