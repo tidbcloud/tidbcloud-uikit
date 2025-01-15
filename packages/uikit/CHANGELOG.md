@@ -1,5 +1,12 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.125
+
+### Patch Changes
+
+- tweak: scroll bar style ([#435](https://github.com/tidbcloud/tidbcloud-uikit/pull/435))
+- refactor(Select): remove unused export and enhance stories ([#434](https://github.com/tidbcloud/tidbcloud-uikit/pull/434))
+
 ## 2.0.0-beta.124
 
 ### Patch Changes
