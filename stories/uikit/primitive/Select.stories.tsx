@@ -1,5 +1,6 @@
 import type { Meta, StoryObj, StoryFn } from '@storybook/react'
 import { Select, Stack, Group } from '@tidbcloud/uikit'
+import { useTimeout } from '@tidbcloud/uikit/hooks'
 import { useState } from 'react'
 
 import { SIZE_LIST } from '../../constants'
@@ -244,4 +245,28 @@ export const Creatable: Story = {
       />
     )
   }
+}
+
+export function Closure() {
+  const [innerValue, setInnerValue] = useState('')
+
+  useTimeout(
+    () => {
+      setInnerValue('react')
+      console.log('setInnerValue')
+    },
+    5000,
+    {
+      autoInvoke: true
+    }
+  )
+
+  return (
+    <Select
+      data={data}
+      onChange={(value) => {
+        console.log('onChange', value, 'innerValue', innerValue)
+      }}
+    />
+  )
 }
