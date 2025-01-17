@@ -1,4 +1,5 @@
-import { isFunction } from 'lodash-es'
+import { CSSObject, EmotionSx } from '@mantine/emotion'
+import { isFunction, merge } from 'lodash-es'
 import { type MRT_TableOptions, type MRT_RowData, useMantineReactTable, MRT_TableInstance } from 'mantine-react-table'
 
 import { IconSwitchVertical02, IconArrowUp, IconArrowDown } from '../../../icons/index.js'
@@ -54,6 +55,7 @@ export function mergeProTableProps<T extends Record<string, any>>(props: ProTabl
     loading = false,
     enableExpanding = false,
     enableRowVirtualization = false,
+    enableColumnPinning = false,
     pagination,
     enableStickyHeader,
     enableStickyFooter,
@@ -150,21 +152,34 @@ export function mergeProTableProps<T extends Record<string, any>>(props: ProTabl
     return {}
   }, mantineTableBodyProps)
 
+  const columnPinningThSx: CSSObject = {
+    '&[data-column-pinned][data-column-pinned="left"][data-last-left-pinned]': {
+      boxShadow: 'none',
+      '& + th': {
+        boxShadow: '6px 0 6px -6px color-mix(in srgb, var(--mantine-color-gray-outline), transparent 50%) inset'
+      }
+    },
+    '&[data-column-pinned][data-column-pinned="right"][data-first-right-pinned]': {}
+  }
+
   const mTableHeaderCellProps = mergeMProps<NonNullable<MRT_TableOptions<T>['mantineTableHeadCellProps']>>(() => {
     return {
-      sx: {
-        '.mrt-table-head-sort-button': {
-          height: 'auto',
-          width: 'auto',
-          backgroundColor: 'transparent',
-          borderColor: 'transparent',
-          minWidth: 20,
-          minHeight: 20
+      sx: mergeSxList([
+        {
+          '.mrt-table-head-sort-button': {
+            height: 'auto',
+            width: 'auto',
+            backgroundColor: 'transparent',
+            borderColor: 'transparent',
+            minWidth: 20,
+            minHeight: 20
+          },
+          '.mrt-table-head-cell-resize-handle': {
+            marginRight: -7
+          }
         },
-        '.mrt-table-head-cell-resize-handle': {
-          marginRight: -7
-        }
-      }
+        enableColumnPinning ? (columnPinningThSx as CSSObject) : undefined
+      ])
     }
   }, mantineTableHeadCellProps)
 
@@ -174,27 +189,44 @@ export function mergeProTableProps<T extends Record<string, any>>(props: ProTabl
     }
   }, mantineTableBodyCellProps)
 
+  const columnPinningTdSx: CSSObject = {
+    "td[data-column-pinned][data-column-pinned='left'][data-last-left-pinned]": {
+      '&::before': {
+        boxShadow: 'none'
+      },
+      '& + td': {
+        boxShadow: '6px 0 6px -6px color-mix(in srgb, var(--mantine-color-gray-outline), transparent 50%) inset'
+      }
+    },
+    "td[data-column-pinned][data-column-pinned='right'][data-first-right-pinned]": {
+      '&::before': {}
+    }
+  }
+
   const mTableBodyRowProps = mergeMProps<NonNullable<MRT_TableOptions<T>['mantineTableBodyRowProps']>>(() => {
     return {
-      sx: {
-        '&:where([data-with-row-border]):not(:last-of-type)': {
-          td: {
-            borderBottom:
-              enableRowVirtualization || (layoutMode && layoutMode !== 'semantic') ? 'none !important' : undefined
+      sx: mergeSxList([
+        {
+          '&:where([data-with-row-border]):not(:last-of-type)': {
+            td: {
+              borderBottom:
+                enableRowVirtualization || (layoutMode && layoutMode !== 'semantic') ? 'none !important' : undefined
+            }
+          },
+          '&[data-hover]': {
+            '&:hover': {
+              '--mrt-row-hover-background-color': theme.colors.carbon[3]
+            }
+          },
+          "&:not([data-striped], [data-striped='false'])": {
+            backgroundColor: theme.colors.carbon[0]
+          },
+          '&:not([data-selected], [data-row-pinned]) td[data-column-pinned]::before': {
+            backgroundColor: 'transparent'
           }
         },
-        '&[data-hover]': {
-          '&:hover': {
-            '--mrt-row-hover-background-color': theme.colors.carbon[3]
-          }
-        },
-        "&:not([data-striped], [data-striped='false'])": {
-          backgroundColor: theme.colors.carbon[0]
-        },
-        '&:not([data-selected], [data-row-pinned]) td[data-column-pinned]::before': {
-          backgroundColor: 'transparent'
-        }
-      }
+        enableColumnPinning ? columnPinningTdSx : undefined
+      ])
     }
   }, mantineTableBodyRowProps)
 
@@ -230,7 +262,10 @@ export function mergeProTableProps<T extends Record<string, any>>(props: ProTabl
 
   const mTableFooterCellProps = mergeMProps<NonNullable<MRT_TableOptions<T>['mantineTableFooterCellProps']>>(
     {
-      p: 8
+      p: 8,
+      sx: {
+        ...(enableColumnPinning ? columnPinningThSx : undefined)
+      }
     },
     mantineTableFooterCellProps
   )
@@ -256,6 +291,7 @@ export function mergeProTableProps<T extends Record<string, any>>(props: ProTabl
     enableColumnFilters: false,
     enableTopToolbar: false,
     enableSorting: false,
+    enableColumnPinning,
     rowCount,
     enablePagination: withPagination,
     enableBottomToolbar: withPagination || enableBottomToolbar,
