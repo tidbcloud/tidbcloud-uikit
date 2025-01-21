@@ -1243,12 +1243,12 @@ const theme = createTheme({
         return {
           section: {
             '&:where(:first-of-type)': {
-              borderTopRightRadius: 'var(--progress-radius) !important',
-              borderBottomRightRadius: 'var(--progress-radius) !important'
+              borderStartStartRadius: 'var(--progress-radius) !important',
+              borderEndStartRadius: 'var(--progress-radius) !important'
             },
             '&:where(:last-of-type)': {
-              borderTopLeftRadius: 'var(--progress-radius) !important',
-              borderBottomLeftRadius: 'var(--progress-radius) !important'
+              borderStartEndRadius: 'var(--progress-radius) !important',
+              borderEndEndRadius: 'var(--progress-radius) !important'
             }
           }
         }
