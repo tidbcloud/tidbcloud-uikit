@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.0-beta.126
+
+### Patch Changes
+
+- fix(Progress): ensured that the border radius is applied with `!important` to maintain styling integrity. ([#437](https://github.com/tidbcloud/tidbcloud-uikit/pull/437))
+
 ## 2.0.0-beta.125
 
 ### Patch Changes
