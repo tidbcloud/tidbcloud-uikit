@@ -1237,6 +1237,22 @@ const theme = createTheme({
       defaultProps: {
         c: 'peacock.7'
       }
+    },
+    Progress: {
+      styles: () => {
+        return {
+          section: {
+            '&:where(:first-of-type)': {
+              borderStartStartRadius: 'var(--progress-radius) !important',
+              borderEndStartRadius: 'var(--progress-radius) !important'
+            },
+            '&:where(:last-of-type)': {
+              borderStartEndRadius: 'var(--progress-radius) !important',
+              borderEndEndRadius: 'var(--progress-radius) !important'
+            }
+          }
+        }
+      }
     }
   }
 })
