@@ -91,7 +91,7 @@
     "cpy-cli": "^5.0.0",
     "tsx": "^3.12.7",
     "typescript": "^5.4.2",
-    "vite": "^4.5.2",
+    "vite": "^6.0.0",
     "vite-plugin-dts": "^3.7.3"
   },
   "typesVersions": {
