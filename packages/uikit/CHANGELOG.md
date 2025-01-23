@@ -1,5 +1,334 @@
 # @tidbcloud/uikit
 
+## 2.0.0
+
+### Major Changes
+
+#### Upgrade to Mantine v7
+
+##### Theme Provider
+
+Use `ThemeProvider` from `@tidbcloud/uikit/theme`, this provider includes both emotion provider, mantine provider, notification provider and modals provider. You should set the color scheme prop via `useColorScheme`
+
+```tsx
+import { ThemeProvider, useColorScheme } from '@tidbcloud/uikit'
+
+function App({ children }) {
+  const { colorScheme } = useColorScheme('auto')
+
+  return <ThemeProvider colorScheme={colorScheme}>{children}</ThemeProvider>
+}
+```
+
+##### Color Scheme
+
+`theme.colorScheme` was removed.
+Use `useColorScheme` from `@tidbcloud/uikit/hooks` to get your color scheme or set the color scheme. (this is for declaring what color scheme you want to use in the top level, it will read from local storage when initializing)
+Use `useComputedColorScheme` if you just want to know that color scheme is using now inside component tree.
+
+```tsx
+import { Button } from '@tidbcloud/uikit'
+import { useColorScheme, useComputedColorScheme } from '@tidbcloud/uikit'
+
+function ComponentA() {
+  const { setColorScheme } = useColorScheme()
+
+  return (
+    <>
+      <Button onClick={() => setColorScheme('light')}>Light</Button>
+      <Button onClick={() => setColorScheme('auto')}>Auto</Button>
+      <Button onClick={() => setColorScheme('dark')}>Dark</Button>
+    </>
+  )
+}
+
+function ComponentB() {
+  const colorScheme = useComputedColorScheme()
+  return colorScheme === 'dark' ? <DarkImage /> : <LightImage />
+}
+```
+
+##### createStyles/styles signature change
+
+```tsx
+// theme: MantineTheme
+// _params: component props, this is void when using createStyles
+// u: helper functions
+const C = <Box styles={(theme, _params, u) => {}} />
+
+const useStyles = createStyles((theme, _params, u) => {})
+
+// the u arg internal is like below:
+const u = {
+  light: '[data-mantine-color-scheme="light"] &',
+  dark: '[data-mantine-color-scheme="dark"] &',
+  rtl: '[dir="rtl"] &',
+  ltr: '[dir="ltr"] &',
+  notRtl: '[dir="ltr"] &',
+  notLtr: '[dir="rtl"] &',
+  ref: getStylesRef,
+  smallerThan: (breakpoint: MantineBreakpoint | number) =>
+    `@media (max-width: ${em(getBreakpointValue(theme, breakpoint) - 0.1)})`,
+  largerThan: (breakpoint: MantineBreakpoint | number) =>
+    `@media (min-width: ${em(getBreakpointValue(theme, breakpoint))})`
+}
+```
+
+Since `theme.colorScheme` was removed, if you need to access colorScheme in createStyles, you can use the 3rd arg:
+
+```tsx
+import { createStyles } from '@tidbcloud/uikit/utils'
+
+export const useStyles = createStyles((theme, _params, u) => {
+  return {
+    root: {
+      [u.dark]: {
+        backgroundColor: theme.colors.dark[6]
+      },
+      [u.light]: {
+        backgroundColor: theme.white
+      }
+    }
+  }
+})
+```
+
+##### Access to Theme object
+
+```tsx
+import { useMantineTheme } from '@tidbcloud/uikit'
+
+function Component() {
+  const theme = useMantineTheme()
+  theme.colors.carbon[5]
+}
+```
+
+##### `theme.fn` is removed
+
+Some utils can be imported from `@tidbcloud/uikit/utils`
+
+```tsx
+import { rgba, rem, getPrimaryShade } from '@tidbcloud/uikit/utils`
+```
+
+##### CodeBlock
+
+`prismProps` to `codeHighlightProps`: https://mantine.dev/x/code-highlight/?t=prop
+
+##### Common props renams
+
+```
+spacing -> gap
+position -> justify
+icon -> leftSection/rightSection
+width -> w
+overlayBlur -> overlayProps
+```
+
+##### Left/right section
+
+`icon => leftSection`
+`rightIcon => rightSection`
+
+```tsx
+<Button leftSection="left" rightSection="right">
+  Label
+</Button>
+```
+
+##### Group/Stack
+
+- `position` => `justify` – it now supports all justify-content values
+- `noWrap` prop was replaced with `wrap="nowrap"`, wrap prop now supports all flex-wrap values
+- `spacing` prop was replaced with `gap`
+
+```
+// Tabs
+onTabChange -> onChange
+TabProps -> TabsTabProps
+tabsList -> list
+
+// Button
+leftIcon/rightIcon -> leftSection/rightSection
+compact -> size="compact-XXX"
+
+// Group
+position -> justify
+noWrap -> wrap="nowrap"
+spacing -> gap
+```
+
+ProTable
+
+- `Pagination` changed
+  - `initialPage` -> `defaultValue`
+  - `page` -> `value`
+- `ProTableProps` -> `ProTableOptions`
+- `enablePinning` -> `enableColumnPinning`
+
+```tsx
+// Recommended
+// Method1
+export const List = () => {
+  const data = [
+    { position: 6, mass: 12.011, symbol: 'C', name: 'Carbon' },
+    { position: 7, mass: 14.007, symbol: 'N', name: 'Nitrogen' },
+    { position: 39, mass: 88.906, symbol: 'Y', name: 'Yttrium' },
+    { position: 56, mass: 137.33, symbol: 'Ba', name: 'Barium' },
+    { position: 58, mass: 140.12, symbol: 'Ce', name: 'Cerium' }
+  ]
+
+  const columns = [
+    {
+      header: 'Position',
+      accessorKey: 'position'
+    },
+    {
+      header: 'Name',
+      accessorKey: 'name'
+    },
+    {
+      header: 'Symbol',
+      accessorKey: 'symbol'
+    },
+    {
+      header: 'Mass',
+      accessorKey: 'mass'
+    }
+  ]
+
+  const table = useProTable({ data, columns })
+  return <ProTable table={table} />
+}
+
+// Method2
+export const List2 = () => {
+  const data = [
+    { position: 6, mass: 12.011, symbol: 'C', name: 'Carbon' },
+    { position: 7, mass: 14.007, symbol: 'N', name: 'Nitrogen' },
+    { position: 39, mass: 88.906, symbol: 'Y', name: 'Yttrium' },
+    { position: 56, mass: 137.33, symbol: 'Ba', name: 'Barium' },
+    { position: 58, mass: 140.12, symbol: 'Ce', name: 'Cerium' }
+  ]
+
+  const columns = [
+    {
+      header: 'Position',
+      accessorKey: 'position'
+    },
+    {
+      header: 'Name',
+      accessorKey: 'name'
+    },
+    {
+      header: 'Symbol',
+      accessorKey: 'symbol'
+    },
+    {
+      header: 'Mass',
+      accessorKey: 'mass'
+    }
+  ]
+
+  // const table = useProTable({ data, columns})
+  return <ProTable data={data} columns={columns} />
+}
+```
+
+##### Elements type
+
+Since `PolymorphicComponentProps` was not exported from the uikit. Sometimes, you may need to extend component props such as ButtonProps, but there is no element interface, you can extends ElementProps<element name> and omit the color property.
+
+```tsx
+import { ButtonProps, ElementProps } from '@tidbcloud/uikit'
+
+interface A extends ButtonProps {}
+
+;<A onClick={() => {}} /> // ❌ Error, can't find onClick
+
+interface B extends ButtonProps, ElementProps<'button', 'color'> {}
+
+;<B onClick={() => {}} /> // ✅
+```
+
+##### Components
+
+###### `Typography`
+
+- component no longer supports `underline`, `color`, `strikethrough`, `italic`, `transform`, `align` and `weight` prop – use style props instead. Eg: `align` -> `ta`
+- Legacy variants were removed.
+  - title -> headline-sm
+  - body2 -> body-lg
+
+###### `Tooltip`
+
+- `width` -> `w`, see https://mantine.dev/core/tooltip/#multiline
+
+###### `Container`
+
+- `Container` component no longer supports `sizes` prop, use CSS variables to customize sizes on theme instead
+- If you want sizes, you can try
+
+```tsx
+  <Container styles={{ root: { '--container-size': xxx } }} />
+
+<Container sx={{ '--container-size': xxx }} />
+```
+
+###### `Button`
+
+https://mantine.dev/changelog/7-0-0/#button-changes
+
+- `compact` prop was removed, use `size="compact-XXX"` instead
+- `leftIcon` and `rightIcon` props were renamed to `leftSection` and `rightSection`
+- `uppercase` prop was removed, use `tt` style prop instead
+- `loaderPosition` prop was removed, Loader is now always rendered in the center to prevent layout shifts
+- Styles API selectors were changed. See Button Styles API documentation for more details
+
+###### `Select`
+
+- `nothingFound` was renamed to `nothingFoundMessage`.
+- Options filtering props signature changed, filter function receives all options and search query and should return a new options array. It has 1 input argument with 3 fields:
+  - options – array of options or options groups, all options are in { value: string; label: string; disabled?: boolean } format
+  - search – current search query
+  - limit – value of limit prop passed to Select
+- `itemComponent` renamed to `renderOption` for custom select option rendering. The signature is also changed to:
+
+```
+(item: { option: { label: string; value: string }; checked: boolean }) => ReactNode
+```
+
+Note that your option can have extra fields other than label and value, you can just annotate them like this for example:
+
+```tsx
+const options = [
+{label: 'label', value: 'value', description: '...', avatar: '...', disabled: false, ...}
+]
+
+type SelectOption = typeof options[number]
+
+<Select
+data={options}
+renderOption={(item: { option: SelectOption, checked: boolean }) =>
+<SelectItem label={item.option.label} description={item.option.description} />}
+```
+
+####### Input
+
+- Input Styles API was changed – disabled, invalid and withIcon selectors are no longer available, they were migrated to data-disabled, data-invalid and data-with-icon attributes
+  NumberInput
+- `precision` -> `decimalScale`
+- `icon` -> `leftSection`
+- `iconWidth` -> `leftSectionWidth`
+- parser and formatter were removed, you can just use prefix or suffix
+
+For more details, please refer to:
+
+- https://v6.mantine.dev/changelog/6-0-0/
+- https://mantine.dev/changelog/7-0-0/
+- https://mantine.dev/guides/6x-to-7x/
+
 ## 2.0.0-beta.126
 
 ### Patch Changes
