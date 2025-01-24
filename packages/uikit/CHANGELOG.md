@@ -1,5 +1,12 @@
 # @tidbcloud/uikit
 
+## 2.0.1
+
+### Patch Changes
+
+- feat(uikit): bug fix of SearchArea component
+- feat: fix input reset bug ([#440](https://github.com/tidbcloud/tidbcloud-uikit/pull/440))
+
 ## 2.0.0
 
 ### Major Changes
