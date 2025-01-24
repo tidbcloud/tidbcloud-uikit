@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { FieldValues, useForm } from 'react-hook-form'
+import { FieldValues, useForm, UseFormReturn } from 'react-hook-form'
 
 import { useURLQueryState } from '../../hooks/index.js'
 import { IconEraser, IconRefreshCw01, IconXClose } from '../../icons/index.js'
@@ -64,6 +64,7 @@ const FORM_ITEM_SX_BASE: BoxProps['sx'] = { minWidth: '160px' }
 
 function FormItemRender(props: {
   data: FormItem
+  form: any
   onSubmit?: () => void
   defaultValue: string | Date | TimeRange
   resetSeed: number
@@ -97,7 +98,9 @@ function FormItemRender(props: {
         <FormTextInput
           name={name}
           value={keyword as string}
-          onChange={(e) => setKeyword(e.target.value)}
+          onChange={(e) => {
+            setKeyword(e.target.value)
+          }}
           placeholder={placeholder ?? ''}
           onKeyDown={onKeyDownHandler}
           rightSection={
@@ -107,6 +110,8 @@ function FormItemRender(props: {
                 size={14}
                 onClick={() => {
                   setKeyword('')
+                  props.form.setValue(name, '')
+                  triggerSubmit()
                 }}
               />
             )
@@ -180,7 +185,7 @@ function FormItemRender(props: {
 /**
  * Please use `formStateQueryKey` instead if you have multiple <SearchArea /> components in the same page
  */
-export const DEFAULT_FORM_STATE_KEY = '__fs__'
+export const DEFAULT_FORM_STATE_KEY = '__fs'
 
 export function SearchArea<T extends object>(props: SearchAreaProps<T>) {
   const { data, onSubmit, recoverFromURLEnabled, defaultValues, formStateQueryKey, ...rest } = props
@@ -215,6 +220,7 @@ export function SearchArea<T extends object>(props: SearchAreaProps<T>) {
           <Box sx={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
             {data.map((x) => (
               <FormItemRender
+                form={form}
                 data={x}
                 key={x.name}
                 onSubmit={handleSubmit}
