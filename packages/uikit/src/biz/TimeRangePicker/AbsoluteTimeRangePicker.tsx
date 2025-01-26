@@ -18,7 +18,7 @@ import { dayjs } from '../../utils/dayjs.js'
 import { AbsoluteTimeRange, TimeRangeValue, timeFormatter, formatDuration } from './helpers.js'
 
 interface AbsoluteTimeRangePickerProps {
-  value: TimeRangeValue
+  value?: TimeRangeValue
   minDateTime?: Date
   maxDateTime?: Date
   maxDuration?: number // unit: seconds
@@ -36,21 +36,35 @@ const AbsoluteTimeRangePicker = ({
   onCancel,
   onReturnClick
 }: AbsoluteTimeRangePickerProps) => {
-  const [start, setStart] = useState(() => new Date(value[0] * 1000))
-  const [end, setEnd] = useState(() => new Date(value[1] * 1000))
-  const startTime = dayjs(start).format('HH:mm:ss')
-  const endTime = dayjs(end).format('HH:mm:ss')
+  const [start, setStart] = useState(() => (value ? new Date(value[0] * 1000) : null))
+  const [end, setEnd] = useState(() => (value ? new Date(value[1] * 1000) : null))
+  const startDate = start ? dayjs(start).format('MMM D, YYYY') : '-'
+  const endDate = end ? dayjs(end).format('MMM D, YYYY') : '-'
+  const startTime = start ? dayjs(start).format('HH:mm:ss') : '-'
+  const endTime = end ? dayjs(end).format('HH:mm:ss') : '-'
 
   const startAfterEnd = useMemo(() => {
+    if (!start || !end) {
+      return false
+    }
     return start.valueOf() > end.valueOf()
   }, [start, end])
   const beyondMin = useMemo(() => {
+    if (!start || !end) {
+      return false
+    }
     return minDateTime && start.valueOf() < minDateTime.valueOf()
   }, [minDateTime, start])
   const beyondMax = useMemo(() => {
+    if (!start || !end) {
+      return false
+    }
     return maxDateTime && end.valueOf() > maxDateTime.valueOf()
   }, [maxDateTime, end])
   const beyondDuration = useMemo(() => {
+    if (!start || !end) {
+      return false
+    }
     if (maxDuration !== undefined) {
       return end.valueOf() - start.valueOf() > maxDuration * 1000
     }
@@ -63,9 +77,11 @@ const AbsoluteTimeRangePicker = ({
     setDisplayRangeDate(dates)
 
     const newStart = new Date(dates[0])
-    newStart.setHours(start.getHours())
-    newStart.setMinutes(start.getMinutes())
-    newStart.setSeconds(start.getSeconds())
+    if (start) {
+      newStart.setHours(start.getHours())
+      newStart.setMinutes(start.getMinutes())
+      newStart.setSeconds(start.getSeconds())
+    }
     setStart(newStart)
 
     // to support to select the same day for start and end
@@ -73,13 +89,15 @@ const AbsoluteTimeRangePicker = ({
     if (dates[1]) {
       newEnd = new Date(dates[1])
     }
-    newEnd.setHours(end.getHours())
-    newEnd.setMinutes(end.getMinutes())
-    newEnd.setSeconds(end.getSeconds())
+    if (end) {
+      newEnd.setHours(end.getHours())
+      newEnd.setMinutes(end.getMinutes())
+      newEnd.setSeconds(end.getSeconds())
+    }
     setEnd(newEnd)
   }
 
-  const updateTime = (v: string, setter: ReturnType<typeof useState<Date>>[1]) => {
+  const updateTime = (v: string, setter: ReturnType<typeof useState<Date | null>>[1]) => {
     setter((old) => {
       const d = dayjs(v, 'HH:mm:ss').toDate()
       const newD = new Date(old!)
@@ -92,8 +110,8 @@ const AbsoluteTimeRangePicker = ({
   const apply = () => onChange?.({ type: 'absolute', value: [dayjs(start).unix(), dayjs(end).unix()] })
 
   return (
-    <Box p={16} w={280} m={-4}>
-      <Group onClick={onReturnClick} sx={{ cursor: 'pointer' }}>
+    <Box p="md" w={280} m={-4}>
+      <Group pb="xs" mt={-4} onClick={onReturnClick} sx={{ cursor: 'pointer' }}>
         <IconChevronLeft size={16} />
         <Typography variant="body-lg">Back</Typography>
       </Group>
@@ -101,11 +119,7 @@ const AbsoluteTimeRangePicker = ({
       <Group gap={0} pt={8} justify="space-between">
         <Typography variant="label-sm">Start</Typography>
         <Group gap={8}>
-          <Input
-            w={116}
-            value={dayjs(start).format('MMM D, YYYY')}
-            error={beyondMin || startAfterEnd || beyondDuration}
-          />
+          <Input w={116} value={startDate} error={beyondMin || startAfterEnd || beyondDuration} />
           <TimeInput
             w={90}
             withSeconds
@@ -119,11 +133,7 @@ const AbsoluteTimeRangePicker = ({
       <Group gap={0} pt={8} justify="space-between">
         <Typography variant="label-sm">End</Typography>
         <Group gap={8}>
-          <Input
-            w={116}
-            value={dayjs(end).format('MMM D, YYYY')}
-            error={beyondMax || startAfterEnd || beyondDuration}
-          />
+          <Input w={116} value={endDate} error={beyondMax || startAfterEnd || beyondDuration} />
           <TimeInput
             w={90}
             withSeconds
@@ -169,7 +179,11 @@ const AbsoluteTimeRangePicker = ({
         <Button size="xs" variant="default" onClick={onCancel}>
           Cancel
         </Button>
-        <Button size="xs" onClick={apply} disabled={startAfterEnd || beyondMin || beyondMax || beyondDuration}>
+        <Button
+          size="xs"
+          onClick={apply}
+          disabled={!start || !end || startAfterEnd || beyondMin || beyondMax || beyondDuration}
+        >
           Apply
         </Button>
       </Flex>

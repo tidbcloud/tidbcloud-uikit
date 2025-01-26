@@ -1,16 +1,19 @@
+import { useHover } from '@mantine/hooks'
 import { useMemo, useState } from 'react'
 
-import { IconChevronRight } from '../../icons/index.js'
-import { Button, Menu, Text, Box, Tooltip, Group, Typography, ButtonProps } from '../../primitive/index.js'
+import { IconChevronRight, IconChevronSelectorVertical, IconX } from '../../icons/index.js'
+import { Button, Menu, Text, Box, Tooltip, Group, Typography, ButtonProps, ActionIcon } from '../../primitive/index.js'
 
 import AbsoluteTimeRangePicker from './AbsoluteTimeRangePicker.js'
 import { DEFAULT_QUICK_RANGES, TimeRange, formatDuration, toTimeRangeValue, timeFormatter } from './helpers.js'
 
 export interface TimeRangePickerProps extends ButtonProps {
-  value: TimeRange
-  onChange?: (value: TimeRange) => void
+  value?: TimeRange
+  onChange?: (value?: TimeRange) => void
 
   loading?: boolean
+  placeholder?: string
+  clearable?: boolean
 
   minDateTime?: () => Date
   maxDateTime?: () => Date
@@ -33,16 +36,19 @@ export const TimeRangePicker = ({
   onChange,
   quickRanges = DEFAULT_QUICK_RANGES,
   loading,
+  placeholder,
+  clearable,
   timezone,
   sx
 }: React.PropsWithChildren<TimeRangePickerProps>) => {
   const [opened, setOpened] = useState(false)
   const [customMode, setCustomMode] = useState(false)
-  const isRelativeRange = value?.type === 'relative' || !value
+  const isEmptyValue = !value
+  const isRelativeRange = value?.type === 'relative'
+  const { hovered, ref: targetRef } = useHover()
 
-  // past 1 day in default if undefined is the initialized value
-  const timeRangeValue = toTimeRangeValue(value ?? { type: 'relative', value: 86400 })
-  const duration = timeRangeValue[1] - timeRangeValue[0]
+  const timeRangeValue = isEmptyValue ? undefined : toTimeRangeValue(value)
+  const duration = isEmptyValue ? undefined : timeRangeValue![1] - timeRangeValue![0]
   const selectedRelativeItem = useMemo(() => {
     if (!value || value.type === 'absolute') {
       return
@@ -51,6 +57,10 @@ export const TimeRangePicker = ({
   }, [quickRanges, value])
 
   const formattedAbsDateTime = useMemo(() => {
+    if (!timeRangeValue) {
+      return ''
+    }
+
     return `${timeFormatter(timeRangeValue[0], timezone ?? null, 'MMM D, YYYY HH:mm')} - ${timeFormatter(
       timeRangeValue[1],
       timezone ?? null,
@@ -71,8 +81,9 @@ export const TimeRangePicker = ({
       onClose={() => setOpened(false)}
     >
       <Menu.Target>
-        <Tooltip label={formattedAbsDateTime} disabled={isRelativeRange} withArrow>
+        <Tooltip label={formattedAbsDateTime} disabled={isRelativeRange || isEmptyValue} withArrow>
           <Button
+            ref={targetRef}
             variant="default"
             bg="carbon.0"
             styles={(theme) => ({
@@ -99,10 +110,25 @@ export const TimeRangePicker = ({
             w={disableAbsoluteRanges ? 200 : 280}
             sx={sx}
             loading={loading}
+            rightSection={
+              clearable && !!value && hovered ? (
+                <ActionIcon
+                  size="xs"
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    onChange?.()
+                  }}
+                >
+                  <IconX size={16} color="var(--mantine-color-carbon-7)!important" />
+                </ActionIcon>
+              ) : (
+                <IconChevronSelectorVertical size={16} color="var(--mantine-color-carbon-7)!important" />
+              )
+            }
           >
             <Group w="100%" gap={0}>
               <Box sx={{ flex: 'none' }}>
-                <DurationBadge>{formatDuration(duration, true)}</DurationBadge>
+                <DurationBadge>{isEmptyValue ? 'All' : formatDuration(duration!, true)}</DurationBadge>
               </Box>
               <Text
                 px={8}
@@ -113,8 +139,13 @@ export const TimeRangePicker = ({
                   textOverflow: 'ellipsis',
                   textAlign: 'left'
                 }}
+                c={isEmptyValue ? 'dimmed' : 'carbon.8'}
               >
-                {isRelativeRange ? `Past ${formatDuration(duration)}` : formattedAbsDateTime}
+                {isEmptyValue
+                  ? placeholder || 'Time Range'
+                  : isRelativeRange
+                    ? `Past ${formatDuration(duration!)}`
+                    : formattedAbsDateTime}
               </Text>
             </Group>
           </Button>

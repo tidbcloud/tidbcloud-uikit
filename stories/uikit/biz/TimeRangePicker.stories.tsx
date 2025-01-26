@@ -13,7 +13,7 @@ type Story = StoryObj<typeof TimeRangePicker>
 
 const decorator = (Story: StoryFn) => {
   return (
-    <div style={{ margin: '3em', minHeight: '300px' }}>
+    <div style={{ margin: '3em' }}>
       <Story />
     </div>
   )
@@ -55,5 +55,21 @@ export const Primary: Story = {
       return dayjs.unix(1721973002).endOf('d').toDate()
     },
     maxDuration: 60 * 60 * 24 * 4
+  }
+}
+
+export const Clearable: Story = {
+  args: {
+    value: undefined,
+    quickRanges: [
+      5 * 60, // 5 mins
+      15 * 60,
+      30 * 60,
+      60 * 60,
+      3 * 60 * 60,
+      6 * 60 * 60,
+      12 * 60 * 60
+    ],
+    clearable: true
   }
 }
