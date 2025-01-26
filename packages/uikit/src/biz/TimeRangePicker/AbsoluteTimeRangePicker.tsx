@@ -43,33 +43,12 @@ const AbsoluteTimeRangePicker = ({
   const startTime = start ? dayjs(start).format('HH:mm:ss') : '-'
   const endTime = end ? dayjs(end).format('HH:mm:ss') : '-'
 
-  const startAfterEnd = useMemo(() => {
-    if (!start || !end) {
-      return false
-    }
-    return start.valueOf() > end.valueOf()
-  }, [start, end])
-  const beyondMin = useMemo(() => {
-    if (!start || !end) {
-      return false
-    }
-    return minDateTime && start.valueOf() < minDateTime.valueOf()
-  }, [minDateTime, start])
-  const beyondMax = useMemo(() => {
-    if (!start || !end) {
-      return false
-    }
-    return maxDateTime && end.valueOf() > maxDateTime.valueOf()
-  }, [maxDateTime, end])
-  const beyondDuration = useMemo(() => {
-    if (!start || !end) {
-      return false
-    }
-    if (maxDuration !== undefined) {
-      return end.valueOf() - start.valueOf() > maxDuration * 1000
-    }
-    return false
-  }, [maxDuration, start, end])
+  // validation status
+  const isRangeComplete = !!start && !!end
+  const startAfterEnd = isRangeComplete && start.valueOf() > end.valueOf()
+  const beyondMin = isRangeComplete && minDateTime && start.valueOf() < minDateTime.valueOf()
+  const beyondMax = isRangeComplete && maxDateTime && end.valueOf() > maxDateTime.valueOf()
+  const beyondDuration = isRangeComplete && maxDuration && end.valueOf() - start.valueOf() > maxDuration * 1000
 
   const [displayRangeDate, setDisplayRangeDate] = useState<[Date | null, Date | null]>([start, end])
 
