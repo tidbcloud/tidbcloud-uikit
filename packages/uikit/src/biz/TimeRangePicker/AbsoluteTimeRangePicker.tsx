@@ -48,7 +48,7 @@ const AbsoluteTimeRangePicker = ({
   const startAfterEnd = isRangeComplete && start.valueOf() > end.valueOf()
   const beyondMin = isRangeComplete && minDateTime && start.valueOf() < minDateTime.valueOf()
   const beyondMax = isRangeComplete && maxDateTime && end.valueOf() > maxDateTime.valueOf()
-  const beyondDuration = isRangeComplete && maxDuration && end.valueOf() - start.valueOf() > maxDuration * 1000
+  const beyondDuration = isRangeComplete && !!maxDuration && end.valueOf() - start.valueOf() > maxDuration * 1000
 
   const [displayRangeDate, setDisplayRangeDate] = useState<[Date | null, Date | null]>([start, end])
 
