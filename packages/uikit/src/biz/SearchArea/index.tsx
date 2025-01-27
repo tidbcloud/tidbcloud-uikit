@@ -10,7 +10,7 @@ import { FormTimeRangePicker } from '../Form/FormTimeRangePicker.js'
 import { Form, FormMultiSelect, FormProps, FormSelect, FormTextInput } from '../Form/index.js'
 import { TimeRange } from '../TimeRangePicker/helpers.js'
 
-export type TSearchAreaValue = string | string[] | Date | TimeRange
+export type TSearchAreaValue = string | string[] | Date | TimeRange | undefined
 
 interface IFormItemBase {
   name: string
