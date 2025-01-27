@@ -10,7 +10,8 @@
     "test": "test",
     "copy:raw-icon": "mkdir -p ./dist/icons/raw && cpy 'src/icons/raw/*.svg' ./dist/icons/raw/",
     "build:icon": "tsx ./scripts/icon.ts",
-    "build": "vite build && pnpm run copy:raw-icon"
+    "build": "vite build && pnpm run copy:raw-icon",
+    "type-check": "tsc --noEmit"
   },
   "exports": {
     ".": {
