@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.3
+
+### Patch Changes
+
+- fix(SearchArea): allow undefined values in search area type ([#444](https://github.com/tidbcloud/tidbcloud-uikit/pull/444))
+
 ## 2.0.2
 
 ### Patch Changes
