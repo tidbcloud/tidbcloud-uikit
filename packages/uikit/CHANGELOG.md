@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.2
+
+### Patch Changes
+
+- tweak(TimeRangePicker): support empty value & clearable ([#442](https://github.com/tidbcloud/tidbcloud-uikit/pull/442))
+
 ## 2.0.1
 
 ### Patch Changes
