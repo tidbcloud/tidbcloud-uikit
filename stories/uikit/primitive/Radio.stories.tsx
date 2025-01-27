@@ -1,5 +1,6 @@
 import type { Meta, StoryObj, StoryFn } from '@storybook/react'
-import { Group, Radio, Stack } from '@tidbcloud/uikit'
+import { Card, Group, Radio, Stack, Typography } from '@tidbcloud/uikit'
+import { useState } from 'react'
 
 type Story = StoryObj<typeof Radio>
 
@@ -120,5 +121,48 @@ export const AllSizes: Story = {
         <Radio value="vue" label="Vue" />
       </Radio.Group>
     </Stack>
+  )
+}
+
+export function RadioCard() {
+  const data = [{ name: 'TiDB Serverless' }, { name: 'TiDB Dedicated' }, { name: 'TiDB On-Premises' }]
+  const [value, setValue] = useState<string | null>(null)
+
+  const cards = data.map((item) => (
+    <Radio.Card
+      radius="md"
+      p="md"
+      value={item.name}
+      key={item.name}
+      sx={{
+        '&[data-checked]': {
+          borderColor: 'var(--mantine-primary-color-filled)'
+        }
+      }}
+    >
+      <Group>
+        <Radio.Indicator />
+        <Typography>{item.name}</Typography>
+      </Group>
+    </Radio.Card>
+  ))
+
+  return (
+    <>
+      <Radio.Group
+        value={value}
+        onChange={setValue}
+        label="Choose a TiDB deployment type"
+        description="Choose a TiDB deployment type that you will need"
+      >
+        <Group pt="md" gap="xs" wrap="nowrap">
+          {cards}
+        </Group>
+      </Radio.Group>
+
+      <Typography fz="xs" mt="md">
+        CurrentValue: {value || '–'}
+      </Typography>
+    </>
   )
 }
