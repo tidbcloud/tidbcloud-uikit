@@ -26,14 +26,17 @@ jobs:
       - name: Install dependencies
         run: pnpm -r install
 
+      - name: Type Check UIKit
+        run: pnpm --filter @tidbcloud/uikit type-check
+
       - name: Build Package
         run: pnpm -r build
 
       - name: Create Release Pull Request or Publish to npm
         uses: changesets/action@v1
         with:
-          commit: "release: bump versions"
-          title: "release: bump versions"
+          commit: 'release: bump versions'
+          title: 'release: bump versions'
           publish: pnpm release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
