@@ -34,7 +34,7 @@ function useCreateableSelect<
   }
 
   const [value, setValue] = useUncontrolled<string | string[] | null>({
-    value: props.value || null, // use null value to clear input
+    value: props.value,
     onChange: props.onChange,
     defaultValue: props.defaultValue
   })
@@ -106,7 +106,7 @@ function useCreateableSelect<
 
 export function Select(props: SelectProps) {
   const allProps = useCreateableSelect(props)
-  return <MantineSelect {...allProps} />
+  return <MantineSelect {...allProps} value={props.value || null} />
 }
 
 export interface MultiSelectProps extends MantineMultiSelectProps {
