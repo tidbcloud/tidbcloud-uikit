@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.7
+
+### Patch Changes
+
+- fix(uikit): pass null value for Select when value is empty string ([#454](https://github.com/tidbcloud/tidbcloud-uikit/pull/454))
+
 ## 2.0.6
 
 ### Patch Changes
