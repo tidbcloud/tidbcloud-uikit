@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.5
+
+### Patch Changes
+
+- fix(uikit): enforce input placeholder color with !important ([#449](https://github.com/tidbcloud/tidbcloud-uikit/pull/449))
+
 ## 2.0.4
 
 ### Patch Changes
