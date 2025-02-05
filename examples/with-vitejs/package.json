@@ -1,7 +1,7 @@
 {
   "name": "@tidbcloud/uikit-example-with-vitejs",
   "private": true,
-  "version": "0.0.5",
+  "version": "0.0.6",
   "type": "module",
   "scripts": {
     "dev": "vite",
