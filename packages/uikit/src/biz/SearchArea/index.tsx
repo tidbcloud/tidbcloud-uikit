@@ -65,7 +65,8 @@ const FORM_ITEM_SX_BASE: BoxProps['sx'] = { minWidth: '160px' }
 function FormItemRender(props: {
   data: FormItem
   form: any
-  onSubmit?: () => void
+  onSubmit: () => void
+  onRefresh?: () => void
   defaultValue: string | Date | TimeRange
   resetSeed: number
 }) {
@@ -189,7 +190,7 @@ function FormItemRender(props: {
 export const DEFAULT_FORM_STATE_KEY = '__fs'
 
 export function SearchArea<T extends object>(props: SearchAreaProps<T>) {
-  const { data, onSubmit, recoverFromURLEnabled, defaultValues, formStateQueryKey, ...rest } = props
+  const { data, onSubmit, onRefresh, recoverFromURLEnabled, defaultValues, formStateQueryKey, ...rest } = props
   const [resetSeed, setResetSeed] = useState(0)
   const [formState, setFormState] = useURLQueryState(formStateQueryKey ?? DEFAULT_FORM_STATE_KEY, defaultValues)
   const state = recoverFromURLEnabled ? formState : defaultValues
@@ -204,7 +205,12 @@ export function SearchArea<T extends object>(props: SearchAreaProps<T>) {
   const handleReset = () => {
     setResetSeed(resetSeed + 1)
     form.reset(defaultValues)
+    onSubmit(form.getValues())
     recoverFromURLEnabled && setFormState(defaultValues as any)
+  }
+
+  const handleRefresh = () => {
+    onRefresh && onRefresh()
   }
 
   useEffect(() => {
@@ -236,11 +242,13 @@ export function SearchArea<T extends object>(props: SearchAreaProps<T>) {
                   Clear Filters
                 </Button>
               </Box>
-              <Box ml={16} sx={SX_Y_MID}>
-                <Button variant="subtle" onClick={handleSubmit}>
-                  <IconRefreshCw01 size={16} />
-                </Button>
-              </Box>
+              {onRefresh && (
+                <Box ml={16} sx={SX_Y_MID}>
+                  <Button variant="subtle" onClick={handleRefresh}>
+                    <IconRefreshCw01 size={16} />
+                  </Button>
+                </Box>
+              )}
             </Box>
           </Box>
         </Box>
