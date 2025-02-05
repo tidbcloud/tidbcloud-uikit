@@ -34,7 +34,7 @@ function useCreateableSelect<
   }
 
   const [value, setValue] = useUncontrolled<string | string[] | null>({
-    value: props.value,
+    value: props.value || null, // use null value to clear input
     onChange: props.onChange,
     defaultValue: props.defaultValue
   })
