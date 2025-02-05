@@ -170,6 +170,7 @@ function FormItemRender(props: {
         <FormTimeRangePicker
           name={name}
           value={keyword as TimeRange}
+          clearable
           onChange={(val) => {
             setKeyword(val)
             triggerSubmit()
