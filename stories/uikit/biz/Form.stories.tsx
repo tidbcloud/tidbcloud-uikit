@@ -63,16 +63,14 @@ export const Primary: Story = {
           <FormTextInput
             name="first_name"
             rules={{ minLength: { value: 10, message: 'min length is 10' } }}
-            required
             placeholder="Your first name"
             label="First name"
           />
-          <FormTextInput name="last_name" required placeholder="Your last name" label="Last name" />
+          <FormTextInput name="last_name" placeholder="Your last name" label="Last name" />
         </Group>
         <FormTextInput
           name="email"
           mt="md"
-          required
           placeholder="Your email"
           label="Email"
           leftSection={<IconAtom01 size={16} stroke="1.5" />}
@@ -80,7 +78,6 @@ export const Primary: Story = {
         <FormTextInput
           name="url"
           mt="md"
-          required
           placeholder="Your url"
           label="url"
           leftLabel="https://www.test.com"
@@ -89,8 +86,7 @@ export const Primary: Story = {
         <FormTextInput
           name="speed"
           mt="md"
-          required
-          placeholder=""
+          placeholder="Input speed"
           label="Speed"
           rightLabel="MiB/s"
           rules={{ required: 'Required' }}
@@ -98,7 +94,6 @@ export const Primary: Story = {
         <FormTextInput
           name="domain"
           mt="md"
-          required
           placeholder="Your domain"
           label="url"
           leftLabel="https://www."
@@ -108,7 +103,6 @@ export const Primary: Story = {
         <FormPasswordInput
           name="password"
           mt="md"
-          required
           placeholder="Password"
           label="Password"
           rules={{ minLength: { value: 8, message: 'min length is 8' } }}
@@ -171,15 +165,18 @@ export const Primary: Story = {
             { label: 'Vue', value: 'vue' }
           ]}
           label="Framework"
-        ></FormSelect>
+          placeholder="Select Framework"
+          rules={{ required: 'Required' }}
+        />
         <FormMultiSelect
-          name="framework"
-          placeholder="Framework"
+          name="framework2"
+          placeholder="Select Multiple Framework"
           data={[
             { label: 'React', value: 'react' },
             { label: 'Vue', value: 'vue' }
           ]}
           label="Multi Frameworks"
+          rules={{ required: 'Required' }}
         />
         <FormNumberInput name="amount" label="Amount" placeholder="Your amount" />
         <FormRatingInput name="rating" label="Rating" />
