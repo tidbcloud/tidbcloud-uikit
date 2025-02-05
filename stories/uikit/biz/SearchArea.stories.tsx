@@ -68,6 +68,7 @@ export const Primary: Story = {
       roles: ['admin', 'r_and_w']
     },
     debugEnabled: true,
-    onSubmit: (data) => console.log(data)
+    onSubmit: (data) => console.log(data),
+    onRefresh: () => console.log('refresh')
   }
 }

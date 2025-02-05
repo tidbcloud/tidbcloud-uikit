@@ -34,6 +34,7 @@ export interface FormProps<T extends FieldValues = object> extends BoxProps, Omi
   preventDefault?: boolean
 
   onSubmit: SubmitHandler<T>
+  onRefresh?: () => void
   onError?: () => any
   onCancel?: () => void
   onFormUnMount?: () => void
