@@ -125,7 +125,7 @@ function FormItemRender(props: {
         <FormSelect
           data={(props.data as IFormItemSelect).data}
           name={name}
-          value={keyword as string}
+          value={(keyword as string) || null}
           placeholder={placeholder ?? ''}
           onChange={(val) => {
             setKeyword(val ?? '')
