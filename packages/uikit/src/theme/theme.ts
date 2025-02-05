@@ -81,7 +81,7 @@ function getInputStyles(theme: MantineTheme, props: Pick<InputProps, 'size' | 'v
           ...passwordInnerInputSize
         },
         '&::placeholder': {
-          color: themeColor(theme, 'carbon', 6)
+          color: `${themeColor(theme, 'carbon', 6)} !important`
         }
       }
     }
@@ -99,7 +99,7 @@ function getInputStyles(theme: MantineTheme, props: Pick<InputProps, 'size' | 'v
           ...passwordInnerInputSize
         },
         '&::placeholder': {
-          color: themeColor(theme, 'carbon', 6)
+          color: `${themeColor(theme, 'carbon', 6)} !important`
         }
       }
     }
@@ -138,13 +138,13 @@ function getInputStyles(theme: MantineTheme, props: Pick<InputProps, 'size' | 'v
         opacity: 1
       },
       '&::placeholder': {
-        color: themeColor(theme, 'carbon', 6)
+        color: `${themeColor(theme, 'carbon', 6)} !important`
       },
 
       '& .mantine-PasswordInput-innerInput': {
         ...passwordInnerInputSize,
         '&::placeholder': {
-          color: themeColor(theme, 'carbon', 6)
+          color: `${themeColor(theme, 'carbon', 6)} !important`
         }
       }
     },
@@ -167,7 +167,7 @@ function getInputStyles(theme: MantineTheme, props: Pick<InputProps, 'size' | 'v
             borderColor: themeColor(theme, 'red', 4)
           },
           '&::placeholder': {
-            color: themeColor(theme, 'carbon', 2)
+            color: `${themeColor(theme, 'carbon', 6)} !important`
           }
         }
       }
@@ -690,7 +690,7 @@ const theme = createTheme({
           },
           inputField: {
             '&::placeholder': {
-              color: themeColor(theme, 'carbon', 6)
+              color: `${themeColor(theme, 'carbon', 6)} !important`
             }
           },
           pill: {
