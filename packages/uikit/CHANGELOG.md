@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.8
+
+### Patch Changes
+
+- fix(uikit): adjust Select component null value handling ([#456](https://github.com/tidbcloud/tidbcloud-uikit/pull/456))
+
 ## 2.0.7
 
 ### Patch Changes
