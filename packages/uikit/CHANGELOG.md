@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.6
+
+### Patch Changes
+
+- Fix/search area bug fix ([#452](https://github.com/tidbcloud/tidbcloud-uikit/pull/452))
+
 ## 2.0.5
 
 ### Patch Changes
