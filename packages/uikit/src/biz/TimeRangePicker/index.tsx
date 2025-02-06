@@ -9,8 +9,8 @@ import { DEFAULT_QUICK_RANGES, TimeRange, formatDuration, toTimeRangeValue, time
 
 export type TimeRangePickerProps = TimeRangePickerBaseProps &
   (
-    | (TimeRangePickerBaseProps & { clearable: true; value?: TimeRange; onChange?: (value?: TimeRange) => void })
-    | (TimeRangePickerBaseProps & { clearable?: false; value: TimeRange; onChange?: (value: TimeRange) => void })
+    | { clearable: true; value?: TimeRange; onChange?: (value?: TimeRange) => void }
+    | { clearable?: false; value: TimeRange; onChange?: (value: TimeRange) => void }
   )
 
 export interface TimeRangePickerBaseProps extends ButtonProps {
