@@ -6,7 +6,7 @@ import { useState } from 'react'
 function TimeRangePickerWrapper(props: TimeRangePickerProps) {
   const [tr, setTr] = useState(props.value)
 
-  return <TimeRangePicker {...props} value={tr} onChange={setTr} />
+  return <TimeRangePicker {...props} value={tr!} onChange={setTr} />
 }
 
 type Story = StoryObj<typeof TimeRangePicker>
