@@ -2,7 +2,7 @@ import { Controller, RegisterOptions, useFormContext } from 'react-hook-form'
 
 import { TimeRangePicker, TimeRangePickerProps } from '../TimeRangePicker/index.js'
 
-export interface FormTimeRangePickerProps extends TimeRangePickerProps {
+export type FormTimeRangePickerProps = TimeRangePickerProps & {
   name: string
   rules?: RegisterOptions
 }
