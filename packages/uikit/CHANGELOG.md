@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.9
+
+### Patch Changes
+
+- refine(time_range_picker): update default order of timerange ([#458](https://github.com/tidbcloud/tidbcloud-uikit/pull/458))
+
 ## 2.0.8
 
 ### Patch Changes
