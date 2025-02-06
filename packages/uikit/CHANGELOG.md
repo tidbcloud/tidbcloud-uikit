@@ -1,5 +1,12 @@
 # @tidbcloud/uikit
 
+## 2.0.11
+
+### Patch Changes
+
+- fix(FormTimeRangePickerProps): types ([#463](https://github.com/tidbcloud/tidbcloud-uikit/pull/463))
+- tweak(TimeRangePicker): compatible types ([#462](https://github.com/tidbcloud/tidbcloud-uikit/pull/462))
+
 ## 2.0.10
 
 ### Patch Changes
