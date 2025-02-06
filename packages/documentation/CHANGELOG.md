@@ -1,5 +1,13 @@
 # @tidbcloud/uikit-documentation
 
+## 0.1.41
+
+### Patch Changes
+
+- Updated dependencies [4af16a1]
+- Updated dependencies [a6178bb]
+  - @tidbcloud/uikit@2.0.11
+
 ## 0.1.40
 
 ### Patch Changes
