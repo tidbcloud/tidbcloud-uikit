@@ -7,10 +7,13 @@ import { Button, Menu, Text, Box, Tooltip, Group, Typography, ButtonProps, Actio
 import AbsoluteTimeRangePicker from './AbsoluteTimeRangePicker.js'
 import { DEFAULT_QUICK_RANGES, TimeRange, formatDuration, toTimeRangeValue, timeFormatter } from './helpers.js'
 
-export interface TimeRangePickerProps extends ButtonProps {
-  value?: TimeRange
-  onChange?: (value?: TimeRange) => void
+export type TimeRangePickerProps = TimeRangePickerBaseProps &
+  (
+    | (TimeRangePickerBaseProps & { clearable: true; value?: TimeRange; onChange?: (value?: TimeRange) => void })
+    | (TimeRangePickerBaseProps & { clearable?: false; value: TimeRange; onChange?: (value: TimeRange) => void })
+  )
 
+export interface TimeRangePickerBaseProps extends ButtonProps {
   loading?: boolean
   placeholder?: string
   clearable?: boolean
