@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.0.10
+
+### Patch Changes
+
+- Feat/remove clear btn icon ([#460](https://github.com/tidbcloud/tidbcloud-uikit/pull/460))
+
 ## 2.0.9
 
 ### Patch Changes
