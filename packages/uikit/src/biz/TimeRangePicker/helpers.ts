@@ -18,15 +18,15 @@ export interface AbsoluteTimeRange {
 export type TimeRangeValue = [from: number, to: number]
 
 export const DEFAULT_QUICK_RANGES = [
-  3 * 24 * 60 * 60,
-  2 * 24 * 60 * 60,
-  24 * 60 * 60,
-  12 * 60 * 60,
-  3 * 60 * 60,
-  60 * 60,
-  30 * 60,
+  5 * 60,
   15 * 60,
-  5 * 60
+  30 * 60,
+  60 * 60,
+  3 * 60 * 60,
+  12 * 60 * 60,
+  24 * 60 * 60,
+  2 * 24 * 60 * 60,
+  3 * 24 * 60 * 60
 ]
 
 export const DEFAULT_TIME_RANGE: TimeRange = {
