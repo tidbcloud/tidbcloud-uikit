@@ -1,5 +1,5 @@
 import type { Meta, StoryObj, StoryFn } from '@storybook/react'
-import { Button, Group, Loader, Stack, Switch } from '@tidbcloud/uikit'
+import { Button, Group, Stack, Switch } from '@tidbcloud/uikit'
 import { IconSettings01 } from '@tidbcloud/uikit/icons'
 import { useState } from 'react'
 

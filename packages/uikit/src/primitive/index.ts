@@ -270,6 +270,7 @@ export { MediaQuery, type MediaQueryProps } from './MediaQuery/index.js'
 export { Select, type SelectProps, MultiSelect, type MultiSelectProps } from './Select/index.js'
 export { Button } from './Button/index.js'
 export * from './Prism/index.js'
+export { AnimatedNumber, type AnimatedNumberProps } from './AnimatedNumber/index.js'
 
 // Re-export @mantine/dropzone
 export {
