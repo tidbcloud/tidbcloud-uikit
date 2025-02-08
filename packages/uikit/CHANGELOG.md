@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.1.0
+
+### Minor Changes
+
+- feat: add AnimatedNumber component ([#465](https://github.com/tidbcloud/tidbcloud-uikit/pull/465))
+
 ## 2.0.11
 
 ### Patch Changes
