@@ -76,7 +76,9 @@ export function mergeProTableProps<T extends Record<string, any>>(props: ProTabl
         borderRadius: withBorder ? theme.defaultRadius : 0,
         borderColor: withBorder ? theme.colors.carbon[4] : 'transparent',
         overflow: 'hidden',
-        transition: 'none'
+        transition: 'none',
+        // see https://v2.mantine-react-table.com/docs/guides/customize-component-styles#how-to-set-mrt-css-variables
+        '--mrt-row-hover-background-color': theme.colors.carbon[3]
       })
     },
     mantinePaperProps
@@ -109,9 +111,6 @@ export function mergeProTableProps<T extends Record<string, any>>(props: ProTabl
             transition: 'none',
             backgroundColor: theme.colors.carbon[0],
             color: theme.colors.carbon[8],
-            '&:hover': {
-              backgroundColor: `${theme.colors.carbon[3]} !important`
-            },
             td: {
               borderColor: theme.colors.carbon[3]
             },
@@ -181,11 +180,6 @@ export function mergeProTableProps<T extends Record<string, any>>(props: ProTabl
           td: {
             borderBottom:
               enableRowVirtualization || (layoutMode && layoutMode !== 'semantic') ? 'none !important' : undefined
-          }
-        },
-        '&[data-hover]': {
-          '&:hover': {
-            '--mrt-row-hover-background-color': theme.colors.carbon[3]
           }
         },
         "&:not([data-striped], [data-striped='false'])": {
