@@ -136,6 +136,9 @@ export const Primary: Story = {
     onPaginationChange: (page) => {
       console.log('onPaginationChange Called')
     },
+    mantineTableProps: {
+      highlightOnHover: true
+    },
     pagination: {
       showRowsPerPage: true,
       showTotal: true,
