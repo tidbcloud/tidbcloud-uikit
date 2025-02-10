@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.1.1
+
+### Patch Changes
+
+- fix(ProTable): enable highlightOnHover ([#468](https://github.com/tidbcloud/tidbcloud-uikit/pull/468))
+
 ## 2.1.0
 
 ### Minor Changes
