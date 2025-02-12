@@ -568,16 +568,16 @@ const theme = createTheme({
             }
           },
           separator: {
-            backgroundColor: themeColor(theme, color, 4)
-          },
-          separatorActive: {
-            backgroundColor: themeColor(theme, color, 9)
+            backgroundColor: themeColor(theme, color, 4),
+            '&[data-active]': {
+              backgroundColor: themeColor(theme, color, 9)
+            }
           },
           verticalSeparator: {
-            backgroundColor: themeColor(theme, color, 4)
-          },
-          verticalSeparatorActive: {
-            backgroundColor: themeColor(theme, color, 9)
+            borderColor: themeColor(theme, color, 4),
+            '&[data-active]': {
+              borderColor: themeColor(theme, color, 9)
+            }
           }
         }
       }
