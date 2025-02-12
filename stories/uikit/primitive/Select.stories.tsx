@@ -270,3 +270,9 @@ export function Closure() {
     />
   )
 }
+
+export const WithDefaultValue: Story = {
+  render: () => {
+    return <Select data={data} defaultValue="React" placeholder="Select a framework" />
+  }
+}
