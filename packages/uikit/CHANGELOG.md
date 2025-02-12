@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.1.2
+
+### Patch Changes
+
+- fix(uikit/theme): fix separator styles with data attributes ([#471](https://github.com/tidbcloud/tidbcloud-uikit/pull/471))
+
 ## 2.1.1
 
 ### Patch Changes
