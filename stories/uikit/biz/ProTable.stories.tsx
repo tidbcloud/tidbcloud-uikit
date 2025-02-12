@@ -128,7 +128,7 @@ export const Primary: Story = {
     },
     state: {
       columnVisibility: {},
-      columnPinning: { left: ['position'], right: ['mass'] }
+      columnPinning: { left: [], right: ['mass'] }
     },
     enablePagination: true,
     rowCount: 0,

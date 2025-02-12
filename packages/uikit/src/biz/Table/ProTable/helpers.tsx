@@ -179,7 +179,7 @@ export function mergeProTableProps<T extends Record<string, any>>(props: ProTabl
 
           "&[data-column-pinned='left']": {
             '&[data-last-left-pinned]': {
-              boxShadow: 'none',
+              boxShadow: 'none !important',
               '&::before': {
                 left: '100%',
                 boxShadow: `6px 0px 6px -6px  ${boxShadowColor} inset`
@@ -188,7 +188,7 @@ export function mergeProTableProps<T extends Record<string, any>>(props: ProTabl
           },
           "&[data-column-pinned='right']": {
             '&[data-first-right-pinned]': {
-              boxShadow: 'none',
+              boxShadow: 'none !important',
               '&::before': {
                 right: '100%',
                 boxShadow: `-6px 0px 6px -6px  ${boxShadowColor} inset`
@@ -224,6 +224,13 @@ export function mergeProTableProps<T extends Record<string, any>>(props: ProTabl
         },
         '&:not([data-selected], [data-row-pinned]) td[data-column-pinned]::before': {
           backgroundColor: 'transparent'
+        },
+        '&[data-hover]': {
+          '&:hover': {
+            'td[data-column-pinned]': {
+              backgroundColor: 'var(--mrt-row-hover-background-color)'
+            }
+          }
         },
         td: {
           '&[data-column-pinned]': {
