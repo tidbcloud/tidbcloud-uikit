@@ -4,7 +4,7 @@
 
 ### Patch Changes
 
-- feat(Select): fix value prop handling ([#473](https://github.com/tidbcloud/tidbcloud-uikit/pull/473))
+- fix(Select): fix value prop handling ([#473](https://github.com/tidbcloud/tidbcloud-uikit/pull/473))
 
 ## 2.1.2
 
