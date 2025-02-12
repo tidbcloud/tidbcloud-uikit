@@ -106,7 +106,7 @@ function useCreateableSelect<
 
 export function Select(props: SelectProps) {
   const allProps = useCreateableSelect(props)
-  return <MantineSelect {...allProps} value={props.value || null} />
+  return <MantineSelect {...allProps} value={allProps.value || null} />
 }
 
 export interface MultiSelectProps extends MantineMultiSelectProps {
