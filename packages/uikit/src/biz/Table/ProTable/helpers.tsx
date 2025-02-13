@@ -167,22 +167,34 @@ export function mergeProTableProps<T extends Record<string, any>>(props: ProTabl
           marginRight: -7
         },
         '&[data-column-pinned]': {
+          '&::before': {
+            pointerEvents: 'none',
+            content: '""',
+            height: '100%',
+            position: 'absolute',
+            top: 0,
+            width: 6,
+            zIndex: -2
+          },
+
           "&[data-column-pinned='left']": {
             '&[data-last-left-pinned]': {
               boxShadow: 'none !important',
-              '+ th': {
+              '&::before': {
+                left: '100%',
                 boxShadow: `6px 0px 6px -6px  ${boxShadowColor} inset`
               }
             }
           },
           "&[data-column-pinned='right']": {
             '&[data-first-right-pinned]': {
-              boxShadow: 'none !important'
+              boxShadow: 'none !important',
+              '&::before': {
+                right: '100%',
+                boxShadow: `-6px 0px 6px -6px  ${boxShadowColor} inset`
+              }
             }
           }
-        },
-        ":has(+ th[data-column-pinned][data-column-pinned='right'][data-first-right-pinned])": {
-          boxShadow: `-6px 0px 6px -6px  ${boxShadowColor} inset`
         }
       }
     }
@@ -224,25 +236,27 @@ export function mergeProTableProps<T extends Record<string, any>>(props: ProTabl
           '&[data-column-pinned]': {
             "&[data-column-pinned='left']": {
               '&[data-last-left-pinned]': {
+                overflow: 'visible',
                 '&::before': {
-                  display: 'none'
-                },
-                '+ td': {
                   pointerEvents: 'none',
-                  boxShadow: `6px 0px 6px -6px  ${boxShadowColor} inset`
+                  left: '100%',
+                  width: 6,
+                  boxShadow: `6px 0px 6px -6px  ${boxShadowColor} inset !important`
                 }
               }
             },
             "&[data-column-pinned='right']": {
               '&[data-first-right-pinned]': {
+                overflow: 'visible',
                 '&::before': {
-                  display: 'none'
+                  pointerEvents: 'none',
+                  width: 6,
+                  left: 'unset',
+                  right: '100%',
+                  boxShadow: `-6px 0px 6px -6px  ${boxShadowColor} inset !important`
                 }
               }
             }
-          },
-          ":has(+ td[data-column-pinned][data-column-pinned='right'][data-first-right-pinned])": {
-            boxShadow: `-6px 0px 6px -6px  ${boxShadowColor} inset`
           }
         }
       }
@@ -284,24 +298,35 @@ export function mergeProTableProps<T extends Record<string, any>>(props: ProTabl
       p: 8,
       sx: {
         '&[data-column-pinned]': {
-          boxShadow: 'none',
+          '&::before': {
+            pointerEvents: 'none',
+            content: '""',
+            height: '100%',
+            position: 'absolute',
+            top: 0,
+            width: 6
+          },
 
           "&[data-column-pinned='left']": {
             '&[data-last-left-pinned]': {
               boxShadow: 'none',
-              '+ th': {
+              zIndex: 2,
+              '&::before': {
+                top: 0,
+                left: '100%',
                 boxShadow: `6px 0px 6px -6px  ${boxShadowColor} inset`
               }
             }
           },
           "&[data-column-pinned='right']": {
             '&[data-first-right-pinned]': {
-              boxShadow: 'none'
+              boxShadow: 'none',
+              '&::before': {
+                right: '100%',
+                boxShadow: `-6px 0px 6px -6px  ${boxShadowColor} inset`
+              }
             }
           }
-        },
-        ":has(+ th[data-column-pinned][data-column-pinned='right'][data-first-right-pinned])": {
-          boxShadow: `-6px 0px 6px -6px  ${boxShadowColor} inset`
         }
       }
     },
