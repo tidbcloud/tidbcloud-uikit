@@ -5,7 +5,6 @@ import { EmotionHelpers, keyframes } from '@mantine/emotion'
 import {
   ButtonProps,
   SkeletonProps,
-  MenuProps,
   NavLinkProps,
   StepperProps,
   AlertProps,
@@ -453,10 +452,10 @@ const theme = createTheme({
       }
     },
     Menu: {
-      styles: (theme: MantineTheme, props: MenuProps) => {
+      styles: (theme: MantineTheme) => {
         const textColor = themeColor(theme, 'carbon', 8)
-        const bgHoverColor = themeColor(theme, 'carbon', 2)
-        const bgActiveColor = themeColor(theme, 'carbon', 3)
+        const bgHoverColor = themeColor(theme, 'carbon', 3)
+        const bgActiveColor = themeColor(theme, 'carbon', 4)
         const disabledColor = themeColor(theme, 'carbon', 6)
         return {
           dropdown: {
