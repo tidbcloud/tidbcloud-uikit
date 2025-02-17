@@ -1,5 +1,12 @@
 # @tidbcloud/uikit
 
+## 2.1.4
+
+### Patch Changes
+
+- fix(uikit/theme): adjust Menu component hover and active background colors ([#477](https://github.com/tidbcloud/tidbcloud-uikit/pull/477))
+- chore(uikit): move react-hook-form to peer dependencies ([#476](https://github.com/tidbcloud/tidbcloud-uikit/pull/476))
+
 ## 2.1.3
 
 ### Patch Changes
