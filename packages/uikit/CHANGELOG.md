@@ -1,5 +1,12 @@
 # @tidbcloud/uikit
 
+## 2.1.6
+
+### Patch Changes
+
+- fix(uikit): update dayjs import and export strategy ([#482](https://github.com/tidbcloud/tidbcloud-uikit/pull/482))
+- chore(deps): upgrade Storybook and Vite to latest versions ([#481](https://github.com/tidbcloud/tidbcloud-uikit/pull/481))
+
 ## 2.1.5
 
 ### Patch Changes
