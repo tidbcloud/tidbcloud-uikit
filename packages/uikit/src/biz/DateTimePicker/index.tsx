@@ -119,7 +119,20 @@ export const DateTimePicker = ({
   })
 
   return (
-    <Popover position="bottom-end" opened={opened} withinPortal={withinPortal} shadow="md">
+    <Popover
+      position="bottom-end"
+      opened={opened}
+      withinPortal={withinPortal}
+      shadow="md"
+      closeOnClickOutside
+      onChange={(opened) => {
+        if (opened) {
+          open()
+        } else {
+          close()
+        }
+      }}
+    >
       <Popover.Target>
         <TextInput
           readOnly
@@ -129,8 +142,7 @@ export const DateTimePicker = ({
           rightSection={loading ? <Loader size="xs" /> : <Box component={IconClock} size={18} c="carbon.6" />}
           sx={sx}
           size={size}
-          onFocus={open}
-          onBlur={close}
+          onClick={open}
         />
       </Popover.Target>
       <Popover.Dropdown>
