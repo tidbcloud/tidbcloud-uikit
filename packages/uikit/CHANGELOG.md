@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.1.5
+
+### Patch Changes
+
+- fix(DateTimePicker): improve popover and input interaction ([#479](https://github.com/tidbcloud/tidbcloud-uikit/pull/479))
+
 ## 2.1.4
 
 ### Patch Changes
