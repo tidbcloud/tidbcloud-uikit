@@ -23,15 +23,15 @@
   "devDependencies": {
     "@changesets/cli": "^2.26.1",
     "@changesets/write": "0.3.2",
-    "@storybook/addon-essentials": "^8.4.1",
-    "@storybook/addon-interactions": "^8.4.1",
-    "@storybook/addon-links": "^8.4.1",
-    "@storybook/blocks": "^8.4.1",
+    "@storybook/addon-essentials": "^8.5.8",
+    "@storybook/addon-interactions": "^8.5.8",
+    "@storybook/addon-links": "^8.5.8",
+    "@storybook/blocks": "^8.5.8",
     "@storybook/global": "^5.0.0",
-    "@storybook/preview-api": "^8.4.1",
-    "@storybook/react": "^8.4.1",
-    "@storybook/react-vite": "^8.4.1",
-    "@storybook/theming": "^8.4.1",
+    "@storybook/preview-api": "^8.5.8",
+    "@storybook/react": "^8.5.8",
+    "@storybook/react-vite": "^8.5.8",
+    "@storybook/theming": "^8.5.8",
     "@svgr/core": "^8.0.0",
     "@svgr/plugin-jsx": "^8.0.1",
     "@svgr/plugin-prettier": "^8.0.1",
@@ -53,11 +53,11 @@
     "prompts": "2.4.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "storybook": "^8.4.1",
+    "storybook": "^8.5.8",
     "storybook-dark-mode": "^4.0.2",
     "tsx": "^4.16.3",
     "typescript": "^5.4.2",
-    "vite": "^4.5.2"
+    "vite": "^6.1.1"
   },
   "pnpm": {
     "overrides": {
