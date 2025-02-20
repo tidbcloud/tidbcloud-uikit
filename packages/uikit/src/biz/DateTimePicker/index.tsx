@@ -1,5 +1,4 @@
 import { useMemoizedFn } from 'ahooks'
-import type { Dayjs } from 'dayjs'
 import { useMemo, useState } from 'react'
 
 import { useDisclosure, useUncontrolled } from '../../hooks/index.js'
@@ -19,7 +18,7 @@ import {
   TextInputProps,
   DatePicker
 } from '../../primitive/index.js'
-import { dayjs } from '../../utils/dayjs.js'
+import { dayjs, type Dayjs } from '../../utils/dayjs.js'
 import { DEFAULT_TIME_FORMAT } from '../TimeRangePicker/helpers.js'
 
 import { TimeScollerPicker, CurrentValueChangedBy } from './TimeScollerPicker.js'
@@ -69,13 +68,17 @@ export const DateTimePicker = ({
   const updateCurrentValue = useMemoizedFn((val: Dayjs, from: typeof currentValueChangedBy) => {
     let next = val
 
+    if (!next.isValid()) {
+      return
+    }
+
     if (currentValue?.unix() === next.unix()) {
       return
     }
 
-    if (startDate && next.valueOf() < startDate.valueOf()) {
+    if (startDate && next.isBefore(startDate)) {
       next = dayjs(startDate)
-    } else if (endDate && next.valueOf() > endDate.valueOf()) {
+    } else if (endDate && next.isAfter(endDate)) {
       next = dayjs(endDate)
     }
 
