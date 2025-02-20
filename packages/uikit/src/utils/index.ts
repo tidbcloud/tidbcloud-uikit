@@ -3,4 +3,4 @@ export { clsx } from 'clsx'
 export { rgba, rem, getPrimaryShade, getThemeColor } from '@mantine/core'
 
 export * from './styles.js'
-export * from './dayjs.js'
+export { dayjs, type Dayjs } from './dayjs.js'
