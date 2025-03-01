@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.1.7
+
+### Patch Changes
+
+- fix(uikit): Improve `CopyButton` and `useClipboard` compatibility ([#485](https://github.com/tidbcloud/tidbcloud-uikit/pull/485))
+
 ## 2.1.6
 
 ### Patch Changes
