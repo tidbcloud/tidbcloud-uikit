@@ -49,7 +49,6 @@ export {
   useValidatedState,
 
   // Utilities
-  useClipboard,
   useDocumentTitle,
   useDocumentVisibility,
   useEyeDropper,
@@ -76,4 +75,5 @@ export {
   useShallowEffect
 } from '@mantine/hooks'
 
+export { useClipboard } from './use-clipboard/use-clipboard.js'
 export { useURLQueryState } from './useURLQueryState.js'
