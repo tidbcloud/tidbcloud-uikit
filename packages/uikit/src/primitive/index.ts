@@ -178,7 +178,6 @@ export {
   // Buttons
   ActionIcon,
   CloseButton,
-  CopyButton,
   FileButton,
   UnstyledButton,
 
@@ -269,6 +268,7 @@ export { Typography, TYPOGRAPHY_STYLES_MAP, type TypographyProps } from './Typog
 export { MediaQuery, type MediaQueryProps } from './MediaQuery/index.js'
 export { Select, type SelectProps, MultiSelect, type MultiSelectProps } from './Select/index.js'
 export { Button } from './Button/index.js'
+export { CopyButton } from './CopyButton/CopyButton.js'
 export * from './Prism/index.js'
 export { AnimatedNumber, type AnimatedNumberProps } from './AnimatedNumber/index.js'
 
