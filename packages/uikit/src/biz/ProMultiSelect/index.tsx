@@ -81,7 +81,38 @@ const defaultProps: Partial<MultiSelectProps> = {
   hiddenInputValuesDivider: ','
 }
 
-export interface ProMultiSelectProps extends MultiSelectProps {
+export interface ProMultiSelectProps
+  extends Pick<
+    MultiSelectProps,
+    | 'data'
+    | 'value'
+    | 'defaultValue'
+    | 'limit'
+    | 'searchable'
+    | 'searchValue'
+    | 'defaultSearchValue'
+    | 'maxValues'
+    | 'readOnly'
+    | 'disabled'
+    | 'size'
+    | 'width'
+    | 'selectFirstOptionOnChange'
+    | 'placeholder'
+    | 'clearable'
+    | 'label'
+    | 'nothingFoundMessage'
+    | 'dropdownOpened'
+    | 'defaultDropdownOpened'
+    | 'maxDropdownHeight'
+    | 'error'
+    | 'onOptionSubmit'
+    | 'renderOption'
+    | 'filter'
+    | 'onChange'
+    | 'onSearchChange'
+    | 'onRemove'
+    | 'onClear'
+  > {
   loading?: boolean
 }
 
@@ -110,6 +141,7 @@ export const ProMultiSelect: React.FC<ProMultiSelectProps> = (_props) => {
     defaultDropdownOpened,
     loading,
     maxDropdownHeight,
+    error,
     onOptionSubmit,
     renderOption,
     filter,
@@ -255,6 +287,7 @@ export const ProMultiSelect: React.FC<ProMultiSelectProps> = (_props) => {
     >
       <Combobox.Target>
         <InputBase
+          error={error}
           w={width}
           component="button"
           type="button"
@@ -264,7 +297,8 @@ export const ProMultiSelect: React.FC<ProMultiSelectProps> = (_props) => {
           label={label}
           styles={{
             label: { color: theme.colors.carbon[8], marginBottom: 6, fontSize: 14, lineHeight: '20px' },
-            description: { color: theme.colors.carbon[6] }
+            description: { color: theme.colors.carbon[6] },
+            error: { color: theme.colors.red[7] }
           }}
           rightSectionPointerEvents={value === null ? 'none' : 'all'}
           onClick={() => combobox.toggleDropdown()}
