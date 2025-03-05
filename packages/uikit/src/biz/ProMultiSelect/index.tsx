@@ -2,7 +2,7 @@ import { OptionsGroup } from '@mantine/core/lib/components/Combobox/OptionsDropd
 import { useUncontrolled } from '@mantine/hooks'
 import React, { useLayoutEffect, useRef, useState } from 'react'
 
-import { IconCheck, IconSearchSm } from '../../icons/index.js'
+import { IconCheck, IconSearchLg, IconSearchSm } from '../../icons/index.js'
 import {
   Combobox,
   MultiSelectProps,
@@ -18,7 +18,10 @@ import {
   Loader,
   Pill,
   useMantineTheme,
-  useProps
+  useProps,
+  Input,
+  Checkbox,
+  Box
 } from '../../primitive/index.js'
 
 import { isValueChecked } from './helper.js'
@@ -35,12 +38,12 @@ interface OptionProps {
 const Option = ({ data, withCheckIcon, value, checkIconPosition, unstyled, renderOption }: OptionProps) => {
   if (!isOptionsGroup(data)) {
     const checked = isValueChecked(value, data.value)
-    const check = withCheckIcon && checked && <IconCheck size={16} strokeWidth={2} />
+    const check = withCheckIcon && <Checkbox checked={checked} />
 
     const defaultContent = (
-      <Group justify="space-between">
+      <Group>
         {checkIconPosition === 'left' && check}
-        <span>{data.label}</span>
+        <Box sx={{ flex: 1 }}>{data.label}</Box>
         {checkIconPosition === 'right' && check}
       </Group>
     )
@@ -242,7 +245,7 @@ export const ProMultiSelect: React.FC<ProMultiSelectProps> = (_props) => {
       key={isOptionsGroup(item) ? item.group : item.value}
       unstyled={false}
       withCheckIcon={true}
-      checkIconPosition="right"
+      checkIconPosition="left"
       renderOption={renderOption}
     />
   ))
@@ -303,6 +306,7 @@ export const ProMultiSelect: React.FC<ProMultiSelectProps> = (_props) => {
           rightSectionPointerEvents={value === null ? 'none' : 'all'}
           onClick={() => combobox.toggleDropdown()}
         >
+          {_value.length === 0 && <Input.Placeholder>Pick value</Input.Placeholder>}
           <Pill.Group
             ref={inputRef}
             mah={22}
@@ -320,14 +324,14 @@ export const ProMultiSelect: React.FC<ProMultiSelectProps> = (_props) => {
       <Combobox.Dropdown>
         {searchable && (
           <Combobox.Search
-            leftSection={<IconSearchSm size={16} />}
+            leftSection={<IconSearchLg size={16} c="gray.9" strokeWidth={2} />}
             value={_searchValue}
             onChange={(event) => {
               setSearchValue(event.currentTarget.value)
               searchable && combobox.openDropdown()
               selectFirstOptionOnChange && combobox.selectFirstOption()
             }}
-            placeholder={placeholder}
+            placeholder="Find"
           />
         )}
         <ScrollArea.Autosize type="scroll" mah={maxDropdownHeight ?? 200}>

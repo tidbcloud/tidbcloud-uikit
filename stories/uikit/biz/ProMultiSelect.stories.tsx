@@ -35,6 +35,7 @@ export const Primary: Story = {
     readOnly: false,
     maxDropdownHeight: 400,
     width: 330,
+    placeholder: 'Select items',
     data: [
       'Apples',
       'Cookie',
