@@ -33,9 +33,18 @@ export const Primary: Story = {
     loading: false,
     disabled: false,
     readOnly: false,
-    width: 300,
-    sx: { width: 400 },
-    style: { width: 500 },
-    data: ['Apples', 'Bananas', 'Broccoli', 'Carrots', 'Chocolate']
+    maxDropdownHeight: 400,
+    width: 330,
+    height: 300,
+    data: [
+      'Apples',
+      'Cookie',
+      'Milk',
+      'Bananas',
+      'Broccoli',
+      'Carrots',
+      'Chocolate',
+      'Traditional Beef Wellington with Mushroom Duxelles'
+    ]
   }
 }

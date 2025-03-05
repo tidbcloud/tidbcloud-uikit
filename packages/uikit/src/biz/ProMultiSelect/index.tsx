@@ -1,6 +1,6 @@
 import { OptionsGroup } from '@mantine/core/lib/components/Combobox/OptionsDropdown/OptionsDropdown.js'
 import { useUncontrolled } from '@mantine/hooks'
-import React from 'react'
+import React, { useLayoutEffect, useRef, useState } from 'react'
 
 import { IconCheck, IconSearchSm } from '../../icons/index.js'
 import {
@@ -100,6 +100,7 @@ export const ProMultiSelect: React.FC<ProMultiSelectProps> = (_props) => {
     readOnly,
     disabled,
     size,
+    width,
     selectFirstOptionOnChange,
     placeholder,
     clearable,
@@ -161,33 +162,58 @@ export const ProMultiSelect: React.FC<ProMultiSelectProps> = (_props) => {
       })
     : parsedData
 
-  const values = _value.map((item, index) => (
-    <Pill
-      key={`${item}-${index}`}
-      withRemoveButton={!readOnly && !optionsLockup[item]?.disabled}
-      onRemove={() => {
-        setValue(_value.filter((i) => item !== i))
-        onRemove?.(item)
-      }}
-      disabled={disabled}
-    >
-      {optionsLockup[item]?.label || item}
-    </Pill>
-  ))
+  const [targetIndex, setTargetIndex] = useState(0)
 
-  const options = filteredData?.map((item) => {
+  const hideCount = _value.length - targetIndex - 1
+
+  const values = _value.map((item, index) => {
     return (
-      <Option
-        data={item}
-        value={_value}
-        key={isOptionsGroup(item) ? item.group : item.value}
-        unstyled={false}
-        withCheckIcon={true}
-        checkIconPosition="right"
-        renderOption={renderOption}
-      />
+      <Pill
+        key={`${item}-${index}`}
+        withRemoveButton={!readOnly && !optionsLockup[item]?.disabled}
+        onRemove={() => {
+          setValue(_value.filter((i) => item !== i))
+          onRemove?.(item)
+        }}
+        disabled={disabled}
+        styles={(theme) => ({ root: { backgroundColor: theme.colors.carbon[3], borderRadius: theme.radius.sm } })}
+        sx={{ position: 'relative' }}
+      >
+        {optionsLockup[item]?.label || item}
+        {targetIndex === index && (
+          <Pill
+            styles={(theme) => ({
+              root: { backgroundColor: theme.colors.carbon[3], borderRadius: theme.radius.sm, padding: '0 5px' }
+            })}
+            sx={{ position: 'absolute', right: 0, transform: 'translateX(calc(100% + 8px))' }}
+          >
+            +{hideCount}
+          </Pill>
+        )}
+      </Pill>
     )
   })
+
+  const inputRef = useRef<HTMLIFrameElement>(null)
+
+  useLayoutEffect(() => {
+    const child = inputRef.current?.children
+    if (!child || child?.length === 0) return
+    const index = Array.from(child).findIndex((child) => (child as HTMLDivElement).offsetTop > 20)
+    setTargetIndex(index - 1)
+  }, [values])
+
+  const options = filteredData?.map((item) => (
+    <Option
+      data={item}
+      value={_value}
+      key={isOptionsGroup(item) ? item.group : item.value}
+      unstyled={false}
+      withCheckIcon={true}
+      checkIconPosition="right"
+      renderOption={renderOption}
+    />
+  ))
 
   const handleOptionSubmit = (val: string) => {
     onOptionSubmit?.(val)
@@ -223,20 +249,13 @@ export const ProMultiSelect: React.FC<ProMultiSelectProps> = (_props) => {
       shadow="sm"
       styles={{
         search: {
-          // border: 'none',
           borderRadius: theme.radius.md
-          // borderBottom: `1px solid ${theme.colors.carbon[3]}`,
-          // '&:hover': {
-          //   borderBottom: `1px solid ${theme.colors.carbon[3]}`
-          // },
-          // '&:focus': {
-          //   borderBottom: `1px solid ${theme.colors.carbon[3]}`
-          // }
         }
       }}
     >
       <Combobox.Target>
         <InputBase
+          w={width}
           component="button"
           type="button"
           pointer
@@ -250,14 +269,18 @@ export const ProMultiSelect: React.FC<ProMultiSelectProps> = (_props) => {
           rightSectionPointerEvents={value === null ? 'none' : 'all'}
           onClick={() => combobox.toggleDropdown()}
         >
-          <Pill.Group>{values}</Pill.Group>
+          <Pill.Group
+            ref={inputRef}
+            mah={22}
+            sx={{
+              flexWrap: 'wrap',
+              overflowY: 'clip',
+              maxWidth: `calc(100% - ${(hideCount.toString().length + 2) * 8}px)`
+            }}
+          >
+            {values}
+          </Pill.Group>
         </InputBase>
-        {/* <InputBase
-          w={width}
-          pointer
-          }
-          error={error ? <Box sx={(t) => ({ color: t.colors.red[7] })}>{error}</Box> : undefined}
-        ></InputBase> */}
       </Combobox.Target>
 
       <Combobox.Dropdown>
@@ -271,11 +294,6 @@ export const ProMultiSelect: React.FC<ProMultiSelectProps> = (_props) => {
               selectFirstOptionOnChange && combobox.selectFirstOption()
             }}
             placeholder={placeholder}
-            // styles={{
-            //   input: {
-            //     border: 'none'
-            //   }
-            // }}
           />
         )}
         <ScrollArea.Autosize type="scroll" mah={maxDropdownHeight ?? 200}>
