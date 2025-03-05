@@ -242,6 +242,13 @@ export {
   Title,
   TypographyStylesProvider,
 
+  // Tree
+  useTree,
+  type UseTreeInput,
+  type UseTreeReturnType,
+  type TreeNodeData,
+  type CheckedNodeStatus,
+
   // Misc
   Box,
   Collapse,

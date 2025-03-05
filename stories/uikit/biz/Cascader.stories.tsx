@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { Box } from '@tidbcloud/uikit'
-import { Cascader, TreeSelectOption, treeToFlatArray, useCascader } from '@tidbcloud/uikit/biz'
-import { useState } from 'react'
+import { Box, TreeNodeData } from '@tidbcloud/uikit'
+import { Cascader, useTreeStore } from '@tidbcloud/uikit/biz'
+import { useMemo, useState } from 'react'
 
 type Story = StoryObj<typeof Cascader>
 
@@ -14,12 +14,11 @@ const meta: Meta<typeof Cascader> = {
 
 export default meta
 
-function getTreeData(): TreeSelectOption[] {
+function getTreeData(): TreeNodeData[] {
   return [
     {
       label: 'TiDB Serverless',
       value: 'TiDB Serverless',
-      isLeaf: false,
       children: [
         // {
         //   label: 'Row-based Storage',
@@ -41,150 +40,179 @@ function getTreeData(): TreeSelectOption[] {
     {
       label: 'TiDB Dedicated',
       value: 'TiDB Dedicated',
-      isLeaf: false,
       children: [
         {
           label: 'Node Compute',
           value: 'Node Compute',
-          isLeaf: false,
           children: [
             {
               label: 'TiDB',
               value: 'TiDB Dedicated - Node Compute - TiDB',
-              isLeaf: true
+              nodeProps: {
+                isLeaf: true
+              }
             },
             {
               label: 'TiKV',
               value: 'TiDB Dedicated - Node Compute - TiKV',
-              isLeaf: true
+              nodeProps: {
+                isLeaf: true
+              }
             },
             {
               label: 'TiFlash',
               value: 'TiDB Dedicated - Node Compute - TiFlash',
-              isLeaf: true
+              nodeProps: {
+                isLeaf: true
+              }
             }
           ]
         },
         {
           label: 'Node Storage',
           value: 'Node Storage',
-          isLeaf: false,
           children: [
             {
               label: 'TiKV',
               value: 'TiDB Dedicated - Node Storage - TiKV',
-              isLeaf: true
+              nodeProps: {
+                isLeaf: true
+              }
             },
             {
               label: 'TiFlash',
               value: 'TiDB Dedicated - Node Storage - TiFlash',
-              isLeaf: true
+              nodeProps: {
+                isLeaf: true
+              }
             }
           ]
         },
         {
           label: 'Backup',
           value: 'Backup',
-          isLeaf: false,
           children: [
             {
               label: 'Single Region Storage',
               value: 'TiDB Dedicated - Backup - Single Region Storage',
-              isLeaf: true
+              nodeProps: {
+                isLeaf: true
+              }
             },
             {
               label: 'Dual Region Storage',
               value: 'TiDB Dedicated - Backup - Dual Region Storage',
-              isLeaf: true
+              nodeProps: {
+                isLeaf: true
+              }
             },
             {
               label: 'Replication',
               value: 'TiDB Dedicated - Backup - Replication',
-              isLeaf: true
+              nodeProps: {
+                isLeaf: true
+              }
             }
           ]
         },
         {
           label: 'Data Migration',
           value: 'Data Migration',
-          isLeaf: false,
           children: [
             {
               label: 'Replication Capacity Units (RCU)',
               value: 'TiDB Dedicated - Data Migration - Replication Capacity Units (RCU)',
-              isLeaf: true
+              nodeProps: {
+                isLeaf: true
+              }
             }
           ]
         },
         {
           label: 'Changefeed',
           value: 'Changefeed',
-          isLeaf: false,
           children: [
             {
               label: 'Replication Capacity Units',
               value: 'TiDB Dedicated - Changefeed - Replication Capacity Units',
-              isLeaf: true
+              nodeProps: {
+                isLeaf: true
+              }
             }
           ]
         },
         {
           label: 'Data Transfer',
           value: 'Data Transfer',
-          isLeaf: false,
           children: [
             {
               label: 'Internet',
               value: 'TiDB Dedicated - Data Transfer - Internet',
-              isLeaf: true
+              nodeProps: {
+                isLeaf: true
+              }
             },
             {
               label: 'Cross Region',
               value: 'TiDB Dedicated - Data Transfer - Cross Region',
-              isLeaf: true
+              nodeProps: {
+                isLeaf: true
+              }
             },
             {
               label: 'Same Region',
               value: 'TiDB Dedicated - Data Transfer - Same Region',
-              isLeaf: true
+              nodeProps: {
+                isLeaf: true
+              }
             },
             {
               label: 'Load Balancing',
               value: 'TiDB Dedicated - Data Transfer - Load Balancing',
-              isLeaf: true
+              nodeProps: {
+                isLeaf: true
+              }
             },
             {
               label: 'DM NAT Gateway',
               value: 'TiDB Dedicated - Data Transfer - DM NAT Gateway',
-              isLeaf: true
+              nodeProps: {
+                isLeaf: true
+              }
             },
             {
               label: 'Private Data Link',
               value: 'TiDB Dedicated - Data Transfer - Private Data Link',
-              isLeaf: true
+              nodeProps: {
+                isLeaf: true
+              }
             }
           ]
         },
         {
           label: 'Recovery Group',
           value: 'Recovery Group',
-          disabled: true,
-          isLeaf: false,
           children: [
             {
               label: 'Recovery Group Service',
               value: 'TiDB Dedicated - Recovery Group - Recovery Group Service',
-              isLeaf: true
+              nodeProps: {
+                isLeaf: true
+              }
             },
             {
               label: 'Same Region Data Processing',
               value: 'TiDB Dedicated - Recovery Group - Same Region Data Processing',
-              isLeaf: true
+              nodeProps: {
+                isLeaf: true
+              }
             },
             {
               label: 'Cross Region Data Processing',
               value: 'TiDB Dedicated - Recovery Group - Cross Region Data Processing',
-              isLeaf: true
+              nodeProps: {
+                isLeaf: true
+              }
             }
           ]
         }
@@ -193,23 +221,62 @@ function getTreeData(): TreeSelectOption[] {
     {
       label: 'Support Plan',
       value: 'Support Plan',
-      isLeaf: true
+      nodeProps: {
+        isLeaf: true
+      }
     }
   ]
 }
 
 const TITLES = ['Group 1', 'Group 2', 'Group 3']
 function MultipleDemo() {
-  const cascader = useCascader({
-    options: treeToFlatArray(getTreeData()),
-    onLoadChildren: (target) => {
-      cascader.toggleLoading(target)
-    }
+  const cascader = useTreeStore({
+    // loadNodesFn: (target, updator) => {
+    //   // cascader.toggleLoading(target)
+    //   // cascader.updateChildren(target, [
+    //   //   {
+    //   //     label: 'Row-based Storage',
+    //   //     value: 'TiDB Serverless - Row-based Storage',
+    //   //     isLeaf: true
+    //   //   },
+    //   //   {
+    //   //     label: 'Columnar Storage',
+    //   //     value: 'TiDB Serverless - Columnar Storage',
+    //   //     isLeaf: true
+    //   //   },
+    //   //   {
+    //   //     label: 'Request Units',
+    //   //     value: 'TiDB Serverless - Request Units',
+    //   //     isLeaf: true
+    //   //   }
+    //   // ])
+    //   const d = Promise.resolve([
+    //     {
+    //       label: 'Row-based Storage',
+    //       value: 'TiDB Serverless - Row-based Storage',
+    //       isLeaf: true
+    //     },
+    //     {
+    //       label: 'Columnar Storage',
+    //       value: 'TiDB Serverless - Columnar Storage',
+    //       isLeaf: true
+    //     },
+    //     {
+    //       label: 'Request Units',
+    //       value: 'TiDB Serverless - Request Units',
+    //       isLeaf: true
+    //     }
+    //   ])
+    //   updator(d)
+    //   return d
+    // }
   })
   const [value, setValue] = useState<string[]>([])
+  const data = useMemo(() => getTreeData(), [])
   return (
     <Cascader
-      store={cascader}
+      tree={cascader}
+      data={data}
       comboboxProps={{ width: 'max-width', position: 'bottom-start' }}
       value={value}
       onChange={(target, v) => {
@@ -220,7 +287,7 @@ function MultipleDemo() {
       fixedGroup={2}
       multiple
       searchable
-      searchOptions={treeToFlatArray(getTreeData())}
+      // searchOptions={treeToFlatArray(getTreeData())}
       allWithEmpty
       changeTrigger="onConfirm"
       optionGroupTitle={(index) => (

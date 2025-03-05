@@ -11,7 +11,7 @@ import type {
   TreeStoreConfig,
   UpdateChildren,
   ToggleCheck
-} from './useTreeStore.js'
+} from './useTreeStore.tsx.bk'
 import { flatArrayToTree, getAllLeafNodes } from './utils.js'
 
 export const useCascader = <T extends SelectionProtectType = string>({
@@ -60,7 +60,7 @@ export const useCascader = <T extends SelectionProtectType = string>({
       undefined
     )
 
-    setOptions(updatedOptions)
+    setOptions((prev) => ({ ...prev, ...updatedOptions }))
     onOptionChange?.({ type: 'check', target, newData })
 
     return updatedOptions
