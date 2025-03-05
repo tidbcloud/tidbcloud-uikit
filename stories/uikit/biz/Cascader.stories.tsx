@@ -230,49 +230,37 @@ function getTreeData(): TreeNodeData[] {
 
 const TITLES = ['Group 1', 'Group 2', 'Group 3']
 function MultipleDemo() {
+  const [data, setData] = useState(() => getTreeData())
   const cascader = useTreeStore({
-    // loadNodesFn: (target, updator) => {
-    //   // cascader.toggleLoading(target)
-    //   // cascader.updateChildren(target, [
-    //   //   {
-    //   //     label: 'Row-based Storage',
-    //   //     value: 'TiDB Serverless - Row-based Storage',
-    //   //     isLeaf: true
-    //   //   },
-    //   //   {
-    //   //     label: 'Columnar Storage',
-    //   //     value: 'TiDB Serverless - Columnar Storage',
-    //   //     isLeaf: true
-    //   //   },
-    //   //   {
-    //   //     label: 'Request Units',
-    //   //     value: 'TiDB Serverless - Request Units',
-    //   //     isLeaf: true
-    //   //   }
-    //   // ])
-    //   const d = Promise.resolve([
-    //     {
-    //       label: 'Row-based Storage',
-    //       value: 'TiDB Serverless - Row-based Storage',
-    //       isLeaf: true
-    //     },
-    //     {
-    //       label: 'Columnar Storage',
-    //       value: 'TiDB Serverless - Columnar Storage',
-    //       isLeaf: true
-    //     },
-    //     {
-    //       label: 'Request Units',
-    //       value: 'TiDB Serverless - Request Units',
-    //       isLeaf: true
-    //     }
-    //   ])
-    //   updator(d)
-    //   return d
-    // }
+    loadNodesFn: async (target, updator) => {
+      const dp = Promise.resolve([
+        {
+          label: 'Row-based Storage',
+          value: 'TiDB Serverless - Row-based Storage',
+          nodeProps: {
+            isLeaf: true
+          }
+        },
+        {
+          label: 'Columnar Storage',
+          value: 'TiDB Serverless - Columnar Storage',
+          nodeProps: {
+            isLeaf: true
+          }
+        },
+        {
+          label: 'Request Units',
+          value: 'TiDB Serverless - Request Units',
+          nodeProps: {
+            isLeaf: true
+          }
+        }
+      ])
+      const d = await dp
+      setData(updator(data, d))
+    }
   })
   const [value, setValue] = useState<string[]>([])
-  const data = useMemo(() => getTreeData(), [])
   return (
     <Cascader
       tree={cascader}
@@ -295,7 +283,6 @@ function MultipleDemo() {
           {TITLES[index]}
         </Box>
       )}
-      // loadData={() => new Promise((resolve) => setTimeout(() => resolve([]), 1000))}
     />
   )
 }
