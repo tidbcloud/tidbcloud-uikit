@@ -1,8 +1,7 @@
-import { OptionsGroup } from '@mantine/core/lib/components/Combobox/OptionsDropdown/OptionsDropdown.js'
 import { useUncontrolled } from '@mantine/hooks'
 import React, { useLayoutEffect, useRef, useState } from 'react'
 
-import { IconCheck, IconSearchLg, IconSearchSm } from '../../icons/index.js'
+import { IconSearchLg } from '../../icons/index.js'
 import {
   Combobox,
   MultiSelectProps,
@@ -21,13 +20,14 @@ import {
   useProps,
   Input,
   Checkbox,
-  Box
+  Box,
+  OptionsData
 } from '../../primitive/index.js'
 
 import { isValueChecked } from './helper.js'
 
 interface OptionProps {
-  data: ComboboxItem | OptionsGroup
+  data: ComboboxItem | OptionsData[number]
   withCheckIcon?: boolean
   value?: string | string[] | null
   checkIconPosition?: 'left' | 'right'

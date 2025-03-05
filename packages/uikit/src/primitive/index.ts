@@ -126,7 +126,8 @@ export type {
   VisuallyHiddenProps,
   ColorSchemeScriptProps,
   MantineSize,
-  ElementProps
+  ElementProps,
+  OptionsData
 } from '@mantine/core'
 
 export {
