@@ -35,7 +35,7 @@ export interface CascaderProps {
   changeTrigger?: 'onSelect' | 'onConfirm'
 
   data: TreeNodeData[]
-  tree?: TreeStore
+  treeStore?: TreeStore
 
   // multi-selection or single-selection
   multiple?: boolean
@@ -76,7 +76,7 @@ export const Cascader = ({
   changeTrigger = 'onSelect',
 
   data = [],
-  tree,
+  treeStore,
 
   multiple,
   emptyMessage,
@@ -98,8 +98,8 @@ export const Cascader = ({
   searchData
 }: CascaderProps) => {
   let controller = useTreeStore({ multiple, initialCheckedState: value })
-  if (!!tree) {
-    controller = tree
+  if (!!treeStore) {
+    controller = treeStore
   }
   const { collapseAllNodes, getCheckedNodes } = controller
 
