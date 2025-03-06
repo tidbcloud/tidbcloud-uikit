@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.2.0
+
+### Minor Changes
+
+- feat: add new multi select component ([#488](https://github.com/tidbcloud/tidbcloud-uikit/pull/488))
+
 ## 2.1.8
 
 ### Patch Changes
