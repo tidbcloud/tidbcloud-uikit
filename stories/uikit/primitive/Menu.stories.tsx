@@ -48,7 +48,9 @@ function PrimaryDemo({ ...props }) {
           <Menu.Label>Danger zone</Menu.Label>
           <Menu.Item>Transfer my data</Menu.Item>
           <Menu.Item disabled>Disabled</Menu.Item>
-          <Menu.Item color="red">Delete my account</Menu.Item>
+          {/* https://github.com/mantinedev/mantine/issues/7503 */}
+          <Menu.Item color="red">Color red</Menu.Item>
+          <Menu.Item c="red.7">Delete my account</Menu.Item>
         </Menu.Dropdown>
       </Menu>
     </Group>

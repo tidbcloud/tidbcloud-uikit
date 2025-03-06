@@ -453,34 +453,19 @@ const theme = createTheme({
     },
     Menu: {
       styles: (theme: MantineTheme) => {
-        const textColor = themeColor(theme, 'carbon', 8)
         const bgHoverColor = themeColor(theme, 'carbon', 3)
         const bgActiveColor = themeColor(theme, 'carbon', 4)
-        const disabledColor = themeColor(theme, 'carbon', 6)
         return {
           dropdown: {
             boxShadow: theme.shadows.md
           },
           item: {
             transition: 'background 150ms ease-in-out',
-            color: textColor,
             '&:hover, &[data-hovered]': {
-              color: textColor,
-              backgroundColor: bgHoverColor,
-              textDecoration: 'none'
+              backgroundColor: bgHoverColor
             },
             '&:active, &[data-active]': {
-              color: textColor,
               backgroundColor: bgActiveColor
-            },
-            '&:disabled, &[data-disabled]': {
-              color: disabledColor,
-              userSelect: 'none',
-              cursor: 'not-allowed',
-              '&:hover, &[data-hovered]': {
-                color: disabledColor,
-                backgroundColor: 'transparent'
-              }
             }
           }
         }
