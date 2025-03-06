@@ -7,7 +7,6 @@ import {
   MultiSelectProps,
   ScrollArea,
   useCombobox,
-  ComboboxItem,
   defaultOptionsFilter,
   getOptionsLockup,
   getParsedComboboxData,
@@ -27,7 +26,7 @@ import {
 import { isValueChecked } from './helper.js'
 
 interface OptionProps {
-  data: ComboboxItem | OptionsData[number]
+  data: OptionsData[number]
   withCheckIcon?: boolean
   value?: string | string[] | null
   checkIconPosition?: 'left' | 'right'
@@ -38,7 +37,7 @@ interface OptionProps {
 const Option = ({ data, withCheckIcon, value, checkIconPosition, unstyled, renderOption }: OptionProps) => {
   if (!isOptionsGroup(data)) {
     const checked = isValueChecked(value, data.value)
-    const check = withCheckIcon && <Checkbox checked={checked} />
+    const check = withCheckIcon && <Checkbox size="xs" checked={checked} />
 
     const defaultContent = (
       <Group>
@@ -56,6 +55,13 @@ const Option = ({ data, withCheckIcon, value, checkIconPosition, unstyled, rende
         data-checked={checked || undefined}
         aria-selected={checked}
         active={checked}
+        styles={(theme) => ({
+          option: {
+            '&:hover': {
+              backgroundColor: theme.colors.carbon[3]
+            }
+          }
+        })}
       >
         {typeof renderOption === 'function' ? renderOption({ option: data, checked }) : defaultContent}
       </Combobox.Option>
@@ -306,7 +312,7 @@ export const ProMultiSelect: React.FC<ProMultiSelectProps> = (_props) => {
           rightSectionPointerEvents={value === null ? 'none' : 'all'}
           onClick={() => combobox.toggleDropdown()}
         >
-          {_value.length === 0 && <Input.Placeholder>Pick value</Input.Placeholder>}
+          {_value.length === 0 && !!placeholder && <Input.Placeholder>{placeholder}</Input.Placeholder>}
           <Pill.Group
             ref={inputRef}
             mah={22}
