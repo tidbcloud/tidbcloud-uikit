@@ -106,6 +106,15 @@ const CascaderItem = ({ multiple, option, siblings, optionProps, onCheck }: Casc
   const isChecked = isNodeChecked(value)
   const isIndeterminate = isNodeIndeterminate(value)
 
+  const collapseSiblings = (nodes: TreeNodeData[]) => {
+    nodes.forEach((node) => {
+      if (node.value !== value && expandedState[node.value]) {
+        collapse(node.value)
+        collapseSiblings(node.children || [])
+      }
+    })
+  }
+
   return (
     <Box {...wrapperProps} w="100%" px="sm">
       <Box
@@ -149,11 +158,7 @@ const CascaderItem = ({ multiple, option, siblings, optionProps, onCheck }: Casc
                   await loadNodes(value)
                 }
 
-                siblings.forEach((sibling) => {
-                  if (sibling.value !== value) {
-                    collapse(sibling.value)
-                  }
-                })
+                collapseSiblings(siblings)
                 toggleExpanded(value)
               }}
             >
