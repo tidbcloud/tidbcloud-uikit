@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.1.8
+
+### Patch Changes
+
+- fix(uikit/theme): Simplify Menu component styling ([#490](https://github.com/tidbcloud/tidbcloud-uikit/pull/490))
+
 ## 2.1.7
 
 ### Patch Changes
