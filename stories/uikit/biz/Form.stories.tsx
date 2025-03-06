@@ -16,7 +16,8 @@ import {
   FormRadioGroup,
   FormSegmentedControl,
   FormCheckboxGroup,
-  FormCheckbox
+  FormCheckbox,
+  FormProMultiSelect
 } from '@tidbcloud/uikit/biz'
 import { IconAtom01, IconLock01 } from '@tidbcloud/uikit/icons'
 
@@ -168,14 +169,36 @@ export const Primary: Story = {
           placeholder="Select Framework"
           rules={{ required: 'Required' }}
         />
-        <FormMultiSelect
+        <FormProMultiSelect
           name="framework2"
           placeholder="Select Multiple Framework"
           data={[
             { label: 'React', value: 'react' },
-            { label: 'Vue', value: 'vue' }
+            { label: 'Vue', value: 'vue' },
+            { label: 'Angular', value: 'angular' },
+            { label: 'Svelte', value: 'svelte' },
+            { label: 'React Native', value: 'react-native' },
+            { label: 'Flutter', value: 'flutter' },
+            { label: 'Ionic', value: 'ionic' },
+            { label: 'Cordova', value: 'cordova' },
+            { label: 'PhoneGap', value: 'phonegap' },
+            { label: 'NativeScript', value: 'nativescript' },
+            { label: 'Quasar', value: 'quasar' },
+            { label: 'Vuetify', value: 'vuetify' },
+            { label: 'BootstrapVue', value: 'bootstrap-vue' },
+            { label: 'Materialize', value: 'materialize' },
+            { label: 'Bulma', value: 'bulma' },
+            { label: 'Chakra UI', value: 'chakra-ui' },
+            { label: 'Ant Design', value: 'ant-design' },
+            { label: 'Material-UI', value: 'material-ui' },
+            { label: 'Grommet', value: 'grommet' },
+            { label: 'Evergreen', value: 'evergreen' },
+            { label: 'Rebass', value: 'rebass' },
+            { label: 'Theme UI', value: 'theme-ui' },
+            { label: 'Tailwind CSS', value: 'tailwind-css' }
           ]}
-          label="Multi Frameworks"
+          clearable
+          label="ProMultiSelect"
           rules={{ required: 'Required' }}
         />
         <FormNumberInput name="amount" label="Amount" placeholder="Your amount" />

@@ -126,7 +126,8 @@ export type {
   VisuallyHiddenProps,
   ColorSchemeScriptProps,
   MantineSize,
-  ElementProps
+  ElementProps,
+  OptionsData
 } from '@mantine/core'
 
 export {
@@ -257,7 +258,12 @@ export {
   useInputProps,
   useMantineTheme,
   useCombobox,
-  useComputedColorScheme
+  useComputedColorScheme,
+  defaultOptionsFilter,
+  getOptionsLockup,
+  getParsedComboboxData,
+  isOptionsGroup,
+  useProps
 } from '@mantine/core'
 export { useColorScheme } from '../hooks/useColorScheme.js'
 
