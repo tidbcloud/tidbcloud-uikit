@@ -24,10 +24,18 @@ export interface TimeRangePickerBaseProps extends ButtonProps {
 
   // quick range selection items, Last x mins, Last x hours...
   // unit: seconds.
-  quickRanges?: number[]
+  // if isFuture is true, the range is in the future.
+  quickRanges?: (number | QuickRange)[]
   disableAbsoluteRanges?: boolean
 
   timezone?: number
+}
+
+type QuickRange = {
+  // unit: seconds.
+  value: number
+  label?: string
+  isFuture?: boolean
 }
 
 export const TimeRangePicker = ({
@@ -186,17 +194,28 @@ export const TimeRangePicker = ({
             )}
 
             <>
-              {quickRanges.map((seconds) => (
-                <Menu.Item
-                  key={seconds}
-                  sx={(theme) => ({
-                    background: seconds === selectedRelativeItem ? theme.colors.carbon[3] : ''
-                  })}
-                  onClick={() => onChange?.({ type: 'relative', value: seconds })}
-                >
-                  <Text>Past {formatDuration(seconds)}</Text>
-                </Menu.Item>
-              ))}
+              {quickRanges.map((item) => {
+                const isNumber = typeof item === 'number'
+                const seconds = isNumber ? item : item.value
+                const isFuture = isNumber ? false : item.isFuture
+                let label = isNumber ? `Past ${formatDuration(seconds)}` : item.label
+
+                if (!label) {
+                  label = isFuture ? `Next ${formatDuration(seconds)}` : `Past ${formatDuration(seconds)}`
+                }
+
+                return (
+                  <Menu.Item
+                    key={seconds}
+                    sx={(theme) => ({
+                      background: seconds === selectedRelativeItem ? theme.colors.carbon[3] : ''
+                    })}
+                    onClick={() => onChange?.({ type: 'relative', value: seconds, isFuture })}
+                  >
+                    <Text>{label}</Text>
+                  </Menu.Item>
+                )
+              })}
             </>
           </>
         )}

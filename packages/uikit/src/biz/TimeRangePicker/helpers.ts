@@ -8,6 +8,7 @@ export type TimeRange = RelativeTimeRange | AbsoluteTimeRange
 export interface RelativeTimeRange {
   type: 'relative'
   value: number // unit: seconds
+  isFuture?: boolean
 }
 
 export interface AbsoluteTimeRange {
