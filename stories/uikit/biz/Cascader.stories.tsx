@@ -19,23 +19,10 @@ function getTreeData(): TreeNodeData[] {
     {
       label: 'TiDB Serverless',
       value: 'TiDB Serverless',
-      children: [
-        // {
-        //   label: 'Row-based Storage',
-        //   value: 'TiDB Serverless - Row-based Storage',
-        //   isLeaf: true
-        // },
-        // {
-        //   label: 'Columnar Storage',
-        //   value: 'TiDB Serverless - Columnar Storage',
-        //   isLeaf: true
-        // },
-        // {
-        //   label: 'Request Units',
-        //   value: 'TiDB Serverless - Request Units',
-        //   isLeaf: true
-        // }
-      ]
+      nodeProps: {
+        isParent: true
+      },
+      children: []
     },
     {
       label: 'TiDB Dedicated',
@@ -47,24 +34,15 @@ function getTreeData(): TreeNodeData[] {
           children: [
             {
               label: 'TiDB',
-              value: 'TiDB Dedicated - Node Compute - TiDB',
-              nodeProps: {
-                isLeaf: true
-              }
+              value: 'TiDB Dedicated - Node Compute - TiDB'
             },
             {
               label: 'TiKV',
-              value: 'TiDB Dedicated - Node Compute - TiKV',
-              nodeProps: {
-                isLeaf: true
-              }
+              value: 'TiDB Dedicated - Node Compute - TiKV'
             },
             {
               label: 'TiFlash',
-              value: 'TiDB Dedicated - Node Compute - TiFlash',
-              nodeProps: {
-                isLeaf: true
-              }
+              value: 'TiDB Dedicated - Node Compute - TiFlash'
             }
           ]
         },
@@ -74,17 +52,11 @@ function getTreeData(): TreeNodeData[] {
           children: [
             {
               label: 'TiKV',
-              value: 'TiDB Dedicated - Node Storage - TiKV',
-              nodeProps: {
-                isLeaf: true
-              }
+              value: 'TiDB Dedicated - Node Storage - TiKV'
             },
             {
               label: 'TiFlash',
-              value: 'TiDB Dedicated - Node Storage - TiFlash',
-              nodeProps: {
-                isLeaf: true
-              }
+              value: 'TiDB Dedicated - Node Storage - TiFlash'
             }
           ]
         },
@@ -94,24 +66,15 @@ function getTreeData(): TreeNodeData[] {
           children: [
             {
               label: 'Single Region Storage',
-              value: 'TiDB Dedicated - Backup - Single Region Storage',
-              nodeProps: {
-                isLeaf: true
-              }
+              value: 'TiDB Dedicated - Backup - Single Region Storage'
             },
             {
               label: 'Dual Region Storage',
-              value: 'TiDB Dedicated - Backup - Dual Region Storage',
-              nodeProps: {
-                isLeaf: true
-              }
+              value: 'TiDB Dedicated - Backup - Dual Region Storage'
             },
             {
               label: 'Replication',
-              value: 'TiDB Dedicated - Backup - Replication',
-              nodeProps: {
-                isLeaf: true
-              }
+              value: 'TiDB Dedicated - Backup - Replication'
             }
           ]
         },
@@ -121,10 +84,7 @@ function getTreeData(): TreeNodeData[] {
           children: [
             {
               label: 'Replication Capacity Units (RCU)',
-              value: 'TiDB Dedicated - Data Migration - Replication Capacity Units (RCU)',
-              nodeProps: {
-                isLeaf: true
-              }
+              value: 'TiDB Dedicated - Data Migration - Replication Capacity Units (RCU)'
             }
           ]
         },
@@ -134,10 +94,7 @@ function getTreeData(): TreeNodeData[] {
           children: [
             {
               label: 'Replication Capacity Units',
-              value: 'TiDB Dedicated - Changefeed - Replication Capacity Units',
-              nodeProps: {
-                isLeaf: true
-              }
+              value: 'TiDB Dedicated - Changefeed - Replication Capacity Units'
             }
           ]
         },
@@ -147,45 +104,27 @@ function getTreeData(): TreeNodeData[] {
           children: [
             {
               label: 'Internet',
-              value: 'TiDB Dedicated - Data Transfer - Internet',
-              nodeProps: {
-                isLeaf: true
-              }
+              value: 'TiDB Dedicated - Data Transfer - Internet'
             },
             {
               label: 'Cross Region',
-              value: 'TiDB Dedicated - Data Transfer - Cross Region',
-              nodeProps: {
-                isLeaf: true
-              }
+              value: 'TiDB Dedicated - Data Transfer - Cross Region'
             },
             {
               label: 'Same Region',
-              value: 'TiDB Dedicated - Data Transfer - Same Region',
-              nodeProps: {
-                isLeaf: true
-              }
+              value: 'TiDB Dedicated - Data Transfer - Same Region'
             },
             {
               label: 'Load Balancing',
-              value: 'TiDB Dedicated - Data Transfer - Load Balancing',
-              nodeProps: {
-                isLeaf: true
-              }
+              value: 'TiDB Dedicated - Data Transfer - Load Balancing'
             },
             {
               label: 'DM NAT Gateway',
-              value: 'TiDB Dedicated - Data Transfer - DM NAT Gateway',
-              nodeProps: {
-                isLeaf: true
-              }
+              value: 'TiDB Dedicated - Data Transfer - DM NAT Gateway'
             },
             {
               label: 'Private Data Link',
-              value: 'TiDB Dedicated - Data Transfer - Private Data Link',
-              nodeProps: {
-                isLeaf: true
-              }
+              value: 'TiDB Dedicated - Data Transfer - Private Data Link'
             }
           ]
         },
@@ -195,24 +134,15 @@ function getTreeData(): TreeNodeData[] {
           children: [
             {
               label: 'Recovery Group Service',
-              value: 'TiDB Dedicated - Recovery Group - Recovery Group Service',
-              nodeProps: {
-                isLeaf: true
-              }
+              value: 'TiDB Dedicated - Recovery Group - Recovery Group Service'
             },
             {
               label: 'Same Region Data Processing',
-              value: 'TiDB Dedicated - Recovery Group - Same Region Data Processing',
-              nodeProps: {
-                isLeaf: true
-              }
+              value: 'TiDB Dedicated - Recovery Group - Same Region Data Processing'
             },
             {
               label: 'Cross Region Data Processing',
-              value: 'TiDB Dedicated - Recovery Group - Cross Region Data Processing',
-              nodeProps: {
-                isLeaf: true
-              }
+              value: 'TiDB Dedicated - Recovery Group - Cross Region Data Processing'
             }
           ]
         }
@@ -220,10 +150,7 @@ function getTreeData(): TreeNodeData[] {
     },
     {
       label: 'Support Plan',
-      value: 'Support Plan',
-      nodeProps: {
-        isLeaf: true
-      }
+      value: 'Support Plan'
     }
   ]
 }
@@ -236,24 +163,15 @@ function MultipleDemo() {
       const dp = Promise.resolve([
         {
           label: 'Row-based Storage',
-          value: 'TiDB Serverless - Row-based Storage',
-          nodeProps: {
-            isLeaf: true
-          }
+          value: 'TiDB Serverless - Row-based Storage'
         },
         {
           label: 'Columnar Storage',
-          value: 'TiDB Serverless - Columnar Storage',
-          nodeProps: {
-            isLeaf: true
-          }
+          value: 'TiDB Serverless - Columnar Storage'
         },
         {
           label: 'Request Units',
-          value: 'TiDB Serverless - Request Units',
-          nodeProps: {
-            isLeaf: true
-          }
+          value: 'TiDB Serverless - Request Units'
         }
       ])
       const d = await dp

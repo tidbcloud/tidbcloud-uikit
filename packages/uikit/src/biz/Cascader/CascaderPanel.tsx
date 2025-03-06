@@ -99,7 +99,7 @@ const CascaderItem = ({ multiple, option, siblings, optionProps, onCheck }: Casc
     collapse
   } = useTreeContext()
   const { label, value, children, nodeProps } = option
-  const isLeaf = nodeProps?.isLeaf
+  const isParent = nodeProps?.isParent
   const isLoading = loadingState[value]
   const disabled = disabledState[value]
   const expanded = expandedState[value]
@@ -136,7 +136,7 @@ const CascaderItem = ({ multiple, option, siblings, optionProps, onCheck }: Casc
             </Group>
           </Box>
 
-          {!isLeaf ? (
+          {(isParent || children?.length) && (
             <ActionIcon
               variant="transparent"
               size={40}
@@ -159,8 +159,6 @@ const CascaderItem = ({ multiple, option, siblings, optionProps, onCheck }: Casc
             >
               <IconChevronRight size={16} />
             </ActionIcon>
-          ) : (
-            <></>
           )}
         </Group>
       </Box>
