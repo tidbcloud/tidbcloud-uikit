@@ -11,7 +11,8 @@ import {
   Typography,
   DatePicker,
   TimeInput,
-  Input
+  Input,
+  DatePickerProps
 } from '../../primitive/index.js'
 import { dayjs } from '../../utils/dayjs.js'
 
@@ -25,6 +26,26 @@ interface AbsoluteTimeRangePickerProps {
   onChange?: (v: AbsoluteTimeRange) => void
   onCancel?: () => void
   onReturnClick?: MouseEventHandler<HTMLElement>
+
+  panelProps?: AbsolutePanelProps
+}
+
+export interface AbsolutePanelProps {
+  entryLabel?: string
+  backLabel?: string
+  startLabel?: string
+  endLabel?: string
+  applyLabel?: string
+  cancelLabel?: string
+  dateInputFormat?: (date: Date) => string
+  datePickerProps?: DatePickerProps<'range'>
+
+  errors?: {
+    startAfterEnd?: string
+    beyondMin?: (min: Date) => string
+    beyondMax?: (max: Date) => string
+    beyondDuration?: (duration: number) => string
+  }
 }
 
 const AbsoluteTimeRangePicker = ({
@@ -34,12 +55,13 @@ const AbsoluteTimeRangePicker = ({
   maxDuration,
   onChange,
   onCancel,
-  onReturnClick
+  onReturnClick,
+  panelProps
 }: AbsoluteTimeRangePickerProps) => {
   const [start, setStart] = useState(() => (value ? new Date(value[0] * 1000) : null))
   const [end, setEnd] = useState(() => (value ? new Date(value[1] * 1000) : null))
-  const startDate = start ? dayjs(start).format('MMM D, YYYY') : '-'
-  const endDate = end ? dayjs(end).format('MMM D, YYYY') : '-'
+  const startDate = start ? panelProps?.dateInputFormat?.(start) || dayjs(start).format('MMM D, YYYY') : '-'
+  const endDate = end ? panelProps?.dateInputFormat?.(end) || dayjs(end).format('MMM D, YYYY') : '-'
   const startTime = start ? dayjs(start).format('HH:mm:ss') : '-'
   const endTime = end ? dayjs(end).format('HH:mm:ss') : '-'
 
@@ -92,11 +114,11 @@ const AbsoluteTimeRangePicker = ({
     <Box p="md" w={280} m={-4}>
       <Group pb="xs" mt={-4} onClick={onReturnClick} sx={{ cursor: 'pointer' }}>
         <IconChevronLeft size={16} />
-        <Typography variant="body-lg">Back</Typography>
+        <Typography variant="body-lg">{panelProps?.backLabel || 'Back'}</Typography>
       </Group>
 
       <Group gap={0} pt={8} justify="space-between">
-        <Typography variant="label-sm">Start</Typography>
+        <Typography variant="label-sm">{panelProps?.startLabel || 'Start'}</Typography>
         <Group gap={8}>
           <Input w={116} value={startDate} error={beyondMin || startAfterEnd || beyondDuration} />
           <TimeInput
@@ -110,7 +132,7 @@ const AbsoluteTimeRangePicker = ({
       </Group>
 
       <Group gap={0} pt={8} justify="space-between">
-        <Typography variant="label-sm">End</Typography>
+        <Typography variant="label-sm">{panelProps?.endLabel || 'End'}</Typography>
         <Group gap={8}>
           <Input w={116} value={endDate} error={beyondMax || startAfterEnd || beyondDuration} />
           <TimeInput
@@ -125,6 +147,7 @@ const AbsoluteTimeRangePicker = ({
 
       <Flex justify="center" pt={8}>
         <DatePicker
+          {...panelProps?.datePickerProps}
           type="range"
           value={displayRangeDate}
           onChange={updateRangeDate}
@@ -135,20 +158,27 @@ const AbsoluteTimeRangePicker = ({
 
       {(startAfterEnd || beyondMin || beyondMax || beyondDuration) && (
         <Alert icon={<IconAlertCircle size={16} />} color="red" pt={8}>
-          {startAfterEnd && <Text c="red">Please select an end time after the start time.</Text>}
+          {startAfterEnd && (
+            <Text c="red">
+              {panelProps?.errors?.startAfterEnd || 'Please select an end time after the start time.'}
+            </Text>
+          )}
           {beyondMin && (
             <Text c="red">
-              Please select a start time after <>{timeFormatter(minDateTime!, null, 'MMM D, YYYY HH:mm:ss')}</>
+              {panelProps?.errors?.beyondMin?.(minDateTime!) ||
+                `Please select a start time after ${timeFormatter(minDateTime!, null, 'MMM D, YYYY HH:mm:ss')}`}
             </Text>
           )}
           {beyondMax && (
             <Text c="red">
-              Please select an end time before <>{timeFormatter(maxDateTime!, null, 'MMM D, YYYY HH:mm:ss')}</>
+              {panelProps?.errors?.beyondMax?.(maxDateTime!) ||
+                `Please select an end time before ${timeFormatter(maxDateTime!, null, 'MMM D, YYYY HH:mm:ss')}`}
             </Text>
           )}
           {beyondDuration && (
             <Text c="red">
-              The selection exceeds the {formatDuration(maxDuration!)} limit, please select a shorter time range.
+              {panelProps?.errors?.beyondDuration?.(maxDuration!) ||
+                `The selection exceeds the ${formatDuration(maxDuration!)} limit, please select a shorter time range.`}
             </Text>
           )}
         </Alert>
@@ -156,14 +186,14 @@ const AbsoluteTimeRangePicker = ({
 
       <Flex pt={8} gap="xs" justify="flex-end" align="flex-start" direction="row" wrap="wrap">
         <Button size="xs" variant="default" onClick={onCancel}>
-          Cancel
+          {panelProps?.cancelLabel || 'Cancel'}
         </Button>
         <Button
           size="xs"
           onClick={apply}
           disabled={!start || !end || startAfterEnd || beyondMin || beyondMax || beyondDuration}
         >
-          Apply
+          {panelProps?.applyLabel || 'Apply'}
         </Button>
       </Flex>
     </Box>

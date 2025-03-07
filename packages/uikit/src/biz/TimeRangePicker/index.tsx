@@ -2,10 +2,29 @@ import { useHover } from '@mantine/hooks'
 import { useMemo, useState } from 'react'
 
 import { IconChevronRight, IconChevronSelectorVertical, IconX } from '../../icons/index.js'
-import { Button, Menu, Text, Box, Tooltip, Group, Typography, ButtonProps, ActionIcon } from '../../primitive/index.js'
+import {
+  Button,
+  Menu,
+  Text,
+  Box,
+  Tooltip,
+  Group,
+  Typography,
+  ButtonProps,
+  ActionIcon,
+  DatePickerProps
+} from '../../primitive/index.js'
 
-import AbsoluteTimeRangePicker from './AbsoluteTimeRangePicker.js'
-import { DEFAULT_QUICK_RANGES, TimeRange, formatDuration, toTimeRangeValue, timeFormatter } from './helpers.js'
+import AbsoluteTimeRangePicker, { AbsolutePanelProps } from './AbsoluteTimeRangePicker.js'
+import {
+  DEFAULT_QUICK_RANGES,
+  TimeRange,
+  formatDuration,
+  toTimeRangeValue,
+  timeFormatter,
+  AbsoluteTimeRange,
+  RelativeTimeRange
+} from './helpers.js'
 
 export type TimeRangePickerProps = TimeRangePickerBaseProps &
   (
@@ -16,7 +35,10 @@ export type TimeRangePickerProps = TimeRangePickerBaseProps &
 export interface TimeRangePickerBaseProps extends ButtonProps {
   loading?: boolean
   placeholder?: string
+  badgePlaceholder?: string
   clearable?: boolean
+  relativeFormatter?: (relativeRange: RelativeTimeRange) => string
+  absoluteFormatter?: (absoluteRange: AbsoluteTimeRange) => string
 
   minDateTime?: () => Date
   maxDateTime?: () => Date
@@ -29,12 +51,15 @@ export interface TimeRangePickerBaseProps extends ButtonProps {
   disableAbsoluteRanges?: boolean
 
   timezone?: number
+
+  absPanelProps?: AbsolutePanelProps
+  absDatePickerProps?: DatePickerProps<'range'>
 }
 
 type QuickRange = {
   // unit: seconds.
   value: number
-  label?: string
+  label?: React.ReactNode
   isFuture?: boolean
 }
 
@@ -48,14 +73,20 @@ export const TimeRangePicker = ({
   quickRanges = DEFAULT_QUICK_RANGES,
   loading,
   placeholder,
+  badgePlaceholder,
   clearable,
   timezone,
-  sx
+  sx,
+  absPanelProps,
+  absDatePickerProps,
+  relativeFormatter,
+  absoluteFormatter
 }: React.PropsWithChildren<TimeRangePickerProps>) => {
   const [opened, setOpened] = useState(false)
   const [customMode, setCustomMode] = useState(false)
   const isEmptyValue = !value
   const isRelativeRange = value?.type === 'relative'
+  const isFuture = isRelativeRange && value?.isFuture
   const { hovered, ref: targetRef } = useHover()
 
   const timeRangeValue = isEmptyValue ? undefined : toTimeRangeValue(value)
@@ -71,13 +102,27 @@ export const TimeRangePicker = ({
     if (!timeRangeValue) {
       return ''
     }
+    if (absoluteFormatter) {
+      return absoluteFormatter(value as AbsoluteTimeRange)
+    }
 
     return `${timeFormatter(timeRangeValue[0], timezone ?? null, 'MMM D, YYYY HH:mm')} - ${timeFormatter(
       timeRangeValue[1],
       timezone ?? null,
       'MMM D, YYYY HH:mm'
     )}`
-  }, [timeRangeValue])
+  }, [value])
+
+  const formattedRelativeDateTime = useMemo(() => {
+    if (!value || value.type === 'absolute') {
+      return ''
+    }
+    if (relativeFormatter) {
+      return relativeFormatter(value as RelativeTimeRange)
+    }
+
+    return `${isFuture ? 'Next' : 'Past'} ${formatDuration(duration!)}`
+  }, [value])
 
   return (
     <Menu
@@ -139,7 +184,9 @@ export const TimeRangePicker = ({
           >
             <Group w="100%" gap={0}>
               <Box sx={{ flex: 'none' }}>
-                <DurationBadge>{isEmptyValue ? 'All' : formatDuration(duration!, true)}</DurationBadge>
+                <DurationBadge>
+                  {isEmptyValue ? badgePlaceholder || 'All' : formatDuration(duration!, true)}
+                </DurationBadge>
               </Box>
               <Text
                 px={8}
@@ -155,7 +202,7 @@ export const TimeRangePicker = ({
                 {isEmptyValue
                   ? placeholder || 'Time Range'
                   : isRelativeRange
-                    ? `Past ${formatDuration(duration!)}`
+                    ? formattedRelativeDateTime
                     : formattedAbsDateTime}
               </Text>
             </Group>
@@ -176,6 +223,7 @@ export const TimeRangePicker = ({
             }}
             onCancel={() => setOpened(false)}
             onReturnClick={() => setCustomMode(false)}
+            panelProps={absPanelProps}
           />
         ) : (
           <>
@@ -186,7 +234,7 @@ export const TimeRangePicker = ({
                   closeMenuOnClick={false}
                   onClick={() => setCustomMode(true)}
                 >
-                  <Typography variant="body-lg">Custom</Typography>
+                  <Typography variant="body-lg">{absPanelProps?.entryLabel || 'Custom'}</Typography>
                 </Menu.Item>
 
                 <Menu.Divider />
