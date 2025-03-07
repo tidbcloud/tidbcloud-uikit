@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.2.1
+
+### Patch Changes
+
+- Feat/search area i18n support ([#493](https://github.com/tidbcloud/tidbcloud-uikit/pull/493))
+
 ## 2.2.0
 
 ### Minor Changes
