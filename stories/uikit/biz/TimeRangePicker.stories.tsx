@@ -123,7 +123,7 @@ export const Internationalization: Story = {
       endLabel: '结束时间',
       applyLabel: '应用',
       cancelLabel: '取消',
-      dateInputFormat: (date) => dayjs(date).format('YYYY-MM-DD'),
+      dateInputFormat: (date: Date) => dayjs(date).format('YYYY-MM-DD'),
       datePickerProps: { locale: 'zh' }
     }
   }
