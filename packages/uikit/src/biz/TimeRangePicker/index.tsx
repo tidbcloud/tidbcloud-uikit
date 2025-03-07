@@ -53,7 +53,6 @@ export interface TimeRangePickerBaseProps extends ButtonProps {
   timezone?: number
 
   absPanelProps?: AbsolutePanelProps
-  absDatePickerProps?: DatePickerProps<'range'>
 }
 
 type QuickRange = {
@@ -78,7 +77,6 @@ export const TimeRangePicker = ({
   timezone,
   sx,
   absPanelProps,
-  absDatePickerProps,
   relativeFormatter,
   absoluteFormatter
 }: React.PropsWithChildren<TimeRangePickerProps>) => {
