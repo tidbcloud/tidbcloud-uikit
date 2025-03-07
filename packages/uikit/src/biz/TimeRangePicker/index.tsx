@@ -15,7 +15,7 @@ import {
   DatePickerProps
 } from '../../primitive/index.js'
 
-import AbsoluteTimeRangePicker, { AbsolutePanelProps } from './AbsoluteTimeRangePicker.js'
+import AbsoluteTimeRangePicker, { Localization } from './AbsoluteTimeRangePicker.js'
 import {
   DEFAULT_QUICK_RANGES,
   TimeRange,
@@ -52,7 +52,9 @@ export interface TimeRangePickerBaseProps extends ButtonProps {
 
   timezone?: number
 
-  absPanelProps?: AbsolutePanelProps
+  datePickerProps?: DatePickerProps<'range'>
+  dateInputFormat?: (date: Date) => string
+  localization?: Localization
 }
 
 type QuickRange = {
@@ -76,7 +78,9 @@ export const TimeRangePicker = ({
   clearable,
   timezone,
   sx,
-  absPanelProps,
+  dateInputFormat,
+  datePickerProps,
+  localization,
   relativeFormatter,
   absoluteFormatter
 }: React.PropsWithChildren<TimeRangePickerProps>) => {
@@ -221,7 +225,9 @@ export const TimeRangePicker = ({
             }}
             onCancel={() => setOpened(false)}
             onReturnClick={() => setCustomMode(false)}
-            panelProps={absPanelProps}
+            dateInputFormat={dateInputFormat}
+            datePickerProps={datePickerProps}
+            localization={localization}
           />
         ) : (
           <>
@@ -232,7 +238,7 @@ export const TimeRangePicker = ({
                   closeMenuOnClick={false}
                   onClick={() => setCustomMode(true)}
                 >
-                  <Typography variant="body-lg">{absPanelProps?.entryLabel || 'Custom'}</Typography>
+                  <Typography variant="body-lg">{localization?.entry || 'Custom'}</Typography>
                 </Menu.Item>
 
                 <Menu.Divider />
