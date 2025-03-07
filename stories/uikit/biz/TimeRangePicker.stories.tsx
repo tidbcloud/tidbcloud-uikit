@@ -1,3 +1,5 @@
+import 'dayjs/locale/zh'
+
 import type { Meta, StoryObj, StoryFn } from '@storybook/react'
 import { TimeRangePicker, TimeRangePickerProps } from '@tidbcloud/uikit/biz'
 import { dayjs } from '@tidbcloud/uikit/utils'
@@ -71,5 +73,58 @@ export const Clearable: Story = {
       12 * 60 * 60
     ],
     clearable: true
+  }
+}
+
+export const FutureRelativeRange: Story = {
+  args: {
+    value: { type: 'relative', value: 30 * 60, isFuture: true },
+    quickRanges: [
+      {
+        value: 5 * 60,
+        isFuture: true
+      },
+      {
+        value: 15 * 60,
+        isFuture: true
+      },
+      {
+        value: 30 * 60,
+        isFuture: true
+      }
+    ]
+  }
+}
+
+export const Internationalization: Story = {
+  args: {
+    value: { type: 'relative', value: 30 * 60, isFuture: true },
+    quickRanges: [
+      {
+        value: 5 * 60,
+        label: '未来 5 分钟',
+        isFuture: true
+      },
+      {
+        value: 15 * 60,
+        label: '未来 15 分钟',
+        isFuture: true
+      },
+      {
+        value: 30 * 60,
+        label: '未来 30 分钟',
+        isFuture: true
+      }
+    ],
+    absPanelProps: {
+      entryLabel: '自定义',
+      backLabel: '返回',
+      startLabel: '开始时间',
+      endLabel: '结束时间',
+      applyLabel: '应用',
+      cancelLabel: '取消',
+      dateInputFormat: (date) => dayjs(date).format('YYYY-MM-DD'),
+      datePickerProps: { locale: 'zh' }
+    }
   }
 }
