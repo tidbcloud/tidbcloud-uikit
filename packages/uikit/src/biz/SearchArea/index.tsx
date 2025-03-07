@@ -179,6 +179,7 @@ function FormItemRender(props: {
           name={name}
           value={keyword as TimeRange}
           clearable
+          placeholder={placeholder ?? ''}
           onChange={(val) => {
             setKeyword(val)
             triggerSubmit()
