@@ -158,7 +158,7 @@ function getTreeData(): TreeNodeData[] {
 const TITLES = ['Group 1', 'Group 2', 'Group 3']
 function MultipleDemo() {
   const [data, setData] = useState(() => getTreeData())
-  const cascader = useTreeStore({
+  const treeStore = useTreeStore({
     loadNodesFn: async (target, updator) => {
       const dp = Promise.resolve([
         {
@@ -181,7 +181,7 @@ function MultipleDemo() {
   const [value, setValue] = useState<string[]>([])
   return (
     <Cascader
-      tree={cascader}
+      treeStore={treeStore}
       data={data}
       comboboxProps={{ width: 'max-width', position: 'bottom-start' }}
       value={value}
