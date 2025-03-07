@@ -1,9 +1,14 @@
 import 'dayjs/locale/zh'
 
 import type { Meta, StoryObj, StoryFn } from '@storybook/react'
-import { TimeRangePicker, TimeRangePickerProps } from '@tidbcloud/uikit/biz'
+import { AbsoluteTimeRange, RelativeTimeRange, TimeRangePicker, TimeRangePickerProps } from '@tidbcloud/uikit/biz'
 import { dayjs } from '@tidbcloud/uikit/utils'
+import duration from 'dayjs/plugin/duration'
+import relativeTime from 'dayjs/plugin/relativeTime'
 import { useState } from 'react'
+
+dayjs.extend(duration)
+dayjs.extend(relativeTime)
 
 function TimeRangePickerWrapper(props: TimeRangePickerProps) {
   const [tr, setTr] = useState(props.value)
@@ -125,6 +130,15 @@ export const Internationalization: Story = {
       cancelLabel: '取消',
       dateInputFormat: (date: Date) => dayjs(date).format('YYYY-MM-DD'),
       datePickerProps: { locale: 'zh' }
+    },
+    relativeFormatter: (range: RelativeTimeRange) => {
+      return `${range.isFuture ? '未来' : '过去'} ${dayjs
+        .duration(range.value * 1000)
+        .locale('zh')
+        .humanize()}`
+    },
+    absoluteFormatter: (range: AbsoluteTimeRange) => {
+      return `${dayjs.unix(range.value[0]).format('YYYY-MM-DD HH:mm')} - ${dayjs.unix(range.value[1]).format('YYYY-MM-DD HH:mm')}`
     }
   }
 }
