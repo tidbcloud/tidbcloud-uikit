@@ -57,6 +57,7 @@ export interface SearchAreaProps<T extends FieldValues> extends FormProps<T> {
    * CAUTIONS: must be set to different keys when using multiple SearchArea in the same page!!!
    */
   formStateQueryKey?: string
+  clearFiltersText?: string
 }
 
 const SX_Y_MID = { display: 'flex', alignItems: 'center' }
@@ -246,7 +247,7 @@ export function SearchArea<T extends object>(props: SearchAreaProps<T>) {
             <Box sx={SX_Y_MID}>
               <Box sx={SX_Y_MID}>
                 <Button variant="subtle" onClick={handleReset}>
-                  Clear Filters
+                  {props.clearFiltersText ?? 'Clear Filters'}
                 </Button>
               </Box>
               {onRefresh && (
