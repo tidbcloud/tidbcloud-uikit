@@ -121,15 +121,21 @@ export const Internationalization: Story = {
         isFuture: true
       }
     ],
-    absPanelProps: {
-      entryLabel: '自定义',
-      backLabel: '返回',
-      startLabel: '开始时间',
-      endLabel: '结束时间',
-      applyLabel: '应用',
-      cancelLabel: '取消',
-      dateInputFormat: (date: Date) => dayjs(date).format('YYYY-MM-DD'),
-      datePickerProps: { locale: 'zh' }
+    dateInputFormat: (date: Date) => dayjs(date).format('YYYY-MM-DD'),
+    datePickerProps: { locale: 'zh' },
+    localization: {
+      entry: '自定义',
+      back: '返回',
+      start: '开始时间',
+      end: '结束时间',
+      apply: '应用',
+      cancel: '取消',
+      errors: {
+        startAfterEnd: '请选择结束时间在开始时间之后',
+        beyondMin: (min: Date) => `请选择开始时间在 ${dayjs(min).format('YYYY-MM-DD HH:mm')} 之后`,
+        beyondMax: (max: Date) => `请选择结束时间在 ${dayjs(max).format('YYYY-MM-DD HH:mm')} 之前`,
+        beyondDuration: (duration: number) => `选择的时间范围超过 ${duration} 秒的限制，请选择更短的时间范围`
+      }
     },
     relativeFormatter: (range: RelativeTimeRange) => {
       return `${range.isFuture ? '未来' : '过去'} ${dayjs
