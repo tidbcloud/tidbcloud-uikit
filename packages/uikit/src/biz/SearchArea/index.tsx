@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { FieldValues, useForm, UseFormReturn } from 'react-hook-form'
 
-import { useURLQueryState } from '../../hooks/index.js'
+import { useDebouncedValue, useURLQueryState } from '../../hooks/index.js'
 import { IconEraser, IconRefreshCw01, IconXClose } from '../../icons/index.js'
 import { Box, BoxProps, Button } from '../../primitive/index.js'
 import { mergeSxList } from '../../utils/styles.js'
@@ -57,6 +57,7 @@ export interface SearchAreaProps<T extends FieldValues> extends FormProps<T> {
    * CAUTIONS: must be set to different keys when using multiple SearchArea in the same page!!!
    */
   formStateQueryKey?: string
+  clearFiltersText?: string
 }
 
 const SX_Y_MID = { display: 'flex', alignItems: 'center' }
@@ -78,12 +79,19 @@ function FormItemRender(props: {
   } = props
 
   const [keyword, setKeyword] = useState<TSearchAreaValue>(defaultValue)
+  const [debouncedKeyword] = useDebouncedValue(keyword, 800)
 
   useEffect(() => {
     if (resetSeed > 0) {
       setKeyword(defaultValue)
     }
   }, [resetSeed])
+
+  useEffect(() => {
+    if (type === 'text') {
+      triggerSubmit()
+    }
+  }, [debouncedKeyword])
 
   const triggerSubmit = () => onSubmit && onSubmit()
   function onKeyDownHandler(e: React.KeyboardEvent<HTMLInputElement>) {
@@ -172,6 +180,7 @@ function FormItemRender(props: {
           name={name}
           value={keyword as TimeRange}
           clearable
+          placeholder={placeholder ?? ''}
           onChange={(val) => {
             setKeyword(val)
             triggerSubmit()
@@ -238,7 +247,7 @@ export function SearchArea<T extends object>(props: SearchAreaProps<T>) {
             <Box sx={SX_Y_MID}>
               <Box sx={SX_Y_MID}>
                 <Button variant="subtle" onClick={handleReset}>
-                  Clear Filters
+                  {props.clearFiltersText ?? 'Clear Filters'}
                 </Button>
               </Box>
               {onRefresh && (
@@ -251,14 +260,6 @@ export function SearchArea<T extends object>(props: SearchAreaProps<T>) {
             </Box>
           </Box>
         </Box>
-        {props.debugEnabled && (
-          <Box sx={{ height: 320 }}>
-            <pre>result = {JSON.stringify(form.getValues(), null, 4)}</pre>
-            <Button variant="light" onClick={() => window.location.reload()}>
-              Refresh Page
-            </Button>
-          </Box>
-        )}
       </Form>
     </Box>
   )
