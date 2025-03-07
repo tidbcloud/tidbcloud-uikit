@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.2.2
+
+### Patch Changes
+
+- feat: allow select all for ProMultiSelect component ([#495](https://github.com/tidbcloud/tidbcloud-uikit/pull/495))
+
 ## 2.2.1
 
 ### Patch Changes
