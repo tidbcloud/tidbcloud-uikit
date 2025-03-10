@@ -67,10 +67,12 @@ export const Grouped: Story = {
       withAsterisk
       error="This is an error"
     >
-      <Radio value="react" label="React" />
-      <Radio value="svelte" label="Svelte" />
-      <Radio value="ng" label="Angular" />
-      <Radio value="vue" label="Vue" />
+      <Stack gap="xs" mt="xs">
+        <Radio value="react" label="React" />
+        <Radio value="svelte" label="Svelte" />
+        <Radio value="ng" label="Angular" />
+        <Radio value="vue" label="Vue" />
+      </Stack>
     </Radio.Group>
   )
 }
@@ -102,10 +104,12 @@ export const AllSizes: Story = {
         withAsterisk
         size="sm"
       >
-        <Radio value="react" label="React" />
-        <Radio value="svelte" label="Svelte" />
-        <Radio value="ng" label="Angular" />
-        <Radio value="vue" label="Vue" />
+        <Stack gap="xs" mt="xs">
+          <Radio value="react" label="React" />
+          <Radio value="svelte" label="Svelte" />
+          <Radio value="ng" label="Angular" />
+          <Radio value="vue" label="Vue" />
+        </Stack>
       </Radio.Group>
 
       <Radio.Group
@@ -115,33 +119,25 @@ export const AllSizes: Story = {
         withAsterisk
         size="md"
       >
-        <Radio value="react" label="React" />
-        <Radio value="svelte" label="Svelte" />
-        <Radio value="ng" label="Angular" />
-        <Radio value="vue" label="Vue" />
+        <Stack gap="xs" mt="xs">
+          <Radio value="react" label="React" />
+          <Radio value="svelte" label="Svelte" />
+          <Radio value="ng" label="Angular" />
+          <Radio value="vue" label="Vue" />
+        </Stack>
       </Radio.Group>
     </Stack>
   )
 }
 
 export function RadioCard() {
-  const data = [{ name: 'TiDB Serverless' }, { name: 'TiDB Dedicated' }, { name: 'TiDB On-Premises' }]
+  const data = [{ name: 'TiDB Serverless' }, { name: 'TiDB Dedicated' }, { name: 'TiDB On-Premises', disabled: true }]
   const [value, setValue] = useState<string | null>(null)
 
   const cards = data.map((item) => (
-    <Radio.Card
-      radius="md"
-      p="md"
-      value={item.name}
-      key={item.name}
-      sx={{
-        '&[data-checked]': {
-          borderColor: 'var(--mantine-primary-color-filled)'
-        }
-      }}
-    >
+    <Radio.Card radius="md" p="md" value={item.name} key={item.name}>
       <Group>
-        <Radio.Indicator />
+        <Radio.Indicator disabled={item.disabled} />
         <Typography>{item.name}</Typography>
       </Group>
     </Radio.Card>
@@ -159,6 +155,9 @@ export function RadioCard() {
           {cards}
         </Group>
       </Radio.Group>
+
+      <Radio value="react" label="unchecked disabled" disabled />
+      <Radio value="react" label="checked" checked disabled />
 
       <Typography fz="xs" mt="md">
         CurrentValue: {value || '–'}
