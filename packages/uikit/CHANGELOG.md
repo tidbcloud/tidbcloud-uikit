@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.2.3
+
+### Patch Changes
+
+- fix(theme): Enhance Radio and Radio.Indicator styling ([#497](https://github.com/tidbcloud/tidbcloud-uikit/pull/497))
+
 ## 2.2.2
 
 ### Patch Changes
