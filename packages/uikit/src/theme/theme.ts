@@ -1,5 +1,5 @@
 // eslint-disable-next-line no-restricted-imports
-import { MantineTheme, createTheme, mergeMantineTheme, DEFAULT_THEME } from '@mantine/core'
+import { MantineTheme, createTheme, mergeMantineTheme, DEFAULT_THEME, RadioIndicatorProps } from '@mantine/core'
 import { EmotionHelpers, keyframes } from '@mantine/emotion'
 
 import {
@@ -1002,12 +1002,38 @@ const theme = createTheme({
             transform: 'var(--radio-icon-transform, scale(0.2))'
           },
           radio: {
+            borderColor: themeColor(theme, 'carbon', 6),
             '&:disabled:not(:checked)': {
               background: themeColor(theme, 'carbon', 4),
               borderColor: themeColor(theme, 'carbon', 6),
               cursor: 'not-allowed'
             },
             '&:disabled:checked': {
+              color: themeColor(theme, 'carbon', 2),
+              background: themeColor(theme, 'carbon', 6),
+              borderColor: themeColor(theme, 'carbon', 6),
+              cursor: 'not-allowed'
+            }
+          }
+        }
+      }
+    },
+    RadioIndicator: {
+      styles: (theme: MantineTheme, props: RadioIndicatorProps) => {
+        const color = (props.color?.includes('.') ? props.color.split('.')[0] : (props.color ?? 'carbon')) as Color
+        const shade = color.includes('carbon') ? 9 : 7
+        return {
+          indicator: {
+            '--radio-color': themeColor(theme, color, shade) + ' !important',
+            '--radio-icon-color':
+              props.variant === 'outline' ? themeColor(theme, color, shade) : theme.white + ' !important',
+            borderColor: themeColor(theme, 'carbon', 6),
+            '&[data-disabled]:not([data-checked])': {
+              background: themeColor(theme, 'carbon', 4),
+              borderColor: themeColor(theme, 'carbon', 6),
+              cursor: 'not-allowed'
+            },
+            '&[data-disabled][data-checked]': {
               color: themeColor(theme, 'carbon', 2),
               background: themeColor(theme, 'carbon', 6),
               borderColor: themeColor(theme, 'carbon', 6),
