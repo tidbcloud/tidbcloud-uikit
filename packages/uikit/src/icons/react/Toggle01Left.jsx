@@ -33,7 +33,14 @@ const Toggle01Left = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'Toggle01Left'].join(' ')}
+    />
+  )
 })
 Toggle01Left.displayName = 'IconToggle01Left'
 export default Toggle01Left

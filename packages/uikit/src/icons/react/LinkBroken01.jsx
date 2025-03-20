@@ -33,7 +33,14 @@ const LinkBroken01 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'LinkBroken01'].join(' ')}
+    />
+  )
 })
 LinkBroken01.displayName = 'IconLinkBroken01'
 export default LinkBroken01

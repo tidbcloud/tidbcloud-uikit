@@ -33,7 +33,14 @@ const Atom02 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'Atom02'].join(' ')}
+    />
+  )
 })
 Atom02.displayName = 'IconAtom02'
 export default Atom02

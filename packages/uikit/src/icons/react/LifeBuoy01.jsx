@@ -33,7 +33,14 @@ const LifeBuoy01 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'LifeBuoy01'].join(' ')}
+    />
+  )
 })
 LifeBuoy01.displayName = 'IconLifeBuoy01'
 export default LifeBuoy01

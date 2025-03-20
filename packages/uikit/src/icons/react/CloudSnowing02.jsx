@@ -33,7 +33,14 @@ const CloudSnowing02 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'CloudSnowing02'].join(' ')}
+    />
+  )
 })
 CloudSnowing02.displayName = 'IconCloudSnowing02'
 export default CloudSnowing02

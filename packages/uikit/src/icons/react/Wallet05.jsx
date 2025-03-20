@@ -33,7 +33,14 @@ const Wallet05 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'Wallet05'].join(' ')}
+    />
+  )
 })
 Wallet05.displayName = 'IconWallet05'
 export default Wallet05

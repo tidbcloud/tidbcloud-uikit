@@ -33,7 +33,14 @@ const PresentationChart02 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'PresentationChart02'].join(' ')}
+    />
+  )
 })
 PresentationChart02.displayName = 'IconPresentationChart02'
 export default PresentationChart02

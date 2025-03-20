@@ -33,7 +33,14 @@ const AlertOctagon = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'AlertOctagon'].join(' ')}
+    />
+  )
 })
 AlertOctagon.displayName = 'IconAlertOctagon'
 export default AlertOctagon

@@ -34,7 +34,14 @@ const DoubleCheck = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'DoubleCheck'].join(' ')}
+    />
+  )
 })
 DoubleCheck.displayName = 'IconDoubleCheck'
 export default DoubleCheck

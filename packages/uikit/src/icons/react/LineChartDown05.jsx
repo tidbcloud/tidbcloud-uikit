@@ -33,7 +33,14 @@ const LineChartDown05 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'LineChartDown05'].join(' ')}
+    />
+  )
 })
 LineChartDown05.displayName = 'IconLineChartDown05'
 export default LineChartDown05

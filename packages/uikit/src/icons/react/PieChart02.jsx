@@ -33,7 +33,14 @@ const PieChart02 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'PieChart02'].join(' ')}
+    />
+  )
 })
 PieChart02.displayName = 'IconPieChart02'
 export default PieChart02

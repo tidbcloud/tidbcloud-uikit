@@ -33,7 +33,14 @@ const ImageIndentLeft = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'ImageIndentLeft'].join(' ')}
+    />
+  )
 })
 ImageIndentLeft.displayName = 'IconImageIndentLeft'
 export default ImageIndentLeft

@@ -33,7 +33,14 @@ const Italic01 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'Italic01'].join(' ')}
+    />
+  )
 })
 Italic01.displayName = 'IconItalic01'
 export default Italic01

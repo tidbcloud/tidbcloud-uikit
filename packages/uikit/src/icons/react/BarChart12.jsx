@@ -33,7 +33,14 @@ const BarChart12 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'BarChart12'].join(' ')}
+    />
+  )
 })
 BarChart12.displayName = 'IconBarChart12'
 export default BarChart12

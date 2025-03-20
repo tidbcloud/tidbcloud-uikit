@@ -33,7 +33,14 @@ const Repeat02 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'Repeat02'].join(' ')}
+    />
+  )
 })
 Repeat02.displayName = 'IconRepeat02'
 export default Repeat02

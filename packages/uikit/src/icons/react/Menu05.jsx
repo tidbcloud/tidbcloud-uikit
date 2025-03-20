@@ -33,7 +33,14 @@ const Menu05 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'Menu05'].join(' ')}
+    />
+  )
 })
 Menu05.displayName = 'IconMenu05'
 export default Menu05

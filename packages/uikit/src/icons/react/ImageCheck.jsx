@@ -33,7 +33,14 @@ const ImageCheck = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'ImageCheck'].join(' ')}
+    />
+  )
 })
 ImageCheck.displayName = 'IconImageCheck'
 export default ImageCheck

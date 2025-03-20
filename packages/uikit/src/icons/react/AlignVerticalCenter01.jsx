@@ -33,7 +33,14 @@ const AlignVerticalCenter01 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'AlignVerticalCenter01'].join(' ')}
+    />
+  )
 })
 AlignVerticalCenter01.displayName = 'IconAlignVerticalCenter01'
 export default AlignVerticalCenter01

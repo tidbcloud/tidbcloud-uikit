@@ -33,7 +33,14 @@ const BoldSquare = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'BoldSquare'].join(' ')}
+    />
+  )
 })
 BoldSquare.displayName = 'IconBoldSquare'
 export default BoldSquare

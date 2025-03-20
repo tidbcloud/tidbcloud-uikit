@@ -33,7 +33,14 @@ const Mail02 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'Mail02'].join(' ')}
+    />
+  )
 })
 Mail02.displayName = 'IconMail02'
 export default Mail02

@@ -33,7 +33,14 @@ const Sliders01 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'Sliders01'].join(' ')}
+    />
+  )
 })
 Sliders01.displayName = 'IconSliders01'
 export default Sliders01

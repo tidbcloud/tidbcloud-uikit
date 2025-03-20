@@ -33,7 +33,14 @@ const BookOpen02 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'BookOpen02'].join(' ')}
+    />
+  )
 })
 BookOpen02.displayName = 'IconBookOpen02'
 export default BookOpen02
