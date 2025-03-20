@@ -9,7 +9,6 @@ const IconDotsHorizontal = (props, ref) => {
       height="1em"
       fill="none"
       viewBox="0 0 24 24"
-      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
@@ -17,8 +16,8 @@ const IconDotsHorizontal = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M12 13C12.5523 13 13 12.5523 13 12 13 11.4477 12.5523 11 12 11 11.4477 11 11 11.4477 11 12 11 12.5523 11.4477 13 12 13ZM19 13C19.5523 13 20 12.5523 20 12 20 11.4477 19.5523 11 19 11 18.4477 11 18 11.4477 18 12 18 12.5523 18.4477 13 19 13ZM5 13C5.55228 13 6 12.5523 6 12 6 11.4477 5.55228 11 5 11 4.44772 11 4 11.4477 4 12 4 12.5523 4.44772 13 5 13Z"
-        strokeWidth="inherit"
+        strokeWidth={2}
+        d="M12 13a1 1 0 1 0 0-2 1 1 0 0 0 0 2M19 13a1 1 0 1 0 0-2 1 1 0 0 0 0 2M5 13a1 1 0 1 0 0-2 1 1 0 0 0 0 2"
       />
     </svg>
   )

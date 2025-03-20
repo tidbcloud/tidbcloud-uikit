@@ -9,7 +9,6 @@ const IconXAxis = (props, ref) => {
       height="1em"
       fill="none"
       viewBox="0 0 24 24"
-      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
@@ -17,8 +16,8 @@ const IconXAxis = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M3 12H21M21 10V14M3 10V14"
-        strokeWidth="inherit"
+        strokeWidth={2}
+        d="M3 12h18m0-2v4M3 10v4"
       />
     </svg>
   )

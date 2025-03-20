@@ -9,7 +9,6 @@ const IconEqualNot = (props, ref) => {
       height="1em"
       fill="none"
       viewBox="0 0 24 24"
-      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
@@ -17,8 +16,8 @@ const IconEqualNot = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M5 9H19M5 15H19M19 5L5 19"
-        strokeWidth="inherit"
+        strokeWidth={2}
+        d="M5 9h14M5 15h14m0-10L5 19"
       />
     </svg>
   )

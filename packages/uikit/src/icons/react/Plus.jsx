@@ -8,7 +8,7 @@ const IconPlus = (props, ref) => {
       width="1em"
       height="1em"
       fill="none"
-      strokeWidth="1.5"
+      strokeWidth={1.5}
       viewBox="0 0 24 24"
       ref={ref}
       {...props}
@@ -17,8 +17,8 @@ const IconPlus = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M12 5V19M5 12H19"
         strokeWidth="inherit"
+        d="M12 5v14m-7-7h14"
       />
     </svg>
   )

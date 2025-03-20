@@ -9,7 +9,6 @@ const IconAlignTopArrow01 = (props, ref) => {
       height="1em"
       fill="none"
       viewBox="0 0 24 24"
-      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
@@ -17,8 +16,8 @@ const IconAlignTopArrow01 = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M21 3H3M12 21V7M12 7L5 14M12 7L19 14"
-        strokeWidth="inherit"
+        strokeWidth={2}
+        d="M21 3H3m9 18V7m0 0-7 7m7-7 7 7"
       />
     </svg>
   )

@@ -9,7 +9,6 @@ const IconMenuRight = (props, ref) => {
       height="1em"
       fill="none"
       viewBox="0 0 24 24"
-      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
@@ -17,8 +16,8 @@ const IconMenuRight = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M3 12H15M3 5H15M3 19H15M18 9L21 12L18 15"
-        strokeWidth="inherit"
+        strokeWidth={2}
+        d="M3 12h12M3 5h12M3 19h12m3-10 3 3-3 3"
       />
     </svg>
   )

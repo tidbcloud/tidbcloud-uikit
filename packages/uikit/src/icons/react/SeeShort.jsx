@@ -8,12 +8,12 @@ const IconSeeShort = (props, ref) => {
       width="1em"
       height="1em"
       fill="none"
-      strokeWidth="1.5"
+      strokeWidth={1.5}
       viewBox="0 0 24 24"
       ref={ref}
       {...props}
     >
-      <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" d="M20 12.5H3" strokeWidth="inherit" />
+      <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="inherit" d="M20 12.5H3" />
     </svg>
   )
 }

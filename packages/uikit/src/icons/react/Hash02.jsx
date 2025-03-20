@@ -9,7 +9,6 @@ const IconHash02 = (props, ref) => {
       height="1em"
       fill="none"
       viewBox="0 0 24 24"
-      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
@@ -17,8 +16,8 @@ const IconHash02 = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M9.49999 3L6.49999 21M17.5 3L14.5 21M20.5 8H3.5M19.5 16H2.5"
-        strokeWidth="inherit"
+        strokeWidth={2}
+        d="m9.5 3-3 18m11-18-3 18m6-13h-17m16 8h-17"
       />
     </svg>
   )
