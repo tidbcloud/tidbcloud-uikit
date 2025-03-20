@@ -17,7 +17,7 @@ const IconCollapse08 = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="m8 19.5 4-4 4 4m-8-15 4 4 4-4"
+        d="M8 19.5L12 15.5L16 19.5M8 4.5L12 8.5L16 4.5"
         strokeWidth="inherit"
       />
     </svg>

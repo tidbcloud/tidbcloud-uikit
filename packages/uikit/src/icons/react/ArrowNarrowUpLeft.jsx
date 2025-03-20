@@ -17,7 +17,7 @@ const IconArrowNarrowUpLeft = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M18 18 6 6m0 0v8m0-8h8"
+        d="M18 18L6 6M6 6V14M6 6H14"
         strokeWidth="inherit"
       />
     </svg>

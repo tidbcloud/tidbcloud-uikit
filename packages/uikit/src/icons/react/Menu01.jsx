@@ -17,7 +17,7 @@ const IconMenu01 = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M3 12h18M3 6h18M3 18h18"
+        d="M3 12H21M3 6H21M3 18H21"
         strokeWidth="inherit"
       />
     </svg>

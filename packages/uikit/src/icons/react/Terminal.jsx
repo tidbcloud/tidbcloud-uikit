@@ -17,7 +17,7 @@ const IconTerminal = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="m4 17 6-6-6-6m8 14h8"
+        d="M4 17L10 11L4 5M12 19H20"
         strokeWidth="inherit"
       />
     </svg>

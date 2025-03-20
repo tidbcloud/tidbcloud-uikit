@@ -17,7 +17,7 @@ const IconChevronUpDouble = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="m17 18-5-5-5 5m10-7-5-5-5 5"
+        d="M17 18L12 13L7 18M17 11L12 6L7 11"
         strokeWidth="inherit"
       />
     </svg>

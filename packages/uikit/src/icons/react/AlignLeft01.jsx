@@ -17,7 +17,7 @@ const IconAlignLeft01 = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M3 3v18m18-9H7m0 0 7 7m-7-7 7-7"
+        d="M3 3V21M21 12H7M7 12L14 19M7 12L14 5"
         strokeWidth="inherit"
       />
     </svg>

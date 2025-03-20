@@ -17,7 +17,7 @@ const IconTrendDown02 = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="m7 7 10 10m0 0V7m0 10H7"
+        d="M7 7L17 17M17 17V7M17 17H7"
         strokeWidth="inherit"
       />
     </svg>

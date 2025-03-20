@@ -135,6 +135,19 @@ async function transformSvgToJSX(content: string, name: string): Promise<string>
           ]
         }
       },
+      svgoConfig: {
+        plugins: [
+          {
+            name: 'preset-default',
+            params: {
+              overrides: {
+                convertPathData: false,
+                removeViewBox: false
+              }
+            }
+          }
+        ]
+      },
       template
     },
     { componentName: name }

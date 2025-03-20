@@ -17,7 +17,7 @@ const IconExpand08 = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="m7.75 8.25 4-4 4 4m-8 7.5 4 4 4-4"
+        d="M7.75 8.25L11.75 4.25L15.75 8.25M7.75 15.75L11.75 19.75L15.75 15.75"
         strokeWidth="inherit"
       />
     </svg>
