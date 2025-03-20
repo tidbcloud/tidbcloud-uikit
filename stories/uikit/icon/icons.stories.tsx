@@ -29,7 +29,7 @@ function Icon({ name }: { name: string }) {
   const IconComp = allIcons[name]
   return (
     <Tooltip label={name}>
-      <IconComp size={24} />
+      <IconComp size={16} />
     </Tooltip>
   )
 }
