@@ -10,7 +10,7 @@ type Story = StoryObj<typeof IconActivity>
 
 const decorator = (Story: StoryFn) => {
   return (
-    <div style={{ margin: '3em' }}>
+    <div>
       <Story />
     </div>
   )
@@ -96,7 +96,7 @@ export const AllIcons: Story = {
           />
         </Stack>
 
-        <Divider />
+        <Divider my={24} />
 
         <Demo size={size} withScalingStroke={withScalingStroke} strokeWidth={strokeWidth} />
       </Stack>
