@@ -17,7 +17,7 @@ const IconItalic01 = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M19 4h-9m4 16H5M15 4 9 20"
+        d="M19 4H10M14 20H5M15 4L9 20"
         strokeWidth="inherit"
       />
     </svg>

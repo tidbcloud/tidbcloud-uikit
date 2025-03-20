@@ -17,7 +17,7 @@ const IconSpacingHeight02 = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M21 3H3m18 18H3m9-3.5v-11m3 0H9m6 11H9"
+        d="M21 3H3M21 21H3M12 17.5L12 6.50004M15.0001 6.50001L9 6.5M15.0001 17.5L9 17.5"
         strokeWidth="inherit"
       />
     </svg>

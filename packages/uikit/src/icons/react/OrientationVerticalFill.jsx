@@ -13,7 +13,7 @@ const IconOrientationVerticalFill = (props, ref) => {
       ref={ref}
       {...props}
     >
-      <path d="M4 13h4v7H4zM10 9h4v11h-4zM16 4h4v16h-4z" strokeWidth="inherit" stroke="currentColor" />
+      <path d="M4 13H8V20H4V13ZM10 9H14V20H10V9ZM16 4H20V20H16V4Z" strokeWidth="inherit" stroke="currentColor" />
     </svg>
   )
 }

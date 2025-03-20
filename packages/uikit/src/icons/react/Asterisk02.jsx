@@ -17,7 +17,7 @@ const IconAsterisk02 = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M12 4v16m6-14L6 18m14-6H4m14 6L6 6"
+        d="M12 4V20M18 6L6 18M20 12H4M18 18L6 6"
         strokeWidth="inherit"
       />
     </svg>
