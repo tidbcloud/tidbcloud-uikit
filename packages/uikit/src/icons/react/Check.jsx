@@ -17,7 +17,7 @@ const IconCheck = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M20 7 9 18l-5-5"
+        d="M20 7L9 18L4 13"
         strokeWidth="inherit"
       />
     </svg>

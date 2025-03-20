@@ -17,7 +17,7 @@ const IconCurrencyPound = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M17.5 20.5h-11s3.5-2.759 3.5-7c0-2.828-2.086-3.839-2.116-6.195.002-4.664 5.617-4.416 7.568-2.562M6.5 13.5H15"
+        d="M17.5 20.5H6.5C6.5 20.5 10 17.7413 10 13.5C10 10.6725 7.91376 9.66123 7.8837 7.30497C7.88566 2.64078 13.5005 2.88877 15.4521 4.74258M6.5 13.5H15"
         strokeWidth="inherit"
       />
     </svg>

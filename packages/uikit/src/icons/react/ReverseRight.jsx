@@ -17,7 +17,7 @@ const IconReverseRight = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M20 7H10a6 6 0 1 0 0 12h10m0-12-4-4m4 4-4 4"
+        d="M20 7H10C6.68629 7 4 9.68629 4 13C4 16.3137 6.68629 19 10 19H20M20 7L16 3M20 7L16 11"
         strokeWidth="inherit"
       />
     </svg>

@@ -17,7 +17,7 @@ const IconLetterSpacing02 = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M2 18h20M2 18l3-3m-3 3 3 3m17-3-3-3m3 3-3 3M7 3h10m-5 0v11"
+        d="M2 18H22M2 18L5 15M2 18L5 21M22 18L19 15M22 18L19 21M7 3H17M12 3V14"
         strokeWidth="inherit"
       />
     </svg>

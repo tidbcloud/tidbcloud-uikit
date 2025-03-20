@@ -13,18 +13,18 @@ const IconCodeCircle03 = (props, ref) => {
       ref={ref}
       {...props}
     >
-      <g clipPath="url(#prefix__a)">
+      <g clipPath="url(#a)">
         <path
           stroke="currentColor"
           strokeLinecap="round"
           strokeLinejoin="round"
-          d="m10.334 10 2-2-2-2M5.667 6l-2 2 2 2m3-5.333-1.333 6.667M14.667 8A6.667 6.667 0 1 1 1.334 8a6.667 6.667 0 0 1 13.333 0"
+          d="M10.3335 10.0002L12.3335 8.00016L10.3335 6.00016M5.66683 6.00016L3.66683 8.00016L5.66683 10.0002M8.66683 4.66683L7.3335 11.3335M14.6668 8.00016C14.6668 11.6821 11.6821 14.6668 8.00016 14.6668C4.31826 14.6668 1.3335 11.6821 1.3335 8.00016C1.3335 4.31826 4.31826 1.3335 8.00016 1.3335C11.6821 1.3335 14.6668 4.31826 14.6668 8.00016Z"
           strokeWidth="inherit"
         />
       </g>
       <defs>
-        <clipPath id="prefix__a">
-          <path fill="#fff" d="M0 0h16v16H0z" strokeWidth="inherit" stroke="currentColor" />
+        <clipPath id="a">
+          <path fill="#fff" d="M0 0H16V16H0z" strokeWidth="inherit" stroke="currentColor" />
         </clipPath>
       </defs>
     </svg>
