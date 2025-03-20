@@ -8,7 +8,7 @@ const IconAlertCircle = (props, ref) => {
       width="1em"
       height="1em"
       fill="none"
-      strokeWidth={1.5}
+      strokeWidth={2}
       viewBox="0 0 24 24"
       ref={ref}
       {...props}
