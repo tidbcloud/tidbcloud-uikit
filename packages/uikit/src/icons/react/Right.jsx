@@ -9,7 +9,6 @@ const IconRight = (props, ref) => {
       height="1em"
       fill="none"
       viewBox="0 0 24 24"
-      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
@@ -17,8 +16,8 @@ const IconRight = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M4 12.6667L7.64647 17.0559C7.67699 17.0927 7.71006 17.1267 7.74359 17.1608C7.97684 17.3975 8.46753 18 8.92308 18C9.3818 18 10.0542 17.2283 10.1438 17.123C10.1507 17.1149 10.1574 17.1071 10.1644 17.0992L20 6"
-        strokeWidth="inherit"
+        strokeWidth={2}
+        d="m4 12.667 3.646 4.389q.047.054.098.105c.233.236.724.839 1.18.839.458 0 1.13-.772 1.22-.877l.02-.024L20 6"
       />
     </svg>
   )

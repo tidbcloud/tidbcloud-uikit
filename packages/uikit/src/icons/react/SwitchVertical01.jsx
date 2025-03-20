@@ -9,7 +9,6 @@ const IconSwitchVertical01 = (props, ref) => {
       height="1em"
       fill="none"
       viewBox="0 0 24 24"
-      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
@@ -17,8 +16,8 @@ const IconSwitchVertical01 = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M17 4V20M17 20L13 16M17 20L21 16M7 20V4M7 4L3 8M7 4L11 8"
-        strokeWidth="inherit"
+        strokeWidth={2}
+        d="M17 4v16m0 0-4-4m4 4 4-4M7 20V4m0 0L3 8m4-4 4 4"
       />
     </svg>
   )

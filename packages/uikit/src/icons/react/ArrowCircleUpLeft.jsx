@@ -9,7 +9,6 @@ const IconArrowCircleUpLeft = (props, ref) => {
       height="1em"
       fill="none"
       viewBox="0 0 24 24"
-      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
@@ -17,8 +16,8 @@ const IconArrowCircleUpLeft = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M9.00019 15.0001V9.00005M9.00019 9.00005H15.0002M9.00019 9.00005L15.0002 14.9999M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z"
-        strokeWidth="inherit"
+        strokeWidth={2}
+        d="M9 15V9m0 0h6M9 9l6 6m7-3c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10"
       />
     </svg>
   )

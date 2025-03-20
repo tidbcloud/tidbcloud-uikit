@@ -9,7 +9,6 @@ const IconGridDotsRight = (props, ref) => {
       height="1em"
       fill="none"
       viewBox="0 0 24 24"
-      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
@@ -17,8 +16,8 @@ const IconGridDotsRight = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M7.5 3H7.51M7.5 12H7.51M7.5 21H7.51M16.5 3H16.51M16.5 12H16.51M16.5 21H16.51M12 3H12.01M12 12H12.01M12 21H12.01M12 16.5H12.01M12 7.5H12.01M3 3H3.01M3 12H3.01M3 21H3.01M3 16.5H3.01M3 7.5H3.01M21 21V3"
-        strokeWidth="inherit"
+        strokeWidth={2}
+        d="M7.5 3h.01m-.01 9h.01m-.01 9h.01M16.5 3h.01m-.01 9h.01m-.01 9h.01M12 3h.01M12 12h.01M12 21h.01M12 16.5h.01m-.01-9h.01M3 3h.01M3 12h.01M3 21h.01M3 16.5h.01M3 7.5h.01M21 21V3"
       />
     </svg>
   )

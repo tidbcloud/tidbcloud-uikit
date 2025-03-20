@@ -9,7 +9,6 @@ const IconChevronSelectorHorizontal = (props, ref) => {
       height="1em"
       fill="none"
       viewBox="0 0 24 24"
-      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
@@ -17,8 +16,8 @@ const IconChevronSelectorHorizontal = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M9 7L4 12L9 17M15 7L20 12L15 17"
-        strokeWidth="inherit"
+        strokeWidth={2}
+        d="m9 7-5 5 5 5m6-10 5 5-5 5"
       />
     </svg>
   )

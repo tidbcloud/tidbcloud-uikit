@@ -9,7 +9,6 @@ const IconLock04 = (props, ref) => {
       height="1em"
       fill="none"
       viewBox="0 0 24 24"
-      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
@@ -17,8 +16,8 @@ const IconLock04 = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M7.10102 10H7V8C7 5.23858 9.23858 3 12 3C14.7614 3 17 5.23858 17 8V10H16.899M12 14V16M19 15C19 18.866 15.866 22 12 22C8.13401 22 5 18.866 5 15C5 11.134 8.13401 8 12 8C15.866 8 19 11.134 19 15Z"
-        strokeWidth="inherit"
+        strokeWidth={2}
+        d="M7.101 10H7V8a5 5 0 0 1 10 0v2h-.101M12 14v2m7-1a7 7 0 1 1-14 0 7 7 0 0 1 14 0"
       />
     </svg>
   )

@@ -9,7 +9,6 @@ const IconArrowTab = (props, ref) => {
       height="1em"
       fill="none"
       viewBox="0 0 24 24"
-      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
@@ -17,8 +16,8 @@ const IconArrowTab = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M4.42216 12C10.089 12 17.5777 12 17.5777 12M17.5777 12L11.5777 6.00004M17.5777 12L11.5777 18M19.5777 6V18"
-        strokeWidth="inherit"
+        strokeWidth={2}
+        d="M4.422 12h13.156m0 0-6-6m6 6-6 6m8-12v12"
       />
     </svg>
   )

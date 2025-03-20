@@ -9,7 +9,6 @@ const IconRecording01 = (props, ref) => {
       height="1em"
       fill="none"
       viewBox="0 0 24 24"
-      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
@@ -17,8 +16,8 @@ const IconRecording01 = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M3 10L3 14M7.5 6L7.5 18M12 3V21M16.5 6V18M21 10V14"
-        strokeWidth="inherit"
+        strokeWidth={2}
+        d="M3 10v4m4.5-8v12M12 3v18m4.5-15v12m4.5-8v4"
       />
     </svg>
   )
