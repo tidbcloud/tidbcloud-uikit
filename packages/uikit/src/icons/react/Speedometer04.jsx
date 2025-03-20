@@ -33,7 +33,14 @@ const Speedometer04 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'Speedometer04'].join(' ')}
+    />
+  )
 })
 Speedometer04.displayName = 'IconSpeedometer04'
 export default Speedometer04

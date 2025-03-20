@@ -33,7 +33,14 @@ const RefreshCcw04 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'RefreshCcw04'].join(' ')}
+    />
+  )
 })
 RefreshCcw04.displayName = 'IconRefreshCcw04'
 export default RefreshCcw04

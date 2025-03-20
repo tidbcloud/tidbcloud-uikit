@@ -33,7 +33,14 @@ const Hexagon01 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'Hexagon01'].join(' ')}
+    />
+  )
 })
 Hexagon01.displayName = 'IconHexagon01'
 export default Hexagon01

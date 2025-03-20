@@ -33,7 +33,14 @@ const ShoppingCart01 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'ShoppingCart01'].join(' ')}
+    />
+  )
 })
 ShoppingCart01.displayName = 'IconShoppingCart01'
 export default ShoppingCart01

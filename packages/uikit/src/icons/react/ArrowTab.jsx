@@ -33,7 +33,14 @@ const ArrowTab = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'ArrowTab'].join(' ')}
+    />
+  )
 })
 ArrowTab.displayName = 'IconArrowTab'
 export default ArrowTab

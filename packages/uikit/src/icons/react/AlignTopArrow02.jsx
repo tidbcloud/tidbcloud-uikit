@@ -33,7 +33,14 @@ const AlignTopArrow02 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'AlignTopArrow02'].join(' ')}
+    />
+  )
 })
 AlignTopArrow02.displayName = 'IconAlignTopArrow02'
 export default AlignTopArrow02

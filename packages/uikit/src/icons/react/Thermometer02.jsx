@@ -40,7 +40,14 @@ const Thermometer02 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'Thermometer02'].join(' ')}
+    />
+  )
 })
 Thermometer02.displayName = 'IconThermometer02'
 export default Thermometer02

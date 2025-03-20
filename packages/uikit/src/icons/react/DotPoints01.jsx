@@ -33,7 +33,14 @@ const DotPoints01 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'DotPoints01'].join(' ')}
+    />
+  )
 })
 DotPoints01.displayName = 'IconDotPoints01'
 export default DotPoints01

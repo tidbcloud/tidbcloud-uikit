@@ -33,7 +33,14 @@ const VolumeMinus = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'VolumeMinus'].join(' ')}
+    />
+  )
 })
 VolumeMinus.displayName = 'IconVolumeMinus'
 export default VolumeMinus

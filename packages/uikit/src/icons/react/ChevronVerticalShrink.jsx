@@ -33,7 +33,14 @@ const ChevronVerticalShrink = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'ChevronVerticalShrink'].join(' ')}
+    />
+  )
 })
 ChevronVerticalShrink.displayName = 'IconChevronVerticalShrink'
 export default ChevronVerticalShrink

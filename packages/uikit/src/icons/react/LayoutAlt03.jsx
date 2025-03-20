@@ -33,7 +33,14 @@ const LayoutAlt03 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'LayoutAlt03'].join(' ')}
+    />
+  )
 })
 LayoutAlt03.displayName = 'IconLayoutAlt03'
 export default LayoutAlt03

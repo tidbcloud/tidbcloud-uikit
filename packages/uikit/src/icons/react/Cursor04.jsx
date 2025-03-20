@@ -33,7 +33,14 @@ const Cursor04 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'Cursor04'].join(' ')}
+    />
+  )
 })
 Cursor04.displayName = 'IconCursor04'
 export default Cursor04

@@ -33,7 +33,14 @@ const Diamond02 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'Diamond02'].join(' ')}
+    />
+  )
 })
 Diamond02.displayName = 'IconDiamond02'
 export default Diamond02

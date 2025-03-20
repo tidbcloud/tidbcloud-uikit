@@ -33,7 +33,14 @@ const Inbox01 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'Inbox01'].join(' ')}
+    />
+  )
 })
 Inbox01.displayName = 'IconInbox01'
 export default Inbox01

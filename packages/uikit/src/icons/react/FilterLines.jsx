@@ -33,7 +33,14 @@ const FilterLines = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'FilterLines'].join(' ')}
+    />
+  )
 })
 FilterLines.displayName = 'IconFilterLines'
 export default FilterLines

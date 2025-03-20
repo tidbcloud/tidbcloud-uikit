@@ -33,7 +33,14 @@ const CurrencyRubleCircle = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'CurrencyRubleCircle'].join(' ')}
+    />
+  )
 })
 CurrencyRubleCircle.displayName = 'IconCurrencyRubleCircle'
 export default CurrencyRubleCircle

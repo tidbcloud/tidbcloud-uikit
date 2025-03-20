@@ -33,7 +33,14 @@ const Fingerprint01 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'Fingerprint01'].join(' ')}
+    />
+  )
 })
 Fingerprint01.displayName = 'IconFingerprint01'
 export default Fingerprint01

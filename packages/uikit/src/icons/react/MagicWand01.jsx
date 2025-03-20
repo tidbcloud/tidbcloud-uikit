@@ -33,7 +33,14 @@ const MagicWand01 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'MagicWand01'].join(' ')}
+    />
+  )
 })
 MagicWand01.displayName = 'IconMagicWand01'
 export default MagicWand01

@@ -33,7 +33,14 @@ const Asterisk02 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'Asterisk02'].join(' ')}
+    />
+  )
 })
 Asterisk02.displayName = 'IconAsterisk02'
 export default Asterisk02

@@ -33,7 +33,14 @@ const Globe021 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'Globe021'].join(' ')}
+    />
+  )
 })
 Globe021.displayName = 'IconGlobe021'
 export default Globe021

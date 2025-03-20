@@ -33,7 +33,14 @@ const Calculator = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'Calculator'].join(' ')}
+    />
+  )
 })
 Calculator.displayName = 'IconCalculator'
 export default Calculator

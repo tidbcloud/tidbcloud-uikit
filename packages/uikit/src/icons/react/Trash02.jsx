@@ -33,7 +33,14 @@ const Trash02 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'Trash02'].join(' ')}
+    />
+  )
 })
 Trash02.displayName = 'IconTrash02'
 export default Trash02

@@ -33,7 +33,14 @@ const SpacingHeight02 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'SpacingHeight02'].join(' ')}
+    />
+  )
 })
 SpacingHeight02.displayName = 'IconSpacingHeight02'
 export default SpacingHeight02

@@ -33,7 +33,14 @@ const Webcam02 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'Webcam02'].join(' ')}
+    />
+  )
 })
 Webcam02.displayName = 'IconWebcam02'
 export default Webcam02

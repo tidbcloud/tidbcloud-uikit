@@ -33,7 +33,14 @@ const CurrencyRupee = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'CurrencyRupee'].join(' ')}
+    />
+  )
 })
 CurrencyRupee.displayName = 'IconCurrencyRupee'
 export default CurrencyRupee

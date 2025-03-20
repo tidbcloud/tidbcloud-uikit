@@ -33,7 +33,14 @@ const CodeCircle02 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'CodeCircle02'].join(' ')}
+    />
+  )
 })
 CodeCircle02.displayName = 'IconCodeCircle02'
 export default CodeCircle02

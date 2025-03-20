@@ -33,7 +33,14 @@ const Upload03 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'Upload03'].join(' ')}
+    />
+  )
 })
 Upload03.displayName = 'IconUpload03'
 export default Upload03

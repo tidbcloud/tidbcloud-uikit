@@ -33,7 +33,14 @@ const Microscope = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'Microscope'].join(' ')}
+    />
+  )
 })
 Microscope.displayName = 'IconMicroscope'
 export default Microscope

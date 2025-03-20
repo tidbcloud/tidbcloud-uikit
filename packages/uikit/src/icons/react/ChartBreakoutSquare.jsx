@@ -33,7 +33,14 @@ const ChartBreakoutSquare = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'ChartBreakoutSquare'].join(' ')}
+    />
+  )
 })
 ChartBreakoutSquare.displayName = 'IconChartBreakoutSquare'
 export default ChartBreakoutSquare

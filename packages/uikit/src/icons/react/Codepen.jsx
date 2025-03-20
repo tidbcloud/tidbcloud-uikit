@@ -33,7 +33,14 @@ const Codepen = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'Codepen'].join(' ')}
+    />
+  )
 })
 Codepen.displayName = 'IconCodepen'
 export default Codepen

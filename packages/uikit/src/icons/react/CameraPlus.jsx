@@ -33,7 +33,14 @@ const CameraPlus = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'CameraPlus'].join(' ')}
+    />
+  )
 })
 CameraPlus.displayName = 'IconCameraPlus'
 export default CameraPlus

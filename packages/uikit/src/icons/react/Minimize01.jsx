@@ -33,7 +33,14 @@ const Minimize01 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'Minimize01'].join(' ')}
+    />
+  )
 })
 Minimize01.displayName = 'IconMinimize01'
 export default Minimize01

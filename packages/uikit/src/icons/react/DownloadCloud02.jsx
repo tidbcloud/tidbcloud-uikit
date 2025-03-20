@@ -33,7 +33,14 @@ const DownloadCloud02 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'DownloadCloud02'].join(' ')}
+    />
+  )
 })
 DownloadCloud02.displayName = 'IconDownloadCloud02'
 export default DownloadCloud02

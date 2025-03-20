@@ -33,7 +33,14 @@ const Maximize02 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'Maximize02'].join(' ')}
+    />
+  )
 })
 Maximize02.displayName = 'IconMaximize02'
 export default Maximize02

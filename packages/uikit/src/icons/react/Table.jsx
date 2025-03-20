@@ -33,7 +33,14 @@ const Table = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'Table'].join(' ')}
+    />
+  )
 })
 Table.displayName = 'IconTable'
 export default Table

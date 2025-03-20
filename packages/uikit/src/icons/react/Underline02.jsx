@@ -33,7 +33,14 @@ const Underline02 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'Underline02'].join(' ')}
+    />
+  )
 })
 Underline02.displayName = 'IconUnderline02'
 export default Underline02

@@ -33,7 +33,14 @@ const Package = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'Package'].join(' ')}
+    />
+  )
 })
 Package.displayName = 'IconPackage'
 export default Package

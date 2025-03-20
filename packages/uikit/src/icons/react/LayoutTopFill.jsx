@@ -39,7 +39,14 @@ const LayoutTopFill = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'LayoutTopFill'].join(' ')}
+    />
+  )
 })
 LayoutTopFill.displayName = 'IconLayoutTopFill'
 export default LayoutTopFill

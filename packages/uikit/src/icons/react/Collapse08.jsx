@@ -33,7 +33,14 @@ const Collapse08 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'Collapse08'].join(' ')}
+    />
+  )
 })
 Collapse08.displayName = 'IconCollapse08'
 export default Collapse08

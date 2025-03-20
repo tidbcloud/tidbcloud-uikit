@@ -33,7 +33,14 @@ const CubeOutline = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'CubeOutline'].join(' ')}
+    />
+  )
 })
 CubeOutline.displayName = 'IconCubeOutline'
 export default CubeOutline

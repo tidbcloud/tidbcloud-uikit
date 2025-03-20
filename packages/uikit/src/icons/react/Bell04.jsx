@@ -33,7 +33,14 @@ const Bell04 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'Bell04'].join(' ')}
+    />
+  )
 })
 Bell04.displayName = 'IconBell04'
 export default Bell04

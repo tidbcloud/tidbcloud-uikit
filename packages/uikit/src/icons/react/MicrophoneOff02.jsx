@@ -33,7 +33,14 @@ const MicrophoneOff02 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'MicrophoneOff02'].join(' ')}
+    />
+  )
 })
 MicrophoneOff02.displayName = 'IconMicrophoneOff02'
 export default MicrophoneOff02

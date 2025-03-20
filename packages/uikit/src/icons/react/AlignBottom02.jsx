@@ -33,7 +33,14 @@ const AlignBottom02 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'AlignBottom02'].join(' ')}
+    />
+  )
 })
 AlignBottom02.displayName = 'IconAlignBottom02'
 export default AlignBottom02

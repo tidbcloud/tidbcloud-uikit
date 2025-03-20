@@ -33,7 +33,14 @@ const PhoneOutgoing02 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'PhoneOutgoing02'].join(' ')}
+    />
+  )
 })
 PhoneOutgoing02.displayName = 'IconPhoneOutgoing02'
 export default PhoneOutgoing02

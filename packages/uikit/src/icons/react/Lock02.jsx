@@ -33,7 +33,14 @@ const Lock02 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'Lock02'].join(' ')}
+    />
+  )
 })
 Lock02.displayName = 'IconLock02'
 export default Lock02
