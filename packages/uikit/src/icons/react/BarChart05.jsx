@@ -9,7 +9,6 @@ const IconBarChart05 = (props, ref) => {
       height="1em"
       fill="none"
       viewBox="0 0 24 24"
-      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
@@ -17,8 +16,8 @@ const IconBarChart05 = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M3 17V21M15 8V21M9 13V21M21 3V21"
-        strokeWidth="inherit"
+        strokeWidth={2}
+        d="M3 17v4M15 8v13m-6-8v8M21 3v18"
       />
     </svg>
   )

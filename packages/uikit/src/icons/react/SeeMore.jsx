@@ -8,7 +8,7 @@ const IconSeeMore = (props, ref) => {
       width="1em"
       height="1em"
       fill="none"
-      strokeWidth="1.5"
+      strokeWidth={1.5}
       viewBox="0 0 24 24"
       ref={ref}
       {...props}
@@ -17,8 +17,8 @@ const IconSeeMore = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M16 10H3M20 6H3M20 14H3M16 18H3"
         strokeWidth="inherit"
+        d="M16 10H3m17-4H3m17 8H3m13 4H3"
       />
     </svg>
   )

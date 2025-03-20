@@ -9,7 +9,6 @@ const IconCurrencyRupee = (props, ref) => {
       height="1em"
       fill="none"
       viewBox="0 0 24 24"
-      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
@@ -17,8 +16,8 @@ const IconCurrencyRupee = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M6 3H18M6 8H18M14.5 21L6 13H9C15.667 13 15.667 3 9 3"
-        strokeWidth="inherit"
+        strokeWidth={2}
+        d="M6 3h12M6 8h12m-3.5 13L6 13h3c6.667 0 6.667-10 0-10"
       />
     </svg>
   )

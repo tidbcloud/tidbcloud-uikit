@@ -9,7 +9,6 @@ const IconDownload02 = (props, ref) => {
       height="1em"
       fill="none"
       viewBox="0 0 24 24"
-      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
@@ -17,8 +16,8 @@ const IconDownload02 = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M21 21H3M18 11L12 17M12 17L6 11M12 17V3"
-        strokeWidth="inherit"
+        strokeWidth={2}
+        d="M21 21H3m15-10-6 6m0 0-6-6m6 6V3"
       />
     </svg>
   )

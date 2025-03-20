@@ -9,7 +9,6 @@ const IconBluetoothOn = (props, ref) => {
       height="1em"
       fill="none"
       viewBox="0 0 24 24"
-      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
@@ -17,8 +16,8 @@ const IconBluetoothOn = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M6 7L18 17L12 22V2L18 7L6 17"
-        strokeWidth="inherit"
+        strokeWidth={2}
+        d="m6 7 12 10-6 5V2l6 5L6 17"
       />
     </svg>
   )
