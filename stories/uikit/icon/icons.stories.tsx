@@ -33,7 +33,14 @@ function Demo({ size, withScalingStroke }: { size?: number; withScalingStroke?: 
         const IconComp = allIcons[name]
         return (
           <Tooltip label={name}>
-            <IconComp size={size} sx={{ 'vector-effect': withScalingStroke ? 'none' : 'non-scaling-stroke' }} />
+            <IconComp
+              size={size}
+              sx={{
+                '& *': {
+                  'vector-effect': withScalingStroke ? 'none' : 'non-scaling-stroke'
+                }
+              }}
+            />
           </Tooltip>
         )
       })}
@@ -55,9 +62,8 @@ export const AllIcons: Story = {
             description={
               <div>
                 Default is true, the icon stroke will scale with the size, see{' '}
-                <a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/vector-effect">
-                  MDN for more info.
-                </a>
+                <a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/vector-effect">MDN for more info</a>
+                , change icon size and toggle this to see the difference.
               </div>
             }
             checked={withScalingStroke}
