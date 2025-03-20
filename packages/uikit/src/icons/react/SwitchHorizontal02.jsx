@@ -33,7 +33,14 @@ const SwitchHorizontal02 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'SwitchHorizontal02'].join(' ')}
+    />
+  )
 })
 SwitchHorizontal02.displayName = 'IconSwitchHorizontal02'
 export default SwitchHorizontal02

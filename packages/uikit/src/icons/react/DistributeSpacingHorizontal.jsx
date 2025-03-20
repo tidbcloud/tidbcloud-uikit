@@ -33,7 +33,14 @@ const DistributeSpacingHorizontal = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'DistributeSpacingHorizontal'].join(' ')}
+    />
+  )
 })
 DistributeSpacingHorizontal.displayName = 'IconDistributeSpacingHorizontal'
 export default DistributeSpacingHorizontal

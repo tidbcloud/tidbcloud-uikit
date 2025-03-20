@@ -33,7 +33,14 @@ const LetterSpacing01 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'LetterSpacing01'].join(' ')}
+    />
+  )
 })
 LetterSpacing01.displayName = 'IconLetterSpacing01'
 export default LetterSpacing01

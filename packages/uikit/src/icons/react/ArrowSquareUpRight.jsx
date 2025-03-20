@@ -33,7 +33,14 @@ const ArrowSquareUpRight = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'ArrowSquareUpRight'].join(' ')}
+    />
+  )
 })
 ArrowSquareUpRight.displayName = 'IconArrowSquareUpRight'
 export default ArrowSquareUpRight

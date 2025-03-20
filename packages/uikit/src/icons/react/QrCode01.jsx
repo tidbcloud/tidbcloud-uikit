@@ -33,7 +33,14 @@ const QrCode01 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'QrCode01'].join(' ')}
+    />
+  )
 })
 QrCode01.displayName = 'IconQrCode01'
 export default QrCode01

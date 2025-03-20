@@ -33,7 +33,14 @@ const CreditCardDownload = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'CreditCardDownload'].join(' ')}
+    />
+  )
 })
 CreditCardDownload.displayName = 'IconCreditCardDownload'
 export default CreditCardDownload

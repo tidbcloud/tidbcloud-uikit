@@ -33,7 +33,14 @@ const GridDotsHorizontalCenter = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'GridDotsHorizontalCenter'].join(' ')}
+    />
+  )
 })
 GridDotsHorizontalCenter.displayName = 'IconGridDotsHorizontalCenter'
 export default GridDotsHorizontalCenter

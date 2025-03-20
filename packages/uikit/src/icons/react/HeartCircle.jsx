@@ -41,7 +41,14 @@ const HeartCircle = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'HeartCircle'].join(' ')}
+    />
+  )
 })
 HeartCircle.displayName = 'IconHeartCircle'
 export default HeartCircle

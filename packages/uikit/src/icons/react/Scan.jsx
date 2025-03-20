@@ -33,7 +33,14 @@ const Scan = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'Scan'].join(' ')}
+    />
+  )
 })
 Scan.displayName = 'IconScan'
 export default Scan

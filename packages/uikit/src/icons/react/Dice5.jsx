@@ -33,7 +33,14 @@ const Dice5 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'Dice5'].join(' ')}
+    />
+  )
 })
 Dice5.displayName = 'IconDice5'
 export default Dice5

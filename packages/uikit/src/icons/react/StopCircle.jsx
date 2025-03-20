@@ -40,7 +40,14 @@ const StopCircle = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'StopCircle'].join(' ')}
+    />
+  )
 })
 StopCircle.displayName = 'IconStopCircle'
 export default StopCircle

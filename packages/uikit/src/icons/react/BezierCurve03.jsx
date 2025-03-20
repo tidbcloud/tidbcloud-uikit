@@ -33,7 +33,14 @@ const BezierCurve03 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'BezierCurve03'].join(' ')}
+    />
+  )
 })
 BezierCurve03.displayName = 'IconBezierCurve03'
 export default BezierCurve03

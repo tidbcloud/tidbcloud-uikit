@@ -33,7 +33,14 @@ const FilterFunnel01 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'FilterFunnel01'].join(' ')}
+    />
+  )
 })
 FilterFunnel01.displayName = 'IconFilterFunnel01'
 export default FilterFunnel01

@@ -33,7 +33,14 @@ const BookmarkCheck = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'BookmarkCheck'].join(' ')}
+    />
+  )
 })
 BookmarkCheck.displayName = 'IconBookmarkCheck'
 export default BookmarkCheck

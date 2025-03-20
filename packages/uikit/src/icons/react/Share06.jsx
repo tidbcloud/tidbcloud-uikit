@@ -33,7 +33,14 @@ const Share06 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'Share06'].join(' ')}
+    />
+  )
 })
 Share06.displayName = 'IconShare06'
 export default Share06

@@ -33,7 +33,14 @@ const MarkerPin04 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'MarkerPin04'].join(' ')}
+    />
+  )
 })
 MarkerPin04.displayName = 'IconMarkerPin04'
 export default MarkerPin04

@@ -33,7 +33,14 @@ const Home05 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'Home05'].join(' ')}
+    />
+  )
 })
 Home05.displayName = 'IconHome05'
 export default Home05
