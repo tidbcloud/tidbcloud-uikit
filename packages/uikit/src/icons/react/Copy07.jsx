@@ -33,7 +33,14 @@ const Copy07 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'Copy07'].join(' ')}
+    />
+  )
 })
 Copy07.displayName = 'IconCopy07'
 export default Copy07

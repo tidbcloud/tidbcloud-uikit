@@ -33,7 +33,14 @@ const LayersThree02 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'LayersThree02'].join(' ')}
+    />
+  )
 })
 LayersThree02.displayName = 'IconLayersThree02'
 export default LayersThree02

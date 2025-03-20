@@ -33,7 +33,14 @@ const Attachment02 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'Attachment02'].join(' ')}
+    />
+  )
 })
 Attachment02.displayName = 'IconAttachment02'
 export default Attachment02

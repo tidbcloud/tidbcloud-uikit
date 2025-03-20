@@ -33,7 +33,14 @@ const StrikethroughSquare = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'StrikethroughSquare'].join(' ')}
+    />
+  )
 })
 StrikethroughSquare.displayName = 'IconStrikethroughSquare'
 export default StrikethroughSquare

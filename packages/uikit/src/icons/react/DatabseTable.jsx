@@ -33,7 +33,14 @@ const DatabseTable = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'DatabseTable'].join(' ')}
+    />
+  )
 })
 DatabseTable.displayName = 'IconDatabseTable'
 export default DatabseTable

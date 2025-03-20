@@ -33,7 +33,14 @@ const Rss02 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'Rss02'].join(' ')}
+    />
+  )
 })
 Rss02.displayName = 'IconRss02'
 export default Rss02

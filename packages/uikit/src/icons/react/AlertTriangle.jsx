@@ -33,7 +33,14 @@ const AlertTriangle = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'AlertTriangle'].join(' ')}
+    />
+  )
 })
 AlertTriangle.displayName = 'IconAlertTriangle'
 export default AlertTriangle

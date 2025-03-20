@@ -33,7 +33,14 @@ const Dataflow04 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'Dataflow04'].join(' ')}
+    />
+  )
 })
 Dataflow04.displayName = 'IconDataflow04'
 export default Dataflow04

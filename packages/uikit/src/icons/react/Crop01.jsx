@@ -33,7 +33,14 @@ const Crop01 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'Crop01'].join(' ')}
+    />
+  )
 })
 Crop01.displayName = 'IconCrop01'
 export default Crop01

@@ -33,7 +33,14 @@ const MusicNote02 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'MusicNote02'].join(' ')}
+    />
+  )
 })
 MusicNote02.displayName = 'IconMusicNote02'
 export default MusicNote02

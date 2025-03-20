@@ -33,7 +33,14 @@ const Equal = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'Equal'].join(' ')}
+    />
+  )
 })
 Equal.displayName = 'IconEqual'
 export default Equal

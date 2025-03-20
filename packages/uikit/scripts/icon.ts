@@ -72,7 +72,7 @@ const ${componentName} = forwardRef((props, ref) => {
     props = { ...rest, w: size, h: size };
   }
   return (
-    <MantineBox ref={ref} {...props} component={ForwardRef} />
+    <MantineBox ref={ref} {...props} component={ForwardRef} className={[props.className, 'tiui-icon', '${componentName}'].join(' ')} />
   )
 })
 

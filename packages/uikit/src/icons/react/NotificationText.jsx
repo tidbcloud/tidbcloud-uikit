@@ -33,7 +33,14 @@ const NotificationText = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'NotificationText'].join(' ')}
+    />
+  )
 })
 NotificationText.displayName = 'IconNotificationText'
 export default NotificationText

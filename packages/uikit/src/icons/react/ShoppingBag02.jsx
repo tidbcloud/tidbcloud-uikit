@@ -33,7 +33,14 @@ const ShoppingBag02 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'ShoppingBag02'].join(' ')}
+    />
+  )
 })
 ShoppingBag02.displayName = 'IconShoppingBag02'
 export default ShoppingBag02

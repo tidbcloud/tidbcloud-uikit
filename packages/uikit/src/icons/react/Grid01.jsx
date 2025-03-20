@@ -33,7 +33,14 @@ const Grid01 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'Grid01'].join(' ')}
+    />
+  )
 })
 Grid01.displayName = 'IconGrid01'
 export default Grid01

@@ -33,7 +33,14 @@ const TerminalCircle = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'TerminalCircle'].join(' ')}
+    />
+  )
 })
 TerminalCircle.displayName = 'IconTerminalCircle'
 export default TerminalCircle

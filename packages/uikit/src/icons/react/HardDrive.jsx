@@ -33,7 +33,14 @@ const HardDrive = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'HardDrive'].join(' ')}
+    />
+  )
 })
 HardDrive.displayName = 'IconHardDrive'
 export default HardDrive

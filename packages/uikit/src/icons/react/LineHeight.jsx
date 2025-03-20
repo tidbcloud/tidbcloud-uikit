@@ -33,7 +33,14 @@ const LineHeight = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'LineHeight'].join(' ')}
+    />
+  )
 })
 LineHeight.displayName = 'IconLineHeight'
 export default LineHeight

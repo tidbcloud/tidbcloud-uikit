@@ -40,7 +40,14 @@ const DataApiSystem = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'DataApiSystem'].join(' ')}
+    />
+  )
 })
 DataApiSystem.displayName = 'IconDataApiSystem'
 export default DataApiSystem

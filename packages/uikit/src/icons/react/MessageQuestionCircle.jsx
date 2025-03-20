@@ -33,7 +33,14 @@ const MessageQuestionCircle = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'MessageQuestionCircle'].join(' ')}
+    />
+  )
 })
 MessageQuestionCircle.displayName = 'IconMessageQuestionCircle'
 export default MessageQuestionCircle

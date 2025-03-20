@@ -27,7 +27,14 @@ const SlashDivider = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'SlashDivider'].join(' ')}
+    />
+  )
 })
 SlashDivider.displayName = 'IconSlashDivider'
 export default SlashDivider
