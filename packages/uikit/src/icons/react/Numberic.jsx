@@ -14,7 +14,7 @@ const IconNumberic = (props, ref) => {
     >
       <g clipPath="url(#prefix__a)">
         <path
-          stroke="#999"
+          stroke="currentColor"
           strokeLinecap="round"
           d="M1.334 4.975h13.333M1.334 10.992h13.333M5.99 1.333 3.673 14.667m8.243-13.334L9.6 14.667"
         />
