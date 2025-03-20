@@ -33,7 +33,14 @@ const AlarmClockCheck = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'AlarmClockCheck'].join(' ')}
+    />
+  )
 })
 AlarmClockCheck.displayName = 'IconAlarmClockCheck'
 export default AlarmClockCheck

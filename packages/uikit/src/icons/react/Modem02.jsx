@@ -33,7 +33,14 @@ const Modem02 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'Modem02'].join(' ')}
+    />
+  )
 })
 Modem02.displayName = 'IconModem02'
 export default Modem02

@@ -33,7 +33,14 @@ const ClipboardDownload = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'ClipboardDownload'].join(' ')}
+    />
+  )
 })
 ClipboardDownload.displayName = 'IconClipboardDownload'
 export default ClipboardDownload

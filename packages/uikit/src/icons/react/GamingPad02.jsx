@@ -33,7 +33,14 @@ const GamingPad02 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'GamingPad02'].join(' ')}
+    />
+  )
 })
 GamingPad02.displayName = 'IconGamingPad02'
 export default GamingPad02

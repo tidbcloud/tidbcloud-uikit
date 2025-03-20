@@ -33,7 +33,14 @@ const ReverseLeft = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'ReverseLeft'].join(' ')}
+    />
+  )
 })
 ReverseLeft.displayName = 'IconReverseLeft'
 export default ReverseLeft

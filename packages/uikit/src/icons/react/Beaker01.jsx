@@ -33,7 +33,14 @@ const Beaker01 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'Beaker01'].join(' ')}
+    />
+  )
 })
 Beaker01.displayName = 'IconBeaker01'
 export default Beaker01

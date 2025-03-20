@@ -33,7 +33,14 @@ const LineChartUp01 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'LineChartUp01'].join(' ')}
+    />
+  )
 })
 LineChartUp01.displayName = 'IconLineChartUp01'
 export default LineChartUp01

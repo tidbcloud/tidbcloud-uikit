@@ -33,7 +33,14 @@ const CloudSun02 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'CloudSun02'].join(' ')}
+    />
+  )
 })
 CloudSun02.displayName = 'IconCloudSun02'
 export default CloudSun02

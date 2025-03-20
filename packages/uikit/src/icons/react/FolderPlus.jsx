@@ -33,7 +33,14 @@ const FolderPlus = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'FolderPlus'].join(' ')}
+    />
+  )
 })
 FolderPlus.displayName = 'IconFolderPlus'
 export default FolderPlus

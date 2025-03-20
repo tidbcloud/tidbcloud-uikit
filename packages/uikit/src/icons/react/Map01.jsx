@@ -33,7 +33,14 @@ const Map01 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'Map01'].join(' ')}
+    />
+  )
 })
 Map01.displayName = 'IconMap01'
 export default Map01

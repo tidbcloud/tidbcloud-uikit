@@ -33,7 +33,14 @@ const ChevronLeft = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'ChevronLeft'].join(' ')}
+    />
+  )
 })
 ChevronLeft.displayName = 'IconChevronLeft'
 export default ChevronLeft

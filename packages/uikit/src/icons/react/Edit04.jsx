@@ -33,7 +33,14 @@ const Edit04 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'Edit04'].join(' ')}
+    />
+  )
 })
 Edit04.displayName = 'IconEdit04'
 export default Edit04

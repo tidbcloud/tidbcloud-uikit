@@ -33,7 +33,14 @@ const FlexAlignRight = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'FlexAlignRight'].join(' ')}
+    />
+  )
 })
 FlexAlignRight.displayName = 'IconFlexAlignRight'
 export default FlexAlignRight

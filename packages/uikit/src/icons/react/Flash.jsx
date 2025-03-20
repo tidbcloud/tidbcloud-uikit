@@ -33,7 +33,14 @@ const Flash = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'Flash'].join(' ')}
+    />
+  )
 })
 Flash.displayName = 'IconFlash'
 export default Flash

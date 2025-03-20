@@ -33,7 +33,14 @@ const Power02 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'Power02'].join(' ')}
+    />
+  )
 })
 Power02.displayName = 'IconPower02'
 export default Power02

@@ -33,7 +33,14 @@ const FileSearch02 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'FileSearch02'].join(' ')}
+    />
+  )
 })
 FileSearch02.displayName = 'IconFileSearch02'
 export default FileSearch02

@@ -33,7 +33,14 @@ const BracketsX = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'BracketsX'].join(' ')}
+    />
+  )
 })
 BracketsX.displayName = 'IconBracketsX'
 export default BracketsX

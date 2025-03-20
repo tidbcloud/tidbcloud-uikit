@@ -33,7 +33,14 @@ const Passport = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'Passport'].join(' ')}
+    />
+  )
 })
 Passport.displayName = 'IconPassport'
 export default Passport

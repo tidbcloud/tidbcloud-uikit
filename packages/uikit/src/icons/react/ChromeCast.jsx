@@ -33,7 +33,14 @@ const ChromeCast = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'ChromeCast'].join(' ')}
+    />
+  )
 })
 ChromeCast.displayName = 'IconChromeCast'
 export default ChromeCast

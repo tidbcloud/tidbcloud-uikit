@@ -33,7 +33,14 @@ const Clipboard = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'Clipboard'].join(' ')}
+    />
+  )
 })
 Clipboard.displayName = 'IconClipboard'
 export default Clipboard

@@ -33,7 +33,14 @@ const CalendarMinus01 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'CalendarMinus01'].join(' ')}
+    />
+  )
 })
 CalendarMinus01.displayName = 'IconCalendarMinus01'
 export default CalendarMinus01

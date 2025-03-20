@@ -33,7 +33,14 @@ const Hourglass02 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'Hourglass02'].join(' ')}
+    />
+  )
 })
 Hourglass02.displayName = 'IconHourglass02'
 export default Hourglass02

@@ -33,7 +33,14 @@ const TrendDown01 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={[props.className, 'tiui-icon', 'TrendDown01'].join(' ')}
+    />
+  )
 })
 TrendDown01.displayName = 'IconTrendDown01'
 export default TrendDown01
