@@ -68,7 +68,20 @@ export const AllIcons: Story = {
     return (
       <Stack>
         <Stack>
-          <NumberInput label="Icon Size" value={size} onChange={(value) => setSize(Number(value))} maw={200} />
+          <NumberInput label="Icon Size" value={size} onChange={(value) => setSize(Number(value))} maw={120} />
+
+          <Select
+            label="Stroke Width"
+            value={strokeWidth}
+            data={[
+              { label: 'raw svg', value: 'default' },
+              { label: '1.5', value: '1.5' },
+              { label: '2', value: '2' }
+            ]}
+            onChange={(value) => setStrokeWidth(value as 'default' | '1.5' | '2')}
+            maw={120}
+          />
+
           <Checkbox
             label="With Scaling Stroke"
             description={
@@ -80,17 +93,6 @@ export const AllIcons: Story = {
             }
             checked={withScalingStroke}
             onChange={(e) => setWithScalingStroke(e.target.checked)}
-          />
-          <Select
-            label="Stroke Width"
-            value={strokeWidth}
-            data={[
-              { label: 'raw svg', value: 'default' },
-              { label: '1.5', value: '1.5' },
-              { label: '2', value: '2' }
-            ]}
-            onChange={(value) => setStrokeWidth(value as 'default' | '1.5' | '2')}
-            maw={120}
           />
         </Stack>
 
