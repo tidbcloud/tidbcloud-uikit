@@ -1,5 +1,5 @@
 import type { Meta, StoryObj, StoryFn } from '@storybook/react'
-import { Checkbox, Divider, Group, NumberInput, Stack, Tooltip } from '@tidbcloud/uikit'
+import { Checkbox, Divider, Group, NumberInput, Select, Stack, Tooltip } from '@tidbcloud/uikit'
 import { IconActivity } from '@tidbcloud/uikit/icons'
 import * as allIcons from '@tidbcloud/uikit/icons'
 import { useState } from 'react'
@@ -25,7 +25,15 @@ const meta: Meta<typeof IconActivity> = {
 
 export default meta
 
-function Demo({ size, withScalingStroke }: { size?: number; withScalingStroke?: boolean }) {
+function Demo({
+  size,
+  withScalingStroke,
+  strokeWidth
+}: {
+  size?: number
+  withScalingStroke?: boolean
+  strokeWidth?: 'default' | '1.5' | '2'
+}) {
   return (
     <Group>
       {iconsData.map((name) => {
@@ -37,7 +45,10 @@ function Demo({ size, withScalingStroke }: { size?: number; withScalingStroke?: 
               size={size}
               sx={{
                 '& *': {
-                  'vector-effect': withScalingStroke ? 'none' : 'non-scaling-stroke'
+                  'vector-effect': withScalingStroke ? 'none' : 'non-scaling-stroke',
+                  ...(strokeWidth !== 'default' && {
+                    'stroke-width': strokeWidth
+                  })
                 }
               }}
             />
@@ -53,6 +64,7 @@ export const AllIcons: Story = {
   render: () => {
     const [size, setSize] = useState(24)
     const [withScalingStroke, setWithScalingStroke] = useState(true)
+    const [strokeWidth, setStrokeWidth] = useState<'default' | '1.5' | '2'>('default')
     return (
       <Stack>
         <Stack>
@@ -69,11 +81,22 @@ export const AllIcons: Story = {
             checked={withScalingStroke}
             onChange={(e) => setWithScalingStroke(e.target.checked)}
           />
+          <Select
+            label="Stroke Width"
+            value={strokeWidth}
+            data={[
+              { label: 'raw svg', value: 'default' },
+              { label: '1.5', value: '1.5' },
+              { label: '2', value: '2' }
+            ]}
+            onChange={(value) => setStrokeWidth(value as 'default' | '1.5' | '2')}
+            maw={120}
+          />
         </Stack>
 
         <Divider />
 
-        <Demo size={size} withScalingStroke={withScalingStroke} />
+        <Demo size={size} withScalingStroke={withScalingStroke} strokeWidth={strokeWidth} />
       </Stack>
     )
   },
