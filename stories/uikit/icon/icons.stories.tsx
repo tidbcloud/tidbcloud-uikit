@@ -1,7 +1,8 @@
 import type { Meta, StoryObj, StoryFn } from '@storybook/react'
-import { Group, Tooltip } from '@tidbcloud/uikit'
+import { Checkbox, Divider, Group, NumberInput, Stack, Tooltip } from '@tidbcloud/uikit'
 import { IconActivity } from '@tidbcloud/uikit/icons'
 import * as allIcons from '@tidbcloud/uikit/icons'
+import { useState } from 'react'
 
 const iconsData = Object.keys(allIcons).filter((i) => i !== 'Icon')
 
@@ -24,28 +25,51 @@ const meta: Meta<typeof IconActivity> = {
 
 export default meta
 
-function Icon({ name }: { name: string }) {
-  // @ts-ignore
-  const IconComp = allIcons[name]
-  return (
-    <Tooltip label={name}>
-      <IconComp size={16} />
-    </Tooltip>
-  )
-}
-
-function Demo() {
+function Demo({ size, withScalingStroke }: { size?: number; withScalingStroke?: boolean }) {
   return (
     <Group>
-      {iconsData.map((name) => (
-        <Icon name={name} />
-      ))}
+      {iconsData.map((name) => {
+        // @ts-ignore
+        const IconComp = allIcons[name]
+        return (
+          <Tooltip label={name}>
+            <IconComp size={size} sx={{ 'vector-effect': withScalingStroke ? 'none' : 'non-scaling-stroke' }} />
+          </Tooltip>
+        )
+      })}
     </Group>
   )
 }
 
 // More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
-export const Primary: Story = {
-  render: () => <Demo></Demo>,
+export const AllIcons: Story = {
+  render: () => {
+    const [size, setSize] = useState(24)
+    const [withScalingStroke, setWithScalingStroke] = useState(true)
+    return (
+      <Stack>
+        <Stack>
+          <NumberInput label="Icon Size" value={size} onChange={(value) => setSize(Number(value))} maw={200} />
+          <Checkbox
+            label="With Scaling Stroke"
+            description={
+              <div>
+                Default is true, the icon stroke will scale with the size, see{' '}
+                <a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/vector-effect">
+                  MDN for more info.
+                </a>
+              </div>
+            }
+            checked={withScalingStroke}
+            onChange={(e) => setWithScalingStroke(e.target.checked)}
+          />
+        </Stack>
+
+        <Divider />
+
+        <Demo size={size} withScalingStroke={withScalingStroke} />
+      </Stack>
+    )
+  },
   args: {}
 }
