@@ -9,7 +9,6 @@ const IconAlignJustify = (props, ref) => {
       height="1em"
       fill="none"
       viewBox="0 0 24 24"
-      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
@@ -17,8 +16,8 @@ const IconAlignJustify = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M21 10H3M21 18H3M21 6H3M21 14H3"
-        strokeWidth="inherit"
+        strokeWidth={2}
+        d="M21 10H3m18 8H3M21 6H3m18 8H3"
       />
     </svg>
   )

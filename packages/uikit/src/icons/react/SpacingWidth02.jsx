@@ -9,7 +9,6 @@ const IconSpacingWidth02 = (props, ref) => {
       height="1em"
       fill="none"
       viewBox="0 0 24 24"
-      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
@@ -17,8 +16,8 @@ const IconSpacingWidth02 = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M21 21V3M3 21V3M6.5 12H17.5M17.5 15L17.5 9M6.5 15L6.5 9"
-        strokeWidth="inherit"
+        strokeWidth={2}
+        d="M21 21V3M3 21V3m3.5 9h11m0 3V9m-11 6V9"
       />
     </svg>
   )

@@ -9,7 +9,6 @@ const IconAttachment02 = (props, ref) => {
       height="1em"
       fill="none"
       viewBox="0 0 24 24"
-      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
@@ -17,8 +16,8 @@ const IconAttachment02 = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M17.5 5.25581V16.5C17.5 19.5376 15.0376 22 12 22C8.96243 22 6.5 19.5376 6.5 16.5V5.66667C6.5 3.64162 8.14162 2 10.1667 2C12.1917 2 13.8333 3.64162 13.8333 5.66667V16.4457C13.8333 17.4583 13.0125 18.2791 12 18.2791C10.9875 18.2791 10.1667 17.4583 10.1667 16.4457V6.65116"
-        strokeWidth="inherit"
+        strokeWidth={2}
+        d="M17.5 5.256V16.5a5.5 5.5 0 1 1-11 0V5.667a3.667 3.667 0 0 1 7.333 0v10.779a1.833 1.833 0 1 1-3.666 0V6.65"
       />
     </svg>
   )

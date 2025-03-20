@@ -9,7 +9,6 @@ const IconLogOut04 = (props, ref) => {
       height="1em"
       fill="none"
       viewBox="0 0 24 24"
-      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
@@ -17,8 +16,8 @@ const IconLogOut04 = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M18 8L22 12M22 12L18 16M22 12H9M15 4.20404C13.7252 3.43827 12.2452 3 10.6667 3C5.8802 3 2 7.02944 2 12C2 16.9706 5.8802 21 10.6667 21C12.2452 21 13.7252 20.5617 15 19.796"
-        strokeWidth="inherit"
+        strokeWidth={2}
+        d="m18 8 4 4m0 0-4 4m4-4H9m6-7.796A8.4 8.4 0 0 0 10.667 3C5.88 3 2 7.03 2 12s3.88 9 8.667 9A8.4 8.4 0 0 0 15 19.796"
       />
     </svg>
   )

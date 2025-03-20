@@ -9,7 +9,6 @@ const IconChevronVerticalShrink = (props, ref) => {
       height="1em"
       fill="none"
       viewBox="0 0 24 24"
-      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
@@ -17,8 +16,8 @@ const IconChevronVerticalShrink = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M6 3 L12 9 L18 3 M6 21 L12 15 L18 21"
         strokeWidth="inherit"
+        d="m6 3 6 6 6-6M6 21l6-6 6 6"
       />
     </svg>
   )

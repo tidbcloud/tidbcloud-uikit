@@ -9,7 +9,6 @@ const IconUnderline01 = (props, ref) => {
       height="1em"
       fill="none"
       viewBox="0 0 24 24"
-      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
@@ -17,8 +16,8 @@ const IconUnderline01 = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M18 4V11C18 14.3137 15.3137 17 12 17C8.68629 17 6 14.3137 6 11V4M4 21H20"
-        strokeWidth="inherit"
+        strokeWidth={2}
+        d="M18 4v7a6 6 0 0 1-12 0V4M4 21h16"
       />
     </svg>
   )

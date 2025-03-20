@@ -9,7 +9,6 @@ const IconActivity = (props, ref) => {
       height="1em"
       fill="none"
       viewBox="0 0 24 24"
-      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
@@ -17,8 +16,8 @@ const IconActivity = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M22 12H18L15 21L9 3L6 12H2"
-        strokeWidth="inherit"
+        strokeWidth={2}
+        d="M22 12h-4l-3 9L9 3l-3 9H2"
       />
     </svg>
   )

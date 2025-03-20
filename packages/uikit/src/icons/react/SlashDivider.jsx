@@ -9,11 +9,10 @@ const IconSlashDivider = (props, ref) => {
       height="1em"
       fill="none"
       viewBox="0 0 24 24"
-      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
-      <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" d="M7 22L17 2" strokeWidth="inherit" />
+      <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 22 17 2" />
     </svg>
   )
 }

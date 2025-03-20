@@ -8,7 +8,7 @@ const IconMenu01 = (props, ref) => {
       width="1em"
       height="1em"
       fill="none"
-      strokeWidth="1.5"
+      strokeWidth={2}
       viewBox="0 0 24 24"
       ref={ref}
       {...props}
@@ -17,8 +17,8 @@ const IconMenu01 = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M3 12H21M3 6H21M3 18H21"
         strokeWidth="inherit"
+        d="M3 12h18M3 6h18M3 18h18"
       />
     </svg>
   )

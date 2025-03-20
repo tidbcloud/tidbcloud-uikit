@@ -9,7 +9,6 @@ const IconAlignCenter = (props, ref) => {
       height="1em"
       fill="none"
       viewBox="0 0 24 24"
-      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
@@ -17,8 +16,8 @@ const IconAlignCenter = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M18 10H6M21 6H3M21 14H3M18 18H6"
-        strokeWidth="inherit"
+        strokeWidth={2}
+        d="M18 10H6m15-4H3m18 8H3m15 4H6"
       />
     </svg>
   )

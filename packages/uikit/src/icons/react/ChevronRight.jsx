@@ -8,7 +8,7 @@ const IconChevronRight = (props, ref) => {
       width="1em"
       height="1em"
       fill="none"
-      strokeWidth="1.5"
+      strokeWidth={1.5}
       viewBox="0 0 24 24"
       ref={ref}
       {...props}
@@ -17,8 +17,8 @@ const IconChevronRight = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M9 18L15 12L9 6"
         strokeWidth="inherit"
+        d="m9 18 6-6-6-6"
       />
     </svg>
   )

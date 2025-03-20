@@ -9,7 +9,6 @@ const IconArrowUpLeft = (props, ref) => {
       height="1em"
       fill="none"
       viewBox="0 0 24 24"
-      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
@@ -17,8 +16,8 @@ const IconArrowUpLeft = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M17 17L7 7M7 7V17M7 7H17"
-        strokeWidth="inherit"
+        strokeWidth={2}
+        d="M17 17 7 7m0 0v10M7 7h10"
       />
     </svg>
   )

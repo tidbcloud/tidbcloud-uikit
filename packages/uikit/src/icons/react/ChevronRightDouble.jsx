@@ -9,7 +9,6 @@ const IconChevronRightDouble = (props, ref) => {
       height="1em"
       fill="none"
       viewBox="0 0 24 24"
-      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
@@ -17,8 +16,8 @@ const IconChevronRightDouble = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M6 17L11 12L6 7M13 17L18 12L13 7"
-        strokeWidth="inherit"
+        strokeWidth={2}
+        d="m6 17 5-5-5-5m7 10 5-5-5-5"
       />
     </svg>
   )

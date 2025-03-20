@@ -8,7 +8,7 @@ const IconSun = (props, ref) => {
       width="1em"
       height="1em"
       fill="none"
-      strokeWidth="1.5"
+      strokeWidth={1.5}
       viewBox="0 0 24 24"
       ref={ref}
       {...props}
@@ -17,8 +17,8 @@ const IconSun = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M12 2V4M12 20V22M4 12H2M6.31412 6.31412L4.8999 4.8999M17.6859 6.31412L19.1001 4.8999M6.31412 17.69L4.8999 19.1042M17.6859 17.69L19.1001 19.1042M22 12H20M17 12C17 14.7614 14.7614 17 12 17C9.23858 17 7 14.7614 7 12C7 9.23858 9.23858 7 12 7C14.7614 7 17 9.23858 17 12Z"
         strokeWidth="inherit"
+        d="M12 2v2m0 16v2M4 12H2m4.314-5.686L4.9 4.9m12.786 1.414L19.1 4.9M6.314 17.69 4.9 19.104m12.786-1.414 1.414 1.414M22 12h-2m-3 0a5 5 0 1 1-10 0 5 5 0 0 1 10 0"
       />
     </svg>
   )

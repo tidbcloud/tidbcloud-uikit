@@ -9,7 +9,6 @@ const IconAsterisk02 = (props, ref) => {
       height="1em"
       fill="none"
       viewBox="0 0 24 24"
-      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
@@ -17,8 +16,8 @@ const IconAsterisk02 = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M12 4V20M18 6L6 18M20 12H4M18 18L6 6"
-        strokeWidth="inherit"
+        strokeWidth={2}
+        d="M12 4v16m6-14L6 18m14-6H4m14 6L6 6"
       />
     </svg>
   )
