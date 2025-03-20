@@ -17,7 +17,7 @@ const IconDownload02 = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M21 21H3m15-10-6 6m0 0-6-6m6 6V3"
+        d="M21 21H3M18 11L12 17M12 17L6 11M12 17V3"
         strokeWidth="inherit"
       />
     </svg>

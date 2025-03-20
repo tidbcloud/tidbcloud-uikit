@@ -17,7 +17,7 @@ const IconUpload02 = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M21 3H3m15 10-6-6m0 0-6 6m6-6v14"
+        d="M21 3H3M18 13L12 7M12 7L6 13M12 7V21"
         strokeWidth="inherit"
       />
     </svg>

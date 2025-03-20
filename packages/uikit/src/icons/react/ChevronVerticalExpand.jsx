@@ -17,7 +17,7 @@ const IconChevronVerticalExpand = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="m6 9 6-6 6 6M6 15l6 6 6-6"
+        d="M6 9 L12 3 L18 9 M6 15 L12 21 L18 15"
         strokeWidth="inherit"
       />
     </svg>

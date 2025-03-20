@@ -17,7 +17,7 @@ const IconHash01 = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M4 8h16M4 16h16M8 3v18m8-18v18"
+        d="M4 8H20M4 16H20M8 3V21M16 3V21"
         strokeWidth="inherit"
       />
     </svg>

@@ -17,7 +17,7 @@ const IconChevronSelectorHorizontal = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="m9 7-5 5 5 5m6-10 5 5-5 5"
+        d="M9 7L4 12L9 17M15 7L20 12L15 17"
         strokeWidth="inherit"
       />
     </svg>

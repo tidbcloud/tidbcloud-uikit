@@ -13,17 +13,17 @@ const IconNumberic = (props, ref) => {
       ref={ref}
       {...props}
     >
-      <g clipPath="url(#prefix__a)">
+      <g clipPath="url(#a)">
         <path
           stroke="currentColor"
           strokeLinecap="round"
-          d="M1.334 4.975h13.333M1.334 10.992h13.333M5.99 1.333 3.673 14.667m8.243-13.334L9.6 14.667"
+          d="M1.3335 4.97491L14.6668 4.97491M1.3335 10.9924L14.6668 10.9924M5.99023 1.33325L3.67309 14.6666M11.9162 1.33325L9.59901 14.6666"
           strokeWidth="inherit"
         />
       </g>
       <defs>
-        <clipPath id="prefix__a">
-          <path fill="#fff" d="M0 0h16v16H0z" strokeWidth="inherit" stroke="currentColor" />
+        <clipPath id="a">
+          <path fill="#fff" d="M0 0H16V16H0z" strokeWidth="inherit" stroke="currentColor" />
         </clipPath>
       </defs>
     </svg>

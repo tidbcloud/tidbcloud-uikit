@@ -17,7 +17,7 @@ const IconAlignTopArrow01 = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M21 3H3m9 18V7m0 0-7 7m7-7 7 7"
+        d="M21 3H3M12 21V7M12 7L5 14M12 7L19 14"
         strokeWidth="inherit"
       />
     </svg>

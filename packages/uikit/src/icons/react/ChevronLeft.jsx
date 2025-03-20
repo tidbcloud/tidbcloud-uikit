@@ -17,7 +17,7 @@ const IconChevronLeft = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="m15 18-6-6 6-6"
+        d="M15 18L9 12L15 6"
         strokeWidth="inherit"
       />
     </svg>

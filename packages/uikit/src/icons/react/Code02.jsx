@@ -17,7 +17,7 @@ const IconCode02 = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="m17 17 5-5-5-5M7 7l-5 5 5 5m7-14-4 18"
+        d="M17 17L22 12L17 7M7 7L2 12L7 17M14 3L10 21"
         strokeWidth="inherit"
       />
     </svg>

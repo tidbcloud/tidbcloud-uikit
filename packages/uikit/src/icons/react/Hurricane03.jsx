@@ -17,7 +17,7 @@ const IconHurricane03 = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M21 4H3m17 4H6m12 4H9m6 4H8m9 4h-5"
+        d="M21 4H3M20 8L6 8M18 12L9 12M15 16L8 16M17 20H12"
         strokeWidth="inherit"
       />
     </svg>

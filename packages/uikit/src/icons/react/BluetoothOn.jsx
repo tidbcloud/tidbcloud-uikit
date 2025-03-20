@@ -17,7 +17,7 @@ const IconBluetoothOn = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="m6 7 12 10-6 5V2l6 5L6 17"
+        d="M6 7L18 17L12 22V2L18 7L6 17"
         strokeWidth="inherit"
       />
     </svg>

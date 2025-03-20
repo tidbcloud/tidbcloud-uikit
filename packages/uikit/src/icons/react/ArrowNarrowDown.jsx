@@ -17,7 +17,7 @@ const IconArrowNarrowDown = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M12 4v16m0 0 6-6m-6 6-6-6"
+        d="M12 4V20M12 20L18 14M12 20L6 14"
         strokeWidth="inherit"
       />
     </svg>

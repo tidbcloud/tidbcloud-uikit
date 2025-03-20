@@ -17,7 +17,7 @@ const IconPlus = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M12 5v14m-7-7h14"
+        d="M12 5V19M5 12H19"
         strokeWidth="inherit"
       />
     </svg>

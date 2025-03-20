@@ -17,7 +17,7 @@ const IconSeeMore = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M16 10H3m17-4H3m17 8H3m13 4H3"
+        d="M16 10H3M20 6H3M20 14H3M16 18H3"
         strokeWidth="inherit"
       />
     </svg>

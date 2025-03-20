@@ -13,7 +13,7 @@ const IconMinus = (props, ref) => {
       ref={ref}
       {...props}
     >
-      <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" d="M5 12h14" strokeWidth="inherit" />
+      <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" d="M5 12H19" strokeWidth="inherit" />
     </svg>
   )
 }
