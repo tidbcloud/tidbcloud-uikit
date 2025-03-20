@@ -17,7 +17,7 @@ const IconCodeSnippet01 = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="m16 18 6-6-6-6M8 6l-6 6 6 6"
+        d="M16 18L22 12L16 6M8 6L2 12L8 18"
         strokeWidth="inherit"
       />
     </svg>

@@ -13,7 +13,13 @@ const IconChevronDown = (props, ref) => {
       ref={ref}
       {...props}
     >
-      <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" d="m6 9 6 6 6-6" strokeWidth="inherit" />
+      <path
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M6 9L12 15L18 9"
+        strokeWidth="inherit"
+      />
     </svg>
   )
 }

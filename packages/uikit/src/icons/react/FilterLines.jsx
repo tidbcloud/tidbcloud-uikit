@@ -17,7 +17,7 @@ const IconFilterLines = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M6 12h12M3 6h18M9 18h6"
+        d="M6 12H18M3 6H21M9 18H15"
         strokeWidth="inherit"
       />
     </svg>

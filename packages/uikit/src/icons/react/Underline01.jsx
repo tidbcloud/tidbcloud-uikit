@@ -17,7 +17,7 @@ const IconUnderline01 = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M18 4v7a6 6 0 0 1-12 0V4M4 21h16"
+        d="M18 4V11C18 14.3137 15.3137 17 12 17C8.68629 17 6 14.3137 6 11V4M4 21H20"
         strokeWidth="inherit"
       />
     </svg>

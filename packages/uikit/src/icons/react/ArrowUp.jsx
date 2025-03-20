@@ -17,7 +17,7 @@ const IconArrowUp = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M12 19V5m0 0-7 7m7-7 7 7"
+        d="M12 19V5M12 5L5 12M12 5L19 12"
         strokeWidth="inherit"
       />
     </svg>
