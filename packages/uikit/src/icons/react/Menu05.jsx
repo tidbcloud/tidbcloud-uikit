@@ -9,17 +9,10 @@ const IconMenu05 = (props, ref) => {
       height="1em"
       fill="none"
       viewBox="0 0 24 24"
-      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
-      <path
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        d="M3 8.5H21M3 15.5H21"
-        strokeWidth="inherit"
-      />
+      <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8.5h18m-18 7h18" />
     </svg>
   )
 }

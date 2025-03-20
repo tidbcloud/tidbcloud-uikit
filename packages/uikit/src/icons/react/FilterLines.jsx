@@ -9,7 +9,6 @@ const IconFilterLines = (props, ref) => {
       height="1em"
       fill="none"
       viewBox="0 0 24 24"
-      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
@@ -17,8 +16,8 @@ const IconFilterLines = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M6 12H18M3 6H21M9 18H15"
-        strokeWidth="inherit"
+        strokeWidth={2}
+        d="M6 12h12M3 6h18M9 18h6"
       />
     </svg>
   )

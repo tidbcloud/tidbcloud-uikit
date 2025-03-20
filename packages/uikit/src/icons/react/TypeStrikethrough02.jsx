@@ -9,7 +9,6 @@ const IconTypeStrikethrough02 = (props, ref) => {
       height="1em"
       fill="none"
       viewBox="0 0 24 24"
-      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
@@ -17,8 +16,8 @@ const IconTypeStrikethrough02 = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M8 20H16M10.25 10.5V20M13.75 14V20M3 3L21 21M4 6.99995V5.99995C4 5.45873 4.21497 4.96773 4.56419 4.60767M9.5 4H17C17.9319 4 18.3978 4 18.7654 4.15224C19.2554 4.35523 19.6448 4.74458 19.8478 5.23463C20 5.60218 20 6.06812 20 7M10.25 4V5M13.75 4V8"
-        strokeWidth="inherit"
+        strokeWidth={2}
+        d="M8 20h8m-5.75-9.5V20m3.5-6v6M3 3l18 18M4 7V6c0-.541.215-1.032.564-1.392M9.5 4H17c.932 0 1.398 0 1.765.152a2 2 0 0 1 1.083 1.083C20 5.602 20 6.068 20 7m-9.75-3v1m3.5-1v4"
       />
     </svg>
   )

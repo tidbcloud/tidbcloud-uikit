@@ -9,7 +9,6 @@ const IconArrowNarrowLeft = (props, ref) => {
       height="1em"
       fill="none"
       viewBox="0 0 24 24"
-      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
@@ -17,8 +16,8 @@ const IconArrowNarrowLeft = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M20 12H4M4 12L10 18M4 12L10 6"
-        strokeWidth="inherit"
+        strokeWidth={2}
+        d="M20 12H4m0 0 6 6m-6-6 6-6"
       />
     </svg>
   )

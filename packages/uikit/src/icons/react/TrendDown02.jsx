@@ -9,7 +9,6 @@ const IconTrendDown02 = (props, ref) => {
       height="1em"
       fill="none"
       viewBox="0 0 24 24"
-      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
@@ -17,8 +16,8 @@ const IconTrendDown02 = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M7 7L17 17M17 17V7M17 17H7"
-        strokeWidth="inherit"
+        strokeWidth={2}
+        d="m7 7 10 10m0 0V7m0 10H7"
       />
     </svg>
   )

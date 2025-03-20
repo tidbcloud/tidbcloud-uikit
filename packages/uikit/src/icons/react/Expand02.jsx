@@ -9,7 +9,6 @@ const IconExpand02 = (props, ref) => {
       height="1em"
       fill="none"
       viewBox="0 0 24 24"
-      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
@@ -17,8 +16,8 @@ const IconExpand02 = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M3 21L21 3M3 21H9M3 21L3 15M21 3H15M21 3V9"
-        strokeWidth="inherit"
+        strokeWidth={2}
+        d="M3 21 21 3M3 21h6m-6 0v-6M21 3h-6m6 0v6"
       />
     </svg>
   )

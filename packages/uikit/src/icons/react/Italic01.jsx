@@ -9,7 +9,6 @@ const IconItalic01 = (props, ref) => {
       height="1em"
       fill="none"
       viewBox="0 0 24 24"
-      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
@@ -17,8 +16,8 @@ const IconItalic01 = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M19 4H10M14 20H5M15 4L9 20"
-        strokeWidth="inherit"
+        strokeWidth={2}
+        d="M19 4h-9m4 16H5M15 4 9 20"
       />
     </svg>
   )

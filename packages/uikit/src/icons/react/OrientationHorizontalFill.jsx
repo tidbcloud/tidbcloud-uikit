@@ -9,15 +9,10 @@ const IconOrientationHorizontalFill = (props, ref) => {
       height="1em"
       fill="currentColor"
       viewBox="0 0 24 24"
-      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
-      <path
-        d="M11 4V8L4 8 4 4 11 4ZM15 10V14H4L4 10 15 10ZM20 16V20H4L4 16H20Z"
-        strokeWidth="inherit"
-        stroke="currentColor"
-      />
+      <path d="M11 4v4H4V4zM15 10v4H4v-4zM20 16v4H4v-4z" />
     </svg>
   )
 }

@@ -8,7 +8,7 @@ const IconCollapse08 = (props, ref) => {
       width="1em"
       height="1em"
       fill="none"
-      strokeWidth="1.5"
+      strokeWidth={1.5}
       viewBox="0 0 24 24"
       ref={ref}
       {...props}
@@ -17,8 +17,8 @@ const IconCollapse08 = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M8 19.5L12 15.5L16 19.5M8 4.5L12 8.5L16 4.5"
         strokeWidth="inherit"
+        d="m8 19.5 4-4 4 4m-8-15 4 4 4-4"
       />
     </svg>
   )

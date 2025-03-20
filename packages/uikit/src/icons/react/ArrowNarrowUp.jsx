@@ -9,7 +9,6 @@ const IconArrowNarrowUp = (props, ref) => {
       height="1em"
       fill="none"
       viewBox="0 0 24 24"
-      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
@@ -17,8 +16,8 @@ const IconArrowNarrowUp = (props, ref) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M12 20V4M12 4L6 10M12 4L18 10"
-        strokeWidth="inherit"
+        strokeWidth={2}
+        d="M12 20V4m0 0-6 6m6-6 6 6"
       />
     </svg>
   )
