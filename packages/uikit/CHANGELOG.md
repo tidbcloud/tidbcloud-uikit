@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.2.5
+
+### Patch Changes
+
+- fix(ProTable): wrapperProps missing ([#503](https://github.com/tidbcloud/tidbcloud-uikit/pull/503))
+
 ## 2.2.4
 
 ### Patch Changes
