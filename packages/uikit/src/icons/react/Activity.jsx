@@ -4,20 +4,21 @@ import { forwardRef } from 'react'
 const IconActivity = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
-      fill="none"
       viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M22 12H18L15 21L9 3L6 12H2"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeWidth={2}
-        d="M22 12h-4l-3 9L9 3l-3 9H2"
+        strokeWidth="inherit"
       />
     </svg>
   )

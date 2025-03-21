@@ -4,20 +4,21 @@ import { forwardRef } from 'react'
 const IconAlignBottom01 = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
-      fill="none"
       viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M3 21H21M12 3V17M12 17L19 10M12 17L5 10"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeWidth={2}
-        d="M3 21h18M12 3v14m0 0 7-7m-7 7-7-7"
+        strokeWidth="inherit"
       />
     </svg>
   )

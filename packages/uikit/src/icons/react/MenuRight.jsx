@@ -4,20 +4,21 @@ import { forwardRef } from 'react'
 const IconMenuRight = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
-      fill="none"
       viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M3 12H15M3 5H15M3 19H15M18 9L21 12L18 15"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeWidth={2}
-        d="M3 12h12M3 5h12M3 19h12m3-10 3 3-3 3"
+        strokeWidth="inherit"
       />
     </svg>
   )

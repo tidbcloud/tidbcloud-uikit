@@ -4,20 +4,21 @@ import { forwardRef } from 'react'
 const IconEqualNot = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
-      fill="none"
       viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M5 9H19M5 15H19M19 5L5 19"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeWidth={2}
-        d="M5 9h14M5 15h14m0-10L5 19"
+        strokeWidth="inherit"
       />
     </svg>
   )

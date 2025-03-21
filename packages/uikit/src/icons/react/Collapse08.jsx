@@ -4,21 +4,21 @@ import { forwardRef } from 'react'
 const IconCollapse08 = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
-      fill="none"
-      strokeWidth={1.5}
       viewBox="0 0 24 24"
+      fill="none"
+      strokeWidth="1.5"
+      xmlns="http://www.w3.org/2000/svg"
       ref={ref}
       {...props}
     >
       <path
+        d="M8 19.5L12 15.5L16 19.5M8 4.5L12 8.5L16 4.5"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth="inherit"
-        d="m8 19.5 4-4 4 4m-8-15 4 4 4-4"
       />
     </svg>
   )

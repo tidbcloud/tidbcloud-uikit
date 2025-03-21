@@ -4,20 +4,21 @@ import { forwardRef } from 'react'
 const IconBluetoothOn = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
-      fill="none"
       viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M6 7L18 17L12 22V2L18 7L6 17"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeWidth={2}
-        d="m6 7 12 10-6 5V2l6 5L6 17"
+        strokeWidth="inherit"
       />
     </svg>
   )
