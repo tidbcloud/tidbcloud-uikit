@@ -4,20 +4,28 @@ import { forwardRef } from 'react'
 const IconCloudDatabase = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
-      fill="none"
       viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M17 5.55C17 6.95833 13.6421 8.1 9.5 8.1C5.35786 8.1 2 6.95833 2 5.55M17 5.55C17 4.14167 13.6421 3 9.5 3C5.35786 3 2 4.14167 2 5.55M17 5.55V10.225M2 5.55V17.45C2 18.861 5.33333 20 9.5 20M9.5 14.05C5.33333 14.05 2 12.911 2 11.5"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeWidth={1.5}
-        d="M17 5.55c0 1.408-3.358 2.55-7.5 2.55S2 6.958 2 5.55m15 0C17 4.142 13.642 3 9.5 3S2 4.142 2 5.55m15 0v4.675M2 5.55v11.9C2 18.861 5.333 20 9.5 20m0-5.95c-4.167 0-7.5-1.139-7.5-2.55M13.475 20C12.108 20 11 18.849 11 17.429c0-1.34.985-2.44 2.244-2.56C13.5 13.24 14.86 12 16.5 12s2.999 1.241 3.256 2.868C21.015 14.99 22 16.09 22 17.428 22 18.849 20.892 20 19.525 20z"
+        strokeWidth="inherit"
+      />
+      <path
+        d="M13.475 20C12.1081 20 11 18.8487 11 17.4286C11 16.0894 11.9853 14.9893 13.2439 14.8682C13.5013 13.2412 14.8611 12 16.5 12C18.1389 12 19.4987 13.2412 19.7561 14.8682C21.0147 14.9893 22 16.0894 22 17.4286C22 18.8487 20.8919 20 19.525 20C17.1106 20 15.5888 20 13.475 20Z"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="inherit"
       />
     </svg>
   )

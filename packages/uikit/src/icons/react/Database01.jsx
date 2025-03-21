@@ -4,19 +4,21 @@ import { forwardRef } from 'react'
 const IconDatabase01 = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
-      fill="none"
       viewBox="0 0 16 16"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M14 3.33325C14 4.43782 11.3137 5.33325 8 5.33325C4.68629 5.33325 2 4.43782 2 3.33325M14 3.33325C14 2.22868 11.3137 1.33325 8 1.33325C4.68629 1.33325 2 2.22868 2 3.33325M14 3.33325V12.6666C14 13.7733 11.3333 14.6666 8 14.6666C4.66667 14.6666 2 13.7733 2 12.6666V3.33325M14 7.99992C14 9.10659 11.3333 9.99992 8 9.99992C4.66667 9.99992 2 9.10659 2 7.99992"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M14 3.333c0 1.105-2.686 2-6 2s-6-.895-6-2m12 0c0-1.104-2.686-2-6-2s-6 .896-6 2m12 0v9.334c0 1.106-2.667 2-6 2s-6-.894-6-2V3.333M14 8c0 1.107-2.667 2-6 2s-6-.893-6-2"
+        strokeWidth="inherit"
       />
     </svg>
   )
