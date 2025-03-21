@@ -19,7 +19,7 @@ export const ProTable = <T extends Record<string, any> = {}>(props: ProTableProp
   }
 
   return (
-    <Box {...props.wrapperProps}>
+    <Box {...(props.wrapperProps || table.wrapperProps)}>
       {/***
        * see https://v2.mantine-react-table.com/docs/api/table-options
        * ***/}
