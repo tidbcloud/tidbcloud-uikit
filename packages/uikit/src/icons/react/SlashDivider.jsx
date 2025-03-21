@@ -4,15 +4,16 @@ import { forwardRef } from 'react'
 const IconSlashDivider = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
-      fill="none"
       viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
-      <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 22 17 2" />
+      <path d="M7 22L17 2" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="inherit" />
     </svg>
   )
 }

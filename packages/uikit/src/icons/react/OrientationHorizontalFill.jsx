@@ -4,15 +4,18 @@ import { forwardRef } from 'react'
 const IconOrientationHorizontalFill = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
-      fill="currentColor"
       viewBox="0 0 24 24"
+      fill="currentColor"
+      xmlns="http://www.w3.org/2000/svg"
+      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
-      <path d="M11 4v4H4V4zM15 10v4H4v-4zM20 16v4H4v-4z" />
+      <path d="M11 4V8L4 8L4 4L11 4Z" strokeWidth="inherit" stroke="currentColor" />
+      <path d="M15 10V14H4L4 10L15 10Z" strokeWidth="inherit" stroke="currentColor" />
+      <path d="M20 16V20H4L4 16H20Z" strokeWidth="inherit" stroke="currentColor" />
     </svg>
   )
 }

@@ -4,20 +4,21 @@ import { forwardRef } from 'react'
 const IconYAxis = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
-      fill="none"
       viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M12 21L12 3M10 3L14 3M10 21L14 21"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeWidth={2}
-        d="M12 21V3m-2 0h4m-4 18h4"
+        strokeWidth="inherit"
       />
     </svg>
   )
