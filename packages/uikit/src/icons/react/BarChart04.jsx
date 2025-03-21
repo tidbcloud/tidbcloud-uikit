@@ -4,20 +4,21 @@ import { forwardRef } from 'react'
 const IconBarChart04 = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
-      fill="none"
       viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M3 11L3 21M15 11L15 21M9 3L9 21M21 3V21"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeWidth={2}
-        d="M3 11v10m12-10v10M9 3v18M21 3v18"
+        strokeWidth="inherit"
       />
     </svg>
   )

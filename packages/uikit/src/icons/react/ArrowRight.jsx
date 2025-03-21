@@ -4,20 +4,21 @@ import { forwardRef } from 'react'
 const IconArrowRight = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
-      fill="none"
       viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M5 12H19M19 12L12 5M19 12L12 19"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeWidth={2}
-        d="M5 12h14m0 0-7-7m7 7-7 7"
+        strokeWidth="inherit"
       />
     </svg>
   )
