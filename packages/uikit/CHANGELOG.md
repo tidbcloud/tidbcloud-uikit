@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.2.4
+
+### Patch Changes
+
+- fix(theme): Remove unnecessary borderColor from disabled state button styling ([#501](https://github.com/tidbcloud/tidbcloud-uikit/pull/501))
+
 ## 2.2.3
 
 ### Patch Changes
