@@ -139,6 +139,9 @@ export const Primary: Story = {
     mantineTableProps: {
       highlightOnHover: true
     },
+    wrapperProps: {
+      mt: 0
+    },
     pagination: {
       showRowsPerPage: true,
       showTotal: true,
