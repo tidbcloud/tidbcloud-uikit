@@ -72,7 +72,7 @@ const ${componentName} = forwardRef((props, ref) => {
     props = { ...rest, w: size, h: size };
   }
   return (
-    <MantineBox ref={ref} {...props} component={ForwardRef} className={[props.className, 'tiui-icon', '${componentName}'].join(' ')} />
+    <MantineBox ref={ref} {...props} component={ForwardRef} className={['tiui-icon', '${componentName}', props.className].join(' ')} />
   )
 })
 
@@ -86,12 +86,67 @@ async function transformSvgToJSX(content: string, name: string): Promise<string>
   const jsCode = await transform(
     content,
     {
-      plugins: ['@svgr/plugin-svgo', '@svgr/plugin-jsx', '@svgr/plugin-prettier'],
+      plugins: ['@svgr/plugin-jsx', '@svgr/plugin-prettier'],
       icon: true,
       ref: true,
       replaceAttrValues: {
         '#000': 'currentColor',
         black: 'currentColor'
+      },
+      jsx: {
+        babelConfig: {
+          plugins: [
+            [
+              '@svgr/babel-plugin-remove-jsx-attribute',
+              {
+                elements: ['path'],
+                attributes: ['strokeWidth']
+              },
+              'remove strokeWidth on path tag'
+            ],
+            [
+              '@svgr/babel-plugin-add-jsx-attribute',
+              {
+                elements: ['svg'],
+                attributes: [{ name: 'strokeWidth', value: '1.5' }]
+              },
+              'add strokeWidth on svg tag'
+            ],
+            [
+              '@svgr/babel-plugin-add-jsx-attribute',
+              {
+                elements: ['path'],
+                attributes: [{ name: 'strokeWidth', value: 'inherit' }]
+              },
+              'add strokeWidth inherit on path tag'
+            ],
+            [
+              '@svgr/babel-plugin-add-jsx-attribute',
+              {
+                elements: ['path'],
+                attributes: [
+                  {
+                    name: 'stroke',
+                    value: 'currentColor'
+                  }
+                ]
+              }
+            ]
+          ]
+        }
+      },
+      svgoConfig: {
+        plugins: [
+          {
+            name: 'preset-default',
+            params: {
+              overrides: {
+                convertPathData: false,
+                removeViewBox: false // 确保保留 viewBox
+              }
+            }
+          }
+        ]
       },
       template
     },
