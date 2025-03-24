@@ -81,7 +81,7 @@ export const FormRadioGroup = ({
                             </Box>
                           </HoverCard.Target>
 
-                          <HoverCard.Dropdown>{i.tooltip}</HoverCard.Dropdown>
+                          <HoverCard.Dropdown maw={400}>{i.tooltip}</HoverCard.Dropdown>
                         </HoverCard>
                       )
                     ) : (
