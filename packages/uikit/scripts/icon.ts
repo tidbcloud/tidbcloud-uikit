@@ -108,7 +108,7 @@ async function transformSvgToJSX(content: string, name: string): Promise<string>
               '@svgr/babel-plugin-add-jsx-attribute',
               {
                 elements: ['svg'],
-                attributes: [{ name: 'strokeWidth', value: '1.5' }]
+                attributes: [{ name: 'strokeWidth', value: '2' }]
               },
               'add strokeWidth on svg tag'
             ],
