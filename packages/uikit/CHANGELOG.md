@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.2.6
+
+### Patch Changes
+
+- fix(FormRadioGroup): set max width for tooltip dropdown ([#505](https://github.com/tidbcloud/tidbcloud-uikit/pull/505))
+
 ## 2.2.5
 
 ### Patch Changes
