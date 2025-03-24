@@ -136,3 +136,23 @@ npx changeset pre exit
 ```
 
 Then run `changeset version` to version packages with normal versions.
+
+### Snapshot release
+
+Snapshot releases are a way to release your changes for testing without impacting real users.
+
+To create a snapshot release, you can create a changeset just like the normal release process, then using snapshot flag to bump the versions:
+
+```bash
+npx changeset version --snapshot
+```
+
+This will apply the changeset, but instead of using the next semantic version, all versions will be set to `0.0.0-THE_TIME_YOU_DID_THIS`.
+
+After running the version command, you will need to use the publish command locally to release the packages:
+
+```bash
+npx changeset publish --tag experimental
+```
+
+By using the `--tag` flag, you will not publish it to the latest flag on npm. This is **REALLY IMPORTANT** because if you do not include a tag, people installing your package using `yarn add your-package-name` will install the snapshot version.
