@@ -9,7 +9,7 @@ const IconRefreshCw04 = (props, ref) => {
       viewBox="0 0 16 20"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      strokeWidth="1.5"
+      strokeWidth="2"
       ref={ref}
       {...props}
     >
@@ -38,7 +38,7 @@ const RefreshCw04 = forwardRef((props, ref) => {
       ref={ref}
       {...props}
       component={ForwardRef}
-      className={[props.className, 'tiui-icon', 'RefreshCw04'].join(' ')}
+      className={['tiui-icon', 'RefreshCw04', props.className].join(' ')}
     />
   )
 })

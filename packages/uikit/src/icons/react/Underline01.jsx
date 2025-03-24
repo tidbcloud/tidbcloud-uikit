@@ -9,7 +9,7 @@ const IconUnderline01 = (props, ref) => {
       viewBox="0 0 24 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      strokeWidth="1.5"
+      strokeWidth="2"
       ref={ref}
       {...props}
     >
@@ -38,7 +38,7 @@ const Underline01 = forwardRef((props, ref) => {
       ref={ref}
       {...props}
       component={ForwardRef}
-      className={[props.className, 'tiui-icon', 'Underline01'].join(' ')}
+      className={['tiui-icon', 'Underline01', props.className].join(' ')}
     />
   )
 })

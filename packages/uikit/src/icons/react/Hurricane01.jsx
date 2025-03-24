@@ -9,7 +9,7 @@ const IconHurricane01 = (props, ref) => {
       viewBox="0 0 24 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      strokeWidth="1.5"
+      strokeWidth="2"
       ref={ref}
       {...props}
     >
@@ -38,7 +38,7 @@ const Hurricane01 = forwardRef((props, ref) => {
       ref={ref}
       {...props}
       component={ForwardRef}
-      className={[props.className, 'tiui-icon', 'Hurricane01'].join(' ')}
+      className={['tiui-icon', 'Hurricane01', props.className].join(' ')}
     />
   )
 })

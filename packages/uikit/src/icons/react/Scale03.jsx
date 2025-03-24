@@ -9,7 +9,7 @@ const IconScale03 = (props, ref) => {
       viewBox="0 0 16 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      strokeWidth="1.5"
+      strokeWidth="2"
       ref={ref}
       {...props}
     >
@@ -38,7 +38,7 @@ const Scale03 = forwardRef((props, ref) => {
       ref={ref}
       {...props}
       component={ForwardRef}
-      className={[props.className, 'tiui-icon', 'Scale03'].join(' ')}
+      className={['tiui-icon', 'Scale03', props.className].join(' ')}
     />
   )
 })
