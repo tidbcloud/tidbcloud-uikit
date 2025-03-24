@@ -9,7 +9,7 @@ const IconMessageCheckCircle = (props, ref) => {
       viewBox="0 0 24 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      strokeWidth="1.5"
+      strokeWidth="2"
       ref={ref}
       {...props}
     >
@@ -38,7 +38,7 @@ const MessageCheckCircle = forwardRef((props, ref) => {
       ref={ref}
       {...props}
       component={ForwardRef}
-      className={[props.className, 'tiui-icon', 'MessageCheckCircle'].join(' ')}
+      className={['tiui-icon', 'MessageCheckCircle', props.className].join(' ')}
     />
   )
 })

@@ -8,7 +8,7 @@ const IconCurrencyDollarCircle = (props, ref) => {
       height="1em"
       viewBox="0 0 24 24"
       fill="none"
-      strokeWidth="1.5"
+      strokeWidth="2"
       xmlns="http://www.w3.org/2000/svg"
       ref={ref}
       {...props}
@@ -38,7 +38,7 @@ const CurrencyDollarCircle = forwardRef((props, ref) => {
       ref={ref}
       {...props}
       component={ForwardRef}
-      className={[props.className, 'tiui-icon', 'CurrencyDollarCircle'].join(' ')}
+      className={['tiui-icon', 'CurrencyDollarCircle', props.className].join(' ')}
     />
   )
 })

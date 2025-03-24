@@ -9,7 +9,7 @@ const IconArrowsDown = (props, ref) => {
       viewBox="0 0 24 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      strokeWidth="1.5"
+      strokeWidth="2"
       ref={ref}
       {...props}
     >
@@ -38,7 +38,7 @@ const ArrowsDown = forwardRef((props, ref) => {
       ref={ref}
       {...props}
       component={ForwardRef}
-      className={[props.className, 'tiui-icon', 'ArrowsDown'].join(' ')}
+      className={['tiui-icon', 'ArrowsDown', props.className].join(' ')}
     />
   )
 })
