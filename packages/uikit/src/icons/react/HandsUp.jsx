@@ -8,7 +8,7 @@ const IconHandsUp = (props, ref) => {
       height="1em"
       viewBox="0 0 22 22"
       fill="none"
-      strokeWidth="1.5"
+      strokeWidth="2"
       xmlns="http://www.w3.org/2000/svg"
       ref={ref}
       {...props}
@@ -36,7 +36,7 @@ const HandsUp = forwardRef((props, ref) => {
       ref={ref}
       {...props}
       component={ForwardRef}
-      className={[props.className, 'tiui-icon', 'HandsUp'].join(' ')}
+      className={['tiui-icon', 'HandsUp', props.className].join(' ')}
     />
   )
 })
