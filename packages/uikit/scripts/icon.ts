@@ -142,7 +142,7 @@ async function transformSvgToJSX(content: string, name: string): Promise<string>
             params: {
               overrides: {
                 convertPathData: false,
-                removeViewBox: false // 确保保留 viewBox
+                removeViewBox: false
               }
             }
           }
