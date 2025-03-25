@@ -27,6 +27,8 @@ export const Primary: Story = {
   args: {
     leftLabel: 'prefix',
     label: 'Label',
+    leftAddon: 'Left Addon',
+    rightAddon: 'Right Addon',
     placeholder: 'this is a placeholder',
     disabled: false,
     error: '',

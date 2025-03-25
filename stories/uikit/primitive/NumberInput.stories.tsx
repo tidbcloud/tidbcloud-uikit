@@ -30,6 +30,11 @@ export const Primary: Story = {
     stepHoldInterval: 100,
     step: 0.05,
     decimalSeparator: ',',
-    disabled: false
+    disabled: false,
+    leftAddon: 'min',
+    rightAddon: 'max',
+    prefix: '',
+    suffix: '',
+    placeholder: 'placeholder'
   }
 }
