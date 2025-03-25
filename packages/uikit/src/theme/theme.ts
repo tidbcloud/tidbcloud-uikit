@@ -995,7 +995,10 @@ const theme = createTheme({
               props.variant === 'outline' ? themeColor(theme, color, shade) : theme.white + ' !important'
           },
           label: {
-            lineHeight: `${size}px`
+            lineHeight: `${size}px`,
+            '&[data-disabled]': {
+              color: themeColor(theme, color, 6)
+            }
           },
           icon: {
             transform: 'var(--radio-icon-transform, scale(0.2))'
