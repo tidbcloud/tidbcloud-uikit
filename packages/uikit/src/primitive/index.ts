@@ -39,7 +39,6 @@ export type {
   InputBaseProps,
   JsonInputProps,
   NativeSelectProps,
-  NumberInputProps,
   PasswordInputProps,
   PinInputProps,
   RadioProps,
@@ -156,7 +155,6 @@ export {
   InputBase,
   JsonInput,
   NativeSelect,
-  NumberInput,
   PasswordInput,
   PinInput,
   Radio,
@@ -277,6 +275,7 @@ export { Button } from './Button/index.js'
 export { CopyButton } from './CopyButton/CopyButton.js'
 export * from './Prism/index.js'
 export { AnimatedNumber, type AnimatedNumberProps } from './AnimatedNumber/index.js'
+export { NumberInput, type NumberInputProps } from './NumberInput/index.js'
 
 // Re-export @mantine/dropzone
 export {
