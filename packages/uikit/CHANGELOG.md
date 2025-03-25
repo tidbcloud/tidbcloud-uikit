@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.2.8
+
+### Patch Changes
+
+- fix(Radio): fix disabled color for label in theme ([#510](https://github.com/tidbcloud/tidbcloud-uikit/pull/510))
+
 ## 2.2.7
 
 ### Patch Changes
