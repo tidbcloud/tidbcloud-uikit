@@ -1,5 +1,12 @@
 # @tidbcloud/uikit
 
+## 2.2.7
+
+### Patch Changes
+
+- feat(NumberInput): add leftAddon & rightAddon ([#508](https://github.com/tidbcloud/tidbcloud-uikit/pull/508))
+- docs: add snapshot release instructions for testing ([#507](https://github.com/tidbcloud/tidbcloud-uikit/pull/507))
+
 ## 2.2.6
 
 ### Patch Changes
