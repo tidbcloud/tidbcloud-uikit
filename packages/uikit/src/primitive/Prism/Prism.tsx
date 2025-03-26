@@ -10,7 +10,6 @@ import {
   MantineColor,
   // MantineNumberSize,
   MantineTheme,
-  rgba,
   MantineRadius,
   useProps,
   getThemeColor,
@@ -19,12 +18,11 @@ import {
   Factory,
   factory,
   StylesApiProps,
-  useStyles
+  useStyles,
+  useComputedColorScheme
 } from '@mantine/core'
 import { useClipboard } from '@mantine/hooks'
 import Highlight, { defaultProps, Language, PrismTheme } from 'prism-react-renderer'
-
-import { useColorScheme } from '../../hooks/useColorScheme.js'
 
 import { CopyIcon } from './CopyIcon.js'
 import { getPrismTheme as defaultGetPrismTheme } from './prism-theme.js'
@@ -111,10 +109,10 @@ export const Prism = factory<PrismFactory>((_props, ref) => {
   const code = trim && typeof children === 'string' ? children.trim() : children
   const maxLineSize = code.split('\n').length.toString().length
 
-  const { colorScheme: globalColorScheme, systemColorScheme } = useColorScheme('light')
+  const globalColorScheme = useComputedColorScheme()
   const theme = useMantineTheme()
   const clipboard = useClipboard()
-  const _colorScheme = colorScheme || (globalColorScheme === 'auto' ? systemColorScheme : globalColorScheme)
+  const _colorScheme = colorScheme || globalColorScheme
   const { classes } = usePrismStyles({
     colorScheme: _colorScheme,
     native: ScrollAreaComponent !== ScrollArea,
