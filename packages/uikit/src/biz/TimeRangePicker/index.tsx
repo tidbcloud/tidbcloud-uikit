@@ -2,10 +2,29 @@ import { useHover } from '@mantine/hooks'
 import { useMemo, useState } from 'react'
 
 import { IconChevronRight, IconChevronSelectorVertical, IconX } from '../../icons/index.js'
-import { Button, Menu, Text, Box, Tooltip, Group, Typography, ButtonProps, ActionIcon } from '../../primitive/index.js'
+import {
+  Button,
+  Menu,
+  Text,
+  Box,
+  Tooltip,
+  Group,
+  Typography,
+  ButtonProps,
+  ActionIcon,
+  DatePickerProps
+} from '../../primitive/index.js'
 
-import AbsoluteTimeRangePicker from './AbsoluteTimeRangePicker.js'
-import { DEFAULT_QUICK_RANGES, TimeRange, formatDuration, toTimeRangeValue, timeFormatter } from './helpers.js'
+import AbsoluteTimeRangePicker, { Localization } from './AbsoluteTimeRangePicker.js'
+import {
+  DEFAULT_QUICK_RANGES,
+  TimeRange,
+  formatDuration,
+  toTimeRangeValue,
+  timeFormatter,
+  AbsoluteTimeRange,
+  RelativeTimeRange
+} from './helpers.js'
 
 export type TimeRangePickerProps = TimeRangePickerBaseProps &
   (
@@ -16,7 +35,10 @@ export type TimeRangePickerProps = TimeRangePickerBaseProps &
 export interface TimeRangePickerBaseProps extends ButtonProps {
   loading?: boolean
   placeholder?: string
+  badgePlaceholder?: string
   clearable?: boolean
+  relativeFormatter?: (relativeRange: RelativeTimeRange) => string
+  absoluteFormatter?: (absoluteRange: AbsoluteTimeRange) => string
 
   minDateTime?: () => Date
   maxDateTime?: () => Date
@@ -24,10 +46,22 @@ export interface TimeRangePickerBaseProps extends ButtonProps {
 
   // quick range selection items, Last x mins, Last x hours...
   // unit: seconds.
-  quickRanges?: number[]
+  // if isFuture is true, the range is in the future.
+  quickRanges?: (number | QuickRange)[]
   disableAbsoluteRanges?: boolean
 
   timezone?: number
+
+  datePickerProps?: DatePickerProps<'range'>
+  dateInputFormat?: (date: Date) => string
+  localization?: Localization
+}
+
+type QuickRange = {
+  // unit: seconds.
+  value: number
+  label?: React.ReactNode
+  isFuture?: boolean
 }
 
 export const TimeRangePicker = ({
@@ -40,14 +74,21 @@ export const TimeRangePicker = ({
   quickRanges = DEFAULT_QUICK_RANGES,
   loading,
   placeholder,
+  badgePlaceholder,
   clearable,
   timezone,
-  sx
+  sx,
+  dateInputFormat,
+  datePickerProps,
+  localization,
+  relativeFormatter,
+  absoluteFormatter
 }: React.PropsWithChildren<TimeRangePickerProps>) => {
   const [opened, setOpened] = useState(false)
   const [customMode, setCustomMode] = useState(false)
   const isEmptyValue = !value
   const isRelativeRange = value?.type === 'relative'
+  const isFuture = isRelativeRange && value?.isFuture
   const { hovered, ref: targetRef } = useHover()
 
   const timeRangeValue = isEmptyValue ? undefined : toTimeRangeValue(value)
@@ -63,13 +104,27 @@ export const TimeRangePicker = ({
     if (!timeRangeValue) {
       return ''
     }
+    if (absoluteFormatter) {
+      return absoluteFormatter(value as AbsoluteTimeRange)
+    }
 
     return `${timeFormatter(timeRangeValue[0], timezone ?? null, 'MMM D, YYYY HH:mm')} - ${timeFormatter(
       timeRangeValue[1],
       timezone ?? null,
       'MMM D, YYYY HH:mm'
     )}`
-  }, [timeRangeValue])
+  }, [value])
+
+  const formattedRelativeDateTime = useMemo(() => {
+    if (!value || value.type === 'absolute') {
+      return ''
+    }
+    if (relativeFormatter) {
+      return relativeFormatter(value as RelativeTimeRange)
+    }
+
+    return `${isFuture ? 'Next' : 'Past'} ${formatDuration(duration!)}`
+  }, [value])
 
   return (
     <Menu
@@ -131,7 +186,9 @@ export const TimeRangePicker = ({
           >
             <Group w="100%" gap={0}>
               <Box sx={{ flex: 'none' }}>
-                <DurationBadge>{isEmptyValue ? 'All' : formatDuration(duration!, true)}</DurationBadge>
+                <DurationBadge>
+                  {isEmptyValue ? badgePlaceholder || 'All' : formatDuration(duration!, true)}
+                </DurationBadge>
               </Box>
               <Text
                 px={8}
@@ -147,7 +204,7 @@ export const TimeRangePicker = ({
                 {isEmptyValue
                   ? placeholder || 'Time Range'
                   : isRelativeRange
-                    ? `Past ${formatDuration(duration!)}`
+                    ? formattedRelativeDateTime
                     : formattedAbsDateTime}
               </Text>
             </Group>
@@ -168,6 +225,9 @@ export const TimeRangePicker = ({
             }}
             onCancel={() => setOpened(false)}
             onReturnClick={() => setCustomMode(false)}
+            dateInputFormat={dateInputFormat}
+            datePickerProps={datePickerProps}
+            localization={localization}
           />
         ) : (
           <>
@@ -178,7 +238,7 @@ export const TimeRangePicker = ({
                   closeMenuOnClick={false}
                   onClick={() => setCustomMode(true)}
                 >
-                  <Typography variant="body-lg">Custom</Typography>
+                  <Typography variant="body-lg">{localization?.entry || 'Custom'}</Typography>
                 </Menu.Item>
 
                 <Menu.Divider />
@@ -186,17 +246,28 @@ export const TimeRangePicker = ({
             )}
 
             <>
-              {quickRanges.map((seconds) => (
-                <Menu.Item
-                  key={seconds}
-                  sx={(theme) => ({
-                    background: seconds === selectedRelativeItem ? theme.colors.carbon[3] : ''
-                  })}
-                  onClick={() => onChange?.({ type: 'relative', value: seconds })}
-                >
-                  <Text>Past {formatDuration(seconds)}</Text>
-                </Menu.Item>
-              ))}
+              {quickRanges.map((item) => {
+                const isNumber = typeof item === 'number'
+                const seconds = isNumber ? item : item.value
+                const isFuture = isNumber ? false : item.isFuture
+                let label = isNumber ? `Past ${formatDuration(seconds)}` : item.label
+
+                if (!label) {
+                  label = isFuture ? `Next ${formatDuration(seconds)}` : `Past ${formatDuration(seconds)}`
+                }
+
+                return (
+                  <Menu.Item
+                    key={seconds}
+                    sx={(theme) => ({
+                      background: seconds === selectedRelativeItem ? theme.colors.carbon[3] : ''
+                    })}
+                    onClick={() => onChange?.({ type: 'relative', value: seconds, isFuture })}
+                  >
+                    <Text>{label}</Text>
+                  </Menu.Item>
+                )
+              })}
             </>
           </>
         )}

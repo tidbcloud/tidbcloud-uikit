@@ -8,6 +8,7 @@ export type TimeRange = RelativeTimeRange | AbsoluteTimeRange
 export interface RelativeTimeRange {
   type: 'relative'
   value: number // unit: seconds
+  isFuture?: boolean
 }
 
 export interface AbsoluteTimeRange {
@@ -46,8 +47,9 @@ export const toTimeRangeValue = (timeRange: TimeRange, offset = 0): TimeRangeVal
   if (timeRange.type === 'absolute') {
     return timeRange.value.map((t) => t + offset) as TimeRangeValue
   } else {
+    const isFuture = timeRange.isFuture
     const now = dayjs().unix()
-    return [now - timeRange.value + offset, now + offset]
+    return isFuture ? [now + offset, now + timeRange.value + offset] : [now - timeRange.value + offset, now + offset]
   }
 }
 
@@ -62,7 +64,8 @@ export type URLTimeRange = { from: string; to: string }
 
 export const toURLTimeRange = (timeRange: TimeRange): URLTimeRange => {
   if (timeRange.type === 'relative') {
-    return { from: `${timeRange.value}`, to: 'now' }
+    const isFuture = timeRange.isFuture
+    return isFuture ? { from: 'now', to: `${timeRange.value}` } : { from: `${timeRange.value}`, to: 'now' }
   }
 
   const timeRangeValue = toTimeRangeValue(timeRange)
@@ -70,8 +73,8 @@ export const toURLTimeRange = (timeRange: TimeRange): URLTimeRange => {
 }
 
 export const urlToTimeRange = (urlTimeRange: URLTimeRange): TimeRange => {
-  if (urlTimeRange.to === 'now') {
-    return { type: 'relative', value: Number(urlTimeRange.from) }
+  if (urlTimeRange.to === 'now' || urlTimeRange.from === 'now') {
+    return { type: 'relative', value: Number(urlTimeRange.from), isFuture: urlTimeRange.from === 'now' }
   }
   return { type: 'absolute', value: [Number(urlTimeRange.from), Number(urlTimeRange.to)] }
 }
