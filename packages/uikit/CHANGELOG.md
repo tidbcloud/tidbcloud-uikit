@@ -1,5 +1,12 @@
 # @tidbcloud/uikit
 
+## 2.2.9
+
+### Patch Changes
+
+- tweak(TimeRangePicker): support custom time range & i18n ([#489](https://github.com/tidbcloud/tidbcloud-uikit/pull/489))
+- fix(Prism): colorScheme ([#512](https://github.com/tidbcloud/tidbcloud-uikit/pull/512))
+
 ## 2.2.8
 
 ### Patch Changes
