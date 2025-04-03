@@ -4,21 +4,20 @@ import { forwardRef } from 'react'
 const IconLetterSpacing02 = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth="1.5"
+      xmlns="http://www.w3.org/2000/svg"
       ref={ref}
       {...props}
     >
       <path
-        stroke="currentColor"
+        d="M1.3335 12H14.6668M1.3335 12L3.3335 10M1.3335 12L3.3335 14M14.6668 12L12.6668 10M14.6668 12L12.6668 14M4.66683 2H11.3335M8.00016 2V9.33333"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M2 18h20M2 18l3-3m-3 3 3 3m17-3-3-3m3 3-3 3M7 3h10m-5 0v11"
-        strokeWidth="inherit"
       />
     </svg>
   )
@@ -33,7 +32,14 @@ const LetterSpacing02 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'LetterSpacing02', props.className].join(' ')}
+    />
+  )
 })
 LetterSpacing02.displayName = 'IconLetterSpacing02'
 export default LetterSpacing02

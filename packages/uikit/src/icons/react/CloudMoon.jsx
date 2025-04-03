@@ -4,21 +4,20 @@ import { forwardRef } from 'react'
 const IconCloudMoon = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth="1.5"
+      xmlns="http://www.w3.org/2000/svg"
       ref={ref}
       {...props}
     >
       <path
-        stroke="currentColor"
+        d="M11.0002 8.66669C12.718 8.66669 14.16 7.48533 14.5579 5.89069C14.2726 5.96191 13.9742 5.99972 13.6668 5.99972C11.6418 5.99972 10.0002 4.3581 10.0002 2.33305C10.0002 2.02588 10.0379 1.72752 10.1091 1.44238C8.51466 1.84045 7.3335 3.2823 7.3335 5.00002C7.3335 5.6085 7.48171 6.18236 7.74401 6.68748M3.3335 4.66667V2M2.00016 3.33333H4.66683M4.00016 14.6667C2.5274 14.6667 1.3335 13.4728 1.3335 12C1.3335 10.6814 2.2905 9.58638 3.54782 9.37154C4.086 7.79803 5.57763 6.66667 7.3335 6.66667C8.85896 6.66667 10.185 7.5206 10.8596 8.77652C11.1165 8.70494 11.3872 8.66667 11.6668 8.66667C13.3237 8.66667 14.6668 10.0098 14.6668 11.6667C14.6668 13.3235 13.3237 14.6667 11.6668 14.6667C9.11127 14.6667 6.55572 14.6667 4.00016 14.6667Z"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M16.5 13a5.5 5.5 0 0 0 5.337-4.164 5.5 5.5 0 0 1-6.673-6.672 5.502 5.502 0 0 0-3.548 7.867M5 7V3M3 5h4M6 22a4 4 0 0 1-.679-7.943 6.003 6.003 0 0 1 10.968-.892A4.5 4.5 0 1 1 17.5 22z"
-        strokeWidth="inherit"
       />
     </svg>
   )
@@ -33,7 +32,14 @@ const CloudMoon = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'CloudMoon', props.className].join(' ')}
+    />
+  )
 })
 CloudMoon.displayName = 'IconCloudMoon'
 export default CloudMoon

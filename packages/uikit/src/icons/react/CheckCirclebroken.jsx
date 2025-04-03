@@ -4,21 +4,20 @@ import { forwardRef } from 'react'
 const IconCheckCirclebroken = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth="1.5"
+      xmlns="http://www.w3.org/2000/svg"
       ref={ref}
       {...props}
     >
       <path
-        stroke="currentColor"
+        d="M14.6668 7.39052V8.00386C14.666 9.44147 14.2005 10.8403 13.3397 11.9917C12.4789 13.1432 11.269 13.9855 9.8904 14.3931C8.51178 14.8007 7.03834 14.7518 5.68981 14.2536C4.34128 13.7554 3.18993 12.8346 2.40747 11.6286C1.62501 10.4225 1.25336 8.9959 1.34795 7.5614C1.44254 6.1269 1.9983 4.76141 2.93235 3.66857C3.8664 2.57574 5.12869 1.81411 6.53096 1.49729C7.93323 1.18046 9.40034 1.32541 10.7135 1.91052M14.6668 2.66671L8.00016 9.34004L6.00016 7.34004"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M22 11.086v.92a10 10 0 1 1-5.93-9.14M22 4 12 14.01l-3-3"
-        strokeWidth="inherit"
       />
     </svg>
   )
@@ -33,7 +32,14 @@ const CheckCirclebroken = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'CheckCirclebroken', props.className].join(' ')}
+    />
+  )
 })
 CheckCirclebroken.displayName = 'IconCheckCirclebroken'
 export default CheckCirclebroken

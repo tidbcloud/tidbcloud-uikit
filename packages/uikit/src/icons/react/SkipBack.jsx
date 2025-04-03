@@ -4,21 +4,20 @@ import { forwardRef } from 'react'
 const IconSkipBack = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth="1.5"
+      xmlns="http://www.w3.org/2000/svg"
       ref={ref}
       {...props}
     >
       <path
-        stroke="currentColor"
+        d="M3.3335 12.6666V3.33325M10.9338 4.05299L7.04132 7.16699C6.68542 7.45171 6.50748 7.59407 6.44305 7.76605C6.38656 7.91685 6.38656 8.08299 6.44305 8.23378C6.50748 8.40577 6.68542 8.54813 7.04132 8.83285L10.9338 11.9468C11.4886 12.3907 11.766 12.6126 11.9994 12.6128C12.2025 12.6131 12.3945 12.5207 12.5212 12.3621C12.6668 12.1796 12.6668 11.8244 12.6668 11.1139V4.88592C12.6668 4.17545 12.6668 3.82022 12.5212 3.63777C12.3945 3.47909 12.2025 3.38678 11.9994 3.387C11.766 3.38725 11.4886 3.60917 10.9338 4.05299Z"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M5 19V5m11.4 1.08-5.838 4.67c-.534.428-.801.641-.898.9a1 1 0 0 0 0 .7c.097.259.364.472.898.9l5.839 4.67c.832.666 1.248.999 1.598 1a1 1 0 0 0 .783-.377c.218-.273.218-.806.218-1.872V7.329c0-1.066 0-1.599-.218-1.872a1 1 0 0 0-.783-.376c-.35 0-.766.333-1.598.999"
-        strokeWidth="inherit"
       />
     </svg>
   )
@@ -33,7 +32,14 @@ const SkipBack = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'SkipBack', props.className].join(' ')}
+    />
+  )
 })
 SkipBack.displayName = 'IconSkipBack'
 export default SkipBack

@@ -4,21 +4,20 @@ import { forwardRef } from 'react'
 const IconFileImport02 = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      strokeWidth="1.5"
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       ref={ref}
       {...props}
     >
       <path
-        stroke="currentColor"
+        d="M6.33167 1.51306V4.26676C6.33167 4.64012 6.33167 4.82681 6.259 4.96942C6.19509 5.09486 6.0931 5.19684 5.96766 5.26076C5.82505 5.33342 5.63837 5.33342 5.265 5.33342H2.51131M8.33171 14.6667H5.53167C4.41156 14.6667 3.85151 14.6667 3.42369 14.4487C3.04736 14.257 2.7414 13.951 2.54965 13.5747C2.33167 13.1469 2.33167 12.5868 2.33167 11.4667V5.33337L6.33167 1.33337H9.79833C10.9184 1.33337 11.4785 1.33337 11.9063 1.55136C12.2826 1.74311 12.5886 2.04907 12.7803 2.42539C12.9983 2.85322 12.9983 3.41327 12.9983 4.53337V6.66671M13.9064 11.4667L11.9064 9.46671M11.9064 9.46671L9.90638 11.4667M11.9064 9.46671L11.9064 11.4667V14.6667"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M9.498 2.27V6.4c0 .56 0 .84-.109 1.054a1 1 0 0 1-.437.437c-.214.11-.494.11-1.054.11h-4.13M12.497 22h-4.2c-1.68 0-2.52 0-3.162-.327a3 3 0 0 1-1.311-1.311c-.327-.642-.327-1.482-.327-3.162V8l6-6h5.2c1.68 0 2.52 0 3.162.327a3 3 0 0 1 1.311 1.311c.327.642.327 1.482.327 3.162V10m1.362 7.2-3-3m0 0-3 3m3-3V22"
-        strokeWidth="inherit"
       />
     </svg>
   )
@@ -33,7 +32,14 @@ const FileImport02 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'FileImport02', props.className].join(' ')}
+    />
+  )
 })
 FileImport02.displayName = 'IconFileImport02'
 export default FileImport02

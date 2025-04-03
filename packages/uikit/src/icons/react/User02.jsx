@@ -4,21 +4,27 @@ import { forwardRef } from 'react'
 const IconUser02 = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth="1.5"
+      xmlns="http://www.w3.org/2000/svg"
       ref={ref}
       {...props}
     >
       <path
-        stroke="currentColor"
+        d="M8.00023 10C5.88684 10 4.00742 11.0204 2.81089 12.604C2.55336 12.9448 2.4246 13.1152 2.42881 13.3455C2.43207 13.5235 2.5438 13.7479 2.6838 13.8578C2.86502 14 3.11614 14 3.61838 14H12.3821C12.8843 14 13.1354 14 13.3166 13.8578C13.4567 13.7479 13.5684 13.5235 13.5716 13.3455C13.5759 13.1152 13.4471 12.9448 13.1896 12.604C11.993 11.0204 10.1136 10 8.00023 10Z"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M12 15c-3.17 0-5.99 1.53-7.784 3.906-.386.511-.58.767-.573 1.112.005.267.172.604.382.769.272.213.649.213 1.402.213h13.146c.753 0 1.13 0 1.402-.213.21-.165.377-.502.382-.769.006-.345-.187-.6-.573-1.112C17.989 16.531 15.17 15 12 15M12 12a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9"
-        strokeWidth="inherit"
+      />
+      <path
+        d="M8.00023 8C9.65708 8 11.0002 6.65685 11.0002 5C11.0002 3.34315 9.65708 2 8.00023 2C6.34337 2 5.00023 3.34315 5.00023 5C5.00023 6.65685 6.34337 8 8.00023 8Z"
+        stroke="#383E40"
+        strokeWidth={1.5}
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   )
@@ -33,7 +39,14 @@ const User02 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'User02', props.className].join(' ')}
+    />
+  )
 })
 User02.displayName = 'IconUser02'
 export default User02

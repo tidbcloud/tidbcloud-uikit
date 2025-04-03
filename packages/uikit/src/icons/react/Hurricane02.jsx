@@ -4,21 +4,20 @@ import { forwardRef } from 'react'
 const IconHurricane02 = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth="1.5"
+      xmlns="http://www.w3.org/2000/svg"
       ref={ref}
       {...props}
     >
       <path
-        stroke="currentColor"
+        d="M12.0002 7.99984C12.0002 10.209 10.2093 11.9998 8.00016 11.9998C5.79102 11.9998 4.00016 10.209 4.00016 7.99984M12.0002 7.99984C12.0002 5.7907 10.2093 3.99984 8.00016 3.99984C5.79102 3.99984 4.00016 5.7907 4.00016 7.99984M12.0002 7.99984C12.0002 10.9454 9.61235 13.3332 6.66683 13.3332C3.72131 13.3332 1.3335 10.9454 1.3335 7.99984M4.00016 7.99984C4.00016 5.05432 6.38798 2.6665 9.3335 2.6665C12.279 2.6665 14.6668 5.05432 14.6668 7.99984M8.66683 7.99984C8.66683 8.36803 8.36835 8.6665 8.00016 8.6665C7.63197 8.6665 7.3335 8.36803 7.3335 7.99984C7.3335 7.63165 7.63197 7.33317 8.00016 7.33317C8.36835 7.33317 8.66683 7.63165 8.66683 7.99984Z"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M18 12a6 6 0 0 1-12 0m12 0a6 6 0 0 0-12 0m12 0a8 8 0 1 1-16 0m4 0a8 8 0 1 1 16 0m-9 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0"
-        strokeWidth="inherit"
       />
     </svg>
   )
@@ -33,7 +32,14 @@ const Hurricane02 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'Hurricane02', props.className].join(' ')}
+    />
+  )
 })
 Hurricane02.displayName = 'IconHurricane02'
 export default Hurricane02

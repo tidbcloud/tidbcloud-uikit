@@ -4,21 +4,20 @@ import { forwardRef } from 'react'
 const IconClapperboard = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth="1.5"
+      xmlns="http://www.w3.org/2000/svg"
       ref={ref}
       {...props}
     >
       <path
-        stroke="currentColor"
+        d="M6.00016 2L5.3335 5.33333M10.6668 2L10.0002 5.33333M14.6668 5.33333H1.3335M4.5335 14H11.4668C12.5869 14 13.147 14 13.5748 13.782C13.9511 13.5903 14.2571 13.2843 14.4488 12.908C14.6668 12.4802 14.6668 11.9201 14.6668 10.8V5.2C14.6668 4.0799 14.6668 3.51984 14.4488 3.09202C14.2571 2.71569 13.9511 2.40973 13.5748 2.21799C13.147 2 12.5869 2 11.4668 2H4.5335C3.41339 2 2.85334 2 2.42552 2.21799C2.04919 2.40973 1.74323 2.71569 1.55148 3.09202C1.3335 3.51984 1.3335 4.0799 1.3335 5.2V10.8C1.3335 11.9201 1.3335 12.4802 1.55148 12.908C1.74323 13.2843 2.04919 13.5903 2.42552 13.782C2.85334 14 3.41339 14 4.5335 14Z"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M9 3 8 8m8-5-1 5m7 0H2m4.8 13h10.4c1.68 0 2.52 0 3.162-.327a3 3 0 0 0 1.311-1.311C22 18.72 22 17.88 22 16.2V7.8c0-1.68 0-2.52-.327-3.162a3 3 0 0 0-1.311-1.311C19.72 3 18.88 3 17.2 3H6.8c-1.68 0-2.52 0-3.162.327a3 3 0 0 0-1.311 1.311C2 5.28 2 6.12 2 7.8v8.4c0 1.68 0 2.52.327 3.162a3 3 0 0 0 1.311 1.311C4.28 21 5.12 21 6.8 21"
-        strokeWidth="inherit"
       />
     </svg>
   )
@@ -33,7 +32,14 @@ const Clapperboard = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'Clapperboard', props.className].join(' ')}
+    />
+  )
 })
 Clapperboard.displayName = 'IconClapperboard'
 export default Clapperboard

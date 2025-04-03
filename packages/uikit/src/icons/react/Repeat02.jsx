@@ -4,21 +4,20 @@ import { forwardRef } from 'react'
 const IconRepeat02 = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth="1.5"
+      xmlns="http://www.w3.org/2000/svg"
       ref={ref}
       {...props}
     >
       <path
-        stroke="currentColor"
+        d="M7.3335 1.33325L9.3335 3.33325M9.3335 3.33325L7.3335 5.33325M9.3335 3.33325H4.5335C3.41339 3.33325 2.85334 3.33325 2.42552 3.55124C2.04919 3.74299 1.74323 4.04895 1.55148 4.42527C1.3335 4.85309 1.3335 5.41315 1.3335 6.53325V10.3333C1.3335 10.6429 1.3335 10.7977 1.35061 10.9276C1.46876 11.8251 2.17498 12.5313 3.07244 12.6495C3.20241 12.6666 3.35722 12.6666 3.66683 12.6666M6.66683 12.6666H11.4668C12.5869 12.6666 13.147 12.6666 13.5748 12.4486C13.9511 12.2569 14.2571 11.9509 14.4488 11.5746C14.6668 11.1467 14.6668 10.5867 14.6668 9.46659V5.66659C14.6668 5.35697 14.6668 5.20217 14.6497 5.0722C14.5316 4.17473 13.8253 3.46852 12.9279 3.35036C12.7979 3.33325 12.6431 3.33325 12.3335 3.33325M6.66683 12.6666L8.66683 14.6666M6.66683 12.6666L8.66683 10.6666"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="m11 2 3 3m0 0-3 3m3-3H6.8c-1.68 0-2.52 0-3.162.327a3 3 0 0 0-1.311 1.311C2 7.28 2 8.12 2 9.8v5.7c0 .464 0 .697.026.892a3 3 0 0 0 2.582 2.582c.195.026.428.026.892.026m4.5 0h7.2c1.68 0 2.52 0 3.162-.327a3 3 0 0 0 1.311-1.311C22 16.72 22 15.88 22 14.2V8.5c0-.464 0-.697-.026-.892a3 3 0 0 0-2.582-2.582C19.197 5 18.964 5 18.5 5M10 19l3 3m-3-3 3-3"
-        strokeWidth="inherit"
       />
     </svg>
   )
@@ -33,7 +32,14 @@ const Repeat02 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'Repeat02', props.className].join(' ')}
+    />
+  )
 })
 Repeat02.displayName = 'IconRepeat02'
 export default Repeat02

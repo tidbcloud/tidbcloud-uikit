@@ -4,21 +4,20 @@ import { forwardRef } from 'react'
 const IconUploadCloud01 = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 20 18"
-      strokeWidth="1.5"
+      xmlns="http://www.w3.org/2000/svg"
       ref={ref}
       {...props}
     >
       <path
-        stroke="currentColor"
+        d="M2.66683 10.8282C1.86284 10.29 1.3335 9.37347 1.3335 8.33333C1.3335 6.77095 2.52783 5.48753 4.05332 5.34625C4.36537 3.44809 6.01366 2 8.00016 2C9.98667 2 11.635 3.44809 11.947 5.34625C13.4725 5.48753 14.6668 6.77095 14.6668 8.33333C14.6668 9.37347 14.1375 10.29 13.3335 10.8282M5.3335 10.6667L8.00016 8M8.00016 8L10.6668 10.6667M8.00016 8V14"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M3.333 12.535a3.75 3.75 0 0 1 1.733-6.852 5.001 5.001 0 0 1 9.868 0 3.75 3.75 0 0 1 1.733 6.852m-10-.202L10 9m0 0 3.333 3.333M10 9v7.5"
-        strokeWidth="inherit"
       />
     </svg>
   )
@@ -33,7 +32,14 @@ const UploadCloud01 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'UploadCloud01', props.className].join(' ')}
+    />
+  )
 })
 UploadCloud01.displayName = 'IconUploadCloud01'
 export default UploadCloud01

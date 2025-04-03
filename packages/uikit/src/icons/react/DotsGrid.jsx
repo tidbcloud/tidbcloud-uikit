@@ -4,21 +4,76 @@ import { forwardRef } from 'react'
 const IconDotsGrid = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth="1.5"
+      xmlns="http://www.w3.org/2000/svg"
       ref={ref}
       {...props}
     >
       <path
-        stroke="currentColor"
+        d="M7.99984 4.00008C8.36803 4.00008 8.6665 3.7016 8.6665 3.33341C8.6665 2.96522 8.36803 2.66675 7.99984 2.66675C7.63165 2.66675 7.33317 2.96522 7.33317 3.33341C7.33317 3.7016 7.63165 4.00008 7.99984 4.00008Z"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M12 6a1 1 0 1 0 0-2 1 1 0 0 0 0 2M12 13a1 1 0 1 0 0-2 1 1 0 0 0 0 2M12 20a1 1 0 1 0 0-2 1 1 0 0 0 0 2M19 6a1 1 0 1 0 0-2 1 1 0 0 0 0 2M19 13a1 1 0 1 0 0-2 1 1 0 0 0 0 2M19 20a1 1 0 1 0 0-2 1 1 0 0 0 0 2M5 6a1 1 0 1 0 0-2 1 1 0 0 0 0 2M5 13a1 1 0 1 0 0-2 1 1 0 0 0 0 2M5 20a1 1 0 1 0 0-2 1 1 0 0 0 0 2"
-        strokeWidth="inherit"
+      />
+      <path
+        d="M7.99984 8.66675C8.36803 8.66675 8.6665 8.36827 8.6665 8.00008C8.6665 7.63189 8.36803 7.33341 7.99984 7.33341C7.63165 7.33341 7.33317 7.63189 7.33317 8.00008C7.33317 8.36827 7.63165 8.66675 7.99984 8.66675Z"
+        stroke="#383E40"
+        strokeWidth={1.5}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M7.99984 13.3334C8.36803 13.3334 8.6665 13.0349 8.6665 12.6667C8.6665 12.2986 8.36803 12.0001 7.99984 12.0001C7.63165 12.0001 7.33317 12.2986 7.33317 12.6667C7.33317 13.0349 7.63165 13.3334 7.99984 13.3334Z"
+        stroke="#383E40"
+        strokeWidth={1.5}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M12.6665 4.00008C13.0347 4.00008 13.3332 3.7016 13.3332 3.33341C13.3332 2.96522 13.0347 2.66675 12.6665 2.66675C12.2983 2.66675 11.9998 2.96522 11.9998 3.33341C11.9998 3.7016 12.2983 4.00008 12.6665 4.00008Z"
+        stroke="#383E40"
+        strokeWidth={1.5}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M12.6665 8.66675C13.0347 8.66675 13.3332 8.36827 13.3332 8.00008C13.3332 7.63189 13.0347 7.33341 12.6665 7.33341C12.2983 7.33341 11.9998 7.63189 11.9998 8.00008C11.9998 8.36827 12.2983 8.66675 12.6665 8.66675Z"
+        stroke="#383E40"
+        strokeWidth={1.5}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M12.6665 13.3334C13.0347 13.3334 13.3332 13.0349 13.3332 12.6667C13.3332 12.2986 13.0347 12.0001 12.6665 12.0001C12.2983 12.0001 11.9998 12.2986 11.9998 12.6667C11.9998 13.0349 12.2983 13.3334 12.6665 13.3334Z"
+        stroke="#383E40"
+        strokeWidth={1.5}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M3.33317 4.00008C3.70136 4.00008 3.99984 3.7016 3.99984 3.33341C3.99984 2.96522 3.70136 2.66675 3.33317 2.66675C2.96498 2.66675 2.6665 2.96522 2.6665 3.33341C2.6665 3.7016 2.96498 4.00008 3.33317 4.00008Z"
+        stroke="#383E40"
+        strokeWidth={1.5}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M3.33317 8.66675C3.70136 8.66675 3.99984 8.36827 3.99984 8.00008C3.99984 7.63189 3.70136 7.33341 3.33317 7.33341C2.96498 7.33341 2.6665 7.63189 2.6665 8.00008C2.6665 8.36827 2.96498 8.66675 3.33317 8.66675Z"
+        stroke="#383E40"
+        strokeWidth={1.5}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M3.33317 13.3334C3.70136 13.3334 3.99984 13.0349 3.99984 12.6667C3.99984 12.2986 3.70136 12.0001 3.33317 12.0001C2.96498 12.0001 2.6665 12.2986 2.6665 12.6667C2.6665 13.0349 2.96498 13.3334 3.33317 13.3334Z"
+        stroke="#383E40"
+        strokeWidth={1.5}
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   )
@@ -33,7 +88,14 @@ const DotsGrid = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'DotsGrid', props.className].join(' ')}
+    />
+  )
 })
 DotsGrid.displayName = 'IconDotsGrid'
 export default DotsGrid

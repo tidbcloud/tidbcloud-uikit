@@ -4,21 +4,20 @@ import { forwardRef } from 'react'
 const IconHourglass01 = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth="1.5"
+      xmlns="http://www.w3.org/2000/svg"
       ref={ref}
       {...props}
     >
       <path
-        stroke="currentColor"
+        d="M7.99984 8.00016L5.15125 5.62634C4.72801 5.27364 4.5164 5.0973 4.36426 4.88112C4.22947 4.68958 4.12936 4.47586 4.06851 4.24968C3.99984 3.99442 3.99984 3.71896 3.99984 3.16803V1.3335M7.99984 8.00016L10.8484 5.62634C11.2717 5.27364 11.4833 5.0973 11.6354 4.88112C11.7702 4.68958 11.8703 4.47586 11.9312 4.24968C11.9998 3.99442 11.9998 3.71896 11.9998 3.16803V1.3335M7.99984 8.00016L5.15125 10.374C4.72801 10.7267 4.5164 10.903 4.36426 11.1192C4.22947 11.3107 4.12936 11.5245 4.06851 11.7506C3.99984 12.0059 3.99984 12.2814 3.99984 12.8323V14.6668M7.99984 8.00016L10.8484 10.374C11.2717 10.7267 11.4833 10.903 11.6354 11.1192C11.7702 11.3107 11.8703 11.5245 11.9312 11.7506C11.9998 12.0059 11.9998 12.2814 11.9998 12.8323V14.6668M2.6665 1.3335H13.3332M2.6665 14.6668H13.3332"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M12 12 7.727 8.44c-.635-.53-.952-.794-1.18-1.119a3 3 0 0 1-.444-.947C6 5.991 6 5.578 6 4.752V2m6 10 4.273-3.56c.635-.53.952-.794 1.18-1.119a3 3 0 0 0 .444-.947C18 5.991 18 5.578 18 4.752V2m-6 10-4.273 3.56c-.635.53-.952.794-1.18 1.119a3 3 0 0 0-.444.947C6 18.009 6 18.422 6 19.248V22m6-10 4.273 3.56c.635.53.952.794 1.18 1.119a3 3 0 0 1 .444.947c.103.383.103.796.103 1.622V22M4 2h16M4 22h16"
-        strokeWidth="inherit"
       />
     </svg>
   )
@@ -33,7 +32,14 @@ const Hourglass01 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'Hourglass01', props.className].join(' ')}
+    />
+  )
 })
 Hourglass01.displayName = 'IconHourglass01'
 export default Hourglass01

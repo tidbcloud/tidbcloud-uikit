@@ -4,21 +4,20 @@ import { forwardRef } from 'react'
 const IconBookClosed = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth="1.5"
+      xmlns="http://www.w3.org/2000/svg"
       ref={ref}
       {...props}
     >
       <path
-        stroke="currentColor"
+        d="M13.3332 12.6668V10.6668H4.6665C3.56193 10.6668 2.6665 11.5623 2.6665 12.6668M5.8665 14.6668H11.1998C11.9466 14.6668 12.3199 14.6668 12.6052 14.5215C12.856 14.3937 13.06 14.1897 13.1878 13.9388C13.3332 13.6536 13.3332 13.2802 13.3332 12.5335V3.46683C13.3332 2.72009 13.3332 2.34672 13.1878 2.06151C13.06 1.81063 12.856 1.60665 12.6052 1.47882C12.3199 1.3335 11.9466 1.3335 11.1998 1.3335H5.8665C4.7464 1.3335 4.18635 1.3335 3.75852 1.55148C3.3822 1.74323 3.07624 2.04919 2.88449 2.42552C2.6665 2.85334 2.6665 3.41339 2.6665 4.5335V11.4668C2.6665 12.5869 2.6665 13.147 2.88449 13.5748C3.07624 13.9511 3.3822 14.2571 3.75852 14.4488C4.18635 14.6668 4.7464 14.6668 5.8665 14.6668Z"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M20 19v-3H7a3 3 0 0 0-3 3m4.8 3h8c1.12 0 1.68 0 2.108-.218a2 2 0 0 0 .874-.874C20 20.48 20 19.92 20 18.8V5.2c0-1.12 0-1.68-.218-2.108a2 2 0 0 0-.874-.874C18.48 2 17.92 2 16.8 2h-8c-1.68 0-2.52 0-3.162.327a3 3 0 0 0-1.311 1.311C4 4.28 4 5.12 4 6.8v10.4c0 1.68 0 2.52.327 3.162a3 3 0 0 0 1.311 1.311C6.28 22 7.12 22 8.8 22"
-        strokeWidth="inherit"
       />
     </svg>
   )
@@ -33,7 +32,14 @@ const BookClosed = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'BookClosed', props.className].join(' ')}
+    />
+  )
 })
 BookClosed.displayName = 'IconBookClosed'
 export default BookClosed

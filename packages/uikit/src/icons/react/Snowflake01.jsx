@@ -4,21 +4,20 @@ import { forwardRef } from 'react'
 const IconSnowflake01 = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth="1.5"
+      xmlns="http://www.w3.org/2000/svg"
       ref={ref}
       {...props}
     >
       <path
-        stroke="currentColor"
+        d="M12.0415 5.66683L3.95861 10.3335M12.0415 5.66683L12.7736 2.93478M12.0415 5.66683L14.7736 6.39888M3.95861 10.3335L1.22656 9.60145M3.95861 10.3335L3.22656 13.0655M12.0415 10.3334L3.95856 5.66673M12.0415 10.3334L14.7736 9.60137M12.0415 10.3334L12.7736 13.0655M3.95856 5.66673L3.22666 2.93485M3.95856 5.66673L1.22666 6.39895M8.00007 3.3335L8.00007 12.6668M8.00007 3.3335L6.00007 1.3335M8.00007 3.3335L10.0001 1.3335M8.00007 12.6668L6.00007 14.6668M8.00007 12.6668L10.0001 14.6668"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="m18.062 8.5-12.124 7m12.124-7 1.098-4.098M18.062 8.5l4.098 1.098M5.938 15.5 1.84 14.402M5.938 15.5 4.84 19.598M18.062 15.5l-12.124-7m12.124 7 4.098-1.098M18.062 15.5l1.098 4.098M5.938 8.5 4.84 4.402M5.938 8.5 1.84 9.598M12 5v14m0-14L9 2m3 3 3-3m-3 17-3 3m3-3 3 3"
-        strokeWidth="inherit"
       />
     </svg>
   )
@@ -33,7 +32,14 @@ const Snowflake01 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'Snowflake01', props.className].join(' ')}
+    />
+  )
 })
 Snowflake01.displayName = 'IconSnowflake01'
 export default Snowflake01

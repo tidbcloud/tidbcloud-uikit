@@ -4,21 +4,20 @@ import { forwardRef } from 'react'
 const IconCurrencyEuroCircle = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth="1.5"
+      xmlns="http://www.w3.org/2000/svg"
       ref={ref}
       {...props}
     >
       <path
-        stroke="currentColor"
+        d="M10.2224 5.5156C9.63266 4.98778 8.85389 4.66683 8.00016 4.66683C6.15921 4.66683 4.66683 6.15921 4.66683 8.00016C4.66683 9.84111 6.15921 11.3335 8.00016 11.3335C8.85389 11.3335 9.63266 11.0125 10.2224 10.4847M4.00016 9.00016H7.3335M4.00016 7.00016H7.3335M14.6668 8.00016C14.6668 11.6821 11.6821 14.6668 8.00016 14.6668C4.31826 14.6668 1.3335 11.6821 1.3335 8.00016C1.3335 4.31826 4.31826 1.3335 8.00016 1.3335C11.6821 1.3335 14.6668 4.31826 14.6668 8.00016Z"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M15.333 8.273a5 5 0 1 0 0 7.454M6 13.5h5m-5-3h5M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10"
-        strokeWidth="inherit"
       />
     </svg>
   )
@@ -33,7 +32,14 @@ const CurrencyEuroCircle = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'CurrencyEuroCircle', props.className].join(' ')}
+    />
+  )
 })
 CurrencyEuroCircle.displayName = 'IconCurrencyEuroCircle'
 export default CurrencyEuroCircle

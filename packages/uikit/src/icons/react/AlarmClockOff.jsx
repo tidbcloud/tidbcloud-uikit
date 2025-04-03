@@ -4,21 +4,20 @@ import { forwardRef } from 'react'
 const IconAlarmClockOff = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth="1.5"
+      xmlns="http://www.w3.org/2000/svg"
       ref={ref}
       {...props}
     >
       <path
-        stroke="currentColor"
+        d="M7.00016 3.4279C7.32747 3.36542 7.66216 3.33333 8.00016 3.33333C9.41465 3.33333 10.7712 3.89524 11.7714 4.89543C12.7716 5.89562 13.3335 7.25218 13.3335 8.66667C13.3335 9.00467 13.3014 9.33936 13.2389 9.66667M12.0905 12.0892C11.9898 12.2096 11.8833 12.326 11.7714 12.4379C10.7712 13.4381 9.41465 14 8.00016 14C6.58568 14 5.22912 13.4381 4.22893 12.4379C3.22873 11.4377 2.66683 10.0812 2.66683 8.66667C2.66683 7.25218 3.22873 5.89562 4.22893 4.89543C4.33981 4.78454 4.45508 4.67905 4.57432 4.5791M2.66683 2.66667L1.3335 4M14.6668 4L12.6668 2M4.00016 12.6667L2.66683 14M14.0002 14L2.00016 2"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M10.5 5.142a8 8 0 0 1 9.358 9.358m-1.722 3.634A8 8 0 1 1 6.862 6.869M4 4 2 6m20 0-3-3M6 19l-2 2m17 0L3 3"
-        strokeWidth="inherit"
       />
     </svg>
   )
@@ -33,7 +32,14 @@ const AlarmClockOff = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'AlarmClockOff', props.className].join(' ')}
+    />
+  )
 })
 AlarmClockOff.displayName = 'IconAlarmClockOff'
 export default AlarmClockOff

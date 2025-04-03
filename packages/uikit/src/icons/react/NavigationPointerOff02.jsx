@@ -4,21 +4,20 @@ import { forwardRef } from 'react'
 const IconNavigationPointerOff02 = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth="1.5"
+      xmlns="http://www.w3.org/2000/svg"
       ref={ref}
       {...props}
     >
       <path
-        stroke="currentColor"
+        d="M6.98099 3.65068L7.50887 2.44712C7.66328 2.09507 7.74048 1.91905 7.84841 1.86517C7.94215 1.81838 8.05243 1.81838 8.14616 1.86517C8.2541 1.91905 8.3313 2.09507 8.48571 2.44712L10.6006 7.26902M5.96462 5.96785L2.65455 13.5148C2.4835 13.9048 2.39797 14.0998 2.43578 14.2194C2.46855 14.323 2.5498 14.4041 2.65348 14.4368C2.77308 14.4745 2.96797 14.3887 3.35776 14.2172L7.78242 12.2704C7.86154 12.2355 7.9011 12.2181 7.9422 12.2113C7.97862 12.2052 8.0158 12.2052 8.05223 12.2113C8.09332 12.2181 8.13288 12.2355 8.21201 12.2704L12.6367 14.2172C13.0265 14.3887 13.2213 14.4745 13.3409 14.4368C13.4446 14.4041 13.5259 14.323 13.5586 14.2194C13.5964 14.0998 13.5109 13.9048 13.3399 13.5148L13.2038 13.2045M14.6668 14.6668L1.3335 1.3335"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="m10.471 5.476.792-1.806c.232-.528.348-.792.51-.872a.5.5 0 0 1 .446 0c.162.08.278.344.51.872l3.172 7.233M8.947 8.952l-4.965 11.32c-.257.585-.385.878-.329 1.057a.5.5 0 0 0 .327.326c.18.056.472-.072 1.056-.33l6.637-2.92c.12-.052.178-.078.24-.088q.082-.015.165 0c.062.01.121.036.24.088l6.637 2.92c.584.258.877.386 1.056.33a.5.5 0 0 0 .327-.326c.056-.18-.072-.472-.328-1.057l-.205-.465M22 22 2 2"
-        strokeWidth="inherit"
       />
     </svg>
   )
@@ -33,7 +32,14 @@ const NavigationPointerOff02 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'NavigationPointerOff02', props.className].join(' ')}
+    />
+  )
 })
 NavigationPointerOff02.displayName = 'IconNavigationPointerOff02'
 export default NavigationPointerOff02

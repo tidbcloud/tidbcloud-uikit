@@ -4,21 +4,20 @@ import { forwardRef } from 'react'
 const IconFolderPlus = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth="1.5"
+      xmlns="http://www.w3.org/2000/svg"
       ref={ref}
       {...props}
     >
       <path
-        stroke="currentColor"
+        d="M8.66683 4.66667L7.92314 3.17928C7.7091 2.7512 7.60207 2.53715 7.44241 2.38078C7.30122 2.24249 7.13105 2.13732 6.94421 2.07287C6.73294 2 6.49363 2 6.01502 2H3.46683C2.72009 2 2.34672 2 2.06151 2.14532C1.81063 2.27316 1.60665 2.47713 1.47882 2.72801C1.3335 3.01323 1.3335 3.3866 1.3335 4.13333V4.66667M1.3335 4.66667H11.4668C12.5869 4.66667 13.147 4.66667 13.5748 4.88465C13.9511 5.0764 14.2571 5.38236 14.4488 5.75869C14.6668 6.18651 14.6668 6.74656 14.6668 7.86667V10.8C14.6668 11.9201 14.6668 12.4802 14.4488 12.908C14.2571 13.2843 13.9511 13.5903 13.5748 13.782C13.147 14 12.5869 14 11.4668 14H4.5335C3.41339 14 2.85334 14 2.42552 13.782C2.04919 13.5903 1.74323 13.2843 1.55148 12.908C1.3335 12.4802 1.3335 11.9201 1.3335 10.8V4.66667ZM8.00016 11.3333V7.33333M6.00016 9.33333H10.0002"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="m13 7-1.116-2.231c-.32-.642-.481-.963-.72-1.198a2 2 0 0 0-.748-.462C10.1 3 9.74 3 9.022 3H5.2c-1.12 0-1.68 0-2.108.218a2 2 0 0 0-.874.874C2 4.52 2 5.08 2 6.2V7m0 0h15.2c1.68 0 2.52 0 3.162.327a3 3 0 0 1 1.311 1.311C22 9.28 22 10.12 22 11.8v4.4c0 1.68 0 2.52-.327 3.162a3 3 0 0 1-1.311 1.311C19.72 21 18.88 21 17.2 21H6.8c-1.68 0-2.52 0-3.162-.327a3 3 0 0 1-1.311-1.311C2 18.72 2 17.88 2 16.2zm10 10v-6m-3 3h6"
-        strokeWidth="inherit"
       />
     </svg>
   )
@@ -33,7 +32,14 @@ const FolderPlus = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'FolderPlus', props.className].join(' ')}
+    />
+  )
 })
 FolderPlus.displayName = 'IconFolderPlus'
 export default FolderPlus

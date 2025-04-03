@@ -4,21 +4,20 @@ import { forwardRef } from 'react'
 const IconCpuChip02 = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth="1.5"
+      xmlns="http://www.w3.org/2000/svg"
       ref={ref}
       {...props}
     >
       <path
-        stroke="currentColor"
+        d="M6.00016 1.3335V3.3335M10.0002 1.3335V3.3335M6.00016 12.6668V14.6668M10.0002 12.6668V14.6668M12.6668 6.00016H14.6668M12.6668 9.3335H14.6668M1.3335 6.00016H3.3335M1.3335 9.3335H3.3335M6.5335 12.6668H9.46683C10.5869 12.6668 11.147 12.6668 11.5748 12.4488C11.9511 12.2571 12.2571 11.9511 12.4488 11.5748C12.6668 11.147 12.6668 10.5869 12.6668 9.46683V6.5335C12.6668 5.41339 12.6668 4.85334 12.4488 4.42552C12.2571 4.04919 11.9511 3.74323 11.5748 3.55148C11.147 3.3335 10.5869 3.3335 9.46683 3.3335H6.5335C5.41339 3.3335 4.85334 3.3335 4.42552 3.55148C4.04919 3.74323 3.74323 4.04919 3.55148 4.42552C3.3335 4.85334 3.3335 5.41339 3.3335 6.5335V9.46683C3.3335 10.5869 3.3335 11.147 3.55148 11.5748C3.74323 11.9511 4.04919 12.2571 4.42552 12.4488C4.85334 12.6668 5.41339 12.6668 6.5335 12.6668Z"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M9 2v3m6-3v3M9 19v3m6-3v3m4-13h3m-3 5h3M2 9h3m-3 5h3m4.8 5h4.4c1.68 0 2.52 0 3.162-.327a3 3 0 0 0 1.311-1.311C19 16.72 19 15.88 19 14.2V9.8c0-1.68 0-2.52-.327-3.162a3 3 0 0 0-1.311-1.311C16.72 5 15.88 5 14.2 5H9.8c-1.68 0-2.52 0-3.162.327a3 3 0 0 0-1.311 1.311C5 7.28 5 8.12 5 9.8v4.4c0 1.68 0 2.52.327 3.162a3 3 0 0 0 1.311 1.311C7.28 19 8.12 19 9.8 19"
-        strokeWidth="inherit"
       />
     </svg>
   )
@@ -33,7 +32,14 @@ const CpuChip02 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'CpuChip02', props.className].join(' ')}
+    />
+  )
 })
 CpuChip02.displayName = 'IconCpuChip02'
 export default CpuChip02

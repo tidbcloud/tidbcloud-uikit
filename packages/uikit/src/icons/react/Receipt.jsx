@@ -4,21 +4,20 @@ import { forwardRef } from 'react'
 const IconReceipt = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth="1.5"
+      xmlns="http://www.w3.org/2000/svg"
       ref={ref}
       {...props}
     >
       <path
-        stroke="currentColor"
+        d="M2.6665 5.2C2.6665 4.0799 2.6665 3.51984 2.88449 3.09202C3.07624 2.71569 3.3822 2.40973 3.75852 2.21799C4.18635 2 4.7464 2 5.8665 2H10.1332C11.2533 2 11.8133 2 12.2412 2.21799C12.6175 2.40973 12.9234 2.71569 13.1152 3.09202C13.3332 3.51984 13.3332 4.0799 13.3332 5.2V14L11.4998 12.6667L9.83317 14L7.99984 12.6667L6.1665 14L4.49984 12.6667L2.6665 14V5.2Z"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M4 7.8c0-1.68 0-2.52.327-3.162a3 3 0 0 1 1.311-1.311C6.28 3 7.12 3 8.8 3h6.4c1.68 0 2.52 0 3.162.327a3 3 0 0 1 1.311 1.311C20 5.28 20 6.12 20 7.8V21l-2.75-2-2.5 2L12 19l-2.75 2-2.5-2L4 21z"
-        strokeWidth="inherit"
       />
     </svg>
   )
@@ -33,7 +32,14 @@ const Receipt = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'Receipt', props.className].join(' ')}
+    />
+  )
 })
 Receipt.displayName = 'IconReceipt'
 export default Receipt

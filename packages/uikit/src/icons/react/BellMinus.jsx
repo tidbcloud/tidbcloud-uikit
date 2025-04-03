@@ -4,21 +4,20 @@ import { forwardRef } from 'react'
 const IconBellMinus = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth="1.5"
+      xmlns="http://www.w3.org/2000/svg"
       ref={ref}
       {...props}
     >
       <path
-        stroke="currentColor"
+        d="M6.23597 13.9999C6.70606 14.4148 7.32355 14.6666 7.99985 14.6666C8.67615 14.6666 9.29364 14.4148 9.76373 13.9999M9.99985 3.33325H13.9998M8.66652 1.38918C8.44767 1.35219 8.22473 1.33325 7.99985 1.33325C6.93898 1.33325 5.92157 1.75468 5.17142 2.50482C4.42128 3.25497 3.99985 4.27239 3.99985 5.33325C3.99985 7.39338 3.48016 8.80389 2.89963 9.73686C2.40994 10.5238 2.16509 10.9173 2.17407 11.0271C2.18401 11.1486 2.20976 11.195 2.3077 11.2676C2.39616 11.3333 2.79491 11.3333 3.59242 11.3333H12.4073C13.2048 11.3333 13.6036 11.3333 13.6921 11.2676C13.79 11.195 13.8157 11.1486 13.8257 11.0271C13.8347 10.9173 13.5898 10.5239 13.1002 9.73703C12.5845 8.90833 12.1168 7.70283 12.0187 5.99992"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M9.354 21c.705.622 1.632 1 2.646 1s1.94-.378 2.646-1M15 5h6m-8-2.916A6 6 0 0 0 6 8c0 3.09-.78 5.206-1.65 6.605-.735 1.18-1.102 1.771-1.089 1.936.015.182.054.252.2.36.133.099.732.099 1.928.099H18.61c1.197 0 1.795 0 1.927-.098.147-.11.186-.179.2-.361.014-.165-.353-.755-1.087-1.935-.774-1.243-1.476-3.052-1.623-5.606"
-        strokeWidth="inherit"
       />
     </svg>
   )
@@ -33,7 +32,14 @@ const BellMinus = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'BellMinus', props.className].join(' ')}
+    />
+  )
 })
 BellMinus.displayName = 'IconBellMinus'
 export default BellMinus

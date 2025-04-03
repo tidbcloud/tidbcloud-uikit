@@ -4,21 +4,20 @@ import { forwardRef } from 'react'
 const IconCreditCardRefresh = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth="1.5"
+      xmlns="http://www.w3.org/2000/svg"
       ref={ref}
       {...props}
     >
       <path
-        stroke="currentColor"
+        d="M14.6668 6.66667H1.3335M7.3335 12.6667L12.5335 12.6667C13.2802 12.6667 13.6536 12.6667 13.9388 12.5213C14.1897 12.3935 14.3937 12.1895 14.5215 11.9387C14.6668 11.6534 14.6668 11.2801 14.6668 10.5333V5.46667C14.6668 4.71993 14.6668 4.34656 14.5215 4.06135C14.3937 3.81046 14.1897 3.60649 13.9388 3.47866C13.6536 3.33333 13.2802 3.33333 12.5335 3.33333H11.3335M7.3335 12.6667L8.66683 14M7.3335 12.6667L8.66683 11.3333M4.66683 12.6667H3.46683C2.72009 12.6667 2.34672 12.6667 2.06151 12.5213C1.81063 12.3935 1.60665 12.1895 1.47882 11.9387C1.3335 11.6534 1.3335 11.2801 1.3335 10.5333V5.46667C1.3335 4.71993 1.3335 4.34656 1.47882 4.06135C1.60665 3.81046 1.81063 3.60649 2.06151 3.47866C2.34672 3.33333 2.72009 3.33333 3.46683 3.33333H8.66683M8.66683 3.33333L7.3335 4.66667M8.66683 3.33333L7.3335 2"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M22 10H2m9 9h7.8c1.12 0 1.68 0 2.108-.218a2 2 0 0 0 .874-.874C22 17.48 22 16.92 22 15.8V8.2c0-1.12 0-1.68-.218-2.108a2 2 0 0 0-.874-.874C20.48 5 19.92 5 18.8 5H17m-6 14 2 2m-2-2 2-2m-6 2H5.2c-1.12 0-1.68 0-2.108-.218a2 2 0 0 1-.874-.874C2 17.48 2 16.92 2 15.8V8.2c0-1.12 0-1.68.218-2.108a2 2 0 0 1 .874-.874C3.52 5 4.08 5 5.2 5H13m0 0-2 2m2-2-2-2"
-        strokeWidth="inherit"
       />
     </svg>
   )
@@ -33,7 +32,14 @@ const CreditCardRefresh = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'CreditCardRefresh', props.className].join(' ')}
+    />
+  )
 })
 CreditCardRefresh.displayName = 'IconCreditCardRefresh'
 export default CreditCardRefresh

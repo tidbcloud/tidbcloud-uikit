@@ -4,21 +4,20 @@ import { forwardRef } from 'react'
 const IconSystemMode = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      strokeWidth="1.5"
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       ref={ref}
       {...props}
     >
       <path
-        stroke="currentColor"
+        d="M10.9199 13.9948C10.038 14.4252 9.04705 14.6667 7.99967 14.6667C4.31778 14.6667 1.33301 11.6819 1.33301 8.00004C1.33301 4.31814 4.31778 1.33337 7.99967 1.33337C9.04705 1.33337 10.038 1.5749 10.9199 2.0053M10.9199 13.9948C10.8358 13.9983 10.7513 14 10.6663 14C7.35263 14 4.66634 11.3137 4.66634 8.00004C4.66634 4.68633 7.35263 2.00004 10.6663 2.00004C10.7513 2.00004 10.8358 2.00181 10.9199 2.0053M10.9199 13.9948C11.9227 13.6253 12.9465 12.5119 13.333 12.0014C15.1104 9.63858 15.1108 6.36341 13.3342 4.00019C12.9473 3.48919 11.9997 2.53228 10.9199 2.0053"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M16.38 20.992A9.96 9.96 0 0 1 12 22C6.477 22 2 17.523 2 12S6.477 2 12 2a9.96 9.96 0 0 1 4.38 1.008m0 17.984a9 9 0 1 1 0-17.984m0 17.984c1.505-.554 3.04-2.224 3.62-2.99A10.01 10.01 0 0 0 20.002 6c-.58-.766-2.002-2.202-3.622-2.992"
-        strokeWidth="inherit"
       />
     </svg>
   )
@@ -33,7 +32,14 @@ const SystemMode = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'SystemMode', props.className].join(' ')}
+    />
+  )
 })
 SystemMode.displayName = 'IconSystemMode'
 export default SystemMode

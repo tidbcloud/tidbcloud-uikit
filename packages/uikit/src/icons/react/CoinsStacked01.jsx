@@ -4,21 +4,20 @@ import { forwardRef } from 'react'
 const IconCoinsStacked01 = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth="1.5"
+      xmlns="http://www.w3.org/2000/svg"
       ref={ref}
       {...props}
     >
       <path
-        stroke="currentColor"
+        d="M8.00016 11.3333C8.00016 13.1743 9.49255 14.6667 11.3335 14.6667C13.1744 14.6667 14.6668 13.1743 14.6668 11.3333C14.6668 9.49238 13.1744 8 11.3335 8C9.49255 8 8.00016 9.49238 8.00016 11.3333ZM8.00016 11.3333C8.00016 10.5828 8.24822 9.89017 8.66683 9.33301V3.33333M8.00016 11.3333C8.00016 11.8836 8.13348 12.4027 8.36958 12.8601C7.80794 13.3345 6.51073 13.6667 5.00016 13.6667C2.97512 13.6667 1.3335 13.0697 1.3335 12.3333V3.33333M8.66683 3.33333C8.66683 4.06971 7.02521 4.66667 5.00016 4.66667C2.97512 4.66667 1.3335 4.06971 1.3335 3.33333M8.66683 3.33333C8.66683 2.59695 7.02521 2 5.00016 2C2.97512 2 1.3335 2.59695 1.3335 3.33333M1.3335 9.33333C1.3335 10.0697 2.97512 10.6667 5.00016 10.6667C6.4595 10.6667 7.71971 10.3567 8.30992 9.90785M8.66683 6.33333C8.66683 7.06971 7.02521 7.66667 5.00016 7.66667C2.97512 7.66667 1.3335 7.06971 1.3335 6.33333"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M12 17a5 5 0 1 0 10 0 5 5 0 0 0-10 0m0 0c0-1.126.372-2.165 1-3V5m-1 12c0 .825.2 1.604.554 2.29-.842.712-2.788 1.21-5.054 1.21-3.038 0-5.5-.895-5.5-2V5m11 0c0 1.105-2.462 2-5.5 2S2 6.105 2 5m11 0c0-1.105-2.462-2-5.5-2S2 3.895 2 5m0 9c0 1.105 2.462 2 5.5 2 2.189 0 4.08-.465 4.965-1.138M13 9.5c0 1.105-2.462 2-5.5 2S2 10.605 2 9.5"
-        strokeWidth="inherit"
       />
     </svg>
   )
@@ -33,7 +32,14 @@ const CoinsStacked01 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'CoinsStacked01', props.className].join(' ')}
+    />
+  )
 })
 CoinsStacked01.displayName = 'IconCoinsStacked01'
 export default CoinsStacked01

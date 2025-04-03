@@ -4,21 +4,20 @@ import { forwardRef } from 'react'
 const IconBracketsEllipses = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth="1.5"
+      xmlns="http://www.w3.org/2000/svg"
       ref={ref}
       {...props}
     >
       <path
-        stroke="currentColor"
+        d="M12.3807 13.3332C13.222 13.3332 13.9047 12.6512 13.9047 11.8092V8.76184L14.6667 7.99984L13.9047 7.23784V4.1905C13.9047 3.3485 13.2227 2.6665 12.3807 2.6665M3.6195 2.6665C2.7775 2.6665 2.0955 3.3485 2.0955 4.1905V7.23784L1.3335 7.99984L2.0955 8.76184V11.8092C2.0955 12.6512 2.7775 13.3332 3.6195 13.3332M5.00016 7.99984H5.00683M8.00016 7.99984H8.00683M11.0002 7.99984H11.0068M5.3335 7.99984C5.3335 8.18393 5.18426 8.33317 5.00016 8.33317C4.81607 8.33317 4.66683 8.18393 4.66683 7.99984C4.66683 7.81574 4.81607 7.6665 5.00016 7.6665C5.18426 7.6665 5.3335 7.81574 5.3335 7.99984ZM8.3335 7.99984C8.3335 8.18393 8.18426 8.33317 8.00016 8.33317C7.81607 8.33317 7.66683 8.18393 7.66683 7.99984C7.66683 7.81574 7.81607 7.6665 8.00016 7.6665C8.18426 7.6665 8.3335 7.81574 8.3335 7.99984ZM11.3335 7.99984C11.3335 8.18393 11.1843 8.33317 11.0002 8.33317C10.8161 8.33317 10.6668 8.18393 10.6668 7.99984C10.6668 7.81574 10.8161 7.6665 11.0002 7.6665C11.1843 7.6665 11.3335 7.81574 11.3335 7.99984Z"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M18.57 20a2.286 2.286 0 0 0 2.287-2.286v-4.571L22 12l-1.143-1.143V6.286A2.285 2.285 0 0 0 18.57 4M5.429 4a2.285 2.285 0 0 0-2.286 2.286v4.571L2 12l1.143 1.143v4.571A2.285 2.285 0 0 0 5.429 20M7.5 12h.01M12 12h.01m4.49 0h.01M8 12a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0m4.5 0a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0m4.5 0a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0"
-        strokeWidth="inherit"
       />
     </svg>
   )
@@ -33,7 +32,14 @@ const BracketsEllipses = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'BracketsEllipses', props.className].join(' ')}
+    />
+  )
 })
 BracketsEllipses.displayName = 'IconBracketsEllipses'
 export default BracketsEllipses

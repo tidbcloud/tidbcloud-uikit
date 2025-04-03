@@ -4,21 +4,20 @@ import { forwardRef } from 'react'
 const IconCameraPlus = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth="1.5"
+      xmlns="http://www.w3.org/2000/svg"
       ref={ref}
       {...props}
     >
       <path
-        stroke="currentColor"
+        d="M14.6668 7.66683V9.7335C14.6668 11.227 14.6668 11.9737 14.3762 12.5441C14.1205 13.0459 13.7126 13.4539 13.2108 13.7095C12.6404 14.0002 11.8936 14.0002 10.4002 14.0002H5.60016C4.10669 14.0002 3.35995 14.0002 2.78952 13.7095C2.28776 13.4539 1.87981 13.0459 1.62415 12.5441C1.3335 11.9737 1.3335 11.227 1.3335 9.7335V6.26683C1.3335 4.77336 1.3335 4.02662 1.62415 3.45619C1.87981 2.95442 2.28776 2.54647 2.78952 2.29081C3.35995 2.00016 4.10669 2.00016 5.60016 2.00016H8.3335M12.6668 5.3335V1.3335M10.6668 3.3335H14.6668M10.6668 8.00016C10.6668 9.47292 9.47292 10.6668 8.00016 10.6668C6.5274 10.6668 5.3335 9.47292 5.3335 8.00016C5.3335 6.5274 6.5274 5.3335 8.00016 5.3335C9.47292 5.3335 10.6668 6.5274 10.6668 8.00016Z"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M22 11.5v3.1c0 2.24 0 3.36-.436 4.216a4 4 0 0 1-1.748 1.748C18.96 21 17.84 21 15.6 21H8.4c-2.24 0-3.36 0-4.216-.436a4 4 0 0 1-1.748-1.748C2 17.96 2 16.84 2 14.6V9.4c0-2.24 0-3.36.436-4.216a4 4 0 0 1 1.748-1.748C5.04 3 6.16 3 8.4 3h4.1M19 8V2m-3 3h6m-6 7a4 4 0 1 1-8 0 4 4 0 0 1 8 0"
-        strokeWidth="inherit"
       />
     </svg>
   )
@@ -33,7 +32,14 @@ const CameraPlus = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'CameraPlus', props.className].join(' ')}
+    />
+  )
 })
 CameraPlus.displayName = 'IconCameraPlus'
 export default CameraPlus

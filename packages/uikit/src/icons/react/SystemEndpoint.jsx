@@ -4,12 +4,11 @@ import { forwardRef } from 'react'
 const IconSystemEndpoint = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
-      fill="none"
       viewBox="0 0 24 24"
-      strokeWidth="1.5"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
       ref={ref}
       {...props}
     >
@@ -24,12 +23,12 @@ const IconSystemEndpoint = (props, ref) => {
       <path
         d="M15.4287 18.5143C15.4287 19.177 15.9404 19.7143 16.5716 19.7143H17.6328C18.3091 19.7143 18.8573 19.1386 18.8573 18.4286C18.8573 17.7185 18.3091 17.1428 17.6328 17.1428H16.6532C15.9769 17.1428 15.4287 16.5672 15.4287 15.8571C15.4287 15.147 15.9769 14.5714 16.6532 14.5714H17.7144C18.3456 14.5714 18.8573 15.1087 18.8573 15.7714"
         stroke="currentColor"
-        stroke-width="inherit"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth={1.5}
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
-      <path d="M1.71436 12H12.0001" stroke="currentColor" stroke-width="inherit" stroke-linecap="round" />
-      <circle cx="11.9999" cy="12.0001" r="1.71429" fill="currentColor" />
+      <path d="M1.71436 12H12.0001" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" />
+      <circle cx={11.9999} cy={12.0001} r={1.71429} fill="currentColor" />
     </svg>
   )
 }
@@ -43,7 +42,14 @@ const SystemEndpoint = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'SystemEndpoint', props.className].join(' ')}
+    />
+  )
 })
 SystemEndpoint.displayName = 'IconSystemEndpoint'
 export default SystemEndpoint

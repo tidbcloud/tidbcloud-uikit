@@ -4,21 +4,20 @@ import { forwardRef } from 'react'
 const IconLogOut04 = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth="1.5"
+      xmlns="http://www.w3.org/2000/svg"
       ref={ref}
       {...props}
     >
       <path
-        stroke="currentColor"
+        d="M12.0002 5.33333L14.6668 8M14.6668 8L12.0002 10.6667M14.6668 8H6.00016M10.0002 2.80269C9.15033 2.29218 8.16366 2 7.11127 2C3.9203 2 1.3335 4.68629 1.3335 8C1.3335 11.3137 3.9203 14 7.11127 14C8.16366 14 9.15033 13.7078 10.0002 13.1973"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="m18 8 4 4m0 0-4 4m4-4H9m6-7.796A8.4 8.4 0 0 0 10.667 3C5.88 3 2 7.03 2 12s3.88 9 8.667 9A8.4 8.4 0 0 0 15 19.796"
-        strokeWidth="inherit"
       />
     </svg>
   )
@@ -33,7 +32,14 @@ const LogOut04 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'LogOut04', props.className].join(' ')}
+    />
+  )
 })
 LogOut04.displayName = 'IconLogOut04'
 export default LogOut04

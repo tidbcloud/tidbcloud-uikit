@@ -4,28 +4,27 @@ import { forwardRef } from 'react'
 const IconLockKeyholeCircle = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth="1.5"
+      xmlns="http://www.w3.org/2000/svg"
       ref={ref}
       {...props}
     >
       <path
-        stroke="currentColor"
+        d="M8.00016 14.6666C11.6821 14.6666 14.6668 11.6818 14.6668 7.99992C14.6668 4.31802 11.6821 1.33325 8.00016 1.33325C4.31826 1.33325 1.3335 4.31802 1.3335 7.99992C1.3335 11.6818 4.31826 14.6666 8.00016 14.6666Z"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10"
-        strokeWidth="inherit"
       />
       <path
-        stroke="currentColor"
+        d="M9.15454 8.79638C9.10751 8.65529 9.08399 8.58474 9.08521 8.52703C9.0865 8.46634 9.09462 8.43452 9.12257 8.38063C9.14914 8.32939 9.22019 8.26327 9.36229 8.13105C9.75471 7.76589 10.0002 7.2449 10.0002 6.66659C10.0002 5.56202 9.10473 4.66659 8.00016 4.66659C6.89559 4.66659 6.00016 5.56202 6.00016 6.66659C6.00016 7.2449 6.24562 7.76589 6.63804 8.13104C6.78013 8.26327 6.85118 8.32939 6.87776 8.38063C6.90571 8.43452 6.91383 8.46634 6.91511 8.52703C6.91633 8.58474 6.89282 8.65529 6.84579 8.79638L6.23416 10.6313C6.15516 10.8683 6.11566 10.9868 6.13934 11.0811C6.16007 11.1637 6.21161 11.2352 6.28339 11.281C6.36538 11.3333 6.4903 11.3333 6.74012 11.3333H9.2602C9.51003 11.3333 9.63494 11.3333 9.71694 11.281C9.78871 11.2352 9.84025 11.1637 9.86098 11.0811C9.88467 10.9868 9.84517 10.8683 9.76617 10.6313L9.15454 8.79638Z"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M13.732 13.195c-.071-.212-.106-.318-.104-.404a.4.4 0 0 1 .056-.22c.04-.077.146-.176.36-.374a3 3 0 1 0-4.086 0c.212.198.319.297.358.374.042.08.054.129.056.22.002.086-.033.192-.104.404l-.917 2.752c-.119.355-.178.533-.142.675a.5.5 0 0 0 .216.3c.123.078.31.078.685.078h3.78c.375 0 .562 0 .685-.078a.5.5 0 0 0 .216-.3c.036-.142-.024-.32-.142-.675z"
-        strokeWidth="inherit"
       />
     </svg>
   )
@@ -40,7 +39,14 @@ const LockKeyholeCircle = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'LockKeyholeCircle', props.className].join(' ')}
+    />
+  )
 })
 LockKeyholeCircle.displayName = 'IconLockKeyholeCircle'
 export default LockKeyholeCircle

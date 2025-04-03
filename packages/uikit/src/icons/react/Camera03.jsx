@@ -4,28 +4,27 @@ import { forwardRef } from 'react'
 const IconCamera03 = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth="1.5"
+      xmlns="http://www.w3.org/2000/svg"
       ref={ref}
       {...props}
     >
       <path
-        stroke="currentColor"
+        d="M1.3335 5.2C1.3335 4.0799 1.3335 3.51984 1.55148 3.09202C1.74323 2.71569 2.04919 2.40973 2.42552 2.21799C2.85334 2 3.41339 2 4.5335 2H11.4668C12.5869 2 13.147 2 13.5748 2.21799C13.9511 2.40973 14.2571 2.71569 14.4488 3.09202C14.6668 3.51984 14.6668 4.0799 14.6668 5.2V10.8C14.6668 11.9201 14.6668 12.4802 14.4488 12.908C14.2571 13.2843 13.9511 13.5903 13.5748 13.782C13.147 14 12.5869 14 11.4668 14H4.5335C3.41339 14 2.85334 14 2.42552 13.782C2.04919 13.5903 1.74323 13.2843 1.55148 12.908C1.3335 12.4802 1.3335 11.9201 1.3335 10.8V5.2Z"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M2 7.8c0-1.68 0-2.52.327-3.162a3 3 0 0 1 1.311-1.311C4.28 3 5.12 3 6.8 3h10.4c1.68 0 2.52 0 3.162.327a3 3 0 0 1 1.311 1.311C22 5.28 22 6.12 22 7.8v8.4c0 1.68 0 2.52-.327 3.162a3 3 0 0 1-1.311 1.311C19.72 21 18.88 21 17.2 21H6.8c-1.68 0-2.52 0-3.162-.327a3 3 0 0 1-1.311-1.311C2 18.72 2 17.88 2 16.2z"
-        strokeWidth="inherit"
       />
       <path
-        stroke="currentColor"
+        d="M8.00016 10.6667C9.47292 10.6667 10.6668 9.47276 10.6668 8C10.6668 6.52724 9.47292 5.33333 8.00016 5.33333C6.5274 5.33333 5.3335 6.52724 5.3335 8C5.3335 9.47276 6.5274 10.6667 8.00016 10.6667Z"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M12 16a4 4 0 1 0 0-8 4 4 0 0 0 0 8"
-        strokeWidth="inherit"
       />
     </svg>
   )
@@ -40,7 +39,14 @@ const Camera03 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'Camera03', props.className].join(' ')}
+    />
+  )
 })
 Camera03.displayName = 'IconCamera03'
 export default Camera03
