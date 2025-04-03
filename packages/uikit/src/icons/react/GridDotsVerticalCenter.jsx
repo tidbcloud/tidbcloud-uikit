@@ -6,19 +6,18 @@ const IconGridDotsVerticalCenter = (props, ref) => {
     <svg
       width="1em"
       height="1em"
-      viewBox="0 0 24 24"
+      viewBox="0 0 16 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      strokeWidth="2"
       ref={ref}
       {...props}
     >
       <path
-        d="M3 3H3.01M3 21H3.01M3 16.5H3.01M3 7.5H3.01M7.5 3H7.51M7.5 21H7.51M16.5 3H16.51M16.5 21H16.51M12 3H12.01M12 21H12.01M12 16.5H12.01M12 7.5H12.01M21 3H21.01M21 21H21.01M21 16.5H21.01M21 7.5H21.01M21 12H3"
-        stroke="currentColor"
+        d="M2 2H2.00667M2 14H2.00667M2 11H2.00667M2 5H2.00667M5 2H5.00667M5 14H5.00667M11 2H11.0067M11 14H11.0067M8 2H8.00667M8 14H8.00667M8 11H8.00667M8 5H8.00667M14 2H14.0067M14 14H14.0067M14 11H14.0067M14 5H14.0067M14 8H2"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeWidth="inherit"
       />
     </svg>
   )

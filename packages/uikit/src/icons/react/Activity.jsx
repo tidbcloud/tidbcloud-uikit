@@ -6,19 +6,18 @@ const IconActivity = (props, ref) => {
     <svg
       width="1em"
       height="1em"
-      viewBox="0 0 24 24"
+      viewBox="0 0 16 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      strokeWidth="2"
       ref={ref}
       {...props}
     >
       <path
-        d="M22 12H18L15 21L9 3L6 12H2"
-        stroke="currentColor"
+        d="M14.6668 8H12.0002L10.0002 14L6.00016 2L4.00016 8H1.3335"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeWidth="inherit"
       />
     </svg>
   )

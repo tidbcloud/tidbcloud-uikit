@@ -6,19 +6,18 @@ const IconSeeMore = (props, ref) => {
     <svg
       width="1em"
       height="1em"
-      viewBox="0 0 24 24"
+      viewBox="0 0 16 16"
       fill="none"
-      strokeWidth="2"
       xmlns="http://www.w3.org/2000/svg"
       ref={ref}
       {...props}
     >
       <path
-        d="M16 10H3M20 6H3M20 14H3M16 18H3"
-        stroke="currentColor"
+        d="M10.6667 6.66667H2M13.3333 4H2M13.3333 9.33333H2M10.6667 12H2"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeWidth="inherit"
       />
     </svg>
   )

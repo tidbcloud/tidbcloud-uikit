@@ -6,19 +6,18 @@ const IconReverseLeft = (props, ref) => {
     <svg
       width="1em"
       height="1em"
-      viewBox="0 0 24 24"
+      viewBox="0 0 16 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      strokeWidth="2"
       ref={ref}
       {...props}
     >
       <path
-        d="M4 7H14C17.3137 7 20 9.68629 20 13C20 16.3137 17.3137 19 14 19H4M4 7L8 3M4 7L8 11"
-        stroke="currentColor"
+        d="M2.6665 4.66667H9.33317C11.5423 4.66667 13.3332 6.45753 13.3332 8.66667C13.3332 10.8758 11.5423 12.6667 9.33317 12.6667H2.6665M2.6665 4.66667L5.33317 2M2.6665 4.66667L5.33317 7.33333"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeWidth="inherit"
       />
     </svg>
   )

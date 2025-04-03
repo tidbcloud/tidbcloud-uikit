@@ -6,19 +6,18 @@ const IconUnderline01 = (props, ref) => {
     <svg
       width="1em"
       height="1em"
-      viewBox="0 0 24 24"
+      viewBox="0 0 16 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      strokeWidth="2"
       ref={ref}
       {...props}
     >
       <path
-        d="M18 4V11C18 14.3137 15.3137 17 12 17C8.68629 17 6 14.3137 6 11V4M4 21H20"
-        stroke="currentColor"
+        d="M12.0003 2.6665V7.33317C12.0003 9.54231 10.2095 11.3332 8.00033 11.3332C5.79119 11.3332 4.00033 9.54231 4.00033 7.33317V2.6665M2.66699 13.9998H13.3337"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeWidth="inherit"
       />
     </svg>
   )

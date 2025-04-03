@@ -6,19 +6,18 @@ const IconRight = (props, ref) => {
     <svg
       width="1em"
       height="1em"
-      viewBox="0 0 24 24"
+      viewBox="0 0 16 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      strokeWidth="2"
       ref={ref}
       {...props}
     >
       <path
-        d="M4 12.6667L7.64647 17.0559C7.67699 17.0927 7.71006 17.1267 7.74359 17.1608C7.97684 17.3975 8.46753 18 8.92308 18C9.3818 18 10.0542 17.2283 10.1438 17.123C10.1507 17.1149 10.1574 17.1071 10.1644 17.0992L20 6"
-        stroke="currentColor"
+        d="M2.66699 8.44444L5.08269 11.3522C5.11321 11.389 5.1463 11.4232 5.17939 11.4577C5.34074 11.6255 5.65581 12 5.94904 12C6.24967 12 6.68798 11.5028 6.75952 11.4193C6.76643 11.4112 6.77308 11.4034 6.78013 11.3955L13.3337 4"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeWidth="inherit"
       />
     </svg>
   )

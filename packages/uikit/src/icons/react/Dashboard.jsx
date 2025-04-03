@@ -1,0 +1,45 @@
+import { Box as MantineBox } from '@mantine/core'
+import * as React from 'react'
+import { forwardRef } from 'react'
+const IconDashboard = (props, ref) => {
+  return (
+    <svg
+      width="1em"
+      height="1em"
+      viewBox="0 0 20 19"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      ref={ref}
+      {...props}
+    >
+      <path
+        d="M11.45 9.04737L13.5 6.87543M8 10.5836C8 11.1456 8.21071 11.6846 8.58579 12.082C8.96086 12.4793 9.46957 12.7026 10 12.7026C10.5304 12.7026 11.0391 12.4793 11.4142 12.082C11.7893 11.6846 12 11.1456 12 10.5836C12 10.0216 11.7893 9.48267 11.4142 9.08528C11.0391 8.6879 10.5304 8.46465 10 8.46465C9.46957 8.46465 8.96086 8.6879 8.58579 9.08528C8.21071 9.48267 8 10.0216 8 10.5836ZM4.4 18C2.93815 16.769 1.87391 15.0867 1.35478 13.1862C0.835644 11.2857 0.887321 9.26126 1.50265 7.39331C2.11797 5.52536 3.26647 3.90645 4.78899 2.76093C6.3115 1.6154 8.13263 1 10 1C11.8674 1 13.6885 1.6154 15.211 2.76093C16.7335 3.90645 17.882 5.52536 18.4974 7.39331C19.1127 9.26126 19.1644 11.2857 18.6452 13.1862C18.1261 15.0867 17.0619 16.769 15.6 18H4.4Z"
+        stroke="#383E40"
+        strokeWidth={1.5}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  )
+}
+const ForwardRef = forwardRef(IconDashboard)
+const Dashboard = forwardRef((props, ref) => {
+  if (typeof props.size === 'number') {
+    const { size, ...rest } = props
+    props = {
+      ...rest,
+      w: size,
+      h: size
+    }
+  }
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'Dashboard', props.className].join(' ')}
+    />
+  )
+})
+Dashboard.displayName = 'IconDashboard'
+export default Dashboard

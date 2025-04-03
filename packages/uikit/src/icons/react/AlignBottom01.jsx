@@ -6,19 +6,18 @@ const IconAlignBottom01 = (props, ref) => {
     <svg
       width="1em"
       height="1em"
-      viewBox="0 0 24 24"
+      viewBox="0 0 16 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      strokeWidth="2"
       ref={ref}
       {...props}
     >
       <path
-        d="M3 21H21M12 3V17M12 17L19 10M12 17L5 10"
-        stroke="currentColor"
+        d="M2 14H14M8 2V11.3333M8 11.3333L12.6667 6.66667M8 11.3333L3.33333 6.66667"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeWidth="inherit"
       />
     </svg>
   )

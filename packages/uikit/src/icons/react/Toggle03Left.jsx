@@ -6,26 +6,25 @@ const IconToggle03Left = (props, ref) => {
     <svg
       width="1em"
       height="1em"
-      viewBox="0 0 24 24"
+      viewBox="0 0 16 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      strokeWidth="2"
       ref={ref}
       {...props}
     >
       <path
-        d="M2 12C2 8.68629 4.68629 6 8 6H16C19.3137 6 22 8.68629 22 12C22 15.3137 19.3137 18 16 18H8C4.68629 18 2 15.3137 2 12Z"
-        stroke="currentColor"
+        d="M1.3335 8C1.3335 5.79086 3.12436 4 5.3335 4H10.6668C12.876 4 14.6668 5.79086 14.6668 8C14.6668 10.2091 12.876 12 10.6668 12H5.3335C3.12436 12 1.3335 10.2091 1.3335 8Z"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeWidth="inherit"
       />
       <path
-        d="M8 14.5C9.38071 14.5 10.5 13.3807 10.5 12C10.5 10.6193 9.38071 9.5 8 9.5C6.61929 9.5 5.5 10.6193 5.5 12C5.5 13.3807 6.61929 14.5 8 14.5Z"
-        stroke="currentColor"
+        d="M5.3335 9.66667C6.25397 9.66667 7.00016 8.92047 7.00016 8C7.00016 7.07953 6.25397 6.33333 5.3335 6.33333C4.41302 6.33333 3.66683 7.07953 3.66683 8C3.66683 8.92047 4.41302 9.66667 5.3335 9.66667Z"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeWidth="inherit"
       />
     </svg>
   )

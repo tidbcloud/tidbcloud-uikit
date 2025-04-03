@@ -6,19 +6,18 @@ const IconBluetoothOff = (props, ref) => {
     <svg
       width="1em"
       height="1em"
-      viewBox="0 0 24 24"
+      viewBox="0 0 16 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      strokeWidth="2"
       ref={ref}
       {...props}
     >
       <path
-        d="M6 17L12 12V22L17.4398 17.4668M12 7V2L18 7L15.0817 9.43194M21 21L3 3"
-        stroke="currentColor"
+        d="M4 11.3333L8 7.99992V14.6666L11.6265 11.6445M8 4.66659V1.33325L12 4.66659L10.0544 6.28788M14 13.9999L2 1.99992"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeWidth="inherit"
       />
     </svg>
   )

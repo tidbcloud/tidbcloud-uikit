@@ -9,13 +9,12 @@ const IconOrientationVerticalFill = (props, ref) => {
       viewBox="0 0 24 24"
       fill="currentColor"
       xmlns="http://www.w3.org/2000/svg"
-      strokeWidth="2"
       ref={ref}
       {...props}
     >
-      <path d="M4 13H8V20H4V13Z" strokeWidth="inherit" stroke="currentColor" />
-      <path d="M10 9H14V20H10V9Z" strokeWidth="inherit" stroke="currentColor" />
-      <path d="M16 4H20V20H16V4Z" strokeWidth="inherit" stroke="currentColor" />
+      <path d="M4 13H8V20H4V13Z" />
+      <path d="M10 9H14V20H10V9Z" />
+      <path d="M16 4H20V20H16V4Z" />
     </svg>
   )
 }

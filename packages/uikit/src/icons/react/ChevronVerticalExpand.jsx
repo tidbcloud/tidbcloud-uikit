@@ -9,16 +9,15 @@ const IconChevronVerticalExpand = (props, ref) => {
       viewBox="0 0 24 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      strokeWidth="2"
       ref={ref}
       {...props}
     >
       <path
         d="M6 9            L12 3            L18 9            M6 15            L12 21            L18 15"
         stroke="currentColor"
+        strokeWidth="inherit"
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeWidth="inherit"
       />
     </svg>
   )

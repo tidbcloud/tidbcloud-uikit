@@ -6,19 +6,18 @@ const IconSunSetting01 = (props, ref) => {
     <svg
       width="1em"
       height="1em"
-      viewBox="0 0 24 24"
+      viewBox="0 0 16 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      strokeWidth="2"
       ref={ref}
       {...props}
     >
       <path
-        d="M12 3V5M5.31412 7.31412L3.8999 5.8999M18.6858 7.31412L20.1 5.8999M6 15C6 11.6863 8.68629 9 12 9C15.3137 9 18 11.6863 18 15M22 15H2M19 19H5"
-        stroke="currentColor"
+        d="M8.00016 2V3.33333M3.54291 4.87608L2.6001 3.93327M12.4574 4.87608L13.4002 3.93327M4.00016 10C4.00016 7.79086 5.79102 6 8.00016 6C10.2093 6 12.0002 7.79086 12.0002 10M14.6668 10H1.3335M12.6668 12.6667H3.3335"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeWidth="inherit"
       />
     </svg>
   )

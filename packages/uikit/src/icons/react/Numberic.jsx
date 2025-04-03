@@ -9,7 +9,6 @@ const IconNumberic = (props, ref) => {
       viewBox="0 0 16 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      strokeWidth="2"
       ref={ref}
       {...props}
     >
@@ -18,7 +17,6 @@ const IconNumberic = (props, ref) => {
           d="M1.3335 4.97491L14.6668 4.97491M1.3335 10.9924L14.6668 10.9924M5.99023 1.33325L3.67309 14.6666M11.9162 1.33325L9.59901 14.6666"
           stroke="currentColor"
           strokeLinecap="round"
-          strokeWidth="inherit"
         />
       </g>
       <defs>

@@ -1,0 +1,45 @@
+import { Box as MantineBox } from '@mantine/core'
+import * as React from 'react'
+import { forwardRef } from 'react'
+const IconLifeBuoy = (props, ref) => {
+  return (
+    <svg
+      width="1em"
+      height="1em"
+      viewBox="0 0 16 16"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      ref={ref}
+      {...props}
+    >
+      <path
+        d="M6.091 6.09077L3.28612 3.28589M3.28612 12.714L6.11214 9.88795M9.90754 9.90909L12.7124 12.714M12.7124 3.28589L9.88599 6.11233M14.6668 7.99992C14.6668 11.6818 11.6821 14.6666 8.00016 14.6666C4.31826 14.6666 1.3335 11.6818 1.3335 7.99992C1.3335 4.31802 4.31826 1.33325 8.00016 1.33325C11.6821 1.33325 14.6668 4.31802 14.6668 7.99992ZM10.6668 7.99992C10.6668 9.47268 9.47292 10.6666 8.00016 10.6666C6.5274 10.6666 5.3335 9.47268 5.3335 7.99992C5.3335 6.52716 6.5274 5.33325 8.00016 5.33325C9.47292 5.33325 10.6668 6.52716 10.6668 7.99992Z"
+        stroke="#383E40"
+        strokeWidth={1.5}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  )
+}
+const ForwardRef = forwardRef(IconLifeBuoy)
+const LifeBuoy = forwardRef((props, ref) => {
+  if (typeof props.size === 'number') {
+    const { size, ...rest } = props
+    props = {
+      ...rest,
+      w: size,
+      h: size
+    }
+  }
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'LifeBuoy', props.className].join(' ')}
+    />
+  )
+})
+LifeBuoy.displayName = 'IconLifeBuoy'
+export default LifeBuoy

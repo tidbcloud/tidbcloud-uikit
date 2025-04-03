@@ -1,0 +1,44 @@
+import { Box as MantineBox } from '@mantine/core'
+import * as React from 'react'
+import { forwardRef } from 'react'
+const IconFeedbackSweet = (props, ref) => {
+  return (
+    <svg
+      width="1em"
+      height="1em"
+      viewBox="0 0 16 16"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      ref={ref}
+      {...props}
+    >
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M8.00033 15.3334C12.0504 15.3334 15.3337 12.0502 15.3337 8.00008C15.3337 3.94999 12.0504 0.666748 8.00033 0.666748C3.95024 0.666748 0.666992 3.94999 0.666992 8.00008C0.666992 12.0502 3.95024 15.3334 8.00033 15.3334ZM5.38522 5.77009C6.22024 5.05663 7.33159 5.26621 7.99804 6.04535C8.66449 5.26621 9.76149 5.06413 10.6109 5.77009C11.4602 6.47604 11.5634 7.67641 10.9077 8.52022C10.4877 9.06068 9.41204 10.0629 8.69294 10.7137C8.45397 10.9299 8.33449 11.038 8.19137 11.0814C8.06834 11.1187 7.92774 11.1187 7.80472 11.0814C7.6616 11.038 7.54212 10.9299 7.30315 10.7137C6.58405 10.0629 5.5084 9.06068 5.08839 8.52022C4.43265 7.67641 4.55021 6.48354 5.38522 5.77009Z"
+        fill="#383E40"
+      />
+    </svg>
+  )
+}
+const ForwardRef = forwardRef(IconFeedbackSweet)
+const FeedbackSweet = forwardRef((props, ref) => {
+  if (typeof props.size === 'number') {
+    const { size, ...rest } = props
+    props = {
+      ...rest,
+      w: size,
+      h: size
+    }
+  }
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'FeedbackSweet', props.className].join(' ')}
+    />
+  )
+})
+FeedbackSweet.displayName = 'IconFeedbackSweet'
+export default FeedbackSweet

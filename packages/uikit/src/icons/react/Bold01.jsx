@@ -6,19 +6,18 @@ const IconBold01 = (props, ref) => {
     <svg
       width="1em"
       height="1em"
-      viewBox="0 0 24 24"
+      viewBox="0 0 16 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      strokeWidth="2"
       ref={ref}
       {...props}
     >
       <path
-        d="M6 12H14C16.2091 12 18 10.2091 18 8C18 5.79086 16.2091 4 14 4H6V12ZM6 12H15C17.2091 12 19 13.7909 19 16C19 18.2091 17.2091 20 15 20H6V12Z"
-        stroke="currentColor"
+        d="M4 7.99984H9.33333C10.8061 7.99984 12 6.80593 12 5.33317C12 3.86041 10.8061 2.6665 9.33333 2.6665H4V7.99984ZM4 7.99984H10C11.4728 7.99984 12.6667 9.19374 12.6667 10.6665C12.6667 12.1393 11.4728 13.3332 10 13.3332H4V7.99984Z"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeWidth="inherit"
       />
     </svg>
   )
