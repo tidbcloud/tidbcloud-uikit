@@ -9,7 +9,6 @@ const IconDatabaseNone = (props, ref) => {
       viewBox="0 0 24 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      strokeWidth="2"
       ref={ref}
       {...props}
     >
@@ -19,7 +18,6 @@ const IconDatabaseNone = (props, ref) => {
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeDasharray="2 2"
-        strokeWidth="inherit"
       />
     </svg>
   )

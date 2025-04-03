@@ -6,19 +6,18 @@ const IconArrowTab = (props, ref) => {
     <svg
       width="1em"
       height="1em"
-      viewBox="0 0 24 24"
+      viewBox="0 0 16 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      strokeWidth="2"
       ref={ref}
       {...props}
     >
       <path
-        d="M4.42216 12C10.089 12 17.5777 12 17.5777 12M17.5777 12L11.5777 6.00004M17.5777 12L11.5777 18M19.5777 6V18"
-        stroke="currentColor"
+        d="M2.94811 8.00003C6.72598 8.00003 11.7185 8.00003 11.7185 8.00003M11.7185 8.00003L7.71847 4.00003M11.7185 8.00003L7.71847 12M13.0518 4V12"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeWidth="inherit"
       />
     </svg>
   )

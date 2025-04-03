@@ -6,19 +6,18 @@ const IconBarChart06 = (props, ref) => {
     <svg
       width="1em"
       height="1em"
-      viewBox="0 0 24 24"
+      viewBox="0 0 16 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      strokeWidth="2"
       ref={ref}
       {...props}
     >
       <path
-        d="M9 8V21M21 17V21M3 3V21M15 13V21"
-        stroke="currentColor"
+        d="M6 5.33333V14M14 11.3333V14M2 2V14M10 8.66667V14"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeWidth="inherit"
       />
     </svg>
   )

@@ -1,0 +1,45 @@
+import { Box as MantineBox } from '@mantine/core'
+import * as React from 'react'
+import { forwardRef } from 'react'
+const IconFeedbackDotsCycle = (props, ref) => {
+  return (
+    <svg
+      width="1em"
+      height="1em"
+      viewBox="0 0 16 16"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      ref={ref}
+      {...props}
+    >
+      <path
+        d="M4.99967 7.99998H5.00634M7.99967 7.99998H8.00634M10.9997 7.99998H11.0063M14.6663 7.99998C14.6663 11.6819 11.6816 14.6666 7.99967 14.6666C4.31778 14.6666 1.33301 11.6819 1.33301 7.99998C1.33301 4.31808 4.31778 1.33331 7.99967 1.33331C11.6816 1.33331 14.6663 4.31808 14.6663 7.99998ZM5.33301 7.99998C5.33301 8.18407 5.18377 8.33331 4.99967 8.33331C4.81558 8.33331 4.66634 8.18407 4.66634 7.99998C4.66634 7.81588 4.81558 7.66665 4.99967 7.66665C5.18377 7.66665 5.33301 7.81588 5.33301 7.99998ZM8.33301 7.99998C8.33301 8.18407 8.18377 8.33331 7.99967 8.33331C7.81558 8.33331 7.66634 8.18407 7.66634 7.99998C7.66634 7.81588 7.81558 7.66665 7.99967 7.66665C8.18377 7.66665 8.33301 7.81588 8.33301 7.99998ZM11.333 7.99998C11.333 8.18407 11.1838 8.33331 10.9997 8.33331C10.8156 8.33331 10.6663 8.18407 10.6663 7.99998C10.6663 7.81588 10.8156 7.66665 10.9997 7.66665C11.1838 7.66665 11.333 7.81588 11.333 7.99998Z"
+        stroke="#383E40"
+        strokeWidth={1.5}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  )
+}
+const ForwardRef = forwardRef(IconFeedbackDotsCycle)
+const FeedbackDotsCycle = forwardRef((props, ref) => {
+  if (typeof props.size === 'number') {
+    const { size, ...rest } = props
+    props = {
+      ...rest,
+      w: size,
+      h: size
+    }
+  }
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'FeedbackDotsCycle', props.className].join(' ')}
+    />
+  )
+})
+FeedbackDotsCycle.displayName = 'IconFeedbackDotsCycle'
+export default FeedbackDotsCycle

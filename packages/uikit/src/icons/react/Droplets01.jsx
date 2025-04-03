@@ -6,26 +6,25 @@ const IconDroplets01 = (props, ref) => {
     <svg
       width="1em"
       height="1em"
-      viewBox="0 0 24 24"
+      viewBox="0 0 16 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      strokeWidth="2"
       ref={ref}
       {...props}
     >
       <path
-        d="M22 16C22 19.3137 19.3137 22 16 22C12.6863 22 10 19.3137 10 16C10 11.6863 16 2 16 2C16 2 22 11.6863 22 16Z"
-        stroke="currentColor"
+        d="M14.6668 10.6668C14.6668 12.876 12.876 14.6668 10.6668 14.6668C8.45769 14.6668 6.66683 12.876 6.66683 10.6668C6.66683 7.79102 10.6668 1.3335 10.6668 1.3335C10.6668 1.3335 14.6668 7.79102 14.6668 10.6668Z"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeWidth="inherit"
       />
       <path
-        d="M8 9C8 10.6569 6.65685 12 5 12C3.34315 12 2 10.6569 2 9C2 6.84315 5 2 5 2C5 2 8 6.84315 8 9Z"
-        stroke="currentColor"
+        d="M5.3335 6.00016C5.3335 7.10473 4.43807 8.00016 3.3335 8.00016C2.22893 8.00016 1.3335 7.10473 1.3335 6.00016C1.3335 4.56226 3.3335 1.3335 3.3335 1.3335C3.3335 1.3335 5.3335 4.56226 5.3335 6.00016Z"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeWidth="inherit"
       />
     </svg>
   )

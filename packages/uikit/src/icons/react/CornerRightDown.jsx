@@ -6,19 +6,18 @@ const IconCornerRightDown = (props, ref) => {
     <svg
       width="1em"
       height="1em"
-      viewBox="0 0 24 24"
+      viewBox="0 0 16 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      strokeWidth="2"
       ref={ref}
       {...props}
     >
       <path
-        d="M3 4H6.4C9.76031 4 11.4405 4 12.7239 4.65396C13.8529 5.2292 14.7708 6.14708 15.346 7.27606C16 8.55953 16 10.2397 16 13.6L16 20M16 20L11 15M16 20L21 15"
-        stroke="currentColor"
+        d="M2 2.66663H4.26667C6.50688 2.66663 7.62698 2.66663 8.48263 3.1026C9.23528 3.48609 9.8472 4.09802 10.2307 4.85066C10.6667 5.70631 10.6667 6.82642 10.6667 9.06663L10.6667 13.3333M10.6667 13.3333L7.33333 9.99996M10.6667 13.3333L14 9.99996"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeWidth="inherit"
       />
     </svg>
   )

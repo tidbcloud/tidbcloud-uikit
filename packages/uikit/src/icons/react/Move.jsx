@@ -6,19 +6,18 @@ const IconMove = (props, ref) => {
     <svg
       width="1em"
       height="1em"
-      viewBox="0 0 24 24"
+      viewBox="0 0 16 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      strokeWidth="2"
       ref={ref}
       {...props}
     >
       <path
-        d="M5 9L2 12M2 12L5 15M2 12H22M9 5L12 2M12 2L15 5M12 2V22M15 19L12 22M12 22L9 19M19 9L22 12M22 12L19 15"
-        stroke="currentColor"
+        d="M3.3335 6.00016L1.3335 8.00016M1.3335 8.00016L3.3335 10.0002M1.3335 8.00016H14.6668M6.00016 3.3335L8.00016 1.3335M8.00016 1.3335L10.0002 3.3335M8.00016 1.3335V14.6668M10.0002 12.6668L8.00016 14.6668M8.00016 14.6668L6.00016 12.6668M12.6668 6.00016L14.6668 8.00016M14.6668 8.00016L12.6668 10.0002"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeWidth="inherit"
       />
     </svg>
   )

@@ -6,19 +6,18 @@ const IconSwitchVertical01 = (props, ref) => {
     <svg
       width="1em"
       height="1em"
-      viewBox="0 0 24 24"
+      viewBox="0 0 16 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      strokeWidth="2"
       ref={ref}
       {...props}
     >
       <path
-        d="M17 4V20M17 20L13 16M17 20L21 16M7 20V4M7 4L3 8M7 4L11 8"
-        stroke="currentColor"
+        d="M11.3333 2.66663V13.3333M11.3333 13.3333L8.66667 10.6666M11.3333 13.3333L14 10.6666M4.66667 13.3333V2.66663M4.66667 2.66663L2 5.33329M4.66667 2.66663L7.33333 5.33329"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeWidth="inherit"
       />
     </svg>
   )

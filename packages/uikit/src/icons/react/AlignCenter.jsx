@@ -6,19 +6,18 @@ const IconAlignCenter = (props, ref) => {
     <svg
       width="1em"
       height="1em"
-      viewBox="0 0 24 24"
+      viewBox="0 0 16 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      strokeWidth="2"
       ref={ref}
       {...props}
     >
       <path
-        d="M18 10H6M21 6H3M21 14H3M18 18H6"
-        stroke="currentColor"
+        d="M12 6.66667H4M14 4H2M14 9.33333H2M12 12H4"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeWidth="inherit"
       />
     </svg>
   )

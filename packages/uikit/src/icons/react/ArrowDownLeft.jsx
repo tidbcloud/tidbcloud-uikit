@@ -6,19 +6,18 @@ const IconArrowDownLeft = (props, ref) => {
     <svg
       width="1em"
       height="1em"
-      viewBox="0 0 24 24"
+      viewBox="0 0 16 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      strokeWidth="2"
       ref={ref}
       {...props}
     >
       <path
-        d="M17 7L7 17M7 17H17M7 17V7"
-        stroke="currentColor"
+        d="M11.3332 4.66663L4.6665 11.3333M4.6665 11.3333H11.3332M4.6665 11.3333V4.66663"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeWidth="inherit"
       />
     </svg>
   )

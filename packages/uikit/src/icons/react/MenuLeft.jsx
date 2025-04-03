@@ -6,19 +6,18 @@ const IconMenuLeft = (props, ref) => {
     <svg
       width="1em"
       height="1em"
-      viewBox="0 0 24 24"
+      viewBox="0 0 16 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      strokeWidth="2"
       ref={ref}
       {...props}
     >
       <path
-        d="M9 12H21M9 5H21M9 19H21M6 9L3 12L6 15"
-        stroke="currentColor"
+        d="M6 7.99998H14M6 3.33331H14M6 12.6666H14M4 5.99998L2 7.99998L4 9.99998"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeWidth="inherit"
       />
     </svg>
   )

@@ -6,19 +6,18 @@ const IconCurrencyEuro = (props, ref) => {
     <svg
       width="1em"
       height="1em"
-      viewBox="0 0 24 24"
+      viewBox="0 0 16 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      strokeWidth="2"
       ref={ref}
       {...props}
     >
       <path
-        d="M19 5.51903C17.5176 4.25973 15.5975 3.5 13.5 3.5C8.80558 3.5 5 7.30558 5 12C5 16.6944 8.80558 20.5 13.5 20.5C15.5975 20.5 17.5176 19.7403 19 18.481M3 14H13M3 10H13"
-        stroke="currentColor"
+        d="M12.6667 3.67952C11.6784 2.83999 10.3983 2.3335 9 2.3335C5.87039 2.3335 3.33333 4.87055 3.33333 8.00016C3.33333 11.1298 5.87039 13.6668 9 13.6668C10.3983 13.6668 11.6784 13.1603 12.6667 12.3208M2 9.3335H8.66667M2 6.66683H8.66667"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeWidth="inherit"
       />
     </svg>
   )

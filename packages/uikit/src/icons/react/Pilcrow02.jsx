@@ -6,19 +6,18 @@ const IconPilcrow02 = (props, ref) => {
     <svg
       width="1em"
       height="1em"
-      viewBox="0 0 24 24"
+      viewBox="0 0 16 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      strokeWidth="2"
       ref={ref}
       {...props}
     >
       <path
-        d="M17.5 4V20M19.5 4H9C6.79086 4 5 5.79086 5 8C5 10.2091 6.79086 12 9 12H14M14 4V20M12 20H19.5"
-        stroke="currentColor"
+        d="M11.6668 2.6665V13.3332M13.0002 2.6665H6.00016C4.5274 2.6665 3.3335 3.86041 3.3335 5.33317C3.3335 6.80593 4.5274 7.99984 6.00016 7.99984H9.3335M9.3335 2.6665V13.3332M8.00016 13.3332H13.0002"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeWidth="inherit"
       />
     </svg>
   )

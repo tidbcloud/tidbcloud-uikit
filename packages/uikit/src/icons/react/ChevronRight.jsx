@@ -6,20 +6,13 @@ const IconChevronRight = (props, ref) => {
     <svg
       width="1em"
       height="1em"
-      viewBox="0 0 24 24"
-      strokeWidth="2"
+      viewBox="0 0 16 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       ref={ref}
       {...props}
     >
-      <path
-        d="M9 18L15 12L9 6"
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="inherit"
-      />
+      <path d="M6 12L10 8L6 4" stroke="#383E40" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   )
 }

@@ -6,19 +6,18 @@ const IconAlignTopArrow01 = (props, ref) => {
     <svg
       width="1em"
       height="1em"
-      viewBox="0 0 24 24"
+      viewBox="0 0 16 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      strokeWidth="2"
       ref={ref}
       {...props}
     >
       <path
-        d="M21 3H3M12 21V7M12 7L5 14M12 7L19 14"
-        stroke="currentColor"
+        d="M14 2H2M8 14V4.66667M8 4.66667L3.33333 9.33333M8 4.66667L12.6667 9.33333"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeWidth="inherit"
       />
     </svg>
   )
