@@ -6,19 +6,18 @@ const IconTarget02 = (props, ref) => {
     <svg
       width="1em"
       height="1em"
-      viewBox="0 0 24 24"
+      viewBox="0 0 16 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      strokeWidth="2"
       ref={ref}
       {...props}
     >
       <path
-        d="M22 12H18M6 12H2M12 6V2M12 22V18M20 12C20 16.4183 16.4183 20 12 20C7.58172 20 4 16.4183 4 12C4 7.58172 7.58172 4 12 4C16.4183 4 20 7.58172 20 12Z"
-        stroke="currentColor"
+        d="M14.6668 8.00004H12.0002M4.00016 8.00004H1.3335M8.00016 4.00004V1.33337M8.00016 14.6667V12M13.3335 8.00004C13.3335 10.9456 10.9457 13.3334 8.00016 13.3334C5.05464 13.3334 2.66683 10.9456 2.66683 8.00004C2.66683 5.05452 5.05464 2.66671 8.00016 2.66671C10.9457 2.66671 13.3335 5.05452 13.3335 8.00004Z"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeWidth="inherit"
       />
     </svg>
   )

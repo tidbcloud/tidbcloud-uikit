@@ -9,16 +9,15 @@ const IconChevronVerticalShrink = (props, ref) => {
       viewBox="0 0 24 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      strokeWidth="2"
       ref={ref}
       {...props}
     >
       <path
         d="M6 3            L12 9            L18 3            M6 21            L12 15            L18 21"
         stroke="currentColor"
+        strokeWidth="inherit"
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeWidth="inherit"
       />
     </svg>
   )

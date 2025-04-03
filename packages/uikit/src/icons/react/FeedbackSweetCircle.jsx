@@ -1,0 +1,54 @@
+import { Box as MantineBox } from '@mantine/core'
+import * as React from 'react'
+import { forwardRef } from 'react'
+const IconFeedbackSweetCircle = (props, ref) => {
+  return (
+    <svg
+      width="1em"
+      height="1em"
+      viewBox="0 0 16 16"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      ref={ref}
+      {...props}
+    >
+      <path
+        d="M7.99967 14.6666C11.6816 14.6666 14.6663 11.6819 14.6663 7.99998C14.6663 4.31808 11.6816 1.33331 7.99967 1.33331C4.31778 1.33331 1.33301 4.31808 1.33301 7.99998C1.33301 11.6819 4.31778 14.6666 7.99967 14.6666Z"
+        stroke="#383E40"
+        strokeWidth={1.5}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M7.99739 6.04525C7.33094 5.26611 6.21959 5.05653 5.38457 5.76998C4.54956 6.48344 4.432 7.67631 5.08774 8.52011C5.50775 9.06058 6.5834 10.0628 7.3025 10.7136C7.54146 10.9298 7.66095 11.0379 7.80407 11.0813C7.92709 11.1186 8.06769 11.1186 8.19072 11.0813C8.33384 11.0379 8.45332 10.9298 8.69229 10.7136C9.41139 10.0628 10.487 9.06058 10.907 8.52011C11.5628 7.67631 11.4596 6.47594 10.6102 5.76998C9.76084 5.06403 8.66384 5.26611 7.99739 6.04525Z"
+        stroke="#383E40"
+        strokeWidth={1.5}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  )
+}
+const ForwardRef = forwardRef(IconFeedbackSweetCircle)
+const FeedbackSweetCircle = forwardRef((props, ref) => {
+  if (typeof props.size === 'number') {
+    const { size, ...rest } = props
+    props = {
+      ...rest,
+      w: size,
+      h: size
+    }
+  }
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'FeedbackSweetCircle', props.className].join(' ')}
+    />
+  )
+})
+FeedbackSweetCircle.displayName = 'IconFeedbackSweetCircle'
+export default FeedbackSweetCircle

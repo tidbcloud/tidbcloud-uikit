@@ -1,0 +1,44 @@
+import { Box as MantineBox } from '@mantine/core'
+import * as React from 'react'
+import { forwardRef } from 'react'
+const IconCurrencyDollarCircle1 = (props, ref) => {
+  return (
+    <svg
+      width="1em"
+      height="1em"
+      viewBox="0 0 16 16"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      ref={ref}
+      {...props}
+    >
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M8.00033 15.3334C12.0504 15.3334 15.3337 12.0502 15.3337 8.00008C15.3337 3.94999 12.0504 0.666748 8.00033 0.666748C3.95024 0.666748 0.666992 3.94999 0.666992 8.00008C0.666992 12.0502 3.95024 15.3334 8.00033 15.3334ZM8.69874 3.4604C8.69874 3.07468 8.38605 2.76199 8.00033 2.76199C7.6146 2.76199 7.30191 3.07468 7.30191 3.4604V3.8096C5.95189 3.8096 4.85747 4.904 4.85747 6.25402C4.85747 7.60405 5.95189 8.69845 7.30191 8.69845H8.69874C9.27733 8.69845 9.74636 9.16749 9.74636 9.74606C9.74636 10.3246 9.27733 10.7937 8.69874 10.7937H7.18551C6.67121 10.7937 6.25429 10.3767 6.25429 9.86246C6.25429 9.47674 5.9416 9.16405 5.55588 9.16405C5.17016 9.16405 4.85747 9.47674 4.85747 9.86246C4.85747 11.1482 5.89977 12.1905 7.18551 12.1905H7.30191V12.5397C7.30191 12.9254 7.6146 13.2381 8.00033 13.2381C8.38605 13.2381 8.69874 12.9254 8.69874 12.5397V12.1905C10.0488 12.1905 11.1432 11.0961 11.1432 9.74606C11.1432 8.39603 10.0488 7.30163 8.69874 7.30163H7.30191C6.72332 7.30163 6.25429 6.83259 6.25429 6.25402C6.25429 5.67546 6.72332 5.20642 7.30191 5.20642H8.81514C9.32944 5.20642 9.74636 5.62334 9.74636 6.13762C9.74636 6.52335 10.059 6.83604 10.4448 6.83604C10.8305 6.83604 11.1432 6.52335 11.1432 6.13762C11.1432 4.85188 10.1009 3.8096 8.81514 3.8096H8.69874V3.4604Z"
+        fill="#383E40"
+      />
+    </svg>
+  )
+}
+const ForwardRef = forwardRef(IconCurrencyDollarCircle1)
+const CurrencyDollarCircle1 = forwardRef((props, ref) => {
+  if (typeof props.size === 'number') {
+    const { size, ...rest } = props
+    props = {
+      ...rest,
+      w: size,
+      h: size
+    }
+  }
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'CurrencyDollarCircle1', props.className].join(' ')}
+    />
+  )
+})
+CurrencyDollarCircle1.displayName = 'IconCurrencyDollarCircle1'
+export default CurrencyDollarCircle1

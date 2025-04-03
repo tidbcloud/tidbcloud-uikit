@@ -6,19 +6,18 @@ const IconPlus = (props, ref) => {
     <svg
       width="1em"
       height="1em"
-      viewBox="0 0 24 24"
+      viewBox="0 0 16 16"
       fill="none"
-      strokeWidth="2"
       xmlns="http://www.w3.org/2000/svg"
       ref={ref}
       {...props}
     >
       <path
-        d="M12 5V19M5 12H19"
-        stroke="currentColor"
+        d="M8.00016 3.33337V12.6667M3.3335 8.00004H12.6668"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeWidth="inherit"
       />
     </svg>
   )

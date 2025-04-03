@@ -6,19 +6,18 @@ const IconSliders01 = (props, ref) => {
     <svg
       width="1em"
       height="1em"
-      viewBox="0 0 24 24"
+      viewBox="0 0 16 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      strokeWidth="2"
       ref={ref}
       {...props}
     >
       <path
-        d="M5 21V14M5 10V3M12 21V12M12 8V3M19 21V16M19 12V3M2 14H8M9 8H15M16 16H22"
-        stroke="currentColor"
+        d="M3.3335 14V9.33333M3.3335 6.66667V2M8.00016 14V8M8.00016 5.33333V2M12.6668 14V10.6667M12.6668 8V2M1.3335 9.33333H5.3335M6.00016 5.33333H10.0002M10.6668 10.6667H14.6668"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeWidth="inherit"
       />
     </svg>
   )

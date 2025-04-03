@@ -6,33 +6,32 @@ const IconDotsHorizontal = (props, ref) => {
     <svg
       width="1em"
       height="1em"
-      viewBox="0 0 24 24"
+      viewBox="0 0 16 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      strokeWidth="2"
       ref={ref}
       {...props}
     >
       <path
-        d="M12 13C12.5523 13 13 12.5523 13 12C13 11.4477 12.5523 11 12 11C11.4477 11 11 11.4477 11 12C11 12.5523 11.4477 13 12 13Z"
-        stroke="currentColor"
+        d="M7.99984 8.66659C8.36803 8.66659 8.6665 8.36811 8.6665 7.99992C8.6665 7.63173 8.36803 7.33325 7.99984 7.33325C7.63165 7.33325 7.33317 7.63173 7.33317 7.99992C7.33317 8.36811 7.63165 8.66659 7.99984 8.66659Z"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeWidth="inherit"
       />
       <path
-        d="M19 13C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11C18.4477 11 18 11.4477 18 12C18 12.5523 18.4477 13 19 13Z"
-        stroke="currentColor"
+        d="M12.6665 8.66659C13.0347 8.66659 13.3332 8.36811 13.3332 7.99992C13.3332 7.63173 13.0347 7.33325 12.6665 7.33325C12.2983 7.33325 11.9998 7.63173 11.9998 7.99992C11.9998 8.36811 12.2983 8.66659 12.6665 8.66659Z"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeWidth="inherit"
       />
       <path
-        d="M5 13C5.55228 13 6 12.5523 6 12C6 11.4477 5.55228 11 5 11C4.44772 11 4 11.4477 4 12C4 12.5523 4.44772 13 5 13Z"
-        stroke="currentColor"
+        d="M3.33317 8.66659C3.70136 8.66659 3.99984 8.36811 3.99984 7.99992C3.99984 7.63173 3.70136 7.33325 3.33317 7.33325C2.96498 7.33325 2.6665 7.63173 2.6665 7.99992C2.6665 8.36811 2.96498 8.66659 3.33317 8.66659Z"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeWidth="inherit"
       />
     </svg>
   )

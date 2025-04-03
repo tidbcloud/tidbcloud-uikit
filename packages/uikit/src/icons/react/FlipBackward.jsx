@@ -6,19 +6,18 @@ const IconFlipBackward = (props, ref) => {
     <svg
       width="1em"
       height="1em"
-      viewBox="0 0 24 24"
+      viewBox="0 0 16 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      strokeWidth="2"
       ref={ref}
       {...props}
     >
       <path
-        d="M3 9H16.5C18.9853 9 21 11.0147 21 13.5C21 15.9853 18.9853 18 16.5 18H12M3 9L7 5M3 9L7 13"
-        stroke="currentColor"
+        d="M2 5.99998H11C12.6569 5.99998 14 7.34313 14 8.99998C14 10.6568 12.6569 12 11 12H8M2 5.99998L4.66667 3.33331M2 5.99998L4.66667 8.66665"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeWidth="inherit"
       />
     </svg>
   )
