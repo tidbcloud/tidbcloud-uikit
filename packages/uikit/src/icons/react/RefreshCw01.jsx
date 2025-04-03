@@ -6,19 +6,18 @@ const IconRefreshCw01 = (props, ref) => {
     <svg
       width="1em"
       height="1em"
-      viewBox="0 0 24 24"
+      viewBox="0 0 16 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      strokeWidth="2"
       ref={ref}
       {...props}
     >
       <path
-        d="M21 10C21 10 18.995 7.26822 17.3662 5.63824C15.7373 4.00827 13.4864 3 11 3C6.02944 3 2 7.02944 2 12C2 16.9706 6.02944 21 11 21C15.1031 21 18.5649 18.2543 19.6482 14.5M21 10V4M21 10H15"
-        stroke="currentColor"
+        d="M14.0002 6.66667C14.0002 6.66667 12.6635 4.84548 11.5776 3.75883C10.4917 2.67218 8.9911 2 7.3335 2C4.01979 2 1.3335 4.68629 1.3335 8C1.3335 11.3137 4.01979 14 7.3335 14C10.0689 14 12.3768 12.1695 13.099 9.66667M14.0002 6.66667V2.66667M14.0002 6.66667H10.0002"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeWidth="inherit"
       />
     </svg>
   )

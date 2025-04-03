@@ -6,19 +6,18 @@ const IconMouse = (props, ref) => {
     <svg
       width="1em"
       height="1em"
-      viewBox="0 0 24 24"
+      viewBox="0 0 16 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      strokeWidth="2"
       ref={ref}
       {...props}
     >
       <path
-        d="M12 9V6M12 22C8.13401 22 5 18.866 5 15V9C5 5.13401 8.13401 2 12 2C15.866 2 19 5.13401 19 9V15C19 18.866 15.866 22 12 22Z"
-        stroke="currentColor"
+        d="M8.00016 5.99992V3.99992M8.00016 14.6666C5.42283 14.6666 3.3335 12.5772 3.3335 9.99992V5.99992C3.3335 3.42259 5.42283 1.33325 8.00016 1.33325C10.5775 1.33325 12.6668 3.42259 12.6668 5.99992V9.99992C12.6668 12.5772 10.5775 14.6666 8.00016 14.6666Z"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeWidth="inherit"
       />
     </svg>
   )

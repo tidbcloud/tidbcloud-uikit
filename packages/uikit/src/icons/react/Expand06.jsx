@@ -6,19 +6,18 @@ const IconExpand06 = (props, ref) => {
     <svg
       width="1em"
       height="1em"
-      viewBox="0 0 24 24"
+      viewBox="0 0 16 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      strokeWidth="2"
       ref={ref}
       {...props}
     >
       <path
-        d="M16 8L21 3M21 3H16M21 3V8M8 8L3 3M3 3L3 8M3 3L8 3M8 16L3 21M3 21H8M3 21L3 16M16 16L21 21M21 21V16M21 21H16"
-        stroke="currentColor"
+        d="M10.6667 5.33333L14 2M14 2H10.6667M14 2V5.33333M5.33333 5.33333L2 2M2 2L2 5.33333M2 2L5.33333 2M5.33333 10.6667L2 14M2 14H5.33333M2 14L2 10.6667M10.6667 10.6667L14 14M14 14V10.6667M14 14H10.6667"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeWidth="inherit"
       />
     </svg>
   )

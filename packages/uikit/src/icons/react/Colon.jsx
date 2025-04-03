@@ -1,0 +1,52 @@
+import { Box as MantineBox } from '@mantine/core'
+import * as React from 'react'
+import { forwardRef } from 'react'
+const IconColon = (props, ref) => {
+  return (
+    <svg
+      width="1em"
+      height="1em"
+      viewBox="0 0 16 16"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      ref={ref}
+      {...props}
+    >
+      <path
+        d="M8.00021 5.70382C8.3684 5.70382 8.66688 5.40534 8.66688 5.03715C8.66688 4.66896 8.3684 4.37048 8.00021 4.37048C7.63202 4.37048 7.33354 4.66896 7.33354 5.03715C7.33354 5.40534 7.63202 5.70382 8.00021 5.70382Z"
+        stroke="#383E40"
+        strokeWidth={1.5}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M7.99967 11.6295C8.36786 11.6295 8.66634 11.3311 8.66634 10.9629C8.66634 10.5947 8.36786 10.2962 7.99967 10.2962C7.63148 10.2962 7.33301 10.5947 7.33301 10.9629C7.33301 11.3311 7.63148 11.6295 7.99967 11.6295Z"
+        stroke="#383E40"
+        strokeWidth={1.5}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  )
+}
+const ForwardRef = forwardRef(IconColon)
+const Colon = forwardRef((props, ref) => {
+  if (typeof props.size === 'number') {
+    const { size, ...rest } = props
+    props = {
+      ...rest,
+      w: size,
+      h: size
+    }
+  }
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'Colon', props.className].join(' ')}
+    />
+  )
+})
+Colon.displayName = 'IconColon'
+export default Colon

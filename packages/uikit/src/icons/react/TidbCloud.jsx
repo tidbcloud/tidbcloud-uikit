@@ -1,0 +1,42 @@
+import { Box as MantineBox } from '@mantine/core'
+import * as React from 'react'
+import { forwardRef } from 'react'
+const IconTidbCloud = (props, ref) => {
+  return (
+    <svg
+      width="1em"
+      height="1em"
+      viewBox="0 0 16 16"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      ref={ref}
+      {...props}
+    >
+      <path
+        d="M12.6195 5.3185C12.0739 4.37673 11.2488 3.62453 10.2564 3.16436C9.264 2.70419 8.15261 2.55843 7.07362 2.74692C5.99463 2.93542 5.0005 3.44901 4.22663 4.21774C3.45275 4.98647 2.93676 5.97296 2.74895 7.04285C1.89921 7.23911 1.15193 7.73818 0.64931 8.44508C0.146691 9.15198 -0.0761801 10.0174 0.0231076 10.8766C0.122395 11.7358 0.536912 12.5288 1.18778 13.1047C1.83864 13.6807 2.68042 13.9993 3.55292 14.0001C3.67325 14 3.7935 13.9939 3.91321 13.9819H11.1961C11.3151 13.9912 11.4347 14.0001 11.5564 14.0001C12.6422 14 13.6904 13.6059 14.5031 12.8921C15.3158 12.1784 15.8368 11.1944 15.9676 10.126C16.0984 9.05761 15.8301 7.97869 15.2132 7.09298C14.5964 6.20726 13.6737 5.57604 12.6195 5.3185ZM7.99312 6.99719V11.7428L6.61682 10.9563V7.78529L5.24007 8.5735V6.99817L7.99312 5.42251L9.36933 6.20963L7.99312 6.99719ZM10.7592 10.1647L9.37721 10.9553V7.79353L10.7592 7.00185V10.1647Z"
+        fill="#383E40"
+      />
+    </svg>
+  )
+}
+const ForwardRef = forwardRef(IconTidbCloud)
+const TidbCloud = forwardRef((props, ref) => {
+  if (typeof props.size === 'number') {
+    const { size, ...rest } = props
+    props = {
+      ...rest,
+      w: size,
+      h: size
+    }
+  }
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'TidbCloud', props.className].join(' ')}
+    />
+  )
+})
+TidbCloud.displayName = 'IconTidbCloud'
+export default TidbCloud

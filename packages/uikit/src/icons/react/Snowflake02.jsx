@@ -6,19 +6,18 @@ const IconSnowflake02 = (props, ref) => {
     <svg
       width="1em"
       height="1em"
-      viewBox="0 0 24 24"
+      viewBox="0 0 16 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      strokeWidth="2"
       ref={ref}
       {...props}
     >
       <path
-        d="M12 8V16M12 8V2M12 8L7 3M12 8L17 3M12 16V22M12 16L7 21M12 16L17 21M16 12H8M16 12H22M16 12L21 7M16 12L21 17M8 12H2M8 12L3 7M8 12L3 17"
-        stroke="currentColor"
+        d="M8.00016 5.3335V10.6668M8.00016 5.3335V1.3335M8.00016 5.3335L4.66683 2.00016M8.00016 5.3335L11.3335 2.00016M8.00016 10.6668V14.6668M8.00016 10.6668L4.66683 14.0002M8.00016 10.6668L11.3335 14.0002M10.6668 8.00016H5.3335M10.6668 8.00016H14.6668M10.6668 8.00016L14.0002 4.66683M10.6668 8.00016L14.0002 11.3335M5.3335 8.00016H1.3335M5.3335 8.00016L2.00016 4.66683M5.3335 8.00016L2.00016 11.3335"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeWidth="inherit"
       />
     </svg>
   )

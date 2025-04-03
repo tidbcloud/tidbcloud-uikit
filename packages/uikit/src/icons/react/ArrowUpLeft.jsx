@@ -6,19 +6,18 @@ const IconArrowUpLeft = (props, ref) => {
     <svg
       width="1em"
       height="1em"
-      viewBox="0 0 24 24"
+      viewBox="0 0 16 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      strokeWidth="2"
       ref={ref}
       {...props}
     >
       <path
-        d="M17 17L7 7M7 7V17M7 7H17"
-        stroke="currentColor"
+        d="M11.3332 11.3333L4.6665 4.66663M4.6665 4.66663V11.3333M4.6665 4.66663H11.3332"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeWidth="inherit"
       />
     </svg>
   )
