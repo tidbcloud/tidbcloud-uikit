@@ -44,7 +44,7 @@ const PageHeader = ({ sticky, leftSection, rightSection, children, ...restProps 
     >
       <Group wrap="nowrap">
         {leftSection}
-        <Typography variant="title-lg" sx={{ flex: 1 }}>
+        <Typography variant="title-lg" component="div" sx={{ flex: 1 }}>
           {children}
         </Typography>
       </Group>
