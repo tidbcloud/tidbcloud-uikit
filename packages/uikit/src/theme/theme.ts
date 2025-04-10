@@ -472,7 +472,8 @@ const theme = createTheme({
     },
     NavLink: {
       defaultProps: {
-        px: 10,
+        px: 8,
+        py: 4,
         lh: 1.5,
         fw: 500,
         variant: 'light',
@@ -490,7 +491,7 @@ const theme = createTheme({
             color: withThemeColor(8),
             '&:hover': {
               color: withThemeColor(8),
-              backgroundColor: withThemeColor(2)
+              backgroundColor: withThemeColor(3)
             },
             '&:active': {
               color: withThemeColor(8),
@@ -520,6 +521,27 @@ const theme = createTheme({
           },
           label: {
             lineHeight: '24px'
+          },
+          section: {
+            '&:where([data-position="left"])': {
+              marginInlineEnd: 8
+            },
+            '&:where([data-position="right"])': {
+              marginInlineStart: 8
+            }
+          },
+          collapse: {
+            position: 'relative',
+            '&::before': {
+              content: '""',
+              display: 'block',
+              position: 'absolute',
+              left: 16,
+              top: 0,
+              width: 1,
+              height: '100%',
+              backgroundColor: withThemeColor(4)
+            }
           }
         }
       }
