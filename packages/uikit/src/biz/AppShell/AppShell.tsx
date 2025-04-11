@@ -65,12 +65,12 @@ export const AppShell = ({ banner, navbar, children }: React.PropsWithChildren<A
       <AppShellMain
         mod={withBanner ? ['height-flex'] : undefined}
         style={{
-          '--app-shell-navbar-width': navbar.width ? `${navbar.width}px` : `${DEFAULT_NAVBAR_WIDTH}px`
+          '--app-shell-navbar-width': `${navbar.width ?? DEFAULT_NAVBAR_WIDTH}px`
         }}
       >
         <Navbar withBorder>
-          <NavbarSection px="md" py={8}>
-            <NavbarHeader logo={navbar.logo} onLogoClick={navbar.onLogoClick} />
+          <NavbarSection>
+            <NavbarHeader logo={navbar.logo} onLogoClick={navbar.onLogoClick} px="md" py={8} />
           </NavbarSection>
           <NavbarSection>
             <Box px="md">{navbar.resourceShortcut}</Box>
