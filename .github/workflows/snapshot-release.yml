@@ -1,0 +1,71 @@
+name: Manual Snapshot Release
+
+on:
+  workflow_dispatch: # Allows manual triggering
+
+jobs:
+  snapshot_release:
+    runs-on: ubuntu-latest
+    # Prevent concurrent snapshot releases
+    concurrency: ${{ github.workflow }}-${{ github.ref }}
+
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+        # Fetch all history for all branches and tags
+        with:
+          fetch-depth: 0
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20' # Or your preferred Node version
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install # Using -r is often implicit with pnpm workspaces
+
+      - name: Type Check UIKit
+        run: pnpm --filter @tidbcloud/uikit type-check
+
+      - name: Build Packages
+        run: pnpm build # Using -r is often implicit
+
+      - name: Configure Git User
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Create Snapshot Changeset File
+        run: |
+          mkdir -p .changeset
+          echo "---" > .changeset/snapshot-${{ github.run_id }}.md
+          echo "'@tidbcloud/uikit': patch" >> .changeset/snapshot-${{ github.run_id }}.md # Adjust package name if needed
+          echo "---" >> .changeset/snapshot-${{ github.run_id }}.md
+          echo "" >> .changeset/snapshot-${{ github.run_id }}.md
+          echo "chore: snapshot release" >> .changeset/snapshot-${{ github.run_id }}.md
+        # This creates a simple patch changeset for the specified package.
+        # Adjust the package name and bump type (patch/minor/major) if necessary.
+        # If you have multiple packages, list them accordingly.
+
+      - name: Bump Version, Commit, and Tag for Snapshot
+        run: pnpm exec changeset version --snapshot
+        env:
+          # GITHUB_TOKEN is automatically available
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Publish Snapshot to npm under experimental tag
+        run: pnpm exec changeset publish --tag experimental
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.PUBLISH_NPM_REGISTRY_TOKEN }} # Ensure this secret is configured in your repo settings
+
+
+      # Optional: Push the version bump commit if changeset didn't already
+      # Changeset version should handle the commit, and publish the tag.
+      # If the tag isn't pushed by publish, you might need an explicit push.
+      # - name: Push Version Commit and Tag
+      #   run: git push --follow-tags origin ${{ github.ref_name }} # Push commit and associated tag
