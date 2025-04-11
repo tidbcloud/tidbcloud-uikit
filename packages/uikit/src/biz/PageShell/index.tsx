@@ -28,7 +28,7 @@ const PageHeader = ({ sticky, leftSection, rightSection, children, ...restProps 
         {
           paddingLeft: 24,
           paddingRight: 24,
-          height: 56
+          height: 64
         },
         sticky
           ? (theme) => ({
@@ -44,7 +44,7 @@ const PageHeader = ({ sticky, leftSection, rightSection, children, ...restProps 
     >
       <Group wrap="nowrap">
         {leftSection}
-        <Typography variant="title-lg" component="div" sx={{ flex: 1 }}>
+        <Typography variant="headline-lg" component="div" fw={300} sx={{ flex: 1 }}>
           {children}
         </Typography>
       </Group>
