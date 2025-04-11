@@ -1,12 +1,12 @@
 import { IconLayoutLeft } from '../../../icons/index.js'
-import { Group, ActionIcon, Box } from '../../../primitive/index.js'
+import { Group, ActionIcon, Box, GroupProps } from '../../../primitive/index.js'
 
-interface NavbarHeaderProps {
+interface NavbarHeaderProps extends GroupProps {
   logo: React.ReactNode
   onLogoClick?: () => void
 }
 
-export const NavbarHeader = ({ logo, onLogoClick }: NavbarHeaderProps) => {
+export const NavbarHeader = ({ logo, onLogoClick, ...restProps }: NavbarHeaderProps) => {
   const handleLogoClick = () => {
     if (onLogoClick) {
       onLogoClick()
@@ -16,7 +16,7 @@ export const NavbarHeader = ({ logo, onLogoClick }: NavbarHeaderProps) => {
   }
 
   return (
-    <Group justify="space-between" sx={{ height: 40 }}>
+    <Group justify="space-between" sx={{ height: 64 }} {...restProps}>
       <Box
         onClick={handleLogoClick}
         sx={{
