@@ -2,7 +2,7 @@ import { isFunction } from 'lodash-es'
 import { type MRT_TableOptions, type MRT_RowData, useMantineReactTable, MRT_TableInstance } from 'mantine-react-table'
 
 import { IconSwitchVertical02, IconArrowUp, IconArrowDown } from '../../../icons/index.js'
-import { type BoxProps, useMantineTheme } from '../../../primitive/index.js'
+import { type BoxProps, useComputedColorScheme, useMantineTheme } from '../../../primitive/index.js'
 import { mergeSxList } from '../../../utils/index.js'
 
 import { ProTableExtraProps, ProTableOptions } from './types.js'
@@ -67,6 +67,9 @@ export function mergeProTableProps<T extends Record<string, any>>(props: ProTabl
   } = props
 
   const theme = useMantineTheme()
+  const colorScheme = useComputedColorScheme()
+  const isDark = colorScheme === 'dark'
+
   const mPaperProps = mergeMProps<NonNullable<MRT_TableOptions<T>['mantinePaperProps']>>(
     {
       shadow: 'none',
@@ -162,6 +165,36 @@ export function mergeProTableProps<T extends Record<string, any>>(props: ProTabl
         },
         '.mrt-table-head-cell-resize-handle': {
           marginRight: -7
+        },
+        '&[data-column-pinned]': {
+          '&::before': {
+            pointerEvents: 'none',
+            content: '""',
+            height: '100%',
+            position: 'absolute',
+            top: 0,
+            width: 6,
+            zIndex: -2
+          },
+
+          "&[data-column-pinned='left']": {
+            '&[data-last-left-pinned]': {
+              boxShadow: 'none !important',
+              '&::before': {
+                left: '100%',
+                boxShadow: `6px 0px 6px -6px  ${boxShadowColor} inset`
+              }
+            }
+          },
+          "&[data-column-pinned='right']": {
+            '&[data-first-right-pinned]': {
+              boxShadow: 'none !important',
+              '&::before': {
+                right: '100%',
+                boxShadow: `-6px 0px 6px -6px  ${boxShadowColor} inset`
+              }
+            }
+          }
         }
       }
     }
@@ -172,6 +205,10 @@ export function mergeProTableProps<T extends Record<string, any>>(props: ProTabl
       h: 48
     }
   }, mantineTableBodyCellProps)
+
+  // see https://github.com/KevinVandy/mantine-react-table/blob/33cda81122d62fd8064af9d51ccf7f7b7250c4bc/packages/mantine-react-table/src/components/body/MRT_TableBodyRow.module.css#L53-L99
+
+  const boxShadowColor = `color-mix(in srgb, var(${isDark ? '--mantine-color-dark-outline' : '--mantine-color-gray-outline'}), transparent 50%)`
 
   const mTableBodyRowProps = mergeMProps<NonNullable<MRT_TableOptions<T>['mantineTableBodyRowProps']>>(() => {
     return {
@@ -187,6 +224,40 @@ export function mergeProTableProps<T extends Record<string, any>>(props: ProTabl
         },
         '&:not([data-selected], [data-row-pinned]) td[data-column-pinned]::before': {
           backgroundColor: 'transparent'
+        },
+        '&[data-hover]': {
+          '&:hover': {
+            'td[data-column-pinned]': {
+              backgroundColor: 'var(--mrt-row-hover-background-color)'
+            }
+          }
+        },
+        td: {
+          '&[data-column-pinned]': {
+            "&[data-column-pinned='left']": {
+              '&[data-last-left-pinned]': {
+                overflow: 'visible',
+                '&::before': {
+                  pointerEvents: 'none',
+                  left: '100%',
+                  width: 6,
+                  boxShadow: `6px 0px 6px -6px  ${boxShadowColor} inset !important`
+                }
+              }
+            },
+            "&[data-column-pinned='right']": {
+              '&[data-first-right-pinned]': {
+                overflow: 'visible',
+                '&::before': {
+                  pointerEvents: 'none',
+                  width: 6,
+                  left: 'unset',
+                  right: '100%',
+                  boxShadow: `-6px 0px 6px -6px  ${boxShadowColor} inset !important`
+                }
+              }
+            }
+          }
         }
       }
     }
@@ -224,7 +295,40 @@ export function mergeProTableProps<T extends Record<string, any>>(props: ProTabl
 
   const mTableFooterCellProps = mergeMProps<NonNullable<MRT_TableOptions<T>['mantineTableFooterCellProps']>>(
     {
-      p: 8
+      p: 8,
+      sx: {
+        '&[data-column-pinned]': {
+          '&::before': {
+            pointerEvents: 'none',
+            content: '""',
+            height: '100%',
+            position: 'absolute',
+            top: 0,
+            width: 6
+          },
+
+          "&[data-column-pinned='left']": {
+            '&[data-last-left-pinned]': {
+              boxShadow: 'none',
+              zIndex: 2,
+              '&::before': {
+                top: 0,
+                left: '100%',
+                boxShadow: `6px 0px 6px -6px  ${boxShadowColor} inset`
+              }
+            }
+          },
+          "&[data-column-pinned='right']": {
+            '&[data-first-right-pinned]': {
+              boxShadow: 'none',
+              '&::before': {
+                right: '100%',
+                boxShadow: `-6px 0px 6px -6px  ${boxShadowColor} inset`
+              }
+            }
+          }
+        }
+      }
     },
     mantineTableFooterCellProps
   )
