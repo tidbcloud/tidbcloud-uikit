@@ -41,9 +41,8 @@ jobs:
 
       - name: Create Snapshot Changeset File
         run: |
-          mkdir -p .changeset
           echo "---" > .changeset/snapshot-${{ github.run_id }}.md
-          echo "'@tidbcloud/uikit': patch" >> .changeset/snapshot-${{ github.run_id }}.md # Adjust package name if needed
+          echo "'@tidbcloud/uikit': patch" >> .changeset/snapshot-${{ github.run_id }}.md
           echo "---" >> .changeset/snapshot-${{ github.run_id }}.md
           echo "" >> .changeset/snapshot-${{ github.run_id }}.md
           echo "chore: snapshot release" >> .changeset/snapshot-${{ github.run_id }}.md
