@@ -4,21 +4,20 @@ import { forwardRef } from 'react'
 const IconFileShield03 = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth="1.5"
+      xmlns="http://www.w3.org/2000/svg"
       ref={ref}
       {...props}
     >
       <path
-        stroke="currentColor"
+        d="M9.33317 1.3335H5.8665C4.7464 1.3335 4.18635 1.3335 3.75852 1.55148C3.3822 1.74323 3.07624 2.04919 2.88449 2.42552C2.6665 2.85334 2.6665 3.41339 2.6665 4.5335V11.4668C2.6665 12.5869 2.6665 13.147 2.88449 13.5748C3.07624 13.9511 3.3822 14.2571 3.75852 14.4488C4.18635 14.6668 4.7464 14.6668 5.8665 14.6668H10.1332C11.2533 14.6668 11.8133 14.6668 12.2412 14.4488C12.6175 14.2571 12.9234 13.9511 13.1152 13.5748C13.3332 13.147 13.3332 12.5869 13.3332 11.4668V5.3335M9.33317 1.3335L13.3332 5.3335M9.33317 1.3335V5.3335H13.3332M7.99984 12.0002C7.99984 12.0002 9.99984 11.0469 9.99984 9.61698V7.94875L8.54144 7.42763C8.19104 7.30212 7.80784 7.30212 7.45744 7.42763L5.99984 7.94875V9.61698C5.99984 11.0469 7.99984 12.0002 7.99984 12.0002Z"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M14 2H8.8c-1.68 0-2.52 0-3.162.327a3 3 0 0 0-1.311 1.311C4 4.28 4 5.12 4 6.8v10.4c0 1.68 0 2.52.327 3.162a3 3 0 0 0 1.311 1.311C6.28 22 7.12 22 8.8 22h6.4c1.68 0 2.52 0 3.162-.327a3 3 0 0 0 1.311-1.311C20 19.72 20 18.88 20 17.2V8m-6-6 6 6m-6-6v6h6m-8 10s3-1.43 3-3.575v-2.502l-2.188-.782a2.4 2.4 0 0 0-1.626 0L9 11.923v2.502C9 16.57 12 18 12 18"
-        strokeWidth="inherit"
       />
     </svg>
   )
@@ -33,7 +32,14 @@ const FileShield03 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'FileShield03', props.className].join(' ')}
+    />
+  )
 })
 FileShield03.displayName = 'IconFileShield03'
 export default FileShield03

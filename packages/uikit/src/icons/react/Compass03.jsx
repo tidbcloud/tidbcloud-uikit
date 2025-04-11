@@ -4,28 +4,27 @@ import { forwardRef } from 'react'
 const IconCompass03 = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth="1.5"
+      xmlns="http://www.w3.org/2000/svg"
       ref={ref}
       {...props}
     >
       <path
-        stroke="currentColor"
+        d="M8.00016 14.6668C11.6821 14.6668 14.6668 11.6821 14.6668 8.00016C14.6668 4.31826 11.6821 1.3335 8.00016 1.3335C4.31826 1.3335 1.3335 4.31826 1.3335 8.00016C1.3335 11.6821 4.31826 14.6668 8.00016 14.6668Z"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10"
-        strokeWidth="inherit"
       />
       <path
-        stroke="currentColor"
+        d="M9.8149 5.51081C10.1406 5.40224 10.3034 5.34796 10.4117 5.38657C10.506 5.42018 10.5801 5.49434 10.6138 5.58858C10.6524 5.69688 10.5981 5.85973 10.4895 6.18543L9.49782 9.16051C9.4669 9.25327 9.45144 9.29965 9.4251 9.33817C9.40176 9.37228 9.37228 9.40176 9.33817 9.4251C9.29965 9.45144 9.25327 9.4669 9.16051 9.49782L6.18543 10.4895C5.85973 10.5981 5.69688 10.6524 5.58858 10.6138C5.49434 10.5801 5.42018 10.506 5.38657 10.4117C5.34796 10.3034 5.40224 10.1406 5.51081 9.8149L6.5025 6.83981C6.53342 6.74705 6.54888 6.70067 6.57523 6.66216C6.59857 6.62804 6.62804 6.59857 6.66216 6.57523C6.70067 6.54888 6.74705 6.53342 6.83981 6.5025L9.8149 5.51081Z"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M14.722 8.266c.489-.163.733-.244.895-.186a.5.5 0 0 1 .303.303c.058.162-.023.406-.186.895l-1.488 4.463c-.046.139-.07.208-.109.266a.5.5 0 0 1-.13.13c-.058.04-.127.063-.266.11l-4.463 1.487c-.489.163-.733.244-.895.186a.5.5 0 0 1-.303-.303c-.058-.162.023-.406.186-.895l1.488-4.462c.046-.14.07-.21.109-.267a.5.5 0 0 1 .13-.13c.058-.04.127-.063.266-.11z"
-        strokeWidth="inherit"
       />
     </svg>
   )
@@ -40,7 +39,14 @@ const Compass03 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'Compass03', props.className].join(' ')}
+    />
+  )
 })
 Compass03.displayName = 'IconCompass03'
 export default Compass03

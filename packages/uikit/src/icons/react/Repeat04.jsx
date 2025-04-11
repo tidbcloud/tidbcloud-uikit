@@ -4,21 +4,20 @@ import { forwardRef } from 'react'
 const IconRepeat04 = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      strokeWidth="1.5"
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       ref={ref}
       {...props}
     >
       <path
-        stroke="currentColor"
+        d="M8.00016 13.6666C11.1298 13.6666 13.6668 11.1296 13.6668 7.99998C13.6668 6.11629 12.7477 4.44727 11.3335 3.41692M8.66683 14.9333L7.3335 13.6L8.66683 12.2666M8.00016 2.33332C4.87055 2.33332 2.3335 4.87037 2.3335 7.99998C2.3335 9.88367 3.25261 11.5527 4.66683 12.5831M7.3335 3.73332L8.66683 2.39998L7.3335 1.06665"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M12 20.5a8.5 8.5 0 0 0 5-15.375M13 22.4l-2-2 2-2M12 3.5a8.5 8.5 0 0 0-5 15.375M11 5.6l2-2-2-2"
-        strokeWidth="inherit"
       />
     </svg>
   )
@@ -33,7 +32,14 @@ const Repeat04 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'Repeat04', props.className].join(' ')}
+    />
+  )
 })
 Repeat04.displayName = 'IconRepeat04'
 export default Repeat04

@@ -4,21 +4,20 @@ import { forwardRef } from 'react'
 const IconGlobe06 = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth="1.5"
+      xmlns="http://www.w3.org/2000/svg"
       ref={ref}
       {...props}
     >
       <path
-        stroke="currentColor"
+        d="M1.79133 10.4302L3.06346 9.69586C3.13237 9.65608 3.21323 9.64226 3.29143 9.6569L5.79443 10.1253C6.00013 10.1638 6.19001 10.0055 6.18908 9.79622L6.17934 7.60313C6.17907 7.54354 6.19478 7.48498 6.22484 7.43353L7.48799 5.27097C7.55373 5.15842 7.54784 5.01788 7.47291 4.91123L5.34611 1.88395M12.667 3.23953C9.0003 5.00019 11.0002 7.33352 11.667 7.66686C12.9184 8.29244 14.6586 8.33349 14.6586 8.33349C14.664 8.22306 14.6668 8.11194 14.6668 8.00016C14.6668 4.31826 11.6821 1.3335 8.00016 1.3335C4.31826 1.3335 1.3335 4.31826 1.3335 8.00016C1.3335 11.6821 4.31826 14.6668 8.00016 14.6668C8.11194 14.6668 8.22307 14.6641 8.3335 14.6586M11.172 14.6267L9.06083 9.06083L14.6267 11.172L12.1586 12.1586L11.172 14.6267Z"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="m2.687 15.645 1.908-1.101a.5.5 0 0 1 .342-.059l3.754.703a.5.5 0 0 0 .592-.494l-.014-3.29a.5.5 0 0 1 .068-.254l1.895-3.244a.5.5 0 0 0-.023-.54l-3.19-4.54M19 4.859C13.5 7.5 16.5 11 17.5 11.5c1.877.938 4.488 1 4.488 1Q22 12.251 22 12c0-5.523-4.477-10-10-10S2 6.477 2 12s4.477 10 10 10q.251 0 .5-.012m4.258-.048L13.59 13.59l8.349 3.167-3.702 1.48z"
-        strokeWidth="inherit"
       />
     </svg>
   )
@@ -33,7 +32,14 @@ const Globe06 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'Globe06', props.className].join(' ')}
+    />
+  )
 })
 Globe06.displayName = 'IconGlobe06'
 export default Globe06

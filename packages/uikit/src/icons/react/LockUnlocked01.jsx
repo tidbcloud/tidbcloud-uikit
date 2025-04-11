@@ -4,21 +4,20 @@ import { forwardRef } from 'react'
 const IconLockUnlocked01 = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth="1.5"
+      xmlns="http://www.w3.org/2000/svg"
       ref={ref}
       {...props}
     >
       <path
-        stroke="currentColor"
+        d="M4.6665 6.66667V5.33333C4.6665 3.49238 6.15889 2 7.99984 2C9.36672 2 10.5414 2.82273 11.0558 4M7.99984 9.66667V11M5.8665 14H10.1332C11.2533 14 11.8133 14 12.2412 13.782C12.6175 13.5903 12.9234 13.2843 13.1152 12.908C13.3332 12.4802 13.3332 11.9201 13.3332 10.8V9.86667C13.3332 8.74656 13.3332 8.18651 13.1152 7.75869C12.9234 7.38236 12.6175 7.0764 12.2412 6.88465C11.8133 6.66667 11.2533 6.66667 10.1332 6.66667H5.8665C4.7464 6.66667 4.18635 6.66667 3.75852 6.88465C3.3822 7.0764 3.07624 7.38236 2.88449 7.75869C2.6665 8.18651 2.6665 8.74656 2.6665 9.86667V10.8C2.6665 11.9201 2.6665 12.4802 2.88449 12.908C3.07624 13.2843 3.3822 13.5903 3.75852 13.782C4.18635 14 4.7464 14 5.8665 14Z"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M7 10V8a5 5 0 0 1 9.584-2M12 14.5v2M8.8 21h6.4c1.68 0 2.52 0 3.162-.327a3 3 0 0 0 1.311-1.311C20 18.72 20 17.88 20 16.2v-1.4c0-1.68 0-2.52-.327-3.162a3 3 0 0 0-1.311-1.311C17.72 10 16.88 10 15.2 10H8.8c-1.68 0-2.52 0-3.162.327a3 3 0 0 0-1.311 1.311C4 12.28 4 13.12 4 14.8v1.4c0 1.68 0 2.52.327 3.162a3 3 0 0 0 1.311 1.311C6.28 21 7.12 21 8.8 21"
-        strokeWidth="inherit"
       />
     </svg>
   )
@@ -33,7 +32,14 @@ const LockUnlocked01 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'LockUnlocked01', props.className].join(' ')}
+    />
+  )
 })
 LockUnlocked01.displayName = 'IconLockUnlocked01'
 export default LockUnlocked01

@@ -4,21 +4,20 @@ import { forwardRef } from 'react'
 const IconBatteryMid = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth="1.5"
+      xmlns="http://www.w3.org/2000/svg"
       ref={ref}
       {...props}
     >
       <path
-        stroke="currentColor"
+        d="M4.3335 6.66667V9.33333M7.00016 6.66667V9.33333M14.6668 8.66667V7.33333M4.5335 12H9.46683C10.5869 12 11.147 12 11.5748 11.782C11.9511 11.5903 12.2571 11.2843 12.4488 10.908C12.6668 10.4802 12.6668 9.92011 12.6668 8.8V7.2C12.6668 6.0799 12.6668 5.51984 12.4488 5.09202C12.2571 4.71569 11.9511 4.40973 11.5748 4.21799C11.147 4 10.5869 4 9.46683 4H4.5335C3.41339 4 2.85334 4 2.42552 4.21799C2.04919 4.40973 1.74323 4.71569 1.55148 5.09202C1.3335 5.51984 1.3335 6.0799 1.3335 7.2V8.8C1.3335 9.92011 1.3335 10.4802 1.55148 10.908C1.74323 11.2843 2.04919 11.5903 2.42552 11.782C2.85334 12 3.41339 12 4.5335 12Z"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M6.5 10v4m4-4v4M22 13v-2M6.8 18h7.4c1.68 0 2.52 0 3.162-.327a3 3 0 0 0 1.311-1.311C19 15.72 19 14.88 19 13.2v-2.4c0-1.68 0-2.52-.327-3.162a3 3 0 0 0-1.311-1.311C16.72 6 15.88 6 14.2 6H6.8c-1.68 0-2.52 0-3.162.327a3 3 0 0 0-1.311 1.311C2 8.28 2 9.12 2 10.8v2.4c0 1.68 0 2.52.327 3.162a3 3 0 0 0 1.311 1.311C4.28 18 5.12 18 6.8 18"
-        strokeWidth="inherit"
       />
     </svg>
   )
@@ -33,7 +32,14 @@ const BatteryMid = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'BatteryMid', props.className].join(' ')}
+    />
+  )
 })
 BatteryMid.displayName = 'IconBatteryMid'
 export default BatteryMid

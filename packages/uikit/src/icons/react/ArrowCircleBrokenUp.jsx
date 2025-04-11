@@ -4,21 +4,20 @@ import { forwardRef } from 'react'
 const IconArrowCircleBrokenUp = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth="1.5"
+      xmlns="http://www.w3.org/2000/svg"
       ref={ref}
       {...props}
     >
       <path
-        stroke="currentColor"
+        d="M4.66683 13.7747C2.67416 12.622 1.3335 10.4675 1.3335 7.99992C1.3335 4.31802 4.31826 1.33325 8.00016 1.33325C11.6821 1.33325 14.6668 4.31802 14.6668 7.99992C14.6668 10.4675 13.3262 12.622 11.3335 13.7747M10.6668 7.99996L8.00016 5.3333M8.00016 5.3333L5.3335 7.99996M8.00016 5.3333V14.6666"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M7 20.662A10 10 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10a10 10 0 0 1-5 8.662M16 12l-4-4m0 0-4 4m4-4v14"
-        strokeWidth="inherit"
       />
     </svg>
   )
@@ -33,7 +32,14 @@ const ArrowCircleBrokenUp = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'ArrowCircleBrokenUp', props.className].join(' ')}
+    />
+  )
 })
 ArrowCircleBrokenUp.displayName = 'IconArrowCircleBrokenUp'
 export default ArrowCircleBrokenUp

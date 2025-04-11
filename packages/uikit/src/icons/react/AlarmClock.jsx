@@ -4,21 +4,20 @@ import { forwardRef } from 'react'
 const IconAlarmClock = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth="1.5"
+      xmlns="http://www.w3.org/2000/svg"
       ref={ref}
       {...props}
     >
       <path
-        stroke="currentColor"
+        d="M3.3335 2L1.3335 4M14.6668 4L12.6668 2M4.00016 12.6667L2.66683 14M12.0002 12.6667L13.3335 14M8.00016 6V8.66667L9.3335 10M8.00016 14C9.41465 14 10.7712 13.4381 11.7714 12.4379C12.7716 11.4377 13.3335 10.0812 13.3335 8.66667C13.3335 7.25218 12.7716 5.89562 11.7714 4.89543C10.7712 3.89524 9.41465 3.33333 8.00016 3.33333C6.58567 3.33333 5.22912 3.89524 4.22893 4.89543C3.22873 5.89562 2.66683 7.25218 2.66683 8.66667C2.66683 10.0812 3.22873 11.4377 4.22893 12.4379C5.22912 13.4381 6.58567 14 8.00016 14Z"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M5 3 2 6m20 0-3-3M6 19l-2 2m14-2 2 2M12 9v4l2 2m-2 6a8 8 0 1 0 0-16.001A8 8 0 0 0 12 21"
-        strokeWidth="inherit"
       />
     </svg>
   )
@@ -33,7 +32,14 @@ const AlarmClock = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'AlarmClock', props.className].join(' ')}
+    />
+  )
 })
 AlarmClock.displayName = 'IconAlarmClock'
 export default AlarmClock

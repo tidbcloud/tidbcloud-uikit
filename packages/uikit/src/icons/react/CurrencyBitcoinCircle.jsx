@@ -4,21 +4,20 @@ import { forwardRef } from 'react'
 const IconCurrencyBitcoinCircle = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth="1.5"
+      xmlns="http://www.w3.org/2000/svg"
       ref={ref}
       {...props}
     >
       <path
-        stroke="currentColor"
+        d="M6.3335 5.00016H9.16683C9.99526 5.00016 10.6668 5.67174 10.6668 6.50016C10.6668 7.32859 9.99526 8.00016 9.16683 8.00016H6.3335H9.50016C10.3286 8.00016 11.0002 8.67174 11.0002 9.50016C11.0002 10.3286 10.3286 11.0002 9.50016 11.0002H6.3335M6.3335 5.00016H5.3335M6.3335 5.00016V11.0002M6.3335 11.0002H5.3335M6.66683 4.00016V5.00016M6.66683 11.0002V12.0002M8.66683 4.00016V5.00016M8.66683 11.0002V12.0002M14.6668 8.00016C14.6668 11.6821 11.6821 14.6668 8.00016 14.6668C4.31826 14.6668 1.3335 11.6821 1.3335 8.00016C1.3335 4.31826 4.31826 1.3335 8.00016 1.3335C11.6821 1.3335 14.6668 4.31826 14.6668 8.00016Z"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M9.5 7.5h4.25a2.25 2.25 0 0 1 0 4.5H9.5h4.75a2.25 2.25 0 0 1 0 4.5H9.5m0-9H8m1.5 0v9m0 0H8M10 6v1.5m0 9V18m3-12v1.5m0 9V18m9-6c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10"
-        strokeWidth="inherit"
       />
     </svg>
   )
@@ -33,7 +32,14 @@ const CurrencyBitcoinCircle = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'CurrencyBitcoinCircle', props.className].join(' ')}
+    />
+  )
 })
 CurrencyBitcoinCircle.displayName = 'IconCurrencyBitcoinCircle'
 export default CurrencyBitcoinCircle

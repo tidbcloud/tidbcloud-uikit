@@ -4,21 +4,20 @@ import { forwardRef } from 'react'
 const IconGlobe011 = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth="1.5"
+      xmlns="http://www.w3.org/2000/svg"
       ref={ref}
       {...props}
     >
       <path
-        stroke="currentColor"
+        d="M1.3335 8.00016H14.6668M1.3335 8.00016C1.3335 11.6821 4.31826 14.6668 8.00016 14.6668M1.3335 8.00016C1.3335 4.31826 4.31826 1.3335 8.00016 1.3335M14.6668 8.00016C14.6668 11.6821 11.6821 14.6668 8.00016 14.6668M14.6668 8.00016C14.6668 4.31826 11.6821 1.3335 8.00016 1.3335M8.00016 1.3335C9.66768 3.15906 10.6153 5.52819 10.6668 8.00016C10.6153 10.4721 9.66768 12.8413 8.00016 14.6668M8.00016 1.3335C6.33264 3.15906 5.38499 5.52819 5.3335 8.00016C5.38499 10.4721 6.33264 12.8413 8.00016 14.6668"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M2 12h20M2 12c0 5.523 4.477 10 10 10M2 12C2 6.477 6.477 2 12 2m10 10c0 5.523-4.477 10-10 10m10-10c0-5.523-4.477-10-10-10m0 0a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10m0-20a15.3 15.3 0 0 0-4 10 15.3 15.3 0 0 0 4 10"
-        strokeWidth="inherit"
       />
     </svg>
   )
@@ -33,7 +32,14 @@ const Globe011 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'Globe011', props.className].join(' ')}
+    />
+  )
 })
 Globe011.displayName = 'IconGlobe011'
 export default Globe011

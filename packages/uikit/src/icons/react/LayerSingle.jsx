@@ -4,21 +4,20 @@ import { forwardRef } from 'react'
 const IconLayerSingle = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth="1.5"
+      xmlns="http://www.w3.org/2000/svg"
       ref={ref}
       {...props}
     >
       <path
-        stroke="currentColor"
+        d="M8.23868 4.78597C8.15122 4.74224 8.1075 4.72038 8.06163 4.71177C8.02101 4.70415 7.97932 4.70415 7.9387 4.71177C7.89283 4.72038 7.8491 4.74224 7.76165 4.78597L1.3335 8.00004L7.76165 11.2141C7.8491 11.2578 7.89283 11.2797 7.9387 11.2883C7.97932 11.2959 8.02101 11.2959 8.06163 11.2883C8.1075 11.2797 8.15122 11.2578 8.23868 11.2141L14.6668 8.00004L8.23868 4.78597Z"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M12.358 7.179c-.131-.066-.197-.098-.266-.111a.5.5 0 0 0-.184 0c-.069.013-.135.045-.266.111L2 12l9.642 4.821c.131.066.197.099.266.111q.091.018.184 0c.069-.012.135-.045.266-.11L22 12z"
-        strokeWidth="inherit"
       />
     </svg>
   )
@@ -33,7 +32,14 @@ const LayerSingle = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'LayerSingle', props.className].join(' ')}
+    />
+  )
 })
 LayerSingle.displayName = 'IconLayerSingle'
 export default LayerSingle

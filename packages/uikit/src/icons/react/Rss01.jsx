@@ -4,21 +4,20 @@ import { forwardRef } from 'react'
 const IconRss01 = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth="1.5"
+      xmlns="http://www.w3.org/2000/svg"
       ref={ref}
       {...props}
     >
       <path
-        stroke="currentColor"
+        d="M2.6665 7.33341C4.2578 7.33341 5.78393 7.96556 6.90914 9.09077C8.03436 10.216 8.6665 11.7421 8.6665 13.3334M2.6665 2.66675C5.49548 2.66675 8.20859 3.79055 10.209 5.79094C12.2094 7.79133 13.3332 10.5044 13.3332 13.3334M3.99984 12.6667C3.99984 13.0349 3.70136 13.3334 3.33317 13.3334C2.96498 13.3334 2.6665 13.0349 2.6665 12.6667C2.6665 12.2986 2.96498 12.0001 3.33317 12.0001C3.70136 12.0001 3.99984 12.2986 3.99984 12.6667Z"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M4 11a9 9 0 0 1 9 9M4 4a16 16 0 0 1 16 16M6 19a1 1 0 1 1-2 0 1 1 0 0 1 2 0"
-        strokeWidth="inherit"
       />
     </svg>
   )
@@ -33,7 +32,14 @@ const Rss01 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'Rss01', props.className].join(' ')}
+    />
+  )
 })
 Rss01.displayName = 'IconRss01'
 export default Rss01

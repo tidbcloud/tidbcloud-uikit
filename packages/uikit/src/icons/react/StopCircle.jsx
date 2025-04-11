@@ -4,28 +4,27 @@ import { forwardRef } from 'react'
 const IconStopCircle = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth="1.5"
+      xmlns="http://www.w3.org/2000/svg"
       ref={ref}
       {...props}
     >
       <path
-        stroke="currentColor"
+        d="M7.99967 14.6666C11.6816 14.6666 14.6663 11.6818 14.6663 7.99992C14.6663 4.31802 11.6816 1.33325 7.99967 1.33325C4.31778 1.33325 1.33301 4.31802 1.33301 7.99992C1.33301 11.6818 4.31778 14.6666 7.99967 14.6666Z"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10"
-        strokeWidth="inherit"
       />
       <path
-        stroke="currentColor"
+        d="M5.33301 6.39992C5.33301 6.02655 5.33301 5.83987 5.40567 5.69726C5.46959 5.57182 5.57157 5.46983 5.69701 5.40591C5.83962 5.33325 6.02631 5.33325 6.39967 5.33325H9.59967C9.97304 5.33325 10.1597 5.33325 10.3023 5.40591C10.4278 5.46983 10.5298 5.57182 10.5937 5.69726C10.6663 5.83987 10.6663 6.02655 10.6663 6.39992V9.59992C10.6663 9.97329 10.6663 10.16 10.5937 10.3026C10.5298 10.428 10.4278 10.53 10.3023 10.5939C10.1597 10.6666 9.97304 10.6666 9.59967 10.6666H6.39967C6.02631 10.6666 5.83962 10.6666 5.69701 10.5939C5.57157 10.53 5.46959 10.428 5.40567 10.3026C5.33301 10.16 5.33301 9.97329 5.33301 9.59992V6.39992Z"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M8 9.6c0-.56 0-.84.109-1.054a1 1 0 0 1 .437-.437C8.76 8 9.04 8 9.6 8h4.8c.56 0 .84 0 1.054.109a1 1 0 0 1 .437.437C16 8.76 16 9.04 16 9.6v4.8c0 .56 0 .84-.109 1.054a1 1 0 0 1-.437.437C15.24 16 14.96 16 14.4 16H9.6c-.56 0-.84 0-1.054-.109a1 1 0 0 1-.437-.437C8 15.24 8 14.96 8 14.4z"
-        strokeWidth="inherit"
       />
     </svg>
   )
@@ -40,7 +39,14 @@ const StopCircle = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'StopCircle', props.className].join(' ')}
+    />
+  )
 })
 StopCircle.displayName = 'IconStopCircle'
 export default StopCircle

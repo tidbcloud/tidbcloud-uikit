@@ -4,21 +4,20 @@ import { forwardRef } from 'react'
 const IconVideoRecorderOff = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth="1.5"
+      xmlns="http://www.w3.org/2000/svg"
       ref={ref}
       {...props}
     >
       <path
-        stroke="currentColor"
+        d="M3.33301 3.33325C2.22844 3.33325 1.33301 4.22868 1.33301 5.33325V10.6666C1.33301 11.7712 2.22844 12.6666 3.33301 12.6666H9.33301C10.2348 12.6666 10.9972 12.0698 11.2467 11.2496M11.333 7.99992L13.7559 5.57704C14.0415 5.29146 14.1843 5.14867 14.3069 5.13902C14.4132 5.13065 14.5172 5.1737 14.5865 5.25484C14.6663 5.34835 14.6663 5.55029 14.6663 5.95417V10.0457C14.6663 10.4495 14.6663 10.6515 14.5865 10.745C14.5172 10.8261 14.4132 10.8692 14.3069 10.8608C14.1843 10.8512 14.0415 10.7084 13.7559 10.4228L11.333 7.99992ZM11.333 7.99992V6.53325C11.333 5.41315 11.333 4.85309 11.115 4.42527C10.9233 4.04895 10.6173 3.74299 10.241 3.55124C9.81317 3.33325 9.25311 3.33325 8.13301 3.33325H6.33301M1.33301 1.33325L14.6663 14.6666"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M5 5a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h9a3 3 0 0 0 2.87-2.125M17 12l3.634-3.634c.429-.429.643-.643.827-.657a.5.5 0 0 1 .42.173c.119.14.119.444.119 1.05v6.137c0 .605 0 .908-.12 1.049a.5.5 0 0 1-.42.173c-.183-.014-.397-.228-.826-.657zm0 0V9.8c0-1.68 0-2.52-.327-3.162a3 3 0 0 0-1.311-1.311C14.72 5 13.88 5 12.2 5H9.5M2 2l20 20"
-        strokeWidth="inherit"
       />
     </svg>
   )
@@ -33,7 +32,14 @@ const VideoRecorderOff = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'VideoRecorderOff', props.className].join(' ')}
+    />
+  )
 })
 VideoRecorderOff.displayName = 'IconVideoRecorderOff'
 export default VideoRecorderOff

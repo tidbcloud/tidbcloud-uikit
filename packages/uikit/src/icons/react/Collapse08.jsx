@@ -4,21 +4,20 @@ import { forwardRef } from 'react'
 const IconCollapse08 = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      strokeWidth="1.5"
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       ref={ref}
       {...props}
     >
       <path
-        stroke="currentColor"
+        d="M5.33301 13L7.99967 10.3333L10.6663 13M5.33301 3L7.99967 5.66667L10.6663 3"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="m8 19.5 4-4 4 4m-8-15 4 4 4-4"
-        strokeWidth="inherit"
       />
     </svg>
   )
@@ -33,7 +32,14 @@ const Collapse08 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'Collapse08', props.className].join(' ')}
+    />
+  )
 })
 Collapse08.displayName = 'IconCollapse08'
 export default Collapse08

@@ -4,21 +4,20 @@ import { forwardRef } from 'react'
 const IconClockRefresh = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth="1.5"
+      xmlns="http://www.w3.org/2000/svg"
       ref={ref}
       {...props}
     >
       <path
-        stroke="currentColor"
+        d="M13.6353 8.59538C13.4501 10.3353 12.4643 11.9658 10.8329 12.9076C8.12262 14.4724 4.65694 13.5438 3.09214 10.8335L2.92547 10.5448M2.36395 7.40491C2.54915 5.66498 3.53501 4.0345 5.16633 3.09265C7.87666 1.52785 11.3423 2.45647 12.9071 5.1668L13.0738 5.45547M2.32861 12.0441L2.81665 10.2227L4.63801 10.7108M11.3613 5.28948L13.1827 5.77752L13.6707 3.95615M7.99967 5.00013V8.00013L9.66633 9.00013"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M20.453 12.893A8.5 8.5 0 0 1 4.638 16.25l-.25-.433m-.842-4.71A8.5 8.5 0 0 1 19.361 7.75l.25.433M3.493 18.066l.732-2.732 2.732.732m10.085-8.132 2.732.732.732-2.732M12 7.5V12l2.5 1.5"
-        strokeWidth="inherit"
       />
     </svg>
   )
@@ -33,7 +32,14 @@ const ClockRefresh = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'ClockRefresh', props.className].join(' ')}
+    />
+  )
 })
 ClockRefresh.displayName = 'IconClockRefresh'
 export default ClockRefresh

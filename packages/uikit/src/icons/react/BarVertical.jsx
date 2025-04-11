@@ -4,21 +4,20 @@ import { forwardRef } from 'react'
 const IconBarVertical = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth="1.5"
+      xmlns="http://www.w3.org/2000/svg"
       ref={ref}
       {...props}
     >
       <path
-        stroke="currentColor"
+        d="M6.33301 4.66667L8.59967 4.66667C8.97304 4.66667 9.15973 4.66667 9.30233 4.73933C9.42778 4.80324 9.52976 4.90523 9.59368 5.03067C9.66634 5.17328 9.66634 5.35996 9.66634 5.73333L9.66634 14M9.66634 7.33333L11.933 7.33333C12.3064 7.33333 12.4931 7.33333 12.6357 7.40599C12.7611 7.46991 12.8631 7.5719 12.927 7.69734C12.9997 7.83995 12.9997 8.02663 12.9997 8.4L12.9997 14M1.33301 14L14.6663 14M6.33301 14L6.33301 3.06667C6.33301 2.6933 6.33301 2.50661 6.26034 2.36401C6.19643 2.23856 6.09444 2.13658 5.969 2.07266C5.82639 2 5.63971 2 5.26634 2L4.06634 2C3.69297 2 3.50629 2 3.36368 2.07266C3.23824 2.13658 3.13625 2.23856 3.07234 2.36401C2.99967 2.50661 2.99967 2.6933 2.99967 3.06667L2.99967 14L6.33301 14Z"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M9.5 7h3.4c.56 0 .84 0 1.054.109a1 1 0 0 1 .437.437c.109.214.109.494.109 1.054V21m0-10h3.4c.56 0 .84 0 1.054.109a1 1 0 0 1 .437.437c.109.214.109.494.109 1.054V21M2 21h20M9.5 21V4.6c0-.56 0-.84-.109-1.054a1 1 0 0 0-.437-.437C8.74 3 8.46 3 7.9 3H6.1c-.56 0-.84 0-1.054.109a1 1 0 0 0-.437.437C4.5 3.76 4.5 4.04 4.5 4.6V21z"
-        strokeWidth="inherit"
       />
     </svg>
   )
@@ -33,7 +32,14 @@ const BarVertical = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'BarVertical', props.className].join(' ')}
+    />
+  )
 })
 BarVertical.displayName = 'IconBarVertical'
 export default BarVertical

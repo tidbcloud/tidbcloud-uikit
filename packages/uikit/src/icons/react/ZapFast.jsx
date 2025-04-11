@@ -4,21 +4,20 @@ import { forwardRef } from 'react'
 const IconZapFast = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth="1.5"
+      xmlns="http://www.w3.org/2000/svg"
       ref={ref}
       {...props}
     >
       <path
-        stroke="currentColor"
+        d="M6.00016 11.6667H2.3335M4.3335 8H1.3335M6.00016 4.33333H2.66683M11.3335 2L6.93587 8.15667C6.74123 8.42917 6.64391 8.56542 6.64812 8.67902C6.65179 8.77792 6.69921 8.87008 6.77756 8.93055C6.86755 9 7.03499 9 7.36986 9H10.6668L10.0002 14L14.3978 7.84333C14.5924 7.57083 14.6898 7.43458 14.6855 7.32098C14.6819 7.22208 14.6344 7.12992 14.5561 7.06945C14.4661 7 14.2987 7 13.9638 7H10.6668L11.3335 2Z"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M9 17.5H3.5m3-5.5H2m7-5.5H4M17 3l-6.596 9.235c-.292.409-.438.613-.432.784a.5.5 0 0 0 .194.377c.135.104.386.104.889.104H16L15 21l6.596-9.235c.292-.409.438-.613.432-.784a.5.5 0 0 0-.194-.377c-.135-.104-.386-.104-.889-.104H16z"
-        strokeWidth="inherit"
       />
     </svg>
   )
@@ -33,7 +32,14 @@ const ZapFast = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'ZapFast', props.className].join(' ')}
+    />
+  )
 })
 ZapFast.displayName = 'IconZapFast'
 export default ZapFast

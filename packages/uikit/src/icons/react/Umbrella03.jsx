@@ -4,21 +4,20 @@ import { forwardRef } from 'react'
 const IconUmbrella03 = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth="1.5"
+      xmlns="http://www.w3.org/2000/svg"
       ref={ref}
       {...props}
     >
       <path
-        stroke="currentColor"
+        d="M4.16683 14.6393L8.00016 7.99981M11.3335 2.22631C8.45804 0.566164 4.85992 1.29156 2.83083 3.78844C2.63278 4.03214 2.53376 4.15399 2.50495 4.32858C2.48203 4.46749 2.51598 4.65158 2.58695 4.77317C2.67615 4.92599 2.83424 5.01726 3.15042 5.19981L12.8499 10.7998C13.1661 10.9824 13.3242 11.0736 13.5011 11.0745C13.6419 11.0751 13.8183 11.0125 13.9271 10.9232C14.0639 10.8109 14.12 10.6643 14.232 10.3709C15.3798 7.36522 14.209 3.88645 11.3335 2.22631ZM11.3335 2.22631C10.058 1.48993 7.53171 3.47786 5.69076 6.66648M11.3335 2.22631C12.6089 2.96269 12.1505 6.14453 10.3096 9.33314M14.6668 14.6665H1.3335"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M6.25 21.96 12 12m5-8.66C12.687.85 7.29 1.938 4.246 5.683c-.297.366-.446.548-.489.81-.034.209.017.485.123.667.134.23.371.366.845.64l14.55 8.4c.474.274.711.41.976.412.212.001.476-.093.64-.227.205-.168.289-.388.457-.828C23.07 11.048 21.313 5.83 17 3.34m0 0C15.087 2.235 11.297 5.217 8.536 10M17 3.34c1.913 1.105 1.226 5.877-1.536 10.66M22 22H2"
-        strokeWidth="inherit"
       />
     </svg>
   )
@@ -33,7 +32,14 @@ const Umbrella03 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'Umbrella03', props.className].join(' ')}
+    />
+  )
 })
 Umbrella03.displayName = 'IconUmbrella03'
 export default Umbrella03

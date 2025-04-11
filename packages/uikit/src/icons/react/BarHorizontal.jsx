@@ -4,21 +4,20 @@ import { forwardRef } from 'react'
 const IconBarHorizontal = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth="1.5"
+      xmlns="http://www.w3.org/2000/svg"
       ref={ref}
       {...props}
     >
       <path
-        stroke="currentColor"
+        d="M11.3333 6.33337V8.60004C11.3333 8.97341 11.3333 9.16009 11.2607 9.3027C11.1968 9.42814 11.0948 9.53013 10.9693 9.59405C10.8267 9.66671 10.64 9.66671 10.2667 9.66671L2 9.66671M8.66667 9.66671V11.9334C8.66667 12.3067 8.66667 12.4934 8.594 12.636C8.53009 12.7615 8.4281 12.8635 8.30266 12.9274C8.16005 13 7.97337 13 7.6 13H2M2 1.33337L2 14.6667M2 6.33337L12.9333 6.33337C13.3067 6.33337 13.4934 6.33337 13.636 6.26071C13.7614 6.1968 13.8634 6.09481 13.9273 5.96937C14 5.82676 14 5.64008 14 5.26671V4.06671C14 3.69334 14 3.50666 13.9273 3.36405C13.8634 3.23861 13.7614 3.13662 13.636 3.0727C13.4934 3.00004 13.3067 3.00004 12.9333 3.00004L2 3.00004L2 6.33337Z"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M17 9.5v3.4c0 .56 0 .84-.109 1.054a1 1 0 0 1-.437.437c-.214.109-.494.109-1.054.109H3m10 0v3.4c0 .56 0 .84-.109 1.054a1 1 0 0 1-.437.437c-.214.109-.494.109-1.054.109H3M3 2v20M3 9.5h16.4c.56 0 .84 0 1.054-.109a1 1 0 0 0 .437-.437C21 8.74 21 8.46 21 7.9V6.1c0-.56 0-.84-.109-1.054a1 1 0 0 0-.437-.437C20.24 4.5 19.96 4.5 19.4 4.5H3z"
-        strokeWidth="inherit"
       />
     </svg>
   )
@@ -33,7 +32,14 @@ const BarHorizontal = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'BarHorizontal', props.className].join(' ')}
+    />
+  )
 })
 BarHorizontal.displayName = 'IconBarHorizontal'
 export default BarHorizontal

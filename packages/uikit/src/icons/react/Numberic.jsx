@@ -4,26 +4,24 @@ import { forwardRef } from 'react'
 const IconNumberic = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
-      fill="none"
       viewBox="0 0 16 16"
-      strokeWidth="1.5"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
       ref={ref}
       {...props}
     >
-      <g clipPath="url(#prefix__a)">
+      <g clipPath="url(#clip0_404_1835)">
         <path
+          d="M1.3335 4.97491L14.6668 4.97491M1.3335 10.9924L14.6668 10.9924M5.99023 1.33325L3.67309 14.6666M11.9162 1.33325L9.59901 14.6666"
           stroke="currentColor"
           strokeLinecap="round"
-          d="M1.334 4.975h13.333M1.334 10.992h13.333M5.99 1.333 3.673 14.667m8.243-13.334L9.6 14.667"
-          strokeWidth="inherit"
         />
       </g>
       <defs>
-        <clipPath id="prefix__a">
-          <path fill="#fff" d="M0 0h16v16H0z" strokeWidth="inherit" stroke="currentColor" />
+        <clipPath id="clip0_404_1835">
+          <rect width={16} height={16} fill="white" />
         </clipPath>
       </defs>
     </svg>
@@ -39,7 +37,14 @@ const Numberic = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'Numberic', props.className].join(' ')}
+    />
+  )
 })
 Numberic.displayName = 'IconNumberic'
 export default Numberic

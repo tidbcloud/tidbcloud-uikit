@@ -4,21 +4,20 @@ import { forwardRef } from 'react'
 const IconCloudSun02 = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth="1.5"
+      xmlns="http://www.w3.org/2000/svg"
       ref={ref}
       {...props}
     >
       <path
-        stroke="currentColor"
+        d="M7.00016 1V2.06667M2.40016 6.66667H1.3335M3.63429 3.30091L2.88005 2.54667M10.3667 3.30091L11.1209 2.54667M12.6668 6.66667H11.6002M4.33354 6.66672C4.33354 5.19396 5.52745 4.00005 7.00021 4.00005C8.00422 4.00005 8.87863 4.5549 9.33354 5.37471M4.00016 14.6667C2.5274 14.6667 1.3335 13.4728 1.3335 12C1.3335 10.5272 2.5274 9.33333 4.00016 9.33333C4.30962 9.33333 4.60677 9.38605 4.88311 9.48298C5.36057 8.22637 6.57608 7.33333 8.00016 7.33333C9.42425 7.33333 10.6398 8.22637 11.1172 9.48298C11.3936 9.38605 11.6907 9.33333 12.0002 9.33333C13.4729 9.33333 14.6668 10.5272 14.6668 12C14.6668 13.4728 13.4729 14.6667 12.0002 14.6667C8.90663 14.6667 6.5863 14.6667 4.00016 14.6667Z"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M10.5 1.5v1.6M3.6 10H2m3.451-5.049L4.32 3.82m11.23 1.131L16.68 3.82M19 10h-1.6M6.5 10A4 4 0 0 1 14 8.062M6 22a4 4 0 1 1 1.324-7.775 5.002 5.002 0 0 1 9.352 0A4 4 0 1 1 18 22z"
-        strokeWidth="inherit"
       />
     </svg>
   )
@@ -33,7 +32,14 @@ const CloudSun02 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'CloudSun02', props.className].join(' ')}
+    />
+  )
 })
 CloudSun02.displayName = 'IconCloudSun02'
 export default CloudSun02

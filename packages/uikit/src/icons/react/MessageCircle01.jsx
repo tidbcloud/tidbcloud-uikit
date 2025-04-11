@@ -4,21 +4,20 @@ import { forwardRef } from 'react'
 const IconMessageCircle01 = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth="1.5"
+      xmlns="http://www.w3.org/2000/svg"
       ref={ref}
       {...props}
     >
       <path
-        stroke="currentColor"
+        d="M13.9996 7.66667C13.9996 10.7963 11.4625 13.3333 8.33292 13.3333C7.61507 13.3333 6.92839 13.1999 6.29636 12.9564C6.1808 12.9118 6.12302 12.8896 6.07708 12.879C6.03188 12.8686 5.99917 12.8642 5.95283 12.8624C5.90571 12.8606 5.85402 12.866 5.75063 12.8767L2.33661 13.2296C2.01112 13.2632 1.84837 13.2801 1.75237 13.2215C1.66875 13.1705 1.6118 13.0853 1.59664 12.9885C1.57923 12.8774 1.657 12.7335 1.81254 12.4456L2.90298 10.4272C2.99278 10.261 3.03769 10.1779 3.05802 10.098C3.07811 10.019 3.08296 9.96213 3.07654 9.88095C3.07003 9.79875 3.03397 9.69175 2.96183 9.47774C2.77015 8.90906 2.66625 8.3 2.66625 7.66667C2.66625 4.53705 5.20331 2 8.33292 2C11.4625 2 13.9996 4.53705 13.9996 7.66667Z"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M21 11.5a8.5 8.5 0 0 1-11.555 7.935c-.174-.067-.26-.1-.33-.116a1 1 0 0 0-.186-.025 2 2 0 0 0-.303.021l-5.12.53c-.49.05-.733.075-.877-.013a.5.5 0 0 1-.234-.35c-.026-.166.09-.382.324-.814l1.636-3.027c.134-.25.202-.374.232-.494a.9.9 0 0 0 .028-.326c-.01-.123-.064-.283-.172-.604A8.5 8.5 0 1 1 21 11.5"
-        strokeWidth="inherit"
       />
     </svg>
   )
@@ -33,7 +32,14 @@ const MessageCircle01 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'MessageCircle01', props.className].join(' ')}
+    />
+  )
 })
 MessageCircle01.displayName = 'IconMessageCircle01'
 export default MessageCircle01

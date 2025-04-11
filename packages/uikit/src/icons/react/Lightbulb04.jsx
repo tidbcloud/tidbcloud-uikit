@@ -4,21 +4,20 @@ import { forwardRef } from 'react'
 const IconLightbulb04 = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth="1.5"
+      xmlns="http://www.w3.org/2000/svg"
       ref={ref}
       {...props}
     >
       <path
-        stroke="currentColor"
+        d="M6.3335 14.6666H9.66683M6.66683 6.66659H9.3335M8.00016 6.66659L8.00016 10.6666M10.0002 10.2175C11.5768 9.46852 12.6668 7.86152 12.6668 5.99992C12.6668 3.42259 10.5775 1.33325 8.00016 1.33325C5.42283 1.33325 3.3335 3.42259 3.3335 5.99992C3.3335 7.86152 4.42353 9.46852 6.00016 10.2175V10.6666C6.00016 11.2878 6.00016 11.5985 6.10166 11.8435C6.23698 12.1702 6.49655 12.4298 6.82325 12.5651C7.06828 12.6666 7.37891 12.6666 8.00016 12.6666C8.62142 12.6666 8.93205 12.6666 9.17707 12.5651C9.50378 12.4298 9.76334 12.1702 9.89867 11.8435C10.0002 11.5985 10.0002 11.2878 10.0002 10.6666V10.2175Z"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M9.5 22h5M10 10h4m-2 0v6m3-.674a7 7 0 1 0-6 0V16c0 .932 0 1.398.152 1.765a2 2 0 0 0 1.083 1.083C10.602 19 11.068 19 12 19s1.398 0 1.765-.152a2 2 0 0 0 1.083-1.083C15 17.398 15 16.932 15 16z"
-        strokeWidth="inherit"
       />
     </svg>
   )
@@ -33,7 +32,14 @@ const Lightbulb04 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'Lightbulb04', props.className].join(' ')}
+    />
+  )
 })
 Lightbulb04.displayName = 'IconLightbulb04'
 export default Lightbulb04
