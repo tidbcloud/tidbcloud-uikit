@@ -4,28 +4,27 @@ import { forwardRef } from 'react'
 const IconEye = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth="1.5"
+      xmlns="http://www.w3.org/2000/svg"
       ref={ref}
       {...props}
     >
       <path
-        stroke="currentColor"
+        d="M1.61342 8.47549C1.52262 8.33173 1.47723 8.25985 1.45182 8.14898C1.43273 8.06571 1.43273 7.93437 1.45182 7.8511C1.47723 7.74023 1.52262 7.66835 1.61341 7.52459C2.36369 6.3366 4.59693 3.33337 8.00027 3.33337C11.4036 3.33337 13.6369 6.3366 14.3871 7.52459C14.4779 7.66835 14.5233 7.74023 14.5487 7.8511C14.5678 7.93437 14.5678 8.06571 14.5487 8.14898C14.5233 8.25985 14.4779 8.33173 14.3871 8.47549C13.6369 9.66348 11.4036 12.6667 8.00027 12.6667C4.59693 12.6667 2.36369 9.66348 1.61342 8.47549Z"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M2.42 12.713c-.136-.215-.204-.323-.242-.49a1.2 1.2 0 0 1 0-.446c.038-.167.106-.274.242-.49C3.546 9.505 6.895 5 12 5s8.455 4.505 9.58 6.287c.137.215.205.323.243.49.029.125.029.322 0 .446-.038.167-.106.274-.242.49C20.455 14.495 17.105 19 12 19c-5.106 0-8.455-4.505-9.58-6.287"
-        strokeWidth="inherit"
       />
       <path
-        stroke="currentColor"
+        d="M8.00027 10C9.10484 10 10.0003 9.10461 10.0003 8.00004C10.0003 6.89547 9.10484 6.00004 8.00027 6.00004C6.8957 6.00004 6.00027 6.89547 6.00027 8.00004C6.00027 9.10461 6.8957 10 8.00027 10Z"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6"
-        strokeWidth="inherit"
       />
     </svg>
   )
@@ -40,7 +39,14 @@ const Eye = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'Eye', props.className].join(' ')}
+    />
+  )
 })
 Eye.displayName = 'IconEye'
 export default Eye

@@ -4,21 +4,20 @@ import { forwardRef } from 'react'
 const IconBrush01 = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth="1.5"
+      xmlns="http://www.w3.org/2000/svg"
       ref={ref}
       {...props}
     >
       <path
-        stroke="currentColor"
+        d="M6.00015 7.48127L8.51866 9.99979M5.31673 13.983C4.4055 14.8943 2.66683 14.6665 1.3335 14.6665C2.0169 13.3331 1.10567 11.5944 2.0169 10.6832C2.92812 9.77198 4.4055 9.77198 5.31673 10.6832C6.22795 11.5944 6.22795 13.0718 5.31673 13.983ZM7.9479 10.6162L14.0393 4.03748C14.5758 3.45804 14.5585 2.55818 14.0001 1.99979C13.4417 1.44139 12.5419 1.42409 11.9624 1.96062L5.38372 8.05202C5.04376 8.36679 4.87378 8.52418 4.77465 8.69204C4.53693 9.09455 4.52736 9.59215 4.74944 10.0035C4.84205 10.175 5.00585 10.3388 5.33346 10.6665C5.66107 10.9941 5.82487 11.1579 5.99641 11.2505C6.40776 11.4726 6.90537 11.463 7.30788 11.2253C7.47574 11.1261 7.63312 10.9562 7.9479 10.6162Z"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M9 11.222 12.778 15m-4.803 5.975C6.608 22.342 4 22 2 22c1.025-2-.342-4.608 1.025-5.975a3.5 3.5 0 0 1 4.95 4.95m3.947-5.05 9.137-9.868a2.204 2.204 0 0 0-3.116-3.116L8.075 12.08c-.51.472-.765.708-.913.96a2 2 0 0 0-.038 1.967c.139.257.385.503.876.994.491.492.737.737.994.876a2 2 0 0 0 1.968-.038c.251-.148.487-.403.96-.913"
-        strokeWidth="inherit"
       />
     </svg>
   )
@@ -33,7 +32,14 @@ const Brush01 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'Brush01', props.className].join(' ')}
+    />
+  )
 })
 Brush01.displayName = 'IconBrush01'
 export default Brush01

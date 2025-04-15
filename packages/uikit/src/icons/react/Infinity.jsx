@@ -4,21 +4,20 @@ import { forwardRef } from 'react'
 const IconInfinity = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth="1.5"
+      xmlns="http://www.w3.org/2000/svg"
       ref={ref}
       {...props}
     >
       <path
-        stroke="currentColor"
+        d="M12.1187 5.33331C15.516 5.33331 15.516 10.6666 12.1187 10.6666C8.722 10.6666 7.36333 5.33331 3.626 5.33331C0.569329 5.33331 0.569329 10.6666 3.626 10.6666C7.36333 10.6666 8.722 5.33331 12.1193 5.33331H12.1187Z"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M18.178 8c5.096 0 5.096 8 0 8-5.095 0-7.133-8-12.74-8-4.584 0-4.584 8 0 8 5.607 0 7.645-8 12.74-8z"
-        strokeWidth="inherit"
       />
     </svg>
   )
@@ -33,7 +32,14 @@ const Infinity = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'Infinity', props.className].join(' ')}
+    />
+  )
 })
 Infinity.displayName = 'IconInfinity'
 export default Infinity

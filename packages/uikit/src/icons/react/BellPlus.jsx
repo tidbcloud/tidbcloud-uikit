@@ -4,21 +4,20 @@ import { forwardRef } from 'react'
 const IconBellPlus = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth="1.5"
+      xmlns="http://www.w3.org/2000/svg"
       ref={ref}
       {...props}
     >
       <path
-        stroke="currentColor"
+        d="M6.23597 13.9999C6.70606 14.4148 7.32355 14.6666 7.99985 14.6666C8.67615 14.6666 9.29364 14.4148 9.76373 13.9999M11.9998 5.33325V1.33325M9.99985 3.33325H13.9998M8.66652 1.38918C8.44767 1.35219 8.22473 1.33325 7.99985 1.33325C6.93898 1.33325 5.92157 1.75468 5.17142 2.50482C4.42128 3.25497 3.99985 4.27239 3.99985 5.33325C3.99985 7.39338 3.48016 8.80389 2.89963 9.73686C2.40994 10.5238 2.16509 10.9173 2.17407 11.0271C2.18401 11.1486 2.20976 11.195 2.3077 11.2676C2.39616 11.3333 2.79491 11.3333 3.59242 11.3333H12.4073C13.2048 11.3333 13.6035 11.3333 13.6919 11.2676C13.7899 11.195 13.8156 11.1486 13.8256 11.0271C13.8346 10.9173 13.5897 10.5238 13.1 9.7367C12.7719 9.20949 12.4633 8.5298 12.257 7.66659"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M9.354 21c.705.622 1.632 1 2.646 1s1.94-.378 2.646-1M18 8V2m-3 3h6m-8-2.916A6 6 0 0 0 6 8c0 3.09-.78 5.206-1.65 6.605-.735 1.18-1.102 1.771-1.089 1.936.015.182.054.252.2.36.133.099.732.099 1.928.099H18.61c1.196 0 1.794 0 1.927-.098.147-.11.186-.179.2-.361.014-.165-.353-.755-1.088-1.936-.492-.79-.955-1.81-1.264-3.105"
-        strokeWidth="inherit"
       />
     </svg>
   )
@@ -33,7 +32,14 @@ const BellPlus = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'BellPlus', props.className].join(' ')}
+    />
+  )
 })
 BellPlus.displayName = 'IconBellPlus'
 export default BellPlus

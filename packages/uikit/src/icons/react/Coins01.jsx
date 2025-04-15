@@ -4,21 +4,20 @@ import { forwardRef } from 'react'
 const IconCoins01 = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth="1.5"
+      xmlns="http://www.w3.org/2000/svg"
       ref={ref}
       {...props}
     >
       <path
-        stroke="currentColor"
+        d="M10.6253 10.6253C12.9071 10.3198 14.6668 8.36551 14.6668 6.00016C14.6668 3.42283 12.5775 1.3335 10.0002 1.3335C7.63482 1.3335 5.68049 3.09328 5.37501 5.37501M10.6668 10.0002C10.6668 12.5775 8.57749 14.6668 6.00016 14.6668C3.42283 14.6668 1.3335 12.5775 1.3335 10.0002C1.3335 7.42283 3.42283 5.3335 6.00016 5.3335C8.57749 5.3335 10.6668 7.42283 10.6668 10.0002Z"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M15.938 15.938A7.001 7.001 0 0 0 15 2a7 7 0 0 0-6.938 6.062M16 15a7 7 0 1 1-14 0 7 7 0 0 1 14 0"
-        strokeWidth="inherit"
       />
     </svg>
   )
@@ -33,7 +32,14 @@ const Coins01 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'Coins01', props.className].join(' ')}
+    />
+  )
 })
 Coins01.displayName = 'IconCoins01'
 export default Coins01

@@ -4,21 +4,20 @@ import { forwardRef } from 'react'
 const IconMenuLeft = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth="1.5"
+      xmlns="http://www.w3.org/2000/svg"
       ref={ref}
       {...props}
     >
       <path
-        stroke="currentColor"
+        d="M6 7.99998H14M6 3.33331H14M6 12.6666H14M4 5.99998L2 7.99998L4 9.99998"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M9 12h12M9 5h12M9 19h12M6 9l-3 3 3 3"
-        strokeWidth="inherit"
       />
     </svg>
   )
@@ -33,7 +32,14 @@ const MenuLeft = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'MenuLeft', props.className].join(' ')}
+    />
+  )
 })
 MenuLeft.displayName = 'IconMenuLeft'
 export default MenuLeft

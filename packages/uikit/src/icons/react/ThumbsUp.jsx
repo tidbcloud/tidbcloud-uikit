@@ -4,21 +4,20 @@ import { forwardRef } from 'react'
 const IconThumbsUp = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth="1.5"
+      xmlns="http://www.w3.org/2000/svg"
       ref={ref}
       {...props}
     >
       <path
-        stroke="currentColor"
+        d="M4.66683 14.6666V7.33325M1.3335 8.66659V13.3333C1.3335 14.0696 1.93045 14.6666 2.66683 14.6666H11.6177C12.6048 14.6666 13.4443 13.9464 13.5944 12.9707L14.3124 8.30403C14.4987 7.09252 13.5614 5.99992 12.3356 5.99992H10.0002C9.63197 5.99992 9.3335 5.70144 9.3335 5.33325V2.97714C9.3335 2.06925 8.5975 1.33325 7.6896 1.33325C7.47305 1.33325 7.27682 1.46078 7.18887 1.65867L4.84279 6.93734C4.73579 7.1781 4.49704 7.33325 4.23358 7.33325H2.66683C1.93045 7.33325 1.3335 7.93021 1.3335 8.66659Z"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M7 22V11m-5 2v7a2 2 0 0 0 2 2h13.426a3 3 0 0 0 2.965-2.544l1.077-7A3 3 0 0 0 18.503 9H15a1 1 0 0 1-1-1V4.466A2.466 2.466 0 0 0 11.534 2a.82.82 0 0 0-.75.488l-3.52 7.918A1 1 0 0 1 6.35 11H4a2 2 0 0 0-2 2"
-        strokeWidth="inherit"
       />
     </svg>
   )
@@ -33,7 +32,14 @@ const ThumbsUp = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'ThumbsUp', props.className].join(' ')}
+    />
+  )
 })
 ThumbsUp.displayName = 'IconThumbsUp'
 export default ThumbsUp

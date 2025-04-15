@@ -4,21 +4,20 @@ import { forwardRef } from 'react'
 const IconToggle02Left = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth="1.5"
+      xmlns="http://www.w3.org/2000/svg"
       ref={ref}
       {...props}
     >
       <path
-        stroke="currentColor"
+        d="M6.66715 10.6666H12.0002C13.4729 10.6666 14.6668 9.47272 14.6668 7.99996C14.6668 6.5272 13.4729 5.33329 12.0002 5.33329H6.66715M8.00016 7.99996C8.00016 9.84091 6.50778 11.3333 4.66683 11.3333C2.82588 11.3333 1.3335 9.84091 1.3335 7.99996C1.3335 6.15901 2.82588 4.66663 4.66683 4.66663C6.50778 4.66663 8.00016 6.15901 8.00016 7.99996Z"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M10 16h8a4 4 0 0 0 0-8h-8m2 4a5 5 0 1 1-10 0 5 5 0 0 1 10 0"
-        strokeWidth="inherit"
       />
     </svg>
   )
@@ -33,7 +32,14 @@ const Toggle02Left = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'Toggle02Left', props.className].join(' ')}
+    />
+  )
 })
 Toggle02Left.displayName = 'IconToggle02Left'
 export default Toggle02Left

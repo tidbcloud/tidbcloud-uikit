@@ -4,21 +4,20 @@ import { forwardRef } from 'react'
 const IconShoppingBag03 = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth="1.5"
+      xmlns="http://www.w3.org/2000/svg"
       ref={ref}
       {...props}
     >
       <path
-        stroke="currentColor"
+        d="M10.6662 5.33333C10.6662 6.04058 10.3853 6.71885 9.88518 7.21895C9.38508 7.71905 8.70681 8 7.99956 8C7.29232 8 6.61404 7.71905 6.11394 7.21895C5.61385 6.71885 5.3329 6.04058 5.3329 5.33333M2.42171 4.93426L1.95504 10.5343C1.85479 11.7373 1.80466 12.3388 2.00802 12.8028C2.18669 13.2105 2.49625 13.5469 2.88769 13.7588C3.33321 14 3.9368 14 5.14399 14H10.8551C12.0623 14 12.6659 14 13.1114 13.7588C13.5029 13.5469 13.8124 13.2105 13.9911 12.8028C14.1945 12.3388 14.1443 11.7373 14.0441 10.5343L13.5774 4.93426C13.4912 3.89917 13.448 3.38162 13.2188 2.9899C13.017 2.64496 12.7164 2.3684 12.3559 2.1959C11.9465 2 11.4271 2 10.3885 2L5.61065 2C4.57198 2 4.05264 2 3.64324 2.1959C3.28273 2.3684 2.98216 2.64496 2.78031 2.9899C2.55109 3.38162 2.50797 3.89917 2.42171 4.93426Z"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M16 8a4 4 0 1 1-8 0m-4.367-.599-.7 8.4c-.15 1.805-.226 2.707.08 3.403a3 3 0 0 0 1.319 1.434C5 21 5.905 21 7.716 21h8.567c1.81 0 2.716 0 3.384-.362a3 3 0 0 0 1.32-1.434c.305-.696.23-1.598.08-3.403l-.7-8.4c-.13-1.552-.195-2.329-.539-2.916a3 3 0 0 0-1.294-1.191C17.92 3 17.141 3 15.583 3H8.416c-1.558 0-2.337 0-2.95.294a3 3 0 0 0-1.295 1.19c-.344.588-.409 1.365-.538 2.917"
-        strokeWidth="inherit"
       />
     </svg>
   )
@@ -33,7 +32,14 @@ const ShoppingBag03 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'ShoppingBag03', props.className].join(' ')}
+    />
+  )
 })
 ShoppingBag03.displayName = 'IconShoppingBag03'
 export default ShoppingBag03

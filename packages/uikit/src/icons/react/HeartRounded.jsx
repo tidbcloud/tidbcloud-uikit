@@ -4,21 +4,20 @@ import { forwardRef } from 'react'
 const IconHeartRounded = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth="1.5"
+      xmlns="http://www.w3.org/2000/svg"
       ref={ref}
       {...props}
     >
       <path
-        stroke="currentColor"
+        d="M10.7409 2C13.0891 2 14.6668 4.235 14.6668 6.32C14.6668 10.5425 8.11868 14 8.00016 14C7.88164 14 1.3335 10.5425 1.3335 6.32C1.3335 4.235 2.91127 2 5.25942 2C6.60757 2 7.48905 2.6825 8.00016 3.2825C8.51127 2.6825 9.39276 2 10.7409 2Z"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M16.111 3C19.633 3 22 6.353 22 9.48 22 15.814 12.178 21 12 21S2 15.814 2 9.48C2 6.352 4.367 3 7.889 3 9.91 3 11.233 4.024 12 4.924 12.767 4.024 14.089 3 16.111 3"
-        strokeWidth="inherit"
       />
     </svg>
   )
@@ -33,7 +32,14 @@ const HeartRounded = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'HeartRounded', props.className].join(' ')}
+    />
+  )
 })
 HeartRounded.displayName = 'IconHeartRounded'
 export default HeartRounded

@@ -4,21 +4,20 @@ import { forwardRef } from 'react'
 const IconMark = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth="1.5"
+      xmlns="http://www.w3.org/2000/svg"
       ref={ref}
       {...props}
     >
       <path
-        stroke="currentColor"
+        d="M13.3335 8.00016C13.3335 10.9457 10.9457 13.3335 8.00016 13.3335M13.3335 8.00016C13.3335 5.05464 10.9457 2.66683 8.00016 2.66683M13.3335 8.00016H14.6668M8.00016 13.3335C5.05464 13.3335 2.66683 10.9457 2.66683 8.00016M8.00016 13.3335V14.6668M2.66683 8.00016C2.66683 5.05464 5.05464 2.66683 8.00016 2.66683M2.66683 8.00016H1.3335M8.00016 2.66683V1.3335M10.0002 8.00016C10.0002 9.10473 9.10473 10.0002 8.00016 10.0002C6.89559 10.0002 6.00016 9.10473 6.00016 8.00016C6.00016 6.89559 6.89559 6.00016 8.00016 6.00016C9.10473 6.00016 10.0002 6.89559 10.0002 8.00016Z"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M20 12a8 8 0 0 1-8 8m8-8a8 8 0 0 0-8-8m8 8h2m-10 8a8 8 0 0 1-8-8m8 8v2M4 12a8 8 0 0 1 8-8m-8 8H2m10-8V2m3 10a3 3 0 1 1-6 0 3 3 0 0 1 6 0"
-        strokeWidth="inherit"
       />
     </svg>
   )
@@ -33,7 +32,14 @@ const Mark = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'Mark', props.className].join(' ')}
+    />
+  )
 })
 Mark.displayName = 'IconMark'
 export default Mark

@@ -4,21 +4,20 @@ import { forwardRef } from 'react'
 const IconLuggage01 = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth="1.5"
+      xmlns="http://www.w3.org/2000/svg"
       ref={ref}
       {...props}
     >
       <path
-        stroke="currentColor"
+        d="M5.33317 14.6668V13.3335M6.33317 10.0002V4.66683M10.6665 14.6668V13.3335M9.6665 10.0002V4.66683M5.8665 13.3335H10.1332C11.2533 13.3335 11.8133 13.3335 12.2412 13.1155C12.6175 12.9238 12.9234 12.6178 13.1152 12.2415C13.3332 11.8137 13.3332 11.2536 13.3332 10.1335V4.5335C13.3332 3.41339 13.3332 2.85334 13.1152 2.42552C12.9234 2.04919 12.6175 1.74323 12.2412 1.55148C11.8133 1.3335 11.2533 1.3335 10.1332 1.3335H5.8665C4.7464 1.3335 4.18635 1.3335 3.75852 1.55148C3.3822 1.74323 3.07624 2.04919 2.88449 2.42552C2.6665 2.85334 2.6665 3.41339 2.6665 4.5335V10.1335C2.6665 11.2536 2.6665 11.8137 2.88449 12.2415C3.07624 12.6178 3.3822 12.9238 3.75852 13.1155C4.18635 13.3335 4.7464 13.3335 5.8665 13.3335Z"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M8 22v-2m1.5-5V7M16 22v-2m-1.5-5V7M8.8 20h6.4c1.68 0 2.52 0 3.162-.327a3 3 0 0 0 1.311-1.311C20 17.72 20 16.88 20 15.2V6.8c0-1.68 0-2.52-.327-3.162a3 3 0 0 0-1.311-1.311C17.72 2 16.88 2 15.2 2H8.8c-1.68 0-2.52 0-3.162.327a3 3 0 0 0-1.311 1.311C4 4.28 4 5.12 4 6.8v8.4c0 1.68 0 2.52.327 3.162a3 3 0 0 0 1.311 1.311C6.28 20 7.12 20 8.8 20"
-        strokeWidth="inherit"
       />
     </svg>
   )
@@ -33,7 +32,14 @@ const Luggage01 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'Luggage01', props.className].join(' ')}
+    />
+  )
 })
 Luggage01.displayName = 'IconLuggage01'
 export default Luggage01

@@ -4,21 +4,20 @@ import { forwardRef } from 'react'
 const IconGlobe03 = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth="1.5"
+      xmlns="http://www.w3.org/2000/svg"
       ref={ref}
       {...props}
     >
       <path
-        stroke="currentColor"
+        d="M8.00016 1.3335C10.0002 2.66683 10.6153 5.52818 10.6668 8.00016C10.6153 10.4721 10.0002 13.3335 8.00016 14.6668M8.00016 1.3335C6.00016 2.66683 5.38499 5.52819 5.3335 8.00016C5.385 10.4721 6.00017 13.3335 8.00016 14.6668M8.00016 1.3335C4.31826 1.3335 1.3335 4.31826 1.3335 8.00016M8.00016 1.3335C11.6821 1.3335 14.6668 4.31826 14.6668 8.00016M8.00016 14.6668C11.6821 14.6668 14.6668 11.6821 14.6668 8.00016M8.00016 14.6668C4.31827 14.6668 1.3335 11.6821 1.3335 8.00016M14.6668 8.00016C13.3335 10.0002 10.4721 10.6153 8.00016 10.6668C5.52819 10.6153 2.66683 10.0002 1.3335 8.00016M14.6668 8.00016C13.3335 6.00016 10.4721 5.38499 8.00016 5.3335C5.52819 5.38499 2.66683 6.00016 1.3335 8.00016"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M12 2c3 2 3.923 6.292 4 10-.077 3.708-1 8-4 10m0-20C9 4 8.077 8.292 8 12c.077 3.708 1 8 4 10m0-20C6.477 2 2 6.477 2 12M12 2c5.523 0 10 4.477 10 10M12 22c5.523 0 10-4.477 10-10M12 22C6.477 22 2 17.523 2 12m20 0c-2 3-6.292 3.923-10 4-3.708-.077-8-1-10-4m20 0c-2-3-6.292-3.923-10-4-3.708.077-8 1-10 4"
-        strokeWidth="inherit"
       />
     </svg>
   )
@@ -33,7 +32,14 @@ const Globe03 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'Globe03', props.className].join(' ')}
+    />
+  )
 })
 Globe03.displayName = 'IconGlobe03'
 export default Globe03

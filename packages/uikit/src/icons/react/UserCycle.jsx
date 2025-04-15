@@ -1,0 +1,50 @@
+import { Box as MantineBox } from '@mantine/core'
+import * as React from 'react'
+import { forwardRef } from 'react'
+const IconUserCycle = (props, ref) => {
+  return (
+    <svg
+      width="1em"
+      height="1em"
+      viewBox="0 0 16 16"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      ref={ref}
+      {...props}
+    >
+      <path
+        d="M15.3337 8.00008C15.3337 12.0502 12.0504 15.3334 8.00033 15.3334C3.95024 15.3334 0.666992 12.0502 0.666992 8.00008C0.666992 3.94999 3.95024 0.666748 8.00033 0.666748C12.0504 0.666748 15.3337 3.94999 15.3337 8.00008Z"
+        fill="#EDF1F2"
+      />
+      <path
+        d="M10.667 6.00008C10.667 7.47284 9.47308 8.66675 8.00033 8.66675C6.52757 8.66675 5.33366 7.47284 5.33366 6.00008C5.33366 4.52732 6.52757 3.33341 8.00033 3.33341C9.47308 3.33341 10.667 4.52732 10.667 6.00008Z"
+        fill="#9FA9AD"
+      />
+      <path
+        d="M8.00033 9.33341C4.06186 9.33341 2.80374 11.7144 2.66699 13.0001C3.35075 13.7144 5.00033 15.3334 8.00033 15.3334C11.0003 15.3334 12.6499 13.7144 13.3337 13.0001C13.1969 11.7144 11.9388 9.33341 8.00033 9.33341Z"
+        fill="#383E40"
+      />
+    </svg>
+  )
+}
+const ForwardRef = forwardRef(IconUserCycle)
+const UserCycle = forwardRef((props, ref) => {
+  if (typeof props.size === 'number') {
+    const { size, ...rest } = props
+    props = {
+      ...rest,
+      w: size,
+      h: size
+    }
+  }
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'UserCycle', props.className].join(' ')}
+    />
+  )
+})
+UserCycle.displayName = 'IconUserCycle'
+export default UserCycle

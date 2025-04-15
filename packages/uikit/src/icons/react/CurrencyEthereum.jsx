@@ -4,21 +4,20 @@ import { forwardRef } from 'react'
 const IconCurrencyEthereum = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth="1.5"
+      xmlns="http://www.w3.org/2000/svg"
       ref={ref}
       {...props}
     >
       <path
-        stroke="currentColor"
+        d="M2.6665 7.3336L7.99984 8.66683L13.3332 7.3335M2.6665 7.3336L7.99984 1.3335M2.6665 7.3336L7.99984 6.00022M13.3332 7.3335L7.99984 1.3335M13.3332 7.3335L7.99984 6.00022M7.99984 1.3335V6.00022M3.6665 10.0002L7.99992 14.6668L12.3332 10.0002L7.99984 11.0002L3.6665 10.0002Z"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="m4 11 8 2 8-2M4 11l8-9m-8 9 8-2m8 2-8-9m8 9-8-2m0-7v7m-6.5 6 6.5 7 6.5-7-6.5 1.5z"
-        strokeWidth="inherit"
       />
     </svg>
   )
@@ -33,7 +32,14 @@ const CurrencyEthereum = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'CurrencyEthereum', props.className].join(' ')}
+    />
+  )
 })
 CurrencyEthereum.displayName = 'IconCurrencyEthereum'
 export default CurrencyEthereum

@@ -4,28 +4,27 @@ import { forwardRef } from 'react'
 const IconPlayCircle = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth="1.5"
+      xmlns="http://www.w3.org/2000/svg"
       ref={ref}
       {...props}
     >
       <path
-        stroke="currentColor"
+        d="M8.00016 14.6666C11.6821 14.6666 14.6668 11.6818 14.6668 7.99992C14.6668 4.31802 11.6821 1.33325 8.00016 1.33325C4.31826 1.33325 1.3335 4.31802 1.3335 7.99992C1.3335 11.6818 4.31826 14.6666 8.00016 14.6666Z"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10"
-        strokeWidth="inherit"
       />
       <path
-        stroke="currentColor"
+        d="M6.3335 5.97681C6.3335 5.65862 6.3335 5.49952 6.39999 5.4107C6.45794 5.3333 6.54664 5.28488 6.64308 5.27799C6.75375 5.27008 6.88758 5.35611 7.15523 5.52818L10.3023 7.55129C10.5346 7.7006 10.6507 7.77525 10.6908 7.87018C10.7258 7.95312 10.7258 8.04672 10.6908 8.12966C10.6507 8.22459 10.5346 8.29924 10.3023 8.44855L7.15523 10.4717C6.88758 10.6437 6.75375 10.7298 6.64308 10.7219C6.54664 10.715 6.45794 10.6665 6.39999 10.5891C6.3335 10.5003 6.3335 10.3412 6.3335 10.023V5.97681Z"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M9.5 8.965c0-.477 0-.716.1-.849a.5.5 0 0 1 .364-.199c.166-.012.367.117.769.375l4.72 3.035c.349.224.523.336.583.478a.5.5 0 0 1 0 .39c-.06.142-.234.254-.583.478l-4.72 3.035c-.402.258-.603.387-.769.375a.5.5 0 0 1-.364-.2c-.1-.132-.1-.371-.1-.848z"
-        strokeWidth="inherit"
       />
     </svg>
   )
@@ -40,7 +39,14 @@ const PlayCircle = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'PlayCircle', props.className].join(' ')}
+    />
+  )
 })
 PlayCircle.displayName = 'IconPlayCircle'
 export default PlayCircle

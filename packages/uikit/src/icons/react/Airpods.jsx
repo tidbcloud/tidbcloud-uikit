@@ -4,21 +4,27 @@ import { forwardRef } from 'react'
 const IconAirpods = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth="1.5"
+      xmlns="http://www.w3.org/2000/svg"
       ref={ref}
       {...props}
     >
       <path
-        stroke="currentColor"
+        d="M1.3335 5.08325C1.3335 6.60204 2.56471 7.83325 4.0835 7.83325C4.28742 7.83325 4.38938 7.83325 4.44221 7.85148C4.55275 7.88962 4.61046 7.94733 4.6486 8.05787C4.66683 8.1107 4.66683 8.19346 4.66683 8.35899V12.5833C4.66683 13.1816 5.15185 13.6666 5.75016 13.6666C6.34847 13.6666 6.8335 13.1816 6.8335 12.5833V5.08325C6.8335 3.56447 5.60228 2.33325 4.0835 2.33325C2.56471 2.33325 1.3335 3.56447 1.3335 5.08325Z"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M2 7.625a4.125 4.125 0 0 0 4.125 4.125c.306 0 .459 0 .538.027a.45.45 0 0 1 .31.31c.027.08.027.203.027.452v6.336a1.625 1.625 0 1 0 3.25 0V7.625a4.125 4.125 0 0 0-8.25 0M22 7.625a4.125 4.125 0 0 1-4.125 4.125c-.306 0-.459 0-.538.027a.45.45 0 0 0-.31.31c-.027.08-.027.203-.027.452v6.336a1.625 1.625 0 1 1-3.25 0V7.625a4.125 4.125 0 1 1 8.25 0"
-        strokeWidth="inherit"
+      />
+      <path
+        d="M14.6668 5.08325C14.6668 6.60204 13.4356 7.83325 11.9168 7.83325C11.7129 7.83325 11.6109 7.83325 11.5581 7.85148C11.4476 7.88962 11.3899 7.94733 11.3517 8.05787C11.3335 8.1107 11.3335 8.19346 11.3335 8.35899V12.5833C11.3335 13.1816 10.8485 13.6666 10.2502 13.6666C9.65185 13.6666 9.16683 13.1816 9.16683 12.5833V5.08325C9.16683 3.56447 10.398 2.33325 11.9168 2.33325C13.4356 2.33325 14.6668 3.56447 14.6668 5.08325Z"
+        stroke="#383E40"
+        strokeWidth={1.5}
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   )
@@ -33,7 +39,14 @@ const Airpods = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'Airpods', props.className].join(' ')}
+    />
+  )
 })
 Airpods.displayName = 'IconAirpods'
 export default Airpods

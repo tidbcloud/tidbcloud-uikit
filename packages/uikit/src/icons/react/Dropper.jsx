@@ -4,21 +4,20 @@ import { forwardRef } from 'react'
 const IconDropper = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth="1.5"
+      xmlns="http://www.w3.org/2000/svg"
       ref={ref}
       {...props}
     >
       <path
-        stroke="currentColor"
+        d="M7.00016 4.33337L11.6668 9.00004M1.3335 14.6667C1.3335 14.6667 4.3335 14.3334 6.00016 12.6667L14.0002 4.66671C14.7365 3.93033 14.7365 2.73642 14.0002 2.00004C13.2638 1.26366 12.0699 1.26366 11.3335 2.00004L3.3335 10C1.66683 11.6667 1.3335 14.6667 1.3335 14.6667Z"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="m10.5 6.5 7 7M2 22s4.5-.5 7-3L21 7a2.828 2.828 0 1 0-4-4L5 15c-2.5 2.5-3 7-3 7"
-        strokeWidth="inherit"
       />
     </svg>
   )
@@ -33,7 +32,14 @@ const Dropper = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'Dropper', props.className].join(' ')}
+    />
+  )
 })
 Dropper.displayName = 'IconDropper'
 export default Dropper

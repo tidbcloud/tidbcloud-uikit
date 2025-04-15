@@ -4,21 +4,20 @@ import { forwardRef } from 'react'
 const IconArrowDownRight = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth="1.5"
+      xmlns="http://www.w3.org/2000/svg"
       ref={ref}
       {...props}
     >
       <path
-        stroke="currentColor"
+        d="M4.6665 4.66663L11.3332 11.3333M11.3332 11.3333V4.66663M11.3332 11.3333H4.6665"
+        stroke="#383E40"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="m7 7 10 10m0 0V7m0 10H7"
-        strokeWidth="inherit"
       />
     </svg>
   )
@@ -33,7 +32,14 @@ const ArrowDownRight = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'ArrowDownRight', props.className].join(' ')}
+    />
+  )
 })
 ArrowDownRight.displayName = 'IconArrowDownRight'
 export default ArrowDownRight
