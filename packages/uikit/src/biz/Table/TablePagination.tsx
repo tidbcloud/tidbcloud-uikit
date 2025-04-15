@@ -41,7 +41,7 @@ export const ProTablePagination = <TData extends MRT_RowData>({ table, ...props 
     getPrePaginationRowModel,
     getState,
     options: {
-      icons: { IconChevronLeft, IconChevronRight },
+      icons: { IconChevronLeft, IconChevronRight, IconChevronLeftPipe, IconChevronRightPipe },
       mantinePaginationProps,
       rowCount
     },
@@ -90,6 +90,8 @@ export const ProTablePagination = <TData extends MRT_RowData>({ table, ...props 
           nextIcon={IconChevronRight}
           onChange={paginationProps.onChange ?? ((newPageIndex) => setPageIndex(newPageIndex - 1))}
           previousIcon={IconChevronLeft}
+          firstIcon={IconChevronLeftPipe}
+          lastIcon={IconChevronRightPipe}
           total={paginationProps?.total ?? numberOfPages}
           value={paginationProps.value ?? pageIndex + 1}
           withEdges={withEdges}
