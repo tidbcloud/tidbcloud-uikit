@@ -1,5 +1,14 @@
 # @tidbcloud/uikit
 
+## 2.2.10
+
+### Patch Changes
+
+- chore: trigger re-run ci
+- fix(ProTable): update pagination icon ([#517](https://github.com/tidbcloud/tidbcloud-uikit/pull/517))
+- feat: add manual snapshot release workflow ([#516](https://github.com/tidbcloud/tidbcloud-uikit/pull/516))
+- docs: update README with Quick Start section and usage example ([#514](https://github.com/tidbcloud/tidbcloud-uikit/pull/514))
+
 ## 2.2.9
 
 ### Patch Changes
