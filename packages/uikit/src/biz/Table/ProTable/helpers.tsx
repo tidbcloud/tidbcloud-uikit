@@ -1,7 +1,17 @@
 import { isFunction } from 'lodash-es'
 import { type MRT_TableOptions, type MRT_RowData, useMantineReactTable, MRT_TableInstance } from 'mantine-react-table'
 
-import { IconSwitchVertical02, IconArrowUp, IconArrowDown } from '../../../icons/index.js'
+import {
+  IconSwitchVertical02,
+  IconArrowUp,
+  IconArrowDown,
+  IconChevronLeft,
+  IconChevronRight,
+  IconChevronDown,
+  IconArrowRight,
+  IconChevronRightDouble,
+  IconChevronLeftDouble
+} from '../../../icons/index.js'
 import { type BoxProps, useMantineTheme } from '../../../primitive/index.js'
 import { mergeSxList } from '../../../utils/index.js'
 
@@ -276,9 +286,14 @@ export function mergeProTableProps<T extends Record<string, any>>(props: ProTabl
     layoutMode,
     data,
     icons: {
-      IconArrowsSort: (props: any) => <IconSwitchVertical02 size={14} {...props} />,
-      IconSortAscending: (props: any) => <IconArrowUp size={14} {...props} />,
-      IconSortDescending: (props: any) => <IconArrowDown size={14} {...props} />
+      IconChevronLeft: (props: any) => <IconChevronLeft {...props} />,
+      IconChevronRight: (props: any) => <IconChevronRight {...props} />,
+      IconChevronDown: (props: any) => <IconChevronDown {...props} />,
+      IconChevronLeftPipe: (props: any) => <IconChevronLeftDouble {...props} />,
+      IconChevronRightPipe: (props: any) => <IconChevronRightDouble {...props} />,
+      IconArrowsSort: (props: any) => <IconSwitchVertical02 {...props} />,
+      IconSortAscending: (props: any) => <IconArrowUp {...props} />,
+      IconSortDescending: (props: any) => <IconArrowDown {...props} />
     },
     localization: {
       noRecordsToDisplay: errorMessage ? errorMessage : emptyMessage ? emptyMessage : undefined,
