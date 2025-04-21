@@ -9,15 +9,16 @@ const IconChevronUpDouble = (props, ref) => {
       viewBox="0 0 16 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
-        d="M11.3332 12L7.99984 8.66667L4.6665 12M11.3332 7.33333L7.99984 4L4.6665 7.33333"
-        stroke="#383E40"
-        strokeWidth={1.5}
+        d="M11.3333 12L7.99996 8.66667L4.66663 12M11.3333 7.33333L7.99996 4L4.66663 7.33333"
+        stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
+        strokeWidth="inherit"
       />
     </svg>
   )

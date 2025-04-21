@@ -9,15 +9,16 @@ const IconHeading01 = (props, ref) => {
       viewBox="0 0 16 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
-        d="M3.99984 2.6665V13.3332M11.9998 2.6665V13.3332M5.33317 2.6665H2.6665M11.9998 7.99984L3.99984 7.99984M5.33317 13.3332H2.6665M13.3332 13.3332H10.6665M13.3332 2.6665H10.6665"
-        stroke="#383E40"
-        strokeWidth={1.5}
+        d="M4.00008 2.6665V13.3332M12.0001 2.6665V13.3332M5.33341 2.6665H2.66675M12.0001 7.99984L4.00008 7.99984M5.33341 13.3332H2.66675M13.3334 13.3332H10.6667M13.3334 2.6665H10.6667"
+        stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
+        strokeWidth="inherit"
       />
     </svg>
   )

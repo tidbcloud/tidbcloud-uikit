@@ -9,15 +9,16 @@ const IconSlashDivider = (props, ref) => {
       viewBox="0 0 16 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
-        d="M4.6665 14.6666L11.3332 1.33331"
-        stroke="#383E40"
-        strokeWidth={1.5}
+        d="M4.66669 14.6666L11.3334 1.33331"
+        stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
+        strokeWidth="inherit"
       />
     </svg>
   )

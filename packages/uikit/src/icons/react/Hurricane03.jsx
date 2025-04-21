@@ -9,15 +9,16 @@ const IconHurricane03 = (props, ref) => {
       viewBox="0 0 16 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
         d="M14 2.6665H2M13.3333 5.33317L4 5.33317M12 7.99984L6 7.99984M10 10.6665L5.33333 10.6665M11.3333 13.3332H8"
-        stroke="#383E40"
-        strokeWidth={1.5}
+        stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
+        strokeWidth="inherit"
       />
     </svg>
   )

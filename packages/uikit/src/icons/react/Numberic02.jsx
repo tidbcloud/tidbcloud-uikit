@@ -9,15 +9,16 @@ const IconNumberic02 = (props, ref) => {
       viewBox="0 0 16 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
-        d="M6.33365 2L4.33365 14M11.667 2L9.66697 14M13.667 5.33333H2.33366M13.0003 10.6667H1.66699"
-        stroke="#383E40"
-        strokeWidth={1.5}
+        d="M6.33341 2L4.33341 14M11.6667 2L9.66672 14M13.6667 5.33333H2.33341M13.0001 10.6667H1.66675"
+        stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
+        strokeWidth="inherit"
       />
     </svg>
   )

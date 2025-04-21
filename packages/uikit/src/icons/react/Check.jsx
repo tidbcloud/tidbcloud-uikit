@@ -9,15 +9,16 @@ const IconCheck = (props, ref) => {
       viewBox="0 0 16 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
-        d="M13.3332 4.66663L5.99984 12L2.6665 8.66663"
-        stroke="#383E40"
-        strokeWidth={1.5}
+        d="M13.3333 4.66663L6 12L2.66666 8.66663"
+        stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
+        strokeWidth="inherit"
       />
     </svg>
   )

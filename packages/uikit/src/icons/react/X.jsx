@@ -9,15 +9,16 @@ const IconX = (props, ref) => {
       viewBox="0 0 16 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
-        d="M11.3332 4.66675L4.6665 11.3334M4.6665 4.66675L11.3332 11.3334"
-        stroke="#383E40"
-        strokeWidth={1.5}
+        d="M11.3334 4.66663L4.66669 11.3333M4.66669 4.66663L11.3334 11.3333"
+        stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
+        strokeWidth="inherit"
       />
     </svg>
   )

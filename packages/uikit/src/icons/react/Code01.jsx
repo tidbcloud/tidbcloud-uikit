@@ -9,15 +9,16 @@ const IconCode01 = (props, ref) => {
       viewBox="0 0 16 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
-        d="M10.6668 12L14.6668 8L10.6668 4M5.3335 4L1.3335 8L5.3335 12"
-        stroke="#383E40"
-        strokeWidth={1.5}
+        d="M10.6667 12L14.6667 8L10.6667 4M5.33334 4L1.33334 8L5.33334 12"
+        stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
+        strokeWidth="inherit"
       />
     </svg>
   )

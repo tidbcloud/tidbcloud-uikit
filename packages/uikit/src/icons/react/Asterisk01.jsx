@@ -9,15 +9,16 @@ const IconAsterisk01 = (props, ref) => {
       viewBox="0 0 16 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
-        d="M8.00016 1.33331V14.6666M12.7142 3.28593L3.28612 12.714M14.6668 7.99998H1.3335M12.7142 12.714L3.28612 3.28593"
-        stroke="#383E40"
-        strokeWidth={1.5}
+        d="M8 1.33334V14.6667M12.714 3.28597L3.28596 12.7141M14.6667 8.00001H1.33334M12.714 12.7141L3.28596 3.28597"
+        stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
+        strokeWidth="inherit"
       />
     </svg>
   )
