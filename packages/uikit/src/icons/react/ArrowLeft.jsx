@@ -9,15 +9,16 @@ const IconArrowLeft = (props, ref) => {
       viewBox="0 0 16 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
-        d="M12.6668 7.99998H3.3335M3.3335 7.99998L8.00016 12.6666M3.3335 7.99998L8.00016 3.33331"
-        stroke="#383E40"
-        strokeWidth={1.5}
+        d="M12.6667 8.00001H3.33337M3.33337 8.00001L8.00004 12.6667M3.33337 8.00001L8.00004 3.33334"
+        stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
+        strokeWidth="inherit"
       />
     </svg>
   )

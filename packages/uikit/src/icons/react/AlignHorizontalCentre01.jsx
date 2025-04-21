@@ -9,15 +9,16 @@ const IconAlignHorizontalCentre01 = (props, ref) => {
       viewBox="0 0 16 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
-        d="M8.00016 2V14M14.6668 8H10.3335M10.3335 8L13.0002 10.6667M10.3335 8L13.0002 5.33333M1.3335 8H5.66683M5.66683 8L3.00016 10.6667M5.66683 8L3.00016 5.33333"
-        stroke="#383E40"
-        strokeWidth={1.5}
+        d="M8 2V14M14.6667 8H10.3333M10.3333 8L13 10.6667M10.3333 8L13 5.33333M1.33334 8H5.66667M5.66667 8L3 10.6667M5.66667 8L3 5.33333"
+        stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
+        strokeWidth="inherit"
       />
     </svg>
   )

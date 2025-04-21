@@ -9,15 +9,16 @@ const IconTerminal = (props, ref) => {
       viewBox="0 0 16 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
-        d="M2.6665 11.3335L6.6665 7.3335L2.6665 3.3335M7.99984 12.6668H13.3332"
-        stroke="#383E40"
-        strokeWidth={1.5}
+        d="M2.66669 11.3333L6.66669 7.33325L2.66669 3.33325M8.00002 12.6666H13.3334"
+        stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
+        strokeWidth="inherit"
       />
     </svg>
   )

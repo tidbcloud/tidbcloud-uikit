@@ -9,15 +9,16 @@ const IconAlignRight01 = (props, ref) => {
       viewBox="0 0 16 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
         d="M14 14V2M2 8H11.3333M11.3333 8L6.66667 3.33333M11.3333 8L6.66667 12.6667"
-        stroke="#383E40"
-        strokeWidth={1.5}
+        stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
+        strokeWidth="inherit"
       />
     </svg>
   )

@@ -9,15 +9,16 @@ const IconSubscript = (props, ref) => {
       viewBox="0 0 16 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
         d="M2 3.3335L8.66667 10.0002M8.66667 3.3335L2 10.0002M14 12.6669H11.3333C11.3333 11.6669 11.6267 11.3335 12.3333 11.0002C13.04 10.6669 14 10.2202 14 9.33355C14 9.02022 13.8867 8.71355 13.68 8.47355C13.4666 8.23188 13.1766 8.07088 12.8586 8.01748C12.5407 7.96408 12.214 8.02153 11.9333 8.18022C11.6533 8.34022 11.44 8.59355 11.3333 8.89355"
-        stroke="#383E40"
-        strokeWidth={1.5}
+        stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
+        strokeWidth="inherit"
       />
     </svg>
   )

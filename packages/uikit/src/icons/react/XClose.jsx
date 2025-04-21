@@ -9,10 +9,17 @@ const IconXClose = (props, ref) => {
       viewBox="0 0 16 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
-      <path d="M12 4L4 12M4 4L12 12" stroke="#383E40" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" />
+      <path
+        d="M12 4L4 12M4 4L12 12"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="inherit"
+      />
     </svg>
   )
 }

@@ -9,15 +9,16 @@ const IconReverseRight = (props, ref) => {
       viewBox="0 0 16 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
-        d="M13.3332 4.66667H6.6665C4.45736 4.66667 2.6665 6.45753 2.6665 8.66667C2.6665 10.8758 4.45736 12.6667 6.6665 12.6667H13.3332M13.3332 4.66667L10.6665 2M13.3332 4.66667L10.6665 7.33333"
-        stroke="#383E40"
-        strokeWidth={1.5}
+        d="M13.3334 4.66667H6.66675C4.45761 4.66667 2.66675 6.45753 2.66675 8.66667C2.66675 10.8758 4.45761 12.6667 6.66675 12.6667H13.3334M13.3334 4.66667L10.6667 2M13.3334 4.66667L10.6667 7.33333"
+        stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
+        strokeWidth="inherit"
       />
     </svg>
   )

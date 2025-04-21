@@ -9,15 +9,16 @@ const IconExpand08 = (props, ref) => {
       viewBox="0 0 16 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
-        d="M5.16699 5.16667L7.83366 2.5L10.5003 5.16667M5.16699 10.8333L7.83366 13.5L10.5003 10.8333"
-        stroke="#383E40"
-        strokeWidth={1.5}
+        d="M5.16675 5.16667L7.83341 2.5L10.5001 5.16667M5.16675 10.8333L7.83341 13.5L10.5001 10.8333"
+        stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
+        strokeWidth="inherit"
       />
     </svg>
   )

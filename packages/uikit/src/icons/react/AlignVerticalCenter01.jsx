@@ -9,15 +9,16 @@ const IconAlignVerticalCenter01 = (props, ref) => {
       viewBox="0 0 16 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
         d="M2 7.99992H14M8 1.33325V5.66659M8 5.66659L10.6667 2.99992M8 5.66659L5.33333 2.99992M8 14.6666V10.3333M8 10.3333L10.6667 12.9999M8 10.3333L5.33333 12.9999"
-        stroke="#383E40"
-        strokeWidth={1.5}
+        stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
+        strokeWidth="inherit"
       />
     </svg>
   )

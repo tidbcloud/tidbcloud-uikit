@@ -9,15 +9,16 @@ const IconYAxis = (props, ref) => {
       viewBox="0 0 16 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
-        d="M8.00033 14L8.00032 2M6.66699 2L9.33366 2M6.66699 14L9.33366 14"
-        stroke="#383E40"
-        strokeWidth={1.5}
+        d="M8.00008 14L8.00008 2M6.66675 2L9.33341 2M6.66675 14L9.33341 14"
+        stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
+        strokeWidth="inherit"
       />
     </svg>
   )

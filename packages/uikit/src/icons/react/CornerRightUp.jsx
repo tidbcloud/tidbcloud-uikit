@@ -9,15 +9,16 @@ const IconCornerRightUp = (props, ref) => {
       viewBox="0 0 16 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
         d="M2 13.3333H4.26667C6.50688 13.3333 7.62698 13.3333 8.48263 12.8973C9.23528 12.5138 9.8472 11.9019 10.2307 11.1493C10.6667 10.2936 10.6667 9.1735 10.6667 6.93329L10.6667 2.66663M10.6667 2.66663L7.33333 5.99996M10.6667 2.66663L14 5.99996"
-        stroke="#383E40"
-        strokeWidth={1.5}
+        stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
+        strokeWidth="inherit"
       />
     </svg>
   )

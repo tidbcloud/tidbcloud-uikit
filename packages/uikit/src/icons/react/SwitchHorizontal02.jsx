@@ -9,15 +9,16 @@ const IconSwitchHorizontal02 = (props, ref) => {
       viewBox="0 0 16 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
-        d="M2.6665 11.3333H13.3332M13.3332 11.3333L10.6665 8.66667M13.3332 11.3333L10.6665 14M13.3332 4.66667H2.6665M2.6665 4.66667L5.33317 2M2.6665 4.66667L5.33317 7.33333"
-        stroke="#383E40"
-        strokeWidth={1.5}
+        d="M2.66675 11.3333H13.3334M13.3334 11.3333L10.6667 8.66667M13.3334 11.3333L10.6667 14M13.3334 4.66667H2.66675M2.66675 4.66667L5.33341 2M2.66675 4.66667L5.33341 7.33333"
+        stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
+        strokeWidth="inherit"
       />
     </svg>
   )

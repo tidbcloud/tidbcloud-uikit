@@ -9,15 +9,16 @@ const IconAi = (props, ref) => {
       viewBox="0 0 16 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
-        d="M4.2987 10.2105H8.84416M3 12.6666L6.40136 3.33331L10.1429 12.6666M13 3.33331V12.6666"
-        stroke="#383E40"
-        strokeWidth={1.5}
+        d="M4.2987 10.2105H8.84416M3 12.6667L6.40136 3.33334L10.1429 12.6667M13 3.33334V12.6667"
+        stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
+        strokeWidth="inherit"
       />
     </svg>
   )

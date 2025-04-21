@@ -9,15 +9,16 @@ const IconItalic02 = (props, ref) => {
       viewBox="0 0 16 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
         d="M8.83333 2.6665L4.83333 13.3332M11.1667 2.6665L7.16667 13.3332M13 2.6665L6.33333 2.6665M9.66667 13.3332H3"
-        stroke="#383E40"
-        strokeWidth={1.5}
+        stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
+        strokeWidth="inherit"
       />
     </svg>
   )

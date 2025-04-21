@@ -9,15 +9,16 @@ const IconHash01 = (props, ref) => {
       viewBox="0 0 16 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
-        d="M2.6665 5.33333H13.3332M2.6665 10.6667H13.3332M5.33317 2V14M10.6665 2V14"
-        stroke="#383E40"
-        strokeWidth={1.5}
+        d="M2.66666 5.33333H13.3333M2.66666 10.6667H13.3333M5.33332 2V14M10.6667 2V14"
+        stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
+        strokeWidth="inherit"
       />
     </svg>
   )

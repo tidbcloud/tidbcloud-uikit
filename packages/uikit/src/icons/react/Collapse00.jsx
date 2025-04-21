@@ -9,15 +9,16 @@ const IconCollapse00 = (props, ref) => {
       viewBox="0 0 16 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
-        d="M13 10.6667L10.3333 8.00004L13 5.33337M3 10.6667L5.66667 8.00004L3 5.33337"
-        stroke="#383E40"
-        strokeWidth={1.5}
+        d="M13 10.6666L10.3333 7.99998L13 5.33331M3 10.6666L5.66667 7.99998L3 5.33331"
+        stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
+        strokeWidth="inherit"
       />
     </svg>
   )

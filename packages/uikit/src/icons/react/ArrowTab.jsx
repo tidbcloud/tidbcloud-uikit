@@ -9,15 +9,16 @@ const IconArrowTab = (props, ref) => {
       viewBox="0 0 16 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
         d="M2.94811 8.00003C6.72598 8.00003 11.7185 8.00003 11.7185 8.00003M11.7185 8.00003L7.71847 4.00003M11.7185 8.00003L7.71847 12M13.0518 4V12"
-        stroke="#383E40"
-        strokeWidth={1.5}
+        stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
+        strokeWidth="inherit"
       />
     </svg>
   )

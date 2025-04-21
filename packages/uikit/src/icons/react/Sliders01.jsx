@@ -9,15 +9,16 @@ const IconSliders01 = (props, ref) => {
       viewBox="0 0 16 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
-        d="M3.3335 14V9.33333M3.3335 6.66667V2M8.00016 14V8M8.00016 5.33333V2M12.6668 14V10.6667M12.6668 8V2M1.3335 9.33333H5.3335M6.00016 5.33333H10.0002M10.6668 10.6667H14.6668"
-        stroke="#383E40"
-        strokeWidth={1.5}
+        d="M3.33325 14V9.33333M3.33325 6.66667V2M7.99992 14V8M7.99992 5.33333V2M12.6666 14V10.6667M12.6666 8V2M1.33325 9.33333H5.33325M5.99992 5.33333H9.99992M10.6666 10.6667H14.6666"
+        stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
+        strokeWidth="inherit"
       />
     </svg>
   )
