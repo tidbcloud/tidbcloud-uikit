@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import { isValidElement, cloneElement } from 'react'
 
-import { IconFile02, IconMinus, IconPlus, IconChevronDownFill } from '../../icons/index.js'
+import { IconFile02, IconMinus, IconPlus, IconChevronDown } from '../../icons/index.js'
 import { Loader } from '../../primitive/index.js'
 
 import type { SwitcherIcon, TreeLeafIcon, TreeNodeProps } from './index'
@@ -70,5 +70,5 @@ export default function renderSwitcherIcon(
       <IconPlus size={14} className={`${prefixCls}-switcher-line-icon`} />
     )
   }
-  return <IconChevronDownFill size={14} className={switcherCls} />
+  return <IconChevronDown size={14} className={switcherCls} />
 }
