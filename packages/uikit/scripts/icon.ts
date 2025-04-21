@@ -96,42 +96,42 @@ async function transformSvgToJSX(content: string, name: string): Promise<string>
       jsx: {
         babelConfig: {
           plugins: [
-            // [
-            //   '@svgr/babel-plugin-remove-jsx-attribute',
-            //   {
-            //     elements: ['path'],
-            //     attributes: ['strokeWidth']
-            //   },
-            //   'remove strokeWidth on path tag'
-            // ],
-            // [
-            //   '@svgr/babel-plugin-add-jsx-attribute',
-            //   {
-            //     elements: ['svg'],
-            //     attributes: [{ name: 'strokeWidth', value: '1.5' }]
-            //   },
-            //   'add strokeWidth on svg tag'
-            // ],
-            // [
-            //   '@svgr/babel-plugin-add-jsx-attribute',
-            //   {
-            //     elements: ['path'],
-            //     attributes: [{ name: 'strokeWidth', value: 'inherit' }]
-            //   },
-            //   'add strokeWidth inherit on path tag'
-            // ],
-            // [
-            //   '@svgr/babel-plugin-add-jsx-attribute',
-            //   {
-            //     elements: ['path'],
-            //     attributes: [
-            //       {
-            //         name: 'stroke',
-            //         value: 'currentColor'
-            //       }
-            //     ]
-            //   }
-            // ]
+            [
+              '@svgr/babel-plugin-remove-jsx-attribute',
+              {
+                elements: ['path'],
+                attributes: ['strokeWidth']
+              },
+              'remove strokeWidth on path tag'
+            ],
+            [
+              '@svgr/babel-plugin-add-jsx-attribute',
+              {
+                elements: ['svg'],
+                attributes: [{ name: 'strokeWidth', value: '1.5' }]
+              },
+              'add strokeWidth on svg tag'
+            ],
+            [
+              '@svgr/babel-plugin-add-jsx-attribute',
+              {
+                elements: ['path'],
+                attributes: [{ name: 'strokeWidth', value: 'inherit' }]
+              },
+              'add strokeWidth inherit on path tag'
+            ],
+            [
+              '@svgr/babel-plugin-add-jsx-attribute',
+              {
+                elements: ['path'],
+                attributes: [
+                  {
+                    name: 'stroke',
+                    value: 'currentColor'
+                  }
+                ]
+              }
+            ]
           ]
         }
       },
