@@ -9,15 +9,16 @@ const IconCurrencyPound = (props, ref) => {
       viewBox="0 0 16 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
-        d="M11.6668 13.6668H4.3335C4.3335 13.6668 6.66683 11.8277 6.66683 9.00016C6.66683 7.11515 5.276 6.44099 5.25597 4.87014C5.25727 1.76068 9.00049 1.92601 10.3016 3.16189M4.3335 9.00016H10.0002"
-        stroke="#383E40"
-        strokeWidth={1.5}
+        d="M11.6666 13.6668H4.33331C4.33331 13.6668 6.66665 11.8277 6.66665 9.00016C6.66665 7.11515 5.27582 6.44099 5.25578 4.87014C5.25708 1.76068 9.00031 1.92601 10.3014 3.16189M4.33331 9.00016H9.99998"
+        stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
+        strokeWidth="inherit"
       />
     </svg>
   )

@@ -9,15 +9,16 @@ const IconTrendDown02 = (props, ref) => {
       viewBox="0 0 16 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
-        d="M4.66699 4.66663L11.3337 11.3333M11.3337 11.3333V4.66663M11.3337 11.3333H4.66699"
-        stroke="#383E40"
-        strokeWidth={1.5}
+        d="M4.66675 4.66669L11.3334 11.3334M11.3334 11.3334V4.66669M11.3334 11.3334H4.66675"
+        stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
+        strokeWidth="inherit"
       />
     </svg>
   )

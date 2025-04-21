@@ -9,15 +9,16 @@ const IconLetterSpacing02 = (props, ref) => {
       viewBox="0 0 16 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
-        d="M1.3335 12H14.6668M1.3335 12L3.3335 10M1.3335 12L3.3335 14M14.6668 12L12.6668 10M14.6668 12L12.6668 14M4.66683 2H11.3335M8.00016 2V9.33333"
-        stroke="#383E40"
-        strokeWidth={1.5}
+        d="M1.33325 12H14.6666M1.33325 12L3.33325 10M1.33325 12L3.33325 14M14.6666 12L12.6666 10M14.6666 12L12.6666 14M4.66659 2H11.3333M7.99992 2V9.33333"
+        stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
+        strokeWidth="inherit"
       />
     </svg>
   )

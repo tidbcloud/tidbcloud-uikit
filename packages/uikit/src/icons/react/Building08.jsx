@@ -9,15 +9,16 @@ const IconBuilding08 = (props, ref) => {
       viewBox="0 0 16 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
         d="M2 14H14M4 12V6.66665M6.66667 12V6.66665M9.33333 12V6.66665M12 12V6.66665M13.3333 4.66665L8.28267 1.50998C8.18012 1.44589 8.12885 1.41385 8.07386 1.40135C8.02524 1.3903 7.97476 1.3903 7.92614 1.40135C7.87115 1.41385 7.81988 1.44589 7.71733 1.50998L2.66667 4.66665H13.3333Z"
-        stroke="#383E40"
-        strokeWidth={1.5}
+        stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
+        strokeWidth="inherit"
       />
     </svg>
   )

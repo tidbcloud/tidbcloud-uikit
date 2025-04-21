@@ -9,15 +9,16 @@ const IconBluetoothConnect = (props, ref) => {
       viewBox="0 0 16 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
         d="M2 4.66659L10 11.3333L6 14.6666V1.33325L10 4.66659L2 11.3333M12 7.99992H12.0067M10 7.99992H10.0067M14 7.99992H14.0067"
-        stroke="#383E40"
-        strokeWidth={1.5}
+        stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
+        strokeWidth="inherit"
       />
     </svg>
   )

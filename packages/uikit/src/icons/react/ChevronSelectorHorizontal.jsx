@@ -9,15 +9,16 @@ const IconChevronSelectorHorizontal = (props, ref) => {
       viewBox="0 0 16 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
-        d="M5.99984 4.66663L2.6665 7.99996L5.99984 11.3333M9.99984 4.66663L13.3332 7.99996L9.99984 11.3333"
-        stroke="#383E40"
-        strokeWidth={1.5}
+        d="M5.99996 4.66669L2.66663 8.00002L5.99996 11.3334M9.99996 4.66669L13.3333 8.00002L9.99996 11.3334"
+        stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
+        strokeWidth="inherit"
       />
     </svg>
   )

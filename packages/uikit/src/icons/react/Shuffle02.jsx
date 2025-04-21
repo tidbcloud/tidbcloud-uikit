@@ -9,15 +9,16 @@ const IconShuffle02 = (props, ref) => {
       viewBox="0 0 16 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
         d="M14 10.6667V14M14 14H10.6667M14 14L10 10M2 2L6 6M10.6667 2H14M14 2V5.33333M14 2L2 14"
-        stroke="#383E40"
-        strokeWidth={1.5}
+        stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
+        strokeWidth="inherit"
       />
     </svg>
   )

@@ -9,15 +9,16 @@ const IconEqual = (props, ref) => {
       viewBox="0 0 16 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
-        d="M3.3335 6H12.6668M3.3335 10H12.6668"
-        stroke="#383E40"
-        strokeWidth={1.5}
+        d="M3.33334 6H12.6667M3.33334 10H12.6667"
+        stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
+        strokeWidth="inherit"
       />
     </svg>
   )
