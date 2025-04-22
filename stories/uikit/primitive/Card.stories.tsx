@@ -23,7 +23,7 @@ export default meta
 function Usage() {
   return (
     <div style={{ maxWidth: 400, padding: 40, margin: 'auto' }}>
-      <Card withBorder p="lg">
+      <Card p="lg">
         <Card.Section inheritPadding>Card section 1</Card.Section>
         <Card.Section inheritPadding withBorder>
           Card section 2
