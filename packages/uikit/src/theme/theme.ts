@@ -20,7 +20,7 @@ import {
   RadioProps,
   ActionIconProps
 } from '../primitive/index.js'
-import { getPrimaryShade, getThemeColor, rem, rgba } from '../utils/index.js'
+import { getPrimaryShade, getThemeColor, rem } from '../utils/index.js'
 
 import * as dark from './colors.dark.js'
 import * as light from './colors.js'
@@ -814,23 +814,30 @@ const theme = createTheme({
     },
     Card: {
       defaultProps: {
-        shadow: 'xs',
+        shadow: 'none',
         withBorder: true
       },
       styles: (theme: MantineTheme) => {
         return {
           root: {
-            backgroundColor: theme.colors.carbon[0]
+            borderColor: theme.colors.carbon[4]
+          },
+          section: {
+            borderColor: theme.colors.carbon[4]
           }
         }
       }
     },
     Paper: {
+      defaultProps: {
+        shadow: 'none',
+        withBorder: false
+      },
       styles: (theme: MantineTheme, props: PaperProps) => {
         return {
           root: {
             backgroundColor: themeColor(theme, 'carbon', 0),
-            borderColor: props.withBorder ? themeColor(theme, 'carbon', 3) : 'transparent'
+            borderColor: props.withBorder ? themeColor(theme, 'carbon', 4) : 'transparent'
           }
         }
       }
