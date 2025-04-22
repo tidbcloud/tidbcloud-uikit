@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.2.11
+
+### Patch Changes
+
+- fix(theme): update Card and Paper components' shadow and border styles ([#520](https://github.com/tidbcloud/tidbcloud-uikit/pull/520))
+
 ## 2.2.10
 
 ### Patch Changes
