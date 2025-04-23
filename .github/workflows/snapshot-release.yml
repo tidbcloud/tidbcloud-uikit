@@ -65,9 +65,5 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.PUBLISH_NPM_REGISTRY_TOKEN }} # Ensure this secret is configured in your repo settings
 
-
-      # Optional: Push the version bump commit if changeset didn't already
-      # Changeset version should handle the commit, and publish the tag.
-      # If the tag isn't pushed by publish, you might need an explicit push.
-      # - name: Push Version Commit and Tag
-      #   run: git push --follow-tags origin ${{ github.ref_name }} # Push commit and associated tag
+      - name: Push Version Commit and Tag
+        run: git push --tags origin # Push associated tag to the remote repository
