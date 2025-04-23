@@ -56,6 +56,9 @@ jobs:
           # GITHUB_TOKEN is automatically available
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Setup npm for Publishing
+        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.PUBLISH_NPM_REGISTRY_TOKEN }}" > .npmrc
+
       - name: Publish Snapshot to npm under experimental tag
         run: pnpm exec changeset publish --tag experimental
         env:
