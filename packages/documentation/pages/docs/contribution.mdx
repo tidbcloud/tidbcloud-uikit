@@ -139,15 +139,41 @@ Then run `changeset version` to version packages with normal versions.
 
 ### Snapshot release
 
-Snapshot releases are a way to release your changes for testing without impacting real users.
+Snapshot releases are a way to release your changes for testing without impacting real users. They allow you to publish experimental versions based on your current branch.
 
-To create a snapshot release, you can create a changeset just like the normal release process, then using snapshot flag to bump the versions:
+#### Triggering via GitHub Actions (Recommended)
+
+The easiest way to create a snapshot release is through GitHub Actions:
+
+1.  Go to the **Actions** tab in the `tidbcloud/uikit` repository.
+2.  Find and select the **Manual Snapshot Release** workflow in the left sidebar.
+3.  Click the **Run workflow** dropdown button on the right.
+4.  Select the branch you want to release from (usually your feature branch).
+5.  Click the green **Run workflow** button.
+
+The CI/CD pipeline will then automatically:
+
+- Build the necessary packages.
+- Version the packages using a timestamp format (e.g., `0.0.0-20250423031914`).
+- Publish these packages to npm under the `experimental` tag.
+
+Once the workflow completes, you can install the snapshot version in other projects using `pnpm add @tidbcloud/uikit@experimental` or `yarn add @tidbcloud/uikit@experimental`.
+
+#### Manual Triggering (Alternative)
+
+Alternatively, you can still create a snapshot release manually. First, create a changeset just like the normal release process:
+
+```bash
+pnpm changeset
+```
+
+Then, use the snapshot flag to bump the versions:
 
 ```bash
 npx changeset version --snapshot
 ```
 
-This will apply the changeset, but instead of using the next semantic version, all versions will be set to `0.0.0-THE_TIME_YOU_DID_THIS`.
+This will apply the changeset, but instead of using the next semantic version, all versions will be set to `0.0.0-<TIMESTAMP>`.
 
 After running the version command, you will need to use the publish command locally to release the packages:
 
@@ -155,4 +181,4 @@ After running the version command, you will need to use the publish command loca
 npx changeset publish --tag experimental
 ```
 
-By using the `--tag` flag, you will not publish it to the latest flag on npm. This is **REALLY IMPORTANT** because if you do not include a tag, people installing your package using `yarn add your-package-name` will install the snapshot version.
+Using the `--tag experimental` flag ensures you do not publish it to the `latest` tag on npm. This is **crucial** because omitting the tag would cause users installing with `pnpm add @tidbcloud/uikit` (or yarn) to get the snapshot version instead of the latest stable release.
