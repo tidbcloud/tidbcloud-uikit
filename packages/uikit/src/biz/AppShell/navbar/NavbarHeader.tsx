@@ -4,9 +4,10 @@ import { Group, ActionIcon, Box, GroupProps } from '../../../primitive/index.js'
 interface NavbarHeaderProps extends GroupProps {
   logo: React.ReactNode
   onLogoClick?: () => void
+  onToggleCollapse?: () => void
 }
 
-export const NavbarHeader = ({ logo, onLogoClick, ...restProps }: NavbarHeaderProps) => {
+export const NavbarHeader = ({ logo, onLogoClick, onToggleCollapse, ...restProps }: NavbarHeaderProps) => {
   const handleLogoClick = () => {
     if (onLogoClick) {
       onLogoClick()
@@ -30,7 +31,7 @@ export const NavbarHeader = ({ logo, onLogoClick, ...restProps }: NavbarHeaderPr
         {logo}
       </Box>
       {/* Fold button */}
-      <ActionIcon variant="white" bg="transparent" aria-label="Navbar fold button">
+      <ActionIcon variant="white" bg="transparent" onClick={onToggleCollapse} aria-label="Navbar fold button">
         <IconLayoutLeft size={20} />
       </ActionIcon>
     </Group>

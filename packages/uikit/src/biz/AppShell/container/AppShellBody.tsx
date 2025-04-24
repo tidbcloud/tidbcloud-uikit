@@ -11,8 +11,7 @@ export const AppShellBody = ({ sx, ...rest }: AppShellBodyProps) => {
         (theme) => ({
           flex: 1,
           overflowX: 'auto',
-          backgroundColor: theme.colors.carbon[1],
-          transition: 'width 200ms ease'
+          backgroundColor: theme.colors.carbon[1]
         }),
         sx
       ])}
