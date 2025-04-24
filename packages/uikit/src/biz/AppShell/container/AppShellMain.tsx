@@ -11,6 +11,7 @@ export const AppShellMain = ({ sx, ...rest }: AppShellMainProps) => {
       align="stretch"
       sx={mergeSxList([
         {
+          position: 'relative',
           height: '100%',
           minHeight: 0,
           overflow: 'hidden',

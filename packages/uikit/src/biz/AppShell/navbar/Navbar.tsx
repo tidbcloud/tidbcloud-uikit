@@ -19,10 +19,14 @@ export const Navbar = ({ withBorder, zIndex, hidden = false, mod, sx, ...rest }:
     <Box
       mod={[{ 'navbar-hidden': hidden }]}
       sx={{
+        flexShrink: 0,
         height: '100%',
         position: 'relative',
+        zIndex: zIndex ?? DEFAULT_NAVBAR_Z_INDEX,
         width: `var(--app-shell-navbar-width)`,
-        transition: 'width 200ms ease',
+        transitionProperty: 'width',
+        transitionDuration: 'var(--app-shell-transition-duration, 200ms)',
+        transitionTimingFunction: 'var(--app-shell-transition-timing-function, ease)',
         '&:where([data-navbar-hidden])': {
           width: 0
         }
@@ -33,13 +37,14 @@ export const Navbar = ({ withBorder, zIndex, hidden = false, mod, sx, ...rest }:
         mod={[{ 'with-border': withBorder }, mod]}
         sx={mergeSxList([
           (theme) => ({
+            backgroundColor: theme.colors.carbon[2],
             display: 'flex',
             flexDirection: 'column',
-            zIndex: zIndex ?? DEFAULT_NAVBAR_Z_INDEX,
             height: '100%',
             width: `var(--app-shell-navbar-width)`,
-            backgroundColor: theme.colors.carbon[2],
-            transition: 'transform 200ms ease',
+            transitionProperty: 'transform',
+            transitionDuration: 'var(--app-shell-transition-duration, 200ms)',
+            transitionTimingFunction: 'var(--app-shell-transition-timing-function, ease)',
             transform: hidden ? 'translateX(-100%)' : 'none',
             '&:where([data-with-border])': {
               borderRight: `1px solid ${theme.colors.carbon[3]}`

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 
 import { Box, Divider, Stack } from '../../primitive/index.js'
 
@@ -6,6 +6,7 @@ import { AppShellBody } from './container/AppShellBody.js'
 import { AppShellMain } from './container/AppShellMain.js'
 import { AppShellRoot } from './container/AppShellRoot.js'
 import { NavMenuRefContext } from './navbar/context/nav-menu-ref-context.js'
+import { ExpandNavbarButton } from './navbar/ExpandNavbarButton.js'
 import { Navbar } from './navbar/Navbar.js'
 import { NavbarHeader } from './navbar/NavbarHeader.js'
 import { NavbarSection } from './navbar/NavbarSection.js'
@@ -52,6 +53,14 @@ export const AppShell = ({ banner, navbar, children }: React.PropsWithChildren<A
   const navMenuRef = useRef<HTMLDivElement>(null)
   const bannerRef = useRef<HTMLDivElement>(null)
   const [withBanner, setWithBanner] = useState(false)
+  const [navbarCollapsed, setNavbarCollapsed] = useState(false)
+
+  const navbarWidth = navbar.width ?? DEFAULT_NAVBAR_WIDTH
+  const pageHeaderOffset = navbarCollapsed ? 28 + 16 : 0
+
+  const toggleNavbar = useCallback(() => {
+    setNavbarCollapsed((prev) => !prev)
+  }, [])
 
   useEffect(() => {
     if (bannerRef.current) {
@@ -65,12 +74,23 @@ export const AppShell = ({ banner, navbar, children }: React.PropsWithChildren<A
       <AppShellMain
         mod={withBanner ? ['height-flex'] : undefined}
         style={{
-          '--app-shell-navbar-width': `${navbar.width ?? DEFAULT_NAVBAR_WIDTH}px`
+          '--app-shell-transition-duration': '200ms',
+          '--app-shell-transition-timing-function': 'ease',
+          '--app-shell-navbar-width': `${navbarWidth}px`,
+          '--app-shell-navbar-offset': navbarCollapsed ? '0px' : `${navbarWidth}px`,
+          '--app-shell-page-header-offset': `${pageHeaderOffset}px`
         }}
       >
-        <Navbar withBorder>
+        {navbarCollapsed && <ExpandNavbarButton onClick={toggleNavbar} />}
+        <Navbar withBorder hidden={navbarCollapsed}>
           <NavbarSection>
-            <NavbarHeader logo={navbar.logo} onLogoClick={navbar.onLogoClick} px="md" py={8} />
+            <NavbarHeader
+              logo={navbar.logo}
+              onLogoClick={navbar.onLogoClick}
+              onToggleCollapse={toggleNavbar}
+              px="md"
+              py={8}
+            />
           </NavbarSection>
           <NavbarSection>
             <Box px="md">{navbar.resourceShortcut}</Box>
