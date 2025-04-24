@@ -21,7 +21,7 @@ export const AppPageShell = ({
           sx: mergeSxList([
             {
               height: '100%',
-              maxWidth: `calc(1920px - var(--app-shell-navbar-width))`,
+              maxWidth: `calc(1920px - var(--app-shell-navbar-offset))`,
               margin: '0 auto'
             },
             bodyProps?.sx
@@ -42,9 +42,9 @@ export const AppPageShell = ({
             display: 'flex',
             flexDirection: 'column',
             height: '100%',
-            maxWidth: `calc(1920px - var(--app-shell-navbar-width))`,
+            maxWidth: `calc(1920px - var(--app-shell-navbar-offset))`,
             margin: '0 auto',
-            minWidth: `calc(${theme.breakpoints.md} - var(--app-shell-navbar-width))`
+            minWidth: `calc(${theme.breakpoints.md} - var(--app-shell-navbar-offset))`
           }),
           wrapperProps?.sx
         ])
