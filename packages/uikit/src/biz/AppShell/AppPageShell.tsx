@@ -53,7 +53,8 @@ export const AppPageShell = ({
         ...headerProps,
         sx: mergeSxList([
           {
-            flexShrink: 0
+            flexShrink: 0,
+            paddingLeft: `calc(24px + var(--app-shell-page-header-offset, 0px))`
           },
           headerProps?.sx
         ])
