@@ -1,9 +1,12 @@
 import { mergeSxList } from '../../utils/index.js'
 import { PageShell, type PageShellProps } from '../PageShell/index.js'
 
+const DEFAULT_PAGE_MAX_WIDTH = 1920
+
 export interface AppPageShellProps
   extends Pick<PageShellProps, 'title' | 'wrapperProps' | 'headerProps' | 'bodyProps' | 'children'> {
   withHeader?: boolean
+  maxWidth?: string
 }
 
 export const AppPageShell = ({
@@ -11,6 +14,7 @@ export const AppPageShell = ({
   headerProps,
   bodyProps,
   wrapperProps,
+  maxWidth = `${DEFAULT_PAGE_MAX_WIDTH}px`,
   ...rest
 }: AppPageShellProps) => {
   if (!withHeader) {
@@ -21,7 +25,7 @@ export const AppPageShell = ({
           sx: mergeSxList([
             {
               height: '100%',
-              maxWidth: `calc(1920px - var(--app-shell-navbar-offset))`,
+              maxWidth: `min(100%, ${maxWidth})`,
               margin: '0 auto'
             },
             bodyProps?.sx
@@ -42,7 +46,7 @@ export const AppPageShell = ({
             display: 'flex',
             flexDirection: 'column',
             height: '100%',
-            maxWidth: `calc(1920px - var(--app-shell-navbar-offset))`,
+            maxWidth: `min(100%, ${maxWidth})`,
             margin: '0 auto',
             minWidth: `calc(${theme.breakpoints.md} - var(--app-shell-navbar-offset))`
           }),
