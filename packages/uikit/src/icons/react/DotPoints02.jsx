@@ -1,7 +1,7 @@
 import { Box as MantineBox } from '@mantine/core'
 import * as React from 'react'
 import { forwardRef } from 'react'
-const IconDotpoints02 = (props, ref) => {
+const IconDotPoints02 = (props, ref) => {
   return (
     <svg
       width="1em"
@@ -23,8 +23,8 @@ const IconDotpoints02 = (props, ref) => {
     </svg>
   )
 }
-const ForwardRef = forwardRef(IconDotpoints02)
-const Dotpoints02 = forwardRef((props, ref) => {
+const ForwardRef = forwardRef(IconDotPoints02)
+const DotPoints02 = forwardRef((props, ref) => {
   if (typeof props.size === 'number') {
     const { size, ...rest } = props
     props = {
@@ -38,9 +38,9 @@ const Dotpoints02 = forwardRef((props, ref) => {
       ref={ref}
       {...props}
       component={ForwardRef}
-      className={['tiui-icon', 'Dotpoints02', props.className].join(' ')}
+      className={['tiui-icon', 'DotPoints02', props.className].join(' ')}
     />
   )
 })
-Dotpoints02.displayName = 'IconDotpoints02'
-export default Dotpoints02
+DotPoints02.displayName = 'IconDotPoints02'
+export default DotPoints02
