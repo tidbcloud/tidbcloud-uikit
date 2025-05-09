@@ -53,8 +53,10 @@ export type {
   TextareaProps,
   AutocompleteProps,
   ComboboxProps,
+  ComboboxSearchProps,
   ComboboxItem,
   ComboboxData,
+  ComboboxStore,
   PillProps,
   PillsInputProps,
   OptionsFilter,
@@ -237,6 +239,13 @@ export {
   Text,
   Title,
   TypographyStylesProvider,
+
+  // Tree
+  useTree,
+  type UseTreeInput,
+  type UseTreeReturnType,
+  type TreeNodeData,
+  type CheckedNodeStatus,
 
   // Misc
   Box,
