@@ -1272,6 +1272,12 @@ const theme = createTheme({
           }
         }
       }
+    },
+    HoverCard: {
+      defaultProps: {
+        withArrow: true,
+        shadow: 'md'
+      }
     }
   }
 })
