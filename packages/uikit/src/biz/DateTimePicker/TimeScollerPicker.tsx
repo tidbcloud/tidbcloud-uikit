@@ -165,6 +165,10 @@ function TimePickerScrollerColumn({
   curr: number
   render?: (val: number) => React.ReactNode
   onChange?: (v: number) => void
+
+  /**
+   * for debugging only
+   */
   name?: string
   currentValueChangedBy: CurrentValueChangedBy | null
 }) {
