@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.3.1
+
+### Patch Changes
+
+- fix(TimePicker): change value types to string and update format handling ([#529](https://github.com/tidbcloud/tidbcloud-uikit/pull/529))
+
 ## 2.3.0
 
 ### Minor Changes
