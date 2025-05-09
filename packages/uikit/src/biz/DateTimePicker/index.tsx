@@ -16,7 +16,8 @@ import {
   MantineSize,
   TimeInput,
   TextInputProps,
-  DatePicker
+  DatePicker,
+  TimeInputProps
 } from '../../primitive/index.js'
 import { dayjs, type Dayjs } from '../../utils/dayjs.js'
 import { DEFAULT_TIME_FORMAT } from '../TimeRangePicker/helpers.js'
@@ -234,6 +235,142 @@ export const DateTimePicker = ({
             </Typography>
           </Group>
         </Stack>
+      </Popover.Dropdown>
+    </Popover>
+  )
+}
+
+export interface TimePickerProps extends Omit<TimeInputProps, 'value' | 'onChange' | 'defaultValue'> {
+  defaultValue?: Date
+  value?: Date
+  onChange?: (val: Date) => void
+  disable?: boolean
+  size?: MantineSize
+}
+
+export const TimePicker = ({
+  value,
+  onChange,
+  defaultValue,
+  disable = false,
+  sx,
+  size,
+  minTime,
+  maxTime,
+  ...rest
+}: TimePickerProps) => {
+  const [currentValue, setCurrentValue] = useUncontrolled({
+    value: value ? dayjs(value) : undefined,
+    defaultValue: defaultValue ? dayjs(defaultValue) : dayjs(),
+    onChange: (v) => {
+      onChange?.(v.toDate())
+    }
+  })
+  const [currentValueChangedBy, setCurrentValueChangedBy] = useState<CurrentValueChangedBy | null>(null)
+  const startDate = useMemo(() => dayjs(minTime, 'HH:mm:ss'), [minTime])
+  const endDate = useMemo(() => dayjs(maxTime, 'HH:mm:ss'), [maxTime])
+
+  const updateCurrentValue = useMemoizedFn((val: Dayjs, from: typeof currentValueChangedBy) => {
+    let next = val
+
+    if (!next.isValid()) {
+      return
+    }
+
+    if (currentValue?.unix() === next.unix()) {
+      return
+    }
+
+    if (startDate && next.isBefore(startDate)) {
+      next = dayjs(startDate)
+    } else if (endDate && next.isAfter(endDate)) {
+      next = dayjs(endDate)
+    }
+
+    setCurrentValue(next)
+    setCurrentValueChangedBy(from)
+    setTimeout(() => {
+      setCurrentValueChangedBy(null)
+    }, 20)
+  })
+
+  const timeInputChange = useMemoizedFn((e: React.ChangeEvent<HTMLInputElement>) => {
+    const originVal = e.currentTarget.value
+    const v = dayjs(originVal, 'HH:mm:ss').toDate()
+
+    let next = currentValue
+    next = next.hour(v.getHours()).minute(v.getMinutes()).second(v.getSeconds())
+
+    updateCurrentValue(next, 'timeInput')
+  })
+
+  const timeScrollPickerChange = useMemoizedFn((v: [number, number, number]) => {
+    const [h, m, s] = v
+    let next = currentValue
+    next = next.hour(h).minute(m).second(s)
+    updateCurrentValue(next, 'timeScroller')
+  })
+
+  return (
+    <Popover>
+      <Popover.Target>
+        <TimeInput
+          {...rest}
+          disabled={disable}
+          withSeconds
+          value={currentValue.format('HH:mm:ss')}
+          onChange={timeInputChange}
+          size={size}
+          sx={sx}
+          rightSection={<IconClock size={16} c="carbon.7" />}
+        />
+      </Popover.Target>
+
+      <Popover.Dropdown>
+        <Box
+          pos="relative"
+          fz={14}
+          fw={400}
+          h={224}
+          sx={(theme) => ({ color: theme.colors.carbon[8], overflow: 'hidden', zIndex: 9999 })}
+        >
+          <Flex mah="100%" gap={8}>
+            <Box
+              bg="carbon.3"
+              pos="absolute"
+              top={0}
+              left={0}
+              h={32}
+              w={32}
+              sx={(theme) => ({ zIndex: -1, borderRadius: theme.defaultRadius, pointerEvents: 'none' })}
+            />
+            <Box
+              bg="carbon.3"
+              pos="absolute"
+              top={0}
+              left={40}
+              h={32}
+              w={32}
+              sx={(theme) => ({ zIndex: -1, borderRadius: theme.defaultRadius, pointerEvents: 'none' })}
+            />
+            <Box
+              bg="carbon.3"
+              pos="absolute"
+              top={0}
+              left={80}
+              h={32}
+              w={32}
+              sx={(theme) => ({ zIndex: -1, borderRadius: theme.defaultRadius, pointerEvents: 'none' })}
+            />
+          </Flex>
+          <TimeScollerPicker
+            currentValue={currentValue}
+            currentValueChangedBy={currentValueChangedBy}
+            onChange={timeScrollPickerChange}
+            start={startDate.toDate()}
+            end={endDate.toDate()}
+          />
+        </Box>
       </Popover.Dropdown>
     </Popover>
   )
