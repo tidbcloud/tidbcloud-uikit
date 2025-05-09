@@ -1,5 +1,15 @@
 # @tidbcloud/uikit
 
+## 2.3.0
+
+### Minor Changes
+
+- feat(TimePicker): add TimePicker componnet ([#527](https://github.com/tidbcloud/tidbcloud-uikit/pull/527))
+- feat(theme): add default props for HoverCard/Popover ([#526](https://github.com/tidbcloud/tidbcloud-uikit/pull/526))
+- chore: update snapshot release workflow to push all tags ([#524](https://github.com/tidbcloud/tidbcloud-uikit/pull/524))
+- docs: enhance snapshot release section with GitHub Actions workflow details ([#523](https://github.com/tidbcloud/tidbcloud-uikit/pull/523))
+- chore: add npm setup step for publishing snapshots ([#522](https://github.com/tidbcloud/tidbcloud-uikit/pull/522))
+
 ## 2.2.11
 
 ### Patch Changes
