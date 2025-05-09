@@ -17,7 +17,8 @@ import {
   TimeInput,
   TextInputProps,
   DatePicker,
-  TimeInputProps
+  TimeInputProps,
+  PopoverProps
 } from '../../primitive/index.js'
 import { dayjs, type Dayjs } from '../../utils/dayjs.js'
 import { DEFAULT_TIME_FORMAT } from '../TimeRangePicker/helpers.js'
@@ -240,7 +241,9 @@ export const DateTimePicker = ({
   )
 }
 
-export interface TimePickerProps extends Omit<TimeInputProps, 'value' | 'onChange' | 'defaultValue'> {
+export interface TimePickerProps
+  extends Omit<TimeInputProps, 'value' | 'onChange' | 'defaultValue'>,
+    Pick<PopoverProps, 'withinPortal' | 'withArrow' | 'position' | 'shadow'> {
   defaultValue?: Date
   value?: Date
   onChange?: (val: Date) => void
@@ -257,6 +260,10 @@ export const TimePicker = ({
   size,
   minTime,
   maxTime,
+  withinPortal,
+  withArrow,
+  position,
+  shadow,
   ...rest
 }: TimePickerProps) => {
   const [currentValue, setCurrentValue] = useUncontrolled({
@@ -312,7 +319,7 @@ export const TimePicker = ({
   })
 
   return (
-    <Popover>
+    <Popover withinPortal={withinPortal} withArrow={withArrow} position={position} shadow={shadow}>
       <Popover.Target>
         <TimeInput
           {...rest}
