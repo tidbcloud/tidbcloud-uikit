@@ -65,3 +65,17 @@ export const Primary: Story = {
     }
   }
 }
+
+export function DefaultProps() {
+  return (
+    <HoverCard>
+      <HoverCard.Target>
+        <Button>Hover to reveal the card</Button>
+      </HoverCard.Target>
+      <HoverCard.Dropdown>
+        Hover card is revealed when user hovers over target element, it will be hidden once mouse is not over both
+        target and dropdown elements
+      </HoverCard.Dropdown>
+    </HoverCard>
+  )
+}
