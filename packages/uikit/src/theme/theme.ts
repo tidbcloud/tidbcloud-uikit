@@ -1278,6 +1278,12 @@ const theme = createTheme({
         withArrow: true,
         shadow: 'md'
       }
+    },
+    Popover: {
+      defaultProps: {
+        withArrow: true,
+        shadow: 'md'
+      }
     }
   }
 })
