@@ -4,20 +4,20 @@ import { forwardRef } from 'react'
 const IconType01 = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M2.66675 4.6665C2.66675 4.04525 2.66675 3.73462 2.76824 3.48959C2.90357 3.16289 3.16313 2.90332 3.48984 2.768C3.73486 2.6665 4.04549 2.6665 4.66675 2.6665H11.3334C11.9547 2.6665 12.2653 2.6665 12.5103 2.768C12.837 2.90332 13.0966 3.16289 13.2319 3.48959C13.3334 3.73462 13.3334 4.04525 13.3334 4.6665M6.00008 13.3332H10.0001M8.00008 2.6665V13.3332"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M4 7c0-.932 0-1.398.152-1.765a2 2 0 0 1 1.083-1.083C5.602 4 6.068 4 7 4h10c.932 0 1.398 0 1.765.152a2 2 0 0 1 1.083 1.083C20 5.602 20 6.068 20 7M9 20h6M12 4v16"
         strokeWidth="inherit"
       />
     </svg>
@@ -33,7 +33,14 @@ const Type01 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'Type01', props.className].join(' ')}
+    />
+  )
 })
 Type01.displayName = 'IconType01'
 export default Type01

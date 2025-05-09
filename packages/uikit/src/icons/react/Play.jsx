@@ -4,20 +4,20 @@ import { forwardRef } from 'react'
 const IconPlay = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M3.33325 3.32642C3.33325 2.67898 3.33325 2.35526 3.46825 2.17681C3.58585 2.02135 3.7656 1.92515 3.96018 1.91353C4.18354 1.9002 4.45289 2.07977 4.9916 2.4389L12.002 7.11248C12.4471 7.40923 12.6697 7.55761 12.7472 7.74462C12.815 7.90813 12.815 8.09188 12.7472 8.25538C12.6697 8.4424 12.4471 8.59077 12.002 8.88752L4.9916 13.5611C4.45289 13.9202 4.18354 14.0998 3.96018 14.0865C3.7656 14.0749 3.58585 13.9787 3.46825 13.8232C3.33325 13.6447 3.33325 13.321 3.33325 12.6736V3.32642Z"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M5 4.99c0-.972 0-1.457.202-1.725a1 1 0 0 1 .738-.395c.335-.02.74.25 1.548.788l10.515 7.01c.668.446 1.002.668 1.118.949a1 1 0 0 1 0 .766c-.116.28-.45.503-1.118.948l-10.515 7.01c-.809.54-1.213.809-1.548.789a1 1 0 0 1-.738-.395C5 20.467 5 19.98 5 19.01z"
         strokeWidth="inherit"
       />
     </svg>
@@ -33,7 +33,14 @@ const Play = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'Play', props.className].join(' ')}
+    />
+  )
 })
 Play.displayName = 'IconPlay'
 export default Play

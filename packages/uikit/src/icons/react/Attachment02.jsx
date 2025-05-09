@@ -4,20 +4,20 @@ import { forwardRef } from 'react'
 const IconAttachment02 = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M11.6666 3.50404V11.0002C11.6666 13.0252 10.025 14.6668 7.99992 14.6668C5.97487 14.6668 4.33325 13.0252 4.33325 11.0002V3.77794C4.33325 2.42791 5.42767 1.3335 6.7777 1.3335C8.12773 1.3335 9.22214 2.42791 9.22214 3.77794V10.964C9.22214 11.639 8.67493 12.1862 7.99992 12.1862C7.3249 12.1862 6.7777 11.639 6.7777 10.964V4.43427"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M17.5 5.256V16.5a5.5 5.5 0 1 1-11 0V5.667a3.667 3.667 0 0 1 7.333 0v10.779a1.833 1.833 0 1 1-3.666 0V6.65"
         strokeWidth="inherit"
       />
     </svg>
@@ -33,7 +33,14 @@ const Attachment02 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'Attachment02', props.className].join(' ')}
+    />
+  )
 })
 Attachment02.displayName = 'IconAttachment02'
 export default Attachment02

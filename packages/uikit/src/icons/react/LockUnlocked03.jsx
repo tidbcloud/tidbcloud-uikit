@@ -4,20 +4,20 @@ import { forwardRef } from 'react'
 const IconLockUnlocked03 = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M4.66675 7.33333V5.33333C4.66675 3.49238 6.15913 2 8.00008 2C9.61272 2 10.9579 3.14517 11.2667 4.66667M5.86675 14H10.1334C11.2535 14 11.8136 14 12.2414 13.782C12.6177 13.5903 12.9237 13.2843 13.1154 12.908C13.3334 12.4802 13.3334 11.9201 13.3334 10.8V10.5333C13.3334 9.41323 13.3334 8.85318 13.1154 8.42535C12.9237 8.04903 12.6177 7.74307 12.2414 7.55132C11.8136 7.33333 11.2535 7.33333 10.1334 7.33333H5.86675C4.74664 7.33333 4.18659 7.33333 3.75877 7.55132C3.38244 7.74307 3.07648 8.04903 2.88473 8.42535C2.66675 8.85318 2.66675 9.41323 2.66675 10.5333V10.8C2.66675 11.9201 2.66675 12.4802 2.88473 12.908C3.07648 13.2843 3.38244 13.5903 3.75877 13.782C4.18659 14 4.74664 14 5.86675 14Z"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M7 11V8a5 5 0 0 1 9.9-1M8.8 21h6.4c1.68 0 2.52 0 3.162-.327a3 3 0 0 0 1.311-1.311C20 18.72 20 17.88 20 16.2v-.4c0-1.68 0-2.52-.327-3.162a3 3 0 0 0-1.311-1.311C17.72 11 16.88 11 15.2 11H8.8c-1.68 0-2.52 0-3.162.327a3 3 0 0 0-1.311 1.311C4 13.28 4 14.12 4 15.8v.4c0 1.68 0 2.52.327 3.162a3 3 0 0 0 1.311 1.311C6.28 21 7.12 21 8.8 21"
         strokeWidth="inherit"
       />
     </svg>
@@ -33,7 +33,14 @@ const LockUnlocked03 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'LockUnlocked03', props.className].join(' ')}
+    />
+  )
 })
 LockUnlocked03.displayName = 'IconLockUnlocked03'
 export default LockUnlocked03

@@ -4,20 +4,20 @@ import { forwardRef } from 'react'
 const IconPodcast = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M11.4126 11.9999C12.9749 10.9433 14 9.18519 14 7.18989C14 3.95545 11.3136 1.33325 8 1.33325C4.68638 1.33325 2 3.95545 2 7.18989C2 9.18519 3.02514 10.9433 4.58742 11.9999M5.57311 9.33325C5.0125 8.7666 4.66667 8.00568 4.66667 7.16695C4.66667 5.41799 6.1592 3.99992 8 3.99992C9.8408 3.99992 11.3333 5.41799 11.3333 7.16695C11.3333 8.00626 10.9875 8.7666 10.4269 9.33325M8 14.6666C7.26362 14.6666 6.66667 14.0696 6.66667 13.3333V11.9999C6.66667 11.2635 7.26362 10.6666 8 10.6666C8.73638 10.6666 9.33333 11.2635 9.33333 11.9999V13.3333C9.33333 14.0696 8.73638 14.6666 8 14.6666ZM8.66667 7.33325C8.66667 7.70144 8.36819 7.99992 8 7.99992C7.63181 7.99992 7.33333 7.70144 7.33333 7.33325C7.33333 6.96506 7.63181 6.66659 8 6.66659C8.36819 6.66659 8.66667 6.96506 8.66667 7.33325Z"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M17.119 18C19.462 16.415 21 13.778 21 10.785 21 5.933 16.97 2 12 2s-9 3.933-9 8.785c0 2.993 1.538 5.63 3.881 7.215m1.479-4C7.519 13.15 7 12.009 7 10.75 7 8.128 9.239 6 12 6s5 2.127 5 4.75c0 1.26-.519 2.4-1.36 3.25M12 22a2 2 0 0 1-2-2v-2a2 2 0 1 1 4 0v2a2 2 0 0 1-2 2m1-11a1 1 0 1 1-2 0 1 1 0 0 1 2 0"
         strokeWidth="inherit"
       />
     </svg>
@@ -33,7 +33,14 @@ const Podcast = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'Podcast', props.className].join(' ')}
+    />
+  )
 })
 Podcast.displayName = 'IconPodcast'
 export default Podcast

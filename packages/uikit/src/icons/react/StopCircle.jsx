@@ -4,27 +4,27 @@ import { forwardRef } from 'react'
 const IconStopCircle = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M7.99992 14.6666C11.6818 14.6666 14.6666 11.6818 14.6666 7.99992C14.6666 4.31802 11.6818 1.33325 7.99992 1.33325C4.31802 1.33325 1.33325 4.31802 1.33325 7.99992C1.33325 11.6818 4.31802 14.6666 7.99992 14.6666Z"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10"
         strokeWidth="inherit"
       />
       <path
+        d="M5.33325 6.39992C5.33325 6.02655 5.33325 5.83987 5.40591 5.69726C5.46983 5.57182 5.57182 5.46983 5.69726 5.40591C5.83987 5.33325 6.02655 5.33325 6.39992 5.33325H9.59992C9.97329 5.33325 10.16 5.33325 10.3026 5.40591C10.428 5.46983 10.53 5.57182 10.5939 5.69726C10.6666 5.83987 10.6666 6.02655 10.6666 6.39992V9.59992C10.6666 9.97329 10.6666 10.16 10.5939 10.3026C10.53 10.428 10.428 10.53 10.3026 10.5939C10.16 10.6666 9.97329 10.6666 9.59992 10.6666H6.39992C6.02655 10.6666 5.83987 10.6666 5.69726 10.5939C5.57182 10.53 5.46983 10.428 5.40591 10.3026C5.33325 10.16 5.33325 9.97329 5.33325 9.59992V6.39992Z"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M8 9.6c0-.56 0-.84.109-1.054a1 1 0 0 1 .437-.437C8.76 8 9.04 8 9.6 8h4.8c.56 0 .84 0 1.054.109a1 1 0 0 1 .437.437C16 8.76 16 9.04 16 9.6v4.8c0 .56 0 .84-.109 1.054a1 1 0 0 1-.437.437C15.24 16 14.96 16 14.4 16H9.6c-.56 0-.84 0-1.054-.109a1 1 0 0 1-.437-.437C8 15.24 8 14.96 8 14.4z"
         strokeWidth="inherit"
       />
     </svg>
@@ -40,7 +40,14 @@ const StopCircle = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'StopCircle', props.className].join(' ')}
+    />
+  )
 })
 StopCircle.displayName = 'IconStopCircle'
 export default StopCircle

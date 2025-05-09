@@ -4,20 +4,20 @@ import { forwardRef } from 'react'
 const IconBluetoothOn = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M4 4.66659L12 11.3333L8 14.6666V1.33325L12 4.66659L4 11.3333"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="m6 7 12 10-6 5V2l6 5L6 17"
         strokeWidth="inherit"
       />
     </svg>
@@ -33,7 +33,14 @@ const BluetoothOn = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'BluetoothOn', props.className].join(' ')}
+    />
+  )
 })
 BluetoothOn.displayName = 'IconBluetoothOn'
 export default BluetoothOn

@@ -4,28 +4,29 @@ import { forwardRef } from 'react'
 const IconHeartSquare = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M2 5.2C2 4.0799 2 3.51984 2.21799 3.09202C2.40973 2.71569 2.71569 2.40973 3.09202 2.21799C3.51984 2 4.0799 2 5.2 2H10.8C11.9201 2 12.4802 2 12.908 2.21799C13.2843 2.40973 13.5903 2.71569 13.782 3.09202C14 3.51984 14 4.0799 14 5.2V10.8C14 11.9201 14 12.4802 13.782 12.908C13.5903 13.2843 13.2843 13.5903 12.908 13.782C12.4802 14 11.9201 14 10.8 14H5.2C4.0799 14 3.51984 14 3.09202 13.782C2.71569 13.5903 2.40973 13.2843 2.21799 12.908C2 12.4802 2 11.9201 2 10.8V5.2Z"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M3 7.8c0-1.68 0-2.52.327-3.162a3 3 0 0 1 1.311-1.311C5.28 3 6.12 3 7.8 3h8.4c1.68 0 2.52 0 3.162.327a3 3 0 0 1 1.311 1.311C21 5.28 21 6.12 21 7.8v8.4c0 1.68 0 2.52-.327 3.162a3 3 0 0 1-1.311 1.311C18.72 21 17.88 21 16.2 21H7.8c-1.68 0-2.52 0-3.162-.327a3 3 0 0 1-1.311-1.311C3 18.72 3 17.88 3 16.2z"
         strokeWidth="inherit"
       />
       <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M7.99772 6.04527C7.33127 5.26613 6.21992 5.05655 5.3849 5.77C4.54988 6.48346 4.43232 7.67633 5.08807 8.52013C5.50807 9.0606 6.58372 10.0628 7.30282 10.7136C7.54179 10.9298 7.66127 11.038 7.80439 11.0813C7.92742 11.1186 8.06801 11.1186 8.19104 11.0813C8.33416 11.038 8.45364 10.9298 8.69261 10.7136C9.41171 10.0628 10.4874 9.0606 10.9074 8.52013C11.5631 7.67633 11.4599 6.47596 10.6105 5.77C9.76117 5.06405 8.66417 5.26613 7.99772 6.04527Z"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M11.997 9.068c-1-1.169-2.667-1.483-3.92-.413-1.252 1.07-1.429 2.86-.445 4.125.63.81 2.244 2.314 3.322 3.29.359.325.538.487.753.552.184.056.395.056.58 0 .214-.065.393-.227.752-.552 1.079-.976 2.692-2.48 3.322-3.29.984-1.265.829-3.066-.445-4.125s-2.92-.756-3.92.413"
-        clipRule="evenodd"
         strokeWidth="inherit"
       />
     </svg>
@@ -41,7 +42,14 @@ const HeartSquare = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'HeartSquare', props.className].join(' ')}
+    />
+  )
 })
 HeartSquare.displayName = 'IconHeartSquare'
 export default HeartSquare

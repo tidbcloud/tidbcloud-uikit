@@ -4,20 +4,20 @@ import { forwardRef } from 'react'
 const IconDivide01 = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M2.66666 8.00004H13.3333M8.66666 4.00004C8.66666 4.36823 8.36819 4.66671 8 4.66671C7.63181 4.66671 7.33333 4.36823 7.33333 4.00004C7.33333 3.63185 7.63181 3.33337 8 3.33337C8.36819 3.33337 8.66666 3.63185 8.66666 4.00004ZM8.66666 12C8.66666 12.3682 8.36819 12.6667 8 12.6667C7.63181 12.6667 7.33333 12.3682 7.33333 12C7.33333 11.6319 7.63181 11.3334 8 11.3334C8.36819 11.3334 8.66666 11.6319 8.66666 12Z"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M4 12h16m-7-6a1 1 0 1 1-2 0 1 1 0 0 1 2 0m0 12a1 1 0 1 1-2 0 1 1 0 0 1 2 0"
         strokeWidth="inherit"
       />
     </svg>
@@ -33,7 +33,14 @@ const Divide01 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'Divide01', props.className].join(' ')}
+    />
+  )
 })
 Divide01.displayName = 'IconDivide01'
 export default Divide01

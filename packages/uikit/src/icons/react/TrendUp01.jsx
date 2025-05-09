@@ -4,20 +4,20 @@ import { forwardRef } from 'react'
 const IconTrendUp01 = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M14.6666 4.66669L9.42083 9.91244C9.15682 10.1765 9.02482 10.3085 8.8726 10.3579C8.7387 10.4014 8.59447 10.4014 8.46057 10.3579C8.30836 10.3085 8.17635 10.1765 7.91234 9.91244L6.0875 8.0876C5.82349 7.82359 5.69148 7.69158 5.53926 7.64212C5.40537 7.59862 5.26114 7.59862 5.12724 7.64212C4.97502 7.69158 4.84302 7.82359 4.579 8.0876L1.33325 11.3334M14.6666 4.66669H9.99992M14.6666 4.66669V9.33335"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="m22 7-7.869 7.869c-.396.396-.594.594-.822.668a1 1 0 0 1-.618 0c-.228-.074-.426-.272-.822-.668L9.13 12.13c-.396-.396-.594-.594-.822-.668a1 1 0 0 0-.618 0c-.228.074-.426.272-.822.668L2 17M22 7h-7m7 0v7"
         strokeWidth="inherit"
       />
     </svg>
@@ -33,7 +33,14 @@ const TrendUp01 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'TrendUp01', props.className].join(' ')}
+    />
+  )
 })
 TrendUp01.displayName = 'IconTrendUp01'
 export default TrendUp01

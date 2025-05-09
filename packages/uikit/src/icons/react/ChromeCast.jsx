@@ -4,20 +4,20 @@ import { forwardRef } from 'react'
 const IconChromeCast = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M1.33325 8.03333C2.68711 8.18391 3.94944 8.7907 4.91266 9.75392C5.87589 10.7171 6.48268 11.9795 6.63325 13.3333M1.33325 10.7333C1.97385 10.864 2.56188 11.1801 3.02417 11.6424C3.48647 12.1047 3.80261 12.6927 3.93325 13.3333M1.33325 13.3333H1.33992M9.33325 14H11.4666C12.5867 14 13.1467 14 13.5746 13.782C13.9509 13.5903 14.2569 13.2843 14.4486 12.908C14.6666 12.4802 14.6666 11.9201 14.6666 10.8V5.2C14.6666 4.0799 14.6666 3.51984 14.4486 3.09202C14.2569 2.71569 13.9509 2.40973 13.5746 2.21799C13.1467 2 12.5867 2 11.4666 2H4.53325C3.41315 2 2.85309 2 2.42527 2.21799C2.04895 2.40973 1.74299 2.71569 1.55124 3.09202C1.33325 3.51984 1.33325 4.0799 1.33325 5.2V5.33333"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M2 12.05A9 9 0 0 1 9.95 20M2 16.1A5 5 0 0 1 5.9 20M2 20h.01M14 21h3.2c1.68 0 2.52 0 3.162-.327a3 3 0 0 0 1.311-1.311C22 18.72 22 17.88 22 16.2V7.8c0-1.68 0-2.52-.327-3.162a3 3 0 0 0-1.311-1.311C19.72 3 18.88 3 17.2 3H6.8c-1.68 0-2.52 0-3.162.327a3 3 0 0 0-1.311 1.311C2 5.28 2 6.12 2 7.8V8"
         strokeWidth="inherit"
       />
     </svg>
@@ -33,7 +33,14 @@ const ChromeCast = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'ChromeCast', props.className].join(' ')}
+    />
+  )
 })
 ChromeCast.displayName = 'IconChromeCast'
 export default ChromeCast

@@ -4,20 +4,20 @@ import { forwardRef } from 'react'
 const IconArrowBlockUp = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M6.53337 14C6.34669 14 6.25335 14 6.18204 13.9637C6.11932 13.9317 6.06833 13.8807 6.03637 13.818C6.00004 13.7467 6.00004 13.6534 6.00004 13.4667V6.66667H3.33337L8.00004 2L12.6667 6.66667H10V13.4667C10 13.6534 10 13.7467 9.96371 13.818C9.93175 13.8807 9.88076 13.9317 9.81804 13.9637C9.74673 14 9.65339 14 9.46671 14H6.53337Z"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M9.8 21c-.28 0-.42 0-.527-.055a.5.5 0 0 1-.218-.218C9 20.62 9 20.48 9 20.2V10H5l7-7 7 7h-4v10.2c0 .28 0 .42-.055.527a.5.5 0 0 1-.218.218C14.62 21 14.48 21 14.2 21z"
         strokeWidth="inherit"
       />
     </svg>
@@ -33,7 +33,14 @@ const ArrowBlockUp = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'ArrowBlockUp', props.className].join(' ')}
+    />
+  )
 })
 ArrowBlockUp.displayName = 'IconArrowBlockUp'
 export default ArrowBlockUp

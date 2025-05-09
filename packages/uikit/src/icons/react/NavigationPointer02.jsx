@@ -4,20 +4,20 @@ import { forwardRef } from 'react'
 const IconNavigationPointer02 = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M3.35788 14.2167C2.96809 14.3882 2.77319 14.474 2.65359 14.4363C2.54991 14.4036 2.46867 14.3225 2.4359 14.2189C2.39809 14.0993 2.48362 13.9043 2.65466 13.5143L7.50891 2.44663C7.66332 2.09459 7.74052 1.91856 7.84845 1.86468C7.94219 1.81789 8.05247 1.81789 8.1462 1.86468C8.25414 1.91856 8.33134 2.09459 8.48575 2.44664L13.34 13.5143C13.511 13.9043 13.5966 14.0993 13.5588 14.2189C13.526 14.3225 13.4447 14.4036 13.3411 14.4363C13.2215 14.474 13.0266 14.3882 12.6368 14.2167L8.21212 12.2698C8.133 12.235 8.09344 12.2176 8.05234 12.2108C8.01592 12.2047 7.97874 12.2047 7.94231 12.2108C7.90122 12.2176 7.86166 12.235 7.78254 12.2698L3.35788 14.2167Z"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M5.037 21.325c-.585.258-.877.386-1.057.33a.5.5 0 0 1-.326-.327c-.057-.179.071-.471.328-1.056L11.263 3.67c.232-.528.348-.792.51-.873a.5.5 0 0 1 .446 0c.162.081.278.345.51.873l7.281 16.602c.257.585.385.877.328 1.056a.5.5 0 0 1-.326.327c-.18.056-.472-.072-1.057-.33l-6.637-2.92c-.118-.052-.178-.078-.24-.089a.5.5 0 0 0-.164 0c-.062.01-.121.037-.24.089z"
         strokeWidth="inherit"
       />
     </svg>
@@ -33,7 +33,14 @@ const NavigationPointer02 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'NavigationPointer02', props.className].join(' ')}
+    />
+  )
 })
 NavigationPointer02.displayName = 'IconNavigationPointer02'
 export default NavigationPointer02

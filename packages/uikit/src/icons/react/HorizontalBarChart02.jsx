@@ -4,20 +4,20 @@ import { forwardRef } from 'react'
 const IconHorizontalBarChart02 = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M11.3333 6.33334V8.60001C11.3333 8.97338 11.3333 9.16006 11.2607 9.30267C11.1968 9.42811 11.0948 9.5301 10.9693 9.59401C10.8267 9.66668 10.64 9.66668 10.2667 9.66668L2 9.66668M8.66667 9.66668V11.9333C8.66667 12.3067 8.66667 12.4934 8.594 12.636C8.53009 12.7614 8.4281 12.8634 8.30266 12.9273C8.16005 13 7.97337 13 7.6 13H2M2 1.33334L2 14.6667M2 6.33334L12.9333 6.33334C13.3067 6.33334 13.4934 6.33334 13.636 6.26068C13.7614 6.19677 13.8634 6.09478 13.9273 5.96934C14 5.82673 14 5.64005 14 5.26668V4.06668C14 3.69331 14 3.50662 13.9273 3.36402C13.8634 3.23858 13.7614 3.13659 13.636 3.07267C13.4934 3.00001 13.3067 3.00001 12.9333 3.00001L2 3.00001L2 6.33334Z"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M17 9.5v3.4c0 .56 0 .84-.109 1.054a1 1 0 0 1-.437.437c-.214.109-.494.109-1.054.109H3m10 0v3.4c0 .56 0 .84-.109 1.054a1 1 0 0 1-.437.437c-.214.109-.494.109-1.054.109H3M3 2v20M3 9.5h16.4c.56 0 .84 0 1.054-.109a1 1 0 0 0 .437-.437C21 8.74 21 8.46 21 7.9V6.1c0-.56 0-.84-.109-1.054a1 1 0 0 0-.437-.437C20.24 4.5 19.96 4.5 19.4 4.5H3z"
         strokeWidth="inherit"
       />
     </svg>
@@ -33,7 +33,14 @@ const HorizontalBarChart02 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'HorizontalBarChart02', props.className].join(' ')}
+    />
+  )
 })
 HorizontalBarChart02.displayName = 'IconHorizontalBarChart02'
 export default HorizontalBarChart02

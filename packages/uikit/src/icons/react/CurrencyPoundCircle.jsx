@@ -4,20 +4,20 @@ import { forwardRef } from 'react'
 const IconCurrencyPoundCircle = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M9.99998 11.6668H5.99998C5.99998 11.6668 7.33331 10.1631 7.33331 8.3335C7.33331 7.3335 6.60984 6.99128 6.59687 5.97485C6.59771 3.96285 9.0198 4.06983 9.86168 4.86951M5.99998 8.3335H9.33331M14.6666 8.00016C14.6666 11.6821 11.6819 14.6668 7.99998 14.6668C4.31808 14.6668 1.33331 11.6821 1.33331 8.00016C1.33331 4.31826 4.31808 1.3335 7.99998 1.3335C11.6819 1.3335 14.6666 4.31826 14.6666 8.00016Z"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M15 17.5H9s2-2.256 2-5c0-1.5-1.085-2.013-1.105-3.538.002-3.018 3.635-2.857 4.898-1.658M9 12.5h5m8-.5c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10"
         strokeWidth="inherit"
       />
     </svg>
@@ -33,7 +33,14 @@ const CurrencyPoundCircle = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'CurrencyPoundCircle', props.className].join(' ')}
+    />
+  )
 })
 CurrencyPoundCircle.displayName = 'IconCurrencyPoundCircle'
 export default CurrencyPoundCircle

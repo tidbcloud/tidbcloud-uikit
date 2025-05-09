@@ -4,20 +4,20 @@ import { forwardRef } from 'react'
 const IconCompass02 = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M14.6667 8.00016H13.3333M14.6667 8.00016C14.6667 11.6821 11.6819 14.6668 8 14.6668M14.6667 8.00016C14.6667 4.31826 11.6819 1.3335 8 1.3335M12.714 12.7142L11.7712 11.7714M2.66667 8.00016H1.33334M1.33334 8.00016C1.33334 11.6821 4.3181 14.6668 8 14.6668M1.33334 8.00016C1.33334 4.31826 4.3181 1.3335 8 1.3335M4.22877 4.22893L3.28596 3.28612M8 2.66683V1.3335M11.7712 4.22893L12.714 3.28612M8 14.6668V13.3335M3.28596 12.7142L4.22877 11.7714M8 5.3335L10.6667 8.00016L8 10.6668L5.33334 8.00016L8 5.3335Z"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M22 12h-2m2 0c0 5.523-4.477 10-10 10m10-10c0-5.523-4.477-10-10-10m7.071 17.071-1.414-1.414M4 12H2m0 0c0 5.523 4.477 10 10 10M2 12C2 6.477 6.477 2 12 2M6.343 6.343 4.93 4.93M12 4V2m5.657 4.343L19.07 4.93M12 22v-2m-7.071-.929 1.414-1.414M12 8l4 4-4 4-4-4z"
         strokeWidth="inherit"
       />
     </svg>
@@ -33,7 +33,14 @@ const Compass02 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'Compass02', props.className].join(' ')}
+    />
+  )
 })
 Compass02.displayName = 'IconCompass02'
 export default Compass02

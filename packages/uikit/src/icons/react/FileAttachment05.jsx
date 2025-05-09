@@ -4,20 +4,20 @@ import { forwardRef } from 'react'
 const IconFileAttachment05 = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M7.99996 9.3335V5.66683C7.99996 5.11454 8.44767 4.66683 8.99996 4.66683C9.55224 4.66683 9.99996 5.11454 9.99996 5.66683V9.3335C9.99996 10.4381 9.10453 11.3335 7.99996 11.3335C6.89539 11.3335 5.99996 10.4381 5.99996 9.3335V6.66683M5.86663 14.6668H10.1333C11.2534 14.6668 11.8134 14.6668 12.2413 14.4488C12.6176 14.2571 12.9236 13.9511 13.1153 13.5748C13.3333 13.147 13.3333 12.5869 13.3333 11.4668V4.5335C13.3333 3.41339 13.3333 2.85334 13.1153 2.42552C12.9236 2.04919 12.6176 1.74323 12.2413 1.55148C11.8134 1.3335 11.2534 1.3335 10.1333 1.3335H5.86663C4.74652 1.3335 4.18647 1.3335 3.75864 1.55148C3.38232 1.74323 3.07636 2.04919 2.88461 2.42552C2.66663 2.85334 2.66663 3.41339 2.66663 4.5335V11.4668C2.66663 12.5869 2.66663 13.147 2.88461 13.5748C3.07636 13.9511 3.38232 14.2571 3.75864 14.4488C4.18647 14.6668 4.74652 14.6668 5.86663 14.6668Z"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M12 14V8.5a1.5 1.5 0 0 1 3 0V14a3 3 0 1 1-6 0v-4m-.2 12h6.4c1.68 0 2.52 0 3.162-.327a3 3 0 0 0 1.311-1.311C20 19.72 20 18.88 20 17.2V6.8c0-1.68 0-2.52-.327-3.162a3 3 0 0 0-1.311-1.311C17.72 2 16.88 2 15.2 2H8.8c-1.68 0-2.52 0-3.162.327a3 3 0 0 0-1.311 1.311C4 4.28 4 5.12 4 6.8v10.4c0 1.68 0 2.52.327 3.162a3 3 0 0 0 1.311 1.311C6.28 22 7.12 22 8.8 22"
         strokeWidth="inherit"
       />
     </svg>
@@ -33,7 +33,14 @@ const FileAttachment05 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'FileAttachment05', props.className].join(' ')}
+    />
+  )
 })
 FileAttachment05.displayName = 'IconFileAttachment05'
 export default FileAttachment05

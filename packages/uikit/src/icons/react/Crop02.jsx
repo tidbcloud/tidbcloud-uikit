@@ -4,20 +4,20 @@ import { forwardRef } from 'react'
 const IconCrop02 = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M6.66659 4.00016H9.86659C10.6133 4.00016 10.9867 4.00016 11.2719 4.14549C11.5228 4.27332 11.7268 4.47729 11.8546 4.72817C11.9999 5.01339 11.9999 5.38676 11.9999 6.1335V9.3335M1.33325 4.00016H3.99992M11.9999 12.0002V14.6668M14.6666 12.0002L6.13325 12.0002C5.38652 12.0002 5.01315 12.0002 4.72793 11.8548C4.47705 11.727 4.27307 11.523 4.14524 11.2722C3.99992 10.9869 3.99992 10.6136 3.99992 9.86683V1.3335"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M10 6h4.8c1.12 0 1.68 0 2.108.218a2 2 0 0 1 .874.874C18 7.52 18 8.08 18 9.2V14M2 6h4m12 12v4m4-4H9.2c-1.12 0-1.68 0-2.108-.218a2 2 0 0 1-.874-.874C6 16.48 6 15.92 6 14.8V2"
         strokeWidth="inherit"
       />
     </svg>
@@ -33,7 +33,14 @@ const Crop02 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'Crop02', props.className].join(' ')}
+    />
+  )
 })
 Crop02.displayName = 'IconCrop02'
 export default Crop02

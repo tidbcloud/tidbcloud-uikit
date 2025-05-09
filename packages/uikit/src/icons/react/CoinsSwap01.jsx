@@ -4,20 +4,20 @@ import { forwardRef } from 'react'
 const IconCoinsSwap01 = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M4 4.00016L5.33334 2.66683M5.33334 2.66683L4 1.3335M5.33334 2.66683H4C2.52724 2.66683 1.33334 3.86074 1.33334 5.3335M12 12.0002L10.6667 13.3335M10.6667 13.3335L12 14.6668M10.6667 13.3335H12C13.4728 13.3335 14.6667 12.1396 14.6667 10.6668M8.94478 8.94494C9.46629 9.19404 10.0502 9.3335 10.6667 9.3335C12.8758 9.3335 14.6667 7.54264 14.6667 5.3335C14.6667 3.12436 12.8758 1.3335 10.6667 1.3335C8.45753 1.3335 6.66667 3.12436 6.66667 5.3335C6.66667 5.94997 6.80613 6.53388 7.05522 7.05538M9.33334 10.6668C9.33334 12.876 7.54248 14.6668 5.33334 14.6668C3.1242 14.6668 1.33334 12.876 1.33334 10.6668C1.33334 8.45769 3.1242 6.66683 5.33334 6.66683C7.54248 6.66683 9.33334 8.45769 9.33334 10.6668Z"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="m6 6 2-2m0 0L6 2m2 2H6a4 4 0 0 0-4 4m16 10-2 2m0 0 2 2m-2-2h2a4 4 0 0 0 4-4m-8.583-2.583a6 6 0 1 0-2.834-2.834M14 16a6 6 0 1 1-12 0 6 6 0 0 1 12 0"
         strokeWidth="inherit"
       />
     </svg>
@@ -33,7 +33,14 @@ const CoinsSwap01 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'CoinsSwap01', props.className].join(' ')}
+    />
+  )
 })
 CoinsSwap01.displayName = 'IconCoinsSwap01'
 export default CoinsSwap01

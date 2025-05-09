@@ -4,16 +4,17 @@ import { forwardRef } from 'react'
 const IconOrientationHorizontalFill = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
-      fill="currentColor"
       viewBox="0 0 24 24"
-      strokeWidth="1.5"
+      fill="currentColor"
+      xmlns="http://www.w3.org/2000/svg"
       ref={ref}
       {...props}
     >
-      <path d="M11 4v4H4V4zM15 10v4H4v-4zM20 16v4H4v-4z" strokeWidth="inherit" stroke="currentColor" />
+      <path d="M11 4V8L4 8L4 4L11 4Z" />
+      <path d="M15 10V14H4L4 10L15 10Z" />
+      <path d="M20 16V20H4L4 16H20Z" />
     </svg>
   )
 }
@@ -27,7 +28,14 @@ const OrientationHorizontalFill = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'OrientationHorizontalFill', props.className].join(' ')}
+    />
+  )
 })
 OrientationHorizontalFill.displayName = 'IconOrientationHorizontalFill'
 export default OrientationHorizontalFill

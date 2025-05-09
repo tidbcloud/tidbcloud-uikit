@@ -4,20 +4,20 @@ import { forwardRef } from 'react'
 const IconUmbrella01 = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M11.3334 12.9335C11.3334 13.8908 10.5872 14.6668 9.66672 14.6668C8.74625 14.6668 8.00006 13.8908 8.00006 12.9335V8.00016M1.4176 6.93767C1.9264 3.76077 4.67977 1.3335 8.00006 1.3335C11.3203 1.3335 14.0737 3.76077 14.5825 6.93767C14.6322 7.24775 14.657 7.40279 14.5947 7.56839C14.5451 7.70015 14.4236 7.8426 14.3014 7.91241C14.1477 8.00016 13.9652 8.00016 13.6001 8.00016H2.40006C2.03496 8.00016 1.85242 8.00016 1.69876 7.91241C1.5765 7.8426 1.45505 7.70015 1.40545 7.56839C1.3431 7.40279 1.36793 7.24775 1.4176 6.93767Z"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M17 19.4c0 1.436-1.12 2.6-2.5 2.6S12 20.836 12 19.4V12m-9.874-1.594C2.89 5.641 7.02 2 12 2s9.11 3.64 9.874 8.406c.074.465.111.698.018.946a1.1 1.1 0 0 1-.44.516c-.23.132-.504.132-1.052.132H3.6c-.548 0-.821 0-1.052-.132a1.1 1.1 0 0 1-.44-.516c-.093-.248-.056-.48.018-.946"
         strokeWidth="inherit"
       />
     </svg>
@@ -33,7 +33,14 @@ const Umbrella01 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'Umbrella01', props.className].join(' ')}
+    />
+  )
 })
 Umbrella01.displayName = 'IconUmbrella01'
 export default Umbrella01

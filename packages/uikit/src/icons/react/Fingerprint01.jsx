@@ -4,20 +4,20 @@ import { forwardRef } from 'react'
 const IconFingerprint01 = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M4.61206 2.25702C5.60486 1.67008 6.76306 1.33325 7.99992 1.33325C11.6818 1.33325 14.6666 4.31802 14.6666 7.99992C14.6666 8.02201 14.6665 8.04407 14.6663 8.06611M2.25401 4.61715C1.66893 5.60882 1.33325 6.76517 1.33325 7.99992C1.33325 11.1063 3.45787 13.7165 6.33325 14.4566M13.805 11.2803C12.9247 12.8347 11.4382 14.0006 9.66659 14.4566M9.39278 4.2491C8.95903 4.08797 8.48976 3.99992 7.99992 3.99992C5.79078 3.99992 3.99992 5.79078 3.99992 7.99992C3.99992 8.49242 4.08893 8.96413 4.25173 9.39984M11.75 6.60503C11.9116 7.03934 11.9999 7.50932 11.9999 7.99992C11.9999 10.2091 10.2091 11.9999 7.99992 11.9999C7.51335 11.9999 7.04707 11.913 6.61574 11.754M7.99992 6.66659V9.33325"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M6.918 3.386A9.95 9.95 0 0 1 12 2c5.523 0 10 4.477 10 10v.1M3.38 6.925A9.95 9.95 0 0 0 2 12c0 4.66 3.187 8.575 7.5 9.685m11.208-4.764a10.02 10.02 0 0 1-6.208 4.764m-.41-15.311A6 6 0 0 0 6.377 14.1m11.247-4.192a6 6 0 0 1-7.701 7.723M12 10v4"
         strokeWidth="inherit"
       />
     </svg>
@@ -33,7 +33,14 @@ const Fingerprint01 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'Fingerprint01', props.className].join(' ')}
+    />
+  )
 })
 Fingerprint01.displayName = 'IconFingerprint01'
 export default Fingerprint01

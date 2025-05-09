@@ -4,20 +4,20 @@ import { forwardRef } from 'react'
 const IconSun = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
-      viewBox="0 0 24 24"
       ref={ref}
       {...props}
     >
       <path
+        d="M8.00004 1.3335V2.66683M8.00004 13.3335V14.6668M2.66671 8.00016H1.33337M4.20945 4.20957L3.26664 3.26676M11.7906 4.20957L12.7334 3.26676M4.20945 11.7935L3.26664 12.7363M11.7906 11.7935L12.7334 12.7363M14.6667 8.00016H13.3334M11.3334 8.00016C11.3334 9.84111 9.84099 11.3335 8.00004 11.3335C6.15909 11.3335 4.66671 9.84111 4.66671 8.00016C4.66671 6.15921 6.15909 4.66683 8.00004 4.66683C9.84099 4.66683 11.3334 6.15921 11.3334 8.00016Z"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M12 2v2m0 16v2M4 12H2m4.314-5.686L4.9 4.9m12.786 1.414L19.1 4.9M6.314 17.69 4.9 19.104m12.786-1.414 1.414 1.414M22 12h-2m-3 0a5 5 0 1 1-10 0 5 5 0 0 1 10 0"
         strokeWidth="inherit"
       />
     </svg>
@@ -33,7 +33,14 @@ const Sun = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'Sun', props.className].join(' ')}
+    />
+  )
 })
 Sun.displayName = 'IconSun'
 export default Sun

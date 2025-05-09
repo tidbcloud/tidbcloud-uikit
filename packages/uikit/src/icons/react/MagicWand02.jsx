@@ -4,20 +4,20 @@ import { forwardRef } from 'react'
 const IconMagicWand02 = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M10 2.66683V1.3335M10 10.6668V9.3335M5.33333 6.00016H6.66667M13.3333 6.00016H14.6667M11.8667 7.86683L12.6667 8.66683M11.8667 4.1335L12.6667 3.3335M2 14.0002L8 8.00016M8.13333 4.1335L7.33333 3.3335"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M15 4V2m0 14v-2M8 9h2m10 0h2m-4.2 2.8L19 13m-1.2-6.8L19 5M3 21l9-9m.2-5.8L11 5"
         strokeWidth="inherit"
       />
     </svg>
@@ -33,7 +33,14 @@ const MagicWand02 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'MagicWand02', props.className].join(' ')}
+    />
+  )
 })
 MagicWand02.displayName = 'IconMagicWand02'
 export default MagicWand02

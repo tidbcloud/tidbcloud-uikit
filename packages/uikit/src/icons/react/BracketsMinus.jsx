@@ -4,20 +4,20 @@ import { forwardRef } from 'react'
 const IconBracketsMinus = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M12.3805 13.3334C13.2219 13.3334 13.9045 12.6514 13.9045 11.8094V8.76208L14.6665 8.00008L13.9045 7.23808V4.19075C13.9045 3.34875 13.2225 2.66675 12.3805 2.66675M3.61934 2.66675C2.77734 2.66675 2.09534 3.34875 2.09534 4.19075V7.23808L1.33334 8.00008L2.09534 8.76208V11.8094C2.09534 12.6514 2.77734 13.3334 3.61934 13.3334M5.33334 8.00008H10.6667"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M18.57 20a2.286 2.286 0 0 0 2.287-2.286v-4.571L22 12l-1.143-1.143V6.286A2.285 2.285 0 0 0 18.57 4M5.429 4a2.285 2.285 0 0 0-2.286 2.286v4.571L2 12l1.143 1.143v4.571A2.285 2.285 0 0 0 5.429 20M8 12h8"
         strokeWidth="inherit"
       />
     </svg>
@@ -33,7 +33,14 @@ const BracketsMinus = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'BracketsMinus', props.className].join(' ')}
+    />
+  )
 })
 BracketsMinus.displayName = 'IconBracketsMinus'
 export default BracketsMinus

@@ -4,20 +4,20 @@ import { forwardRef } from 'react'
 const IconDivide03 = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M8 5.33337H8.00667M8 10.6667H8.00667M4.66667 8.00004H11.3333M8.33334 5.33337C8.33334 5.51747 8.1841 5.66671 8 5.66671C7.81591 5.66671 7.66667 5.51747 7.66667 5.33337C7.66667 5.14928 7.81591 5.00004 8 5.00004C8.1841 5.00004 8.33334 5.14928 8.33334 5.33337ZM8.33334 10.6667C8.33334 10.8508 8.1841 11 8 11C7.81591 11 7.66667 10.8508 7.66667 10.6667C7.66667 10.4826 7.81591 10.3334 8 10.3334C8.1841 10.3334 8.33334 10.4826 8.33334 10.6667ZM14.6667 8.00004C14.6667 11.6819 11.6819 14.6667 8 14.6667C4.3181 14.6667 1.33334 11.6819 1.33334 8.00004C1.33334 4.31814 4.3181 1.33337 8 1.33337C11.6819 1.33337 14.6667 4.31814 14.6667 8.00004Z"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M12 8h.01M12 16h.01M7 12h10m-4.5-4a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0m0 8a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0m9.5-4c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10"
         strokeWidth="inherit"
       />
     </svg>
@@ -33,7 +33,14 @@ const Divide03 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'Divide03', props.className].join(' ')}
+    />
+  )
 })
 Divide03.displayName = 'IconDivide03'
 export default Divide03

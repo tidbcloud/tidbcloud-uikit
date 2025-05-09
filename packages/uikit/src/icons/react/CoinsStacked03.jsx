@@ -4,20 +4,20 @@ import { forwardRef } from 'react'
 const IconCoinsStacked03 = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M8.66667 3.33333C8.66667 4.06971 7.02505 4.66667 5 4.66667C2.97496 4.66667 1.33334 4.06971 1.33334 3.33333M8.66667 3.33333C8.66667 2.59695 7.02505 2 5 2C2.97496 2 1.33334 2.59695 1.33334 3.33333M8.66667 3.33333V4.33333M1.33334 3.33333V11.3333C1.33334 12.0697 2.97496 12.6667 5 12.6667M5 7.33333C4.88764 7.33333 4.77646 7.3315 4.66667 7.3279C2.79784 7.26666 1.33334 6.69552 1.33334 6M5 10C2.97496 10 1.33334 9.40305 1.33334 8.66667M14.6667 7.66667C14.6667 8.40305 13.025 9 11 9C8.97496 9 7.33334 8.40305 7.33334 7.66667M14.6667 7.66667C14.6667 6.93029 13.025 6.33333 11 6.33333C8.97496 6.33333 7.33334 6.93029 7.33334 7.66667M14.6667 7.66667V12.6667C14.6667 13.403 13.025 14 11 14C8.97496 14 7.33334 13.403 7.33334 12.6667V7.66667M14.6667 10.1667C14.6667 10.903 13.025 11.5 11 11.5C8.97496 11.5 7.33334 10.903 7.33334 10.1667"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M13 5c0 1.105-2.462 2-5.5 2S2 6.105 2 5m11 0c0-1.105-2.462-2-5.5-2S2 3.895 2 5m11 0v1.5M2 5v12c0 1.105 2.462 2 5.5 2m0-8q-.253 0-.5-.008C4.197 10.9 2 10.043 2 9m5.5 6C4.462 15 2 14.105 2 13m20-1.5c0 1.105-2.462 2-5.5 2s-5.5-.895-5.5-2m11 0c0-1.105-2.462-2-5.5-2s-5.5.895-5.5 2m11 0V19c0 1.105-2.462 2-5.5 2s-5.5-.895-5.5-2v-7.5m11 3.75c0 1.105-2.462 2-5.5 2s-5.5-.895-5.5-2"
         strokeWidth="inherit"
       />
     </svg>
@@ -33,7 +33,14 @@ const CoinsStacked03 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'CoinsStacked03', props.className].join(' ')}
+    />
+  )
 })
 CoinsStacked03.displayName = 'IconCoinsStacked03'
 export default CoinsStacked03

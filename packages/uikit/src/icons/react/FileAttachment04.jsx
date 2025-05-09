@@ -4,20 +4,20 @@ import { forwardRef } from 'react'
 const IconFileAttachment04 = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M13.3333 4.66659V4.53325C13.3333 3.41315 13.3333 2.85309 13.1153 2.42527C12.9236 2.04895 12.6176 1.74299 12.2413 1.55124C11.8134 1.33325 11.2534 1.33325 10.1333 1.33325H5.86663C4.74652 1.33325 4.18647 1.33325 3.75864 1.55124C3.38232 1.74299 3.07636 2.04895 2.88461 2.42527C2.66663 2.85309 2.66663 3.41315 2.66663 4.53325V11.4666C2.66663 12.5867 2.66663 13.1467 2.88461 13.5746C3.07636 13.9509 3.38232 14.2569 3.75864 14.4486C4.18647 14.6666 4.74652 14.6666 5.86663 14.6666H8.33329M8.33329 7.33325H5.33329M7.66663 9.99992H5.33329M10.6666 4.66659H5.33329M12 11.9999V8.33325C12 7.78097 12.4477 7.33325 13 7.33325C13.5522 7.33325 14 7.78097 14 8.33325V11.9999C14 13.1045 13.1045 13.9999 12 13.9999C10.8954 13.9999 9.99996 13.1045 9.99996 11.9999V9.33325"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M20 7v-.2c0-1.68 0-2.52-.327-3.162a3 3 0 0 0-1.311-1.311C17.72 2 16.88 2 15.2 2H8.8c-1.68 0-2.52 0-3.162.327a3 3 0 0 0-1.311 1.311C4 4.28 4 5.12 4 6.8v10.4c0 1.68 0 2.52.327 3.162a3 3 0 0 0 1.311 1.311C6.28 22 7.12 22 8.8 22h3.7m0-11H8m3.5 4H8m8-8H8m10 11v-5.5a1.5 1.5 0 0 1 3 0V18a3 3 0 1 1-6 0v-4"
         strokeWidth="inherit"
       />
     </svg>
@@ -33,7 +33,14 @@ const FileAttachment04 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'FileAttachment04', props.className].join(' ')}
+    />
+  )
 })
 FileAttachment04.displayName = 'IconFileAttachment04'
 export default FileAttachment04

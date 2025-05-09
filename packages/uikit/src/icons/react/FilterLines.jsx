@@ -4,20 +4,20 @@ import { forwardRef } from 'react'
 const IconFilterLines = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M4 8H12M2 4H14M6 12H10"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M6 12h12M3 6h18M9 18h6"
         strokeWidth="inherit"
       />
     </svg>
@@ -33,7 +33,14 @@ const FilterLines = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'FilterLines', props.className].join(' ')}
+    />
+  )
 })
 FilterLines.displayName = 'IconFilterLines'
 export default FilterLines

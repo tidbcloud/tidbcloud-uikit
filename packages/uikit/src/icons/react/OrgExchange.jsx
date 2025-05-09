@@ -1,0 +1,46 @@
+import { Box as MantineBox } from '@mantine/core'
+import * as React from 'react'
+import { forwardRef } from 'react'
+const IconOrgExchange = (props, ref) => {
+  return (
+    <svg
+      width="1em"
+      height="1em"
+      viewBox="0 0 16 16"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      strokeWidth="1.5"
+      ref={ref}
+      {...props}
+    >
+      <path
+        d="M8.66659 7.33333H11.8666C12.6133 7.33333 12.9867 7.33333 13.2719 7.47866M8.66659 7.33333V4.13333C8.66659 3.3866 8.66659 3.01323 8.52126 2.72801C8.39343 2.47713 8.18946 2.27316 7.93857 2.14532C7.65336 2 7.27999 2 6.53325 2H4.13325C3.38652 2 3.01315 2 2.72793 2.14532C2.47705 2.27316 2.27307 2.47713 2.14524 2.72801C1.99992 3.01323 1.99992 3.3866 1.99992 4.13333V14M8.66659 7.33333V9.06667M1.99992 14H7.17138M1.99992 14H1.33325M4.33325 4.66667H6.33325M4.33325 7.33333H6.33325M4.33325 10H6.33325M14.6666 13.1825H9.33325L10.6666 14.6667M9.33325 10.8175H14.6666L13.3333 9.33333"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="inherit"
+      />
+    </svg>
+  )
+}
+const ForwardRef = forwardRef(IconOrgExchange)
+const OrgExchange = forwardRef((props, ref) => {
+  if (typeof props.size === 'number') {
+    const { size, ...rest } = props
+    props = {
+      ...rest,
+      w: size,
+      h: size
+    }
+  }
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'OrgExchange', props.className].join(' ')}
+    />
+  )
+})
+OrgExchange.displayName = 'IconOrgExchange'
+export default OrgExchange

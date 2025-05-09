@@ -4,20 +4,20 @@ import { forwardRef } from 'react'
 const IconFileDownload03 = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M9.33329 1.51294V4.26663C9.33329 4.64 9.33329 4.82669 9.40595 4.96929C9.46987 5.09473 9.57186 5.19672 9.6973 5.26064C9.83991 5.3333 10.0266 5.3333 10.4 5.3333H13.1537M5.99996 9.99992L7.99996 11.9999M7.99996 11.9999L9.99996 9.99992M7.99996 11.9999L7.99996 7.99992M9.33329 1.33325H5.86663C4.74652 1.33325 4.18647 1.33325 3.75864 1.55124C3.38232 1.74299 3.07636 2.04895 2.88461 2.42527C2.66663 2.85309 2.66663 3.41315 2.66663 4.53325V11.4666C2.66663 12.5867 2.66663 13.1467 2.88461 13.5746C3.07636 13.9509 3.38232 14.2569 3.75864 14.4486C4.18647 14.6666 4.74652 14.6666 5.86663 14.6666H10.1333C11.2534 14.6666 11.8134 14.6666 12.2413 14.4486C12.6176 14.2569 12.9236 13.9509 13.1153 13.5746C13.3333 13.1467 13.3333 12.5867 13.3333 11.4666V5.33325L9.33329 1.33325Z"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M14 2.27V6.4c0 .56 0 .84.109 1.054a1 1 0 0 0 .437.437c.214.11.494.11 1.054.11h4.13M9 15l3 3m0 0 3-3m-3 3v-6m2-10H8.8c-1.68 0-2.52 0-3.162.327a3 3 0 0 0-1.311 1.311C4 4.28 4 5.12 4 6.8v10.4c0 1.68 0 2.52.327 3.162a3 3 0 0 0 1.311 1.311C6.28 22 7.12 22 8.8 22h6.4c1.68 0 2.52 0 3.162-.327a3 3 0 0 0 1.311-1.311C20 19.72 20 18.88 20 17.2V8z"
         strokeWidth="inherit"
       />
     </svg>
@@ -33,7 +33,14 @@ const FileDownload03 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'FileDownload03', props.className].join(' ')}
+    />
+  )
 })
 FileDownload03.displayName = 'IconFileDownload03'
 export default FileDownload03

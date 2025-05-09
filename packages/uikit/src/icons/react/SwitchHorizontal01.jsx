@@ -4,20 +4,20 @@ import { forwardRef } from 'react'
 const IconSwitchHorizontal01 = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M13.3334 11.3333H2.66675M2.66675 11.3333L5.33341 8.66667M2.66675 11.3333L5.33341 14M2.66675 4.66667H13.3334M13.3334 4.66667L10.6667 2M13.3334 4.66667L10.6667 7.33333"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M20 17H4m0 0 4-4m-4 4 4 4M4 7h16m0 0-4-4m4 4-4 4"
         strokeWidth="inherit"
       />
     </svg>
@@ -33,7 +33,14 @@ const SwitchHorizontal01 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'SwitchHorizontal01', props.className].join(' ')}
+    />
+  )
 })
 SwitchHorizontal01.displayName = 'IconSwitchHorizontal01'
 export default SwitchHorizontal01

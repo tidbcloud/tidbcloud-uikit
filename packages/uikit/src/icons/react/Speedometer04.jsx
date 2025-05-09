@@ -4,20 +4,20 @@ import { forwardRef } from 'react'
 const IconSpeedometer04 = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M11.8302 10.6666C12.3574 9.91073 12.6666 8.99147 12.6666 7.99998C12.6666 7.65672 12.6296 7.32212 12.5592 6.99995M4.16977 10.6666C3.64252 9.91076 3.33331 8.99148 3.33331 7.99998C3.33331 5.42265 5.42265 3.33331 7.99998 3.33331C8.2814 3.33331 8.55701 3.35822 8.82471 3.40596M10.9999 4.99998L7.99992 7.99998M14.6666 7.99998C14.6666 11.6819 11.6819 14.6666 7.99998 14.6666C4.31808 14.6666 1.33331 11.6819 1.33331 7.99998C1.33331 4.31808 4.31808 1.33331 7.99998 1.33331C11.6819 1.33331 14.6666 4.31808 14.6666 7.99998ZM8.66665 7.99998C8.66665 8.36817 8.36817 8.66665 7.99998 8.66665C7.63179 8.66665 7.33331 8.36817 7.33331 7.99998C7.33331 7.63179 7.63179 7.33331 7.99998 7.33331C8.36817 7.33331 8.66665 7.63179 8.66665 7.99998Z"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M17.745 16a7.026 7.026 0 0 0 1.094-5.5M6.255 16a7 7 0 0 1 6.982-10.891M16.5 7.5 12 12m10 0c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10m-9 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0"
         strokeWidth="inherit"
       />
     </svg>
@@ -33,7 +33,14 @@ const Speedometer04 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'Speedometer04', props.className].join(' ')}
+    />
+  )
 })
 Speedometer04.displayName = 'IconSpeedometer04'
 export default Speedometer04

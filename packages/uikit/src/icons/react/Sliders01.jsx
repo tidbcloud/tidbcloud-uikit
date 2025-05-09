@@ -4,20 +4,20 @@ import { forwardRef } from 'react'
 const IconSliders01 = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M3.33325 14V9.33333M3.33325 6.66667V2M7.99992 14V8M7.99992 5.33333V2M12.6666 14V10.6667M12.6666 8V2M1.33325 9.33333H5.33325M5.99992 5.33333H9.99992M10.6666 10.6667H14.6666"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M5 21v-7m0-4V3m7 18v-9m0-4V3m7 18v-5m0-4V3M2 14h6m1-6h6m1 8h6"
         strokeWidth="inherit"
       />
     </svg>
@@ -33,7 +33,14 @@ const Sliders01 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'Sliders01', props.className].join(' ')}
+    />
+  )
 })
 Sliders01.displayName = 'IconSliders01'
 export default Sliders01

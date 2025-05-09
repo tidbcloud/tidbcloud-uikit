@@ -4,20 +4,20 @@ import { forwardRef } from 'react'
 const IconVariable = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
-      fill="none"
       viewBox="0 0 16 16"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M13.2707 14C14.1642 12.1926 14.6666 10.1553 14.6666 8C14.6666 5.84474 14.1642 3.80744 13.2707 2M2.72927 2C1.83573 3.80744 1.33331 5.84474 1.33331 8C1.33331 10.1553 1.83574 12.1926 2.72927 14M11.0324 5.75H10.9726C10.537 5.75 10.1232 5.94134 9.83968 6.27381L6.25645 10.4762C5.97297 10.8087 5.55912 11 5.12352 11H5.06373M5.80987 5.75H6.73926C7.07237 5.75 7.36513 5.97198 7.45664 6.29396L8.6396 10.456C8.73111 10.778 9.02386 11 9.35697 11H10.2864"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M13.27 14a13.5 13.5 0 0 0 1.397-6c0-2.155-.503-4.193-1.396-6M2.729 2a13.5 13.5 0 0 0-1.396 6c0 2.155.503 4.193 1.396 6m8.304-8.25h-.06c-.436 0-.85.191-1.133.524l-3.583 4.202A1.49 1.49 0 0 1 5.124 11h-.06m.746-5.25h.93c.333 0 .625.222.717.544l1.183 4.162a.75.75 0 0 0 .717.544h.93"
         strokeWidth="inherit"
       />
     </svg>
@@ -33,7 +33,14 @@ const Variable = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'Variable', props.className].join(' ')}
+    />
+  )
 })
 Variable.displayName = 'IconVariable'
 export default Variable

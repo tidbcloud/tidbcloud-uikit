@@ -4,20 +4,20 @@ import { forwardRef } from 'react'
 const IconMessageXCircle = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M6.6665 6L9.99983 9.33333M9.99983 6L6.6665 9.33333M8.33316 13.3333C11.4628 13.3333 13.9998 10.7963 13.9998 7.66667C13.9998 4.53705 11.4628 2 8.33316 2C5.20355 2 2.6665 4.53705 2.6665 7.66667C2.6665 8.3 2.7704 8.90906 2.96208 9.47774C3.03421 9.69175 3.07028 9.79875 3.07678 9.88095C3.08321 9.96213 3.07835 10.019 3.05827 10.098C3.03793 10.1779 2.99303 10.261 2.90323 10.4272L1.81279 12.4456C1.65725 12.7335 1.57948 12.8774 1.59688 12.9885C1.61204 13.0853 1.669 13.1705 1.75261 13.2215C1.84862 13.2801 2.01136 13.2632 2.33686 13.2296L5.75087 12.8767C5.85426 12.866 5.90595 12.8606 5.95307 12.8624C5.99941 12.8642 6.03213 12.8686 6.07732 12.879C6.12327 12.8896 6.18104 12.9118 6.2966 12.9564C6.92864 13.1999 7.61531 13.3333 8.33316 13.3333Z"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="m10 9 5 5m0-5-5 5m2.5 6a8.5 8.5 0 1 0-8.057-5.783c.108.32.162.481.172.604a.9.9 0 0 1-.028.326c-.03.12-.098.245-.232.494l-1.636 3.027c-.233.432-.35.648-.324.815a.5.5 0 0 0 .234.35c.144.087.388.062.876.011l5.121-.529c.155-.016.233-.024.303-.021s.12.009.187.024c.069.016.155.05.329.116A8.5 8.5 0 0 0 12.5 20"
         strokeWidth="inherit"
       />
     </svg>
@@ -33,7 +33,14 @@ const MessageXCircle = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'MessageXCircle', props.className].join(' ')}
+    />
+  )
 })
 MessageXCircle.displayName = 'IconMessageXCircle'
 export default MessageXCircle

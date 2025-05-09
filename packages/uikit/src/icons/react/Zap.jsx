@@ -4,20 +4,20 @@ import { forwardRef } from 'react'
 const IconZap = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M8.66668 1.33337L2.72898 8.45861C2.49644 8.73766 2.38017 8.87718 2.37839 8.99502C2.37685 9.09745 2.4225 9.19491 2.50218 9.2593C2.59384 9.33337 2.77546 9.33337 3.1387 9.33337H8.00001L7.33334 14.6667L13.271 7.54147C13.5036 7.26243 13.6198 7.1229 13.6216 7.00507C13.6232 6.90263 13.5775 6.80517 13.4978 6.74078C13.4062 6.66671 13.2246 6.66671 12.8613 6.66671H8.00001L8.66668 1.33337Z"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M13 2 4.093 12.688c-.348.418-.523.628-.525.804a.5.5 0 0 0 .185.397c.138.111.41.111.955.111H12l-1 8 8.907-10.688c.348-.418.523-.628.525-.804a.5.5 0 0 0-.185-.397c-.138-.111-.41-.111-.955-.111H12z"
         strokeWidth="inherit"
       />
     </svg>
@@ -33,7 +33,14 @@ const Zap = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'Zap', props.className].join(' ')}
+    />
+  )
 })
 Zap.displayName = 'IconZap'
 export default Zap

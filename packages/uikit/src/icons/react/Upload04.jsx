@@ -4,20 +4,20 @@ import { forwardRef } from 'react'
 const IconUpload04 = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M10.6666 8.00004L7.99998 5.33337M7.99998 5.33337L5.33331 8.00004M7.99998 5.33337V11.4667C7.99998 12.3938 7.99998 12.8574 8.36699 13.3764C8.61084 13.7213 9.31293 14.1469 9.73146 14.2036C10.3614 14.289 10.6006 14.1642 11.079 13.9146C13.2111 12.8024 14.6666 10.5712 14.6666 8.00004C14.6666 4.31814 11.6819 1.33337 7.99998 1.33337C4.31808 1.33337 1.33331 4.31814 1.33331 8.00004C1.33331 10.4676 2.67398 12.6221 4.66665 13.7748"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="m16 12-4-4m0 0-4 4m4-4v9.2c0 1.39 0 2.086.55 2.865.366.517 1.42 1.155 2.047 1.24.945.128 1.304-.059 2.022-.433A10 10 0 0 0 22 12c0-5.523-4.477-10-10-10S2 6.477 2 12a10 10 0 0 0 5 8.662"
         strokeWidth="inherit"
       />
     </svg>
@@ -33,7 +33,14 @@ const Upload04 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'Upload04', props.className].join(' ')}
+    />
+  )
 })
 Upload04.displayName = 'IconUpload04'
 export default Upload04

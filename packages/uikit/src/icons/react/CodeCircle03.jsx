@@ -4,29 +4,22 @@ import { forwardRef } from 'react'
 const IconCodeCircle03 = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
-      fill="none"
       viewBox="0 0 16 16"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
-      <g clipPath="url(#prefix__a)">
-        <path
-          stroke="currentColor"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="m10.334 10 2-2-2-2M5.667 6l-2 2 2 2m3-5.333-1.333 6.667M14.667 8A6.667 6.667 0 1 1 1.334 8a6.667 6.667 0 0 1 13.333 0"
-          strokeWidth="inherit"
-        />
-      </g>
-      <defs>
-        <clipPath id="prefix__a">
-          <path fill="#fff" d="M0 0h16v16H0z" strokeWidth="inherit" stroke="currentColor" />
-        </clipPath>
-      </defs>
+      <path
+        d="M10.3333 10.0002L12.3333 8.00016L10.3333 6.00016M5.66667 6.00016L3.66667 8.00016L5.66667 10.0002M8.66667 4.66683L7.33334 11.3335M14.6667 8.00016C14.6667 11.6821 11.6819 14.6668 8 14.6668C4.3181 14.6668 1.33334 11.6821 1.33334 8.00016C1.33334 4.31826 4.3181 1.3335 8 1.3335C11.6819 1.3335 14.6667 4.31826 14.6667 8.00016Z"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="inherit"
+      />
     </svg>
   )
 }
@@ -40,7 +33,14 @@ const CodeCircle03 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'CodeCircle03', props.className].join(' ')}
+    />
+  )
 })
 CodeCircle03.displayName = 'IconCodeCircle03'
 export default CodeCircle03

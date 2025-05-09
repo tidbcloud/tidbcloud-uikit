@@ -4,20 +4,20 @@ import { forwardRef } from 'react'
 const IconCreditCardRefresh = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M14.6667 6.66667H1.33334M7.33334 12.6667L12.5333 12.6667C13.2801 12.6667 13.6534 12.6667 13.9387 12.5213C14.1895 12.3935 14.3935 12.1895 14.5214 11.9387C14.6667 11.6534 14.6667 11.2801 14.6667 10.5333V5.46667C14.6667 4.71993 14.6667 4.34656 14.5214 4.06135C14.3935 3.81046 14.1895 3.60649 13.9387 3.47866C13.6534 3.33333 13.2801 3.33333 12.5333 3.33333H11.3333M7.33334 12.6667L8.66668 14M7.33334 12.6667L8.66668 11.3333M4.66668 12.6667H3.46668C2.71994 12.6667 2.34657 12.6667 2.06136 12.5213C1.81047 12.3935 1.6065 12.1895 1.47867 11.9387C1.33334 11.6534 1.33334 11.2801 1.33334 10.5333V5.46667C1.33334 4.71993 1.33334 4.34656 1.47867 4.06135C1.6065 3.81046 1.81047 3.60649 2.06136 3.47866C2.34657 3.33333 2.71994 3.33333 3.46668 3.33333H8.66668M8.66668 3.33333L7.33334 4.66667M8.66668 3.33333L7.33334 2"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M22 10H2m9 9h7.8c1.12 0 1.68 0 2.108-.218a2 2 0 0 0 .874-.874C22 17.48 22 16.92 22 15.8V8.2c0-1.12 0-1.68-.218-2.108a2 2 0 0 0-.874-.874C20.48 5 19.92 5 18.8 5H17m-6 14 2 2m-2-2 2-2m-6 2H5.2c-1.12 0-1.68 0-2.108-.218a2 2 0 0 1-.874-.874C2 17.48 2 16.92 2 15.8V8.2c0-1.12 0-1.68.218-2.108a2 2 0 0 1 .874-.874C3.52 5 4.08 5 5.2 5H13m0 0-2 2m2-2-2-2"
         strokeWidth="inherit"
       />
     </svg>
@@ -33,7 +33,14 @@ const CreditCardRefresh = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'CreditCardRefresh', props.className].join(' ')}
+    />
+  )
 })
 CreditCardRefresh.displayName = 'IconCreditCardRefresh'
 export default CreditCardRefresh

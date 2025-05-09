@@ -4,27 +4,27 @@ import { forwardRef } from 'react'
 const IconMarkerPin03 = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M8.00002 14.6668C8.66669 11.3335 13.3334 10.9457 13.3334 6.66683C13.3334 3.72131 10.9455 1.3335 8.00002 1.3335C5.0545 1.3335 2.66669 3.72131 2.66669 6.66683C2.66669 10.9457 7.33335 11.3335 8.00002 14.6668Z"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M12 22c1-5 8-5.582 8-12a8 8 0 1 0-16 0c0 6.418 7 7 8 12"
         strokeWidth="inherit"
       />
       <path
+        d="M8.00002 8.66683C9.10459 8.66683 10 7.7714 10 6.66683C10 5.56226 9.10459 4.66683 8.00002 4.66683C6.89545 4.66683 6.00002 5.56226 6.00002 6.66683C6.00002 7.7714 6.89545 8.66683 8.00002 8.66683Z"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M12 13a3 3 0 1 0 0-6 3 3 0 0 0 0 6"
         strokeWidth="inherit"
       />
     </svg>
@@ -40,7 +40,14 @@ const MarkerPin03 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'MarkerPin03', props.className].join(' ')}
+    />
+  )
 })
 MarkerPin03.displayName = 'IconMarkerPin03'
 export default MarkerPin03

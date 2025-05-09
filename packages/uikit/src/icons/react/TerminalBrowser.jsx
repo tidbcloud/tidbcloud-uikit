@@ -4,20 +4,20 @@ import { forwardRef } from 'react'
 const IconTerminalBrowser = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M14.6666 6H1.33331M3.99998 11.6667L5.66665 10L3.99998 8.33333M7.33331 11.6667L9.99998 11.6667M1.33331 5.2L1.33331 10.8C1.33331 11.9201 1.33331 12.4802 1.5513 12.908C1.74305 13.2843 2.04901 13.5903 2.42533 13.782C2.85316 14 3.41321 14 4.53331 14H11.4666C12.5868 14 13.1468 14 13.5746 13.782C13.951 13.5903 14.2569 13.2843 14.4487 12.908C14.6666 12.4802 14.6666 11.9201 14.6666 10.8V5.2C14.6666 4.0799 14.6666 3.51984 14.4487 3.09202C14.2569 2.7157 13.951 2.40973 13.5746 2.21799C13.1468 2 12.5868 2 11.4666 2L4.53331 2C3.41321 2 2.85316 2 2.42533 2.21799C2.04901 2.40973 1.74305 2.71569 1.5513 3.09202C1.33331 3.51984 1.33331 4.0799 1.33331 5.2Z"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M22 9H2m4 8.5L8.5 15 6 12.5m5 5h4M2 7.8v8.4c0 1.68 0 2.52.327 3.162a3 3 0 0 0 1.311 1.311C4.28 21 5.12 21 6.8 21h10.4c1.68 0 2.52 0 3.162-.327a3 3 0 0 0 1.311-1.311C22 18.72 22 17.88 22 16.2V7.8c0-1.68 0-2.52-.327-3.162a3 3 0 0 0-1.311-1.311C19.72 3 18.88 3 17.2 3H6.8c-1.68 0-2.52 0-3.162.327a3 3 0 0 0-1.311 1.311C2 5.28 2 6.12 2 7.8"
         strokeWidth="inherit"
       />
     </svg>
@@ -33,7 +33,14 @@ const TerminalBrowser = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'TerminalBrowser', props.className].join(' ')}
+    />
+  )
 })
 TerminalBrowser.displayName = 'IconTerminalBrowser'
 export default TerminalBrowser

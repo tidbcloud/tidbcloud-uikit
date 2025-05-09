@@ -1,0 +1,55 @@
+import { Box as MantineBox } from '@mantine/core'
+import * as React from 'react'
+import { forwardRef } from 'react'
+const IconTerminalBrowser1 = (props, ref) => {
+  return (
+    <svg
+      width="1em"
+      height="1em"
+      viewBox="0 0 16 16"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      ref={ref}
+      {...props}
+    >
+      <path
+        opacity={0.6}
+        d="M14.6663 6V5.2C14.6663 4.0799 14.6663 3.51984 14.4484 3.09202C14.2566 2.7157 13.9506 2.40973 13.5743 2.21799C13.1465 2 12.5864 2 11.4663 2L4.53301 2C3.4129 2 2.85285 2 2.42503 2.21799C2.0487 2.40973 1.74274 2.71569 1.55099 3.09202C1.33301 3.51984 1.33301 4.0799 1.33301 5.2L1.33301 6L14.6663 6Z"
+        fill="#383E40"
+      />
+      <path
+        opacity={0.2}
+        d="M14.6663 5.93346V10.8C14.6663 11.9201 14.6663 12.4802 14.4484 12.908C14.2566 13.2843 13.9506 13.5903 13.5743 13.782C13.1465 14 12.5864 14 11.4663 14L4.53301 14C3.4129 14 2.85285 14 2.42503 13.782C2.0487 13.5903 1.74274 13.2843 1.55099 12.908C1.33301 12.4802 1.33301 11.9201 1.33301 10.8L1.33301 5.93346L14.6663 5.93346Z"
+        fill="#383E40"
+      />
+      <path
+        d="M14.6663 6H1.33301M3.99967 11.6667L5.66634 10L3.99967 8.33333M7.33301 11.6667L9.99967 11.6667M1.33301 5.2L1.33301 10.8C1.33301 11.9201 1.33301 12.4802 1.55099 12.908C1.74274 13.2843 2.0487 13.5903 2.42503 13.782C2.85285 14 3.4129 14 4.53301 14H11.4663C12.5864 14 13.1465 14 13.5743 13.782C13.9506 13.5903 14.2566 13.2843 14.4484 12.908C14.6663 12.4802 14.6663 11.9201 14.6663 10.8V5.2C14.6663 4.0799 14.6663 3.51984 14.4484 3.09202C14.2566 2.7157 13.9506 2.40973 13.5743 2.21799C13.1465 2 12.5864 2 11.4663 2L4.53301 2C3.4129 2 2.85285 2 2.42503 2.21799C2.0487 2.40973 1.74274 2.71569 1.55099 3.09202C1.33301 3.51984 1.33301 4.0799 1.33301 5.2Z"
+        stroke="#383E40"
+        strokeWidth={2}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  )
+}
+const ForwardRef = forwardRef(IconTerminalBrowser1)
+const TerminalBrowser1 = forwardRef((props, ref) => {
+  if (typeof props.size === 'number') {
+    const { size, ...rest } = props
+    props = {
+      ...rest,
+      w: size,
+      h: size
+    }
+  }
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'TerminalBrowser1', props.className].join(' ')}
+    />
+  )
+})
+TerminalBrowser1.displayName = 'IconTerminalBrowser1'
+export default TerminalBrowser1

@@ -4,20 +4,20 @@ import { forwardRef } from 'react'
 const IconCornerRightDown = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M2 2.66663H4.26667C6.50688 2.66663 7.62698 2.66663 8.48263 3.1026C9.23528 3.48609 9.8472 4.09802 10.2307 4.85066C10.6667 5.70631 10.6667 6.82642 10.6667 9.06663L10.6667 13.3333M10.6667 13.3333L7.33333 9.99996M10.6667 13.3333L14 9.99996"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M3 4h3.4c3.36 0 5.04 0 6.324.654a6 6 0 0 1 2.622 2.622C16 8.56 16 10.24 16 13.6V20m0 0-5-5m5 5 5-5"
         strokeWidth="inherit"
       />
     </svg>
@@ -33,7 +33,14 @@ const CornerRightDown = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'CornerRightDown', props.className].join(' ')}
+    />
+  )
 })
 CornerRightDown.displayName = 'IconCornerRightDown'
 export default CornerRightDown

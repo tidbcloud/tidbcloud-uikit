@@ -4,20 +4,20 @@ import { forwardRef } from 'react'
 const IconFlashOff = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M5.33333 5.3335L2.72897 8.45873C2.49643 8.73778 2.38016 8.8773 2.37839 8.99514C2.37684 9.09757 2.42249 9.19503 2.50217 9.25943C2.59383 9.3335 2.77545 9.3335 3.13869 9.3335H8L7.33333 14.6668L10.6667 10.6668M10.4334 6.66683H12.8613C13.2245 6.66683 13.4062 6.66683 13.4978 6.7409C13.5775 6.80529 13.6232 6.90275 13.6216 7.00519C13.6198 7.12302 13.5036 7.26255 13.271 7.5416L12.3668 8.62663M7.0485 3.27526L8.66664 1.3335L8.26683 4.53197M14 14.0002L2 2.00016"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="m8 8-3.907 4.688c-.348.418-.523.628-.525.804a.5.5 0 0 0 .185.397c.138.111.41.111.955.111H12l-1 8 5-6m-.35-6h3.642c.545 0 .817 0 .955.111a.5.5 0 0 1 .185.396c-.002.177-.177.387-.525.805L18.55 12.94m-7.977-8.027L13 2l-.6 4.798M21 21 3 3"
         strokeWidth="inherit"
       />
     </svg>
@@ -33,7 +33,14 @@ const FlashOff = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'FlashOff', props.className].join(' ')}
+    />
+  )
 })
 FlashOff.displayName = 'IconFlashOff'
 export default FlashOff

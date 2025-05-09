@@ -4,20 +4,20 @@ import { forwardRef } from 'react'
 const IconLogIn03 = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M4 11.3333C4 11.5675 4 11.6846 4.01045 11.7864C4.09716 12.6316 4.7084 13.3298 5.53471 13.5274C5.63423 13.5512 5.75034 13.5667 5.98246 13.5977L10.3771 14.1836C11.628 14.3504 12.2535 14.4338 12.739 14.2408C13.1652 14.0713 13.5202 13.7605 13.7445 13.3604C14 12.9047 14 12.2737 14 11.0117V4.98831C14 3.72629 14 3.09527 13.7445 2.63959C13.5202 2.23951 13.1652 1.92869 12.739 1.75922C12.2535 1.56619 11.628 1.64959 10.3771 1.81638L5.98246 2.40233C5.75031 2.43329 5.63423 2.44876 5.53471 2.47257C4.7084 2.67023 4.09716 3.36838 4.01044 4.21356C4 4.31536 4 4.43246 4 4.66666M8 5.33333L10.6667 8M10.6667 8L8 10.6667M10.6667 8H2"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M6 17c0 .351 0 .527.016.68a3 3 0 0 0 2.286 2.611c.15.036.324.059.672.105l6.592.88c1.876.25 2.814.375 3.542.085a3 3 0 0 0 1.509-1.32c.383-.684.383-1.63.383-3.524V7.482c0-1.893 0-2.84-.383-3.523a3 3 0 0 0-1.509-1.32c-.728-.29-1.666-.165-3.542.086l-6.592.878c-.349.047-.523.07-.672.106A3 3 0 0 0 6.016 6.32C6 6.473 6 6.65 6 7m6 1 4 4m0 0-4 4m4-4H3"
         strokeWidth="inherit"
       />
     </svg>
@@ -33,7 +33,14 @@ const LogIn03 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'LogIn03', props.className].join(' ')}
+    />
+  )
 })
 LogIn03.displayName = 'IconLogIn03'
 export default LogIn03

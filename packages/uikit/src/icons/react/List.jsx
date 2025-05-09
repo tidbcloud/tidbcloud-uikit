@@ -4,20 +4,20 @@ import { forwardRef } from 'react'
 const IconList = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M14 7.99992L6 7.99992M14 3.99992L6 3.99992M14 11.9999L6 11.9999M3.33333 7.99992C3.33333 8.36811 3.03486 8.66659 2.66667 8.66659C2.29848 8.66659 2 8.36811 2 7.99992C2 7.63173 2.29848 7.33325 2.66667 7.33325C3.03486 7.33325 3.33333 7.63173 3.33333 7.99992ZM3.33333 3.99992C3.33333 4.36811 3.03486 4.66659 2.66667 4.66659C2.29848 4.66659 2 4.36811 2 3.99992C2 3.63173 2.29848 3.33325 2.66667 3.33325C3.03486 3.33325 3.33333 3.63173 3.33333 3.99992ZM3.33333 11.9999C3.33333 12.3681 3.03486 12.6666 2.66667 12.6666C2.29848 12.6666 2 12.3681 2 11.9999C2 11.6317 2.29848 11.3333 2.66667 11.3333C3.03486 11.3333 3.33333 11.6317 3.33333 11.9999Z"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M21 12H9m12-6H9m12 12H9m-4-6a1 1 0 1 1-2 0 1 1 0 0 1 2 0m0-6a1 1 0 1 1-2 0 1 1 0 0 1 2 0m0 12a1 1 0 1 1-2 0 1 1 0 0 1 2 0"
         strokeWidth="inherit"
       />
     </svg>
@@ -33,7 +33,14 @@ const List = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'List', props.className].join(' ')}
+    />
+  )
 })
 List.displayName = 'IconList'
 export default List

@@ -4,20 +4,20 @@ import { forwardRef } from 'react'
 const IconBuilding08 = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M2 14H14M4 12V6.66665M6.66667 12V6.66665M9.33333 12V6.66665M12 12V6.66665M13.3333 4.66665L8.28267 1.50998C8.18012 1.44589 8.12885 1.41385 8.07386 1.40135C8.02524 1.3903 7.97476 1.3903 7.92614 1.40135C7.87115 1.41385 7.81988 1.44589 7.71733 1.50998L2.66667 4.66665H13.3333Z"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M3 21h18M6 18v-8m4 8v-8m4 8v-8m4 8v-8m2-3-7.576-4.735c-.154-.096-.23-.144-.313-.163a.5.5 0 0 0-.222 0c-.082.019-.16.067-.313.163L4 7z"
         strokeWidth="inherit"
       />
     </svg>
@@ -33,7 +33,14 @@ const Building08 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'Building08', props.className].join(' ')}
+    />
+  )
 })
 Building08.displayName = 'IconBuilding08'
 export default Building08

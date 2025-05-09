@@ -1,0 +1,45 @@
+import { Box as MantineBox } from '@mantine/core'
+import * as React from 'react'
+import { forwardRef } from 'react'
+const IconTiDbBot = (props, ref) => {
+  return (
+    <svg
+      width="1em"
+      height="1em"
+      viewBox="0 0 16 16"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      strokeWidth="1.5"
+      ref={ref}
+      {...props}
+    >
+      <path
+        d="M5.99986 6.66668V8.00001M10.6665 6.66668V8.00001M8.51802 1.7993L13.4514 4.54004C13.651 4.65097 13.7509 4.70644 13.8236 4.78533C13.8879 4.85513 13.9366 4.93785 13.9663 5.02797C14 5.12983 14 5.24406 14 5.47247V10.8839C14 11.1123 14 11.2265 13.9663 11.3284C13.9366 11.4185 13.8879 11.5012 13.8236 11.571C13.7509 11.6499 13.651 11.7054 13.4514 11.8163L8.51802 14.5571C8.32895 14.6621 8.23441 14.7146 8.1343 14.7352C8.04569 14.7534 7.95431 14.7534 7.8657 14.7352C7.76558 14.7146 7.67105 14.6621 7.48198 14.5571L2.54865 11.8163C2.34897 11.7054 2.24912 11.6499 2.17642 11.571C2.11211 11.5012 2.06343 11.4185 2.03366 11.3284C2 11.2265 2 11.1123 2 10.8839V5.47247C2 5.24405 2 5.12983 2.03366 5.02797C2.06343 4.93785 2.11211 4.85513 2.17642 4.78533C2.24912 4.70644 2.34897 4.65097 2.54865 4.54004L7.48198 1.7993C7.67105 1.69426 7.76558 1.64174 7.8657 1.62115C7.95431 1.60293 8.04569 1.60293 8.1343 1.62115C8.23441 1.64174 8.32895 1.69426 8.51802 1.7993Z"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeWidth="inherit"
+      />
+    </svg>
+  )
+}
+const ForwardRef = forwardRef(IconTiDbBot)
+const TiDbBot = forwardRef((props, ref) => {
+  if (typeof props.size === 'number') {
+    const { size, ...rest } = props
+    props = {
+      ...rest,
+      w: size,
+      h: size
+    }
+  }
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'TiDbBot', props.className].join(' ')}
+    />
+  )
+})
+TiDbBot.displayName = 'IconTiDbBot'
+export default TiDbBot

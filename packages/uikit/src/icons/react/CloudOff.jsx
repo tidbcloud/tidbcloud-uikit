@@ -4,20 +4,20 @@ import { forwardRef } from 'react'
 const IconCloudOff = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M14.4669 10.7454C14.596 10.4106 14.6667 10.0469 14.6667 9.66667C14.6667 8.10429 13.4724 6.82086 11.9469 6.67958C11.6348 4.78142 9.98655 3.33333 8.00004 3.33333C7.70233 3.33333 7.41222 3.36586 7.13306 3.42755M4.85835 4.85723C4.44882 5.37613 4.1651 5.99892 4.0532 6.67958C2.52771 6.82086 1.33337 8.10429 1.33337 9.66667C1.33337 11.3235 2.67652 12.6667 4.33337 12.6667H11.6667C11.9708 12.6667 12.2642 12.6214 12.5408 12.5373M2.00004 2L14 14"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M21.7 16.118a4.5 4.5 0 0 0-3.78-6.099 6 6 0 0 0-7.22-4.878M7.287 7.286a6 6 0 0 0-1.207 2.733A4.5 4.5 0 0 0 6.5 19h11c.456 0 .896-.068 1.311-.194M3 3l18 18"
         strokeWidth="inherit"
       />
     </svg>
@@ -33,7 +33,14 @@ const CloudOff = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'CloudOff', props.className].join(' ')}
+    />
+  )
 })
 CloudOff.displayName = 'IconCloudOff'
 export default CloudOff
