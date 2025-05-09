@@ -244,9 +244,12 @@ export const DateTimePicker = ({
 export interface TimePickerProps
   extends Omit<TimeInputProps, 'value' | 'onChange' | 'defaultValue'>,
     Pick<PopoverProps, 'withinPortal' | 'withArrow' | 'position' | 'shadow'> {
-  defaultValue?: Date
-  value?: Date
-  onChange?: (val: Date) => void
+  defaultValue?: string
+  /**
+   * with format of `HH:mm:ss`
+   */
+  value?: string
+  onChange?: (val: string) => void
   disable?: boolean
   size?: MantineSize
 }
@@ -267,10 +270,10 @@ export const TimePicker = ({
   ...rest
 }: TimePickerProps) => {
   const [currentValue, setCurrentValue] = useUncontrolled({
-    value: value ? dayjs(value) : undefined,
-    defaultValue: defaultValue ? dayjs(defaultValue) : dayjs(),
+    value: value ? dayjs(value, 'HH:mm:ss') : undefined,
+    defaultValue: defaultValue ? dayjs(defaultValue, 'HH:mm:ss') : dayjs(),
     onChange: (v) => {
-      onChange?.(v.toDate())
+      onChange?.(v.format('HH:mm:ss'))
     }
   })
   const [currentValueChangedBy, setCurrentValueChangedBy] = useState<CurrentValueChangedBy | null>(null)
