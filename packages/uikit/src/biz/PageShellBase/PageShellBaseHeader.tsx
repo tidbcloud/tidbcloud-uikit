@@ -15,7 +15,6 @@ export interface PageShellBaseHeaderProps extends GroupProps {
    * Right section of header
    */
   rightSection?: React.ReactNode
-  mod?: Record<string, any>
 }
 
 export const PageShellBaseHeader = ({
@@ -32,16 +31,13 @@ export const PageShellBaseHeader = ({
       gap="xl"
       {...restProps}
       className={clsx(restProps.className, 'tiui-page-shell-header')}
-      mod={{
-        ...restProps.mod,
-        sticky
-      }}
+      {...(sticky ? { 'data-sticky': sticky } : {})}
       sx={mergeSxList([
         {
           paddingLeft: 24,
           paddingRight: 24,
           height: 64,
-          '&[data-sticky]': {
+          '&[data-sticky=true]': {
             position: 'sticky',
             zIndex: 1,
             top: 0,
