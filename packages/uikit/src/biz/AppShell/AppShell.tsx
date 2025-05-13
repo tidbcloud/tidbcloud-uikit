@@ -56,7 +56,6 @@ export const AppShell = ({ banner, navbar, children }: React.PropsWithChildren<A
   const [navbarCollapsed, setNavbarCollapsed] = useState(false)
 
   const navbarWidth = navbar.width ?? DEFAULT_NAVBAR_WIDTH
-  const pageHeaderOffset = navbarCollapsed ? 28 + 16 : 0
 
   const toggleNavbar = useCallback(() => {
     setNavbarCollapsed((prev) => !prev)
@@ -78,7 +77,7 @@ export const AppShell = ({ banner, navbar, children }: React.PropsWithChildren<A
           '--app-shell-transition-timing-function': 'ease',
           '--app-shell-navbar-width': `${navbarWidth}px`,
           '--app-shell-navbar-offset': navbarCollapsed ? '0px' : `${navbarWidth}px`,
-          '--app-shell-page-header-offset': `${pageHeaderOffset}px`
+          '--app-shell-navbar-expand-button-width': '28px'
         }}
       >
         {navbarCollapsed && <ExpandNavbarButton onClick={toggleNavbar} />}
