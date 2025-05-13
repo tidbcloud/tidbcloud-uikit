@@ -1,12 +1,37 @@
+import { IconChevronLeft } from '../../icons/index.js'
+import { ActionIcon } from '../../primitive/index.js'
 import { mergeSxList } from '../../utils/index.js'
-import { PageShell, type PageShellProps } from '../PageShell/index.js'
+import {
+  PageShellBaseRoot,
+  PageShellBaseHeader,
+  PageShellBaseTitle,
+  PageShellBaseBody,
+  type PageShellBaseRootProps,
+  type PageShellBaseHeaderProps,
+  type PageShellBaseBodyProps
+} from '../PageShellBase/page-shell-base.js'
+
+import { ExpandNavbarButtonPlaceholder } from './navbar/ExpandNavbarButtonPlaceholder.js'
 
 const DEFAULT_PAGE_MAX_WIDTH = 1920
 
-export interface AppPageShellProps
-  extends Pick<PageShellProps, 'title' | 'wrapperProps' | 'headerProps' | 'bodyProps' | 'children'> {
-  withHeader?: boolean
+export interface AppPageShellProps {
   maxWidth?: string
+  withHeader?: boolean
+  title?: React.ReactNode
+  children?: React.ReactNode
+  wrapperProps?: PageShellBaseRootProps
+  headerProps?: PageShellBaseHeaderProps & {
+    /**
+     * Determines whether the back button should be rendered
+     */
+    withBack?: boolean
+    /**
+     * Called when the back button is clicked
+     */
+    onBackClick?: () => void
+  }
+  bodyProps?: PageShellBaseBodyProps
 }
 
 export const AppPageShell = ({
@@ -19,62 +44,89 @@ export const AppPageShell = ({
 }: AppPageShellProps) => {
   if (!withHeader) {
     return (
-      <PageShell
-        bodyProps={{
-          ...bodyProps,
-          sx: mergeSxList([
-            {
-              height: '100%',
-              maxWidth: `min(100%, ${maxWidth})`,
-              margin: '0 auto'
-            },
-            bodyProps?.sx
-          ])
-        }}
-        {...rest}
-      />
+      <PageShellBaseRoot
+        {...bodyProps}
+        sx={mergeSxList([
+          {
+            '--app-shell-page-max-width': maxWidth
+          },
+          {
+            height: '100%',
+            maxWidth: `min(100%, ${maxWidth})`,
+            margin: '0 auto',
+            padding: 24
+          },
+          bodyProps?.sx
+        ])}
+      >
+        {rest.children}
+      </PageShellBaseRoot>
     )
   }
 
   return (
-    <PageShell
-      wrapped
-      wrapperProps={{
-        ...wrapperProps,
-        sx: mergeSxList([
+    <PageShellBaseRoot
+      {...wrapperProps}
+      sx={mergeSxList([
+        {
+          '--app-shell-page-max-width': maxWidth
+        },
+        (theme) => ({
+          display: 'flex',
+          flexDirection: 'column',
+          height: '100%',
+          maxWidth: `min(100%, ${maxWidth})`,
+          margin: '0 auto',
+          minWidth: `calc(${theme.breakpoints.md} - var(--app-shell-navbar-offset))`
+        }),
+        wrapperProps?.sx
+      ])}
+    >
+      <PageShellBaseHeader
+        {...headerProps}
+        leftSection={
+          <>
+            <ExpandNavbarButtonPlaceholder />
+            {headerProps?.withBack && (
+              <ActionIcon
+                variant="default"
+                onClick={() => {
+                  if (headerProps?.onBackClick) {
+                    headerProps.onBackClick()
+                  } else {
+                    history.back()
+                  }
+                }}
+                aria-label="Navigate Back"
+              >
+                <IconChevronLeft size={20} />
+              </ActionIcon>
+            )}
+          </>
+        }
+        sx={mergeSxList([
           (theme) => ({
-            display: 'flex',
-            flexDirection: 'column',
-            height: '100%',
-            maxWidth: `min(100%, ${maxWidth})`,
-            margin: '0 auto',
-            minWidth: `calc(${theme.breakpoints.md} - var(--app-shell-navbar-offset))`
+            backgroundColor: theme.colors.carbon[1],
+            flexShrink: 0
           }),
-          wrapperProps?.sx
-        ])
-      }}
-      headerProps={{
-        ...headerProps,
-        sx: mergeSxList([
-          {
-            flexShrink: 0,
-            paddingLeft: `calc(24px + var(--app-shell-page-header-offset, 0px))`
-          },
           headerProps?.sx
-        ])
-      }}
-      bodyProps={{
-        ...bodyProps,
-        sx: mergeSxList([
+        ])}
+      >
+        <PageShellBaseTitle>{rest.title}</PageShellBaseTitle>
+      </PageShellBaseHeader>
+      <PageShellBaseBody
+        {...bodyProps}
+        sx={mergeSxList([
           {
-            paddingTop: 16,
+            paddingTop: 0,
             paddingBottom: 64,
             flex: 1
           },
           bodyProps?.sx
-        ])
-      }}
-      {...rest}
-    />
+        ])}
+      >
+        {rest.children}
+      </PageShellBaseBody>
+    </PageShellBaseRoot>
   )
 }
