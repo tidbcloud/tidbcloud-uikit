@@ -5,8 +5,8 @@ export const ExpandNavbarButtonPlaceholder = () => {
     <Box
       display="inline-block"
       style={{
-        '--button-width': 'var(--app-shell-navbar-expand-button-width, 28px)',
-        '--placeholder-max-width': 'calc(var(--button-width) + 16px)'
+        '--button-width': '28px',
+        '--placeholder-max-width': 'calc(var(--app-shell-navbar-collapsed, 0) * (var(--button-width) + 16px))'
       }}
       sx={{
         height: 'var(--button-width)',

@@ -77,7 +77,7 @@ export const AppShell = ({ banner, navbar, children }: React.PropsWithChildren<A
           '--app-shell-transition-timing-function': 'ease',
           '--app-shell-navbar-width': `${navbarWidth}px`,
           '--app-shell-navbar-offset': navbarCollapsed ? '0px' : `${navbarWidth}px`,
-          '--app-shell-navbar-expand-button-width': '28px'
+          '--app-shell-navbar-collapsed': navbarCollapsed ? '1' : '0'
         }}
       >
         {navbarCollapsed && <ExpandNavbarButton onClick={toggleNavbar} />}
