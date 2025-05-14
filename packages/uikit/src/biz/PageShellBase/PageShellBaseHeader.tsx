@@ -28,10 +28,10 @@ export const PageShellBaseHeader = ({
     <Group
       wrap="nowrap"
       justify="space-between"
-      gap="xl"
+      gap={0}
       {...restProps}
-      className={clsx(restProps.className, 'tiui-page-shell-header')}
       {...(sticky ? { 'data-sticky': sticky } : {})}
+      className={clsx(restProps.className, 'tiui-page-shell-header')}
       sx={mergeSxList([
         {
           paddingLeft: 24,
@@ -47,8 +47,8 @@ export const PageShellBaseHeader = ({
         restProps.sx
       ])}
     >
-      <Group wrap="nowrap">
-        {leftSection}
+      {leftSection}
+      <Group wrap="nowrap" sx={{ flex: 1, marginRight: 16 }}>
         {children}
       </Group>
       {rightSection}
