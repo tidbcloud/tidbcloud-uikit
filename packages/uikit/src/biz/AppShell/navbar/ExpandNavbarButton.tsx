@@ -8,7 +8,7 @@ interface ExpandNavbarButtonProps {
 export const ExpandNavbarButton = ({ onClick }: ExpandNavbarButtonProps) => (
   <ActionIcon
     variant="default"
-    aria-label="navbar expand button"
+    size={32}
     onClick={onClick}
     sx={{
       position: 'absolute',
@@ -16,6 +16,7 @@ export const ExpandNavbarButton = ({ onClick }: ExpandNavbarButtonProps) => (
       left: 24,
       zIndex: 15
     }}
+    aria-label="navbar expand button"
   >
     <IconLayoutLeft size={20} />
   </ActionIcon>
