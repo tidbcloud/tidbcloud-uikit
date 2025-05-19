@@ -7,6 +7,7 @@ interface ExpandNavbarButtonProps {
 
 export const ExpandNavbarButton = ({ onClick }: ExpandNavbarButtonProps) => (
   <ActionIcon
+    className="tiui-app-shell-expand-navbar-button"
     variant="default"
     size={32}
     onClick={onClick}

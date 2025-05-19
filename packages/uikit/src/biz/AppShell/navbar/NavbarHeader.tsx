@@ -1,5 +1,6 @@
 import { IconLayoutLeft } from '../../../icons/index.js'
 import { Group, ActionIcon, Box, GroupProps } from '../../../primitive/index.js'
+import { clsx } from '../../../utils/index.js'
 
 interface NavbarHeaderProps extends GroupProps {
   logo: React.ReactNode
@@ -17,7 +18,12 @@ export const NavbarHeader = ({ logo, onLogoClick, onToggleCollapse, ...restProps
   }
 
   return (
-    <Group justify="space-between" sx={{ height: 64 }} {...restProps}>
+    <Group
+      justify="space-between"
+      sx={{ height: 64 }}
+      {...restProps}
+      className={clsx(restProps.className, 'tiui-app-shell-navbar-header')}
+    >
       <Box
         onClick={handleLogoClick}
         sx={{

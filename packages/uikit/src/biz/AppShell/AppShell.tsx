@@ -69,7 +69,9 @@ export const AppShell = ({ banner, navbar, children }: React.PropsWithChildren<A
 
   return (
     <AppShellRoot>
-      <Box ref={bannerRef}>{banner}</Box>
+      <Box ref={bannerRef} className="tiui-app-shell-banner">
+        {banner}
+      </Box>
       <AppShellMain
         mod={withBanner ? ['height-flex'] : undefined}
         style={{
@@ -92,14 +94,18 @@ export const AppShell = ({ banner, navbar, children }: React.PropsWithChildren<A
             />
           </NavbarSection>
           <NavbarSection>
-            <Box px="md">{navbar.resourceShortcut}</Box>
+            <Box className="tiui-app-shell-navbar-resource-shortcut" px="md">
+              {navbar.resourceShortcut}
+            </Box>
           </NavbarSection>
           <NavbarSection grow scrollable py={8}>
-            <Stack ref={navMenuRef} gap={8} px="md" />
+            <Stack ref={navMenuRef} className="tiui-app-shell-navbar-menu" gap={8} px="md" />
           </NavbarSection>
           <NavbarSection px="md" py="8">
             <Divider mx="-md" mb={8} />
-            <Stack gap={8}>{navbar.footer}</Stack>
+            <Stack className="tiui-app-shell-navbar-footer" gap={8}>
+              {navbar.footer}
+            </Stack>
           </NavbarSection>
         </Navbar>
         <AppShellBody>
