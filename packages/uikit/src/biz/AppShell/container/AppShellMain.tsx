@@ -1,14 +1,16 @@
 import { BoxProps, ElementProps, Group } from '../../../primitive/index.js'
-import { mergeSxList } from '../../../utils/index.js'
+import { clsx, mergeSxList } from '../../../utils/index.js'
 
 interface AppShellMainProps extends BoxProps, ElementProps<'div'> {}
 
-export const AppShellMain = ({ sx, ...rest }: AppShellMainProps) => {
+export const AppShellMain = ({ className, sx, ...rest }: AppShellMainProps) => {
   return (
     <Group
       gap={0}
       wrap="nowrap"
       align="stretch"
+      {...rest}
+      className={clsx(className, 'tiui-app-shell-main')}
       sx={mergeSxList([
         {
           position: 'relative',
@@ -21,7 +23,6 @@ export const AppShellMain = ({ sx, ...rest }: AppShellMainProps) => {
         },
         sx
       ])}
-      {...rest}
     />
   )
 }

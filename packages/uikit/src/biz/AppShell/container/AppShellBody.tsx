@@ -1,12 +1,14 @@
 import { Box, BoxProps, ElementProps } from '../../../primitive/index.js'
-import { mergeSxList } from '../../../utils/index.js'
+import { clsx, mergeSxList } from '../../../utils/index.js'
 
 interface AppShellBodyProps extends BoxProps, ElementProps<'main'> {}
 
-export const AppShellBody = ({ sx, ...rest }: AppShellBodyProps) => {
+export const AppShellBody = ({ className, sx, ...rest }: AppShellBodyProps) => {
   return (
     <Box
       component="main"
+      {...rest}
+      className={clsx(className, 'tiui-app-shell-body')}
       sx={mergeSxList([
         (theme) => ({
           flex: 1,
@@ -15,7 +17,6 @@ export const AppShellBody = ({ sx, ...rest }: AppShellBodyProps) => {
         }),
         sx
       ])}
-      {...rest}
     />
   )
 }
