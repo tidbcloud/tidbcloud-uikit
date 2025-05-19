@@ -98,7 +98,7 @@ export const AppShell = ({ banner, navbar, children }: React.PropsWithChildren<A
               {navbar.resourceShortcut}
             </Box>
           </NavbarSection>
-          <NavbarSection grow scrollable py={8}>
+          <NavbarSection className="tiui-app-shell-navbar-menu-section" grow scrollable py={8}>
             <Stack ref={navMenuRef} className="tiui-app-shell-navbar-menu" gap={8} px="md" />
           </NavbarSection>
           <NavbarSection px="md" py="8">
