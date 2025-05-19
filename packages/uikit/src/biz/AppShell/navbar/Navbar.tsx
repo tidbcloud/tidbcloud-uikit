@@ -1,5 +1,5 @@
 import { Box, BoxProps, ElementProps } from '../../../primitive/index.js'
-import { mergeSxList } from '../../../utils/index.js'
+import { clsx, mergeSxList } from '../../../utils/index.js'
 
 interface NavbarProps extends BoxProps, ElementProps<'nav'> {
   /** Determines whether the navbar should have a border */
@@ -14,9 +14,10 @@ interface NavbarProps extends BoxProps, ElementProps<'nav'> {
 
 const DEFAULT_NAVBAR_Z_INDEX = 10
 
-export const Navbar = ({ withBorder, zIndex, hidden = false, mod, sx, ...rest }: NavbarProps) => {
+export const Navbar = ({ withBorder, zIndex, hidden = false, className, mod, sx, ...rest }: NavbarProps) => {
   return (
     <Box
+      className="tiui-app-shell-navbar-wrapper"
       mod={[{ 'navbar-hidden': hidden }]}
       sx={{
         flexShrink: 0,
@@ -34,6 +35,8 @@ export const Navbar = ({ withBorder, zIndex, hidden = false, mod, sx, ...rest }:
     >
       <Box
         component="nav"
+        {...rest}
+        className={clsx(className, 'tiui-app-shell-navbar')}
         mod={[{ 'with-border': withBorder }, mod]}
         sx={mergeSxList([
           (theme) => ({
@@ -52,7 +55,6 @@ export const Navbar = ({ withBorder, zIndex, hidden = false, mod, sx, ...rest }:
           }),
           sx
         ])}
-        {...rest}
       />
     </Box>
   )

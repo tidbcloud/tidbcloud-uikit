@@ -3,6 +3,7 @@ import { Box } from '../../../primitive/index.js'
 export const ExpandNavbarButtonPlaceholder = () => {
   return (
     <Box
+      className="tiui-app-shell-expand-navbar-button-placeholder"
       display="inline-block"
       style={{
         '--button-width': '32px',
