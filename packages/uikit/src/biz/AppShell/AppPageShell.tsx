@@ -1,11 +1,11 @@
-import { IconChevronLeft } from '../../icons/index.js'
-import { ActionIcon, Group } from '../../primitive/index.js'
+import { Group } from '../../primitive/index.js'
 import { mergeSxList } from '../../utils/index.js'
 import {
   PageShellBaseRoot,
   PageShellBaseHeader,
   PageShellBaseTitle,
   PageShellBaseBody,
+  PageShellBaseBackButton,
   type PageShellBaseRootProps,
   type PageShellBaseHeaderProps,
   type PageShellBaseBodyProps
@@ -87,22 +87,7 @@ export const AppPageShell = ({
         leftSection={
           <Group wrap="nowrap" gap={0}>
             <ExpandNavbarButtonPlaceholder />
-            {headerProps?.withBack && (
-              <ActionIcon
-                variant="default"
-                onClick={() => {
-                  if (headerProps?.onBackClick) {
-                    headerProps.onBackClick()
-                  } else {
-                    history.back()
-                  }
-                }}
-                mr="md"
-                aria-label="Navigate Back"
-              >
-                <IconChevronLeft size={20} />
-              </ActionIcon>
-            )}
+            {headerProps?.withBack && <PageShellBaseBackButton onClick={headerProps?.onBackClick} mr="md" />}
           </Group>
         }
         sx={mergeSxList([
