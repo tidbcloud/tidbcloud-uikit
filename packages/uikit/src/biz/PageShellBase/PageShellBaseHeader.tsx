@@ -37,7 +37,7 @@ export const PageShellBaseHeader = ({
           paddingLeft: 24,
           paddingRight: 24,
           height: 64,
-          '&[data-sticky=true]': {
+          '&[data-sticky]': {
             position: 'sticky',
             zIndex: 1,
             top: 0,
