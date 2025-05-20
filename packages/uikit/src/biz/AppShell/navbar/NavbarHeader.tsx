@@ -36,8 +36,14 @@ export const NavbarHeader = ({ logo, onLogoClick, onToggleCollapse, ...restProps
       >
         {logo}
       </Box>
-      {/* Fold button */}
-      <ActionIcon variant="white" bg="transparent" onClick={onToggleCollapse} aria-label="Navbar fold button">
+      {/* Collapse button */}
+      <ActionIcon
+        className="tiui-app-shell-navbar-collapse-button"
+        variant="white"
+        bg="transparent"
+        onClick={onToggleCollapse}
+        aria-label="Collapse navbar"
+      >
         <IconLayoutLeft size={20} />
       </ActionIcon>
     </Group>
