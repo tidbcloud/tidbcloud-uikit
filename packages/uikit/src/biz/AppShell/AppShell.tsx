@@ -31,9 +31,9 @@ interface AppShellProps {
      */
     logo: React.ReactNode
     /**
-     * The resource shortcut section of the navbar
+     * Custom content rendered in the navbar section between the header and the main menu.
      */
-    resourceShortcut: React.ReactNode
+    aboveMenu: React.ReactNode
     /**
      * The footer section of the navbar
      */
@@ -107,14 +107,14 @@ export const AppShell = ({ banner, navbar, children }: React.PropsWithChildren<A
             />
           </NavbarSection>
           <NavbarSection>
-            <Box className="tiui-app-shell-navbar-resource-shortcut" px="md">
-              {navbar.resourceShortcut}
+            <Box className="tiui-app-shell-navbar-above-menu" px="md">
+              {navbar.aboveMenu}
             </Box>
           </NavbarSection>
           <NavbarSection className="tiui-app-shell-navbar-menu-section" grow scrollable py={8}>
             <Stack ref={navMenuRef} className="tiui-app-shell-navbar-menu" gap={8} px="md" />
           </NavbarSection>
-          <NavbarSection px="md" py="8">
+          <NavbarSection px="md" pb="8">
             <Divider mx="-md" mb={8} />
             <Stack className="tiui-app-shell-navbar-footer" gap={8}>
               {navbar.footer}
