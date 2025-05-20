@@ -30,8 +30,8 @@ export const PageShellBaseHeader = ({
       justify="space-between"
       gap={0}
       {...restProps}
-      {...(sticky ? { 'data-sticky': sticky } : {})}
       className={clsx(restProps.className, 'tiui-page-shell-header')}
+      mod={[{ sticky }, restProps.mod]}
       sx={mergeSxList([
         {
           paddingLeft: 24,
