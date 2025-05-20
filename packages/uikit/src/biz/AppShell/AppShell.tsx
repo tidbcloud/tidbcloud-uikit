@@ -31,10 +31,6 @@ interface AppShellProps {
      */
     logo: React.ReactNode
     /**
-     * The callback function to handle logo click
-     */
-    onLogoClick?: () => void
-    /**
      * The resource shortcut section of the navbar
      */
     resourceShortcut: React.ReactNode
@@ -42,6 +38,18 @@ interface AppShellProps {
      * The footer section of the navbar
      */
     footer: React.ReactNode
+    /**
+     * The callback function to handle logo click
+     */
+    onLogoClick?: () => void
+    /**
+     * Trigger when the navbar is collapsed
+     */
+    onCollapse?: () => void
+    /**
+     * Trigger when the navbar is expanded
+     */
+    onExpand?: () => void
   }
 }
 
@@ -57,9 +65,14 @@ export const AppShell = ({ banner, navbar, children }: React.PropsWithChildren<A
 
   const navbarWidth = navbar.width ?? DEFAULT_NAVBAR_WIDTH
 
-  const toggleNavbar = useCallback(() => {
-    setNavbarCollapsed((prev) => !prev)
-  }, [])
+  const handleNavbarCollapse = useCallback(() => {
+    setNavbarCollapsed(true)
+    navbar.onCollapse?.()
+  }, [navbar.onCollapse])
+  const handleNavbarExpand = useCallback(() => {
+    setNavbarCollapsed(false)
+    navbar.onExpand?.()
+  }, [navbar.onExpand])
 
   useEffect(() => {
     if (bannerRef.current) {
@@ -82,13 +95,13 @@ export const AppShell = ({ banner, navbar, children }: React.PropsWithChildren<A
           '--app-shell-navbar-collapsed': navbarCollapsed ? '1' : '0'
         }}
       >
-        {navbarCollapsed && <ExpandNavbarButton onClick={toggleNavbar} />}
+        {navbarCollapsed && <ExpandNavbarButton onClick={handleNavbarExpand} />}
         <Navbar withBorder hidden={navbarCollapsed}>
           <NavbarSection>
             <NavbarHeader
               logo={navbar.logo}
               onLogoClick={navbar.onLogoClick}
-              onToggleCollapse={toggleNavbar}
+              onToggleCollapse={handleNavbarCollapse}
               px="md"
               py={8}
             />
