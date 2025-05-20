@@ -73,7 +73,7 @@ export const AppShell = ({ banner, navbar, children }: React.PropsWithChildren<A
         {banner}
       </Box>
       <AppShellMain
-        mod={withBanner ? ['height-flex'] : undefined}
+        mod={{ 'height-flex': withBanner }}
         style={{
           '--app-shell-transition-duration': '200ms',
           '--app-shell-transition-timing-function': 'ease',
