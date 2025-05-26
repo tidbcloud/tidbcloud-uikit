@@ -1,5 +1,5 @@
 import { IconLayoutLeft } from '../../../icons/index.js'
-import { Group, ActionIcon, Box, GroupProps } from '../../../primitive/index.js'
+import { Group, ActionIcon, GroupProps, Stack } from '../../../primitive/index.js'
 import { clsx } from '../../../utils/index.js'
 
 interface NavbarHeaderProps extends GroupProps {
@@ -24,18 +24,17 @@ export const NavbarHeader = ({ logo, onLogoClick, onToggleCollapse, ...restProps
       {...restProps}
       className={clsx(restProps.className, 'tiui-app-shell-navbar-header')}
     >
-      <Box
+      <Stack
+        justify="center"
         onClick={handleLogoClick}
         sx={{
-          width: 32,
-          height: 28,
-          paddingLeft: 4,
+          padding: 4,
           cursor: 'pointer'
         }}
         aria-label="Logo"
       >
         {logo}
-      </Box>
+      </Stack>
       {/* Collapse button */}
       <ActionIcon
         className="tiui-app-shell-navbar-collapse-button"
