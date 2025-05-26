@@ -95,7 +95,7 @@ export const AppShell = ({ banner, navbar, children }: React.PropsWithChildren<A
           '--app-shell-navbar-collapsed': navbarCollapsed ? '1' : '0'
         }}
       >
-        {navbarCollapsed && <ExpandNavbarButton onClick={handleNavbarExpand} />}
+        {navbarCollapsed && <ExpandNavbarButton logo={navbar.logo} onClick={handleNavbarExpand} />}
         <Navbar withBorder hidden={navbarCollapsed}>
           <NavbarSection>
             <NavbarHeader
