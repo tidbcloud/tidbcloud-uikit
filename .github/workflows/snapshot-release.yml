@@ -2,12 +2,24 @@ name: Manual Snapshot Release
 
 on:
   workflow_dispatch: # Allows manual triggering
+  workflow_call:
+    inputs:
+      pr_number:
+        description: 'PR number to comment on'
+        required: false
+        type: string
+    outputs:
+      version:
+        description: 'Published version'
+        value: ${{ jobs.snapshot_release.outputs.version }}
 
 jobs:
   snapshot_release:
     runs-on: ubuntu-latest
     # Prevent concurrent snapshot releases
     concurrency: ${{ github.workflow }}-${{ github.ref }}
+    outputs:
+      version: ${{ steps.get_version.outputs.version }}
 
     steps:
       - name: Checkout Repo
@@ -64,6 +76,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.PUBLISH_NPM_REGISTRY_TOKEN }} # Ensure this secret is configured in your repo settings
+
+      - name: Get Published Version
+        id: get_version
+        run: echo "version=$(node -p "require('./packages/uikit/package.json').version")" >> $GITHUB_OUTPUT
 
       - name: Push Version Commit and Tag
         run: git push --tags origin # Push associated tag to the remote repository
