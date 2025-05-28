@@ -19,18 +19,41 @@ import fs from 'node:fs/promises'
 import path from 'node:path'
 import { argv } from 'node:process'
 
-import { transform, Config } from '@svgr/core'
+import { Config, transform } from '@svgr/core'
 import { camelCase, upperFirst } from 'lodash-es'
 import ora, { Ora } from 'ora'
 
 const withForceFlag = argv.includes('--force')
 const rawIconInputPath = path.resolve(process.cwd(), './src/icons/raw')
+const filledIconInputPath = path.resolve(process.cwd(), './src/icons/filled')
 const reactIconOutput = path.resolve(process.cwd(), './src/icons/react')
 const indexOutput = path.join('./src/icons/index.ts')
 
-async function getIconList(): Promise<string[]> {
+async function getIconList(): Promise<{ outline: string[]; filled: string[] }> {
   const files = await fs.readdir(rawIconInputPath)
-  return files.filter((i) => path.extname(i) === '.svg').sort()
+  const svgFiles = files.filter((i) => path.extname(i) === '.svg').sort()
+
+  const outline: string[] = []
+  const filled: string[] = []
+
+  for (const file of svgFiles) {
+    if (file.toLowerCase().includes('fill')) {
+      filled.push(file)
+    } else {
+      outline.push(file)
+    }
+  }
+
+  // Also get existing filled icons
+  try {
+    const existingFilled = await fs.readdir(filledIconInputPath)
+    const existingFilledSvg = existingFilled.filter((i) => path.extname(i) === '.svg').sort()
+    filled.push(...existingFilledSvg)
+  } catch {
+    // filled folder doesn't exist yet, that's ok
+  }
+
+  return { outline, filled }
 }
 
 function pascalCase(filename: string) {
@@ -38,8 +61,13 @@ function pascalCase(filename: string) {
 }
 
 async function prepare() {
-  const icons = await getIconList()
-  for (const i of icons) {
+  const { outline, filled } = await getIconList()
+
+  // Ensure filled directory exists
+  await fs.mkdir(filledIconInputPath, { recursive: true })
+
+  // Process outline icons
+  for (const i of outline) {
     const name = pascalCase(i)
     if (!i.startsWith(name)) {
       const iconPath = path.resolve(rawIconInputPath, i)
@@ -48,7 +76,28 @@ async function prepare() {
       await fs.writeFile(path.resolve(rawIconInputPath, `${name}.svg`), content)
     }
   }
-  return icons.length
+
+  // Process filled icons - move them to filled folder and rename
+  for (const i of filled) {
+    const name = pascalCase(i)
+    const sourcePath = path.resolve(rawIconInputPath, i)
+    const targetPath = path.resolve(filledIconInputPath, `${name}.svg`)
+
+    try {
+      const content = await fs.readFile(sourcePath, 'utf-8')
+      await fs.writeFile(targetPath, content)
+      // Remove from raw folder if it was there
+      try {
+        await fs.unlink(sourcePath)
+      } catch {
+        // File might not be in raw folder, that's ok
+      }
+    } catch {
+      // File might already be in filled folder
+    }
+  }
+
+  return outline.length + filled.length
 }
 
 const template: Config['template'] = (variables, { tpl }) => {
@@ -82,11 +131,57 @@ export default ${componentName};
 `
 }
 
-async function transformSvgToJSX(content: string, name: string): Promise<string> {
+async function transformSvgToJSX(content: string, name: string, isFilled = false): Promise<string> {
+  const plugins = ['@svgr/plugin-jsx', '@svgr/plugin-prettier']
+
+  const babelPlugins: any[] = []
+
+  if (!isFilled) {
+    // Only add strokeWidth plugins for outline icons
+    babelPlugins.push(
+      [
+        '@svgr/babel-plugin-remove-jsx-attribute',
+        {
+          elements: ['path'],
+          attributes: ['strokeWidth']
+        },
+        'remove strokeWidth on path tag'
+      ],
+      [
+        '@svgr/babel-plugin-add-jsx-attribute',
+        {
+          elements: ['svg'],
+          attributes: [{ name: 'strokeWidth', value: '1.5' }]
+        },
+        'add strokeWidth on svg tag'
+      ],
+      [
+        '@svgr/babel-plugin-add-jsx-attribute',
+        {
+          elements: ['path'],
+          attributes: [{ name: 'strokeWidth', value: 'inherit' }]
+        },
+        'add strokeWidth inherit on path tag'
+      ],
+      [
+        '@svgr/babel-plugin-add-jsx-attribute',
+        {
+          elements: ['path'],
+          attributes: [
+            {
+              name: 'stroke',
+              value: 'currentColor'
+            }
+          ]
+        }
+      ]
+    )
+  }
+
   const jsCode = await transform(
     content,
     {
-      plugins: ['@svgr/plugin-jsx', '@svgr/plugin-prettier'],
+      plugins,
       icon: true,
       ref: true,
       replaceAttrValues: {
@@ -95,44 +190,7 @@ async function transformSvgToJSX(content: string, name: string): Promise<string>
       },
       jsx: {
         babelConfig: {
-          plugins: [
-            [
-              '@svgr/babel-plugin-remove-jsx-attribute',
-              {
-                elements: ['path'],
-                attributes: ['strokeWidth']
-              },
-              'remove strokeWidth on path tag'
-            ],
-            [
-              '@svgr/babel-plugin-add-jsx-attribute',
-              {
-                elements: ['svg'],
-                attributes: [{ name: 'strokeWidth', value: '1.5' }]
-              },
-              'add strokeWidth on svg tag'
-            ],
-            [
-              '@svgr/babel-plugin-add-jsx-attribute',
-              {
-                elements: ['path'],
-                attributes: [{ name: 'strokeWidth', value: 'inherit' }]
-              },
-              'add strokeWidth inherit on path tag'
-            ],
-            [
-              '@svgr/babel-plugin-add-jsx-attribute',
-              {
-                elements: ['path'],
-                attributes: [
-                  {
-                    name: 'stroke',
-                    value: 'currentColor'
-                  }
-                ]
-              }
-            ]
-          ]
+          plugins: babelPlugins
         }
       },
       svgoConfig: {
@@ -157,12 +215,15 @@ async function transformSvgToJSX(content: string, name: string): Promise<string>
 }
 
 async function transformAllSvgIcon(spinner: Ora) {
-  const icons = await getIconList()
-  const total = icons.length
+  const { outline, filled } = await getIconList()
+  const total = outline.length + filled.length
   const chunkSize = 100
 
-  for (let i = 0; i < icons.length; i += chunkSize) {
-    const chunk = icons.slice(i, i + chunkSize)
+  let processed = 0
+
+  // Process outline icons
+  for (let i = 0; i < outline.length; i += chunkSize) {
+    const chunk = outline.slice(i, i + chunkSize)
 
     await Promise.all(
       chunk.map(async (icon) => {
@@ -172,16 +233,38 @@ async function transformAllSvgIcon(spinner: Ora) {
         const output = path.resolve(reactIconOutput, `${name}.jsx`)
         const isExist = await fs.stat(output).catch(() => false)
 
-        // only do the transformation if the file not transformed yet or with force flag
         if (!isExist || withForceFlag) {
-          const jsCode = await transformSvgToJSX(content, name)
+          const jsCode = await transformSvgToJSX(content, name, false)
           await fs.writeFile(output, jsCode)
         }
       })
     )
 
-    // Update progress after each chunk
-    spinner.text = `transformed icons: ${Math.min(i + chunkSize, total)}/${total}`
+    processed += chunk.length
+    spinner.text = `transformed icons: ${processed}/${total}`
+  }
+
+  // Process filled icons
+  for (let i = 0; i < filled.length; i += chunkSize) {
+    const chunk = filled.slice(i, i + chunkSize)
+
+    await Promise.all(
+      chunk.map(async (icon) => {
+        const name = pascalCase(icon)
+        const iconPath = path.resolve(filledIconInputPath, icon)
+        const content = await fs.readFile(iconPath, 'utf-8')
+        const output = path.resolve(reactIconOutput, `${name}.jsx`)
+        const isExist = await fs.stat(output).catch(() => false)
+
+        if (!isExist || withForceFlag) {
+          const jsCode = await transformSvgToJSX(content, name, true)
+          await fs.writeFile(output, jsCode)
+        }
+      })
+    )
+
+    processed += chunk.length
+    spinner.text = `transformed icons: ${processed}/${total}`
   }
 }
 
@@ -193,12 +276,14 @@ const noEdit = `/**
 `
 
 async function updateImportEntry() {
-  const icons = await getIconList()
+  const { outline, filled } = await getIconList()
+  const allIcons = [...outline, ...filled]
+
   const typeImports = [`import type { SVGProps } from 'react'`, `import type { BoxProps } from '@mantine/core'`].join(
     '\n'
   )
 
-  const iconImports = icons
+  const iconImports = allIcons
     .map((i) => {
       const name = pascalCase(i)
       return `import ${name} from './react/${name}.jsx'`
@@ -212,10 +297,12 @@ async function updateImportEntry() {
   ].join('\n')
 
   const iconExportsWithType = await Promise.all(
-    icons.map(async (i) => {
+    allIcons.map(async (i) => {
       const name = pascalCase(i)
       const iconName = pascalCase('Icon' + name)
-      const svgContent = await fs.readFile(path.resolve(rawIconInputPath, i), 'utf-8')
+      const isFilled = filled.includes(i)
+      const iconPath = isFilled ? path.resolve(filledIconInputPath, i) : path.resolve(rawIconInputPath, i)
+      const svgContent = await fs.readFile(iconPath, 'utf-8')
       return [
         generateIconDoc(svgToBase64(svgContent)),
         `export const ${iconName} = ${name} as React.FC<IconProps>\n`
