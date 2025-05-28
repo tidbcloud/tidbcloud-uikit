@@ -321,7 +321,13 @@ function generateIconDoc(preview: string) {
 }
 
 function svgToBase64(svgString: string): string {
-  const encoded = Buffer.from(svgString).toString('base64')
+  // Simple approach: wrap the original SVG in a new SVG with white background
+  const wrappedSvg = `<svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+  <rect width="16" height="16" fill="white"/>
+  <g>${svgString}</g>
+</svg>`
+
+  const encoded = Buffer.from(wrappedSvg).toString('base64')
   return `data:image/svg+xml;base64,${encoded}`
 }
 
