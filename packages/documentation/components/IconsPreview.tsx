@@ -1,8 +1,8 @@
-import { Input, Button, Card, Box, CopyButton, Flex, Typography, Center, Stack, Modal, Tooltip } from '@tidbcloud/uikit'
+import { Box, Button, Card, Center, CopyButton, Flex, Input, Modal, Stack, Tooltip, Typography } from '@tidbcloud/uikit'
 import { useDisclosure } from '@tidbcloud/uikit/hooks'
 import * as icons from '@tidbcloud/uikit/icons'
-import { useInfiniteScroll, useMemoizedFn, useInViewport } from 'ahooks'
-import { useState, useDeferredValue, useRef, useEffect } from 'react'
+import { useInfiniteScroll, useInViewport, useMemoizedFn } from 'ahooks'
+import { useDeferredValue, useEffect, useMemo, useRef, useState } from 'react'
 
 const iconsData = Object.keys(icons).filter((i) => i !== 'Icon')
 
@@ -74,6 +74,12 @@ export default function IconsPreview() {
   const loadMoreButtonRef = useRef(null)
   const [inViewport] = useInViewport(loadMoreButtonRef)
 
+  const displayedIcons: string[] = useMemo(() => {
+    return deferredValue
+      ? iconsData.filter((i) => i.toLowerCase().includes(deferredValue.toLowerCase())).slice(0, 50)
+      : (data?.list ?? [])
+  }, [deferredValue, data?.list])
+
   useEffect(() => {
     if (inViewport && !isLoadingMoreRef.current) {
       isLoadingMoreRef.current = true
@@ -92,12 +98,9 @@ export default function IconsPreview() {
       />
 
       <Flex wrap="wrap" gap={16}>
-        {deferredValue
-          ? iconsData
-              .filter((i) => i.toLowerCase().includes(deferredValue))
-              .slice(0, 50)
-              .map((i) => <IconCard name={i} onClick={onIconClick} key={i} />)
-          : data?.list.map((i) => <IconCard name={i} onClick={onIconClick} key={i} />)}
+        {displayedIcons.map((i) => (
+          <IconCard name={i} onClick={onIconClick} key={i} />
+        ))}
       </Flex>
 
       {!deferredValue && hasMore && (
