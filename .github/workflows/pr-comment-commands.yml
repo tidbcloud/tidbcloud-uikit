@@ -1,0 +1,105 @@
+name: PR Comment Commands
+
+on:
+  issue_comment:
+    types: [created]
+
+jobs:
+  handle_commands:
+    # Only run on PR comments, not issues
+    if: github.event.issue.pull_request
+    runs-on: ubuntu-latest
+    outputs:
+      command_found: ${{ steps.check_command.outputs.command_found }}
+
+    steps:
+      - name: Check for snapshot-release command
+        id: check_command
+        run: |
+          comment="${{ github.event.comment.body }}"
+          if [[ "$comment" =~ ^/snapshot-release ]]; then
+            echo "command_found=true" >> $GITHUB_OUTPUT
+          else
+            echo "command_found=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: React to comment
+        if: steps.check_command.outputs.command_found == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.reactions.createForIssueComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              comment_id: ${{ github.event.comment.id }},
+              content: 'rocket'
+            });
+
+      - name: Get PR details
+        if: steps.check_command.outputs.command_found == 'true'
+        id: pr_details
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { data: pr } = await github.rest.pulls.get({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: ${{ github.event.issue.number }}
+            });
+            core.setOutput('branch', pr.head.ref);
+            core.setOutput('sha', pr.head.sha);
+
+      - name: Comment deployment started
+        if: steps.check_command.outputs.command_found == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: ${{ github.event.issue.number }},
+              body: '🚀 Starting snapshot release... This may take a few minutes.'
+            });
+
+  snapshot_release:
+    needs: handle_commands
+    if: needs.handle_commands.outputs.command_found == 'true'
+    uses: ./.github/workflows/snapshot-release.yml
+    with:
+      pr_number: ${{ github.event.issue.number }}
+    secrets: inherit
+
+  notify_result:
+    needs: [handle_commands, snapshot_release]
+    if: always() && needs.handle_commands.outputs.command_found == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Comment success
+        if: needs.snapshot_release.result == 'success'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: ${{ github.event.issue.number }},
+              body: `✅ Snapshot release published successfully!
+
+              📦 **Version**: \`${{ needs.snapshot_release.outputs.version }}\`
+              🏷️ **Tag**: \`experimental\`
+              📥 **Install**: \`npm install @tidbcloud/uikit@experimental\`
+
+              You can test this version in your project now.`
+            });
+
+      - name: Comment failure
+        if: needs.snapshot_release.result == 'failure'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: ${{ github.event.issue.number }},
+              body: '❌ Snapshot release failed. Please check the [workflow logs](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}) for details.'
+            });
