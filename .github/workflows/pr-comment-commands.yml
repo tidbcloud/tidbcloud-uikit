@@ -18,6 +18,7 @@ jobs:
         id: check_command
         run: |
           comment="${{ github.event.comment.body }}"
+          comment=$(echo "$comment" | xargs)
           if [[ "$comment" =~ ^/snapshot-release ]]; then
             echo "command_found=true" >> $GITHUB_OUTPUT
           else
