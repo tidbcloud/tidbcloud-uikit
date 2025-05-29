@@ -11,6 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       command_found: ${{ steps.check_command.outputs.command_found }}
+      status_comment_id: ${{ steps.comment_deployment.outputs.comment_id }}
 
     steps:
       - name: Check for snapshot-release command
@@ -51,15 +52,17 @@ jobs:
 
       - name: Comment deployment started
         if: steps.check_command.outputs.command_found == 'true'
+        id: comment_deployment
         uses: actions/github-script@v7
         with:
           script: |
-            await github.rest.issues.createComment({
+            const { data: comment } = await github.rest.issues.createComment({
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: ${{ github.event.issue.number }},
               body: '🚀 Starting snapshot release... This may take a few minutes.'
             });
+            core.setOutput('comment_id', comment.id);
 
   snapshot_release:
     needs: handle_commands
@@ -74,15 +77,15 @@ jobs:
     if: always() && needs.handle_commands.outputs.command_found == 'true'
     runs-on: ubuntu-latest
     steps:
-      - name: Comment success
+      - name: Update comment with success
         if: needs.snapshot_release.result == 'success'
         uses: actions/github-script@v7
         with:
           script: |
-            await github.rest.issues.createComment({
+            await github.rest.issues.updateComment({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              issue_number: ${{ github.event.issue.number }},
+              comment_id: ${{ needs.handle_commands.outputs.status_comment_id }},
               body: `✅ Snapshot release published successfully!
 
               📦 **Version**: \`${{ needs.snapshot_release.outputs.version }}\`
@@ -92,14 +95,14 @@ jobs:
               You can test this version in your project now.`
             });
 
-      - name: Comment failure
+      - name: Update comment with failure
         if: needs.snapshot_release.result == 'failure'
         uses: actions/github-script@v7
         with:
           script: |
-            await github.rest.issues.createComment({
+            await github.rest.issues.updateComment({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              issue_number: ${{ github.event.issue.number }},
+              comment_id: ${{ needs.handle_commands.outputs.status_comment_id }},
               body: '❌ Snapshot release failed. Please check the [workflow logs](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}) for details.'
             });
