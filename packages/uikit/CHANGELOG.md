@@ -1,5 +1,12 @@
 # @tidbcloud/uikit
 
+## 2.3.2
+
+### Patch Changes
+
+- feat(uikit/icon): full revamp with better visual effect and enhanced utility ([#500](https://github.com/tidbcloud/tidbcloud-uikit/pull/500))
+- fix(ci): trim whitespace from PR comment before processing ([#536](https://github.com/tidbcloud/tidbcloud-uikit/pull/536))
+
 ## 2.3.1
 
 ### Patch Changes
