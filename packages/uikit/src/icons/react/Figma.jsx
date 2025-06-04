@@ -4,20 +4,20 @@ import { forwardRef } from 'react'
 const IconFigma = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M7.99992 1H5.66659C4.37792 1 3.33325 2.04467 3.33325 3.33333C3.33325 4.622 4.37792 5.66667 5.66659 5.66667M7.99992 1V5.66667M7.99992 1H10.3333C11.6219 1 12.6666 2.04467 12.6666 3.33333C12.6666 4.622 11.6219 5.66667 10.3333 5.66667M7.99992 5.66667H5.66659M7.99992 5.66667V10.3333M7.99992 5.66667H10.3333M5.66659 5.66667C4.37792 5.66667 3.33325 6.71134 3.33325 8C3.33325 9.28866 4.37792 10.3333 5.66659 10.3333M7.99992 10.3333H5.66659M7.99992 10.3333V12.6667C7.99992 13.9553 6.95525 15 5.66659 15C4.37792 15 3.33325 13.9553 3.33325 12.6667C3.33325 11.378 4.37792 10.3333 5.66659 10.3333M10.3333 5.66667C11.6219 5.66667 12.6666 6.71134 12.6666 8C12.6666 9.28866 11.6219 10.3333 10.3333 10.3333C9.04459 10.3333 7.99992 9.28866 7.99992 8C7.99992 6.71134 9.04459 5.66667 10.3333 5.66667Z"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M12 1.5H8.5a3.5 3.5 0 1 0 0 7m3.5-7v7m0-7h3.5a3.5 3.5 0 1 1 0 7m-3.5 0H8.5m3.5 0v7m0-7h3.5m-7 0a3.5 3.5 0 1 0 0 7m3.5 0H8.5m3.5 0V19a3.5 3.5 0 1 1-3.5-3.5m7-7a3.5 3.5 0 1 1 0 7 3.5 3.5 0 0 1 0-7"
         strokeWidth="inherit"
       />
     </svg>
@@ -33,7 +33,14 @@ const Figma = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'Figma', props.className].join(' ')}
+    />
+  )
 })
 Figma.displayName = 'IconFigma'
 export default Figma

@@ -4,20 +4,20 @@ import { forwardRef } from 'react'
 const IconMessageNotificationSquare = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M7.33333 2.66667H5.2C4.0799 2.66667 3.51984 2.66667 3.09202 2.88465C2.71569 3.0764 2.40973 3.38236 2.21799 3.75869C2 4.18651 2 4.74656 2 5.86667V9.33333C2 9.95331 2 10.2633 2.06815 10.5176C2.25308 11.2078 2.79218 11.7469 3.48236 11.9319C3.7367 12 4.04669 12 4.66667 12V13.557C4.66667 13.9122 4.66667 14.0898 4.73949 14.1811C4.80282 14.2604 4.89885 14.3066 5.00036 14.3065C5.11708 14.3063 5.25578 14.1954 5.53317 13.9735L7.12348 12.7012C7.44834 12.4413 7.61078 12.3114 7.79166 12.219C7.95213 12.137 8.12295 12.0771 8.29948 12.0408C8.49845 12 8.70646 12 9.1225 12H10.1333C11.2534 12 11.8135 12 12.2413 11.782C12.6176 11.5903 12.9236 11.2843 13.1153 10.908C13.3333 10.4802 13.3333 9.9201 13.3333 8.8V8.66667M13.4142 2.58579C14.1953 3.36683 14.1953 4.63316 13.4142 5.41421C12.6332 6.19526 11.3668 6.19526 10.5858 5.41421C9.80474 4.63316 9.80474 3.36683 10.5858 2.58579C11.3668 1.80474 12.6332 1.80474 13.4142 2.58579Z"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M11 4H7.8c-1.68 0-2.52 0-3.162.327a3 3 0 0 0-1.311 1.311C3 6.28 3 7.12 3 8.8V14c0 .93 0 1.395.102 1.777a3 3 0 0 0 2.122 2.12C5.605 18 6.07 18 7 18v2.335c0 .533 0 .8.11.937a.5.5 0 0 0 .39.188c.176 0 .384-.167.8-.5l2.385-1.908c.487-.39.731-.585 1.002-.724q.363-.184.762-.267c.299-.061.61-.061 1.235-.061H15.2c1.68 0 2.52 0 3.162-.327a3 3 0 0 0 1.311-1.311C20 15.72 20 14.88 20 13.2V13m.121-9.121A3 3 0 1 1 15.88 8.12 3 3 0 0 1 20.12 3.88"
         strokeWidth="inherit"
       />
     </svg>
@@ -33,7 +33,14 @@ const MessageNotificationSquare = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'MessageNotificationSquare', props.className].join(' ')}
+    />
+  )
 })
 MessageNotificationSquare.displayName = 'IconMessageNotificationSquare'
 export default MessageNotificationSquare

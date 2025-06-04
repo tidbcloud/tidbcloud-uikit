@@ -4,20 +4,20 @@ import { forwardRef } from 'react'
 const IconCalendar = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 14 16"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M14 6.66683H2M10.6667 1.3335V4.00016M5.33333 1.3335V4.00016M5.2 14.6668H10.8C11.9201 14.6668 12.4802 14.6668 12.908 14.4488C13.2843 14.2571 13.5903 13.9511 13.782 13.5748C14 13.147 14 12.5869 14 11.4668V5.86683C14 4.74672 14 4.18667 13.782 3.75885C13.5903 3.38252 13.2843 3.07656 12.908 2.88482C12.4802 2.66683 11.9201 2.66683 10.8 2.66683H5.2C4.0799 2.66683 3.51984 2.66683 3.09202 2.88482C2.71569 3.07656 2.40973 3.38252 2.21799 3.75885C2 4.18667 2 4.74672 2 5.86683V11.4668C2 12.5869 2 13.147 2.21799 13.5748C2.40973 13.9511 2.71569 14.2571 3.09202 14.4488C3.51984 14.6668 4.0799 14.6668 5.2 14.6668Z"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M13 6.667H1m8.667-5.334V4M4.333 1.333V4M4.2 14.667h5.6c1.12 0 1.68 0 2.108-.218a2 2 0 0 0 .874-.874c.218-.428.218-.988.218-2.108v-5.6c0-1.12 0-1.68-.218-2.108a2 2 0 0 0-.874-.874c-.428-.218-.988-.218-2.108-.218H4.2c-1.12 0-1.68 0-2.108.218a2 2 0 0 0-.874.874C1 4.187 1 4.747 1 5.867v5.6c0 1.12 0 1.68.218 2.108a2 2 0 0 0 .874.874c.428.218.988.218 2.108.218"
         strokeWidth="inherit"
       />
     </svg>
@@ -33,7 +33,14 @@ const Calendar = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'Calendar', props.className].join(' ')}
+    />
+  )
 })
 Calendar.displayName = 'IconCalendar'
 export default Calendar

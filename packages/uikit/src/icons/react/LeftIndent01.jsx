@@ -4,20 +4,20 @@ import { forwardRef } from 'react'
 const IconLeftIndent01 = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M14 6.1665H8M14 2.6665H2M14 9.83317H8M14 13.3332H2M2.85333 5.7065L5.43111 7.63984C5.62411 7.78458 5.7206 7.85696 5.75511 7.94568C5.78533 8.02339 5.78533 8.10961 5.75511 8.18733C5.7206 8.27605 5.62411 8.34842 5.43111 8.49317L2.85333 10.4265C2.57868 10.6325 2.44135 10.7355 2.3264 10.7331C2.22637 10.731 2.13256 10.6841 2.07088 10.6053C2 10.5148 2 10.3432 2 9.99984V6.13317C2 5.78985 2 5.6182 2.07088 5.52767C2.13256 5.44889 2.22637 5.40199 2.3264 5.39991C2.44135 5.39752 2.57868 5.50051 2.85333 5.7065Z"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M21 9.25h-9M21 4H3m18 10.75h-9M21 20H3M4.28 8.56l3.867 2.9c.29.217.434.326.486.459a.5.5 0 0 1 0 .362c-.052.133-.197.242-.486.459l-3.867 2.9c-.412.309-.618.463-.79.46a.5.5 0 0 1-.384-.192C3 15.773 3 15.515 3 15V9.2c0-.515 0-.772.106-.908A.5.5 0 0 1 3.49 8.1c.172-.003.378.151.79.46"
         strokeWidth="inherit"
       />
     </svg>
@@ -33,7 +33,14 @@ const LeftIndent01 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'LeftIndent01', props.className].join(' ')}
+    />
+  )
 })
 LeftIndent01.displayName = 'IconLeftIndent01'
 export default LeftIndent01

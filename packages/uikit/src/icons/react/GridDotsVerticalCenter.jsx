@@ -4,20 +4,20 @@ import { forwardRef } from 'react'
 const IconGridDotsVerticalCenter = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M2 2H2.00667M2 14H2.00667M2 11H2.00667M2 5H2.00667M5 2H5.00667M5 14H5.00667M11 2H11.0067M11 14H11.0067M8 2H8.00667M8 14H8.00667M8 11H8.00667M8 5H8.00667M14 2H14.0067M14 14H14.0067M14 11H14.0067M14 5H14.0067M14 8H2"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M3 3h.01M3 21h.01M3 16.5h.01M3 7.5h.01M7.5 3h.01M7.5 21h.01M16.5 3h.01m-.01 18h.01M12 3h.01M12 21h.01M12 16.5h.01m-.01-9h.01M21 3h.01M21 21h.01M21 16.5h.01m-.01-9h.01M21 12H3"
         strokeWidth="inherit"
       />
     </svg>
@@ -33,7 +33,14 @@ const GridDotsVerticalCenter = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'GridDotsVerticalCenter', props.className].join(' ')}
+    />
+  )
 })
 GridDotsVerticalCenter.displayName = 'IconGridDotsVerticalCenter'
 export default GridDotsVerticalCenter

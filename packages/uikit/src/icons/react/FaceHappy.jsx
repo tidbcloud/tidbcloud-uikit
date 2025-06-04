@@ -4,20 +4,20 @@ import { forwardRef } from 'react'
 const IconFaceHappy = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M10 6.00004H10.0067M6.00004 6.00004H6.00671M14.6667 8.00004C14.6667 11.6819 11.6819 14.6667 8.00004 14.6667C4.31814 14.6667 1.33337 11.6819 1.33337 8.00004C1.33337 4.31814 4.31814 1.33337 8.00004 1.33337C11.6819 1.33337 14.6667 4.31814 14.6667 8.00004ZM10.3334 6.00004C10.3334 6.18414 10.1841 6.33337 10 6.33337C9.81595 6.33337 9.66671 6.18414 9.66671 6.00004C9.66671 5.81595 9.81595 5.66671 10 5.66671C10.1841 5.66671 10.3334 5.81595 10.3334 6.00004ZM6.33337 6.00004C6.33337 6.18414 6.18414 6.33337 6.00004 6.33337C5.81595 6.33337 5.66671 6.18414 5.66671 6.00004C5.66671 5.81595 5.81595 5.66671 6.00004 5.66671C6.18414 5.66671 6.33337 5.81595 6.33337 6.00004ZM8.00004 11.6667C9.66704 11.6667 11 10.4447 11 9.33337H5.00004C5.00004 10.4447 6.33304 11.6667 8.00004 11.6667Z"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M15 9h.01M9 9h.01M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10m-6.5-3a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0m-6 0a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0m2.5 8.5c2.5 0 4.5-1.833 4.5-3.5h-9c0 1.667 2 3.5 4.5 3.5"
         strokeWidth="inherit"
       />
     </svg>
@@ -33,7 +33,14 @@ const FaceHappy = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'FaceHappy', props.className].join(' ')}
+    />
+  )
 })
 FaceHappy.displayName = 'IconFaceHappy'
 export default FaceHappy

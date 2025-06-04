@@ -4,20 +4,20 @@ import { forwardRef } from 'react'
 const IconReverseLeft = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M2.66675 4.66667H9.33341C11.5426 4.66667 13.3334 6.45753 13.3334 8.66667C13.3334 10.8758 11.5426 12.6667 9.33341 12.6667H2.66675M2.66675 4.66667L5.33341 2M2.66675 4.66667L5.33341 7.33333"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M4 7h10a6 6 0 0 1 0 12H4M4 7l4-4M4 7l4 4"
         strokeWidth="inherit"
       />
     </svg>
@@ -33,7 +33,14 @@ const ReverseLeft = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'ReverseLeft', props.className].join(' ')}
+    />
+  )
 })
 ReverseLeft.displayName = 'IconReverseLeft'
 export default ReverseLeft

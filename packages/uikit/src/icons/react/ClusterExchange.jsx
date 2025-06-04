@@ -1,0 +1,46 @@
+import { Box as MantineBox } from '@mantine/core'
+import * as React from 'react'
+import { forwardRef } from 'react'
+const IconClusterExchange = (props, ref) => {
+  return (
+    <svg
+      width="1em"
+      height="1em"
+      viewBox="0 0 16 16"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      strokeWidth="1.5"
+      ref={ref}
+      {...props}
+    >
+      <path
+        d="M3.99992 5.33329H4.00659M3.99992 10.6666H4.00659M3.99992 7.99996H11.9999C13.4727 7.99996 14.6666 6.80605 14.6666 5.33329C14.6666 3.86053 13.4727 2.66663 11.9999 2.66663H3.99992C2.52716 2.66663 1.33325 3.86053 1.33325 5.33329C1.33325 6.80605 2.52716 7.99996 3.99992 7.99996ZM3.99992 7.99996C2.52716 7.99996 1.33325 9.19387 1.33325 10.6666C1.33325 12.1394 2.52716 13.3333 3.99992 13.3333H6.89468M14.6666 13.1824H9.33325L10.6666 14.6666M9.33325 10.8175H14.6666L13.3333 9.33329"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="inherit"
+      />
+    </svg>
+  )
+}
+const ForwardRef = forwardRef(IconClusterExchange)
+const ClusterExchange = forwardRef((props, ref) => {
+  if (typeof props.size === 'number') {
+    const { size, ...rest } = props
+    props = {
+      ...rest,
+      w: size,
+      h: size
+    }
+  }
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'ClusterExchange', props.className].join(' ')}
+    />
+  )
+})
+ClusterExchange.displayName = 'IconClusterExchange'
+export default ClusterExchange

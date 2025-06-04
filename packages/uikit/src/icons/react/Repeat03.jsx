@@ -4,20 +4,20 @@ import { forwardRef } from 'react'
 const IconRepeat03 = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M8.66659 14.6666L6.66659 12.6666M6.66659 12.6666L8.66659 10.6666M6.66659 12.6666H9.99992C12.5772 12.6666 14.6666 10.5772 14.6666 7.99992C14.6666 6.13832 13.5766 4.53132 11.9999 3.78234M3.99992 12.2175C2.42329 11.4685 1.33325 9.86152 1.33325 7.99992C1.33325 5.42259 3.42259 3.33325 5.99992 3.33325H9.33325M9.33325 3.33325L7.33325 1.33325M9.33325 3.33325L7.33325 5.33325"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="m13 22-3-3m0 0 3-3m-3 3h5a7 7 0 0 0 3-13.326M6 18.326A7 7 0 0 1 9 5h5m0 0-3-3m3 3-3 3"
         strokeWidth="inherit"
       />
     </svg>
@@ -33,7 +33,14 @@ const Repeat03 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'Repeat03', props.className].join(' ')}
+    />
+  )
 })
 Repeat03.displayName = 'IconRepeat03'
 export default Repeat03

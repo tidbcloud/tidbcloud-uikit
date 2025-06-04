@@ -4,21 +4,21 @@ import { forwardRef } from 'react'
 const IconDatabaseNone = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M14 3.33325C14 4.43782 11.3137 5.33325 8 5.33325C4.68629 5.33325 2 4.43782 2 3.33325M14 3.33325C14 2.22868 11.3137 1.33325 8 1.33325C4.68629 1.33325 2 2.22868 2 3.33325M14 3.33325V12.6666C14 13.7733 11.3333 14.6666 8 14.6666C4.66667 14.6666 2 13.7733 2 12.6666V3.33325M14 7.99992C14 9.10659 11.3333 9.99992 8 9.99992C4.66667 9.99992 2 9.10659 2 7.99992"
         stroke="currentColor"
-        strokeDasharray="2 2"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M21 5c0 1.657-4.03 3-9 3S3 6.657 3 5m18 0c0-1.657-4.03-3-9-3S3 3.343 3 5m18 0v14c0 1.66-4 3-9 3s-9-1.34-9-3V5m18 7c0 1.66-4 3-9 3s-9-1.34-9-3"
+        strokeDasharray="2 2"
         strokeWidth="inherit"
       />
     </svg>
@@ -34,7 +34,14 @@ const DatabaseNone = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'DatabaseNone', props.className].join(' ')}
+    />
+  )
 })
 DatabaseNone.displayName = 'IconDatabaseNone'
 export default DatabaseNone

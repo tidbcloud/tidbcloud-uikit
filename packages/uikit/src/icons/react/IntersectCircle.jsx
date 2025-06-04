@@ -4,27 +4,27 @@ import { forwardRef } from 'react'
 const IconIntersectCircle = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M5.99998 10.6666C8.57731 10.6666 10.6666 8.57725 10.6666 5.99992C10.6666 3.42259 8.57731 1.33325 5.99998 1.33325C3.42265 1.33325 1.33331 3.42259 1.33331 5.99992C1.33331 8.57725 3.42265 10.6666 5.99998 10.6666Z"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M9 16A7 7 0 1 0 9 2a7 7 0 0 0 0 14"
         strokeWidth="inherit"
       />
       <path
+        d="M9.99998 14.6666C12.5773 14.6666 14.6666 12.5772 14.6666 9.99992C14.6666 7.42259 12.5773 5.33325 9.99998 5.33325C7.42265 5.33325 5.33331 7.42259 5.33331 9.99992C5.33331 12.5772 7.42265 14.6666 9.99998 14.6666Z"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M15 22a7 7 0 1 0 0-14 7 7 0 0 0 0 14"
         strokeWidth="inherit"
       />
     </svg>
@@ -40,7 +40,14 @@ const IntersectCircle = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'IntersectCircle', props.className].join(' ')}
+    />
+  )
 })
 IntersectCircle.displayName = 'IconIntersectCircle'
 export default IntersectCircle

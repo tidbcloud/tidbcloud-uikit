@@ -4,20 +4,20 @@ import { forwardRef } from 'react'
 const IconTriangle = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M1.59338 12.0655L7.07663 2.59439C7.37968 2.07095 7.5312 1.80923 7.72889 1.72132C7.90133 1.64465 8.09818 1.64465 8.27062 1.72132C8.46831 1.80923 8.61983 2.07095 8.92288 2.59439L14.4061 12.0655C14.7103 12.5908 14.8623 12.8535 14.8399 13.069C14.8203 13.2571 14.7217 13.4279 14.5688 13.5391C14.3935 13.6666 14.09 13.6666 13.483 13.6666H2.5165C1.90948 13.6666 1.60597 13.6666 1.43067 13.5391C1.27776 13.4279 1.17925 13.2571 1.15965 13.069C1.13717 12.8535 1.28924 12.5908 1.59338 12.0655Z"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="m2.39 18.098 8.225-14.206c.455-.785.682-1.178.979-1.31a1 1 0 0 1 .812 0c.297.132.524.525.978 1.31l8.225 14.206c.456.788.685 1.182.65 1.506a1 1 0 0 1-.406.705c-.263.191-.718.191-1.628.191H3.775c-.91 0-1.366 0-1.629-.191a1 1 0 0 1-.406-.705c-.034-.324.194-.718.65-1.506"
         strokeWidth="inherit"
       />
     </svg>
@@ -33,7 +33,14 @@ const Triangle = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'Triangle', props.className].join(' ')}
+    />
+  )
 })
 Triangle.displayName = 'IconTriangle'
 export default Triangle

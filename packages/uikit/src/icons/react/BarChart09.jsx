@@ -4,20 +4,20 @@ import { forwardRef } from 'react'
 const IconBarChart09 = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M14 14H4.13333C3.3866 14 3.01323 14 2.72801 13.8547C2.47713 13.7268 2.27316 13.5229 2.14532 13.272C2 12.9868 2 12.6134 2 11.8667V2M4.66667 3.66667V11.6667M7.66667 5.66667V11.6667M10.6667 7.66667V11.6667M13.6667 9.66667V11.6667"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M21 21H6.2c-1.12 0-1.68 0-2.108-.218a2 2 0 0 1-.874-.874C3 19.48 3 18.92 3 17.8V3m4 2.5v12m4.5-9v9m4.5-6v6m4.5-3v3"
         strokeWidth="inherit"
       />
     </svg>
@@ -33,7 +33,14 @@ const BarChart09 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'BarChart09', props.className].join(' ')}
+    />
+  )
 })
 BarChart09.displayName = 'IconBarChart09'
 export default BarChart09

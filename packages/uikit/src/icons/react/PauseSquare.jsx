@@ -4,20 +4,20 @@ import { forwardRef } from 'react'
 const IconPauseSquare = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M9.8776 6.0282V10.4574M6.12197 6.0282L6.12197 10.4574M14 4.88V11.12C14 12.1281 14 12.6321 13.8038 13.0172C13.6312 13.3559 13.3559 13.6312 13.0172 13.8038C12.6321 14 10.9281 14 9.92 14H6.08C5.07192 14 3.36785 14 2.98282 13.8038C2.64413 13.6312 2.36876 13.3559 2.19619 13.0172C2 12.6321 2 12.1281 2 11.12V4.88C2 3.87191 2 3.36786 2.19619 2.98282C2.36876 2.64413 2.64413 2.36876 2.98282 2.19619C3.36785 2 5.07192 2 6.08 2H9.92C10.9281 2 12.6321 2 13.0172 2.19619C13.3559 2.36876 13.6312 2.64413 13.8038 2.98282C14 3.36786 14 3.87191 14 4.88Z"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M9.5 15V9m5 6V9M7.8 21h8.4c1.68 0 2.52 0 3.162-.327a3 3 0 0 0 1.311-1.311C21 18.72 21 17.88 21 16.2V7.8c0-1.68 0-2.52-.327-3.162a3 3 0 0 0-1.311-1.311C18.72 3 17.88 3 16.2 3H7.8c-1.68 0-2.52 0-3.162.327a3 3 0 0 0-1.311 1.311C3 5.28 3 6.12 3 7.8v8.4c0 1.68 0 2.52.327 3.162a3 3 0 0 0 1.311 1.311C5.28 21 6.12 21 7.8 21"
         strokeWidth="inherit"
       />
     </svg>
@@ -33,7 +33,14 @@ const PauseSquare = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'PauseSquare', props.className].join(' ')}
+    />
+  )
 })
 PauseSquare.displayName = 'IconPauseSquare'
 export default PauseSquare

@@ -4,20 +4,20 @@ import { forwardRef } from 'react'
 const IconXAxis = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M2 8.00002H14M14 6.66669V9.33335M2 6.66669V9.33335"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M3 12h18m0-2v4M3 10v4"
         strokeWidth="inherit"
       />
     </svg>
@@ -33,7 +33,14 @@ const XAxis = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'XAxis', props.className].join(' ')}
+    />
+  )
 })
 XAxis.displayName = 'IconXAxis'
 export default XAxis

@@ -4,20 +4,20 @@ import { forwardRef } from 'react'
 const IconChevronVerticalExpand = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
-      fill="none"
       viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M6 9            L12 3            L18 9            M6 15            L12 21            L18 15"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="m6 9 6-6 6 6M6 15l6 6 6-6"
         strokeWidth="inherit"
       />
     </svg>
@@ -33,7 +33,14 @@ const ChevronVerticalExpand = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'ChevronVerticalExpand', props.className].join(' ')}
+    />
+  )
 })
 ChevronVerticalExpand.displayName = 'IconChevronVerticalExpand'
 export default ChevronVerticalExpand

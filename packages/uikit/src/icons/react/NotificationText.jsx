@@ -4,20 +4,20 @@ import { forwardRef } from 'react'
 const IconNotificationText = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M7.33333 2.66667H5.2C4.0799 2.66667 3.51984 2.66667 3.09202 2.88465C2.71569 3.0764 2.40973 3.38236 2.21799 3.75869C2 4.18651 2 4.74656 2 5.86667V10.8C2 11.9201 2 12.4802 2.21799 12.908C2.40973 13.2843 2.71569 13.5903 3.09202 13.782C3.51984 14 4.07989 14 5.2 14H10.1333C11.2534 14 11.8135 14 12.2413 13.782C12.6176 13.5903 12.9236 13.2843 13.1153 12.908C13.3333 12.4802 13.3333 11.9201 13.3333 10.8V8.66667M8.66667 11.3333H4.66667M10 8.66667H4.66667M13.4142 2.58579C14.1953 3.36683 14.1953 4.63317 13.4142 5.41421C12.6332 6.19526 11.3668 6.19526 10.5858 5.41421C9.80474 4.63317 9.80474 3.36683 10.5858 2.58579C11.3668 1.80474 12.6332 1.80474 13.4142 2.58579Z"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M11 4H7.8c-1.68 0-2.52 0-3.162.327a3 3 0 0 0-1.311 1.311C3 6.28 3 7.12 3 8.8v7.4c0 1.68 0 2.52.327 3.162a3 3 0 0 0 1.311 1.311C5.28 21 6.12 21 7.8 21h7.4c1.68 0 2.52 0 3.162-.327a3 3 0 0 0 1.311-1.311C20 18.72 20 17.88 20 16.2V13m-7 4H7m8-4H7m13.121-9.121A3 3 0 1 1 15.88 8.12 3 3 0 0 1 20.12 3.88"
         strokeWidth="inherit"
       />
     </svg>
@@ -33,7 +33,14 @@ const NotificationText = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'NotificationText', props.className].join(' ')}
+    />
+  )
 })
 NotificationText.displayName = 'IconNotificationText'
 export default NotificationText

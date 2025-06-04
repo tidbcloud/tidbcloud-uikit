@@ -4,20 +4,20 @@ import { forwardRef } from 'react'
 const IconConnect = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
-      viewBox="0 0 24 24"
       ref={ref}
       {...props}
     >
       <path
+        d="M10.4306 5.92077L6.17104 10.491M14.3214 3.50226C14.6991 4.75752 13.9878 6.08135 12.7325 6.45911C11.4773 6.83687 10.1534 6.12551 9.77567 4.87025C9.39791 3.61498 10.1093 2.29116 11.3645 1.9134C12.6198 1.53564 13.9436 2.24699 14.3214 3.50226ZM6.82594 11.5416C7.2037 12.7968 6.49235 14.1207 5.23708 14.4984C3.98182 14.8762 2.65799 14.1648 2.28023 12.9096C1.90247 11.6543 2.61383 10.3305 3.86909 9.95271C5.12435 9.57495 6.44818 10.2863 6.82594 11.5416Z"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="m15.646 8.881-6.39 6.855M21.482 5.253a3.56 3.56 0 1 1-6.819 2.052 3.56 3.56 0 0 1 6.819-2.052m-11.243 12.06a3.56 3.56 0 1 1-6.819 2.051 3.56 3.56 0 0 1 6.819-2.052"
         strokeWidth="inherit"
       />
     </svg>
@@ -33,7 +33,14 @@ const Connect = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'Connect', props.className].join(' ')}
+    />
+  )
 })
 Connect.displayName = 'IconConnect'
 export default Connect

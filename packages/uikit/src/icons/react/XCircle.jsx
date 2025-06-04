@@ -4,20 +4,20 @@ import { forwardRef } from 'react'
 const IconXCircle = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M9.99998 6.00004L5.99998 10M5.99998 6.00004L9.99998 10M14.6666 8.00004C14.6666 11.6819 11.6819 14.6667 7.99998 14.6667C4.31808 14.6667 1.33331 11.6819 1.33331 8.00004C1.33331 4.31814 4.31808 1.33337 7.99998 1.33337C11.6819 1.33337 14.6666 4.31814 14.6666 8.00004Z"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="m15 9-6 6m0-6 6 6m7-3c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10"
         strokeWidth="inherit"
       />
     </svg>
@@ -33,7 +33,14 @@ const XCircle = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'XCircle', props.className].join(' ')}
+    />
+  )
 })
 XCircle.displayName = 'IconXCircle'
 export default XCircle

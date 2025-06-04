@@ -4,20 +4,20 @@ import { forwardRef } from 'react'
 const IconAlignLeft = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M10.6667 6.66667H2M13.3333 4H2M13.3333 9.33333H2M10.6667 12H2"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M16 10H3m17-4H3m17 8H3m13 4H3"
         strokeWidth="inherit"
       />
     </svg>
@@ -33,7 +33,14 @@ const AlignLeft = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'AlignLeft', props.className].join(' ')}
+    />
+  )
 })
 AlignLeft.displayName = 'IconAlignLeft'
 export default AlignLeft

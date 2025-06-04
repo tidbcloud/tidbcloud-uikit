@@ -4,20 +4,20 @@ import { forwardRef } from 'react'
 const IconPower02 = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M7.99992 4.66659V7.99992M5.33325 5.99959C4.91465 6.55676 4.66659 7.24937 4.66659 7.99992C4.66659 9.84087 6.15897 11.3333 7.99992 11.3333C9.84087 11.3333 11.3333 9.84087 11.3333 7.99992C11.3333 7.24937 11.0852 6.55676 10.6666 5.99959M14.6666 7.99992C14.6666 11.6818 11.6818 14.6666 7.99992 14.6666C4.31802 14.6666 1.33325 11.6818 1.33325 7.99992C1.33325 4.31802 4.31802 1.33325 7.99992 1.33325C11.6818 1.33325 14.6666 4.31802 14.6666 7.99992Z"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M12 7v5M8 9a5 5 0 1 0 8 0m6 3c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10"
         strokeWidth="inherit"
       />
     </svg>
@@ -33,7 +33,14 @@ const Power02 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'Power02', props.className].join(' ')}
+    />
+  )
 })
 Power02.displayName = 'IconPower02'
 export default Power02

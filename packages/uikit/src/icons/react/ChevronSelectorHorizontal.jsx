@@ -4,20 +4,20 @@ import { forwardRef } from 'react'
 const IconChevronSelectorHorizontal = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M5.99996 4.66669L2.66663 8.00002L5.99996 11.3334M9.99996 4.66669L13.3333 8.00002L9.99996 11.3334"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="m9 7-5 5 5 5m6-10 5 5-5 5"
         strokeWidth="inherit"
       />
     </svg>
@@ -33,7 +33,14 @@ const ChevronSelectorHorizontal = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'ChevronSelectorHorizontal', props.className].join(' ')}
+    />
+  )
 })
 ChevronSelectorHorizontal.displayName = 'IconChevronSelectorHorizontal'
 export default ChevronSelectorHorizontal

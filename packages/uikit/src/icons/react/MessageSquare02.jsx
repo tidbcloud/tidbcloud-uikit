@@ -4,20 +4,20 @@ import { forwardRef } from 'react'
 const IconMessageSquare02 = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M2 5.2C2 4.07989 2 3.51984 2.21799 3.09202C2.40973 2.71569 2.71569 2.40973 3.09202 2.21799C3.51984 2 4.0799 2 5.2 2H10.8C11.9201 2 12.4802 2 12.908 2.21799C13.2843 2.40973 13.5903 2.71569 13.782 3.09202C14 3.51984 14 4.07989 14 5.2V8.8C14 9.9201 14 10.4802 13.782 10.908C13.5903 11.2843 13.2843 11.5903 12.908 11.782C12.4802 12 11.9201 12 10.8 12H9.1225C8.70646 12 8.49845 12 8.29948 12.0408C8.12295 12.0771 7.95213 12.137 7.79166 12.219C7.61078 12.3114 7.44834 12.4413 7.12348 12.7012L5.53317 13.9735C5.25578 14.1954 5.11708 14.3063 5.00036 14.3065C4.89885 14.3066 4.80282 14.2604 4.73949 14.1811C4.66667 14.0898 4.66667 13.9122 4.66667 13.557V12C4.04669 12 3.7367 12 3.48236 11.9319C2.79218 11.7469 2.25308 11.2078 2.06815 10.5176C2 10.2633 2 9.95331 2 9.33333V5.2Z"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M3 7.8c0-1.68 0-2.52.327-3.162a3 3 0 0 1 1.311-1.311C5.28 3 6.12 3 7.8 3h8.4c1.68 0 2.52 0 3.162.327a3 3 0 0 1 1.311 1.311C21 5.28 21 6.12 21 7.8v5.4c0 1.68 0 2.52-.327 3.162a3 3 0 0 1-1.311 1.311C18.72 18 17.88 18 16.2 18h-2.516c-.624 0-.936 0-1.235.061a3 3 0 0 0-.761.267c-.272.14-.516.334-1.003.724L8.3 20.96c-.416.333-.624.5-.8.5a.5.5 0 0 1-.39-.188C7 21.135 7 20.868 7 20.336V18c-.93 0-1.395 0-1.776-.102a3 3 0 0 1-2.122-2.121C3 15.395 3 14.93 3 14z"
         strokeWidth="inherit"
       />
     </svg>
@@ -33,7 +33,14 @@ const MessageSquare02 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'MessageSquare02', props.className].join(' ')}
+    />
+  )
 })
 MessageSquare02.displayName = 'IconMessageSquare02'
 export default MessageSquare02

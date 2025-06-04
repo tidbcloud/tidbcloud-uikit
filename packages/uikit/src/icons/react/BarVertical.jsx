@@ -4,20 +4,20 @@ import { forwardRef } from 'react'
 const IconBarVertical = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M6.33325 4.66667L8.59992 4.66667C8.97329 4.66667 9.15997 4.66667 9.30258 4.73933C9.42802 4.80324 9.53001 4.90523 9.59392 5.03067C9.66658 5.17328 9.66658 5.35996 9.66658 5.73333L9.66658 14M9.66658 7.33333L11.9333 7.33333C12.3066 7.33333 12.4933 7.33333 12.6359 7.40599C12.7614 7.46991 12.8633 7.5719 12.9273 7.69734C12.9999 7.83995 12.9999 8.02663 12.9999 8.4L12.9999 14M1.33325 14L14.6666 14M6.33325 14L6.33325 3.06667C6.33325 2.6933 6.33325 2.50661 6.26059 2.36401C6.19667 2.23856 6.09469 2.13658 5.96924 2.07266C5.82664 2 5.63995 2 5.26658 2L4.06658 2C3.69322 2 3.50653 2 3.36392 2.07266C3.23848 2.13658 3.1365 2.23856 3.07258 2.36401C2.99992 2.50661 2.99992 2.6933 2.99992 3.06667L2.99992 14L6.33325 14Z"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M9.5 7h3.4c.56 0 .84 0 1.054.109a1 1 0 0 1 .437.437c.109.214.109.494.109 1.054V21m0-10h3.4c.56 0 .84 0 1.054.109a1 1 0 0 1 .437.437c.109.214.109.494.109 1.054V21M2 21h20M9.5 21V4.6c0-.56 0-.84-.109-1.054a1 1 0 0 0-.437-.437C8.74 3 8.46 3 7.9 3H6.1c-.56 0-.84 0-1.054.109a1 1 0 0 0-.437.437C4.5 3.76 4.5 4.04 4.5 4.6V21z"
         strokeWidth="inherit"
       />
     </svg>
@@ -33,7 +33,14 @@ const BarVertical = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'BarVertical', props.className].join(' ')}
+    />
+  )
 })
 BarVertical.displayName = 'IconBarVertical'
 export default BarVertical

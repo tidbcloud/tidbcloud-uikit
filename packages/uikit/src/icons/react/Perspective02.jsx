@@ -4,20 +4,20 @@ import { forwardRef } from 'react'
 const IconPerspective02 = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M10.6667 3.33322L10.6667 12.6665M6.66667 2.66655L6.66667 13.3332M2 7.99988H14M2 3.99266L2 12.0071C2 12.9165 2 13.3711 2.18756 13.6863C2.35202 13.9626 2.6108 14.1702 2.91623 14.2708C3.26456 14.3855 3.70841 14.2869 4.59612 14.0896L12.3295 12.3711C12.9255 12.2387 13.2236 12.1724 13.446 12.0121C13.6423 11.8708 13.7964 11.6787 13.8918 11.4565C14 11.2045 14 10.8992 14 10.2886V5.71118C14 5.10056 14 4.79525 13.8918 4.5433C13.7964 4.32108 13.6423 4.12899 13.446 3.98762C13.2236 3.82734 12.9255 3.76111 12.3295 3.62865L4.59612 1.91013C3.70842 1.71286 3.26456 1.61423 2.91623 1.72896C2.6108 1.82955 2.35202 2.03714 2.18756 2.31347C2 2.62863 2 3.08331 2 3.99266Z"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M16 5v14M10 4v16m-7-8h18M3 5.99v12.02c0 1.365 0 2.047.281 2.52a2 2 0 0 0 1.093.877c.523.171 1.189.024 2.52-.272l11.6-2.578c.894-.199 1.341-.298 1.675-.538a2 2 0 0 0 .669-.834c.162-.378.162-.836.162-1.752V8.567c0-.916 0-1.374-.162-1.752a2 2 0 0 0-.669-.833c-.334-.24-.78-.34-1.675-.539l-11.6-2.578c-1.331-.295-1.997-.443-2.52-.271a2 2 0 0 0-1.093.876C3 3.943 3 4.625 3 5.99"
         strokeWidth="inherit"
       />
     </svg>
@@ -33,7 +33,14 @@ const Perspective02 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'Perspective02', props.className].join(' ')}
+    />
+  )
 })
 Perspective02.displayName = 'IconPerspective02'
 export default Perspective02

@@ -4,20 +4,20 @@ import { forwardRef } from 'react'
 const IconThermometerWarm = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M7.99992 6.00016C7.40507 5.99058 6.82409 6.18019 6.34941 6.53883C5.87474 6.89747 5.53362 7.40454 5.38033 7.97938C5.22704 8.55423 5.27037 9.16382 5.50345 9.71119C5.73652 10.2586 6.14594 10.7123 6.66659 11.0002M7.99992 2.00016V3.3335M4.39992 12.2668L3.46659 13.2002M2.66659 8.66683H1.33325M4.39992 5.06683L3.46659 4.1335M13.3333 9.69025V2.66683C13.3333 1.93045 12.7363 1.3335 11.9999 1.3335C11.2635 1.3335 10.6666 1.93045 10.6666 2.66683V9.69025C9.86952 10.1513 9.33325 11.0131 9.33325 12.0002C9.33325 13.4729 10.5272 14.6668 11.9999 14.6668C13.4727 14.6668 14.6666 13.4729 14.6666 12.0002C14.6666 11.0131 14.1303 10.1513 13.3333 9.69025Z"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M12 9a4 4 0 0 0-2 7.5M12 3v2M6.6 18.4l-1.4 1.4M4 13H2m4.6-5.4L5.2 6.2M20 14.535V4a2 2 0 1 0-4 0v10.535a4 4 0 1 0 4 0"
         strokeWidth="inherit"
       />
     </svg>
@@ -33,7 +33,14 @@ const ThermometerWarm = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'ThermometerWarm', props.className].join(' ')}
+    />
+  )
 })
 ThermometerWarm.displayName = 'IconThermometerWarm'
 export default ThermometerWarm

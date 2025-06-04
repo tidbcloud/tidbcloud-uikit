@@ -4,22 +4,28 @@ import { forwardRef } from 'react'
 const IconDoubleCheck = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
-      fill="none"
       viewBox="0 0 16 16"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
-        fill="currentColor"
-        fillRule="evenodd"
-        d="M1.214 9.782A.722.722 0 1 1 2.23 8.756c1.012 1.009 1.998 2.013 3.023 3.014l-.428.507-.04.043a.72.72 0 0 1-1.02 0zm3.205-.416a.721.721 0 1 1 1.005-1.033l2.849 2.778 5.448-6.446c.612-.724 1.71.21 1.101.932l-5.951 7.036-.034.037a.72.72 0 0 1-1.02.014zm3.277-.48-.035.038-1.034-1.008 2.54-3.009c.612-.723 1.71.209 1.102.933L7.694 8.886z"
-        clipRule="evenodd"
-        strokeWidth="inherit"
+        d="M5.25 8.63889L8.01923 11.75L14.25 4.75"
         stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="inherit"
+      />
+      <path
+        d="M1.5498 8.13889L4.31904 11.25M10.5498 4.25L7.43442 7.75"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="inherit"
       />
     </svg>
   )
@@ -34,7 +40,14 @@ const DoubleCheck = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'DoubleCheck', props.className].join(' ')}
+    />
+  )
 })
 DoubleCheck.displayName = 'IconDoubleCheck'
 export default DoubleCheck

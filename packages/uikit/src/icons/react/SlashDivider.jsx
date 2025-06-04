@@ -4,16 +4,22 @@ import { forwardRef } from 'react'
 const IconSlashDivider = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
-      <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" d="M7 22 17 2" strokeWidth="inherit" />
+      <path
+        d="M4.66669 14.6666L11.3334 1.33331"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="inherit"
+      />
     </svg>
   )
 }
@@ -27,7 +33,14 @@ const SlashDivider = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'SlashDivider', props.className].join(' ')}
+    />
+  )
 })
 SlashDivider.displayName = 'IconSlashDivider'
 export default SlashDivider

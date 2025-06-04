@@ -4,20 +4,20 @@ import { forwardRef } from 'react'
 const IconMessageTextSquare01 = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 20 20"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M4.66667 5.66667H8M4.66667 8H10M6.45583 12H10.8C11.9201 12 12.4802 12 12.908 11.782C13.2843 11.5903 13.5903 11.2843 13.782 10.908C14 10.4802 14 9.9201 14 8.8V5.2C14 4.07989 14 3.51984 13.782 3.09202C13.5903 2.71569 13.2843 2.40973 12.908 2.21799C12.4802 2 11.9201 2 10.8 2H5.2C4.0799 2 3.51984 2 3.09202 2.21799C2.71569 2.40973 2.40973 2.71569 2.21799 3.09202C2 3.51984 2 4.0799 2 5.2V13.557C2 13.9122 2 14.0898 2.07282 14.1811C2.13615 14.2604 2.23218 14.3066 2.33369 14.3065C2.45042 14.3063 2.58911 14.1954 2.8665 13.9735L4.45681 12.7012C4.78168 12.4413 4.94411 12.3114 5.12499 12.219C5.28547 12.137 5.45628 12.0771 5.63281 12.0408C5.83178 12 6.0398 12 6.45583 12Z"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M5.833 7.083H10M5.833 10H12.5m-4.43 5h5.43c1.4 0 2.1 0 2.635-.273a2.5 2.5 0 0 0 1.092-1.092C17.5 13.1 17.5 12.4 17.5 11V6.5c0-1.4 0-2.1-.273-2.635a2.5 2.5 0 0 0-1.092-1.093C15.6 2.5 14.9 2.5 13.5 2.5h-7c-1.4 0-2.1 0-2.635.272a2.5 2.5 0 0 0-1.093 1.093C2.5 4.4 2.5 5.1 2.5 6.5v10.446c0 .444 0 .666.091.78.08.1.2.157.326.157.146 0 .32-.139.666-.416l1.988-1.59c.406-.325.61-.488.835-.603a2.5 2.5 0 0 1 .635-.223C7.29 15 7.55 15 8.07 15"
         strokeWidth="inherit"
       />
     </svg>
@@ -33,7 +33,14 @@ const MessageTextSquare01 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'MessageTextSquare01', props.className].join(' ')}
+    />
+  )
 })
 MessageTextSquare01.displayName = 'IconMessageTextSquare01'
 export default MessageTextSquare01

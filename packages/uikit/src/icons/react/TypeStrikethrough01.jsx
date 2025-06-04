@@ -4,20 +4,20 @@ import { forwardRef } from 'react'
 const IconTypeStrikethrough01 = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M2.66667 4.66667V4C2.66667 3.63919 2.80998 3.31186 3.04279 3.07181M6 13.3333H10M8 8V13.3333M2 2L14 14M6.33333 2.66667H11.3333C11.9546 2.66667 12.2652 2.66667 12.5102 2.76816C12.8369 2.90349 13.0965 3.16305 13.2318 3.48976C13.3333 3.73478 13.3333 4.04541 13.3333 4.66667M8 2.66667V4.33333"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M4 7V6c0-.541.215-1.032.564-1.392M9 20h6m-3-8v8M3 3l18 18M9.5 4H17c.932 0 1.398 0 1.765.152a2 2 0 0 1 1.083 1.083C20 5.602 20 6.068 20 7m-8-3v2.5"
         strokeWidth="inherit"
       />
     </svg>
@@ -33,7 +33,14 @@ const TypeStrikethrough01 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'TypeStrikethrough01', props.className].join(' ')}
+    />
+  )
 })
 TypeStrikethrough01.displayName = 'IconTypeStrikethrough01'
 export default TypeStrikethrough01

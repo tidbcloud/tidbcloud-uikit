@@ -4,20 +4,20 @@ import { forwardRef } from 'react'
 const IconXClose = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M12 4L4 12M4 4L12 12"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M18 6 6 18M6 6l12 12"
         strokeWidth="inherit"
       />
     </svg>
@@ -33,7 +33,14 @@ const XClose = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'XClose', props.className].join(' ')}
+    />
+  )
 })
 XClose.displayName = 'IconXClose'
 export default XClose

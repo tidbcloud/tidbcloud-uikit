@@ -4,20 +4,20 @@ import { forwardRef } from 'react'
 const IconBellOff01 = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M5.75538 2.02239C6.41306 1.57652 7.19399 1.33325 8 1.33325C9.06087 1.33325 10.0783 1.75468 10.8284 2.50482C11.5786 3.25497 12 4.27239 12 5.33325C12 6.73377 12.1801 7.83406 12.4323 8.68819M4.17245 4.17141C4.05911 4.54476 4 4.93596 4 5.33325C4 7.39338 3.48031 8.80389 2.89978 9.73686C2.41008 10.5238 2.16524 10.9173 2.17422 11.0271C2.18416 11.1486 2.20991 11.195 2.30785 11.2676C2.39631 11.3333 2.79506 11.3333 3.59257 11.3333H11.3333M6.23612 13.9999C6.70621 14.4148 7.3237 14.6666 8 14.6666C8.6763 14.6666 9.29379 14.4148 9.76388 13.9999M14 13.9999L2 1.99992"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M8.633 3.034A6 6 0 0 1 18 8c0 2.1.27 3.751.648 5.032M6.258 6.257A6 6 0 0 0 6 8c0 3.09-.78 5.206-1.65 6.605-.735 1.18-1.102 1.771-1.089 1.936.015.182.054.252.2.36.133.099.732.099 1.928.099H17m-7.646 4c.705.622 1.632 1 2.646 1s1.94-.378 2.646-1M21 21 3 3"
         strokeWidth="inherit"
       />
     </svg>
@@ -33,7 +33,14 @@ const BellOff01 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'BellOff01', props.className].join(' ')}
+    />
+  )
 })
 BellOff01.displayName = 'IconBellOff01'
 export default BellOff01

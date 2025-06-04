@@ -4,20 +4,20 @@ import { forwardRef } from 'react'
 const IconBatteryCharging02 = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M6.33325 12L8.99992 8H4.99992L7.66659 4M14.6666 8.66667V7.33333M9.33325 12H9.46659C10.5867 12 11.1467 12 11.5746 11.782C11.9509 11.5903 12.2569 11.2843 12.4486 10.908C12.6666 10.4802 12.6666 9.92011 12.6666 8.8V6.66667C12.6666 6.04669 12.6666 5.7367 12.5984 5.48236C12.4135 4.79218 11.8744 4.25308 11.1842 4.06815C10.9299 4 10.6199 4 9.99992 4M4.66659 4H4.53325C3.41315 4 2.85309 4 2.42527 4.21799C2.04895 4.40973 1.74299 4.71569 1.55124 5.09202C1.33325 5.51984 1.33325 6.0799 1.33325 7.2V9.33333C1.33325 9.95331 1.33325 10.2633 1.4014 10.5176C1.58633 11.2078 2.12543 11.7469 2.81561 11.9319C3.06995 12 3.37994 12 3.99992 12"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="m9.5 18 4-6h-6l4-6M22 13v-2m-8 7h.2c1.68 0 2.52 0 3.162-.327a3 3 0 0 0 1.311-1.311C19 15.72 19 14.88 19 13.2V10c0-.93 0-1.395-.102-1.776a3 3 0 0 0-2.122-2.122C16.396 6 15.93 6 15 6M7 6h-.2c-1.68 0-2.52 0-3.162.327a3 3 0 0 0-1.311 1.311C2 8.28 2 9.12 2 10.8V14c0 .93 0 1.395.102 1.777a3 3 0 0 0 2.122 2.12C4.605 18 5.07 18 6 18"
         strokeWidth="inherit"
       />
     </svg>
@@ -33,7 +33,14 @@ const BatteryCharging02 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'BatteryCharging02', props.className].join(' ')}
+    />
+  )
 })
 BatteryCharging02.displayName = 'IconBatteryCharging02'
 export default BatteryCharging02

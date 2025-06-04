@@ -4,20 +4,20 @@ import { forwardRef } from 'react'
 const IconPercent03 = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M5.99998 6.00004H6.00665M9.99998 10H10.0066M10.6666 5.33337L5.33331 10.6667M6.33331 6.00004C6.33331 6.18414 6.18407 6.33337 5.99998 6.33337C5.81588 6.33337 5.66665 6.18414 5.66665 6.00004C5.66665 5.81595 5.81588 5.66671 5.99998 5.66671C6.18407 5.66671 6.33331 5.81595 6.33331 6.00004ZM10.3333 10C10.3333 10.1841 10.1841 10.3334 9.99998 10.3334C9.81588 10.3334 9.66665 10.1841 9.66665 10C9.66665 9.81595 9.81588 9.66671 9.99998 9.66671C10.1841 9.66671 10.3333 9.81595 10.3333 10ZM14.6666 8.00004C14.6666 11.6819 11.6819 14.6667 7.99998 14.6667C4.31808 14.6667 1.33331 11.6819 1.33331 8.00004C1.33331 4.31814 4.31808 1.33337 7.99998 1.33337C11.6819 1.33337 14.6666 4.31814 14.6666 8.00004Z"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M9 9h.01M15 15h.01M16 8l-8 8m1.5-7a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0m6 6a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0m6.5-3c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10"
         strokeWidth="inherit"
       />
     </svg>
@@ -33,7 +33,14 @@ const Percent03 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'Percent03', props.className].join(' ')}
+    />
+  )
 })
 Percent03.displayName = 'IconPercent03'
 export default Percent03

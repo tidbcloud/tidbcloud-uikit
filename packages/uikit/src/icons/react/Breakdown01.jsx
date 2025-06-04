@@ -1,0 +1,46 @@
+import { Box as MantineBox } from '@mantine/core'
+import * as React from 'react'
+import { forwardRef } from 'react'
+const IconBreakdown01 = (props, ref) => {
+  return (
+    <svg
+      width="1em"
+      height="1em"
+      viewBox="0 0 16 16"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      strokeWidth="1.5"
+      ref={ref}
+      {...props}
+    >
+      <path
+        d="M8 3.99994L7.99995 8.04547L8.0001 12M10.7999 3.99994H5.2C4.0799 3.99994 3.51984 3.99994 3.09202 4.21545C2.71569 4.40502 2.40973 4.7075 2.21799 5.07954C2 5.5025 2 6.05619 2 7.16355L2.0001 8.83639C2.0001 9.94376 2.0001 10.4974 2.21809 10.9204C2.40984 11.2924 2.7158 11.5949 3.09212 11.7845C3.51994 12 4.08 12 5.2001 12H10.8M10.7999 3.99994C11.92 3.99994 12.4802 3.99994 12.908 4.21545C13.2843 4.40502 13.5903 4.7075 13.782 5.07954C14 5.5025 14 6.05619 14 7.16356L14.0001 8.83639C14.0001 9.94376 14.0001 10.4974 13.7821 10.9204C13.5904 11.2924 13.2844 11.5949 12.9081 11.7845C12.4803 12 11.9201 12 10.8 12M10.7999 3.99994L10.7999 8.04547L10.8 12"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="inherit"
+      />
+    </svg>
+  )
+}
+const ForwardRef = forwardRef(IconBreakdown01)
+const Breakdown01 = forwardRef((props, ref) => {
+  if (typeof props.size === 'number') {
+    const { size, ...rest } = props
+    props = {
+      ...rest,
+      w: size,
+      h: size
+    }
+  }
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'Breakdown01', props.className].join(' ')}
+    />
+  )
+})
+Breakdown01.displayName = 'IconBreakdown01'
+export default Breakdown01

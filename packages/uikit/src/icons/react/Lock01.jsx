@@ -4,20 +4,20 @@ import { forwardRef } from 'react'
 const IconLock01 = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M11.3334 6.66667V5.33333C11.3334 3.49238 9.84103 2 8.00008 2C6.15913 2 4.66675 3.49238 4.66675 5.33333V6.66667M8.00008 9.66667V11M5.86675 14H10.1334C11.2535 14 11.8136 14 12.2414 13.782C12.6177 13.5903 12.9237 13.2843 13.1154 12.908C13.3334 12.4802 13.3334 11.9201 13.3334 10.8V9.86667C13.3334 8.74656 13.3334 8.18651 13.1154 7.75869C12.9237 7.38236 12.6177 7.0764 12.2414 6.88465C11.8136 6.66667 11.2535 6.66667 10.1334 6.66667H5.86675C4.74664 6.66667 4.18659 6.66667 3.75877 6.88465C3.38244 7.0764 3.07648 7.38236 2.88473 7.75869C2.66675 8.18651 2.66675 8.74656 2.66675 9.86667V10.8C2.66675 11.9201 2.66675 12.4802 2.88473 12.908C3.07648 13.2843 3.38244 13.5903 3.75877 13.782C4.18659 14 4.74664 14 5.86675 14Z"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M17 10V8A5 5 0 0 0 7 8v2m5 4.5v2M8.8 21h6.4c1.68 0 2.52 0 3.162-.327a3 3 0 0 0 1.311-1.311C20 18.72 20 17.88 20 16.2v-1.4c0-1.68 0-2.52-.327-3.162a3 3 0 0 0-1.311-1.311C17.72 10 16.88 10 15.2 10H8.8c-1.68 0-2.52 0-3.162.327a3 3 0 0 0-1.311 1.311C4 12.28 4 13.12 4 14.8v1.4c0 1.68 0 2.52.327 3.162a3 3 0 0 0 1.311 1.311C6.28 21 7.12 21 8.8 21"
         strokeWidth="inherit"
       />
     </svg>
@@ -33,7 +33,14 @@ const Lock01 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'Lock01', props.className].join(' ')}
+    />
+  )
 })
 Lock01.displayName = 'IconLock01'
 export default Lock01

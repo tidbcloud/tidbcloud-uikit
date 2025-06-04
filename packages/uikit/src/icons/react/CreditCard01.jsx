@@ -4,20 +4,20 @@ import { forwardRef } from 'react'
 const IconCreditCard01 = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M14.6667 6.66683H1.33334M1.33334 5.46683L1.33334 10.5335C1.33334 11.2802 1.33334 11.6536 1.47866 11.9388C1.60649 12.1897 1.81047 12.3937 2.06135 12.5215C2.34656 12.6668 2.71993 12.6668 3.46667 12.6668L12.5333 12.6668C13.2801 12.6668 13.6534 12.6668 13.9387 12.5215C14.1895 12.3937 14.3935 12.1897 14.5213 11.9388C14.6667 11.6536 14.6667 11.2802 14.6667 10.5335V5.46683C14.6667 4.72009 14.6667 4.34673 14.5213 4.06151C14.3935 3.81063 14.1895 3.60665 13.9387 3.47882C13.6534 3.3335 13.2801 3.3335 12.5333 3.3335L3.46667 3.3335C2.71993 3.3335 2.34656 3.3335 2.06135 3.47882C1.81047 3.60665 1.60649 3.81063 1.47866 4.06151C1.33334 4.34672 1.33334 4.72009 1.33334 5.46683Z"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M22 10H2m0-1.8v7.6c0 1.12 0 1.68.218 2.108a2 2 0 0 0 .874.874C3.52 19 4.08 19 5.2 19h13.6c1.12 0 1.68 0 2.108-.218a2 2 0 0 0 .874-.874C22 17.48 22 16.92 22 15.8V8.2c0-1.12 0-1.68-.218-2.108a2 2 0 0 0-.874-.874C20.48 5 19.92 5 18.8 5H5.2c-1.12 0-1.68 0-2.108.218a2 2 0 0 0-.874.874C2 6.52 2 7.08 2 8.2"
         strokeWidth="inherit"
       />
     </svg>
@@ -33,7 +33,14 @@ const CreditCard01 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'CreditCard01', props.className].join(' ')}
+    />
+  )
 })
 CreditCard01.displayName = 'IconCreditCard01'
 export default CreditCard01

@@ -4,20 +4,20 @@ import { forwardRef } from 'react'
 const IconShoppingBag03 = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M10.6664 5.33333C10.6664 6.04058 10.3855 6.71885 9.88536 7.21895C9.38527 7.71905 8.70699 8 7.99975 8C7.2925 8 6.61422 7.71905 6.11413 7.21895C5.61403 6.71885 5.33308 6.04058 5.33308 5.33333M2.42189 4.93426L1.95522 10.5343C1.85497 11.7373 1.80485 12.3388 2.0082 12.8028C2.18687 13.2105 2.49643 13.5469 2.88787 13.7588C3.33339 14 3.93699 14 5.14417 14H10.8553C12.0625 14 12.6661 14 13.1116 13.7588C13.5031 13.5469 13.8126 13.2105 13.9913 12.8028C14.1946 12.3388 14.1445 11.7373 14.0443 10.5343L13.5776 4.93426C13.4913 3.89917 13.4482 3.38162 13.219 2.9899C13.0171 2.64496 12.7166 2.3684 12.3561 2.1959C11.9467 2 11.4273 2 10.3887 2L5.61084 2C4.57216 2 4.05282 2 3.64342 2.1959C3.28291 2.3684 2.98234 2.64496 2.7805 2.9899C2.55128 3.38162 2.50815 3.89917 2.42189 4.93426Z"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M16 8a4 4 0 1 1-8 0m-4.367-.599-.7 8.4c-.15 1.805-.226 2.707.08 3.403a3 3 0 0 0 1.319 1.434C5 21 5.905 21 7.716 21h8.567c1.81 0 2.716 0 3.384-.362a3 3 0 0 0 1.32-1.434c.305-.696.23-1.598.08-3.403l-.7-8.4c-.13-1.552-.195-2.329-.539-2.916a3 3 0 0 0-1.294-1.191C17.92 3 17.141 3 15.583 3H8.416c-1.558 0-2.337 0-2.95.294a3 3 0 0 0-1.295 1.19c-.344.588-.409 1.365-.538 2.917"
         strokeWidth="inherit"
       />
     </svg>
@@ -33,7 +33,14 @@ const ShoppingBag03 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'ShoppingBag03', props.className].join(' ')}
+    />
+  )
 })
 ShoppingBag03.displayName = 'IconShoppingBag03'
 export default ShoppingBag03

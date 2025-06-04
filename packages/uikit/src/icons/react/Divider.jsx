@@ -4,20 +4,20 @@ import { forwardRef } from 'react'
 const IconDivider = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M2 8H2.00667M5 8H5.00667M11 8H11.0067M8 8H8.00667M14 8H14.0067M14 14V13.4667C14 12.7199 14 12.3466 13.8547 12.0613C13.7268 11.8105 13.5229 11.6065 13.272 11.4787C12.9868 11.3333 12.6134 11.3333 11.8667 11.3333H4.13333C3.3866 11.3333 3.01323 11.3333 2.72801 11.4787C2.47713 11.6065 2.27316 11.8105 2.14532 12.0613C2 12.3466 2 12.7199 2 13.4667V14M14 2V2.53333C14 3.28007 14 3.65344 13.8547 3.93865C13.7268 4.18954 13.5229 4.39351 13.272 4.52134C12.9868 4.66667 12.6134 4.66667 11.8667 4.66667H4.13333C3.3866 4.66667 3.01323 4.66667 2.72801 4.52134C2.47713 4.39351 2.27316 4.18954 2.14532 3.93865C2 3.65344 2 3.28007 2 2.53333V2"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M3 12h.01m4.49 0h.01m8.99 0h.01M12 12h.01M21 12h.01M21 21v-.8c0-1.12 0-1.68-.218-2.108a2 2 0 0 0-.874-.874C19.48 17 18.92 17 17.8 17H6.2c-1.12 0-1.68 0-2.108.218a2 2 0 0 0-.874.874C3 18.52 3 19.08 3 20.2v.8M21 3v.8c0 1.12 0 1.68-.218 2.108a2 2 0 0 1-.874.874C19.48 7 18.92 7 17.8 7H6.2c-1.12 0-1.68 0-2.108-.218a2 2 0 0 1-.874-.874C3 5.48 3 4.92 3 3.8V3"
         strokeWidth="inherit"
       />
     </svg>
@@ -33,7 +33,14 @@ const Divider = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'Divider', props.className].join(' ')}
+    />
+  )
 })
 Divider.displayName = 'IconDivider'
 export default Divider

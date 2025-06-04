@@ -4,20 +4,20 @@ import { forwardRef } from 'react'
 const IconSubscript = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M2 3.3335L8.66667 10.0002M8.66667 3.3335L2 10.0002M14 12.6669H11.3333C11.3333 11.6669 11.6267 11.3335 12.3333 11.0002C13.04 10.6669 14 10.2202 14 9.33355C14 9.02022 13.8867 8.71355 13.68 8.47355C13.4666 8.23188 13.1766 8.07088 12.8586 8.01748C12.5407 7.96408 12.214 8.02153 11.9333 8.18022C11.6533 8.34022 11.44 8.59355 11.3333 8.89355"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="m3 5 10 10m0-10L3 15m18 4h-4c0-1.5.44-2 1.5-2.5S21 15.33 21 14c0-.47-.17-.93-.48-1.29a2.11 2.11 0 0 0-2.62-.44c-.42.24-.74.62-.9 1.07"
         strokeWidth="inherit"
       />
     </svg>
@@ -33,7 +33,14 @@ const Subscript = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'Subscript', props.className].join(' ')}
+    />
+  )
 })
 Subscript.displayName = 'IconSubscript'
 export default Subscript

@@ -1,0 +1,42 @@
+import { Box as MantineBox } from '@mantine/core'
+import * as React from 'react'
+import { forwardRef } from 'react'
+const IconChevronDown1 = (props, ref) => {
+  return (
+    <svg
+      width="1em"
+      height="1em"
+      viewBox="0 0 16 16"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      ref={ref}
+      {...props}
+    >
+      <path
+        d="M3.45 5.59992C3.64858 5.34067 4.09799 5.33336 4.34882 5.33338H7.93787L11.4587 5.33325C11.7583 5.33325 12.1883 5.33345 12.4381 5.48035C12.6573 5.60923 12.6799 5.81573 12.6622 5.96195C12.6481 6.07823 12.5783 6.17686 12.4979 6.26208L8.60749 10.3873C8.59955 10.3957 8.5915 10.404 8.58288 10.4117C8.52531 10.4633 8.27679 10.6666 7.93784 10.6666C7.61372 10.6666 7.37229 10.4807 7.30144 10.4193C7.28682 10.4067 7.27564 10.395 7.2627 10.3806C6.99008 10.0777 3.60206 6.31289 3.45 6.13326C3.29156 5.94609 3.29823 5.79806 3.45 5.59992Z"
+        fill="#383E40"
+      />
+    </svg>
+  )
+}
+const ForwardRef = forwardRef(IconChevronDown1)
+const ChevronDown1 = forwardRef((props, ref) => {
+  if (typeof props.size === 'number') {
+    const { size, ...rest } = props
+    props = {
+      ...rest,
+      w: size,
+      h: size
+    }
+  }
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'ChevronDown1', props.className].join(' ')}
+    />
+  )
+})
+ChevronDown1.displayName = 'IconChevronDown1'
+export default ChevronDown1

@@ -4,20 +4,20 @@ import { forwardRef } from 'react'
 const IconMicrophoneOff01 = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M9.99992 6.26659V3.33325C9.99992 2.22868 9.10449 1.33325 7.99992 1.33325C7.21484 1.33325 6.53542 1.7856 6.20806 2.44387M7.99992 12.6666V14.6666M7.99992 12.6666C5.42259 12.6666 3.33325 10.5772 3.33325 7.99992V6.66659M7.99992 12.6666C10.5772 12.6666 12.6666 10.5772 12.6666 7.99992V6.66659M5.33325 14.6666H10.6666M1.33325 1.33325L14.6666 14.6666M7.99992 9.99992C6.89535 9.99992 5.99992 9.10449 5.99992 7.99992V5.99992L9.41499 9.41328C9.05299 9.77571 8.55264 9.99992 7.99992 9.99992Z"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M15 9.4V5a3 3 0 0 0-5.688-1.334M12 19v3m0-3a7 7 0 0 1-7-7v-2m7 9a7 7 0 0 0 7-7v-2M8 22h8M2 2l20 20m-10-7a3 3 0 0 1-3-3V9l5.123 5.12A3 3 0 0 1 12 15"
         strokeWidth="inherit"
       />
     </svg>
@@ -33,7 +33,14 @@ const MicrophoneOff01 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'MicrophoneOff01', props.className].join(' ')}
+    />
+  )
 })
 MicrophoneOff01.displayName = 'IconMicrophoneOff01'
 export default MicrophoneOff01

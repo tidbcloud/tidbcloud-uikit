@@ -4,20 +4,20 @@ import { forwardRef } from 'react'
 const IconRoute = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M7.66665 3.3335H7.95624C9.98774 3.3335 11.0035 3.3335 11.3891 3.69836C11.7224 4.01374 11.8701 4.47835 11.7801 4.9283C11.676 5.44884 10.8467 6.0354 9.18817 7.20852L6.47846 9.12514C4.81992 10.2983 3.99064 10.8848 3.88654 11.4054C3.79655 11.8553 3.94426 12.3199 4.27755 12.6353C4.66314 13.0002 5.67888 13.0002 7.71038 13.0002H8.33331M5.33331 3.3335C5.33331 4.43807 4.43788 5.3335 3.33331 5.3335C2.22874 5.3335 1.33331 4.43807 1.33331 3.3335C1.33331 2.22893 2.22874 1.3335 3.33331 1.3335C4.43788 1.3335 5.33331 2.22893 5.33331 3.3335ZM14.6666 12.6668C14.6666 13.7714 13.7712 14.6668 12.6666 14.6668C11.5621 14.6668 10.6666 13.7714 10.6666 12.6668C10.6666 11.5623 11.5621 10.6668 12.6666 10.6668C13.7712 10.6668 14.6666 11.5623 14.6666 12.6668Z"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M11.5 5h.434c3.048 0 4.571 0 5.15.547a2 2 0 0 1 .586 1.845c-.156.781-1.4 1.66-3.888 3.42l-4.064 2.876c-2.488 1.76-3.732 2.639-3.888 3.42a2 2 0 0 0 .586 1.845c.579.547 2.102.547 5.15.547h.934M8 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0m14 14a3 3 0 1 1-6 0 3 3 0 0 1 6 0"
         strokeWidth="inherit"
       />
     </svg>
@@ -33,7 +33,14 @@ const Route = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'Route', props.className].join(' ')}
+    />
+  )
 })
 Route.displayName = 'IconRoute'
 export default Route

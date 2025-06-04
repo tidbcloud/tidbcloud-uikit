@@ -4,69 +4,69 @@ import { forwardRef } from 'react'
 const IconFingerprint03 = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M5.39989 14.1473C4.47331 12.825 3.92822 11.2162 3.92822 9.47914C3.92822 7.22955 5.75084 5.40625 7.99907 5.40625C10.2473 5.40625 12.0699 7.22955 12.0699 9.47914"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M8.1 21.221a12.16 12.16 0 0 1-2.207-7.002 6.11 6.11 0 0 1 6.106-6.11 6.11 6.11 0 0 1 6.106 6.11"
         strokeWidth="inherit"
       />
       <path
+        d="M5.40014 14.1473C4.47355 12.825 3.92847 11.2162 3.92847 9.47914C3.92847 7.22955 5.75108 5.40625 7.99932 5.40625C10.2476 5.40625 12.0702 7.22955 12.0702 9.47914"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M8.1 21.221a12.16 12.16 0 0 1-2.207-7.002 6.11 6.11 0 0 1 6.106-6.11 6.11 6.11 0 0 1 6.106 6.11"
         strokeWidth="inherit"
       />
       <path
+        d="M12.2906 13.541C12.2173 13.5451 12.1453 13.5519 12.0713 13.5519C9.8231 13.5519 8.00049 11.7286 8.00049 9.479"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M18.436 20.312c-.11.006-.218.016-.329.016a6.11 6.11 0 0 1-6.106-6.11"
         strokeWidth="inherit"
       />
       <path
+        d="M12.2908 13.5413C12.2175 13.5453 12.1456 13.5521 12.0716 13.5521C9.82335 13.5521 8.00073 11.7288 8.00073 9.47925"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M18.436 20.312c-.11.006-.218.016-.329.016a6.11 6.11 0 0 1-6.106-6.11"
         strokeWidth="inherit"
       />
       <path
+        d="M8.84627 14.6667C7.11665 13.5881 5.9647 11.6684 5.9647 9.4792C5.9647 8.35441 6.87635 7.44276 8.00047 7.44276C9.12458 7.44276 10.0362 8.35441 10.0362 9.4792C10.0362 10.604 10.9479 11.5156 12.072 11.5156C13.1961 11.5156 14.1078 10.604 14.1078 9.4792C14.1078 6.10482 11.3735 3.36987 8.00115 3.36987C4.6288 3.36987 1.89453 6.10482 1.89453 9.4792C1.89453 10.2313 1.9787 10.9638 2.13347 11.6697"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M13.27 22a9.16 9.16 0 0 1-4.323-7.781 3.054 3.054 0 1 1 6.107 0 3.054 3.054 0 1 0 6.108 0c0-5.062-4.102-9.164-9.16-9.164-5.059 0-9.16 4.102-9.16 9.164 0 1.128.126 2.226.358 3.286"
         strokeWidth="inherit"
       />
       <path
+        d="M8.84627 14.6667C7.11665 13.5881 5.9647 11.6684 5.9647 9.4792C5.9647 8.35441 6.87635 7.44276 8.00047 7.44276C9.12458 7.44276 10.0362 8.35441 10.0362 9.4792C10.0362 10.604 10.9479 11.5156 12.072 11.5156C13.1961 11.5156 14.1078 10.604 14.1078 9.4792C14.1078 6.10482 11.3735 3.36987 8.00115 3.36987C4.6288 3.36987 1.89453 6.10482 1.89453 9.4792C1.89453 10.2313 1.9787 10.9638 2.13347 11.6697"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M13.27 22a9.16 9.16 0 0 1-4.323-7.781 3.054 3.054 0 1 1 6.107 0 3.054 3.054 0 1 0 6.108 0c0-5.062-4.102-9.164-9.16-9.164-5.059 0-9.16 4.102-9.16 9.164 0 1.128.126 2.226.358 3.286"
         strokeWidth="inherit"
       />
       <path
+        d="M13.6838 3.90867C12.2957 2.33179 10.266 1.33325 8.00012 1.33325C5.73424 1.33325 3.70458 2.33179 2.31641 3.90867"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M20.526 5.863A11.33 11.33 0 0 0 12 2a11.33 11.33 0 0 0-8.525 3.863"
         strokeWidth="inherit"
       />
       <path
+        d="M13.6838 3.90867C12.2957 2.33179 10.266 1.33325 8.00012 1.33325C5.73424 1.33325 3.70458 2.33179 2.31641 3.90867"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M20.526 5.863A11.33 11.33 0 0 0 12 2a11.33 11.33 0 0 0-8.525 3.863"
         strokeWidth="inherit"
       />
     </svg>
@@ -82,7 +82,14 @@ const Fingerprint03 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'Fingerprint03', props.className].join(' ')}
+    />
+  )
 })
 Fingerprint03.displayName = 'IconFingerprint03'
 export default Fingerprint03

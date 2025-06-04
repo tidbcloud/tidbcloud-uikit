@@ -4,20 +4,20 @@ import { forwardRef } from 'react'
 const IconCursor02 = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M13.6704 7.18374C14.0817 7.0238 14.2873 6.94383 14.3451 6.83076C14.3951 6.7328 14.3936 6.61647 14.341 6.51985C14.2803 6.40834 14.0726 6.33379 13.6573 6.1847L3.06419 2.38203C2.7244 2.26005 2.5545 2.19906 2.44343 2.23753C2.34686 2.27097 2.27097 2.34686 2.23753 2.44343C2.19906 2.5545 2.26005 2.7244 2.38203 3.06419L6.18467 13.6573C6.33376 14.0727 6.4083 14.2803 6.51982 14.341C6.61644 14.3936 6.73276 14.3951 6.83072 14.3451C6.9438 14.2874 7.02377 14.0817 7.18371 13.6704L8.91493 9.21873C8.94626 9.13816 8.96193 9.09788 8.98612 9.06396C9.00757 9.03389 9.03386 9.0076 9.06393 8.98616C9.09785 8.96196 9.13813 8.9463 9.21869 8.91496L13.6704 7.18374Z"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M20.506 10.775c.616-.24.925-.36 1.012-.53a.5.5 0 0 0-.006-.465c-.091-.168-.403-.28-1.026-.503L4.596 3.573c-.51-.183-.764-.275-.93-.217a.5.5 0 0 0-.31.309c-.057.167.034.421.217.931l5.704 15.89c.224.623.335.934.503 1.025a.5.5 0 0 0 .466.006c.17-.086.29-.395.53-1.012l2.596-6.677c.047-.121.07-.181.107-.232a.5.5 0 0 1 .117-.117c.05-.036.111-.06.232-.107z"
         strokeWidth="inherit"
       />
     </svg>
@@ -33,7 +33,14 @@ const Cursor02 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'Cursor02', props.className].join(' ')}
+    />
+  )
 })
 Cursor02.displayName = 'IconCursor02'
 export default Cursor02

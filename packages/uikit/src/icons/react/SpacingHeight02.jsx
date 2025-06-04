@@ -4,20 +4,20 @@ import { forwardRef } from 'react'
 const IconSpacingHeight02 = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M14 2H2M14 14H2M8 11.6667L8 4.33336M10.0001 4.33334L6 4.33333M10.0001 11.6667L6 11.6667"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M21 3H3m18 18H3m9-3.5v-11m3 0H9m6 11H9"
         strokeWidth="inherit"
       />
     </svg>
@@ -33,7 +33,14 @@ const SpacingHeight02 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'SpacingHeight02', props.className].join(' ')}
+    />
+  )
 })
 SpacingHeight02.displayName = 'IconSpacingHeight02'
 export default SpacingHeight02

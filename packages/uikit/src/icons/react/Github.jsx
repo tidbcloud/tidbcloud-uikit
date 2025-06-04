@@ -4,20 +4,20 @@ import { forwardRef } from 'react'
 const IconGithub = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M10.6668 14.6845V12.7712C10.6918 12.4533 10.6489 12.1337 10.5408 11.8337C10.4328 11.5337 10.2621 11.2602 10.0402 11.0312C12.1335 10.7979 14.3335 10.0045 14.3335 6.36454C14.3333 5.43376 13.9753 4.53867 13.3335 3.86454C13.6374 3.05021 13.6159 2.15011 13.2735 1.35121C13.2735 1.35121 12.4868 1.11787 10.6668 2.33787C9.13884 1.92375 7.52816 1.92375 6.00016 2.33787C4.18016 1.11787 3.3935 1.35121 3.3935 1.35121C3.05108 2.15011 3.02959 3.05021 3.3335 3.86454C2.68691 4.54367 2.32851 5.44685 2.3335 6.38454C2.3335 9.99787 4.5335 10.7912 6.62683 11.0512C6.40749 11.2779 6.23834 11.5481 6.13037 11.8445C6.0224 12.1408 5.97803 12.4566 6.00016 12.7712V14.6845M1.3335 11.3512C2.3335 13.3512 4.00016 14 6.00016 13.3512"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M16 22.027v-2.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7a5.44 5.44 0 0 0-1.5-3.75 5.07 5.07 0 0 0-.09-3.77s-1.18-.35-3.91 1.48a13.4 13.4 0 0 0-7 0c-2.73-1.83-3.91-1.48-3.91-1.48A5.07 5.07 0 0 0 5 5.797a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7a3.37 3.37 0 0 0-.94 2.58v2.87m-7-5c1.5 3 4 3.973 7 3"
         strokeWidth="inherit"
       />
     </svg>
@@ -33,7 +33,14 @@ const Github = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'Github', props.className].join(' ')}
+    />
+  )
 })
 Github.displayName = 'IconGithub'
 export default Github

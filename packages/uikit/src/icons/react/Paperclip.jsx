@@ -4,20 +4,20 @@ import { forwardRef } from 'react'
 const IconPaperclip = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M14.1017 7.26622L8.09133 13.2766C6.72449 14.6435 4.50842 14.6435 3.14158 13.2766C1.77475 11.9098 1.77475 9.69372 3.14158 8.32688L9.15199 2.31647C10.0632 1.40525 11.5406 1.40525 12.4518 2.31647C13.363 3.2277 13.363 4.70508 12.4518 5.61631L6.67711 11.391C6.2215 11.8466 5.48281 11.8466 5.0272 11.391C4.57159 10.9354 4.57159 10.1967 5.0272 9.74109L10.0948 4.6735"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="m21.153 10.9-9.016 9.015a5.25 5.25 0 0 1-7.425-7.425l9.016-9.015a3.5 3.5 0 1 1 4.95 4.95l-8.662 8.662a1.75 1.75 0 1 1-2.475-2.475l7.601-7.602"
         strokeWidth="inherit"
       />
     </svg>
@@ -33,7 +33,14 @@ const Paperclip = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'Paperclip', props.className].join(' ')}
+    />
+  )
 })
 Paperclip.displayName = 'IconPaperclip'
 export default Paperclip

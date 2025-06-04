@@ -4,20 +4,20 @@ import { forwardRef } from 'react'
 const IconGitCommit = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M10.6666 7.99992C10.6666 9.47268 9.47273 10.6666 7.99997 10.6666C6.52721 10.6666 5.3333 9.47268 5.3333 7.99992M10.6666 7.99992C10.6666 6.52716 9.47273 5.33325 7.99997 5.33325C6.52721 5.33325 5.3333 6.52716 5.3333 7.99992M10.6666 7.99992H14.6666M5.3333 7.99992H1.33344"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M16 12a4 4 0 0 1-8 0m8 0a4 4 0 0 0-8 0m8 0h6M8 12H2"
         strokeWidth="inherit"
       />
     </svg>
@@ -33,7 +33,14 @@ const GitCommit = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'GitCommit', props.className].join(' ')}
+    />
+  )
 })
 GitCommit.displayName = 'IconGitCommit'
 export default GitCommit

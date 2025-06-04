@@ -4,20 +4,20 @@ import { forwardRef } from 'react'
 const IconBarChartCircle03 = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M5.33325 4.66668V11.3333M7.99992 7.33334V11.3333M10.6666 10V11.3333M14.6666 8.00001C14.6666 11.6819 11.6818 14.6667 7.99992 14.6667C4.31802 14.6667 1.33325 11.6819 1.33325 8.00001C1.33325 4.31811 4.31802 1.33334 7.99992 1.33334C11.6818 1.33334 14.6666 4.31811 14.6666 8.00001Z"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M8 7v10m4-6v6m4-2v2m6-5c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10"
         strokeWidth="inherit"
       />
     </svg>
@@ -33,7 +33,14 @@ const BarChartCircle03 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'BarChartCircle03', props.className].join(' ')}
+    />
+  )
 })
 BarChartCircle03.displayName = 'IconBarChartCircle03'
 export default BarChartCircle03

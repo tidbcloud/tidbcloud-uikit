@@ -4,20 +4,20 @@ import { forwardRef } from 'react'
 const IconPresentationChart02 = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M7.99992 10.6667V14M11.9999 14L9.36565 11.8048C8.87979 11.3999 8.63687 11.1975 8.36569 11.1201C8.12661 11.0519 7.87322 11.0519 7.63414 11.1201C7.36297 11.1975 7.12004 11.3999 6.63419 11.8048L3.99992 14M5.33325 7.33333V8M7.99992 6V8M10.6666 4.66667V8M14.6666 2H1.33325M1.99992 2H13.9999V7.46667C13.9999 8.58677 13.9999 9.14682 13.7819 9.57465C13.5902 9.95097 13.2842 10.2569 12.9079 10.4487C12.4801 10.6667 11.92 10.6667 10.7999 10.6667H5.19992C4.07981 10.6667 3.51976 10.6667 3.09194 10.4487C2.71561 10.2569 2.40965 9.95097 2.21791 9.57465C1.99992 9.14682 1.99992 8.58677 1.99992 7.46667V2Z"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M12 16v5m6 0-3.951-3.293c-.73-.607-1.094-.91-1.5-1.027a2 2 0 0 0-1.098 0c-.406.116-.77.42-1.5 1.027L6 21m2-10v1m4-3v3m4-5v5m6-9H2m1 0h18v8.2c0 1.68 0 2.52-.327 3.162a3 3 0 0 1-1.311 1.311C18.72 16 17.88 16 16.2 16H7.8c-1.68 0-2.52 0-3.162-.327a3 3 0 0 1-1.311-1.311C3 13.72 3 12.88 3 11.2z"
         strokeWidth="inherit"
       />
     </svg>
@@ -33,7 +33,14 @@ const PresentationChart02 = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'PresentationChart02', props.className].join(' ')}
+    />
+  )
 })
 PresentationChart02.displayName = 'IconPresentationChart02'
 export default PresentationChart02

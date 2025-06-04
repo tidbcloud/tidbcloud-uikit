@@ -4,20 +4,20 @@ import { forwardRef } from 'react'
 const IconImageIndentRight = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M14 2.6665H2M14 13.3332H2M6 6.1665H2M6 9.83317H2M9.73333 10.6665H12.9333C13.3067 10.6665 13.4934 10.6665 13.636 10.5938C13.7614 10.5299 13.8634 10.4279 13.9273 10.3025C14 10.1599 14 9.9732 14 9.59984V6.39984C14 6.02647 14 5.83978 13.9273 5.69718C13.8634 5.57174 13.7614 5.46975 13.636 5.40583C13.4934 5.33317 13.3067 5.33317 12.9333 5.33317H9.73333C9.35997 5.33317 9.17328 5.33317 9.03067 5.40583C8.90523 5.46975 8.80324 5.57174 8.73933 5.69718C8.66667 5.83978 8.66667 6.02647 8.66667 6.39984V9.59984C8.66667 9.9732 8.66667 10.1599 8.73933 10.3025C8.80324 10.4279 8.90523 10.5299 9.03067 10.5938C9.17328 10.6665 9.35997 10.6665 9.73333 10.6665Z"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M21 4H3m18 16H3M9 9.25H3m6 5.5H3M14.6 16h4.8c.56 0 .84 0 1.054-.109a1 1 0 0 0 .437-.437C21 15.24 21 14.96 21 14.4V9.6c0-.56 0-.84-.109-1.054a1 1 0 0 0-.437-.437C20.24 8 19.96 8 19.4 8h-4.8c-.56 0-.84 0-1.054.109a1 1 0 0 0-.437.437C13 8.76 13 9.04 13 9.6v4.8c0 .56 0 .84.109 1.054a1 1 0 0 0 .437.437C13.76 16 14.04 16 14.6 16"
         strokeWidth="inherit"
       />
     </svg>
@@ -33,7 +33,14 @@ const ImageIndentRight = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'ImageIndentRight', props.className].join(' ')}
+    />
+  )
 })
 ImageIndentRight.displayName = 'IconImageIndentRight'
 export default ImageIndentRight

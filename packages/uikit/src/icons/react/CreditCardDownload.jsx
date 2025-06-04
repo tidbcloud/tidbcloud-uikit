@@ -4,20 +4,20 @@ import { forwardRef } from 'react'
 const IconCreditCardDownload = (props, ref) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
+      viewBox="0 0 16 16"
       fill="none"
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="1.5"
       ref={ref}
       {...props}
     >
       <path
+        d="M6 11.3332L8 13.3332M8 13.3332L10 11.3332M8 13.3332V8.6665M14.6667 5.99984H1.33334M3.66667 11.9998H3.46667C2.71993 11.9998 2.34656 11.9998 2.06135 11.8545C1.81047 11.7267 1.60649 11.5227 1.47866 11.2718C1.33334 10.9866 1.33334 10.6132 1.33334 9.8665V4.79984C1.33334 4.0531 1.33334 3.67973 1.47866 3.39452C1.60649 3.14363 1.81047 2.93966 2.06135 2.81183C2.34656 2.6665 2.71993 2.6665 3.46667 2.6665H12.5333C13.2801 2.6665 13.6534 2.6665 13.9387 2.81183C14.1895 2.93966 14.3935 3.14363 14.5213 3.39452C14.6667 3.67973 14.6667 4.0531 14.6667 4.79984V9.8665C14.6667 10.6132 14.6667 10.9866 14.5213 11.2718C14.3935 11.5227 14.1895 11.7267 13.9387 11.8545C13.6534 11.9998 13.2801 11.9998 12.5333 11.9998H12.3333"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="m9 17 3 3m0 0 3-3m-3 3v-7m10-4H2m3.5 9h-.3c-1.12 0-1.68 0-2.108-.218a2 2 0 0 1-.874-.874C2 16.48 2 15.92 2 14.8V7.2c0-1.12 0-1.68.218-2.108a2 2 0 0 1 .874-.874C3.52 4 4.08 4 5.2 4h13.6c1.12 0 1.68 0 2.108.218a2 2 0 0 1 .874.874C22 5.52 22 6.08 22 7.2v7.6c0 1.12 0 1.68-.218 2.108a2 2 0 0 1-.874.874C20.48 18 19.92 18 18.8 18h-.3"
         strokeWidth="inherit"
       />
     </svg>
@@ -33,7 +33,14 @@ const CreditCardDownload = forwardRef((props, ref) => {
       h: size
     }
   }
-  return <MantineBox ref={ref} {...props} component={ForwardRef} />
+  return (
+    <MantineBox
+      ref={ref}
+      {...props}
+      component={ForwardRef}
+      className={['tiui-icon', 'CreditCardDownload', props.className].join(' ')}
+    />
+  )
 })
 CreditCardDownload.displayName = 'IconCreditCardDownload'
 export default CreditCardDownload
