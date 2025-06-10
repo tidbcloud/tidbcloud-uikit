@@ -1,24 +1,31 @@
 // eslint-disable-next-line no-restricted-imports
-import { MantineTheme, createTheme, mergeMantineTheme, DEFAULT_THEME, RadioIndicatorProps } from '@mantine/core'
+import {
+  AccordionProps,
+  DEFAULT_THEME,
+  MantineTheme,
+  RadioIndicatorProps,
+  createTheme,
+  mergeMantineTheme
+} from '@mantine/core'
 import { EmotionHelpers, keyframes } from '@mantine/emotion'
 
 import {
-  ButtonProps,
-  SkeletonProps,
-  NavLinkProps,
-  StepperProps,
+  ActionIconProps,
   AlertProps,
-  TabsProps,
-  SelectProps,
+  BadgeProps,
+  ButtonProps,
+  CheckboxProps,
   InputProps,
   MultiSelectProps,
-  BadgeProps,
-  CheckboxProps,
+  NavLinkProps,
   PaperProps,
-  TableProps,
-  SwitchProps,
   RadioProps,
-  ActionIconProps
+  SelectProps,
+  SkeletonProps,
+  StepperProps,
+  SwitchProps,
+  TableProps,
+  TabsProps
 } from '../primitive/index.js'
 import { getPrimaryShade, getThemeColor, rem } from '../utils/index.js'
 
@@ -1283,6 +1290,24 @@ const theme = createTheme({
       defaultProps: {
         withArrow: true,
         shadow: 'md'
+      }
+    },
+    Accordion: {
+      styles: (theme: MantineTheme, props: AccordionProps) => {
+        if (props.variant === 'contained') {
+          return {
+            item: {
+              '--item-border-color': themeColor(theme, 'carbon', 4),
+              '--item-filled-color': 'inherit'
+            },
+            control: {
+              '&:hover': {
+                backgroundColor: 'inherit'
+              }
+            }
+          }
+        }
+        return {}
       }
     }
   }

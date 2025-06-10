@@ -1,5 +1,5 @@
-import type { Meta, StoryObj, StoryFn } from '@storybook/react'
-import { Accordion } from '@tidbcloud/uikit'
+import type { Meta, StoryFn, StoryObj } from '@storybook/react'
+import { Accordion, AccordionProps } from '@tidbcloud/uikit'
 
 type Story = StoryObj<typeof Accordion>
 
@@ -20,9 +20,9 @@ const meta: Meta<typeof Accordion> = {
 
 export default meta
 
-function PrimaryDemo() {
+function PrimaryDemo({ ...rest }: AccordionProps) {
   return (
-    <Accordion defaultValue="customization">
+    <Accordion multiple variant="contained" defaultValue={['customization']} {...rest}>
       <Accordion.Item value="customization">
         <Accordion.Control>Customization</Accordion.Control>
         <Accordion.Panel>
@@ -50,5 +50,17 @@ function PrimaryDemo() {
 
 // More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
 export const Primary: Story = {
-  render: () => <PrimaryDemo />
+  render: ({ variant }) => <PrimaryDemo variant={variant} />,
+  args: {
+    variant: 'contained',
+    defaultValue: ['customization']
+  },
+  argTypes: {
+    variant: {
+      options: ['contained', 'default', 'filled', 'separated'],
+      control: {
+        type: 'select'
+      }
+    }
+  }
 }
