@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.3.3
+
+### Patch Changes
+
+- fix(theme): update Accordion styles in theme configuration ([#538](https://github.com/tidbcloud/tidbcloud-uikit/pull/538))
+
 ## 2.3.2
 
 ### Patch Changes
