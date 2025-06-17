@@ -4,6 +4,7 @@ node_modules/
 dist/
 build/
 storybook-static/
+.specstory/
 
 .npmrc
 .DS_Store
