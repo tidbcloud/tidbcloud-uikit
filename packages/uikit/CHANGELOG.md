@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.4.0
+
+### Minor Changes
+
+- feat(biz): add new AppShell and PageShell ([#540](https://github.com/tidbcloud/tidbcloud-uikit/pull/540))
+
 ## 2.3.3
 
 ### Patch Changes
