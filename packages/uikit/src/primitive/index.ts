@@ -115,6 +115,7 @@ export type {
   TitleProps,
   TypographyStylesProviderProps,
   BoxProps,
+  BoxComponentProps,
   CollapseProps,
   DividerProps,
   FocusTrapProps,
