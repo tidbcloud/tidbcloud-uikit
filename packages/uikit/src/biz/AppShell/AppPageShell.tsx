@@ -64,6 +64,8 @@ export const AppPageShell = ({
     )
   }
 
+  const { withBack, onBackClick, ...headerPropsWithoutBack } = headerProps ?? {}
+
   return (
     <PageShellBaseRoot
       {...wrapperProps}
@@ -83,11 +85,11 @@ export const AppPageShell = ({
       ])}
     >
       <PageShellBaseHeader
-        {...headerProps}
+        {...headerPropsWithoutBack}
         leftSection={
           <Group wrap="nowrap" gap={0}>
             <ExpandNavbarButtonPlaceholder />
-            {headerProps?.withBack && <PageShellBaseBackButton onClick={headerProps?.onBackClick} mr="md" />}
+            {withBack && <PageShellBaseBackButton onClick={onBackClick} mr="md" />}
           </Group>
         }
         sx={mergeSxList([
