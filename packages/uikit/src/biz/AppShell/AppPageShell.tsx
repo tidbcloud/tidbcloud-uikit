@@ -55,7 +55,7 @@ export const AppPageShell = ({
             maxWidth: `min(100%, ${maxWidth})`,
             margin: '0 auto',
             padding: 24,
-            overflow: 'auto'
+            overflowX: 'auto'
           },
           bodyProps?.sx
         ])}
@@ -81,7 +81,7 @@ export const AppPageShell = ({
           maxWidth: `min(100%, ${maxWidth})`,
           margin: '0 auto',
           minWidth: `calc(${theme.breakpoints.md} - var(--app-shell-navbar-offset))`,
-          overflow: 'auto'
+          overflowX: 'auto'
         }),
         wrapperProps?.sx
       ])}
