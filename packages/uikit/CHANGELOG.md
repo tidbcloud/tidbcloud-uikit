@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.4.1
+
+### Patch Changes
+
+- refactor(biz/app-shell): extract back button props for cleaner prop handling ([#542](https://github.com/tidbcloud/tidbcloud-uikit/pull/542))
+
 ## 2.4.0
 
 ### Minor Changes
