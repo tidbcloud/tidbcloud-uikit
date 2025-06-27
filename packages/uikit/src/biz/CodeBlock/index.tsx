@@ -1,10 +1,10 @@
 import React, { useMemo, useState } from 'react'
 
 import { useLocalStorage } from '../../hooks/index.js'
-import { IconChevronVerticalExpand, IconChevronVerticalShrink, IconCheck, IconCopy01 } from '../../icons/index.js'
-import { ActionIcon, Box, BoxProps, CopyButton, Group, Code, CodeProps, HoverCard } from '../../primitive/index.js'
+import { IconCheck, IconChevronVerticalExpand, IconChevronVerticalShrink, IconCopy01 } from '../../icons/index.js'
+import { ActionIcon, Box, BoxProps, Code, CodeProps, CopyButton, Group, HoverCard } from '../../primitive/index.js'
 import { Prism, PrismProps } from '../../primitive/Prism/index.js'
-import { mergeSxList, mergeStylesList } from '../../utils/index.js'
+import { mergeStylesList, mergeSxList } from '../../utils/index.js'
 
 function useFold(persistenceKey?: string) {
   const foldPersistenceKey = `${persistenceKey}.codeblock.fold`
@@ -123,11 +123,7 @@ export const CodeBlock = ({
                   onFoldIconClick?.(v)
                 }}
               >
-                {folded ? (
-                  <IconChevronVerticalExpand size={14} strokeWidth={2.5} />
-                ) : (
-                  <IconChevronVerticalShrink size={14} strokeWidth={2.5} />
-                )}
+                {folded ? <IconChevronVerticalExpand size={14} /> : <IconChevronVerticalShrink size={14} />}
               </ActionIcon>
             </HoverCard.Target>
             <HoverCard.Dropdown p="xs">{folded ? 'Expand' : 'Collapse'}</HoverCard.Dropdown>
@@ -147,7 +143,7 @@ export const CodeBlock = ({
                     onCopyClick?.()
                   }}
                 >
-                  {copied ? <IconCheck size={14} /> : <IconCopy01 size={14} strokeWidth={2.5} />}
+                  {copied ? <IconCheck size={14} /> : <IconCopy01 size={14} />}
                 </ActionIcon>
               </HoverCard.Target>
               <HoverCard.Dropdown p="xs">{copied ? 'Copied' : 'Copy'}</HoverCard.Dropdown>
@@ -197,7 +193,7 @@ export const CopyText = ({ children, value, ...rest }: React.PropsWithChildren<C
                   copy()
                 }}
               >
-                {copied ? <IconCheck size={14} /> : <IconCopy01 size={14} strokeWidth={2.5} />}
+                {copied ? <IconCheck size={14} /> : <IconCopy01 size={14} />}
               </ActionIcon>
             </HoverCard.Target>
             <HoverCard.Dropdown p="xs">{copied ? 'Copied' : 'Copy'}</HoverCard.Dropdown>

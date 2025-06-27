@@ -3,26 +3,26 @@ import React, { useLayoutEffect, useMemo, useRef, useState } from 'react'
 
 import { IconSearchLg } from '../../icons/index.js'
 import {
+  Box,
+  Checkbox,
   Combobox,
   ComboboxItem,
-  MultiSelectProps,
-  ScrollArea,
-  useCombobox,
   defaultOptionsFilter,
+  Divider,
   getOptionsLockup,
   getParsedComboboxData,
   Group,
+  Input,
   InputBase,
   isOptionsGroup,
   Loader,
-  Pill,
-  useMantineTheme,
-  useProps,
-  Input,
-  Checkbox,
-  Box,
+  MultiSelectProps,
   OptionsData,
-  Divider
+  Pill,
+  ScrollArea,
+  useCombobox,
+  useMantineTheme,
+  useProps
 } from '../../primitive/index.js'
 
 import { isValueChecked } from './helper.js'
@@ -523,7 +523,7 @@ export const ProMultiSelect: React.FC<ProMultiSelectProps> = (_props) => {
       <Combobox.Dropdown>
         {searchable && (
           <Combobox.Search
-            leftSection={<IconSearchLg size={16} c="gray.9" strokeWidth={2} />}
+            leftSection={<IconSearchLg size={16} c="gray.9" />}
             value={_searchValue}
             onChange={(event) => {
               setSearchValue(event.currentTarget.value)
