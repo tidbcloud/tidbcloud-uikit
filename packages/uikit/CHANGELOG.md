@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.4.3
+
+### Patch Changes
+
+- fix(biz): update onChange handler in FormSwitch to pass event instead of value ([#547](https://github.com/tidbcloud/tidbcloud-uikit/pull/547))
+
 ## 2.4.2
 
 ### Patch Changes
