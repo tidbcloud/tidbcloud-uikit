@@ -27,7 +27,7 @@ export const FormSwitch: React.FC<FormSwitchProps> = ({ name, rules, onChange, l
             {...rest}
             onChange={(e) => {
               handleChange(e.currentTarget.checked)
-              onChange?.(value)
+              onChange?.(e)
             }}
             {...restField}
             error={error ? <ErrorMessage errors={formState.errors} name={name} /> : undefined}
