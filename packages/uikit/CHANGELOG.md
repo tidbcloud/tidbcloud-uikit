@@ -1,5 +1,14 @@
 # @tidbcloud/uikit
 
+## 2.4.2
+
+### Patch Changes
+
+- fix(uikit): clean up icon usage and remove unnecessary strokeWidth in CodeBlock and ProMultiSelect ([#546](https://github.com/tidbcloud/tidbcloud-uikit/pull/546))
+- fix(biz): add horizontal scroll support to AppPageShell ([#544](https://github.com/tidbcloud/tidbcloud-uikit/pull/544))
+- fix(uikit): clean up icon usage and remove unnecessary strokeWidth in CodeBlock and ProMultiSelect ([#546](https://github.com/tidbcloud/tidbcloud-uikit/pull/546))
+- fix(biz): add horizontal scroll support to AppPageShell ([#544](https://github.com/tidbcloud/tidbcloud-uikit/pull/544))
+
 ## 2.4.1
 
 ### Patch Changes
