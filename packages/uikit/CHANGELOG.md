@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.4.6
+
+### Patch Changes
+
+- fix(uikit): add custom styles for Code component in theme ([#553](https://github.com/tidbcloud/tidbcloud-uikit/pull/553))
+
 ## 2.4.5
 
 ### Patch Changes
