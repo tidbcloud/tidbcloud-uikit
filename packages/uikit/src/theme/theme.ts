@@ -407,25 +407,44 @@ const theme = createTheme({
     },
     Tabs: {
       styles(theme: MantineTheme, props: TabsProps) {
-        return {
-          list: {
-            gap: props.orientation === 'vertical' ? 8 : 32,
-            border: 0
-          },
-          tab: {
-            color: themeColor(theme, 'carbon', 7),
-            fontWeight: 600,
-            paddingLeft: 0,
-            paddingRight: props.orientation === 'vertical' ? 8 : 0,
-            '&[data-active]': {
-              color: themeColor(theme, 'carbon', 9)
+        const variant = props.variant || 'default'
+
+        if (variant === 'default') {
+          return {
+            list: {
+              '--tab-border-color': 'transparent',
+              gap: props.orientation === 'vertical' ? 8 : 32,
+              border: 0
             },
-            '&:hover': {
-              color: themeColor(theme, 'carbon', 9),
-              backgroundColor: 'transparent'
+            tab: {
+              color: themeColor(theme, 'carbon', 7),
+              fontWeight: 600,
+              paddingLeft: 0,
+              paddingRight: props.orientation === 'vertical' ? 8 : 0,
+              '&[data-active]': {
+                color: themeColor(theme, 'carbon', 9)
+              },
+              '&:hover': {
+                color: themeColor(theme, 'carbon', 9),
+                backgroundColor: 'transparent'
+              }
             }
           }
         }
+
+        if (variant === 'outline') {
+          return {
+            list: {
+              '--tab-border-color': themeColor(theme, 'carbon', 4)
+            }
+          }
+        }
+
+        if (variant === 'pills') {
+          return {}
+        }
+
+        return {}
       }
     },
     Notification: {
