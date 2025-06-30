@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.4.4
+
+### Patch Changes
+
+- fix(uikit): enhance Tabs component with variant themes support and update storybook controls ([#549](https://github.com/tidbcloud/tidbcloud-uikit/pull/549))
+
 ## 2.4.3
 
 ### Patch Changes
