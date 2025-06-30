@@ -1,5 +1,5 @@
 import { Meta, StoryFn } from '@storybook/react'
-import { Stack, Button } from '@tidbcloud/uikit'
+import { Button, Stack } from '@tidbcloud/uikit'
 import { DateTimePicker } from '@tidbcloud/uikit/biz'
 import { useState } from 'react'
 
@@ -25,7 +25,14 @@ export function Demo() {
   const [value, setValue] = useState<Date>(new Date())
   return (
     <Stack>
-      <DateTimePicker value={value} onChange={setValue} startDate={startDate} endDate={endDate} />
+      <DateTimePicker
+        value={value}
+        onChange={setValue}
+        utcOffset={-7 * 60}
+        startDate={startDate}
+        endDate={endDate}
+        formatter={(val) => val.toISOString()}
+      />
       <Button onClick={() => setValue(new Date(Date.now() + Math.random() * 10000000000))}>Set random date</Button>
     </Stack>
   )

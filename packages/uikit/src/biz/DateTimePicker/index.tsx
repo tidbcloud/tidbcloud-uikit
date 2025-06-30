@@ -5,30 +5,47 @@ import { useDisclosure, useUncontrolled } from '../../hooks/index.js'
 import { IconClock } from '../../icons/index.js'
 import {
   Box,
+  DatePicker,
   Divider,
   Flex,
   Group,
   Loader,
+  MantineSize,
   Popover,
+  PopoverProps,
   Stack,
   TextInput,
-  Typography,
-  MantineSize,
-  TimeInput,
   TextInputProps,
-  DatePicker,
+  TimeInput,
   TimeInputProps,
-  PopoverProps
+  Typography
 } from '../../primitive/index.js'
 import { dayjs, type Dayjs } from '../../utils/dayjs.js'
 import { DEFAULT_TIME_FORMAT } from '../TimeRangePicker/helpers.js'
 
-import { TimeScollerPicker, CurrentValueChangedBy } from './TimeScollerPicker.js'
+import { CurrentValueChangedBy, TimeScollerPicker } from './TimeScollerPicker.js'
 
 export interface DateTimePickerProps extends Omit<TextInputProps, 'value' | 'onChange' | 'defaultValue'> {
+  /**
+   * The placeholder of the input.
+   * @default 'Select time'
+   */
   placeholder?: string
+  /**
+   * The format of the date string.
+   * @default 'YYYY-MM-DD HH:mm:ss'
+   */
   format?: string
+  /**
+   * A function to format the date in the input
+   * If provided, `format` prop will be ignored.
+   */
+  formatter?: (val: Date) => string
 
+  /**
+   * The UTC offset in minutes.
+   * See https://day.js.org/docs/en/manipulate/utc-offset
+   */
   utcOffset?: number
   defaultValue?: Date
   value?: Date
@@ -45,6 +62,7 @@ export interface DateTimePickerProps extends Omit<TextInputProps, 'value' | 'onC
 export const DateTimePicker = ({
   placeholder = 'Select time',
   format = DEFAULT_TIME_FORMAT,
+  formatter,
   defaultValue,
   value,
   startDate = dayjs().subtract(10, 'year').toDate(),
@@ -91,7 +109,9 @@ export const DateTimePicker = ({
     }, 20)
   })
 
-  const inputStr = currentValue.format(format)
+  const inputStr = formatter
+    ? formatter(currentValue.utcOffset(utcOffset).toDate())
+    : currentValue.utcOffset(utcOffset).format(format)
 
   const utcStr = useMemo(() => {
     const h = Math.floor(utcOffset / 60)
