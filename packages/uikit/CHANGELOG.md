@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.4.5
+
+### Patch Changes
+
+- fix(biz): enhance DateTimePicker with formatter prop and update storybook demo ([#551](https://github.com/tidbcloud/tidbcloud-uikit/pull/551))
+
 ## 2.4.4
 
 ### Patch Changes
