@@ -1350,6 +1350,16 @@ const theme = createTheme({
         }
         return {}
       }
+    },
+    Code: {
+      styles: (theme: MantineTheme) => {
+        return {
+          root: {
+            backgroundColor: themeColor(theme, 'carbon', 3),
+            color: themeColor(theme, 'carbon', 8)
+          }
+        }
+      }
     }
   }
 })
