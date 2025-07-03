@@ -17,8 +17,7 @@ import {
   TextInput,
   TextInputProps,
   TimeInput,
-  TimeInputProps,
-  Typography
+  TimeInputProps
 } from '../../primitive/index.js'
 import { dayjs, type Dayjs } from '../../utils/dayjs.js'
 import { DEFAULT_TIME_FORMAT } from '../TimeRangePicker/helpers.js'
@@ -42,11 +41,6 @@ export interface DateTimePickerProps extends Omit<TextInputProps, 'value' | 'onC
    */
   formatter?: (val: Date) => string
 
-  /**
-   * The UTC offset in minutes.
-   * See https://day.js.org/docs/en/manipulate/utc-offset
-   */
-  utcOffset?: number
   defaultValue?: Date
   value?: Date
   startDate?: Date
@@ -69,7 +63,6 @@ export const DateTimePicker = ({
   endDate = dayjs().add(10, 'year').toDate(),
   onChange,
   disable = false,
-  utcOffset = dayjs().utcOffset(),
   withinPortal = true,
   sx,
   loading = false,
@@ -96,14 +89,9 @@ export const DateTimePicker = ({
       return
     }
 
-    // Convert to UTC for accurate comparison since next might be timezone-adjusted
-    const nextUTC = next.utc()
-    const startDateUTC = startDate ? dayjs(startDate).utc() : null
-    const endDateUTC = endDate ? dayjs(endDate).utc() : null
-
-    if (startDateUTC && nextUTC.isBefore(startDateUTC)) {
+    if (startDate && next.isBefore(startDate)) {
       next = dayjs(startDate)
-    } else if (endDateUTC && nextUTC.isAfter(endDateUTC)) {
+    } else if (endDate && next.isAfter(endDate)) {
       next = dayjs(endDate)
     }
 
@@ -114,21 +102,11 @@ export const DateTimePicker = ({
     }, 20)
   })
 
-  const inputStr = formatter
-    ? formatter(currentValue.utcOffset(utcOffset).toDate())
-    : currentValue.utcOffset(utcOffset).format(format)
-
-  const { utcStr, isLocalTimeZone } = useMemo(() => {
-    const h = Math.floor(utcOffset / 60)
-    const m = utcOffset % 60
-    const utcStr = `UTC${h >= 0 ? '+' : '-'}${Math.abs(h)}:${m < 10 ? '0' : ''}${m}`
-    const isLocalTimeZone = utcOffset === dayjs().utcOffset()
-    return { utcStr, isLocalTimeZone }
-  }, [utcOffset])
+  const inputStr = formatter ? formatter(currentValue.toDate()) : currentValue.format(format)
 
   const calendarChange = useMemoizedFn((v: Date) => {
     let next = currentValue
-    next = next.utcOffset(utcOffset).year(v.getFullYear()).month(v.getMonth()).date(v.getDate())
+    next = next.year(v.getFullYear()).month(v.getMonth()).date(v.getDate())
 
     updateCurrentValue(next, 'calendar')
   })
@@ -138,7 +116,7 @@ export const DateTimePicker = ({
     const v = dayjs(originVal, 'HH:mm:ss').toDate()
 
     let next = currentValue
-    next = next.utcOffset(utcOffset).hour(v.getHours()).minute(v.getMinutes()).second(v.getSeconds())
+    next = next.hour(v.getHours()).minute(v.getMinutes()).second(v.getSeconds())
 
     updateCurrentValue(next, 'timeInput')
   })
@@ -146,7 +124,7 @@ export const DateTimePicker = ({
   const timeScrollPickerChange = useMemoizedFn((v: [number, number, number]) => {
     const [h, m, s] = v
     let next = currentValue
-    next = next.utcOffset(utcOffset).hour(h).minute(m).second(s)
+    next = next.hour(h).minute(m).second(s)
     updateCurrentValue(next, 'timeScroller')
   })
 
@@ -183,7 +161,7 @@ export const DateTimePicker = ({
             <DatePicker
               minDate={startDate}
               maxDate={endDate}
-              value={currentValue.utcOffset(utcOffset).toDate()}
+              value={currentValue.toDate()}
               onChange={calendarChange}
               withCellSpacing={false}
               size="md"
@@ -194,7 +172,7 @@ export const DateTimePicker = ({
             <Stack justify="flex-start">
               <TimeInput
                 withSeconds
-                value={currentValue.utcOffset(utcOffset).format('HH:mm:ss')}
+                value={currentValue.format('HH:mm:ss')}
                 onChange={timeInputChange}
                 size="sm"
                 w={112}
@@ -247,19 +225,9 @@ export const DateTimePicker = ({
                   onChange={timeScrollPickerChange}
                   start={startDate}
                   end={endDate}
-                  utcOffset={utcOffset}
                 />
               </Box>
             </Stack>
-          </Group>
-          <Divider mx={-16} />
-          <Group>
-            <Typography size="sm">
-              {isLocalTimeZone ? 'Local time zone' : 'Time zone'}:{' '}
-              <Typography fw={600} component="span">
-                {utcStr}
-              </Typography>
-            </Typography>
           </Group>
         </Stack>
       </Popover.Dropdown>
