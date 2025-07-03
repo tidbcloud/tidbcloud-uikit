@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.4.9
+
+### Patch Changes
+
+- refactor(DateTimePicker): remove utcOffset prop and simplify timezone handling ([#559](https://github.com/tidbcloud/tidbcloud-uikit/pull/559))
+
 ## 2.4.8
 
 ### Patch Changes
