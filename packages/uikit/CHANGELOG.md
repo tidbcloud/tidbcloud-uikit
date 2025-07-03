@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.4.7
+
+### Patch Changes
+
+- feat(AppShell): add headerLeftSection prop and make aboveMenu optional ([#555](https://github.com/tidbcloud/tidbcloud-uikit/pull/555))
+
 ## 2.4.6
 
 ### Patch Changes
