@@ -2,7 +2,7 @@ import { createStyles } from '@mantine/emotion'
 import { useMemoizedFn } from 'ahooks'
 import type { Dayjs } from 'dayjs'
 import { padStart, range } from 'lodash-es'
-import { useRef, useMemo, useEffect } from 'react'
+import { useEffect, useMemo, useRef } from 'react'
 
 import { useUncontrolled } from '../../hooks/index.js'
 import { Box, Flex, ScrollArea } from '../../primitive/index.js'
@@ -10,7 +10,7 @@ import { dayjs } from '../../utils/dayjs.js'
 
 import { CellHeight, CellStyle } from './constant.js'
 
-const useStyles = createStyles(() => ({
+const useStyles = createStyles((theme) => ({
   bold: {
     fontWeight: 600
   },
@@ -19,6 +19,14 @@ const useStyles = createStyles(() => ({
     cursor: 'pointer',
     scrollSnapAlign: 'start',
     userSelect: 'none'
+  },
+  cellDisabled: {
+    textAlign: 'center',
+    scrollSnapAlign: 'start',
+    userSelect: 'none',
+    cursor: 'not-allowed',
+    color: theme.colors.gray[5],
+    opacity: 0.5
   },
   cellPlaceholder: {
     visibility: 'hidden'
@@ -174,9 +182,25 @@ function TimePickerScrollerColumn({
 }) {
   const { classes, cx: clsx } = useStyles()
   const ref = useRef<HTMLDivElement>(null)
-  const numbers = useMemo(() => range(min, max + 1), [min, max])
+
+  // Generate full range based on the column type
+  const fullRange = useMemo(() => {
+    switch (name) {
+      case 'hour':
+        return range(0, 24) // 0-23
+      case 'minute':
+      case 'second':
+        return range(0, 60) // 0-59
+      default:
+        return range(min, max + 1) // fallback to original behavior
+    }
+  }, [name, min, max])
+
+  const numbers = fullRange
   const timeoutRef = useRef<number>()
   const isArtificialScroll = useRef(false)
+
+  const isDisabled = useMemo(() => (val: number) => val < min || val > max, [min, max])
 
   const [val, setVal] = useUncontrolled({
     value: curr,
@@ -210,24 +234,26 @@ function TimePickerScrollerColumn({
     const i = position.y / CellHeight
     if (i === Math.floor(i)) {
       const val = i >= numbers.length ? numbers.at(-1) : numbers[i]
-      if (typeof val !== 'undefined') {
+      if (typeof val !== 'undefined' && !isDisabled(val)) {
         setVal(val)
       }
     } else {
       timeoutRef.current = window.setTimeout(() => {
         const k = Math.round(i)
         const val = k >= numbers.length ? numbers.at(-1) : numbers[k]
-        if (typeof val !== 'undefined') {
+        if (typeof val !== 'undefined' && !isDisabled(val)) {
           setVal(val)
         }
       }, 300)
     }
   })
 
-  const handleClickCell = useMemoizedFn((e: React.MouseEvent<HTMLDivElement>, i: number) => {
+  const handleClickCell = useMemoizedFn((e: React.MouseEvent<HTMLDivElement>, i: number, val: number) => {
     e.stopPropagation()
     e.preventDefault()
-    ref.current?.scrollTo({ top: i * CellHeight, behavior: 'smooth' })
+    if (!isDisabled(val)) {
+      ref.current?.scrollTo({ top: i * CellHeight, behavior: 'smooth' })
+    }
   })
 
   useEffect(() => {
@@ -246,16 +272,19 @@ function TimePickerScrollerColumn({
       }}
       onScrollPositionChange={onScroll}
     >
-      {numbers.map((i, index) => (
-        <div
-          key={i}
-          className={clsx(classes.cell, i === curr && classes.bold)}
-          onClick={(e) => handleClickCell(e, index)}
-          style={CellStyle}
-        >
-          {render ? render(i) : i}
-        </div>
-      ))}
+      {numbers.map((i, index) => {
+        const disabled = isDisabled(i)
+        return (
+          <div
+            key={i}
+            className={clsx(disabled ? classes.cellDisabled : classes.cell, i === curr && !disabled && classes.bold)}
+            onClick={(e) => handleClickCell(e, index, i)}
+            style={CellStyle}
+          >
+            {render ? render(i) : i}
+          </div>
+        )
+      })}
 
       {/* cellPlaceholder */}
       {range(6).map((i) => (
