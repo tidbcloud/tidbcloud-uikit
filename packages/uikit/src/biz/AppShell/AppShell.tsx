@@ -31,9 +31,15 @@ interface AppShellProps {
      */
     logo: React.ReactNode
     /**
+     * The left section of the navbar header, which is usually the logo
+     * If not provided, the logo will be used as the left section
+     * @default undefined
+     */
+    headerLeftSection?: React.ReactNode
+    /**
      * Custom content rendered in the navbar section between the header and the main menu.
      */
-    aboveMenu: React.ReactNode
+    aboveMenu?: React.ReactNode
     /**
      * The footer section of the navbar
      */
@@ -99,18 +105,20 @@ export const AppShell = ({ banner, navbar, children }: React.PropsWithChildren<A
         <Navbar withBorder hidden={navbarCollapsed}>
           <NavbarSection>
             <NavbarHeader
-              logo={navbar.logo}
+              logo={navbar.headerLeftSection || navbar.logo}
               onLogoClick={navbar.onLogoClick}
               onToggleCollapse={handleNavbarCollapse}
               px="md"
               py={8}
             />
           </NavbarSection>
-          <NavbarSection>
-            <Box className="tiui-app-shell-navbar-above-menu" px="md">
-              {navbar.aboveMenu}
-            </Box>
-          </NavbarSection>
+          {navbar.aboveMenu && (
+            <NavbarSection>
+              <Box className="tiui-app-shell-navbar-above-menu" px="md">
+                {navbar.aboveMenu}
+              </Box>
+            </NavbarSection>
+          )}
           <NavbarSection className="tiui-app-shell-navbar-menu-section" grow scrollable py={8}>
             <Stack ref={navMenuRef} className="tiui-app-shell-navbar-menu" gap={8} px="md" />
           </NavbarSection>
