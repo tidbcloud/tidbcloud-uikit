@@ -77,6 +77,9 @@ const getTimeRange = ({
   const s1 = start ? dayjs(start).utcOffset(utcOffset) : null
   const s2 = end ? dayjs(end).utcOffset(utcOffset) : null
 
+  // Ensure curr is in the same timezone for comparison
+  const currInTimezone = typeof utcOffset === 'number' ? curr.utcOffset(utcOffset) : curr
+
   switch (type) {
     case 'year': {
       if (s1) {
@@ -88,46 +91,46 @@ const getTimeRange = ({
       break
     }
     case 'month': {
-      if (s1 && curr.isSame(s1, 'year')) {
+      if (s1 && currInTimezone.isSame(s1, 'year')) {
         min = s1.month() + 1 // should be 1-12 here
       }
-      if (s2 && curr.isSame(s2, 'year')) {
+      if (s2 && currInTimezone.isSame(s2, 'year')) {
         max = s2.month() + 1
       }
       break
     }
     case 'day': {
-      if (s1 && curr.isSame(s1, 'month')) {
+      if (s1 && currInTimezone.isSame(s1, 'month')) {
         min = s1.date() // 1-31
       }
-      if (s2 && curr.isSame(s2, 'month')) {
+      if (s2 && currInTimezone.isSame(s2, 'month')) {
         max = s2.date()
       }
       break
     }
     case 'hour': {
-      if (s1 && curr.isSame(s1, 'day')) {
+      if (s1 && currInTimezone.isSame(s1, 'day')) {
         min = s1.hour()
       }
-      if (s2 && curr.isSame(s2, 'day')) {
+      if (s2 && currInTimezone.isSame(s2, 'day')) {
         max = s2.hour()
       }
       break
     }
     case 'minute': {
-      if (s1 && curr.isSame(s1, 'hour')) {
+      if (s1 && currInTimezone.isSame(s1, 'hour')) {
         min = s1.minute()
       }
-      if (s2 && curr.isSame(s2, 'hour')) {
+      if (s2 && currInTimezone.isSame(s2, 'hour')) {
         max = s2.minute()
       }
       break
     }
     case 'second': {
-      if (s1 && curr.isSame(s1, 'minute')) {
+      if (s1 && currInTimezone.isSame(s1, 'minute')) {
         min = s1.second()
       }
-      if (s2 && curr.isSame(s2, 'minute')) {
+      if (s2 && currInTimezone.isSame(s2, 'minute')) {
         max = s2.second()
       }
       break

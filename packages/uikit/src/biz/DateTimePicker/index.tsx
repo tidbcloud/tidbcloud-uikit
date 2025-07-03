@@ -96,9 +96,14 @@ export const DateTimePicker = ({
       return
     }
 
-    if (startDate && next.isBefore(startDate)) {
+    // Convert to UTC for accurate comparison since next might be timezone-adjusted
+    const nextUTC = next.utc()
+    const startDateUTC = startDate ? dayjs(startDate).utc() : null
+    const endDateUTC = endDate ? dayjs(endDate).utc() : null
+
+    if (startDateUTC && nextUTC.isBefore(startDateUTC)) {
       next = dayjs(startDate)
-    } else if (endDate && next.isAfter(endDate)) {
+    } else if (endDateUTC && nextUTC.isAfter(endDateUTC)) {
       next = dayjs(endDate)
     }
 
@@ -176,7 +181,7 @@ export const DateTimePicker = ({
             <DatePicker
               minDate={startDate}
               maxDate={endDate}
-              value={currentValue.toDate()}
+              value={currentValue.utcOffset(utcOffset).toDate()}
               onChange={calendarChange}
               withCellSpacing={false}
               size="md"
@@ -187,7 +192,7 @@ export const DateTimePicker = ({
             <Stack justify="flex-start">
               <TimeInput
                 withSeconds
-                value={currentValue.format('HH:mm:ss')}
+                value={currentValue.utcOffset(utcOffset).format('HH:mm:ss')}
                 onChange={timeInputChange}
                 size="sm"
                 w={112}
@@ -311,10 +316,23 @@ export const TimePicker = ({
       return
     }
 
-    if (startDate && next.isBefore(startDate)) {
-      next = dayjs(startDate)
-    } else if (endDate && next.isAfter(endDate)) {
-      next = dayjs(endDate)
+    // For time-only comparison, use same date for accurate comparison
+    const baseDate = next.format('YYYY-MM-DD')
+
+    if (startDate && startDate.isValid()) {
+      // Set startDate to the same date as next for time-only comparison
+      const startOnSameDate = dayjs(`${baseDate} ${startDate.format('HH:mm:ss')}`)
+      if (next.isBefore(startOnSameDate)) {
+        next = next.hour(startDate.hour()).minute(startDate.minute()).second(startDate.second())
+      }
+    }
+
+    if (endDate && endDate.isValid()) {
+      // Set endDate to the same date as next for time-only comparison
+      const endOnSameDate = dayjs(`${baseDate} ${endDate.format('HH:mm:ss')}`)
+      if (next.isAfter(endOnSameDate)) {
+        next = next.hour(endDate.hour()).minute(endDate.minute()).second(endDate.second())
+      }
     }
 
     setCurrentValue(next)
