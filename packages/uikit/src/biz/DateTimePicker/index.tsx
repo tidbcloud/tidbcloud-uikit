@@ -42,6 +42,11 @@ export interface DateTimePickerProps extends Omit<TextInputProps, 'value' | 'onC
    */
   formatter?: (val: Date) => string
 
+  /**
+   * This props is deprecated, use `formatter` instead to display the time in any timezone.
+   * @deprecated
+   */
+  utcOffset?: number
   defaultValue?: Date
   value?: Date
   startDate?: Date
