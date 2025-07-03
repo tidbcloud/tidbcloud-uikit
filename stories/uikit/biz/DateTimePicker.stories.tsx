@@ -1,6 +1,7 @@
 import { Meta, StoryFn } from '@storybook/react'
 import { Button, Stack } from '@tidbcloud/uikit'
 import { DateTimePicker } from '@tidbcloud/uikit/biz'
+import { dayjs } from '@tidbcloud/uikit/utils'
 import { useState } from 'react'
 
 const decorator = (Story: StoryFn) => {
@@ -19,7 +20,7 @@ const meta: Meta<typeof DateTimePicker> = {
 }
 
 const startDate = new Date()
-const endDate = new Date(Date.now() + 1000 * 60 * 60 * 24 * 30)
+const endDate = new Date(Date.now() + 1000 * 60 * 60 * 24 * 3) // 3 days later
 
 export function Demo() {
   const [value, setValue] = useState<Date>(new Date())
@@ -28,10 +29,13 @@ export function Demo() {
       <DateTimePicker
         value={value}
         onChange={setValue}
-        utcOffset={-7 * 60}
         startDate={startDate}
         endDate={endDate}
-        formatter={(val) => val.toISOString()}
+        formatter={(val) =>
+          dayjs(val)
+            .utcOffset(-7 * 60)
+            .format('YYYY-MM-DD HH:mm:ss Z')
+        }
       />
       <Button onClick={() => setValue(new Date(Date.now() + Math.random() * 10000000000))}>Set random date</Button>
     </Stack>

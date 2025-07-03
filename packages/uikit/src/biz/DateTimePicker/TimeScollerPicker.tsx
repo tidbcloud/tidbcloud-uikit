@@ -2,7 +2,7 @@ import { createStyles } from '@mantine/emotion'
 import { useMemoizedFn } from 'ahooks'
 import type { Dayjs } from 'dayjs'
 import { padStart, range } from 'lodash-es'
-import { useRef, useMemo, useEffect } from 'react'
+import { useEffect, useMemo, useRef } from 'react'
 
 import { useUncontrolled } from '../../hooks/index.js'
 import { Box, Flex, ScrollArea } from '../../primitive/index.js'
@@ -10,7 +10,7 @@ import { dayjs } from '../../utils/dayjs.js'
 
 import { CellHeight, CellStyle } from './constant.js'
 
-const useStyles = createStyles(() => ({
+const useStyles = createStyles((theme) => ({
   bold: {
     fontWeight: 600
   },
@@ -19,6 +19,14 @@ const useStyles = createStyles(() => ({
     cursor: 'pointer',
     scrollSnapAlign: 'start',
     userSelect: 'none'
+  },
+  cellDisabled: {
+    textAlign: 'center',
+    scrollSnapAlign: 'start',
+    userSelect: 'none',
+    cursor: 'not-allowed',
+    color: theme.colors.carbon[6],
+    opacity: 0.5
   },
   cellPlaceholder: {
     visibility: 'hidden'
@@ -29,14 +37,12 @@ const getTimeRange = ({
   curr,
   type,
   start,
-  end,
-  utcOffset = dayjs().utcOffset()
+  end
 }: {
   curr: Dayjs
   type: 'year' | 'month' | 'day' | 'hour' | 'minute' | 'second'
   start?: Date
   end?: Date
-  utcOffset?: number
 }): Range => {
   const map = {
     year: {
@@ -66,8 +72,8 @@ const getTimeRange = ({
   }
 
   let { min, max } = map[type]
-  const s1 = start ? dayjs(start).utcOffset(utcOffset) : null
-  const s2 = end ? dayjs(end).utcOffset(utcOffset) : null
+  const s1 = start ? dayjs(start) : null
+  const s2 = end ? dayjs(end) : null
 
   switch (type) {
     case 'year': {
@@ -174,9 +180,25 @@ function TimePickerScrollerColumn({
 }) {
   const { classes, cx: clsx } = useStyles()
   const ref = useRef<HTMLDivElement>(null)
-  const numbers = useMemo(() => range(min, max + 1), [min, max])
+
+  // Generate full range based on the column type
+  const fullRange = useMemo(() => {
+    switch (name) {
+      case 'hour':
+        return range(0, 24) // 0-23
+      case 'minute':
+      case 'second':
+        return range(0, 60) // 0-59
+      default:
+        return range(min, max + 1) // fallback to original behavior
+    }
+  }, [name, min, max])
+
+  const numbers = fullRange
   const timeoutRef = useRef<number>()
   const isArtificialScroll = useRef(false)
+
+  const isDisabled = useMemo(() => (val: number) => val < min || val > max, [min, max])
 
   const [val, setVal] = useUncontrolled({
     value: curr,
@@ -201,6 +223,36 @@ function TimePickerScrollerColumn({
     }
   })
 
+  const findNearestValidValue = useMemoizedFn((targetIndex: number) => {
+    // Find the nearest valid value, prioritizing the direction towards valid range
+    let upIndex = targetIndex
+    let downIndex = targetIndex
+
+    // Search upwards and downwards simultaneously
+    while (upIndex >= 0 || downIndex < numbers.length) {
+      // Check upward direction first (towards larger values)
+      if (upIndex >= 0 && upIndex < numbers.length) {
+        const upVal = numbers[upIndex]
+        if (!isDisabled(upVal)) {
+          return { value: upVal, index: upIndex }
+        }
+      }
+
+      // Check downward direction (towards smaller values)
+      if (downIndex >= 0 && downIndex < numbers.length) {
+        const downVal = numbers[downIndex]
+        if (!isDisabled(downVal)) {
+          return { value: downVal, index: downIndex }
+        }
+      }
+
+      upIndex++
+      downIndex--
+    }
+
+    return null
+  })
+
   const onScroll = useMemoizedFn((position: { x: number; y: number }) => {
     if (isArtificialScroll.current) return
     if (currentValueChangedBy) return
@@ -210,24 +262,44 @@ function TimePickerScrollerColumn({
     const i = position.y / CellHeight
     if (i === Math.floor(i)) {
       const val = i >= numbers.length ? numbers.at(-1) : numbers[i]
-      if (typeof val !== 'undefined') {
+      if (typeof val !== 'undefined' && !isDisabled(val)) {
         setVal(val)
+      } else if (typeof val !== 'undefined' && isDisabled(val)) {
+        // If landed on disabled value, find nearest valid value and scroll to it
+        const nearest = findNearestValidValue(i)
+        if (nearest) {
+          setVal(nearest.value)
+          setTimeout(() => {
+            ref.current?.scrollTo({ top: nearest.index * CellHeight, behavior: 'smooth' })
+          }, 100)
+        }
       }
     } else {
       timeoutRef.current = window.setTimeout(() => {
         const k = Math.round(i)
         const val = k >= numbers.length ? numbers.at(-1) : numbers[k]
-        if (typeof val !== 'undefined') {
+        if (typeof val !== 'undefined' && !isDisabled(val)) {
           setVal(val)
+        } else if (typeof val !== 'undefined' && isDisabled(val)) {
+          // If would land on disabled value, find nearest valid value and scroll to it
+          const nearest = findNearestValidValue(k)
+          if (nearest) {
+            setVal(nearest.value)
+            setTimeout(() => {
+              ref.current?.scrollTo({ top: nearest.index * CellHeight, behavior: 'smooth' })
+            }, 100)
+          }
         }
       }, 300)
     }
   })
 
-  const handleClickCell = useMemoizedFn((e: React.MouseEvent<HTMLDivElement>, i: number) => {
+  const handleClickCell = useMemoizedFn((e: React.MouseEvent<HTMLDivElement>, i: number, val: number) => {
     e.stopPropagation()
     e.preventDefault()
-    ref.current?.scrollTo({ top: i * CellHeight, behavior: 'smooth' })
+    if (!isDisabled(val)) {
+      ref.current?.scrollTo({ top: i * CellHeight, behavior: 'smooth' })
+    }
   })
 
   useEffect(() => {
@@ -246,16 +318,19 @@ function TimePickerScrollerColumn({
       }}
       onScrollPositionChange={onScroll}
     >
-      {numbers.map((i, index) => (
-        <div
-          key={i}
-          className={clsx(classes.cell, i === curr && classes.bold)}
-          onClick={(e) => handleClickCell(e, index)}
-          style={CellStyle}
-        >
-          {render ? render(i) : i}
-        </div>
-      ))}
+      {numbers.map((i, index) => {
+        const disabled = isDisabled(i)
+        return (
+          <div
+            key={i}
+            className={clsx(disabled ? classes.cellDisabled : classes.cell, i === curr && !disabled && classes.bold)}
+            onClick={(e) => handleClickCell(e, index, i)}
+            style={CellStyle}
+          >
+            {render ? render(i) : i}
+          </div>
+        )
+      })}
 
       {/* cellPlaceholder */}
       {range(6).map((i) => (
@@ -272,33 +347,31 @@ export function TimeScollerPicker({
   currentValueChangedBy,
   start,
   end,
-  utcOffset,
   onChange
 }: {
   currentValue: Dayjs
   currentValueChangedBy: CurrentValueChangedBy | null
   start?: Date
   end?: Date
-  utcOffset?: number
   onChange?: (v: [number, number, number]) => void
 }) {
   const options = useMemo(
     () => ({
-      hour: getTimeRange({ curr: currentValue, start, end, utcOffset, type: 'hour' }),
-      minute: getTimeRange({ curr: currentValue, start, end, utcOffset, type: 'minute' }),
-      second: getTimeRange({ curr: currentValue, start, end, utcOffset, type: 'second' })
+      hour: getTimeRange({ curr: currentValue, start, end, type: 'hour' }),
+      minute: getTimeRange({ curr: currentValue, start, end, type: 'minute' }),
+      second: getTimeRange({ curr: currentValue, start, end, type: 'second' })
     }),
-    [currentValue, start, end, utcOffset]
+    [currentValue, start, end]
   )
   const hourValue = useMemo(() => {
-    return typeof utcOffset === 'number' ? currentValue.utcOffset(utcOffset).hour() : currentValue.hour()
-  }, [currentValue, utcOffset])
+    return currentValue.hour()
+  }, [currentValue])
   const minuteValue = useMemo(() => {
-    return typeof utcOffset === 'number' ? currentValue.utcOffset(utcOffset).minute() : currentValue.minute()
-  }, [currentValue, utcOffset])
+    return currentValue.minute()
+  }, [currentValue])
   const secondValue = useMemo(() => {
-    return typeof utcOffset === 'number' ? currentValue.utcOffset(utcOffset).second() : currentValue.second()
-  }, [currentValue, utcOffset])
+    return currentValue.second()
+  }, [currentValue])
   const onHourChange = useMemoizedFn((v: number) => {
     onChange?.([v, minuteValue, secondValue])
   })

@@ -43,8 +43,8 @@ export interface DateTimePickerProps extends Omit<TextInputProps, 'value' | 'onC
   formatter?: (val: Date) => string
 
   /**
-   * The UTC offset in minutes.
-   * See https://day.js.org/docs/en/manipulate/utc-offset
+   * This props is deprecated, use `formatter` instead to display the time in any timezone.
+   * @deprecated
    */
   utcOffset?: number
   defaultValue?: Date
@@ -69,7 +69,6 @@ export const DateTimePicker = ({
   endDate = dayjs().add(10, 'year').toDate(),
   onChange,
   disable = false,
-  utcOffset = dayjs().utcOffset(),
   withinPortal = true,
   sx,
   loading = false,
@@ -109,19 +108,17 @@ export const DateTimePicker = ({
     }, 20)
   })
 
-  const inputStr = formatter
-    ? formatter(currentValue.utcOffset(utcOffset).toDate())
-    : currentValue.utcOffset(utcOffset).format(format)
-
+  const inputStr = formatter ? formatter(currentValue.toDate()) : currentValue.format(format)
   const utcStr = useMemo(() => {
+    const utcOffset = currentValue.utcOffset()
     const h = Math.floor(utcOffset / 60)
     const m = utcOffset % 60
     return `UTC${h >= 0 ? '+' : '-'}${Math.abs(h)}:${m < 10 ? '0' : ''}${m}`
-  }, [utcOffset])
+  }, [])
 
   const calendarChange = useMemoizedFn((v: Date) => {
     let next = currentValue
-    next = next.utcOffset(utcOffset).year(v.getFullYear()).month(v.getMonth()).date(v.getDate())
+    next = next.year(v.getFullYear()).month(v.getMonth()).date(v.getDate())
 
     updateCurrentValue(next, 'calendar')
   })
@@ -131,7 +128,7 @@ export const DateTimePicker = ({
     const v = dayjs(originVal, 'HH:mm:ss').toDate()
 
     let next = currentValue
-    next = next.utcOffset(utcOffset).hour(v.getHours()).minute(v.getMinutes()).second(v.getSeconds())
+    next = next.hour(v.getHours()).minute(v.getMinutes()).second(v.getSeconds())
 
     updateCurrentValue(next, 'timeInput')
   })
@@ -139,7 +136,7 @@ export const DateTimePicker = ({
   const timeScrollPickerChange = useMemoizedFn((v: [number, number, number]) => {
     const [h, m, s] = v
     let next = currentValue
-    next = next.utcOffset(utcOffset).hour(h).minute(m).second(s)
+    next = next.hour(h).minute(m).second(s)
     updateCurrentValue(next, 'timeScroller')
   })
 
@@ -240,7 +237,6 @@ export const DateTimePicker = ({
                   onChange={timeScrollPickerChange}
                   start={startDate}
                   end={endDate}
-                  utcOffset={utcOffset}
                 />
               </Box>
             </Stack>
@@ -248,11 +244,10 @@ export const DateTimePicker = ({
           <Divider mx={-16} />
           <Group>
             <Typography size="sm">
-              Use{' '}
+              Time selection in local time zone:{' '}
               <Typography fw={600} component="span">
                 {utcStr}
-              </Typography>{' '}
-              from your local time zone
+              </Typography>
             </Typography>
           </Group>
         </Stack>
@@ -311,10 +306,23 @@ export const TimePicker = ({
       return
     }
 
-    if (startDate && next.isBefore(startDate)) {
-      next = dayjs(startDate)
-    } else if (endDate && next.isAfter(endDate)) {
-      next = dayjs(endDate)
+    // For time-only comparison, use same date for accurate comparison
+    const baseDate = next.format('YYYY-MM-DD')
+
+    if (startDate && startDate.isValid()) {
+      // Set startDate to the same date as next for time-only comparison
+      const startOnSameDate = dayjs(`${baseDate} ${startDate.format('HH:mm:ss')}`)
+      if (next.isBefore(startOnSameDate)) {
+        next = next.hour(startDate.hour()).minute(startDate.minute()).second(startDate.second())
+      }
+    }
+
+    if (endDate && endDate.isValid()) {
+      // Set endDate to the same date as next for time-only comparison
+      const endOnSameDate = dayjs(`${baseDate} ${endDate.format('HH:mm:ss')}`)
+      if (next.isAfter(endOnSameDate)) {
+        next = next.hour(endDate.hour()).minute(endDate.minute()).second(endDate.second())
+      }
     }
 
     setCurrentValue(next)
