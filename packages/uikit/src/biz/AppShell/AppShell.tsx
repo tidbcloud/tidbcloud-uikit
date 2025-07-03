@@ -37,9 +37,6 @@ interface AppShellProps {
      */
     headerLeftSection?: React.ReactNode
     /**
-     * The right section of the navbar header
-     */
-    /**
      * Custom content rendered in the navbar section between the header and the main menu.
      */
     aboveMenu?: React.ReactNode
