@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.4.8
+
+### Patch Changes
+
+- refactor(AppShell): simplify SubNavItemBase spacing with consistent top margin ([#557](https://github.com/tidbcloud/tidbcloud-uikit/pull/557))
+
 ## 2.4.7
 
 ### Patch Changes
