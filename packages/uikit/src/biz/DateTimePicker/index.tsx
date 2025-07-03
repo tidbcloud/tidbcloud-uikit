@@ -17,7 +17,8 @@ import {
   TextInput,
   TextInputProps,
   TimeInput,
-  TimeInputProps
+  TimeInputProps,
+  Typography
 } from '../../primitive/index.js'
 import { dayjs, type Dayjs } from '../../utils/dayjs.js'
 import { DEFAULT_TIME_FORMAT } from '../TimeRangePicker/helpers.js'
@@ -103,6 +104,12 @@ export const DateTimePicker = ({
   })
 
   const inputStr = formatter ? formatter(currentValue.toDate()) : currentValue.format(format)
+  const utcStr = useMemo(() => {
+    const utcOffset = currentValue.utcOffset()
+    const h = Math.floor(utcOffset / 60)
+    const m = utcOffset % 60
+    return `UTC${h >= 0 ? '+' : '-'}${Math.abs(h)}:${m < 10 ? '0' : ''}${m}`
+  }, [])
 
   const calendarChange = useMemoizedFn((v: Date) => {
     let next = currentValue
@@ -228,6 +235,15 @@ export const DateTimePicker = ({
                 />
               </Box>
             </Stack>
+          </Group>
+          <Divider mx={-16} />
+          <Group>
+            <Typography size="sm">
+              Time selection in local time zone:{' '}
+              <Typography fw={600} component="span">
+                {utcStr}
+              </Typography>
+            </Typography>
           </Group>
         </Stack>
       </Popover.Dropdown>
