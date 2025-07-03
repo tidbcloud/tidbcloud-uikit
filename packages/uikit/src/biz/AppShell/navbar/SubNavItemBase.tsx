@@ -14,9 +14,7 @@ export const SubNavItemBase = (props: SubNavItemBaseProps) => {
       {...props}
       sx={mergeSxList([
         {
-          '&:not(:last-child)': {
-            marginBottom: 8
-          }
+          marginTop: 8
         },
         props.sx
       ])}
