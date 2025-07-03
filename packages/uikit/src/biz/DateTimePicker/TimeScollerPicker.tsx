@@ -25,7 +25,7 @@ const useStyles = createStyles((theme) => ({
     scrollSnapAlign: 'start',
     userSelect: 'none',
     cursor: 'not-allowed',
-    color: theme.colors.gray[5],
+    color: theme.colors.carbon[6],
     opacity: 0.5
   },
   cellPlaceholder: {
@@ -225,6 +225,36 @@ function TimePickerScrollerColumn({
     }
   })
 
+  const findNearestValidValue = useMemoizedFn((targetIndex: number) => {
+    // Find the nearest valid value, prioritizing the direction towards valid range
+    let upIndex = targetIndex
+    let downIndex = targetIndex
+
+    // Search upwards and downwards simultaneously
+    while (upIndex >= 0 || downIndex < numbers.length) {
+      // Check upward direction first (towards larger values)
+      if (upIndex >= 0 && upIndex < numbers.length) {
+        const upVal = numbers[upIndex]
+        if (!isDisabled(upVal)) {
+          return { value: upVal, index: upIndex }
+        }
+      }
+
+      // Check downward direction (towards smaller values)
+      if (downIndex >= 0 && downIndex < numbers.length) {
+        const downVal = numbers[downIndex]
+        if (!isDisabled(downVal)) {
+          return { value: downVal, index: downIndex }
+        }
+      }
+
+      upIndex++
+      downIndex--
+    }
+
+    return null
+  })
+
   const onScroll = useMemoizedFn((position: { x: number; y: number }) => {
     if (isArtificialScroll.current) return
     if (currentValueChangedBy) return
@@ -236,6 +266,15 @@ function TimePickerScrollerColumn({
       const val = i >= numbers.length ? numbers.at(-1) : numbers[i]
       if (typeof val !== 'undefined' && !isDisabled(val)) {
         setVal(val)
+      } else if (typeof val !== 'undefined' && isDisabled(val)) {
+        // If landed on disabled value, find nearest valid value and scroll to it
+        const nearest = findNearestValidValue(i)
+        if (nearest) {
+          setVal(nearest.value)
+          setTimeout(() => {
+            ref.current?.scrollTo({ top: nearest.index * CellHeight, behavior: 'smooth' })
+          }, 100)
+        }
       }
     } else {
       timeoutRef.current = window.setTimeout(() => {
@@ -243,6 +282,15 @@ function TimePickerScrollerColumn({
         const val = k >= numbers.length ? numbers.at(-1) : numbers[k]
         if (typeof val !== 'undefined' && !isDisabled(val)) {
           setVal(val)
+        } else if (typeof val !== 'undefined' && isDisabled(val)) {
+          // If would land on disabled value, find nearest valid value and scroll to it
+          const nearest = findNearestValidValue(k)
+          if (nearest) {
+            setVal(nearest.value)
+            setTimeout(() => {
+              ref.current?.scrollTo({ top: nearest.index * CellHeight, behavior: 'smooth' })
+            }, 100)
+          }
         }
       }, 300)
     }
