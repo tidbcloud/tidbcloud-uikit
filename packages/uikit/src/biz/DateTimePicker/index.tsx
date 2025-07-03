@@ -118,10 +118,12 @@ export const DateTimePicker = ({
     ? formatter(currentValue.utcOffset(utcOffset).toDate())
     : currentValue.utcOffset(utcOffset).format(format)
 
-  const utcStr = useMemo(() => {
+  const { utcStr, isLocalTimeZone } = useMemo(() => {
     const h = Math.floor(utcOffset / 60)
     const m = utcOffset % 60
-    return `UTC${h >= 0 ? '+' : '-'}${Math.abs(h)}:${m < 10 ? '0' : ''}${m}`
+    const utcStr = `UTC${h >= 0 ? '+' : '-'}${Math.abs(h)}:${m < 10 ? '0' : ''}${m}`
+    const isLocalTimeZone = utcOffset === dayjs().utcOffset()
+    return { utcStr, isLocalTimeZone }
   }, [utcOffset])
 
   const calendarChange = useMemoizedFn((v: Date) => {
@@ -253,11 +255,10 @@ export const DateTimePicker = ({
           <Divider mx={-16} />
           <Group>
             <Typography size="sm">
-              Use{' '}
+              {isLocalTimeZone ? 'Local time zone' : 'Time zone'}:{' '}
               <Typography fw={600} component="span">
                 {utcStr}
-              </Typography>{' '}
-              from your local time zone
+              </Typography>
             </Typography>
           </Group>
         </Stack>
