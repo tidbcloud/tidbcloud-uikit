@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.4.10
+
+### Patch Changes
+
+- feat(ProMultiSelect): support `sx` and `size` props ([#561](https://github.com/tidbcloud/tidbcloud-uikit/pull/561))
+
 ## 2.4.9
 
 ### Patch Changes
