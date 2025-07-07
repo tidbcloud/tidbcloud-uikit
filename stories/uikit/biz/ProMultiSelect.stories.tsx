@@ -1,4 +1,5 @@
-import type { Meta, StoryObj, StoryFn } from '@storybook/react'
+import type { Meta, StoryFn, StoryObj } from '@storybook/react'
+import { Group } from '@tidbcloud/uikit'
 import { ProMultiSelect } from '@tidbcloud/uikit/biz'
 
 type Story = StoryObj<typeof ProMultiSelect>
@@ -26,6 +27,12 @@ export const Primary: Story = {
   parameters: {
     controls: { expanded: true }
   },
+  argTypes: {
+    size: {
+      options: ['xs', 'sm', 'md', 'lg', 'xl'],
+      control: { type: 'select' }
+    }
+  },
   args: {
     label: 'ProMultiSelect',
     searchable: true,
@@ -37,6 +44,7 @@ export const Primary: Story = {
     width: 330,
     placeholder: 'Select items',
     allowSelectAll: true,
+    size: 'md',
     data: [
       'Apples',
       'Cookie',
@@ -48,4 +56,23 @@ export const Primary: Story = {
       'Traditional Beef Wellington with Mushroom Duxelles'
     ]
   }
+}
+
+export function WithSx() {
+  return (
+    <Group>
+      <ProMultiSelect
+        label="ProMultiSelect"
+        searchable={true}
+        clearable={true}
+        loading={false}
+        disabled={false}
+        sx={{
+          flex: 1
+        }}
+      />
+
+      <div style={{ color: 'red' }}>placeholder</div>
+    </Group>
+  )
 }
