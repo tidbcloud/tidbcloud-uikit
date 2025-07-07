@@ -123,6 +123,7 @@ export interface ProMultiSelectProps
     | 'onSearchChange'
     | 'onRemove'
     | 'onClear'
+    | 'sx'
   > {
   loading?: boolean
   allowSelectAll?: boolean
@@ -274,6 +275,7 @@ export const ProMultiSelect: React.FC<ProMultiSelectProps> = (_props) => {
     error,
     allowSelectAll,
     selectAllText,
+    sx,
     onOptionSubmit,
     renderOption,
     filter,
@@ -469,6 +471,8 @@ export const ProMultiSelect: React.FC<ProMultiSelectProps> = (_props) => {
         <InputBase
           error={error}
           w={width}
+          sx={sx}
+          size={size}
           component="button"
           type="button"
           pointer
