@@ -725,8 +725,6 @@ const theme = createTheme({
             }
           },
           pill: {
-            backgroundColor: themeColor(theme, 'carbon', 3),
-            color: themeColor(theme, 'carbon', 8),
             borderRadius: theme.radius.sm
           },
           section: {
@@ -1352,6 +1350,16 @@ const theme = createTheme({
       }
     },
     Code: {
+      styles: (theme: MantineTheme) => {
+        return {
+          root: {
+            backgroundColor: themeColor(theme, 'carbon', 3),
+            color: themeColor(theme, 'carbon', 8)
+          }
+        }
+      }
+    },
+    Pill: {
       styles: (theme: MantineTheme) => {
         return {
           root: {
