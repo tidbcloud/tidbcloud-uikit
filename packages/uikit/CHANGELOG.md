@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.4.11
+
+### Patch Changes
+
+- fix(theme): move Pill styles to separate section in theme configuration ([#563](https://github.com/tidbcloud/tidbcloud-uikit/pull/563))
+
 ## 2.4.10
 
 ### Patch Changes
