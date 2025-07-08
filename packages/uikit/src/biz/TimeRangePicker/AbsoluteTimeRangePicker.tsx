@@ -122,9 +122,9 @@ const AbsoluteTimeRangePicker = ({
       <Group gap={0} pt={8} justify="space-between">
         <Typography variant="label-sm">{localization?.start || 'Start'}</Typography>
         <Group gap={8}>
-          <Input w={110} value={startDate} error={beyondMin || startAfterEnd || beyondDuration} />
+          <Input w={116} value={startDate} error={beyondMin || startAfterEnd || beyondDuration} />
           <TimeInput
-            w={116}
+            w={110}
             withSeconds
             value={startTime}
             onChange={(d) => updateTime(d.currentTarget.value, setStart)}
@@ -136,9 +136,9 @@ const AbsoluteTimeRangePicker = ({
       <Group gap={0} pt={8} justify="space-between">
         <Typography variant="label-sm">{localization?.end || 'End'}</Typography>
         <Group gap={8}>
-          <Input w={110} value={endDate} error={beyondMax || startAfterEnd || beyondDuration} />
+          <Input w={116} value={endDate} error={beyondMax || startAfterEnd || beyondDuration} />
           <TimeInput
-            w={116}
+            w={110}
             withSeconds
             value={endTime}
             onChange={(d) => updateTime(d.currentTarget.value, setEnd)}
