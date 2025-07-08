@@ -113,7 +113,7 @@ const AbsoluteTimeRangePicker = ({
   const apply = () => onChange?.({ type: 'absolute', value: [dayjs(start).unix(), dayjs(end).unix()] })
 
   return (
-    <Box p="md" w={280} m={-4}>
+    <Box p={8} pt="md" w={280} m={-4}>
       <Group pb="xs" mt={-4} onClick={onReturnClick} sx={{ cursor: 'pointer' }}>
         <IconChevronLeft size={16} />
         <Typography variant="body-lg">{localization?.back || 'Back'}</Typography>
@@ -124,7 +124,7 @@ const AbsoluteTimeRangePicker = ({
         <Group gap={8}>
           <Input w={116} value={startDate} error={beyondMin || startAfterEnd || beyondDuration} />
           <TimeInput
-            w={90}
+            w={110}
             withSeconds
             value={startTime}
             onChange={(d) => updateTime(d.currentTarget.value, setStart)}
@@ -138,7 +138,7 @@ const AbsoluteTimeRangePicker = ({
         <Group gap={8}>
           <Input w={116} value={endDate} error={beyondMax || startAfterEnd || beyondDuration} />
           <TimeInput
-            w={90}
+            w={110}
             withSeconds
             value={endTime}
             onChange={(d) => updateTime(d.currentTarget.value, setEnd)}
