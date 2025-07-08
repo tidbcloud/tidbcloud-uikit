@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.4.12
+
+### Patch Changes
+
+- fix(TimeRangePicker): adjust padding and width for input components in AbsoluteTimeRangePicker ([#565](https://github.com/tidbcloud/tidbcloud-uikit/pull/565))
+
 ## 2.4.11
 
 ### Patch Changes
