@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.4.13
+
+### Patch Changes
+
+- refactor(AppShell): enhance `NavItemBase` props and refine `SubNavItemBase` type ([#568](https://github.com/tidbcloud/tidbcloud-uikit/pull/568))
+
 ## 2.4.12
 
 ### Patch Changes
