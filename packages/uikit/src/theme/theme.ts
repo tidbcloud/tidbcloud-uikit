@@ -4,6 +4,7 @@ import {
   DEFAULT_THEME,
   MantineTheme,
   RadioIndicatorProps,
+  TagsInputProps,
   createTheme,
   mergeMantineTheme
 } from '@mantine/core'
@@ -68,6 +69,12 @@ function getInputStyles(theme: MantineTheme, props: Pick<InputProps, 'size' | 'v
         '--input-fz': `${inputFontSize}px`
       }
     : {}
+
+  const withInputSize = {
+    '&:not(.mantine-Textarea-input)': {
+      ...inputSize
+    }
+  }
   const passwordInnerInputSize = size
     ? {
         height: size - 2,
@@ -80,9 +87,7 @@ function getInputStyles(theme: MantineTheme, props: Pick<InputProps, 'size' | 'v
   if (props.variant === 'unstyled') {
     return {
       input: {
-        '&:not(.mantine-Textarea-input)': {
-          ...inputSize
-        },
+        ...withInputSize,
         '& .mantine-PasswordInput-innerInput': {
           ...passwordInnerInputSize
         },
@@ -98,9 +103,7 @@ function getInputStyles(theme: MantineTheme, props: Pick<InputProps, 'size' | 'v
       input: {
         '--input-bg': themeColor(theme, 'carbon', 3),
         '--input-bd-focus': themeColor(theme, 'carbon', 9),
-        '&:not(.mantine-Textarea-input)': {
-          ...inputSize
-        },
+        ...withInputSize,
         '& .mantine-PasswordInput-innerInput': {
           ...passwordInnerInputSize
         },
@@ -127,9 +130,7 @@ function getInputStyles(theme: MantineTheme, props: Pick<InputProps, 'size' | 'v
       border: `1px solid ${themeColor(theme, 'carbon', 4)}`,
       backgroundColor: themeColor(theme, 'carbon', 0),
 
-      '&:not(.mantine-Textarea-input)': {
-        ...inputSize
-      },
+      ...withInputSize,
 
       '&:hover': {
         borderColor: themeColor(theme, 'carbon', 5)
@@ -767,6 +768,27 @@ const theme = createTheme({
     },
     Textarea: {
       styles: getInputStyles
+    },
+    TagsInput: {
+      styles: (theme: MantineTheme, props: TagsInputProps) => {
+        const size = InputSizes[(props.size as keyof typeof InputSizes) ?? 'md']
+        // 2px is the border width
+        const inputSize = `calc(${size}px - 2 * var(--input-padding-y, 0rem) - 2px)`
+        return {
+          input: {
+            height: 'auto'
+          },
+          inputField: {
+            height: inputSize
+          },
+          pill: {
+            height: inputSize,
+            '& .mantine-Pill-label': {
+              lineHeight: inputSize
+            }
+          }
+        }
+      }
     },
     Badge: {
       defaultProps: {

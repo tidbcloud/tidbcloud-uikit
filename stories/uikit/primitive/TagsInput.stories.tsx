@@ -1,5 +1,5 @@
 import type { Meta, StoryFn } from '@storybook/react'
-import { TagsInput } from '@tidbcloud/uikit'
+import { Stack, TagsInput } from '@tidbcloud/uikit'
 import { useState } from 'react'
 
 const decorator = (Story: StoryFn) => {
@@ -46,5 +46,17 @@ export function MaxSelectedValues() {
       maxTags={3}
       defaultValue={['first', 'second']}
     />
+  )
+}
+
+export function Sizes() {
+  return (
+    <Stack>
+      <TagsInput label="XS" placeholder="Enter tag" size="xs" />
+      <TagsInput label="Small" placeholder="Enter tag" size="sm" />
+      <TagsInput label="Medium" placeholder="Enter tag" size="md" />
+      <TagsInput label="Large" placeholder="Enter tag" size="lg" />
+      <TagsInput label="X-Large" placeholder="Enter tag" size="xl" />
+    </Stack>
   )
 }
