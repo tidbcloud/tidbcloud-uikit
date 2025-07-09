@@ -20,24 +20,26 @@ const meta: Meta<typeof DateTimePicker> = {
 }
 
 const startDate = new Date()
-const endDate = new Date(Date.now() + 1000 * 60 * 60 * 24 * 3) // 3 days later
+const endDate = new Date(Date.now() + 1000 * 60 * 60 * 24 * 20) // 3 days later
 
 export function Demo() {
-  const [value, setValue] = useState<Date>(new Date())
+  // const [value, setValue] = useState<Date>(new Date())
+  const [value, setValue] = useState('2025-07-15T20:00:00Z')
   return (
     <Stack>
       <DateTimePicker
-        value={value}
-        onChange={setValue}
+        value={dayjs(value).toDate()}
+        onChange={(val) => setValue(new Date(dayjs(val).format('YYYY-MM-DD HH:mm Z')).toISOString())}
         startDate={startDate}
         endDate={endDate}
-        formatter={(val) =>
-          dayjs(val)
-            .utcOffset(-7 * 60)
-            .format('YYYY-MM-DD HH:mm:ss Z')
-        }
+        utcOffset={0}
+        // formatter={(val) =>
+        //   dayjs(val)
+        //     .utcOffset(-7 * 60)
+        //     .format('YYYY-MM-DD HH:mm:ss Z')
+        // }
       />
-      <Button onClick={() => setValue(new Date(Date.now() + Math.random() * 10000000000))}>Set random date</Button>
+      {/* <Button onClick={() => setValue(new Date(Date.now() + Math.random() * 10000000000))}>Set random date</Button> */}
     </Stack>
   )
 }

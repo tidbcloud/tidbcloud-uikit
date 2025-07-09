@@ -42,10 +42,6 @@ export interface DateTimePickerProps extends Omit<TextInputProps, 'value' | 'onC
    */
   formatter?: (val: Date) => string
 
-  /**
-   * This props is deprecated, use `formatter` instead to display the time in any timezone.
-   * @deprecated
-   */
   utcOffset?: number
   defaultValue?: Date
   value?: Date
@@ -72,11 +68,13 @@ export const DateTimePicker = ({
   withinPortal = true,
   sx,
   loading = false,
-  size
+  size,
+  utcOffset
 }: DateTimePickerProps) => {
   const [opened, { close, open }] = useDisclosure(false)
+  const curUtcOffset = utcOffset !== undefined ? utcOffset : dayjs().utcOffset()
   const [currentValue, setCurrentValue] = useUncontrolled({
-    value: value ? dayjs(value) : undefined,
+    value: value ? dayjs(value).utcOffset(curUtcOffset) : undefined,
     defaultValue: defaultValue ? dayjs(defaultValue) : dayjs(),
     onChange: (v) => {
       onChange?.(v.toDate())
@@ -108,7 +106,7 @@ export const DateTimePicker = ({
     }, 20)
   })
 
-  const inputStr = formatter ? formatter(currentValue.toDate()) : currentValue.format(format)
+  const inputStr = formatter ? formatter(currentValue.toDate()) : currentValue.utcOffset(curUtcOffset).format(format)
   const utcStr = useMemo(() => {
     const utcOffset = currentValue.utcOffset()
     const h = Math.floor(utcOffset / 60)
@@ -173,7 +171,7 @@ export const DateTimePicker = ({
             <DatePicker
               minDate={startDate}
               maxDate={endDate}
-              value={currentValue.toDate()}
+              value={dayjs(currentValue.format('YYYY-MM-DD')).toDate()}
               onChange={calendarChange}
               withCellSpacing={false}
               size="md"
@@ -244,7 +242,7 @@ export const DateTimePicker = ({
           <Divider mx={-16} />
           <Group>
             <Typography size="sm">
-              Time selection in local time zone:{' '}
+              Time selection in time zone:{' '}
               <Typography fw={600} component="span">
                 {utcStr}
               </Typography>
