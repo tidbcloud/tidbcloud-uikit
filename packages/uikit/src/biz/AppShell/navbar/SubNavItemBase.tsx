@@ -2,7 +2,7 @@ import { mergeSxList } from '../../../utils/index.js'
 
 import { NavItemBase, NavItemBaseProps } from './NavItemBase.js'
 
-export type SubNavItemBaseProps = Omit<NavItemBaseProps, 'leftSection' | 'defaultOpened'>
+export type SubNavItemBaseProps = Omit<NavItemBaseProps, 'leftSection' | 'defaultOpened' | 'opened'>
 
 /**
  * Base component for sub navigation items
