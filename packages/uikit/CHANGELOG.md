@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.4.14
+
+### Patch Changes
+
+- feat(TagsInput): add size support and styles to theme configuration ([#570](https://github.com/tidbcloud/tidbcloud-uikit/pull/570))
+
 ## 2.4.13
 
 ### Patch Changes
