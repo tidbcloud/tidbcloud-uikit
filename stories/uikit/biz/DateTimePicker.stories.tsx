@@ -1,5 +1,5 @@
 import { Meta, StoryFn } from '@storybook/react'
-import { Button, Stack } from '@tidbcloud/uikit'
+import { Button, Stack, Typography } from '@tidbcloud/uikit'
 import { DateTimePicker } from '@tidbcloud/uikit/biz'
 import { dayjs } from '@tidbcloud/uikit/utils'
 import { useState } from 'react'
@@ -35,6 +35,17 @@ export function Demo() {
           dayjs(val)
             .utcOffset(-7 * 60)
             .format('YYYY-MM-DD HH:mm:ss Z')
+        }
+        footer={
+          <Stack gap={4}>
+            <Typography size="sm">Local time: {dayjs(value).format('YYYY-MM-DD HH:mm:ss Z')}</Typography>
+            <Typography size="sm">
+              Orgnization time:{' '}
+              {dayjs(value)
+                .utcOffset(60 * -7)
+                .format('YYYY-MM-DD HH:mm:ss Z')}
+            </Typography>
+          </Stack>
         }
       />
       <Button onClick={() => setValue(new Date(Date.now() + Math.random() * 10000000000))}>Set random date</Button>
