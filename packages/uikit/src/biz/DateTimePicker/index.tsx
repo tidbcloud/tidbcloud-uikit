@@ -17,8 +17,7 @@ import {
   TextInput,
   TextInputProps,
   TimeInput,
-  TimeInputProps,
-  Typography
+  TimeInputProps
 } from '../../primitive/index.js'
 import { dayjs, type Dayjs } from '../../utils/dayjs.js'
 import { DEFAULT_TIME_FORMAT } from '../TimeRangePicker/helpers.js'
@@ -57,6 +56,7 @@ export interface DateTimePickerProps extends Omit<TextInputProps, 'value' | 'onC
   withinPortal?: boolean
   loading?: boolean
   size?: MantineSize
+  footer?: React.ReactNode
 }
 
 export const DateTimePicker = ({
@@ -72,7 +72,8 @@ export const DateTimePicker = ({
   withinPortal = true,
   sx,
   loading = false,
-  size
+  size,
+  footer
 }: DateTimePickerProps) => {
   const [opened, { close, open }] = useDisclosure(false)
   const [currentValue, setCurrentValue] = useUncontrolled({
@@ -241,15 +242,12 @@ export const DateTimePicker = ({
               </Box>
             </Stack>
           </Group>
-          <Divider mx={-16} />
-          <Group>
-            <Typography size="sm">
-              Time selection in local time zone:{' '}
-              <Typography fw={600} component="span">
-                {utcStr}
-              </Typography>
-            </Typography>
-          </Group>
+          {footer && (
+            <>
+              <Divider mx={-16} />
+              {footer}
+            </>
+          )}
         </Stack>
       </Popover.Dropdown>
     </Popover>
