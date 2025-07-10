@@ -477,7 +477,9 @@ export const ProMultiSelect: React.FC<ProMultiSelectProps> = (_props) => {
           type="button"
           pointer
           disabled={disabled || loading}
-          rightSection={loading ? <Loader size="sm" /> : _clearable ? clearButton : <Combobox.Chevron />}
+          rightSection={
+            loading ? <Loader size="sm" /> : _clearable ? clearButton : <Combobox.Chevron c="carbon.7" size="20" />
+          }
           label={label}
           styles={{
             label: { color: theme.colors.carbon[8], marginBottom: 6, fontSize: 14, lineHeight: '20px' },
@@ -487,7 +489,7 @@ export const ProMultiSelect: React.FC<ProMultiSelectProps> = (_props) => {
           rightSectionPointerEvents={value === null ? 'none' : 'all'}
           onClick={() => combobox.toggleDropdown()}
         >
-          {_value.length === 0 && !!placeholder && <Input.Placeholder>{placeholder}</Input.Placeholder>}
+          {_value.length === 0 && !!placeholder && <Input.Placeholder c="carbon.6">{placeholder}</Input.Placeholder>}
 
           {/*This Pill.Group is only for computed*/}
           <Pill.Group
