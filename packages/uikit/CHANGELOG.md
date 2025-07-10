@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.4.15
+
+### Patch Changes
+
+- Fix/promultiselect UI issule ([#572](https://github.com/tidbcloud/tidbcloud-uikit/pull/572))
+
 ## 2.4.14
 
 ### Patch Changes
