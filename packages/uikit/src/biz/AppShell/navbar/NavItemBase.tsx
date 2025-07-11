@@ -24,6 +24,7 @@ export interface NavItemBaseProps
    * Tooltip content
    */
   tooltip?: React.ReactNode
+  [p: `data-${string}`]: string
 }
 
 /**
