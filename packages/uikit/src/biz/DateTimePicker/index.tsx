@@ -24,6 +24,8 @@ import { DEFAULT_TIME_FORMAT } from '../TimeRangePicker/helpers.js'
 
 import { CurrentValueChangedBy, TimeScollerPicker } from './TimeScollerPicker.js'
 
+export { useDateTimePicker } from './helpers.js'
+
 export interface DateTimePickerProps extends Omit<TextInputProps, 'value' | 'onChange' | 'defaultValue'> {
   /**
    * The placeholder of the input.

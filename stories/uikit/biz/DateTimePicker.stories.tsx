@@ -1,8 +1,7 @@
 import { Meta, StoryFn } from '@storybook/react'
 import { Button, Stack, Typography } from '@tidbcloud/uikit'
-import { DateTimePicker } from '@tidbcloud/uikit/biz'
+import { DateTimePicker, useDateTimePicker } from '@tidbcloud/uikit/biz'
 import { dayjs } from '@tidbcloud/uikit/utils'
-import { useState } from 'react'
 
 const decorator = (Story: StoryFn) => {
   return (
@@ -19,23 +18,29 @@ const meta: Meta<typeof DateTimePicker> = {
   parameters: {}
 }
 
-const startDate = new Date()
-const endDate = new Date(Date.now() + 1000 * 60 * 60 * 24 * 3) // 3 days later
+const startDate = new Date(Date.now() - 1000 * 60 * 60 * 24 * 3) // 3 days ago
+const endDate = new Date()
 
 export function Demo() {
-  const [value, setValue] = useState<Date>(new Date())
+  const { value, start, end, setValue } = useDateTimePicker({
+    start: startDate,
+    end: endDate,
+    defaultValue: new Date(),
+    utcOffset: '+00:00',
+    onChange: (date, utcString) => {
+      // date is actually the time you can sent to the server
+      console.log(date?.format('YYYY-MM-DD HH:mm:ss Z'), utcString)
+    }
+  })
+
   return (
     <Stack>
       <DateTimePicker
         value={value}
         onChange={setValue}
-        startDate={startDate}
-        endDate={endDate}
-        formatter={(val) =>
-          dayjs(val)
-            .utcOffset(-7 * 60)
-            .format('YYYY-MM-DD HH:mm:ss Z')
-        }
+        startDate={start}
+        endDate={end}
+        formatter={(val) => dayjs(val).utcOffset('+00:00', true).format('YYYY-MM-DD HH:mm:ss Z')}
         footer={
           <Stack gap={4}>
             <Typography size="sm">Local time: {dayjs(value).format('YYYY-MM-DD HH:mm:ss Z')}</Typography>
