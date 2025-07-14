@@ -50,9 +50,7 @@ export const useDateTimePicker = ({
   utcOffset = dayjs().utcOffset(),
   format,
   formatter
-}: UseDateTimePickerProps): Pick<DateTimePickerProps, 'value' | 'onChange' | 'startDate' | 'endDate' | 'formatter'> & {
-  computedValue: Dayjs | undefined
-} => {
+}: UseDateTimePickerProps): Pick<DateTimePickerProps, 'value' | 'onChange' | 'startDate' | 'endDate' | 'formatter'> => {
   // Convert time with specified utcOffset to local timezone for display
   const convertToLocal = useMemoizedFn((date: Date): Date => {
     // Treat time as specified utcOffset time, then shift to local timezone
@@ -91,14 +89,8 @@ export const useDateTimePicker = ({
     onChange?.(targetTime)
   })
 
-  const computedValue = useMemo(() => {
-    if (!value) return undefined
-    return dayjs(value).utcOffset(utcOffset)
-  }, [value, utcOffset])
-
   return {
     value: displayValue,
-    computedValue,
     onChange: handleChange,
     startDate: displayStartDate,
     endDate: displayEndDate,

@@ -21,14 +21,13 @@ const meta: Meta<typeof DateTimePicker> = {
 
 export function Demo() {
   const [value, setValue] = useState<Date>(new Date())
-  const utcOffset = '+09:00'
+  const utcOffset = '-01:00'
   const {
     value: displayValue,
     startDate,
     endDate,
     onChange,
-    formatter,
-    computedValue
+    formatter
   } = useDateTimePicker({
     startDate: new Date(Date.now() - 1000 * 60 * 60 * 24 * 3),
     endDate: new Date(),
@@ -39,7 +38,7 @@ export function Demo() {
   })
 
   // This is the value that will be sent to the server
-  console.log(computedValue?.format('YYYY-MM-DD HH:mm:ss Z'))
+  console.log(dayjs.utc(value).utcOffset(utcOffset).format('YYYY-MM-DD HH:mm:ss Z'))
   return (
     <Stack>
       <DateTimePicker
