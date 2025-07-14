@@ -1,5 +1,16 @@
 # @tidbcloud/uikit
 
+## 2.4.16
+
+### Patch Changes
+
+- feat(DateTimePicker): implement useDateTimePicker ([#577](https://github.com/tidbcloud/tidbcloud-uikit/pull/577))
+- refine(AppShell): add data attribute support to NavItemBase component ([#575](https://github.com/tidbcloud/tidbcloud-uikit/pull/575))
+- feat(DateTimePicker): add footer prop for custom content in DateTimePicker component ([#574](https://github.com/tidbcloud/tidbcloud-uikit/pull/574))
+- feat(DateTimePicker): implement useDateTimePicker ([#577](https://github.com/tidbcloud/tidbcloud-uikit/pull/577))
+- refine(AppShell): add data attribute support to NavItemBase component ([#575](https://github.com/tidbcloud/tidbcloud-uikit/pull/575))
+- feat(DateTimePicker): add footer prop for custom content in DateTimePicker component ([#574](https://github.com/tidbcloud/tidbcloud-uikit/pull/574))
+
 ## 2.4.15
 
 ### Patch Changes
