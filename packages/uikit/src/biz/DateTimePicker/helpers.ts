@@ -1,138 +1,110 @@
-import dayjs, { Dayjs } from 'dayjs'
-import utc from 'dayjs/plugin/utc'
-import { useState, useMemo, useCallback } from 'react'
+import { useMemoizedFn } from 'ahooks'
+import { useMemo } from 'react'
 
-// Initialize dayjs plugins
-dayjs.extend(utc)
+import { dayjs, Dayjs } from '../../utils/dayjs.js'
 
-// --- Type Definitions ---
+import { DateTimePickerProps } from './types.js'
 
-/**
- * Props for the useDateTimePicker hook.
- */
-type UseDateTimePickerProps = {
-  /** The controlled value. If provided, the hook operates in controlled mode. */
-  value?: string | Date | undefined
-  /** The initial value for uncontrolled mode. Ignored if `value` is provided. */
-  defaultValue?: string | Date | undefined
-  /** The minimum selectable date (UTC string or Date object). */
-  start?: string | Date | undefined
-  /** The maximum selectable date (UTC string or Date object). */
-  end?: string | Date | undefined
-  /** The target UTC offset the component should operate in, e.g., '+08:00'. */
-  utcOffset: string
-  /** Callback that returns the correct UTC string when the value changes. */
-  onChange?: (date: Dayjs | undefined, utcString: string | undefined) => void
+export interface UseDateTimePickerProps
+  extends Pick<DateTimePickerProps, 'value' | 'onChange' | 'startDate' | 'endDate' | 'format' | 'formatter'> {
+  /**
+   * the UTC offset in minutes.
+   * User selected time will be treated as time in that timezone
+   * If the input is less than 16 and greater than -16, it will interpret your input as hours instead.
+   * It also can be a string like '+09:00' or '-01:00'
+   * @see https://day.js.org/docs/en/manipulate/utc-offset
+   */
+  utcOffset?: number | string
 }
 
 /**
- * The return value of the useDateTimePicker hook.
- */
-type UseDateTimePickerReturn = {
-  value: Date | undefined
-  start: Date | undefined
-  end: Date | undefined
-  setValue: (date: Date | undefined) => void
-}
-
-// --- Helper Functions ---
-
-/**
- * Reinterprets a date/time (Date object or string) as a time in a specific UTC offset.
- * This is key for handling user input from the picker, leveraging dayjs's `keepLocalTime` feature.
- */
-const reinterpretDateInTargetOffset = (
-  dateToReinterpret: Date | string | null | undefined,
-  targetOffsetString: string
-): Dayjs | undefined => {
-  if (!dateToReinterpret) return undefined
-  return dayjs(dateToReinterpret).utcOffset(targetOffsetString, true)
-}
-
-/**
- * Converts a UTC time value (string or Date) into a 'visual' Date object
- * that displays correctly on a calendar operating in a specific target offset.
- */
-const createVisualDateForPicker = (
-  utcValue: string | Date | null | undefined,
-  offsetString: string
-): Date | undefined => {
-  if (!utcValue) return undefined
-
-  const sign = offsetString[0] === '-' ? -1 : 1
-  const parts = offsetString.substring(1).split(':')
-  const hours = parseInt(parts[0], 10)
-  const minutes = parseInt(parts[1] || '0', 10)
-  const totalOffsetMinutes = sign * (hours * 60 + minutes)
-
-  const dateInTargetOffset = dayjs.utc(utcValue).utcOffset(totalOffsetMinutes)
-
-  return new Date(
-    dateInTargetOffset.year(),
-    dateInTargetOffset.month(),
-    dateInTargetOffset.date(),
-    dateInTargetOffset.hour(),
-    dateInTargetOffset.minute(),
-    dateInTargetOffset.second()
-  )
-}
-
-// --- Core Hook ---
-
-/**
- * A React Hook to handle timezone issues for date/time pickers.
- * It acts as an adapter between the server (UTC time) and the UI component (visual/local time).
- * Supports both controlled (via `value`) and uncontrolled (via `defaultValue`) modes.
+ * Hook for timezone-aware DateTimePicker
+ *
+ * @example
+ * ```tsx
+ * const Component = () => {
+ *   const [value, setValue] = useState<Date>()
+ *
+ *   // UTC+8 timezone (480 minutes)
+ *   const utcOffset = 480
+ *
+ *   // Use hook to convert timezone
+ *   const dateTimePickerProps = useDateTimePicker({
+ *     value,
+ *     onChange: setValue,
+ *     startDate: dayjs().subtract(1, 'day').toDate(),
+ *     endDate: dayjs().add(1, 'day').toDate(),
+ *     utcOffset
+ *   })
+ *
+ *   // Use spread operator to pass converted props
+ *   return <DateTimePicker {...dateTimePickerProps} />
+ * }
+ * ```
  */
 export const useDateTimePicker = ({
   value,
-  defaultValue,
-  start: serverStart,
-  end: serverEnd,
-  utcOffset,
-  onChange
-}: UseDateTimePickerProps): UseDateTimePickerReturn => {
-  // Determine if the component is controlled.
-  const isControlled = value !== undefined
+  onChange,
+  startDate = dayjs().subtract(10, 'year').toDate(),
+  endDate = dayjs().add(10, 'year').toDate(),
+  utcOffset = dayjs().utcOffset(),
+  format,
+  formatter
+}: UseDateTimePickerProps): Pick<DateTimePickerProps, 'value' | 'onChange' | 'startDate' | 'endDate' | 'formatter'> & {
+  computedValue: Dayjs | undefined
+} => {
+  // Convert time with specified utcOffset to local timezone for display
+  const convertToLocal = useMemoizedFn((date: Date): Date => {
+    // Treat time as specified utcOffset time, then shift to local timezone
+    const targetTime = dayjs(date).utcOffset(utcOffset)
+    const converted = targetTime.utcOffset(dayjs().utcOffset(), true)
+    // Don't just call `toDate()`, it will not work due to https://github.com/iamkun/dayjs/issues/1803
+    // Convert to string first to avoid corrupted internal state
+    return new Date(converted.format())
+  })
 
-  // Internal state for uncontrolled mode. Initialized only once from defaultValue.
-  const [internalValue, setInternalValue] = useState<Date | undefined>(() =>
-    createVisualDateForPicker(defaultValue, utcOffset)
-  )
+  // Convert local timezone time to specified utcOffset time
+  const convertFromLocal = useMemoizedFn((date: Date) => {
+    // User selected time, first utcOffset(target, true) then set to target timezone
+    const targetTime = dayjs(date).utcOffset(utcOffset, true)
+    return new Date(targetTime.format())
+  })
 
-  // Forward conversion for start/end boundaries.
-  const displayStart = useMemo(() => createVisualDateForPicker(serverStart, utcOffset), [serverStart, utcOffset])
+  // Convert controlled value from specified timezone to local timezone
+  const displayValue = useMemo(() => {
+    if (!value) return undefined
+    return convertToLocal(value)
+  }, [value, convertToLocal])
 
-  const displayEnd = useMemo(() => createVisualDateForPicker(serverEnd, utcOffset), [serverEnd, utcOffset])
+  // Convert start/end time from specified timezone to local timezone
+  const displayStartDate = useMemo(() => {
+    return convertToLocal(startDate)
+  }, [startDate, convertToLocal])
 
-  // Determine the value to display in the picker.
-  // If controlled, derive from the `value` prop. If uncontrolled, use internal state.
-  const displayValue = isControlled
-    ? useMemo(() => createVisualDateForPicker(value, utcOffset), [value, utcOffset])
-    : internalValue
+  const displayEndDate = useMemo(() => {
+    return convertToLocal(endDate)
+  }, [endDate, convertToLocal])
 
-  // Reverse conversion: Process the local Date object from the picker.
-  const handleValueChange = useCallback(
-    (dateFromPicker: Date | undefined) => {
-      // This is the core reverse logic.
-      const correctDayjsObject = reinterpretDateInTargetOffset(dateFromPicker, utcOffset)
-      const finalUtcString = correctDayjsObject ? correctDayjsObject.toISOString() : undefined
+  // Handle onChange callback, convert local timezone time to specified timezone
+  const handleChange = useMemoizedFn((localTime: Date) => {
+    const targetTime = convertFromLocal(localTime)
+    onChange?.(targetTime)
+  })
 
-      // If in uncontrolled mode, update the internal state.
-      if (!isControlled) {
-        setInternalValue(dateFromPicker)
-      }
-
-      // Always call the provided callback with the correctly processed UTC string.
-      onChange?.(correctDayjsObject, finalUtcString)
-    },
-    [utcOffset, onChange, isControlled]
-  )
+  const computedValue = useMemo(() => {
+    if (!value) return undefined
+    return dayjs(value).utcOffset(utcOffset)
+  }, [value, utcOffset])
 
   return {
     value: displayValue,
-    start: displayStart,
-    end: displayEnd,
-    setValue: handleValueChange
+    computedValue,
+    onChange: handleChange,
+    startDate: displayStartDate,
+    endDate: displayEndDate,
+    formatter: (val) => {
+      const targetTime = dayjs(val).utcOffset(utcOffset, true)
+      return formatter ? formatter(new Date(targetTime.format())) : targetTime.format(format)
+    }
   }
 }

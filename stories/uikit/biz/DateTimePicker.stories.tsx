@@ -2,6 +2,7 @@ import { Meta, StoryFn } from '@storybook/react'
 import { Button, Stack, Typography } from '@tidbcloud/uikit'
 import { DateTimePicker, useDateTimePicker } from '@tidbcloud/uikit/biz'
 import { dayjs } from '@tidbcloud/uikit/utils'
+import { useState } from 'react'
 
 const decorator = (Story: StoryFn) => {
   return (
@@ -18,29 +19,35 @@ const meta: Meta<typeof DateTimePicker> = {
   parameters: {}
 }
 
-const startDate = new Date(Date.now() - 1000 * 60 * 60 * 24 * 3) // 3 days ago
-const endDate = new Date()
-
 export function Demo() {
-  const { value, start, end, setValue } = useDateTimePicker({
-    start: startDate,
-    end: endDate,
-    defaultValue: new Date(),
-    utcOffset: '+00:00',
-    onChange: (date, utcString) => {
-      // date is actually the time you can sent to the server
-      console.log(date?.format('YYYY-MM-DD HH:mm:ss Z'), utcString)
-    }
+  const [value, setValue] = useState<Date>(new Date())
+  const utcOffset = '+09:00'
+  const {
+    value: displayValue,
+    startDate,
+    endDate,
+    onChange,
+    formatter,
+    computedValue
+  } = useDateTimePicker({
+    startDate: new Date(Date.now() - 1000 * 60 * 60 * 24 * 3),
+    endDate: new Date(),
+    value,
+    utcOffset,
+    onChange: setValue,
+    format: 'YYYY-MM-DD HH:mm:ss Z'
   })
 
+  // This is the value that will be sent to the server
+  console.log(computedValue?.format('YYYY-MM-DD HH:mm:ss Z'))
   return (
     <Stack>
       <DateTimePicker
-        value={value}
-        onChange={setValue}
-        startDate={start}
-        endDate={end}
-        formatter={(val) => dayjs(val).utcOffset('+00:00', true).format('YYYY-MM-DD HH:mm:ss Z')}
+        value={displayValue}
+        onChange={onChange}
+        startDate={startDate}
+        endDate={endDate}
+        formatter={formatter}
         footer={
           <Stack gap={4}>
             <Typography size="sm">Local time: {dayjs(value).format('YYYY-MM-DD HH:mm:ss Z')}</Typography>
@@ -53,7 +60,7 @@ export function Demo() {
           </Stack>
         }
       />
-      <Button onClick={() => setValue(new Date(Date.now() + Math.random() * 10000000000))}>Set random date</Button>
+      <Button onClick={() => onChange?.(new Date(Date.now() + Math.random() * 10000000000))}>Set random date</Button>
     </Stack>
   )
 }
