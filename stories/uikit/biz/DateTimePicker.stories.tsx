@@ -1,6 +1,6 @@
 import { Meta, StoryFn } from '@storybook/react'
 import { Button, Stack, Typography } from '@tidbcloud/uikit'
-import { DateTimePicker } from '@tidbcloud/uikit/biz'
+import { DateTimePicker, useDateTimePicker } from '@tidbcloud/uikit/biz'
 import { dayjs } from '@tidbcloud/uikit/utils'
 import { useState } from 'react'
 
@@ -19,23 +19,34 @@ const meta: Meta<typeof DateTimePicker> = {
   parameters: {}
 }
 
-const startDate = new Date()
-const endDate = new Date(Date.now() + 1000 * 60 * 60 * 24 * 3) // 3 days later
-
 export function Demo() {
   const [value, setValue] = useState<Date>(new Date())
+  const utcOffset = '-01:00'
+  const {
+    value: displayValue,
+    startDate,
+    endDate,
+    onChange,
+    formatter
+  } = useDateTimePicker({
+    startDate: new Date(Date.now() - 1000 * 60 * 60 * 24 * 3),
+    endDate: new Date(),
+    value,
+    utcOffset,
+    onChange: setValue,
+    format: 'YYYY-MM-DD HH:mm:ss Z'
+  })
+
+  // This is the value that will be sent to the server
+  console.log(dayjs.utc(value).utcOffset(utcOffset).format('YYYY-MM-DD HH:mm:ss Z'))
   return (
     <Stack>
       <DateTimePicker
-        value={value}
-        onChange={setValue}
+        value={displayValue}
+        onChange={onChange}
         startDate={startDate}
         endDate={endDate}
-        formatter={(val) =>
-          dayjs(val)
-            .utcOffset(-7 * 60)
-            .format('YYYY-MM-DD HH:mm:ss Z')
-        }
+        formatter={formatter}
         footer={
           <Stack gap={4}>
             <Typography size="sm">Local time: {dayjs(value).format('YYYY-MM-DD HH:mm:ss Z')}</Typography>
@@ -48,7 +59,7 @@ export function Demo() {
           </Stack>
         }
       />
-      <Button onClick={() => setValue(new Date(Date.now() + Math.random() * 10000000000))}>Set random date</Button>
+      <Button onClick={() => onChange?.(new Date(Date.now() + Math.random() * 10000000000))}>Set random date</Button>
     </Stack>
   )
 }
