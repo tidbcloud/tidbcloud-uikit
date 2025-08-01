@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.4.17
+
+### Patch Changes
+
+- feat(uikit): add withCopyButton field for CodeBlock ([#578](https://github.com/tidbcloud/tidbcloud-uikit/pull/578))
+
 ## 2.4.16
 
 ### Patch Changes
