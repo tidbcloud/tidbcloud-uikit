@@ -39,6 +39,7 @@ export interface CodeBlockProps extends BoxProps {
   }
 
   withBorder?: boolean
+  withCopyButton?: boolean
 }
 
 export const CodeBlock = ({
@@ -50,6 +51,7 @@ export const CodeBlock = ({
   codeHighlightProps,
   foldProps,
   withBorder = true,
+  withCopyButton = true,
   ...rest
 }: CodeBlockProps) => {
   const { defaultHeight, persistenceKey, iconVisible: foldIconVisible, onIconClick: onFoldIconClick } = foldProps || {}
@@ -130,26 +132,28 @@ export const CodeBlock = ({
           </HoverCard>
         )}
 
-        <CopyButton value={copyContent ?? children} timeout={2000}>
-          {({ copied, copy }) => (
-            <HoverCard withArrow position="top" shadow="xs">
-              <HoverCard.Target>
-                <ActionIcon
-                  aria-label="Copy"
-                  size="sm"
-                  variant="subtle"
-                  onClick={() => {
-                    copy()
-                    onCopyClick?.()
-                  }}
-                >
-                  {copied ? <IconCheck size={14} /> : <IconCopy01 size={14} />}
-                </ActionIcon>
-              </HoverCard.Target>
-              <HoverCard.Dropdown p="xs">{copied ? 'Copied' : 'Copy'}</HoverCard.Dropdown>
-            </HoverCard>
-          )}
-        </CopyButton>
+        {withCopyButton && (
+          <CopyButton value={copyContent ?? children} timeout={2000}>
+            {({ copied, copy }) => (
+              <HoverCard withArrow position="top" shadow="xs">
+                <HoverCard.Target>
+                  <ActionIcon
+                    aria-label="Copy"
+                    size="sm"
+                    variant="subtle"
+                    onClick={() => {
+                      copy()
+                      onCopyClick?.()
+                    }}
+                  >
+                    {copied ? <IconCheck size={14} /> : <IconCopy01 size={14} />}
+                  </ActionIcon>
+                </HoverCard.Target>
+                <HoverCard.Dropdown p="xs">{copied ? 'Copied' : 'Copy'}</HoverCard.Dropdown>
+              </HoverCard>
+            )}
+          </CopyButton>
+        )}
       </Group>
     </Box>
   )
