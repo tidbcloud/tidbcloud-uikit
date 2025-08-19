@@ -146,7 +146,7 @@ export const DateTimePicker = ({
               value={currentValue.toDate()}
               onChange={calendarChange}
               withCellSpacing={false}
-              size="md"
+              size="sm"
             />
 
             <Divider orientation="vertical" mt={-12} mb={-16} />
@@ -156,11 +156,18 @@ export const DateTimePicker = ({
                 withSeconds
                 value={currentValue.format('HH:mm:ss')}
                 onChange={timeInputChange}
-                size="sm"
+                size="md"
                 w={112}
                 styles={{
                   input: {
-                    height: 30
+                    '--input-size': '32px!important',
+                    '--input-height': '32px!important',
+                    '--input-line-height': '30px!important',
+                    fontVariantNumeric: 'tabular-nums',
+                    '&::-webkit-datetime-edit-fields-wrapper': {
+                      display: 'flex',
+                      justifyContent: 'space-between'
+                    }
                   }
                 }}
               />
