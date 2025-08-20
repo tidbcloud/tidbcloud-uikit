@@ -1283,9 +1283,13 @@ const theme = createTheme({
           calendarHeader: {
             maxWidth: '100%'
           },
+          monthCell: {
+            padding: 4
+          },
           day: {
             '--day-size-sm': '32px',
             '--day-size-md': '40px',
+            fontSize: 'round(up, calc(var(--day-size) / 2.3), 1px)',
             color: themeColor(theme, color, 8),
             '&[data-in-range]': {
               backgroundColor: themeColor(theme, color, 3),
