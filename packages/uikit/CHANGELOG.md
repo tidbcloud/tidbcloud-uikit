@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.4.18
+
+### Patch Changes
+
+- Refine DateTimePicker input sizes and styles for better UX ([#580](https://github.com/tidbcloud/tidbcloud-uikit/pull/580))
+
 ## 2.4.17
 
 ### Patch Changes
