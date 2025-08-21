@@ -1,3 +1,0 @@
----
-'@tidbcloud/uikit': patch
----
