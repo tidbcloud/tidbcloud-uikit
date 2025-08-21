@@ -221,7 +221,7 @@ export const mustard = [
   '#CCE8B0',
   '#B8DF90',
   '#99D161',
-  '#788946',
+  '#78B946',
   '#5C9933'
 ] as ShadingColor
 
