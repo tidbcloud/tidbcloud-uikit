@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.4.19
+
+### Patch Changes
+
+- fix(colors): correct mustard color value in theme colors ([#582](https://github.com/tidbcloud/tidbcloud-uikit/pull/582))
+
 ## 2.4.18
 
 ### Patch Changes
