@@ -1,5 +1,5 @@
 import { Meta, StoryFn, StoryObj } from '@storybook/react'
-import { Box, Button, Group, Stack, Typography } from '@tidbcloud/uikit'
+import { Button, Group, Stack, Typography } from '@tidbcloud/uikit'
 import { CollapsibleCard } from '@tidbcloud/uikit/biz'
 
 type Story = StoryObj<typeof CollapsibleCard>
@@ -45,6 +45,7 @@ export const Primary: Story = {
     return (
       <Stack>
         <CollapsibleCard
+          onTransitionEnd={(opened) => console.log('Transition ended with opened', opened)}
           title={
             <Group>
               <Typography>click title to toggle card</Typography>
