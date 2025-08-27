@@ -1,5 +1,12 @@
 # @tidbcloud/uikit-example-with-vitejs
 
+## 0.0.58
+
+### Patch Changes
+
+- Updated dependencies [750b5b5]
+  - @tidbcloud/uikit@2.5.0
+
 ## 0.0.57
 
 ### Patch Changes

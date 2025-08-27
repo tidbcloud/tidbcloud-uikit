@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.5.0
+
+### Minor Changes
+
+- feat: add CollapsibleCard component with stories ([#584](https://github.com/tidbcloud/tidbcloud-uikit/pull/584))
+
 ## 2.4.19
 
 ### Patch Changes
