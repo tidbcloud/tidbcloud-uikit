@@ -5,7 +5,6 @@ import { Box, BoxProps, Card, CardProps, Collapse, Group, GroupProps } from '../
 export interface CollapsibleCardProps extends CardProps {
   title: React.ReactNode
   children: React.ReactNode
-
   defaultOpened?: boolean
   headerProps?: GroupProps
   contentProps?: BoxProps
