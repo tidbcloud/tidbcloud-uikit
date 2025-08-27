@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.5.2
+
+### Patch Changes
+
+- feat: update CollapsibleCard for improved state management ([#588](https://github.com/tidbcloud/tidbcloud-uikit/pull/588))
+
 ## 2.5.1
 
 ### Patch Changes
