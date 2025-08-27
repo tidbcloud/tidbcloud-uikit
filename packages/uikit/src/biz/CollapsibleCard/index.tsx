@@ -15,7 +15,7 @@ export const CollapsibleCard = ({ children, title, defaultOpened = false }: Coll
   return (
     <Card>
       <Card.Section>
-        <Group onClick={toggle} sx={{ cursor: 'pointer', userSelect: 'none' }} p={16} bg="carbon.2">
+        <Group onClick={toggle} align="center" sx={{ cursor: 'pointer', userSelect: 'none' }} p={16} bg="carbon.2">
           <IconChevronRight
             size={18}
             sx={{
@@ -24,12 +24,14 @@ export const CollapsibleCard = ({ children, title, defaultOpened = false }: Coll
             }}
           />
 
-          <Box sx={{ flexGrow: 1 }}>{title}</Box>
+          {title}
         </Group>
       </Card.Section>
 
       <Card.Section>
-        <Collapse in={opened}>{children}</Collapse>
+        <Collapse in={opened}>
+          <Box p={16}>{children}</Box>
+        </Collapse>
       </Card.Section>
     </Card>
   )

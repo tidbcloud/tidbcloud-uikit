@@ -1,5 +1,5 @@
 import { Meta, StoryFn, StoryObj } from '@storybook/react'
-import { Box, Stack, Typography } from '@tidbcloud/uikit'
+import { Box, Button, Group, Stack, Typography } from '@tidbcloud/uikit'
 import { CollapsibleCard } from '@tidbcloud/uikit/biz'
 
 type Story = StoryObj<typeof CollapsibleCard>
@@ -44,10 +44,15 @@ export const Primary: Story = {
   render: (props) => {
     return (
       <Stack>
-        <CollapsibleCard title="click title to toggle card">
-          <Box p={16}>
-            <Typography>This is the content of the collapsible card.</Typography>
-          </Box>
+        <CollapsibleCard
+          title={
+            <Group>
+              <Typography>click title to toggle card</Typography>
+              <Button>hello</Button>
+            </Group>
+          }
+        >
+          <Typography>This is the content of the collapsible card.</Typography>
         </CollapsibleCard>
       </Stack>
     )
