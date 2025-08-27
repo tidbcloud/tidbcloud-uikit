@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.5.1
+
+### Patch Changes
+
+- fix: enhance CollapsibleCard with customizable header and content props ([#586](https://github.com/tidbcloud/tidbcloud-uikit/pull/586))
+
 ## 2.5.0
 
 ### Minor Changes
