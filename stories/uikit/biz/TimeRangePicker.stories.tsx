@@ -1,6 +1,7 @@
 import 'dayjs/locale/zh'
 
 import type { Meta, StoryObj, StoryFn } from '@storybook/react'
+import { Typography } from '@tidbcloud/uikit'
 import { AbsoluteTimeRange, RelativeTimeRange, TimeRangePicker, TimeRangePickerProps } from '@tidbcloud/uikit/biz'
 import { dayjs } from '@tidbcloud/uikit/utils'
 import duration from 'dayjs/plugin/duration'
@@ -39,7 +40,12 @@ export default meta
 // More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
 export const Basic: Story = {
   args: {
-    value: { type: 'relative', value: 30 * 60 }
+    value: { type: 'relative', value: 30 * 60 },
+    footer: (
+      <Typography c="carbon.7" px={14} pt={8} pb={6} fz="xs">
+        Current used is org time zone: UTC+08:00
+      </Typography>
+    )
   }
 }
 

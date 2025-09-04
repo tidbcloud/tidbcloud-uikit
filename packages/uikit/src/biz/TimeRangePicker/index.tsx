@@ -12,7 +12,8 @@ import {
   Typography,
   ButtonProps,
   ActionIcon,
-  DatePickerProps
+  DatePickerProps,
+  Divider
 } from '../../primitive/index.js'
 
 import AbsoluteTimeRangePicker, { Localization } from './AbsoluteTimeRangePicker.js'
@@ -39,6 +40,7 @@ export interface TimeRangePickerBaseProps extends ButtonProps {
   clearable?: boolean
   relativeFormatter?: (relativeRange: RelativeTimeRange) => string
   absoluteFormatter?: (absoluteRange: AbsoluteTimeRange) => string
+  footer?: React.ReactNode
 
   minDateTime?: () => Date
   maxDateTime?: () => Date
@@ -82,7 +84,8 @@ export const TimeRangePicker = ({
   datePickerProps,
   localization,
   relativeFormatter,
-  absoluteFormatter
+  absoluteFormatter,
+  footer
 }: React.PropsWithChildren<TimeRangePickerProps>) => {
   const [opened, setOpened] = useState(false)
   const [customMode, setCustomMode] = useState(false)
@@ -269,6 +272,13 @@ export const TimeRangePicker = ({
                 )
               })}
             </>
+          </>
+        )}
+
+        {footer && (
+          <>
+            <Divider mx={-4} mt={4} />
+            {footer}
           </>
         )}
       </Menu.Dropdown>
