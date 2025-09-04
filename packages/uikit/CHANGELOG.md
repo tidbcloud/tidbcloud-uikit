@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.5.3
+
+### Patch Changes
+
+- feat: add footer prop to TimeRangePicker for customizable content ([#592](https://github.com/tidbcloud/tidbcloud-uikit/pull/592))
+
 ## 2.5.2
 
 ### Patch Changes
