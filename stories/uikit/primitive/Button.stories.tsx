@@ -249,3 +249,11 @@ export const DataDisabled: Story = {
     </Button>
   )
 }
+
+export const Transparent = () => {
+  return (
+    <Button variant="transparent" color="peacock" leftSection={<IconSettings01 size={16} />}>
+      Transparent
+    </Button>
+  )
+}

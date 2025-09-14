@@ -324,12 +324,22 @@ const theme = createTheme({
           }
         }
 
+        const getTransparentStyles = () => {
+          return {
+            color: themeColor(theme, color, 7),
+            '&:hover': {
+              color: themeColor(theme, color, 7)
+            }
+          }
+        }
+
         const variantStyles = {
           filled: getFilledStyles(),
           light: getLightStyles(),
           default: getDefaultStyles(),
           subtle: getSubtleStyles(),
-          outline: getDefaultStyles()
+          outline: getDefaultStyles(),
+          transparent: getTransparentStyles()
         }
 
         const sizeStyles = {
