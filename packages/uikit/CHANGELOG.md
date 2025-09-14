@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.5.4
+
+### Patch Changes
+
+- feat: add transparent variant to Button component ([#595](https://github.com/tidbcloud/tidbcloud-uikit/pull/595))
+
 ## 2.5.3
 
 ### Patch Changes
