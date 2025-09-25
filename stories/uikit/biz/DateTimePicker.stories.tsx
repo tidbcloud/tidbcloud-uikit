@@ -51,10 +51,7 @@ export function Demo() {
           <Stack gap={4}>
             <Typography size="sm">Local time: {dayjs(value).format('YYYY-MM-DD HH:mm:ss Z')}</Typography>
             <Typography size="sm">
-              Orgnization time:{' '}
-              {dayjs(value)
-                .utcOffset(60 * -7)
-                .format('YYYY-MM-DD HH:mm:ss Z')}
+              Orgnization time: {dayjs(value).utcOffset(utcOffset).format('YYYY-MM-DD HH:mm:ss Z')}
             </Typography>
           </Stack>
         }
