@@ -101,6 +101,9 @@ const AbsoluteTimeRangePicker = ({
   }
 
   const updateTime = (v: string, setter: ReturnType<typeof useState<Date | null>>[1]) => {
+    if (!dayjs(v, 'HH:mm:ss').isValid()) {
+      return
+    }
     setter((old) => {
       const d = dayjs(v, 'HH:mm:ss').toDate()
       const newD = new Date(old!)
