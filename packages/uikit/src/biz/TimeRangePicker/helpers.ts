@@ -1,5 +1,7 @@
+import { useMemoizedFn } from 'ahooks'
 import { trim } from 'lodash-es'
 import prettyMs from 'pretty-ms'
+import { useMemo } from 'react'
 
 import { dayjs } from '../../utils/dayjs.js'
 
@@ -9,6 +11,7 @@ export interface RelativeTimeRange {
   type: 'relative'
   value: number // unit: seconds
   isFuture?: boolean
+  utcOffset?: number | string
 }
 
 export interface AbsoluteTimeRange {
@@ -47,9 +50,14 @@ export const toTimeRangeValue = (timeRange: TimeRange, offset = 0): TimeRangeVal
   if (timeRange.type === 'absolute') {
     return timeRange.value.map((t) => t + offset) as TimeRangeValue
   } else {
-    const isFuture = timeRange.isFuture
-    const now = dayjs().unix()
-    return isFuture ? [now + offset, now + timeRange.value + offset] : [now - timeRange.value + offset, now + offset]
+    let now = dayjs().unix()
+    if (timeRange.utcOffset) {
+      now = dayjs(convertToLocal(dayjs().toDate(), timeRange.utcOffset)).unix()
+    }
+
+    return timeRange.isFuture
+      ? [now + offset, now + timeRange.value + offset]
+      : [now - timeRange.value + offset, now + offset]
   }
 }
 
@@ -144,4 +152,176 @@ export const timeFormatter = (
     dayjs(addOffsetUTC(time, currentTZOffsetInHours)).format(withUTC ? trim(format, 'Z') : format) +
     (withUTC ? getUTCString(currentTZOffsetInHours) : '')
   )
+}
+
+// Hook for timezone-aware TimeRangePicker
+export interface UseTimeRangePickerProps {
+  value: TimeRange
+  onChange?: (value?: TimeRange) => void
+  minDateTime?: () => Date
+  maxDateTime?: () => Date
+  maxDuration?: number
+  relativeFormatter?: (relativeRange: RelativeTimeRange) => string
+  absoluteFormatter?: (absoluteRange: AbsoluteTimeRange) => string
+  dateInputFormat?: (date: Date) => string
+  /**
+   * the UTC offset in minutes.
+   * User selected time will be treated as time in that timezone
+   * If the input is less than 16 and greater than -16, it will interpret your input as hours instead.
+   * It also can be a string like '+09:00' or '-01:00'
+   * @see https://day.js.org/docs/en/manipulate/utc-offset
+   */
+  utcOffset?: number | string
+}
+
+const convertToLocal = (date: Date, utcOffset: number | string) => {
+  const targetTime = dayjs(date).utcOffset(utcOffset)
+  const converted = targetTime.utcOffset(dayjs().utcOffset(), true)
+  return new Date(converted.format())
+}
+
+/**
+ * Hook for timezone-aware TimeRangePicker
+ *
+ * @example
+ * ```tsx
+ * const Component = () => {
+ *   const [value, setValue] = useState<TimeRange>()
+ *
+ *   // UTC+8 timezone (480 minutes)
+ *   const utcOffset = 480
+ *
+ *   // Use hook to convert timezone
+ *   const timeRangePickerProps = useTimeRangePicker({
+ *     value,
+ *     onChange: setValue,
+ *     minDateTime: () => dayjs().subtract(1, 'day').toDate(),
+ *     maxDateTime: () => dayjs().add(1, 'day').toDate(),
+ *     utcOffset
+ *   })
+ *
+ *   // Use spread operator to pass converted props
+ *   return <TimeRangePicker {...timeRangePickerProps} />
+ * }
+ * ```
+ */
+export const useTimeRangePicker = ({
+  value,
+  onChange,
+  minDateTime,
+  maxDateTime,
+  maxDuration,
+  relativeFormatter,
+  absoluteFormatter,
+  dateInputFormat,
+  utcOffset = dayjs().utcOffset()
+}: UseTimeRangePickerProps) => {
+  // Convert local timezone time to specified utcOffset time
+  const convertFromLocal = useMemoizedFn((date: Date) => {
+    // User selected time, first utcOffset(target, true) then set to target timezone
+    const targetTime = dayjs(date).utcOffset(utcOffset, true)
+    return new Date(targetTime.format())
+  })
+
+  // Convert absolute time range from specified timezone to local timezone for display
+  const convertAbsoluteTimeRangeToLocal = useMemoizedFn((timeRange: AbsoluteTimeRange): AbsoluteTimeRange => {
+    const [from, to] = timeRange.value
+    const fromDate = new Date(from * 1000)
+    const toDate = new Date(to * 1000)
+
+    const localFromDate = convertToLocal(fromDate, utcOffset)
+    const localToDate = convertToLocal(toDate, utcOffset)
+
+    return {
+      type: 'absolute',
+      value: [Math.floor(localFromDate.getTime() / 1000), Math.floor(localToDate.getTime() / 1000)]
+    }
+  })
+
+  // Convert absolute time range from local timezone to specified timezone
+  const convertAbsoluteTimeRangeFromLocal = useMemoizedFn((timeRange: AbsoluteTimeRange): AbsoluteTimeRange => {
+    const [from, to] = timeRange.value
+    const fromDate = new Date(from * 1000)
+    const toDate = new Date(to * 1000)
+
+    const targetFromDate = convertFromLocal(fromDate)
+    const targetToDate = convertFromLocal(toDate)
+
+    return {
+      type: 'absolute',
+      value: [Math.floor(targetFromDate.getTime() / 1000), Math.floor(targetToDate.getTime() / 1000)]
+    }
+  })
+
+  // Convert controlled value from specified timezone to local timezone
+  const displayValue = useMemo(() => {
+    if (value.type === 'relative') {
+      value.utcOffset = utcOffset
+      return value // Relative time ranges don't need timezone conversion
+    }
+    return convertAbsoluteTimeRangeToLocal(value)
+  }, [value, convertAbsoluteTimeRangeToLocal])
+
+  // Convert min/max time from specified timezone to local timezone
+  const displayMinDateTime = useMemo(() => {
+    if (!minDateTime) return undefined
+    return () => convertToLocal(minDateTime(), utcOffset)
+  }, [minDateTime])
+
+  const displayMaxDateTime = useMemo(() => {
+    if (!maxDateTime) return undefined
+    return () => convertToLocal(maxDateTime(), utcOffset)
+  }, [maxDateTime])
+
+  // Handle onChange callback, convert local timezone time to specified timezone
+  const handleChange = useMemoizedFn((localTimeRange?: TimeRange) => {
+    if (!localTimeRange) {
+      onChange?.(undefined)
+      return
+    }
+
+    if (localTimeRange.type === 'relative') {
+      onChange?.(localTimeRange) // Relative time ranges don't need timezone conversion
+      return
+    }
+
+    const targetTimeRange = convertAbsoluteTimeRangeFromLocal(localTimeRange)
+    onChange?.(targetTimeRange)
+  })
+
+  // Convert formatters to handle timezone conversion
+  const displayRelativeFormatter = useMemo(() => {
+    if (!relativeFormatter) return undefined
+    return (relativeRange: RelativeTimeRange) => relativeFormatter(relativeRange)
+  }, [relativeFormatter])
+
+  const displayAbsoluteFormatter = useMemo(() => {
+    if (!absoluteFormatter) return undefined
+    return (absoluteRange: AbsoluteTimeRange) => {
+      // Convert the absolute range to the target timezone for formatting
+      const targetRange = convertAbsoluteTimeRangeFromLocal(absoluteRange)
+      return absoluteFormatter(targetRange)
+    }
+  }, [absoluteFormatter, convertAbsoluteTimeRangeFromLocal])
+
+  const displayDateInputFormat = useMemo(() => {
+    if (!dateInputFormat) return undefined
+    return (date: Date) => {
+      // Convert the date to the target timezone for formatting
+      const targetDate = convertFromLocal(date)
+      return dateInputFormat(targetDate)
+    }
+  }, [dateInputFormat, convertFromLocal])
+
+  return {
+    value: displayValue,
+    onChange: handleChange,
+    minDateTime: displayMinDateTime,
+    maxDateTime: displayMaxDateTime,
+    maxDuration,
+    relativeFormatter: displayRelativeFormatter,
+    absoluteFormatter: displayAbsoluteFormatter,
+    dateInputFormat: displayDateInputFormat,
+    timezone: typeof utcOffset === 'number' ? utcOffset : undefined
+  }
 }

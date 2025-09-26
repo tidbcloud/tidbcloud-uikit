@@ -2,7 +2,14 @@ import 'dayjs/locale/zh'
 
 import type { Meta, StoryObj, StoryFn } from '@storybook/react'
 import { Typography } from '@tidbcloud/uikit'
-import { AbsoluteTimeRange, RelativeTimeRange, TimeRangePicker, TimeRangePickerProps } from '@tidbcloud/uikit/biz'
+import {
+  AbsoluteTimeRange,
+  RelativeTimeRange,
+  TimeRange,
+  TimeRangePicker,
+  TimeRangePickerProps,
+  useTimeRangePicker
+} from '@tidbcloud/uikit/biz'
 import { dayjs } from '@tidbcloud/uikit/utils'
 import duration from 'dayjs/plugin/duration'
 import relativeTime from 'dayjs/plugin/relativeTime'
@@ -14,7 +21,7 @@ dayjs.extend(relativeTime)
 function TimeRangePickerWrapper(props: TimeRangePickerProps) {
   const [tr, setTr] = useState(props.value)
 
-  return <TimeRangePicker {...props} value={tr!} onChange={setTr} />
+  return <TimeRangePicker value={tr!} onChange={setTr} {...props} />
 }
 
 type Story = StoryObj<typeof TimeRangePicker>
@@ -38,15 +45,28 @@ const meta: Meta<typeof TimeRangePicker> = {
 export default meta
 
 // More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
-export const Basic: Story = {
-  args: {
-    value: { type: 'relative', value: 30 * 60 },
-    footer: (
-      <Typography c="carbon.7" px={14} pt={8} pb={6} fz="xs">
-        Current used is org time zone: UTC+08:00
-      </Typography>
-    )
-  }
+export const Basic: StoryFn = () => {
+  const [tr, setTr] = useState<TimeRange>({ type: 'relative', value: 30 * 60 })
+
+  const utcOffset = '-01:00'
+  const props = useTimeRangePicker({
+    value: tr,
+    onChange: (v) => {
+      console.log(v)
+      setTr(v!)
+    },
+    utcOffset
+  })
+  return (
+    <TimeRangePicker
+      {...props}
+      footer={
+        <Typography c="carbon.7" px={14} pt={8} pb={6} fz="xs">
+          Current used is org time zone: UTC{utcOffset}
+        </Typography>
+      }
+    />
+  )
 }
 
 export const Primary: Story = {
