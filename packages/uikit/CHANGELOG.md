@@ -1,5 +1,12 @@
 # @tidbcloud/uikit
 
+## 2.5.5
+
+### Patch Changes
+
+- Tweak/timerange picker ([#598](https://github.com/tidbcloud/tidbcloud-uikit/pull/598))
+- fix: correct organization time calculation in DateTimePicker demo ([#597](https://github.com/tidbcloud/tidbcloud-uikit/pull/597))
+
 ## 2.5.4
 
 ### Patch Changes
