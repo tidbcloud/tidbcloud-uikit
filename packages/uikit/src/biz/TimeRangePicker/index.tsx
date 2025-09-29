@@ -27,6 +27,8 @@ import {
   RelativeTimeRange
 } from './helpers.js'
 
+export { useTimeRangePicker } from './helpers.js'
+
 export type TimeRangePickerProps = TimeRangePickerBaseProps &
   (
     | { clearable: true; value?: TimeRange; onChange?: (value?: TimeRange) => void }
