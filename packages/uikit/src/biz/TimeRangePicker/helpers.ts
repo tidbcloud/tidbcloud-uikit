@@ -256,8 +256,9 @@ export const useTimeRangePicker = ({
   // Convert controlled value from specified timezone to local timezone
   const displayValue = useMemo(() => {
     if (value.type === 'relative') {
-      value.utcOffset = utcOffset
-      return value // Relative time ranges don't need timezone conversion
+      const _v = { ...value }
+      _v.utcOffset = utcOffset
+      return _v // Relative time ranges don't need timezone conversion
     }
     return convertAbsoluteTimeRangeToLocal(value)
   }, [value, convertAbsoluteTimeRangeToLocal])
