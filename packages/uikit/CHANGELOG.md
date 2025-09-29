@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.5.6
+
+### Patch Changes
+
+- fix: ensure correct handling of utcOffset in relative time ranges in … ([#601](https://github.com/tidbcloud/tidbcloud-uikit/pull/601))
+
 ## 2.5.5
 
 ### Patch Changes
