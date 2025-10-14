@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.5.7
+
+### Patch Changes
+
+- feat: enhance FormSegmentedControl to support external onChange handler ([#603](https://github.com/tidbcloud/tidbcloud-uikit/pull/603))
+
 ## 2.5.6
 
 ### Patch Changes
