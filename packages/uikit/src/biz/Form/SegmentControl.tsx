@@ -7,7 +7,12 @@ export interface FormSegmentedControlProps extends SegmentedControlProps {
   rules?: RegisterOptions
 }
 
-export const FormSegmentedControl = ({ name, rules, ...restProps }: FormSegmentedControlProps) => {
+export const FormSegmentedControl = ({
+  name,
+  rules,
+  onChange: formOnChange,
+  ...restProps
+}: FormSegmentedControlProps) => {
   const { control } = useFormContext()
 
   return (
@@ -16,7 +21,16 @@ export const FormSegmentedControl = ({ name, rules, ...restProps }: FormSegmente
       control={control}
       rules={rules}
       render={({ field: { onChange, value } }) => {
-        return <SegmentedControl value={value} onChange={onChange} {...restProps} />
+        return (
+          <SegmentedControl
+            value={value}
+            onChange={(val) => {
+              onChange(val)
+              formOnChange?.(val)
+            }}
+            {...restProps}
+          />
+        )
       }}
     ></Controller>
   )
