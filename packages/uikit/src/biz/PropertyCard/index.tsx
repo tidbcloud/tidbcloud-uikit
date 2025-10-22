@@ -1,4 +1,4 @@
-import { Children, cloneElement } from 'react'
+import { createContext, useContext, useMemo } from 'react'
 
 import {
   Card,
@@ -13,38 +13,37 @@ import {
 } from '../../primitive/index.js'
 
 export interface PropertyCardProps extends CardProps {
-  title: string
+  title?: string
   labelProps?: TypographyProps
   valueProps?: TypographyProps
 }
 
-const PropertyCard = ({ title, children, labelProps, valueProps, ...rest }: PropertyCardProps) => {
-  const renderChildren = () => {
-    return Children.map(children, (child) => {
-      if (!child || typeof child !== 'object' || !('props' in child)) {
-        return child
-      }
+interface PropertyCardContextValue {
+  labelProps?: TypographyProps
+  valueProps?: TypographyProps
+}
 
-      return cloneElement(child, {
-        ...child.props,
-        labelProps: {
-          ...labelProps,
-          ...child.props.labelProps
-        },
-        valueProps: {
-          ...valueProps,
-          ...child.props.valueProps
-        }
-      })
-    })
-  }
+const PropertyCardContext = createContext<PropertyCardContextValue | undefined>(undefined)
+
+const PropertyCard = ({ title, children, labelProps, valueProps, ...rest }: PropertyCardProps) => {
+  const contextValue = useMemo(
+    () => ({
+      labelProps,
+      valueProps
+    }),
+    [labelProps, valueProps]
+  )
 
   return (
     <Card p="xl" {...rest}>
-      <Typography variant="headline-sm" mb={16}>
-        {title}
-      </Typography>
-      <Stack gap={16}>{renderChildren()}</Stack>
+      {title && (
+        <Typography variant="headline-sm" mb={16}>
+          {title}
+        </Typography>
+      )}
+      <PropertyCardContext.Provider value={contextValue}>
+        <Stack gap={16}>{children}</Stack>
+      </PropertyCardContext.Provider>
     </Card>
   )
 }
@@ -56,12 +55,22 @@ export interface PropertyCardItemProps extends GroupProps {
 }
 
 const Item = ({ label, children, labelProps, valueProps, ...rest }: PropertyCardItemProps) => {
+  const context = useContext(PropertyCardContext)
+  const mergedLabelProps = {
+    ...context?.labelProps,
+    ...labelProps
+  }
+  const mergedValueProps = {
+    ...context?.valueProps,
+    ...valueProps
+  }
+
   return (
     <Group gap="md" wrap="nowrap" {...rest}>
-      <Typography variant="label-lg" miw={128} {...labelProps}>
+      <Typography variant="label-lg" miw={128} {...mergedLabelProps}>
         {label}
       </Typography>
-      <Typography variant="body-lg" sx={{ wordBreak: 'break-all' }} {...valueProps}>
+      <Typography variant="body-lg" sx={{ wordBreak: 'break-all' }} {...mergedValueProps}>
         {children}
       </Typography>
     </Group>
