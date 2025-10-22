@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.5.8
+
+### Patch Changes
+
+- fix: refactor PropertyCard to use context for props management ([#606](https://github.com/tidbcloud/tidbcloud-uikit/pull/606))
+
 ## 2.5.7
 
 ### Patch Changes
