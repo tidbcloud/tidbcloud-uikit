@@ -104,7 +104,11 @@ export const WithGlobalProps: Story = {
   },
   render: () => {
     return (
-      <PropertyCard title="Global labelProps and valueProps" labelProps={{ miw: 200 }} valueProps={{ color: 'red' }}>
+      <PropertyCard
+        title="Global labelProps and valueProps"
+        labelProps={{ miw: 200 }}
+        valueProps={{ c: 'red', fw: 'bold' }}
+      >
         <PropertyCard.Item label="Name">Cluster0</PropertyCard.Item>
         <PropertyCard.Item label="Status">Available</PropertyCard.Item>
         <PropertyCard.Item label="Tier Type">Dedicated Tier</PropertyCard.Item>
