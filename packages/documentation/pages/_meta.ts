@@ -50,7 +50,7 @@ export default {
 
   storybook_link: {
     type: 'page',
-    title: 'API Refs↗',
+    title: 'Storybook↗',
     href: 'https://tidbcloud-uikit-story.netlify.app/',
     newWindow: true
   }
