@@ -32,7 +32,7 @@ export default {
   },
   __rap: {
     type: 'page',
-    title: 'RAP API↗',
+    title: 'RAP API ↗',
     href: 'https://doc.rapapi.cn/',
     newWindow: true
   },
@@ -50,7 +50,7 @@ export default {
 
   storybook_link: {
     type: 'page',
-    title: 'API Refs↗',
+    title: 'Storybook ↗',
     href: 'https://tidbcloud-uikit-story.netlify.app/',
     newWindow: true
   }

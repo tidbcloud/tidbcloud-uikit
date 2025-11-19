@@ -1,488 +1,191 @@
-/**
- * v0 by Vercel.
- * @see https://v0.dev/t/R87ZJeFaF4p
- * Documentation: https://v0.dev/docs#integrating-generated-code-into-your-nextjs-app
- */
-import {
-  IconAlertSquare,
-  IconBarChartSquareUp,
-  IconCodeSquare01,
-  IconCopy03,
-  IconIntersectSquare
-} from '@tidbcloud/uikit/icons'
 import Link from 'next/link'
-import { JSX, SVGProps } from 'react'
+import React from 'react'
 
-export default function Component() {
+// Icons
+const ArrowRightIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg
+    {...props}
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="M5 12h14" />
+    <path d="m12 5 7 7-7 7" />
+  </svg>
+)
+
+const ComponentIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg
+    {...props}
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <rect width="18" height="18" x="3" y="3" rx="2" ry="2" />
+    <line x1="3" x2="21" y1="9" y2="9" />
+    <line x1="9" x2="9" y1="21" y2="9" />
+  </svg>
+)
+
+const PaletteIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg
+    {...props}
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <circle cx="13.5" cy="6.5" r=".5" fill="currentColor" />
+    <circle cx="17.5" cy="10.5" r=".5" fill="currentColor" />
+    <circle cx="8.5" cy="7.5" r=".5" fill="currentColor" />
+    <circle cx="6.5" cy="12.5" r=".5" fill="currentColor" />
+    <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z" />
+  </svg>
+)
+
+const AccessibilityIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg
+    {...props}
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <circle cx="16" cy="4" r="1" />
+    <path d="m18 19 1-7-6 1" />
+    <path d="m5 8 3-3 5.5 3-2.36 3.5" />
+    <path d="M4.24 14.5a5 5 0 0 0 6.88 6" />
+    <path d="M13.77 18.95a5 5 0 0 0 5.13-2.87" />
+  </svg>
+)
+
+export default function CloudUI() {
   return (
-    <div className="flex flex-col min-h-[100dvh]">
-      <main className="flex-1">
-        <section className="w-full pt-12 md:pt-24 lg:pt-32">
-          <div className="container space-y-10 xl:space-y-16 px-4 md:px-6">
-            <div className="grid gap-4 md:grid-cols-2 md:gap-16">
-              <div>
-                <h1 className="lg:leading-tighter text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl xl:text-[3.4rem] 2xl:text-[3.75rem] mb-2">
-                  Cloud UI
-                </h1>
-                <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl dark:text-gray-400 mb-8">
-                  <b>Cloud UI</b> is the component library for TiDB Cloud. It is based on Mantine and includes many
-                  business-specific customizations, providing better support for Dark Mode. Additionally, it has
-                  accumulated a large number of business components specifically for the Cloud Database Console.
-                </p>
+    <div className="flex flex-col min-h-screen bg-background text-foreground overflow-hidden">
+      {/* Hero Section */}
+      <section className="relative w-full py-20 md:py-32 lg:py-40 overflow-hidden">
+        <div className="absolute inset-0 bg-grid-pattern opacity-[0.03] dark:opacity-[0.05] pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/50 to-background pointer-events-none" />
+        <div className="absolute top-0 right-0 w-[800px] h-[600px] bg-blue-500/10 blur-[100px] rounded-full pointer-events-none opacity-50" />
+
+        <div className="container relative z-10 px-4 md:px-6 mx-auto">
+          <div className="grid gap-12 lg:grid-cols-2 items-center">
+            <div className="flex flex-col justify-center space-y-8 animate-fade-in-up">
+              <div className="inline-flex items-center rounded-full border border-blue-200 bg-blue-50 dark:border-blue-900 dark:bg-blue-950/30 px-3 py-1 text-sm font-medium text-blue-800 dark:text-blue-300 w-fit">
+                <span className="flex h-2 w-2 rounded-full bg-blue-600 mr-2 animate-pulse"></span>
+                Enterprise Grade
+              </div>
+
+              <h1 className="text-5xl md:text-7xl font-bold tracking-tight">
+                Cloud UI <br />
+                <span className="text-gradient">Components</span>
+              </h1>
+
+              <p className="max-w-[600px] text-lg md:text-xl text-muted-foreground">
+                The definitive component library for TiDB Cloud. Built on Mantine, customized for complex data
+                applications, and fully accessible.
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-4">
                 <Link
                   href="/docs"
-                  className="inline-flex h-9 items-center justify-center rounded-md bg-gray-900 px-4 py-2 text-sm font-medium text-gray-50 shadow transition-colors hover:bg-gray-900/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50 dark:bg-gray-50 dark:text-gray-900 dark:hover:bg-gray-50/90 dark:focus-visible:ring-gray-300"
-                  prefetch={false}
+                  className="inline-flex h-12 items-center justify-center rounded-full bg-primary px-8 text-base font-medium text-primary-foreground shadow-lg shadow-blue-500/20 transition-all hover:bg-primary/90 hover:scale-105 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
                 >
                   View Documentation
+                  <ArrowRightIcon className="ml-2 h-4 w-4" />
                 </Link>
               </div>
-              <div className="hidden md:block">
+            </div>
+
+            <div className="relative mx-auto lg:ml-auto animate-fade-in-up [animation-delay:200ms]">
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/20 glass-card p-2">
                 <img
                   src="https://boserverdisc.oss-cn-hangzhou.aliyuncs.com/public/tiui/tidb-cloud.png"
-                  width="550"
-                  height="550"
-                  alt="Hero"
-                  className="mx-auto overflow-hidden rounded-xl object-cover"
+                  alt="Cloud UI Hero"
+                  className="rounded-xl w-full h-auto object-cover"
                 />
               </div>
             </div>
           </div>
-        </section>
-        <section className="w-full py-12 md:py-24 lg:py-32">
-          <div className="container space-y-12 px-4 md:px-6">
-            <div className="flex flex-col items-center justify-center space-y-4 text-center">
-              <div className="space-y-2">
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Featured Components</h2>
-                <p className="max-w-[900px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
-                  Explore a selection of our most popular and versatile components.
-                </p>
-              </div>
-            </div>
-            <div className="mx-auto grid max-w-5xl items-start gap-8 sm:grid-cols-2 md:gap-12 lg:grid-cols-3">
-              <div className="grid gap-4">
-                <div className="bg-gray-100 rounded-md flex items-center justify-center aspect-square p-4 dark:bg-gray-800">
-                  <a href="https://tidbcloud-uikit-story.netlify.app/?path=/docs/primitive-button--docs">
-                    <img src="https://boserverdisc.oss-cn-hangzhou.aliyuncs.com/public/tiui/button.dark.png" />
-                  </a>
-                </div>
-                <div className="space-y-1">
-                  <h3 className="text-lg font-bold">Button</h3>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">
-                    Highly customizable buttons with built-in accessibility features.
-                  </p>
-                </div>
-              </div>
-              <div className="grid gap-4">
-                <div className="bg-gray-100 rounded-md flex items-center justify-center aspect-square p-4 dark:bg-gray-800">
-                  <a href="https://tidbcloud-uikit-story.netlify.app/?path=/docs/primitive-card--docs">
-                    <img src="https://boserverdisc.oss-cn-hangzhou.aliyuncs.com/public/tiui/card.dark.png" />
-                  </a>
-                </div>
-                <div className="space-y-1">
-                  <h3 className="text-lg font-bold">Card</h3>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">
-                    Versatile card component with header, content, and footer sections.
-                  </p>
-                </div>
-              </div>
-              <div className="grid gap-4">
-                <div className="bg-gray-100 rounded-md flex items-center justify-center aspect-square p-4 dark:bg-gray-800">
-                  <a href="https://tidbcloud-uikit-story.netlify.app/?path=/docs/primitive-select--docs">
-                    <img src="https://boserverdisc.oss-cn-hangzhou.aliyuncs.com/public/tiui/select.dark.png" />
-                  </a>
-                </div>
-                <div className="space-y-1">
-                  <h3 className="text-lg font-bold">Select</h3>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">
-                    Accessible and customizable dropdown menu component.
-                  </p>
-                </div>
-              </div>
-              <div className="grid gap-4">
-                <div className="bg-gray-100 rounded-md flex items-center justify-center aspect-square p-4 dark:bg-gray-800">
-                  <a href="https://tidbcloud-uikit-story.netlify.app/?path=/docs/primitive-input--docs">
-                    <img src="https://boserverdisc.oss-cn-hangzhou.aliyuncs.com/public/tiui/input.dark.png" />
-                  </a>
-                </div>
-                <div className="space-y-1">
-                  <h3 className="text-lg font-bold">Input</h3>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">
-                    Stylish and accessible input fields with built-in validation.
-                  </p>
-                </div>
-              </div>
-              <div className="grid gap-4">
-                <div className="bg-gray-100 rounded-md flex items-center justify-center aspect-square p-4 dark:bg-gray-800">
-                  <a href="https://tidbcloud-uikit-story.netlify.app/?path=/docs/primitive-tabs--docs">
-                    <img src="https://boserverdisc.oss-cn-hangzhou.aliyuncs.com/public/tiui/tabs.dark.png" />
-                  </a>
-                </div>
-                <div className="space-y-1">
-                  <h3 className="text-lg font-bold">Tabs</h3>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">
-                    Accessible and customizable tab navigation component.
-                  </p>
-                </div>
-              </div>
-              <div className="grid gap-4">
-                <div className="bg-gray-100 rounded-md flex items-center justify-center aspect-square p-4 dark:bg-gray-800">
-                  <a href="https://tidbcloud-uikit-story.netlify.app/?path=/docs/primitive-popover--docs">
-                    <img src="https://boserverdisc.oss-cn-hangzhou.aliyuncs.com/public/tiui/popover.dark.png" />
-                  </a>
-                </div>
-                <div className="space-y-1">
-                  <h3 className="text-lg font-bold">Popover</h3>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">
-                    Lightweight and customizable popover component.
-                  </p>
-                </div>
-              </div>
-            </div>
+        </div>
+      </section>
+
+      {/* Features Grid */}
+      <section className="w-full py-12 md:py-24 bg-muted/30 relative">
+        <div className="container px-4 md:px-6 mx-auto">
+          <div className="flex flex-col items-center justify-center space-y-4 text-center mb-16">
+            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Featured Components</h2>
+            <p className="max-w-[700px] text-muted-foreground md:text-xl">
+              Explore a selection of our most popular and versatile components.
+            </p>
           </div>
-        </section>
-        <aside className="w-full py-12 md:py-24 lg:py-32 bg-gray-100 dark:bg-gray-800">
-          <div className="container grid items-center justify-center gap-4 px-4 md:px-6 lg:grid-cols-2 lg:gap-10">
-            <div className="space-y-2">
-              <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">Component Layers</h2>
-              <p className="max-w-[600px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
-                Browse our extensive library of components organized by for layers.
-              </p>
-            </div>
-            <div className="grid gap-4">
-              <Link
-                href="/docs/primitive/Accordion"
-                className="flex items-center justify-between rounded-md bg-white px-4 py-3 shadow-sm transition-colors hover:bg-gray-100 focus:bg-gray-100 focus:outline-none dark:bg-gray-950 dark:hover:bg-gray-800 dark:focus:bg-gray-800"
-                prefetch={false}
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {[
+              {
+                title: 'Button',
+                desc: 'Highly customizable buttons with built-in accessibility features.',
+                img: 'https://boserverdisc.oss-cn-hangzhou.aliyuncs.com/public/tiui/button.dark.png',
+                link: 'https://tidbcloud-uikit-story.netlify.app/?path=/docs/primitive-button--docs'
+              },
+              {
+                title: 'Card',
+                desc: 'Versatile card component with header, content, and footer sections.',
+                img: 'https://boserverdisc.oss-cn-hangzhou.aliyuncs.com/public/tiui/card.dark.png',
+                link: 'https://tidbcloud-uikit-story.netlify.app/?path=/docs/primitive-card--docs'
+              },
+              {
+                title: 'Select',
+                desc: 'Accessible and customizable dropdown menu component.',
+                img: 'https://boserverdisc.oss-cn-hangzhou.aliyuncs.com/public/tiui/select.dark.png',
+                link: 'https://tidbcloud-uikit-story.netlify.app/?path=/docs/primitive-select--docs'
+              }
+            ].map((item, i) => (
+              <a
+                key={i}
+                href={item.link}
+                target="_blank"
+                className="glass-card rounded-3xl p-6 relative overflow-hidden group hover:shadow-2xl transition-all duration-300 border-t border-l border-white/50 dark:border-white/10 flex flex-col"
               >
-                <div className="flex items-center gap-3">
-                  <div className="bg-gray-100 rounded-md flex items-center justify-center aspect-square w-10 dark:bg-gray-800">
-                    <IconCodeSquare01 className="w-5 h-5" />
-                  </div>
-                  <span className="text-sm font-medium">
-                    Cloud UI Primitive - atomic components like button / link / text...
-                  </span>
+                <div className="aspect-video rounded-xl bg-muted/50 mb-6 overflow-hidden flex items-center justify-center p-4">
+                  <img
+                    src={item.img}
+                    alt={item.title}
+                    className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-110"
+                  />
                 </div>
-                <ChevronRightIcon className="w-5 h-5 text-gray-500 dark:text-gray-400" />
-              </Link>
-              <Link
-                href="/docs/biz/CodeBlock"
-                className="flex items-center justify-between rounded-md bg-white px-4 py-3 shadow-sm transition-colors hover:bg-gray-100 focus:bg-gray-100 focus:outline-none dark:bg-gray-950 dark:hover:bg-gray-800 dark:focus:bg-gray-800"
-                prefetch={false}
-              >
-                <div className="flex items-center gap-3">
-                  <div className="bg-gray-100 rounded-md flex items-center justify-center aspect-square w-10 dark:bg-gray-800">
-                    <IconIntersectSquare className="w-5 h-5" />
-                  </div>
-                  <span className="text-sm font-medium">
-                    Cloud UI Business - biz components with rich user interactions & behaviours...
-                  </span>
+                <h3 className="text-xl font-bold mb-2 group-hover:text-blue-500 transition-colors">{item.title}</h3>
+                <p className="text-muted-foreground text-sm">{item.desc}</p>
+                <div className="mt-4 flex items-center text-sm font-medium text-blue-500 opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0">
+                  View Storybook <ArrowRightIcon className="ml-1 w-3 h-3" />
                 </div>
-                <ChevronRightIcon className="w-5 h-5 text-gray-500 dark:text-gray-400" />
-              </Link>
-              <Link
-                href="/icons"
-                className="flex items-center justify-between rounded-md bg-white px-4 py-3 shadow-sm transition-colors hover:bg-gray-100 focus:bg-gray-100 focus:outline-none dark:bg-gray-950 dark:hover:bg-gray-800 dark:focus:bg-gray-800"
-                prefetch={false}
-              >
-                <div className="flex items-center gap-3">
-                  <div className="bg-gray-100 rounded-md flex items-center justify-center aspect-square w-10 dark:bg-gray-800">
-                    <IconAlertSquare className="w-5 h-5" />
-                  </div>
-                  <span className="text-sm font-medium">Cloud UI Icons - icons make by our design team</span>
-                </div>
-                <ChevronRightIcon className="w-5 h-5 text-gray-500 dark:text-gray-400" />
-              </Link>
-              <Link
-                href="#"
-                className="flex items-center justify-between rounded-md bg-white px-4 py-3 shadow-sm transition-colors hover:bg-gray-100 focus:bg-gray-100 focus:outline-none dark:bg-gray-950 dark:hover:bg-gray-800 dark:focus:bg-gray-800"
-                prefetch={false}
-              >
-                <div className="flex items-center gap-3">
-                  <div className="bg-gray-100 rounded-md flex items-center justify-center aspect-square w-10 dark:bg-gray-800">
-                    <ShapesIcon className="w-5 h-5" />
-                  </div>
-                  <span className="text-sm font-medium">
-                    Cloud UI Pro (WIP) - sample pages as a good page level demons
-                  </span>
-                </div>
-                <ChevronRightIcon className="w-5 h-5 text-gray-500 dark:text-gray-400" />
-              </Link>
-            </div>
+              </a>
+            ))}
           </div>
-        </aside>
-      </main>
+        </div>
+      </section>
     </div>
-  )
-}
-
-function BoxIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z" />
-      <path d="m3.3 7 8.7 5 8.7-5" />
-      <path d="M12 22V12" />
-    </svg>
-  )
-}
-
-function ChevronDownIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="m6 9 6 6 6-6" />
-    </svg>
-  )
-}
-
-function ChevronRightIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="m9 18 6-6-6-6" />
-    </svg>
-  )
-}
-
-function CreditCardIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <rect width="20" height="14" x="2" y="5" rx="2" />
-      <line x1="2" x2="22" y1="10" y2="10" />
-    </svg>
-  )
-}
-
-function DatabaseIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <ellipse cx="12" cy="5" rx="9" ry="3" />
-      <path d="M3 5V19A9 3 0 0 0 21 19V5" />
-      <path d="M3 12A9 3 0 0 0 21 12" />
-    </svg>
-  )
-}
-
-function FileInputIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M4 22h14a2 2 0 0 0 2-2V7l-5-5H6a2 2 0 0 0-2 2v4" />
-      <path d="M14 2v4a2 2 0 0 0 2 2h4" />
-      <path d="M2 15h10" />
-      <path d="m9 18 3-3-3-3" />
-    </svg>
-  )
-}
-
-function LayoutTemplateIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <rect width="18" height="7" x="3" y="3" rx="1" />
-      <rect width="9" height="7" x="3" y="14" rx="1" />
-      <rect width="5" height="7" x="16" y="14" rx="1" />
-    </svg>
-  )
-}
-
-function MountainIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="m8 3 4 8 5-5 5 15H2L8 3z" />
-    </svg>
-  )
-}
-
-function NavigationIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <polygon points="3 11 22 2 13 21 11 13 3 11" />
-    </svg>
-  )
-}
-
-function NotebookTabsIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M2 6h4" />
-      <path d="M2 10h4" />
-      <path d="M2 14h4" />
-      <path d="M2 18h4" />
-      <rect width="16" height="20" x="4" y="2" rx="2" />
-      <path d="M15 2v20" />
-      <path d="M15 7h5" />
-      <path d="M15 12h5" />
-      <path d="M15 17h5" />
-    </svg>
-  )
-}
-
-function PopcornIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M18 8a2 2 0 0 0 0-4 2 2 0 0 0-4 0 2 2 0 0 0-4 0 2 2 0 0 0-4 0 2 2 0 0 0 0 4" />
-      <path d="M10 22 9 8" />
-      <path d="m14 22 1-14" />
-      <path d="M20 8c.5 0 .9.4.8 1l-2.6 12c-.1.5-.7 1-1.2 1H7c-.6 0-1.1-.4-1.2-1L3.2 9c-.1-.6.3-1 .8-1Z" />
-    </svg>
-  )
-}
-
-function ReplyIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <polyline points="9 17 4 12 9 7" />
-      <path d="M20 18v-2a4 4 0 0 0-4-4H4" />
-    </svg>
-  )
-}
-
-function ShapesIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M8.3 10a.7.7 0 0 1-.626-1.079L11.4 3a.7.7 0 0 1 1.198-.043L16.3 8.9a.7.7 0 0 1-.572 1.1Z" />
-      <rect x="3" y="14" width="7" height="7" rx="1" />
-      <circle cx="17.5" cy="17.5" r="3.5" />
-    </svg>
   )
 }

@@ -1,398 +1,202 @@
-/**
- * v0 by Vercel.
- * @see https://v0.dev/t/R87ZJeFaF4p
- * Documentation: https://v0.dev/docs#integrating-generated-code-into-your-nextjs-app
- */
 import Link from 'next/link'
-import { JSX, SVGProps } from 'react'
+import React from 'react'
 
-export default function Component() {
+// Icons
+const ArrowRightIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg
+    {...props}
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="M5 12h14" />
+    <path d="m12 5 7 7-7 7" />
+  </svg>
+)
+
+const CodeIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg
+    {...props}
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <polyline points="16 18 22 12 16 6" />
+    <polyline points="8 6 2 12 8 18" />
+  </svg>
+)
+
+const CheckIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg
+    {...props}
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <polyline points="20 6 9 17 4 12" />
+  </svg>
+)
+
+const GlobeIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg
+    {...props}
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <circle cx="12" cy="12" r="10" />
+    <line x1="2" x2="22" y1="12" y2="12" />
+    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+  </svg>
+)
+
+const ZapIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg
+    {...props}
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+  </svg>
+)
+
+export default function SQLEditor() {
   return (
-    <div className="flex flex-col min-h-[100dvh]">
-      <main className="flex-1">
-        <section className="w-full pt-12 md:pt-24 lg:pt-32">
-          <div className="container space-y-10 xl:space-y-16 px-4 md:px-6">
-            <div className="grid gap-4 md:grid-cols-2 md:gap-16">
-              <div>
-                <h1 className="lg:leading-tighter text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl xl:text-[3.4rem] 2xl:text-[3.75rem] mb-2">
-                  Ti SQL Editor
-                </h1>
-                <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl dark:text-gray-400 mb-8">
-                  <b>Ti SQL Editor</b> is an SQL Editor wrapped around CodeMirror, significantly enhancing usability. It
-                  includes numerous improvements and refinements for common features such as syntax error handling,
-                  Chinese language processing, and interactive pop-ups. This component is also used in the code editor
-                  within TiDB Cloud.
-                </p>
+    <div className="flex flex-col min-h-screen bg-background text-foreground overflow-hidden">
+      {/* Hero Section */}
+      <section className="relative w-full py-20 md:py-32 lg:py-40 overflow-hidden">
+        <div className="absolute inset-0 bg-grid-pattern opacity-[0.03] dark:opacity-[0.05] pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/50 to-background pointer-events-none" />
+        <div className="absolute top-0 left-0 w-[800px] h-[600px] bg-purple-500/10 blur-[100px] rounded-full pointer-events-none opacity-50" />
+
+        <div className="container relative z-10 px-4 md:px-6 mx-auto">
+          <div className="grid gap-12 lg:grid-cols-2 items-center">
+            <div className="flex flex-col justify-center space-y-8 animate-fade-in-up">
+              <div className="inline-flex items-center rounded-full border border-purple-200 bg-purple-50 dark:border-purple-900 dark:bg-purple-950/30 px-3 py-1 text-sm font-medium text-purple-800 dark:text-purple-300 w-fit">
+                <span className="flex h-2 w-2 rounded-full bg-purple-600 mr-2 animate-pulse"></span>
+                Powered by CodeMirror
+              </div>
+
+              <h1 className="text-5xl md:text-7xl font-bold tracking-tight">
+                Ti SQL <br />
+                <span className="text-gradient from-purple-600 to-pink-500">Editor</span>
+              </h1>
+
+              <p className="max-w-[600px] text-lg md:text-xl text-muted-foreground">
+                An enhanced SQL editor component with syntax highlighting, error handling, and intelligent autocomplete.
+                Designed for the modern data cloud.
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-4">
                 <Link
                   href="/docs/sql-editor-getting-started"
-                  className="inline-flex h-9 items-center justify-center rounded-md bg-gray-900 px-4 py-2 text-sm font-medium text-gray-50 shadow transition-colors hover:bg-gray-900/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50 dark:bg-gray-50 dark:text-gray-900 dark:hover:bg-gray-50/90 dark:focus-visible:ring-gray-300"
-                  prefetch={false}
+                  className="inline-flex h-12 items-center justify-center rounded-full bg-primary px-8 text-base font-medium text-primary-foreground shadow-lg shadow-purple-500/20 transition-all hover:bg-primary/90 hover:scale-105 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
                 >
                   View Documentation
+                  <ArrowRightIcon className="ml-2 h-4 w-4" />
                 </Link>
               </div>
-              <div className="hidden md:block">
+            </div>
+
+            <div className="relative mx-auto lg:ml-auto animate-fade-in-up [animation-delay:200ms]">
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/20 glass-card p-2">
                 <img
                   src="https://boserverdisc.oss-cn-hangzhou.aliyuncs.com/public/tiui/sql-editor.png"
-                  width="550"
-                  height="550"
-                  alt="Hero"
-                  className="mx-auto aspect-square overflow-hidden rounded-xl object-cover"
+                  alt="SQL Editor Hero"
+                  className="rounded-xl w-full h-auto object-cover"
                 />
               </div>
             </div>
           </div>
-        </section>
-        <section className="w-full py-12 md:py-24 lg:py-32">
-          <div className="container space-y-12 px-4 md:px-6">
-            <div className="flex flex-col items-center justify-center space-y-4 text-center">
-              <div className="space-y-2">
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Features</h2>
-                <p className="max-w-[900px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
-                  Simple and beautiful
-                </p>
-              </div>
-            </div>
-            <div className="mx-auto grid max-w-5xl items-start gap-8 sm:grid-cols-2 md:gap-12 lg:grid-cols-3">
-              <div className="grid gap-4">
-                <div className="bg-gray-100 rounded-md flex items-center justify-center aspect-square p-4 dark:bg-gray-800">
-                  <BoxIcon className="w-8 h-8" />
-                </div>
-                <div className="space-y-1">
-                  <h3 className="text-lg font-bold">Easy to use</h3>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">
-                    We simplify the API for the simplest experience to use this.
-                  </p>
-                </div>
-              </div>
-              <div className="grid gap-4">
-                <div className="bg-gray-100 rounded-md flex items-center justify-center aspect-square p-4 dark:bg-gray-800">
-                  <CreditCardIcon className="w-8 h-8" />
-                </div>
-                <div className="space-y-1">
-                  <h3 className="text-lg font-bold">Open source</h3>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">
-                    Feel free to contribute to the project on GitHub.
-                  </p>
-                </div>
-              </div>
-              <div className="grid gap-4">
-                <div className="bg-gray-100 rounded-md flex items-center justify-center aspect-square p-4 dark:bg-gray-800">
-                  <ChevronDownIcon className="w-8 h-8" />
-                </div>
-                <div className="space-y-1">
-                  <h3 className="text-lg font-bold">Grammar check</h3>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">Add grammer check for the SQL editor.</p>
-                </div>
-              </div>
-              <div className="grid gap-4">
-                <div className="bg-gray-100 rounded-md flex items-center justify-center aspect-square p-4 dark:bg-gray-800">
-                  <FileInputIcon className="w-8 h-8" />
-                </div>
-                <div className="space-y-1">
-                  <h3 className="text-lg font-bold">Language support</h3>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">
-                    A better support for Chinese and other languages.
-                  </p>
-                </div>
-              </div>
-              <div className="grid gap-4">
-                <div className="bg-gray-100 rounded-md flex items-center justify-center aspect-square p-4 dark:bg-gray-800">
-                  <NotebookTabsIcon className="w-8 h-8" />
-                </div>
-                <div className="space-y-1">
-                  <h3 className="text-lg font-bold">Extendable</h3>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">
-                    You can easily extend the SQL editor with your own plugins.
-                  </p>
-                </div>
-              </div>
-              <div className="grid gap-4">
-                <div className="bg-gray-100 rounded-md flex items-center justify-center aspect-square p-4 dark:bg-gray-800">
-                  <PopcornIcon className="w-8 h-8" />
-                </div>
-                <div className="space-y-1">
-                  <h3 className="text-lg font-bold">Robust and trusted</h3>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">
-                    This component is used in TiDB Cloud and has been tested by countless users.
-                  </p>
-                </div>
-              </div>
-            </div>
+        </div>
+      </section>
+
+      {/* Features Grid */}
+      <section className="w-full py-12 md:py-24 bg-muted/30 relative">
+        <div className="container px-4 md:px-6 mx-auto">
+          <div className="flex flex-col items-center justify-center space-y-4 text-center mb-16">
+            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Powerful Features</h2>
+            <p className="max-w-[700px] text-muted-foreground md:text-xl">
+              Simple on the surface, powerful underneath.
+            </p>
           </div>
-        </section>
-      </main>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            {[
+              {
+                title: 'Easy to use',
+                desc: 'Simplified API designed for quick integration and minimal configuration.',
+                icon: ZapIcon,
+                color: 'text-yellow-500',
+                bg: 'bg-yellow-100 dark:bg-yellow-900/20'
+              },
+              {
+                title: 'Open Source',
+                desc: 'Fully open source and community driven. Contribute on GitHub.',
+                icon: CodeIcon,
+                color: 'text-blue-500',
+                bg: 'bg-blue-100 dark:bg-blue-900/20'
+              },
+              {
+                title: 'Grammar Check',
+                desc: 'Real-time syntax validation and error reporting for SQL queries.',
+                icon: CheckIcon,
+                color: 'text-green-500',
+                bg: 'bg-green-100 dark:bg-green-900/20'
+              },
+              {
+                title: 'Language Support',
+                desc: 'Enhanced support for internationalization, including Chinese language processing.',
+                icon: GlobeIcon,
+                color: 'text-purple-500',
+                bg: 'bg-purple-100 dark:bg-purple-900/20'
+              }
+            ].map((item, i) => (
+              <div
+                key={i}
+                className="glass-card rounded-3xl p-8 relative overflow-hidden group hover:shadow-xl transition-all duration-300 border-t border-l border-white/50 dark:border-white/10"
+              >
+                <div className={`h-12 w-12 rounded-2xl ${item.bg} flex items-center justify-center mb-6 ${item.color}`}>
+                  <item.icon className="w-6 h-6" />
+                </div>
+                <h3 className="text-xl font-bold mb-2">{item.title}</h3>
+                <p className="text-muted-foreground">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
     </div>
-  )
-}
-
-function BoxIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z" />
-      <path d="m3.3 7 8.7 5 8.7-5" />
-      <path d="M12 22V12" />
-    </svg>
-  )
-}
-
-function ChevronDownIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="m6 9 6 6 6-6" />
-    </svg>
-  )
-}
-
-function ChevronRightIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="m9 18 6-6-6-6" />
-    </svg>
-  )
-}
-
-function CreditCardIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <rect width="20" height="14" x="2" y="5" rx="2" />
-      <line x1="2" x2="22" y1="10" y2="10" />
-    </svg>
-  )
-}
-
-function DatabaseIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <ellipse cx="12" cy="5" rx="9" ry="3" />
-      <path d="M3 5V19A9 3 0 0 0 21 19V5" />
-      <path d="M3 12A9 3 0 0 0 21 12" />
-    </svg>
-  )
-}
-
-function FileInputIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M4 22h14a2 2 0 0 0 2-2V7l-5-5H6a2 2 0 0 0-2 2v4" />
-      <path d="M14 2v4a2 2 0 0 0 2 2h4" />
-      <path d="M2 15h10" />
-      <path d="m9 18 3-3-3-3" />
-    </svg>
-  )
-}
-
-function LayoutTemplateIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <rect width="18" height="7" x="3" y="3" rx="1" />
-      <rect width="9" height="7" x="3" y="14" rx="1" />
-      <rect width="5" height="7" x="16" y="14" rx="1" />
-    </svg>
-  )
-}
-
-function MountainIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="m8 3 4 8 5-5 5 15H2L8 3z" />
-    </svg>
-  )
-}
-
-function NavigationIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <polygon points="3 11 22 2 13 21 11 13 3 11" />
-    </svg>
-  )
-}
-
-function NotebookTabsIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M2 6h4" />
-      <path d="M2 10h4" />
-      <path d="M2 14h4" />
-      <path d="M2 18h4" />
-      <rect width="16" height="20" x="4" y="2" rx="2" />
-      <path d="M15 2v20" />
-      <path d="M15 7h5" />
-      <path d="M15 12h5" />
-      <path d="M15 17h5" />
-    </svg>
-  )
-}
-
-function PopcornIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M18 8a2 2 0 0 0 0-4 2 2 0 0 0-4 0 2 2 0 0 0-4 0 2 2 0 0 0-4 0 2 2 0 0 0 0 4" />
-      <path d="M10 22 9 8" />
-      <path d="m14 22 1-14" />
-      <path d="M20 8c.5 0 .9.4.8 1l-2.6 12c-.1.5-.7 1-1.2 1H7c-.6 0-1.1-.4-1.2-1L3.2 9c-.1-.6.3-1 .8-1Z" />
-    </svg>
-  )
-}
-
-function ReplyIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <polyline points="9 17 4 12 9 7" />
-      <path d="M20 18v-2a4 4 0 0 0-4-4H4" />
-    </svg>
-  )
-}
-
-function ShapesIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M8.3 10a.7.7 0 0 1-.626-1.079L11.4 3a.7.7 0 0 1 1.198-.043L16.3 8.9a.7.7 0 0 1-.572 1.1Z" />
-      <rect x="3" y="14" width="7" height="7" rx="1" />
-      <circle cx="17.5" cy="17.5" r="3.5" />
-    </svg>
   )
 }
