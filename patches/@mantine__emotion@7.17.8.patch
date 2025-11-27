@@ -1,0 +1,10 @@
+diff --git a/lib/create-styles.d.ts b/lib/create-styles.d.ts
+index a4f43c3ae60c182d49d6816bce5582defa6ae9f4..de5617f873ab45c2fbda45d5cdfeeba6ea20ab57 100644
+--- a/lib/create-styles.d.ts
++++ b/lib/create-styles.d.ts
+@@ -1,4 +1,4 @@
+-import { CSSObject } from '@emotion/serialize';
++import { CSSObject } from './types';
+ import { MantineBreakpoint, MantineTheme } from '@mantine/core';
+ export declare function getStylesRef(refName: string): string;
+ export declare const getHelpers: (theme: MantineTheme) => {
