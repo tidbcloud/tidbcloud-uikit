@@ -76,7 +76,7 @@
       ]
     },
     "patchedDependencies": {
-      "@mantine/core@7.15.2": "patches/@mantine__core@7.15.2.patch"
+      "@mantine/core@7.17.8": "patches/@mantine__core@7.17.8.patch"
     }
   },
   "engines": {
