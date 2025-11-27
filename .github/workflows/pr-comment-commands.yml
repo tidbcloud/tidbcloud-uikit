@@ -71,6 +71,7 @@ jobs:
     uses: ./.github/workflows/snapshot-release.yml
     with:
       pr_number: ${{ github.event.issue.number }}
+      ref: ${{ steps.pr_details.outputs.sha }}
     secrets: inherit
 
   notify_result:

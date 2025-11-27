@@ -8,6 +8,10 @@ on:
         description: 'PR number to comment on'
         required: false
         type: string
+      ref:
+        description: 'Git ref to checkout (e.g., branch name or commit SHA)'
+        required: false
+        type: string
     outputs:
       version:
         description: 'Published version'
@@ -27,6 +31,7 @@ jobs:
         # Fetch all history for all branches and tags
         with:
           fetch-depth: 0
+          ref: ${{ inputs.ref }}
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
