@@ -1,5 +1,12 @@
 # @tidbcloud/uikit
 
+## 2.6.0
+
+### Minor Changes
+
+- feat: update mantine from 7.15.2 to 7.17.8 ([#609](https://github.com/tidbcloud/tidbcloud-uikit/pull/609))
+- fix: enhance CI workflow to include PR branch and commit SHA outputs ([#611](https://github.com/tidbcloud/tidbcloud-uikit/pull/611))
+
 ## 2.5.8
 
 ### Patch Changes
