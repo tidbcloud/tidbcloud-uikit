@@ -94,8 +94,11 @@ jobs:
 
               📦 **Version**: \`${{ needs.snapshot_release.outputs.version }}\`
               🏷️ **Tag**: \`experimental\`
-              📥 **Install**: \`npm install @tidbcloud/uikit@experimental\`
               🔗 **npm**: https://www.npmjs.com/package/@tidbcloud/uikit/v/${{ needs.snapshot_release.outputs.version }}?activeTab=readme
+              📥 **Install**:
+              \`\`\`
+              pnpm install @tidbcloud/uikit@${{ needs.snapshot_release.outputs.version }}
+              \`\`\`
 
               You can test this version in your project now.`
             });
