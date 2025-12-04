@@ -257,29 +257,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="py-10 w-full shrink-0 items-center px-4 md:px-6 border-t bg-background/50 backdrop-blur-sm">
-        <div className="container mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-xs text-muted-foreground">
-            © {new Date().getFullYear()} TiDB Cloud FE Team. All rights reserved.
-          </p>
-          <nav className="flex gap-4 sm:gap-6">
-            <Link
-              className="text-xs hover:underline underline-offset-4 text-muted-foreground hover:text-foreground"
-              href="#"
-            >
-              Terms of Service
-            </Link>
-            <Link
-              className="text-xs hover:underline underline-offset-4 text-muted-foreground hover:text-foreground"
-              href="#"
-            >
-              Privacy
-            </Link>
-          </nav>
-        </div>
-      </footer>
     </div>
   )
 }
