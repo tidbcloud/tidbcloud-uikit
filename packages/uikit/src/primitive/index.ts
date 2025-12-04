@@ -127,7 +127,8 @@ export type {
   ColorSchemeScriptProps,
   MantineSize,
   ElementProps,
-  OptionsData
+  OptionsData,
+  TableOfContentsProps
 } from '@mantine/core'
 
 export {
@@ -144,13 +145,14 @@ export {
   Stack,
 
   // Inputs
+  AngleSlider,
   Checkbox,
   Chip,
   ColorInput,
   ColorPicker,
+  Fieldset,
   HueSlider,
   AlphaSlider,
-  Fieldset,
   FileInput,
   Input,
   InputBase,
@@ -188,6 +190,7 @@ export {
   NavLink,
   Pagination,
   Stepper,
+  TableOfContents,
   Tabs,
   Tree,
 

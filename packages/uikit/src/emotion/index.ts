@@ -1,5 +1,3 @@
-export type { CSSObject, CSSProperties } from '@mantine/emotion'
-
 // eslint-disable-next-line no-restricted-imports
 import type { FactoryPayload, MantineTheme, StylesRecord } from '@mantine/core'
 import type { CSSObject, EmotionHelpers } from '@mantine/emotion'
@@ -18,3 +16,4 @@ export type EmotionStyles<Payload extends FactoryPayload> = EmotionStylesApiReco
 
 export { keyframes, createStyles, createGetInitialProps } from '@mantine/emotion'
 export { default as createEmotionCache } from '@emotion/cache'
+export type { CSSObject, CSSProperties } from '@mantine/emotion'

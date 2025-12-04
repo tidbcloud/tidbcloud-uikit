@@ -32,7 +32,7 @@ const mantineCoreTypingsSrc = resolve(__dirname, 'node_modules/@mantine/core/lib
 const mantineCoreTypingsDest = resolve(
   __dirname,
   // this path is generate when rollup `perserveModule` set to true
-  'dist/node_modules/.pnpm/@mantine_core@7.15.2_patch_hash_jclkxeaefn6uz54h34k3r3yjsq_@mantine_hooks@7.15.2_react@18.3.1_sx7emryda53tomnuogmu74guza/node_modules/@mantine/core/lib'
+  'dist/node_modules/.pnpm/@mantine_core@7.17.8_patch_hash_3qirwkgu3wxhvd6hnr2gb24yzq_@mantine_hooks@7.17.8_react@18.3.1_e5yvlgwhmeykc75dkphi7jou6q/node_modules/@mantine/core/lib'
 )
 
 function replaceMantineCoreWithRelativePath(filePath: string, content: string) {
@@ -66,7 +66,9 @@ export default defineConfig({
         if (!typeOverride) return
 
         if (
-          ['primitive', 'biz', 'hooks', 'theme', 'utils'].some((folder) => filePath.endsWith(`${folder}/index.d.ts`))
+          ['primitive', 'biz', 'hooks', 'theme', 'utils'].some(
+            (folder) => filePath.endsWith(`.d.ts`) && filePath.includes(folder)
+          )
         ) {
           const { declare: overrideDeclare, content: overrideContent } = typeOverride
           content = [
