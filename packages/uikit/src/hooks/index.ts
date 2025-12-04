@@ -23,6 +23,7 @@ export {
   useViewportSize,
   useWindowEvent,
   useWindowScroll,
+  useScrollSpy,
 
   // State management
   useCounter,
@@ -64,6 +65,7 @@ export {
   usePageLeave,
   useTextSelection,
   useTimeout,
+  useFileDialog,
 
   // Lifecycle
   useDidUpdate,
