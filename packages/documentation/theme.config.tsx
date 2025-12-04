@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import type { DocsThemeConfig } from 'nextra-theme-docs'
 import { useConfig } from 'nextra-theme-docs'
 
@@ -36,7 +37,11 @@ const config: DocsThemeConfig = {
     backToTop: true
   },
   footer: {
-    content: <span>TiUI - TiDB Cloud</span>
+    content: (
+      <footer>
+        <p className="text-xs">© {new Date().getFullYear()} TiDB Cloud FE Team. All rights reserved.</p>
+      </footer>
+    )
   },
   darkMode: true,
   sidebar: {

@@ -8,7 +8,7 @@ export default {
   },
   'cloud-ui': {
     type: 'page',
-    title: 'Cloud UI',
+    title: 'Components',
     theme: {
       typesetting: 'article',
       layout: 'full'
@@ -30,15 +30,15 @@ export default {
       layout: 'full'
     }
   },
+  docs: {
+    type: 'page',
+    title: 'Docs'
+  },
   __rap: {
     type: 'page',
     title: 'RAP API ↗',
     href: 'https://doc.rapapi.cn/',
     newWindow: true
-  },
-  docs: {
-    type: 'page',
-    title: 'Docs'
   },
   '404': {
     type: 'page',
@@ -47,7 +47,6 @@ export default {
       typesetting: 'article'
     }
   },
-
   storybook_link: {
     type: 'page',
     title: 'Storybook ↗',
