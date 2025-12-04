@@ -12,6 +12,8 @@ jobs:
     outputs:
       command_found: ${{ steps.check_command.outputs.command_found }}
       status_comment_id: ${{ steps.comment_deployment.outputs.comment_id }}
+      pr_branch: ${{ steps.pr_details.outputs.branch }}
+      pr_sha: ${{ steps.pr_details.outputs.sha }}
 
     steps:
       - name: Check for snapshot-release command
@@ -71,6 +73,7 @@ jobs:
     uses: ./.github/workflows/snapshot-release.yml
     with:
       pr_number: ${{ github.event.issue.number }}
+      commit_sha: ${{ needs.handle_commands.outputs.pr_sha }}
     secrets: inherit
 
   notify_result:
@@ -92,6 +95,7 @@ jobs:
               📦 **Version**: \`${{ needs.snapshot_release.outputs.version }}\`
               🏷️ **Tag**: \`experimental\`
               📥 **Install**: \`npm install @tidbcloud/uikit@experimental\`
+              🔗 **npm**: https://www.npmjs.com/package/@tidbcloud/uikit/v/${{ needs.snapshot_release.outputs.version }}?activeTab=readme
 
               You can test this version in your project now.`
             });
