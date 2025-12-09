@@ -12,10 +12,10 @@ overrides:
 
 patchedDependencies:
   '@mantine/core@7.17.8':
-    hash: 3qirwkgu3wxhvd6hnr2gb24yzq
+    hash: 0fe6b4653cf663832f30332bd587c1148984760b4bcd3d47fa7b49d33e19ae10
     path: patches/@mantine__core@7.17.8.patch
   '@mantine/emotion@7.17.8':
-    hash: op2x5ib3e7mgdsoy22n5xoaf4q
+    hash: a679918cfeb363fbae74f3928a417592404cdd26b0b9c4628dbbfa06a6cf28e7
     path: patches/@mantine__emotion@7.17.8.patch
 
 importers:
@@ -151,7 +151,7 @@ importers:
         version: link:../../packages/uikit
       next:
         specifier: 15.1.3
-        version: 15.1.3(@babel/core@7.25.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 15.1.3(@babel/core@7.26.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react:
         specifier: 18.3.1
         version: 18.3.1
@@ -228,13 +228,13 @@ importers:
         version: 3.8.1(react@18.3.1)
       next:
         specifier: ^14.2.3
-        version: 14.2.15(@babel/core@7.25.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 14.2.15(@babel/core@7.26.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       nextra:
         specifier: ^3.2.0
-        version: 3.2.0(@types/react@18.3.18)(acorn@8.12.1)(next@14.2.15(@babel/core@7.25.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.6.3)
+        version: 3.2.0(@types/react@18.3.18)(acorn@8.12.1)(next@14.2.15(@babel/core@7.26.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.6.3)
       nextra-theme-docs:
         specifier: ^3.2.0
-        version: 3.2.0(next@14.2.15(@babel/core@7.25.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(nextra@3.2.0(@types/react@18.3.18)(acorn@8.12.1)(next@14.2.15(@babel/core@7.25.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.6.3))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 3.2.0(next@14.2.15(@babel/core@7.26.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(nextra@3.2.0(@types/react@18.3.18)(acorn@8.12.1)(next@14.2.15(@babel/core@7.26.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.6.3))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react:
         specifier: 18.3.1
         version: 18.3.1
@@ -307,31 +307,31 @@ importers:
         version: 2.0.1(react-dom@18.3.1(react@18.3.1))(react-hook-form@7.53.0(react@18.3.1))(react@18.3.1)
       '@mantine/carousel':
         specifier: 7.17.8
-        version: 7.17.8(@mantine/core@7.17.8(patch_hash=3qirwkgu3wxhvd6hnr2gb24yzq)(@mantine/hooks@7.17.8(react@18.3.1))(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@mantine/hooks@7.17.8(react@18.3.1))(embla-carousel-react@7.1.0(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 7.17.8(@mantine/core@7.17.8(patch_hash=0fe6b4653cf663832f30332bd587c1148984760b4bcd3d47fa7b49d33e19ae10)(@mantine/hooks@7.17.8(react@18.3.1))(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@mantine/hooks@7.17.8(react@18.3.1))(embla-carousel-react@7.1.0(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@mantine/code-highlight':
         specifier: 7.17.8
-        version: 7.17.8(@mantine/core@7.17.8(patch_hash=3qirwkgu3wxhvd6hnr2gb24yzq)(@mantine/hooks@7.17.8(react@18.3.1))(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@mantine/hooks@7.17.8(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 7.17.8(@mantine/core@7.17.8(patch_hash=0fe6b4653cf663832f30332bd587c1148984760b4bcd3d47fa7b49d33e19ae10)(@mantine/hooks@7.17.8(react@18.3.1))(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@mantine/hooks@7.17.8(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@mantine/core':
         specifier: 7.17.8
-        version: 7.17.8(patch_hash=3qirwkgu3wxhvd6hnr2gb24yzq)(@mantine/hooks@7.17.8(react@18.3.1))(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 7.17.8(patch_hash=0fe6b4653cf663832f30332bd587c1148984760b4bcd3d47fa7b49d33e19ae10)(@mantine/hooks@7.17.8(react@18.3.1))(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@mantine/dates':
         specifier: 7.17.8
-        version: 7.17.8(@mantine/core@7.17.8(patch_hash=3qirwkgu3wxhvd6hnr2gb24yzq)(@mantine/hooks@7.17.8(react@18.3.1))(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@mantine/hooks@7.17.8(react@18.3.1))(dayjs@1.11.13)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 7.17.8(@mantine/core@7.17.8(patch_hash=0fe6b4653cf663832f30332bd587c1148984760b4bcd3d47fa7b49d33e19ae10)(@mantine/hooks@7.17.8(react@18.3.1))(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@mantine/hooks@7.17.8(react@18.3.1))(dayjs@1.11.13)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@mantine/dropzone':
         specifier: 7.17.8
-        version: 7.17.8(@mantine/core@7.17.8(patch_hash=3qirwkgu3wxhvd6hnr2gb24yzq)(@mantine/hooks@7.17.8(react@18.3.1))(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@mantine/hooks@7.17.8(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 7.17.8(@mantine/core@7.17.8(patch_hash=0fe6b4653cf663832f30332bd587c1148984760b4bcd3d47fa7b49d33e19ae10)(@mantine/hooks@7.17.8(react@18.3.1))(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@mantine/hooks@7.17.8(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@mantine/emotion':
         specifier: 7.17.8
-        version: 7.17.8(patch_hash=op2x5ib3e7mgdsoy22n5xoaf4q)(@emotion/cache@11.14.0)(@emotion/react@11.14.0(@types/react@18.3.18)(react@18.3.1))(@emotion/serialize@1.3.3)(@emotion/utils@1.4.2)(@mantine/core@7.17.8(patch_hash=3qirwkgu3wxhvd6hnr2gb24yzq)(@mantine/hooks@7.17.8(react@18.3.1))(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@mantine/hooks@7.17.8(react@18.3.1))(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 7.17.8(patch_hash=a679918cfeb363fbae74f3928a417592404cdd26b0b9c4628dbbfa06a6cf28e7)(@emotion/cache@11.14.0)(@emotion/react@11.14.0(@types/react@18.3.18)(react@18.3.1))(@emotion/serialize@1.3.3)(@emotion/utils@1.4.2)(@mantine/core@7.17.8(patch_hash=0fe6b4653cf663832f30332bd587c1148984760b4bcd3d47fa7b49d33e19ae10)(@mantine/hooks@7.17.8(react@18.3.1))(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@mantine/hooks@7.17.8(react@18.3.1))(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@mantine/hooks':
         specifier: 7.17.8
         version: 7.17.8(react@18.3.1)
       '@mantine/modals':
         specifier: 7.17.8
-        version: 7.17.8(@mantine/core@7.17.8(patch_hash=3qirwkgu3wxhvd6hnr2gb24yzq)(@mantine/hooks@7.17.8(react@18.3.1))(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@mantine/hooks@7.17.8(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 7.17.8(@mantine/core@7.17.8(patch_hash=0fe6b4653cf663832f30332bd587c1148984760b4bcd3d47fa7b49d33e19ae10)(@mantine/hooks@7.17.8(react@18.3.1))(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@mantine/hooks@7.17.8(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@mantine/notifications':
         specifier: 7.17.8
-        version: 7.17.8(@mantine/core@7.17.8(patch_hash=3qirwkgu3wxhvd6hnr2gb24yzq)(@mantine/hooks@7.17.8(react@18.3.1))(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@mantine/hooks@7.17.8(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 7.17.8(@mantine/core@7.17.8(patch_hash=0fe6b4653cf663832f30332bd587c1148984760b4bcd3d47fa7b49d33e19ae10)(@mantine/hooks@7.17.8(react@18.3.1))(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@mantine/hooks@7.17.8(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@number-flow/react':
         specifier: 0.5.5
         version: 0.5.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -364,7 +364,7 @@ importers:
         version: 4.17.21
       mantine-react-table:
         specifier: 2.0.0-beta.7
-        version: 2.0.0-beta.7(@mantine/core@7.17.8(patch_hash=3qirwkgu3wxhvd6hnr2gb24yzq)(@mantine/hooks@7.17.8(react@18.3.1))(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@mantine/dates@7.17.8(@mantine/core@7.17.8(patch_hash=3qirwkgu3wxhvd6hnr2gb24yzq)(@mantine/hooks@7.17.8(react@18.3.1))(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@mantine/hooks@7.17.8(react@18.3.1))(dayjs@1.11.13)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@mantine/hooks@7.17.8(react@18.3.1))(@tabler/icons-react@3.26.0(react@18.3.1))(clsx@2.1.1)(dayjs@1.11.13)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 2.0.0-beta.7(@mantine/core@7.17.8(patch_hash=0fe6b4653cf663832f30332bd587c1148984760b4bcd3d47fa7b49d33e19ae10)(@mantine/hooks@7.17.8(react@18.3.1))(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@mantine/dates@7.17.8(@mantine/core@7.17.8(patch_hash=0fe6b4653cf663832f30332bd587c1148984760b4bcd3d47fa7b49d33e19ae10)(@mantine/hooks@7.17.8(react@18.3.1))(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@mantine/hooks@7.17.8(react@18.3.1))(dayjs@1.11.13)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@mantine/hooks@7.17.8(react@18.3.1))(@tabler/icons-react@3.26.0(react@18.3.1))(clsx@2.1.1)(dayjs@1.11.13)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       pretty-ms:
         specifier: ^9.1.0
         version: 9.1.0
@@ -398,10 +398,10 @@ importers:
     devDependencies:
       '@svgr/babel-plugin-add-jsx-attribute':
         specifier: ^8.0.0
-        version: 8.0.0(@babel/core@7.25.2)
+        version: 8.0.0(@babel/core@7.26.0)
       '@svgr/babel-plugin-remove-jsx-attribute':
         specifier: ^8.0.0
-        version: 8.0.0(@babel/core@7.25.2)
+        version: 8.0.0(@babel/core@7.26.0)
       '@types/dompurify':
         specifier: ^2.3.4
         version: 2.4.0
@@ -7618,24 +7618,24 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.0
 
-  '@mantine/carousel@7.17.8(@mantine/core@7.17.8(patch_hash=3qirwkgu3wxhvd6hnr2gb24yzq)(@mantine/hooks@7.17.8(react@18.3.1))(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@mantine/hooks@7.17.8(react@18.3.1))(embla-carousel-react@7.1.0(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@mantine/carousel@7.17.8(@mantine/core@7.17.8(patch_hash=0fe6b4653cf663832f30332bd587c1148984760b4bcd3d47fa7b49d33e19ae10)(@mantine/hooks@7.17.8(react@18.3.1))(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@mantine/hooks@7.17.8(react@18.3.1))(embla-carousel-react@7.1.0(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
-      '@mantine/core': 7.17.8(patch_hash=3qirwkgu3wxhvd6hnr2gb24yzq)(@mantine/hooks@7.17.8(react@18.3.1))(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@mantine/core': 7.17.8(patch_hash=0fe6b4653cf663832f30332bd587c1148984760b4bcd3d47fa7b49d33e19ae10)(@mantine/hooks@7.17.8(react@18.3.1))(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@mantine/hooks': 7.17.8(react@18.3.1)
       embla-carousel-react: 7.1.0(react@18.3.1)
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
 
-  '@mantine/code-highlight@7.17.8(@mantine/core@7.17.8(patch_hash=3qirwkgu3wxhvd6hnr2gb24yzq)(@mantine/hooks@7.17.8(react@18.3.1))(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@mantine/hooks@7.17.8(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@mantine/code-highlight@7.17.8(@mantine/core@7.17.8(patch_hash=0fe6b4653cf663832f30332bd587c1148984760b4bcd3d47fa7b49d33e19ae10)(@mantine/hooks@7.17.8(react@18.3.1))(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@mantine/hooks@7.17.8(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
-      '@mantine/core': 7.17.8(patch_hash=3qirwkgu3wxhvd6hnr2gb24yzq)(@mantine/hooks@7.17.8(react@18.3.1))(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@mantine/core': 7.17.8(patch_hash=0fe6b4653cf663832f30332bd587c1148984760b4bcd3d47fa7b49d33e19ae10)(@mantine/hooks@7.17.8(react@18.3.1))(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@mantine/hooks': 7.17.8(react@18.3.1)
       clsx: 2.1.1
       highlight.js: 11.10.0
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
 
-  '@mantine/core@7.17.8(patch_hash=3qirwkgu3wxhvd6hnr2gb24yzq)(@mantine/hooks@7.17.8(react@18.3.1))(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@mantine/core@7.17.8(patch_hash=0fe6b4653cf663832f30332bd587c1148984760b4bcd3d47fa7b49d33e19ae10)(@mantine/hooks@7.17.8(react@18.3.1))(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@floating-ui/react': 0.26.28(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@mantine/hooks': 7.17.8(react@18.3.1)
@@ -7649,30 +7649,30 @@ snapshots:
     transitivePeerDependencies:
       - '@types/react'
 
-  '@mantine/dates@7.17.8(@mantine/core@7.17.8(patch_hash=3qirwkgu3wxhvd6hnr2gb24yzq)(@mantine/hooks@7.17.8(react@18.3.1))(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@mantine/hooks@7.17.8(react@18.3.1))(dayjs@1.11.13)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@mantine/dates@7.17.8(@mantine/core@7.17.8(patch_hash=0fe6b4653cf663832f30332bd587c1148984760b4bcd3d47fa7b49d33e19ae10)(@mantine/hooks@7.17.8(react@18.3.1))(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@mantine/hooks@7.17.8(react@18.3.1))(dayjs@1.11.13)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
-      '@mantine/core': 7.17.8(patch_hash=3qirwkgu3wxhvd6hnr2gb24yzq)(@mantine/hooks@7.17.8(react@18.3.1))(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@mantine/core': 7.17.8(patch_hash=0fe6b4653cf663832f30332bd587c1148984760b4bcd3d47fa7b49d33e19ae10)(@mantine/hooks@7.17.8(react@18.3.1))(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@mantine/hooks': 7.17.8(react@18.3.1)
       clsx: 2.1.1
       dayjs: 1.11.13
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
 
-  '@mantine/dropzone@7.17.8(@mantine/core@7.17.8(patch_hash=3qirwkgu3wxhvd6hnr2gb24yzq)(@mantine/hooks@7.17.8(react@18.3.1))(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@mantine/hooks@7.17.8(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@mantine/dropzone@7.17.8(@mantine/core@7.17.8(patch_hash=0fe6b4653cf663832f30332bd587c1148984760b4bcd3d47fa7b49d33e19ae10)(@mantine/hooks@7.17.8(react@18.3.1))(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@mantine/hooks@7.17.8(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
-      '@mantine/core': 7.17.8(patch_hash=3qirwkgu3wxhvd6hnr2gb24yzq)(@mantine/hooks@7.17.8(react@18.3.1))(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@mantine/core': 7.17.8(patch_hash=0fe6b4653cf663832f30332bd587c1148984760b4bcd3d47fa7b49d33e19ae10)(@mantine/hooks@7.17.8(react@18.3.1))(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@mantine/hooks': 7.17.8(react@18.3.1)
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
       react-dropzone-esm: 15.2.0(react@18.3.1)
 
-  '@mantine/emotion@7.17.8(patch_hash=op2x5ib3e7mgdsoy22n5xoaf4q)(@emotion/cache@11.14.0)(@emotion/react@11.14.0(@types/react@18.3.18)(react@18.3.1))(@emotion/serialize@1.3.3)(@emotion/utils@1.4.2)(@mantine/core@7.17.8(patch_hash=3qirwkgu3wxhvd6hnr2gb24yzq)(@mantine/hooks@7.17.8(react@18.3.1))(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@mantine/hooks@7.17.8(react@18.3.1))(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@mantine/emotion@7.17.8(patch_hash=a679918cfeb363fbae74f3928a417592404cdd26b0b9c4628dbbfa06a6cf28e7)(@emotion/cache@11.14.0)(@emotion/react@11.14.0(@types/react@18.3.18)(react@18.3.1))(@emotion/serialize@1.3.3)(@emotion/utils@1.4.2)(@mantine/core@7.17.8(patch_hash=0fe6b4653cf663832f30332bd587c1148984760b4bcd3d47fa7b49d33e19ae10)(@mantine/hooks@7.17.8(react@18.3.1))(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@mantine/hooks@7.17.8(react@18.3.1))(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@emotion/cache': 11.14.0
       '@emotion/react': 11.14.0(@types/react@18.3.18)(react@18.3.1)
       '@emotion/serialize': 1.3.3
       '@emotion/utils': 1.4.2
-      '@mantine/core': 7.17.8(patch_hash=3qirwkgu3wxhvd6hnr2gb24yzq)(@mantine/hooks@7.17.8(react@18.3.1))(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@mantine/core': 7.17.8(patch_hash=0fe6b4653cf663832f30332bd587c1148984760b4bcd3d47fa7b49d33e19ae10)(@mantine/hooks@7.17.8(react@18.3.1))(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@mantine/hooks': 7.17.8(react@18.3.1)
       html-react-parser: 5.1.18(@types/react@18.3.18)(react@18.3.1)
       react: 18.3.1
@@ -7684,16 +7684,16 @@ snapshots:
     dependencies:
       react: 18.3.1
 
-  '@mantine/modals@7.17.8(@mantine/core@7.17.8(patch_hash=3qirwkgu3wxhvd6hnr2gb24yzq)(@mantine/hooks@7.17.8(react@18.3.1))(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@mantine/hooks@7.17.8(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@mantine/modals@7.17.8(@mantine/core@7.17.8(patch_hash=0fe6b4653cf663832f30332bd587c1148984760b4bcd3d47fa7b49d33e19ae10)(@mantine/hooks@7.17.8(react@18.3.1))(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@mantine/hooks@7.17.8(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
-      '@mantine/core': 7.17.8(patch_hash=3qirwkgu3wxhvd6hnr2gb24yzq)(@mantine/hooks@7.17.8(react@18.3.1))(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@mantine/core': 7.17.8(patch_hash=0fe6b4653cf663832f30332bd587c1148984760b4bcd3d47fa7b49d33e19ae10)(@mantine/hooks@7.17.8(react@18.3.1))(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@mantine/hooks': 7.17.8(react@18.3.1)
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
 
-  '@mantine/notifications@7.17.8(@mantine/core@7.17.8(patch_hash=3qirwkgu3wxhvd6hnr2gb24yzq)(@mantine/hooks@7.17.8(react@18.3.1))(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@mantine/hooks@7.17.8(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@mantine/notifications@7.17.8(@mantine/core@7.17.8(patch_hash=0fe6b4653cf663832f30332bd587c1148984760b4bcd3d47fa7b49d33e19ae10)(@mantine/hooks@7.17.8(react@18.3.1))(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@mantine/hooks@7.17.8(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
-      '@mantine/core': 7.17.8(patch_hash=3qirwkgu3wxhvd6hnr2gb24yzq)(@mantine/hooks@7.17.8(react@18.3.1))(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@mantine/core': 7.17.8(patch_hash=0fe6b4653cf663832f30332bd587c1148984760b4bcd3d47fa7b49d33e19ae10)(@mantine/hooks@7.17.8(react@18.3.1))(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@mantine/hooks': 7.17.8(react@18.3.1)
       '@mantine/store': 7.17.8(react@18.3.1)
       react: 18.3.1
@@ -8533,9 +8533,17 @@ snapshots:
     dependencies:
       '@babel/core': 7.25.2
 
+  '@svgr/babel-plugin-add-jsx-attribute@8.0.0(@babel/core@7.26.0)':
+    dependencies:
+      '@babel/core': 7.26.0
+
   '@svgr/babel-plugin-remove-jsx-attribute@8.0.0(@babel/core@7.25.2)':
     dependencies:
       '@babel/core': 7.25.2
+
+  '@svgr/babel-plugin-remove-jsx-attribute@8.0.0(@babel/core@7.26.0)':
+    dependencies:
+      '@babel/core': 7.26.0
 
   '@svgr/babel-plugin-remove-jsx-empty-expression@8.0.0(@babel/core@7.25.2)':
     dependencies:
@@ -11271,10 +11279,10 @@ snapshots:
     dependencies:
       '@jridgewell/sourcemap-codec': 1.5.0
 
-  mantine-react-table@2.0.0-beta.7(@mantine/core@7.17.8(patch_hash=3qirwkgu3wxhvd6hnr2gb24yzq)(@mantine/hooks@7.17.8(react@18.3.1))(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@mantine/dates@7.17.8(@mantine/core@7.17.8(patch_hash=3qirwkgu3wxhvd6hnr2gb24yzq)(@mantine/hooks@7.17.8(react@18.3.1))(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@mantine/hooks@7.17.8(react@18.3.1))(dayjs@1.11.13)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@mantine/hooks@7.17.8(react@18.3.1))(@tabler/icons-react@3.26.0(react@18.3.1))(clsx@2.1.1)(dayjs@1.11.13)(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+  mantine-react-table@2.0.0-beta.7(@mantine/core@7.17.8(patch_hash=0fe6b4653cf663832f30332bd587c1148984760b4bcd3d47fa7b49d33e19ae10)(@mantine/hooks@7.17.8(react@18.3.1))(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@mantine/dates@7.17.8(@mantine/core@7.17.8(patch_hash=0fe6b4653cf663832f30332bd587c1148984760b4bcd3d47fa7b49d33e19ae10)(@mantine/hooks@7.17.8(react@18.3.1))(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@mantine/hooks@7.17.8(react@18.3.1))(dayjs@1.11.13)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@mantine/hooks@7.17.8(react@18.3.1))(@tabler/icons-react@3.26.0(react@18.3.1))(clsx@2.1.1)(dayjs@1.11.13)(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
-      '@mantine/core': 7.17.8(patch_hash=3qirwkgu3wxhvd6hnr2gb24yzq)(@mantine/hooks@7.17.8(react@18.3.1))(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@mantine/dates': 7.17.8(@mantine/core@7.17.8(patch_hash=3qirwkgu3wxhvd6hnr2gb24yzq)(@mantine/hooks@7.17.8(react@18.3.1))(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@mantine/hooks@7.17.8(react@18.3.1))(dayjs@1.11.13)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@mantine/core': 7.17.8(patch_hash=0fe6b4653cf663832f30332bd587c1148984760b4bcd3d47fa7b49d33e19ae10)(@mantine/hooks@7.17.8(react@18.3.1))(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@mantine/dates': 7.17.8(@mantine/core@7.17.8(patch_hash=0fe6b4653cf663832f30332bd587c1148984760b4bcd3d47fa7b49d33e19ae10)(@mantine/hooks@7.17.8(react@18.3.1))(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@mantine/hooks@7.17.8(react@18.3.1))(dayjs@1.11.13)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@mantine/hooks': 7.17.8(react@18.3.1)
       '@tabler/icons-react': 3.26.0(react@18.3.1)
       '@tanstack/match-sorter-utils': 8.19.4
@@ -11900,7 +11908,7 @@ snapshots:
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
 
-  next@14.2.15(@babel/core@7.25.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+  next@14.2.15(@babel/core@7.26.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
       '@next/env': 14.2.15
       '@swc/helpers': 0.5.5
@@ -11910,7 +11918,7 @@ snapshots:
       postcss: 8.4.31
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
-      styled-jsx: 5.1.1(@babel/core@7.25.2)(react@18.3.1)
+      styled-jsx: 5.1.1(@babel/core@7.26.0)(react@18.3.1)
     optionalDependencies:
       '@next/swc-darwin-arm64': 14.2.15
       '@next/swc-darwin-x64': 14.2.15
@@ -11925,7 +11933,7 @@ snapshots:
       - '@babel/core'
       - babel-plugin-macros
 
-  next@15.1.3(@babel/core@7.25.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+  next@15.1.3(@babel/core@7.26.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
       '@next/env': 15.1.3
       '@swc/counter': 0.1.3
@@ -11935,7 +11943,7 @@ snapshots:
       postcss: 8.4.31
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
-      styled-jsx: 5.1.6(@babel/core@7.25.2)(react@18.3.1)
+      styled-jsx: 5.1.6(@babel/core@7.26.0)(react@18.3.1)
     optionalDependencies:
       '@next/swc-darwin-arm64': 15.1.3
       '@next/swc-darwin-x64': 15.1.3
@@ -11950,21 +11958,21 @@ snapshots:
       - '@babel/core'
       - babel-plugin-macros
 
-  nextra-theme-docs@3.2.0(next@14.2.15(@babel/core@7.25.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(nextra@3.2.0(@types/react@18.3.18)(acorn@8.12.1)(next@14.2.15(@babel/core@7.25.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.6.3))(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+  nextra-theme-docs@3.2.0(next@14.2.15(@babel/core@7.26.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(nextra@3.2.0(@types/react@18.3.18)(acorn@8.12.1)(next@14.2.15(@babel/core@7.26.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.6.3))(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
       '@headlessui/react': 2.2.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       clsx: 2.1.1
       escape-string-regexp: 5.0.0
       flexsearch: 0.7.43
-      next: 14.2.15(@babel/core@7.25.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      next: 14.2.15(@babel/core@7.26.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       next-themes: 0.3.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      nextra: 3.2.0(@types/react@18.3.18)(acorn@8.12.1)(next@14.2.15(@babel/core@7.25.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.6.3)
+      nextra: 3.2.0(@types/react@18.3.18)(acorn@8.12.1)(next@14.2.15(@babel/core@7.26.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.6.3)
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
       scroll-into-view-if-needed: 3.1.0
       zod: 3.23.8
 
-  nextra@3.2.0(@types/react@18.3.18)(acorn@8.12.1)(next@14.2.15(@babel/core@7.25.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.6.3):
+  nextra@3.2.0(@types/react@18.3.18)(acorn@8.12.1)(next@14.2.15(@babel/core@7.26.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.6.3):
     dependencies:
       '@formatjs/intl-localematcher': 0.5.7
       '@headlessui/react': 2.2.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -11987,7 +11995,7 @@ snapshots:
       mdast-util-gfm: 3.0.0
       mdast-util-to-hast: 13.2.0
       negotiator: 1.0.0
-      next: 14.2.15(@babel/core@7.25.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      next: 14.2.15(@babel/core@7.26.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       p-limit: 6.1.0
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
@@ -13162,19 +13170,19 @@ snapshots:
     dependencies:
       inline-style-parser: 0.2.4
 
-  styled-jsx@5.1.1(@babel/core@7.25.2)(react@18.3.1):
+  styled-jsx@5.1.1(@babel/core@7.26.0)(react@18.3.1):
     dependencies:
       client-only: 0.0.1
       react: 18.3.1
     optionalDependencies:
-      '@babel/core': 7.25.2
+      '@babel/core': 7.26.0
 
-  styled-jsx@5.1.6(@babel/core@7.25.2)(react@18.3.1):
+  styled-jsx@5.1.6(@babel/core@7.26.0)(react@18.3.1):
     dependencies:
       client-only: 0.0.1
       react: 18.3.1
     optionalDependencies:
-      '@babel/core': 7.25.2
+      '@babel/core': 7.26.0
 
   stylis@4.2.0: {}
 

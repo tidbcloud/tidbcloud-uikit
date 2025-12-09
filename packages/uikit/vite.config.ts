@@ -32,7 +32,7 @@ const mantineCoreTypingsSrc = resolve(__dirname, 'node_modules/@mantine/core/lib
 const mantineCoreTypingsDest = resolve(
   __dirname,
   // this path is generate when rollup `perserveModule` set to true
-  'dist/node_modules/.pnpm/@mantine_core@7.17.8_patch_hash_3qirwkgu3wxhvd6hnr2gb24yzq_@mantine_hooks@7.17.8_react@18.3.1_e5yvlgwhmeykc75dkphi7jou6q/node_modules/@mantine/core/lib'
+  'dist/node_modules/.pnpm/@mantine_core@7.17.8_patch_hash_0fe6b4653cf663832f30332bd587c1148984760b4bcd3d47fa7b49d33e19ae10_@mantine_hooks@7.17.8_react@18.3.1_e5yvlgwhmeykc75dkphi7jou6q/node_modules/@mantine/core/lib'
 )
 
 function replaceMantineCoreWithRelativePath(filePath: string, content: string) {
