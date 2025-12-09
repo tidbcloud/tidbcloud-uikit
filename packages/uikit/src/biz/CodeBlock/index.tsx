@@ -1,8 +1,8 @@
 import React, { useMemo, useState } from 'react'
 
 import { useLocalStorage } from '../../hooks/index.js'
-import { IconCheck, IconChevronVerticalExpand, IconChevronVerticalShrink, IconCopy01 } from '../../icons/index.js'
-import { ActionIcon, Box, BoxProps, Code, CodeProps, CopyButton, Group, HoverCard } from '../../primitive/index.js'
+import { IconCheck, IconChevronVerticalExpand, IconChevronVerticalShrink, IconCopy03 } from '../../icons/index.js'
+import { ActionIcon, Box, BoxProps, Code, CodeProps, CopyButton, Group, Tooltip } from '../../primitive/index.js'
 import { Prism, PrismProps } from '../../primitive/Prism/index.js'
 import { mergeStylesList, mergeSxList } from '../../utils/index.js'
 
@@ -114,43 +114,37 @@ export const CodeBlock = ({
 
       <Group gap={4} sx={(theme) => ({ position: 'absolute', top: 16, right: 16, color: theme.colors.carbon[8] })}>
         {foldIconVisible && (
-          <HoverCard withArrow position="top" shadow="xs">
-            <HoverCard.Target>
-              <ActionIcon
-                size="sm"
-                variant="subtle"
-                onClick={() => {
-                  const v = !folded
-                  setFolded(v)
-                  onFoldIconClick?.(v)
-                }}
-              >
-                {folded ? <IconChevronVerticalExpand size={14} /> : <IconChevronVerticalShrink size={14} />}
-              </ActionIcon>
-            </HoverCard.Target>
-            <HoverCard.Dropdown p="xs">{folded ? 'Expand' : 'Collapse'}</HoverCard.Dropdown>
-          </HoverCard>
+          <Tooltip withArrow label={folded ? 'Expand' : 'Collapse'}>
+            <ActionIcon
+              size="sm"
+              variant="subtle"
+              onClick={() => {
+                const v = !folded
+                setFolded(v)
+                onFoldIconClick?.(v)
+              }}
+            >
+              {folded ? <IconChevronVerticalExpand size={14} /> : <IconChevronVerticalShrink size={14} />}
+            </ActionIcon>
+          </Tooltip>
         )}
 
         {withCopyButton && (
           <CopyButton value={copyContent ?? children} timeout={2000}>
             {({ copied, copy }) => (
-              <HoverCard withArrow position="top" shadow="xs">
-                <HoverCard.Target>
-                  <ActionIcon
-                    aria-label="Copy"
-                    size="sm"
-                    variant="subtle"
-                    onClick={() => {
-                      copy()
-                      onCopyClick?.()
-                    }}
-                  >
-                    {copied ? <IconCheck size={14} /> : <IconCopy01 size={14} />}
-                  </ActionIcon>
-                </HoverCard.Target>
-                <HoverCard.Dropdown p="xs">{copied ? 'Copied' : 'Copy'}</HoverCard.Dropdown>
-              </HoverCard>
+              <Tooltip withArrow label={copied ? 'Copied' : 'Copy'}>
+                <ActionIcon
+                  aria-label="Copy"
+                  size="sm"
+                  variant="subtle"
+                  onClick={() => {
+                    copy()
+                    onCopyClick?.()
+                  }}
+                >
+                  {copied ? <IconCheck size={14} /> : <IconCopy03 size={14} />}
+                </ActionIcon>
+              </Tooltip>
             )}
           </CopyButton>
         )}
@@ -185,23 +179,20 @@ export const CopyText = ({ children, value, ...rest }: React.PropsWithChildren<C
       {children}
       <CopyButton value={value} timeout={2000}>
         {({ copied, copy }) => (
-          <HoverCard withArrow position="top" shadow="xs">
-            <HoverCard.Target>
-              <ActionIcon
-                aria-label="Copy"
-                variant="subtle"
-                size="sm"
-                ml={8}
-                display="inline-block"
-                onClick={() => {
-                  copy()
-                }}
-              >
-                {copied ? <IconCheck size={14} /> : <IconCopy01 size={14} />}
-              </ActionIcon>
-            </HoverCard.Target>
-            <HoverCard.Dropdown p="xs">{copied ? 'Copied' : 'Copy'}</HoverCard.Dropdown>
-          </HoverCard>
+          <Tooltip withArrow label={copied ? 'Copied' : 'Copy'}>
+            <ActionIcon
+              aria-label="Copy"
+              variant="subtle"
+              size="sm"
+              ml={8}
+              display="inline-block"
+              onClick={() => {
+                copy()
+              }}
+            >
+              {copied ? <IconCheck size={14} /> : <IconCopy03 size={14} />}
+            </ActionIcon>
+          </Tooltip>
         )}
       </CopyButton>
     </Code>
