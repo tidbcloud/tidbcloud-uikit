@@ -1,5 +1,12 @@
 # @tidbcloud/uikit
 
+## 2.6.1
+
+### Patch Changes
+
+- refactor(uikit/biz): replace HoverCard with Tooltip in CodeBlock ([#615](https://github.com/tidbcloud/tidbcloud-uikit/pull/615))
+- fix: update footer content and improve page titles in documentation ([#613](https://github.com/tidbcloud/tidbcloud-uikit/pull/613))
+
 ## 2.6.0
 
 ### Minor Changes
