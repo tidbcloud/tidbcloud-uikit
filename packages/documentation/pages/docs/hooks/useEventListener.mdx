@@ -1,0 +1,45 @@
+# useEventListener
+
+Add event listener to an element.
+
+## Import
+
+```tsx
+import { useEventListener } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+`useEventListener` adds a given event listener to an element to which `ref` is assigned. After the component is unmounted, the listener is automatically removed.
+
+```tsx
+import { useState } from 'react'
+import { useEventListener } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [count, setCount] = useState(0)
+  const ref = useEventListener('click', () => setCount((c) => c + 1))
+
+  return <button ref={ref}>Button clicked {count} times</button>
+}
+```
+
+## Options
+
+The hook supports the same options as `addEventListener` method:
+
+```tsx
+import { useEventListener } from '@tidbcloud/uikit'
+
+const ref = useEventListener('scroll', handler, { passive: true })
+```
+
+## Definition
+
+```tsx
+function useEventListener<K extends keyof HTMLElementEventMap, T extends HTMLElement = any>(
+  type: K,
+  listener: (this: HTMLDivElement, ev: HTMLElementEventMap[K]) => any,
+  options?: boolean | AddEventListenerOptions
+): React.RefCallback<T | null>
+```

@@ -1,0 +1,57 @@
+# useCounter
+
+Manage numeric counter state with increment, decrement, set, and reset handlers.
+
+## Import
+
+```tsx
+import { useCounter } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+```tsx
+import { useCounter } from '@tidbcloud/uikit'
+import { Button, Group, Text } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [count, handlers] = useCounter(0, { min: 0, max: 10 })
+
+  return (
+    <>
+      <Text>Count: {count}</Text>
+      <Group>
+        <Button onClick={handlers.increment}>Increment</Button>
+        <Button onClick={handlers.decrement}>Decrement</Button>
+        <Button onClick={() => handlers.set(5)}>Set 5</Button>
+        <Button onClick={handlers.reset}>Reset</Button>
+      </Group>
+    </>
+  )
+}
+```
+
+## Options
+
+- `min` – minimum value (will not go below)
+- `max` – maximum value (will not go above)
+
+## Definition
+
+```tsx
+interface UseCounterOptions {
+  min?: number
+  max?: number
+}
+
+interface UseCounterHandlers {
+  increment: () => void
+  decrement: () => void
+  set: (value: number) => void
+  reset: () => void
+}
+
+type UseCounterReturnValue = [number, UseCounterHandlers]
+
+function useCounter(initialValue?: number, options?: UseCounterOptions): UseCounterReturnValue
+```

@@ -1,0 +1,43 @@
+# useInViewport
+
+Check if an element is visible in the viewport.
+
+## Import
+
+```tsx
+import { useInViewport } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+`useInViewport` is a simpler alternative to `useIntersection` that only checks if the element is visible in the viewport.
+
+```tsx
+import { useInViewport } from '@tidbcloud/uikit'
+import { Box, Text } from '@tidbcloud/uikit'
+
+function Demo() {
+  const { ref, inViewport } = useInViewport()
+
+  return (
+    <>
+      <Text>{inViewport ? 'Box is in viewport' : 'Scroll down to see the box'}</Text>
+      <div style={{ height: '150vh' }} />
+      <Box ref={ref} p="xl" bg="blue">
+        Target element
+      </Box>
+    </>
+  )
+}
+```
+
+## Definition
+
+```tsx
+interface UseInViewportReturnValue<T extends HTMLElement = any> {
+  inViewport: boolean
+  ref: React.RefCallback<T | null>
+}
+
+function useInViewport<T extends HTMLElement = any>(): UseInViewportReturnValue<T>
+```

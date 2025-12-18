@@ -1,0 +1,41 @@
+# usePageLeave
+
+Detect when the mouse leaves the page.
+
+## Import
+
+```tsx
+import { usePageLeave } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+`usePageLeave` calls the given function when the mouse leaves the page.
+
+```tsx
+import { useState } from 'react'
+import { usePageLeave } from '@tidbcloud/uikit'
+import { Text } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [leftCount, setLeftCount] = useState(0)
+
+  usePageLeave(() => {
+    setLeftCount((c) => c + 1)
+  })
+
+  return <Text>Mouse has left the page {leftCount} times</Text>
+}
+```
+
+## Use Cases
+
+- Show exit intent popups
+- Pause content when user is not on page
+- Track user engagement
+
+## Definition
+
+```tsx
+function usePageLeave(onPageLeave: () => void): void
+```

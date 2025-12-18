@@ -1,0 +1,63 @@
+# useWindowEvent
+
+Add event listener to window object.
+
+## Import
+
+```tsx
+import { useWindowEvent } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+`useWindowEvent` adds event listener to `window` object on component mount and removes it on unmount.
+
+```tsx
+import { useRef } from 'react'
+import { useWindowEvent } from '@tidbcloud/uikit'
+import { TextInput } from '@tidbcloud/uikit'
+
+function Demo() {
+  const inputRef = useRef<HTMLInputElement>(null)
+
+  // Focus search input with Cmd/Ctrl + K
+  useWindowEvent('keydown', (event) => {
+    if (event.code === 'KeyK' && (event.ctrlKey || event.metaKey)) {
+      event.preventDefault()
+      inputRef.current?.focus()
+    }
+  })
+
+  return <TextInput ref={inputRef} placeholder="Press ⌘K to focus" />
+}
+```
+
+## Comparison with useEffect
+
+```tsx
+import { useEffect } from 'react'
+import { useWindowEvent } from '@tidbcloud/uikit'
+
+const handler = (event: KeyboardEvent) => console.log(event)
+
+// Regular way
+useEffect(() => {
+  window.addEventListener('keydown', handler)
+  return () => window.removeEventListener('keydown', handler)
+}, [])
+
+// With useWindowEvent
+useWindowEvent('keydown', handler)
+```
+
+## Definition
+
+The hook has the same signature as `window.addEventListener`:
+
+```tsx
+function useWindowEvent<K extends keyof WindowEventMap>(
+  type: K,
+  listener: (this: Window, ev: WindowEventMap[K]) => any,
+  options?: boolean | AddEventListenerOptions
+): void
+```

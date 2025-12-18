@@ -1,0 +1,41 @@
+# useLogger
+
+Log component lifecycle events.
+
+## Import
+
+```tsx
+import { useLogger } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+`useLogger` logs component lifecycle events to the console. This is useful for debugging.
+
+```tsx
+import { useState } from 'react'
+import { useLogger } from '@tidbcloud/uikit'
+import { Button } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [count, setCount] = useState(0)
+  useLogger('Demo', [{ count }])
+
+  return <Button onClick={() => setCount((c) => c + 1)}>Count: {count}</Button>
+}
+```
+
+## Console Output
+
+```
+[Demo] Mounted
+[Demo] Updated [{ count: 0 }]
+[Demo] Updated [{ count: 1 }]
+[Demo] Unmounted
+```
+
+## Definition
+
+```tsx
+function useLogger(componentName: string, props: any[]): void
+```

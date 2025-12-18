@@ -1,0 +1,82 @@
+# useDebouncedCallback
+
+Create a debounced version of a callback function.
+
+## Import
+
+```tsx
+import { useDebouncedCallback } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+`useDebouncedCallback` creates a debounced version of the given function, delaying its execution until a specified time has elapsed since the last invocation.
+
+```tsx
+import { useState } from 'react'
+import { useDebouncedCallback } from '@tidbcloud/uikit'
+import { TextInput, Text } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [value, setValue] = useState('')
+  const [debouncedValue, setDebouncedValue] = useState('')
+
+  const handleChange = useDebouncedCallback((val: string) => {
+    setDebouncedValue(val)
+  }, 500)
+
+  return (
+    <>
+      <TextInput
+        value={value}
+        onChange={(e) => {
+          setValue(e.currentTarget.value)
+          handleChange(e.currentTarget.value)
+        }}
+        placeholder="Type something..."
+      />
+      <Text mt="md">Debounced value: {debouncedValue}</Text>
+    </>
+  )
+}
+```
+
+## Flush on Unmount
+
+By default, the callback is not fired when the component unmounts. Set `flushOnUnmount: true` to execute the pending callback:
+
+```tsx
+import { useDebouncedCallback } from '@tidbcloud/uikit'
+
+const callback = useDebouncedCallback(() => console.log('Hello'), { delay: 1000, flushOnUnmount: true })
+```
+
+## Flush Manually
+
+Call the `flush` method to execute the debounced callback immediately:
+
+```tsx
+import { useDebouncedCallback } from '@tidbcloud/uikit'
+
+const callback = useDebouncedCallback(() => console.log('Hello'), 1000)
+
+callback.flush() // Immediately executes the pending callback
+```
+
+## Definition
+
+```tsx
+interface UseDebouncedCallbackOptions {
+  delay: number
+  flushOnUnmount?: boolean
+}
+
+type UseDebouncedCallbackReturnValue<T extends (...args: any[]) => any> = ((...args: Parameters<T>) => void) & {
+  flush: () => void
+}
+
+function useDebouncedCallback<T extends (...args: any[]) => any>(
+  callback: T,
+  delayOrOptions: number | UseDebouncedCallbackOptions
+): UseDebouncedCallbackReturnValue<T>
+```

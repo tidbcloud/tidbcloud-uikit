@@ -1,0 +1,38 @@
+# useThrottledValue
+
+Throttle value changes.
+
+## Import
+
+```tsx
+import { useThrottledValue } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+`useThrottledValue` accepts a value and a wait time in milliseconds. It returns a throttled value that cannot change more than once every `wait` milliseconds.
+
+```tsx
+import { useState } from 'react'
+import { useThrottledValue } from '@tidbcloud/uikit'
+import { TextInput, Text } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [value, setValue] = useState('')
+  const throttledValue = useThrottledValue(value, 1000)
+
+  return (
+    <>
+      <TextInput value={value} onChange={(e) => setValue(e.currentTarget.value)} placeholder="Type something..." />
+      <Text mt="md">Value: {value}</Text>
+      <Text>Throttled value: {throttledValue}</Text>
+    </>
+  )
+}
+```
+
+## Definition
+
+```tsx
+function useThrottledValue<T>(value: T, wait: number): T
+```

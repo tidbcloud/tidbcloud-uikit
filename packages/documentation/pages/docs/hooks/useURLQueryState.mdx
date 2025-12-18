@@ -1,0 +1,61 @@
+# useURLQueryState
+
+Manage state synced with URL query parameters.
+
+## Import
+
+```tsx
+import { useURLQueryState } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+`useURLQueryState` keeps state in sync with URL query parameters. When the state changes, the URL is updated. When the URL changes (e.g., back/forward navigation), the state is updated.
+
+```tsx
+import { useURLQueryState } from '@tidbcloud/uikit'
+import { TextInput } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [search, setSearch] = useURLQueryState('search', '')
+
+  return <TextInput value={search} onChange={(e) => setSearch(e.currentTarget.value)} placeholder="Search..." />
+}
+```
+
+This will update the URL to `?search=value` when the input changes.
+
+## Multiple Parameters
+
+```tsx
+import { useURLQueryState } from '@tidbcloud/uikit'
+import { TextInput, NumberInput, Stack } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [search, setSearch] = useURLQueryState('q', '')
+  const [page, setPage] = useURLQueryState('page', '1')
+
+  return (
+    <Stack>
+      <TextInput value={search} onChange={(e) => setSearch(e.currentTarget.value)} label="Search" />
+      <NumberInput value={parseInt(page)} onChange={(val) => setPage(String(val))} label="Page" />
+    </Stack>
+  )
+}
+```
+
+## URL State Persistence
+
+When a user bookmarks or shares the URL, the state will be restored from the query parameters.
+
+## Notes
+
+- State is stored as strings in the URL
+- Empty values are removed from the URL
+- Compatible with browser history (back/forward buttons)
+
+## Definition
+
+```tsx
+function useURLQueryState(key: string, defaultValue: string): [string, (value: string) => void]
+```

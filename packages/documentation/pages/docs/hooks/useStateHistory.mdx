@@ -1,0 +1,67 @@
+# useStateHistory
+
+Track state history with undo/redo functionality.
+
+## Import
+
+```tsx
+import { useStateHistory } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+`useStateHistory` creates a state with history. It returns the current value, handlers for navigation, and the history object.
+
+```tsx
+import { useStateHistory } from '@tidbcloud/uikit'
+import { Button, Group, Text } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [value, handlers, history] = useStateHistory('Initial')
+
+  return (
+    <>
+      <Text>Current: {value}</Text>
+      <Text>History: {JSON.stringify(history)}</Text>
+
+      <Group mt="md">
+        <Button onClick={() => handlers.set(`Value ${Date.now()}`)}>Set new value</Button>
+        <Button onClick={() => handlers.back()} disabled={history.current === 0}>
+          Undo
+        </Button>
+        <Button onClick={() => handlers.forward()} disabled={history.current === history.history.length - 1}>
+          Redo
+        </Button>
+        <Button onClick={handlers.reset}>Reset</Button>
+      </Group>
+    </>
+  )
+}
+```
+
+## Handlers
+
+- `set(value)` – set new value, adds to history
+- `back(steps?)` – go back in history (default: 1 step)
+- `forward(steps?)` – go forward in history (default: 1 step)
+- `reset()` – reset to initial value
+
+## Definition
+
+```tsx
+interface UseStateHistoryHandlers<T> {
+  set: (value: T) => void
+  back: (steps?: number) => void
+  forward: (steps?: number) => void
+  reset: () => void
+}
+
+interface UseStateHistoryValue<T> {
+  history: T[]
+  current: number
+}
+
+type UseStateHistoryReturnValue<T> = [T, UseStateHistoryHandlers<T>, UseStateHistoryValue<T>]
+
+function useStateHistory<T>(initialValue: T): UseStateHistoryReturnValue<T>
+```

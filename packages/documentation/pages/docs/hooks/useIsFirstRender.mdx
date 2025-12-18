@@ -1,0 +1,44 @@
+# useIsFirstRender
+
+Check if this is the first render.
+
+## Import
+
+```tsx
+import { useIsFirstRender } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+`useIsFirstRender` returns `true` only on the first render.
+
+```tsx
+import { useState } from 'react'
+import { useIsFirstRender } from '@tidbcloud/uikit'
+import { Button, Text } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [count, setCount] = useState(0)
+  const isFirstRender = useIsFirstRender()
+
+  return (
+    <>
+      <Text>Is first render: {isFirstRender ? 'Yes' : 'No'}</Text>
+      <Text>Count: {count}</Text>
+      <Button onClick={() => setCount((c) => c + 1)}>Re-render</Button>
+    </>
+  )
+}
+```
+
+## Use Cases
+
+- Skip animations on initial render
+- Conditional logic based on first render
+- Debugging render cycles
+
+## Definition
+
+```tsx
+function useIsFirstRender(): boolean
+```

@@ -1,0 +1,50 @@
+# useShallowEffect
+
+useEffect with shallow comparison.
+
+## Import
+
+```tsx
+import { useShallowEffect } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+`useShallowEffect` works like `useEffect`, but does a shallow comparison on dependencies instead of reference equality.
+
+```tsx
+import { useState } from 'react'
+import { useShallowEffect } from '@tidbcloud/uikit'
+import { Button, Text } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [count, setCount] = useState(0)
+
+  // This effect will run only when { value: count } has different shallow values
+  // With useEffect, it would run on every render since the object is recreated
+  useShallowEffect(() => {
+    console.log('Effect ran with', { value: count })
+  }, [{ value: count }])
+
+  return (
+    <>
+      <Text>Count: {count}</Text>
+      <Button onClick={() => setCount((c) => c + 1)}>Increment</Button>
+    </>
+  )
+}
+```
+
+## When to Use
+
+Use `useShallowEffect` when:
+
+- Dependencies are objects or arrays that are recreated on each render
+- You want to compare by value, not reference
+- You need to avoid unnecessary effect executions
+
+## Definition
+
+```tsx
+function useShallowEffect(cb: React.EffectCallback, dependencies?: React.DependencyList): void
+```

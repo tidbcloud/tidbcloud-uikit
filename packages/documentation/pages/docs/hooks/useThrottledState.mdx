@@ -1,0 +1,38 @@
+# useThrottledState
+
+Throttle state updates.
+
+## Import
+
+```tsx
+import { useThrottledState } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+`useThrottledState` works similar to `useState` but throttles state updates. The state will not update more than once every `wait` milliseconds.
+
+```tsx
+import { useThrottledState } from '@tidbcloud/uikit'
+import { TextInput, Text } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [value, setValue] = useThrottledState('', 1000)
+
+  return (
+    <>
+      <TextInput onChange={(e) => setValue(e.currentTarget.value)} placeholder="Type something..." />
+      <Text mt="md">Throttled value (updates at most once per second): {value}</Text>
+    </>
+  )
+}
+```
+
+## Definition
+
+```tsx
+function useThrottledState<T = any>(
+  defaultValue: T,
+  wait: number
+): readonly [T, (newValue: React.SetStateAction<T>) => void]
+```

@@ -1,0 +1,67 @@
+# useTimeout
+
+Run a function after a timeout.
+
+## Import
+
+```tsx
+import { useTimeout } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+```tsx
+import { useState } from 'react'
+import { useTimeout } from '@tidbcloud/uikit'
+import { Button, Text, Group } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [visible, setVisible] = useState(true)
+  const { start, clear } = useTimeout(() => setVisible(false), 3000)
+
+  return (
+    <>
+      <Text>{visible ? 'Message will hide in 3 seconds' : 'Message hidden'}</Text>
+      <Group>
+        <Button onClick={start}>Start timer</Button>
+        <Button onClick={clear}>Cancel</Button>
+        <Button onClick={() => setVisible(true)}>Reset message</Button>
+      </Group>
+    </>
+  )
+}
+```
+
+## Auto Invoke
+
+Start the timeout automatically when the component mounts:
+
+```tsx
+import { useTimeout } from '@tidbcloud/uikit'
+
+const { start, clear } = useTimeout(() => console.log('Timeout!'), 3000, { autoInvoke: true })
+```
+
+## API
+
+- `start(...args)` – starts the timer, can pass arguments to the callback
+- `clear()` – cancels the timer
+
+## Definition
+
+```tsx
+interface UseTimeoutOptions {
+  autoInvoke: boolean
+}
+
+interface UseTimeoutReturnValue {
+  start: (...args: any[]) => void
+  clear: () => void
+}
+
+function useTimeout(
+  callback: (...args: any[]) => void,
+  delay: number,
+  options?: UseTimeoutOptions
+): UseTimeoutReturnValue
+```

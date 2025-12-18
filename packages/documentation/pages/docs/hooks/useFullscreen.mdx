@@ -1,0 +1,60 @@
+# useFullscreen
+
+Enter/exit fullscreen mode for an element.
+
+## Import
+
+```tsx
+import { useFullscreen } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+`useFullscreen` allows entering/exiting fullscreen for a given element using the Fullscreen API. By default, if you don't provide `ref`, the hook will target `document.documentElement`.
+
+```tsx
+import { Button } from '@tidbcloud/uikit'
+import { useFullscreen } from '@tidbcloud/uikit'
+
+function Demo() {
+  const { toggle, fullscreen } = useFullscreen()
+
+  return (
+    <Button onClick={toggle} color={fullscreen ? 'red' : 'blue'}>
+      {fullscreen ? 'Exit Fullscreen' : 'Enter Fullscreen'}
+    </Button>
+  )
+}
+```
+
+## Custom Target Element
+
+The hook returns an optional `ref` function that can be passed to an element to act as root:
+
+```tsx
+import { Button, Image, Stack } from '@tidbcloud/uikit'
+import { useFullscreen } from '@tidbcloud/uikit'
+
+function Demo() {
+  const { ref, toggle, fullscreen } = useFullscreen()
+
+  return (
+    <Stack>
+      <Image ref={ref} src="https://example.com/image.jpg" alt="Toggle fullscreen" />
+      <Button onClick={toggle}>{fullscreen ? 'Exit' : 'View fullscreen'}</Button>
+    </Stack>
+  )
+}
+```
+
+## Definition
+
+```tsx
+interface UseFullscreenReturnValue<T extends HTMLElement = any> {
+  ref: React.RefCallback<T | null>
+  toggle: () => Promise<void>
+  fullscreen: boolean
+}
+
+function useFullscreen<T extends HTMLElement = any>(): UseFullscreenReturnValue<T>
+```

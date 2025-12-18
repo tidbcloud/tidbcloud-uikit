@@ -1,0 +1,69 @@
+# useClipboard
+
+Copy text to clipboard with fallback support.
+
+## Import
+
+```tsx
+import { useClipboard } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+`useClipboard` provides a `copy` function to copy text to the clipboard and a `copied` state that indicates if the text has been copied recently.
+
+```tsx
+import { useClipboard } from '@tidbcloud/uikit'
+import { Button, TextInput, Group } from '@tidbcloud/uikit'
+
+function Demo() {
+  const clipboard = useClipboard({ timeout: 500 })
+
+  return (
+    <Group>
+      <TextInput value="https://example.com" readOnly />
+      <Button color={clipboard.copied ? 'teal' : 'blue'} onClick={() => clipboard.copy('https://example.com')}>
+        {clipboard.copied ? 'Copied' : 'Copy'}
+      </Button>
+    </Group>
+  )
+}
+```
+
+## Timeout
+
+The `copied` value is `true` for a short period after calling `copy`. By default, the timeout is 2000ms. You can change it with the `timeout` option:
+
+```tsx
+import { useClipboard } from '@tidbcloud/uikit'
+
+const clipboard = useClipboard({ timeout: 1000 }) // 1 second
+```
+
+## Fallback Support
+
+This hook includes a fallback for non-secure contexts (e.g., `http://` or when `navigator.clipboard` is unavailable). The fallback uses `document.execCommand('copy')` which works in older browsers and non-HTTPS environments.
+
+## API
+
+- `copy(text)` – copy text to clipboard
+- `reset()` – reset `copied` value
+- `error` – error if copying failed
+- `copied` – `true` if text was recently copied
+
+## Definition
+
+```tsx
+interface UseClipboardOptions {
+  timeout?: number
+}
+
+interface UseClipboardReturnValue {
+  copy: (valueToCopy: string) => void
+  reset: () => void
+  error: Error | null
+  copied: boolean
+}
+
+function useClipboard(options?: UseClipboardOptions): UseClipboardReturnValue
+```

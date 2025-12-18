@@ -1,0 +1,71 @@
+# useInterval
+
+Run a function at intervals.
+
+## Import
+
+```tsx
+import { useInterval } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+```tsx
+import { useState } from 'react'
+import { useInterval } from '@tidbcloud/uikit'
+import { Button, Text, Group } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [seconds, setSeconds] = useState(0)
+  const interval = useInterval(() => setSeconds((s) => s + 1), 1000)
+
+  return (
+    <>
+      <Text>Timer: {seconds} seconds</Text>
+      <Group>
+        <Button onClick={interval.start} disabled={interval.active}>
+          Start
+        </Button>
+        <Button onClick={interval.stop} disabled={!interval.active}>
+          Stop
+        </Button>
+        <Button onClick={interval.toggle}>Toggle</Button>
+      </Group>
+    </>
+  )
+}
+```
+
+## Auto Invoke
+
+Start the interval automatically when the component mounts:
+
+```tsx
+import { useInterval } from '@tidbcloud/uikit'
+
+const interval = useInterval(() => console.log('Interval tick'), 1000, { autoInvoke: true })
+```
+
+## API
+
+- `start()` – start the interval
+- `stop()` – stop the interval
+- `toggle()` – toggle the interval
+- `active` – current interval status
+
+## Definition
+
+```tsx
+interface UseIntervalOptions {
+  autoInvoke?: boolean
+}
+
+interface UseIntervalReturnValue {
+  start: () => void
+  stop: () => void
+  toggle: () => void
+  active: boolean
+}
+
+function useInterval(fn: () => void, interval: number, options?: UseIntervalOptions): UseIntervalReturnValue
+```

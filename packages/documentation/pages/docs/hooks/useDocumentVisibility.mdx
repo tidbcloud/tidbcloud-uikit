@@ -1,0 +1,37 @@
+# useDocumentVisibility
+
+Track document visibility state.
+
+## Import
+
+```tsx
+import { useDocumentVisibility } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+`useDocumentVisibility` returns current `document.visibilityState` – it allows detecting if the current tab is active.
+
+```tsx
+import { useDocumentVisibility } from '@tidbcloud/uikit'
+import { Text } from '@tidbcloud/uikit'
+
+function Demo() {
+  const documentState = useDocumentVisibility()
+
+  return <Text>Document is {documentState === 'visible' ? 'visible' : 'hidden'}</Text>
+}
+```
+
+## Use Cases
+
+- Pause videos/animations when tab is not visible
+- Stop polling when user switches tabs
+- Track user engagement
+
+## Definition
+
+```tsx
+// DocumentVisibilityState is 'visible' | 'hidden'
+function useDocumentVisibility(): DocumentVisibilityState
+```

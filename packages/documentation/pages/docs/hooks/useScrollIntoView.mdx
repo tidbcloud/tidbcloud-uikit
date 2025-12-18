@@ -1,0 +1,115 @@
+# useScrollIntoView
+
+Scroll element into view with smooth animation.
+
+## Import
+
+```tsx
+import { useScrollIntoView } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+`useScrollIntoView` handles scroll behavior for any scrollable element. It adjusts scrolling animation with respect to the reduced-motion user preference.
+
+```tsx
+import { useScrollIntoView } from '@tidbcloud/uikit'
+import { Button, Box } from '@tidbcloud/uikit'
+
+function Demo() {
+  const { scrollIntoView, targetRef } = useScrollIntoView<HTMLDivElement>()
+
+  return (
+    <>
+      <Button onClick={() => scrollIntoView({ alignment: 'center' })}>Scroll to target</Button>
+
+      <div style={{ height: '150vh' }} />
+
+      <Box ref={targetRef} p="xl" bg="blue">
+        Target element
+      </Box>
+    </>
+  )
+}
+```
+
+## Options
+
+The hook accepts a settings object:
+
+- `onScrollFinish` – function called after scroll animation
+- `easing` – custom easing function
+- `duration` – duration of scroll animation in milliseconds
+- `axis` – axis of scroll (`'x'` or `'y'`)
+- `cancelable` – whether animation may be interrupted by user scrolling
+- `offset` – additional distance between the nearest edge and element
+- `isList` – prevents content jumping in scrolling lists with multiple targets
+
+```tsx
+import { useScrollIntoView } from '@tidbcloud/uikit'
+
+const { scrollIntoView, targetRef, scrollableRef } = useScrollIntoView({
+  duration: 500,
+  offset: 60,
+  onScrollFinish: () => console.log('Scroll finished')
+})
+```
+
+## Custom Easing
+
+```tsx
+import { useScrollIntoView } from '@tidbcloud/uikit'
+
+useScrollIntoView({
+  easing: (t) => (t < 0.5 ? 16 * t ** 5 : 1 - (-2 * t + 2) ** 5 / 2) // easeInOutQuint
+})
+```
+
+## Parent Node
+
+For scrolling within a specific container:
+
+```tsx
+import { useScrollIntoView } from '@tidbcloud/uikit'
+
+function Demo() {
+  const { scrollIntoView, targetRef, scrollableRef } = useScrollIntoView<HTMLDivElement, HTMLDivElement>()
+
+  return (
+    <div ref={scrollableRef} style={{ height: 300, overflow: 'auto' }}>
+      <div style={{ height: 1000 }}>
+        <div ref={targetRef}>Target</div>
+      </div>
+    </div>
+  )
+}
+```
+
+## Definition
+
+```tsx
+interface UseScrollIntoViewAnimation {
+  alignment?: 'start' | 'end' | 'center'
+}
+
+interface UseScrollIntoViewOptions {
+  onScrollFinish?: () => void
+  duration?: number
+  axis?: 'x' | 'y'
+  easing?: (t: number) => number
+  offset?: number
+  cancelable?: boolean
+  isList?: boolean
+}
+
+interface UseScrollIntoViewReturnValue<Target, Parent> {
+  scrollableRef: React.RefObject<Parent | null>
+  targetRef: React.RefObject<Target | null>
+  scrollIntoView: (params?: UseScrollIntoViewAnimation) => void
+  cancel: () => void
+}
+
+function useScrollIntoView<Target extends HTMLElement = any, Parent extends HTMLElement | null = null>(
+  options?: UseScrollIntoViewOptions
+): UseScrollIntoViewReturnValue<Target, Parent>
+```

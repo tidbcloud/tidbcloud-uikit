@@ -1,0 +1,55 @@
+# useIdle
+
+Detect user idle state.
+
+## Import
+
+```tsx
+import { useIdle } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+`useIdle` detects if the user does nothing for a given time in ms.
+
+```tsx
+import { useIdle } from '@tidbcloud/uikit'
+import { Text } from '@tidbcloud/uikit'
+
+function Demo() {
+  const idle = useIdle(2000)
+
+  return <Text>{idle ? 'User is idle' : 'User is active'}</Text>
+}
+```
+
+## Custom Events
+
+By default, the hook listens to `keypress`, `mousemove`, `touchmove`, `wheel`, `click`, and `scroll` events. You can customize these:
+
+```tsx
+import { useIdle } from '@tidbcloud/uikit'
+
+const idle = useIdle(2000, { events: ['click', 'keypress'] })
+```
+
+## Initial State
+
+By default, the hook returns `true` (idle) on initial render. Change with `initialState`:
+
+```tsx
+import { useIdle } from '@tidbcloud/uikit'
+
+const idle = useIdle(2000, { initialState: false })
+```
+
+## Definition
+
+```tsx
+interface UseIdleOptions {
+  events?: (keyof DocumentEventMap)[]
+  initialState?: boolean
+}
+
+function useIdle(timeout: number, options?: UseIdleOptions): boolean
+```

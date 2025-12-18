@@ -1,0 +1,108 @@
+# useLocalStorage
+
+Persist state in localStorage with automatic synchronization.
+
+## Import
+
+```tsx
+import { useLocalStorage } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+`useLocalStorage` allows using value from the `localStorage` as React state. The hook works the same way as `useState`, but also writes the value to localStorage.
+
+```tsx
+import { useLocalStorage } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [value, setValue] = useLocalStorage({
+    key: 'color-scheme',
+    defaultValue: 'dark'
+  })
+
+  // Value is set both to state and localStorage
+  setValue('light')
+
+  // You can also use callback like in useState
+  setValue((current) => (current === 'dark' ? 'light' : 'dark'))
+}
+```
+
+## Remove Value
+
+Use `removeValue` callback to clean localStorage. When value is removed, it is reset to `defaultValue`:
+
+```tsx
+import { useLocalStorage } from '@tidbcloud/uikit'
+
+const [value, setValue, removeValue] = useLocalStorage({
+  key: 'color-scheme',
+  defaultValue: 'light'
+})
+
+// Later...
+removeValue() // Removes from localStorage and resets to 'light'
+```
+
+## Browser Tabs Synchronization
+
+The hook subscribes to the storage event. When state changes in one tab, it automatically updates the value in all other opened browser tabs.
+
+## Custom Serialization
+
+By default, the hook uses `JSON.stringify`/`JSON.parse`. Provide custom handlers if needed:
+
+```tsx
+import { useLocalStorage } from '@tidbcloud/uikit'
+
+const [value, setValue] = useLocalStorage({
+  key: 'data',
+  serialize: (value) => {
+    /* return value serialized to string */
+  },
+  deserialize: (localStorageValue) => {
+    /* parse localStorage string value and return value */
+  }
+})
+```
+
+## Session Storage
+
+Use `useSessionStorage` for session storage instead:
+
+```tsx
+import { useSessionStorage } from '@tidbcloud/uikit'
+
+const [value, setValue] = useSessionStorage({
+  key: 'session-key',
+  defaultValue: 'mantine'
+})
+```
+
+## Read Storage Value
+
+To read value from storage without using the hook:
+
+```tsx
+import { readLocalStorageValue } from '@tidbcloud/uikit'
+
+const value = readLocalStorageValue({ key: 'color-scheme' })
+```
+
+## Definition
+
+```tsx
+interface UseStorageOptions<T> {
+  key: string
+  defaultValue?: T
+  getInitialValueInEffect?: boolean
+  sync?: boolean
+  serialize?: (value: T) => string
+  deserialize?: (value: string) => T
+}
+
+type UseStorageReturnValue<T> = [T, (val: T | ((prevState: T) => T)) => void, () => void]
+
+function useLocalStorage<T = string>(options: UseStorageOptions<T>): UseStorageReturnValue<T>
+```

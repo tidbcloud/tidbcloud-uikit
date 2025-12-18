@@ -1,0 +1,94 @@
+# useFocusReturn
+
+Automatically returns focus to the last focused element when a given condition is met.
+
+## Import
+
+```tsx
+import { useFocusReturn } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+`useFocusReturn` is used to restore focus after a modal, drawer, or similar overlay was closed.
+
+```tsx
+import { useFocusReturn } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [opened, setOpened] = useState(false)
+
+  useFocusReturn({
+    opened,
+    shouldReturnFocus: true
+  })
+
+  return (
+    <>
+      <button onClick={() => setOpened(true)}>Open</button>
+      {opened && (
+        <div>
+          <button onClick={() => setOpened(false)}>Close</button>
+        </div>
+      )}
+    </>
+  )
+}
+```
+
+## With useFocusTrap
+
+In most cases, you should use this hook with `useFocusTrap`:
+
+```tsx
+import { useFocusReturn, useFocusTrap, useMergedRef } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [opened, setOpened] = useState(false)
+  const focusTrapRef = useFocusTrap(opened)
+
+  useFocusReturn({
+    opened,
+    shouldReturnFocus: true
+  })
+
+  return (
+    <>
+      <button onClick={() => setOpened(true)}>Open</button>
+      {opened && (
+        <div ref={focusTrapRef}>
+          <input />
+          <button onClick={() => setOpened(false)}>Close</button>
+        </div>
+      )}
+    </>
+  )
+}
+```
+
+## Manual Focus Return
+
+If `shouldReturnFocus` is set to `false`, you can call the returned function to focus last active element:
+
+```tsx
+import { useFocusReturn } from '@tidbcloud/uikit'
+
+const returnFocus = useFocusReturn({
+  opened: false,
+  shouldReturnFocus: false
+})
+
+// Later...
+returnFocus()
+```
+
+## Definition
+
+```tsx
+interface UseFocusReturnOptions {
+  opened: boolean
+  shouldReturnFocus?: boolean
+}
+
+function useFocusReturn(options: UseFocusReturnOptions): () => void
+```

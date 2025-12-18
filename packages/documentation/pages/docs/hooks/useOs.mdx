@@ -1,0 +1,40 @@
+# useOs
+
+Detect the user's operating system.
+
+## Import
+
+```tsx
+import { useOs } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+`useOs` returns the user's operating system. Possible values are: `undetermined`, `macos`, `ios`, `windows`, `android`, `linux`, `chromeos`.
+
+```tsx
+import { useOs } from '@tidbcloud/uikit'
+import { Text } from '@tidbcloud/uikit'
+
+function Demo() {
+  const os = useOs()
+
+  return <Text>Your operating system: {os}</Text>
+}
+```
+
+## SSR
+
+If the OS cannot be identified (e.g., during server-side rendering), `undetermined` is returned.
+
+## Definition
+
+```tsx
+type UseOSReturnValue = 'undetermined' | 'macos' | 'ios' | 'windows' | 'android' | 'linux' | 'chromeos'
+
+interface UseOsOptions {
+  getValueInEffect: boolean
+}
+
+function useOs(options?: UseOsOptions): UseOSReturnValue
+```

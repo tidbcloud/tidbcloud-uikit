@@ -1,0 +1,103 @@
+# useClickOutside
+
+Detect clicks outside of an element.
+
+## Import
+
+```tsx
+import { useClickOutside } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+`useClickOutside` hook accepts a callback function that is called when user clicks outside of the element.
+
+```tsx
+import { useState } from 'react'
+import { Paper, Button } from '@tidbcloud/uikit'
+import { useClickOutside } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [opened, setOpened] = useState(false)
+  const ref = useClickOutside(() => setOpened(false))
+
+  return (
+    <>
+      <Button onClick={() => setOpened(true)}>Open dropdown</Button>
+
+      {opened && (
+        <Paper ref={ref} shadow="sm" p="xl">
+          Click outside to close
+        </Paper>
+      )}
+    </>
+  )
+}
+```
+
+## API
+
+The hook accepts 3 arguments:
+
+- `handler` – function that is called on outside click
+- `events` – optional list of events that trigger outside click, `['mousedown', 'touchstart']` by default
+- `nodes` – optional list of nodes that should not trigger outside click event
+
+The hook returns a `ref` object that must be passed to the element based on which outside clicks should be captured.
+
+## Change Events
+
+By default, `useClickOutside` listens to `mousedown` and `touchstart` events. You can change these events by passing an array of events as second argument:
+
+```tsx
+import { useClickOutside } from '@tidbcloud/uikit'
+
+function Demo() {
+  const ref = useClickOutside(() => console.log('Outside click'), ['mouseup', 'touchend'])
+  return <div ref={ref}>Click outside</div>
+}
+```
+
+## Multiple Nodes
+
+```tsx
+import { useState } from 'react'
+import { Portal } from '@tidbcloud/uikit'
+import { useClickOutside } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [dropdown, setDropdown] = useState<HTMLDivElement | null>(null)
+  const [control, setControl] = useState<HTMLDivElement | null>(null)
+
+  useClickOutside(() => console.log('outside'), null, [control, dropdown])
+
+  return (
+    <div>
+      <div ref={setControl}>Control</div>
+      <Portal>
+        <div ref={setDropdown}>Dropdown</div>
+      </Portal>
+    </div>
+  )
+}
+```
+
+## TypeScript
+
+Set ref type:
+
+```tsx
+import { useClickOutside } from '@tidbcloud/uikit'
+
+const ref = useClickOutside<HTMLDivElement>(() => console.log('Click outside'))
+```
+
+## Definition
+
+```tsx
+function useClickOutside<T extends HTMLElement = any>(
+  handler: () => void,
+  events?: string[] | null,
+  nodes?: HTMLElement[]
+): React.RefObject<T>
+```

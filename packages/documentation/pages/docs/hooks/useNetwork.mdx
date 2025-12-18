@@ -1,0 +1,52 @@
+# useNetwork
+
+Track network connection status.
+
+## Import
+
+```tsx
+import { useNetwork } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+`useNetwork` returns an object with current connection status.
+
+```tsx
+import { useNetwork } from '@tidbcloud/uikit'
+import { Text, Stack } from '@tidbcloud/uikit'
+
+function Demo() {
+  const network = useNetwork()
+
+  return (
+    <Stack>
+      <Text>Online: {network.online ? 'Yes' : 'No'}</Text>
+      <Text>Effective type: {network.effectiveType}</Text>
+      <Text>Downlink: {network.downlink} Mbps</Text>
+      <Text>RTT: {network.rtt} ms</Text>
+      <Text>Save data: {network.saveData ? 'Yes' : 'No'}</Text>
+    </Stack>
+  )
+}
+```
+
+## Browser Support
+
+The hook uses experimental `navigator.connection`. See [browser compatibility](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/connection#browser_compatibility) for details.
+
+## Definition
+
+```tsx
+interface UserNetworkReturnValue {
+  online: boolean
+  downlink?: number
+  downlinkMax?: number
+  effectiveType?: 'slow-2g' | '2g' | '3g' | '4g'
+  rtt?: number
+  saveData?: boolean
+  type?: 'bluetooth' | 'cellular' | 'ethernet' | 'wifi' | 'wimax' | 'none' | 'other' | 'unknown'
+}
+
+function useNetwork(): UserNetworkReturnValue
+```

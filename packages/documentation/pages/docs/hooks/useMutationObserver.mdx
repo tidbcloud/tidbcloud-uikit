@@ -1,0 +1,65 @@
+# useMutationObserver
+
+Subscribe to DOM mutations with MutationObserver.
+
+## Import
+
+```tsx
+import { useMutationObserver } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+`useMutationObserver` is a wrapper for the MutationObserver API. It allows subscribing to changes being made to the DOM tree.
+
+```tsx
+import { useState } from 'react'
+import { useMutationObserver } from '@tidbcloud/uikit'
+import { Button, Text } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [lastMutation, setLastMutation] = useState('')
+
+  const ref = useMutationObserver<HTMLDivElement>(
+    (mutations) => {
+      mutations.forEach((mutation) => {
+        setLastMutation(`${mutation.type}: ${mutation.target.textContent}`)
+      })
+    },
+    { childList: true, subtree: true, characterData: true }
+  )
+
+  return (
+    <div>
+      <div ref={ref}>
+        <Text>Content to observe</Text>
+      </div>
+      <Text mt="md">Last mutation: {lastMutation}</Text>
+    </div>
+  )
+}
+```
+
+## Target Element
+
+If you cannot pass `ref` to the target element, you can pass a function to resolve the target element as a third argument:
+
+```tsx
+import { useMutationObserver } from '@tidbcloud/uikit'
+
+useMutationObserver(
+  (mutations) => console.log(mutations),
+  { childList: true },
+  () => document.body
+)
+```
+
+## Definition
+
+```tsx
+function useMutationObserver<Element extends HTMLElement>(
+  callback: MutationCallback,
+  options: MutationObserverInit,
+  target?: HTMLElement | (() => HTMLElement) | null
+): RefObject<Element>
+```

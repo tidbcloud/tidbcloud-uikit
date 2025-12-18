@@ -1,0 +1,45 @@
+# useMap
+
+Manage Map state with automatic re-renders.
+
+## Import
+
+```tsx
+import { useMap } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+`useMap` returns a Map object that can be used as React state. The `set`, `clear`, and `delete` methods update state and trigger re-renders.
+
+```tsx
+import { useMap } from '@tidbcloud/uikit'
+import { Button, Group, Text } from '@tidbcloud/uikit'
+
+function Demo() {
+  const map = useMap([
+    ['key1', 'value1'],
+    ['key2', 'value2']
+  ])
+
+  return (
+    <>
+      <Text>key1: {map.get('key1')}</Text>
+      <Text>key2: {map.get('key2')}</Text>
+      <Text>Size: {map.size}</Text>
+
+      <Group mt="md">
+        <Button onClick={() => map.set('key3', 'value3')}>Add key3</Button>
+        <Button onClick={() => map.delete('key1')}>Delete key1</Button>
+        <Button onClick={() => map.clear()}>Clear all</Button>
+      </Group>
+    </>
+  )
+}
+```
+
+## Definition
+
+```tsx
+function useMap<T, V>(initialState?: [T, V][]): Map<T, V>
+```

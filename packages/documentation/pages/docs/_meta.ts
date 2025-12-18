@@ -19,6 +19,9 @@ export default {
   icons: {
     title: 'Cloud UI Icons'
   },
+  hooks: {
+    title: 'Cloud UI Hooks'
+  },
   contribution: {
     title: 'Contribution'
   },

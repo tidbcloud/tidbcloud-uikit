@@ -1,0 +1,52 @@
+# useMounted
+
+Check if the component is mounted.
+
+## Import
+
+```tsx
+import { useMounted } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+`useMounted` returns a function that returns `true` if the component is mounted, which is useful to avoid state updates on unmounted components.
+
+```tsx
+import { useEffect, useState } from 'react'
+import { useMounted } from '@tidbcloud/uikit'
+import { Text } from '@tidbcloud/uikit'
+
+function Demo() {
+  const mounted = useMounted()
+  const [data, setData] = useState(null)
+
+  useEffect(() => {
+    async function fetchData() {
+      const response = await fetch('/api/data')
+      const result = await response.json()
+
+      // Only update state if component is still mounted
+      if (mounted()) {
+        setData(result)
+      }
+    }
+
+    fetchData()
+  }, [mounted])
+
+  return <Text>{data ? JSON.stringify(data) : 'Loading...'}</Text>
+}
+```
+
+## Use Cases
+
+- Prevent state updates after unmount
+- Safe async operations
+- Memory leak prevention
+
+## Definition
+
+```tsx
+function useMounted(): () => boolean
+```
