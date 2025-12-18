@@ -1,5 +1,101 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# Table
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-typography-table--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Render tables with theme styles. Supports sticky headers, striped rows, row hover effects, and responsive scrolling.
+
+## Import
+
+```tsx
+import { Table } from '@tidbcloud/uikit'
+```
+
+## Basic Usage
+
+```tsx
+import { Table } from '@tidbcloud/uikit'
+
+const elements = [
+  { position: 6, mass: 12.011, symbol: 'C', name: 'Carbon' },
+  { position: 7, mass: 14.007, symbol: 'N', name: 'Nitrogen' },
+  { position: 39, mass: 88.906, symbol: 'Y', name: 'Yttrium' }
+]
+
+function Demo() {
+  const rows = elements.map((element) => (
+    <Table.Tr key={element.name}>
+      <Table.Td>{element.position}</Table.Td>
+      <Table.Td>{element.name}</Table.Td>
+      <Table.Td>{element.symbol}</Table.Td>
+      <Table.Td>{element.mass}</Table.Td>
+    </Table.Tr>
+  ))
+
+  return (
+    <Table>
+      <Table.Thead>
+        <Table.Tr>
+          <Table.Th>Position</Table.Th>
+          <Table.Th>Name</Table.Th>
+          <Table.Th>Symbol</Table.Th>
+          <Table.Th>Mass</Table.Th>
+        </Table.Tr>
+      </Table.Thead>
+      <Table.Tbody>{rows}</Table.Tbody>
+    </Table>
+  )
+}
+```
+
+## With Data Prop
+
+Automatically generate table rows from an array:
+
+```tsx
+import { Table, TableData } from '@tidbcloud/uikit'
+
+const tableData: TableData = {
+  caption: 'Some elements from periodic table',
+  head: ['Position', 'Mass', 'Symbol', 'Name'],
+  body: [
+    [6, 12.011, 'C', 'Carbon'],
+    [7, 14.007, 'N', 'Nitrogen']
+  ]
+}
+
+function Demo() {
+  return <Table data={tableData} />
+}
+```
+
+## Sticky Header
+
+```tsx
+<Table stickyHeader stickyHeaderOffset={60}>
+  {/* table content */}
+</Table>
+```
+
+## Scroll Container
+
+Wrap Table with `Table.ScrollContainer` to prevent viewport overflow:
+
+```tsx
+<Table.ScrollContainer minWidth={500}>
+  <Table>{/* table content */}</Table>
+</Table.ScrollContainer>
+```
+
+## Key Props
+
+| Prop                 | Type                         | Description                          |
+| -------------------- | ---------------------------- | ------------------------------------ |
+| `data`               | `TableData`                  | Data to generate table automatically |
+| `striped`            | `boolean \| 'odd' \| 'even'` | Enable striped rows                  |
+| `highlightOnHover`   | `boolean`                    | Highlight rows on hover              |
+| `stickyHeader`       | `boolean`                    | Make header sticky                   |
+| `stickyHeaderOffset` | `number`                     | Offset for sticky header             |
+| `withTableBorder`    | `boolean`                    | Add outer border                     |
+| `withColumnBorders`  | `boolean`                    | Add column borders                   |
+| `withRowBorders`     | `boolean`                    | Add row borders                      |
+| `horizontalSpacing`  | `MantineSpacing`             | Horizontal cell padding              |
+| `verticalSpacing`    | `MantineSpacing`             | Vertical cell padding                |
+| `captionSide`        | `'top' \| 'bottom'`          | Caption position                     |

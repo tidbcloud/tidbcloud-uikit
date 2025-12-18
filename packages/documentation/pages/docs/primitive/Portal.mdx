@@ -1,5 +1,105 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# Portal
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-misc-portal--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Renders component outside of parent element tree using ReactDOM.createPortal. Useful for modals, popovers, and fixed-position elements.
+
+## Import
+
+```tsx
+import { Portal } from '@tidbcloud/uikit'
+```
+
+## Basic Usage
+
+```tsx
+import { useState } from 'react'
+import { Portal } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [opened, setOpened] = useState(false)
+
+  return (
+    <main style={{ position: 'relative', zIndex: 1 }}>
+      {opened && (
+        <Portal>
+          <div>Your modal content</div>
+        </Portal>
+      )}
+
+      <button onClick={() => setOpened(true)} type="button">
+        Open modal
+      </button>
+    </main>
+  )
+}
+```
+
+## Custom Target
+
+```tsx
+import { Portal } from '@tidbcloud/uikit'
+
+// Render in existing element
+function Demo() {
+  return <Portal target="#portal-container">My portal</Portal>
+}
+
+// Or pass a DOM element
+const container = document.getElementById('my-container')
+function Demo2() {
+  return <Portal target={container}>My portal</Portal>
+}
+```
+
+## Reuse Target Node
+
+```tsx
+import { Portal } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <>
+      {/* All three will render in the same target node */}
+      <Portal reuseTargetNode>
+        <p>First</p>
+      </Portal>
+      <Portal reuseTargetNode>
+        <p>Second</p>
+      </Portal>
+      <Portal reuseTargetNode>
+        <p>Third</p>
+      </Portal>
+    </>
+  )
+}
+```
+
+## OptionalPortal
+
+Use `OptionalPortal` to conditionally render in a portal:
+
+```tsx
+import { OptionalPortal } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <>
+      <OptionalPortal withinPortal>This text is rendered in Portal</OptionalPortal>
+      <OptionalPortal withinPortal={false}>This text is rendered as regular child</OptionalPortal>
+    </>
+  )
+}
+```
+
+## Key Props
+
+| Prop              | Type                    | Description                            |
+| ----------------- | ----------------------- | -------------------------------------- |
+| `children`        | `ReactNode`             | Content to render in portal (required) |
+| `target`          | `string \| HTMLElement` | Target element or selector             |
+| `reuseTargetNode` | `boolean`               | Reuse same target for all portals      |
+
+## Notes
+
+- Portal content is rendered at the end of `document.body` by default
+- Use Portal to prevent parent styles (z-index, position) from affecting children
+- Not rendered during SSR - only after component mounts

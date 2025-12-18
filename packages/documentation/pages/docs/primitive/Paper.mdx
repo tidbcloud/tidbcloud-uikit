@@ -1,5 +1,76 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# Paper
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-misc-paper--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Renders white or dark background depending on color scheme. Use it to create cards, dropdowns, modals and other components that require a background with shadow.
+
+## Import
+
+```tsx
+import { Paper } from '@tidbcloud/uikit'
+```
+
+## Basic Usage
+
+```tsx
+import { Paper, Text } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Paper p="xl">
+      <Text>Paper is the most basic UI component</Text>
+      <Text>Use it to create cards, dropdowns, modals and other components that require background with shadow</Text>
+    </Paper>
+  )
+}
+```
+
+## With Shadow
+
+```tsx
+import { Paper, Text } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Paper shadow="xs" p="xl">
+      <Text>Paper with extra small shadow</Text>
+    </Paper>
+  )
+}
+```
+
+## With Border
+
+```tsx
+import { Paper, Text } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Paper withBorder p="xl">
+      <Text>Paper with border</Text>
+    </Paper>
+  )
+}
+```
+
+## With Radius
+
+```tsx
+import { Paper, Text } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Paper radius="md" p="xl">
+      <Text>Paper with medium border radius</Text>
+    </Paper>
+  )
+}
+```
+
+## Key Props
+
+| Prop         | Type             | Description                           |
+| ------------ | ---------------- | ------------------------------------- |
+| `shadow`     | `MantineShadow`  | Box shadow from theme or CSS value    |
+| `radius`     | `MantineRadius`  | Border radius from theme or CSS value |
+| `withBorder` | `boolean`        | Adds border to the element            |
+| `p`          | `MantineSpacing` | Padding shorthand                     |
+| `component`  | `ElementType`    | Polymorphic component root element    |

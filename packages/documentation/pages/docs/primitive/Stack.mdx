@@ -1,5 +1,54 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# Stack
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-layout-stack--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Compose elements and components in a vertical flex container with consistent spacing.
+
+## Import
+
+```tsx
+import { Stack } from '@tidbcloud/uikit'
+```
+
+## Basic Usage
+
+```tsx
+import { Stack, Button } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Stack>
+      <Button variant="default">First</Button>
+      <Button variant="default">Second</Button>
+      <Button variant="default">Third</Button>
+    </Stack>
+  )
+}
+```
+
+## With Gap and Alignment
+
+```tsx
+import { Stack, Button } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Stack h={300} bg="var(--mantine-color-body)" align="center" justify="center" gap="md">
+      <Button variant="default">1</Button>
+      <Button variant="default">2</Button>
+      <Button variant="default">3</Button>
+    </Stack>
+  )
+}
+```
+
+## Related Components
+
+- Use **Group** for horizontal flex containers
+- Use **Flex** for full control over flex container properties
+
+## Key Props
+
+| Prop    | Type           | Description                                           |
+| ------- | -------------- | ----------------------------------------------------- |
+| gap     | MantineSpacing | Gap between children (theme.spacing key or CSS value) |
+| align   | AlignItems     | Controls `align-items` CSS property                   |
+| justify | JustifyContent | Controls `justify-content` CSS property               |

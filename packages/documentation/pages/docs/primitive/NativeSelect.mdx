@@ -1,5 +1,97 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# NativeSelect
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-inputs-nativeselect--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Native select element based on Input. Captures user selection from a dropdown list using the browser's native select element.
+
+## Import
+
+```tsx
+import { NativeSelect } from '@tidbcloud/uikit'
+```
+
+## Basic Usage
+
+```tsx
+import { NativeSelect } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <NativeSelect data={['React', 'Angular', 'Vue']} />
+}
+```
+
+## Controlled
+
+```tsx
+import { useState } from 'react'
+import { NativeSelect } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [value, setValue] = useState('')
+
+  return (
+    <NativeSelect
+      value={value}
+      onChange={(event) => setValue(event.currentTarget.value)}
+      data={['React', 'Angular', 'Svelte', 'Vue']}
+    />
+  )
+}
+```
+
+## Data Formats
+
+The `data` prop accepts multiple formats:
+
+```tsx
+// Array of strings
+<NativeSelect data={['React', 'Angular', 'Vue']} />
+
+// Array of objects
+<NativeSelect
+  data={[
+    { label: 'React', value: 'react' },
+    { label: 'Angular', value: 'angular' },
+    { label: 'Vue', value: 'vue', disabled: true },
+  ]}
+/>
+
+// Grouped options
+<NativeSelect
+  data={[
+    {
+      group: 'Frontend',
+      items: ['React', 'Angular', 'Vue'],
+    },
+    {
+      group: 'Backend',
+      items: ['Express', 'Django'],
+    },
+  ]}
+/>
+```
+
+## With Sections
+
+```tsx
+import { NativeSelect } from '@tidbcloud/uikit'
+import { IconHash } from '@tabler/icons-react'
+
+function Demo() {
+  return <NativeSelect leftSection={<IconHash size={16} />} label="With left section" data={['React', 'Angular']} />
+}
+```
+
+## Key Props
+
+| Prop           | Type              | Description                       |
+| -------------- | ----------------- | --------------------------------- |
+| `data`         | `ComboboxData`    | Data used to render options       |
+| `value`        | `string`          | Controlled input value            |
+| `onChange`     | `(event) => void` | Called when value changes         |
+| `label`        | `ReactNode`       | Input label                       |
+| `description`  | `ReactNode`       | Input description                 |
+| `error`        | `ReactNode`       | Error message                     |
+| `disabled`     | `boolean`         | Disables the input                |
+| `leftSection`  | `ReactNode`       | Content on the left side          |
+| `rightSection` | `ReactNode`       | Content on the right side         |
+| `size`         | `MantineSize`     | Controls input height and padding |
+| `radius`       | `MantineRadius`   | Border radius                     |

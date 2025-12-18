@@ -1,5 +1,113 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# PinInput
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-inputs-pininput--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Capture PIN code or one-time password from the user. Supports automatic focus management and various input types.
+
+## Import
+
+```tsx
+import { PinInput } from '@tidbcloud/uikit'
+```
+
+## Basic Usage
+
+```tsx
+import { PinInput } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <PinInput />
+}
+```
+
+## Controlled
+
+```tsx
+import { useState } from 'react'
+import { PinInput } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [value, setValue] = useState('')
+  return <PinInput value={value} onChange={setValue} />
+}
+```
+
+## Length
+
+```tsx
+import { PinInput } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <PinInput length={6} />
+}
+```
+
+## Number Type
+
+```tsx
+import { PinInput } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <PinInput type="number" />
+}
+```
+
+## Custom Regex Type
+
+```tsx
+import { PinInput } from '@tidbcloud/uikit'
+
+function Demo() {
+  // Only accept digits 0-3
+  return <PinInput type={/^[0-3]*$/} inputType="tel" inputMode="numeric" />
+}
+```
+
+## One-Time Code
+
+```tsx
+import { PinInput } from '@tidbcloud/uikit'
+
+function Demo() {
+  // Enables autocomplete="one-time-code" for SMS autofill
+  return <PinInput oneTimeCode />
+}
+```
+
+## Masked Input
+
+```tsx
+import { PinInput } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <PinInput mask />
+}
+```
+
+## On Complete
+
+```tsx
+import { PinInput } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <PinInput length={4} onComplete={(value) => console.log('Completed:', value)} />
+}
+```
+
+## Key Props
+
+| Prop          | Type                                   | Description                   |
+| ------------- | -------------------------------------- | ----------------------------- |
+| `value`       | `string`                               | Controlled value              |
+| `onChange`    | `(value: string) => void`              | Called when value changes     |
+| `onComplete`  | `(value: string) => void`              | Called when all inputs filled |
+| `length`      | `number`                               | Number of inputs              |
+| `type`        | `'number' \| 'alphanumeric' \| RegExp` | Allowed characters            |
+| `mask`        | `boolean`                              | Hide input characters         |
+| `oneTimeCode` | `boolean`                              | Enable SMS autofill           |
+| `placeholder` | `string`                               | Input placeholder             |
+| `disabled`    | `boolean`                              | Disable all inputs            |
+| `error`       | `boolean`                              | Apply error styles            |
+| `size`        | `MantineSize`                          | Input size                    |
+| `radius`      | `MantineRadius`                        | Border radius                 |
+| `gap`         | `MantineSpacing`                       | Gap between inputs            |
+| `manageFocus` | `boolean`                              | Auto-focus next input         |
+| `autoFocus`   | `boolean`                              | Focus first input on mount    |

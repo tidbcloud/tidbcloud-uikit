@@ -1,5 +1,66 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# Code
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-typography-code--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Inline and block code without syntax highlighting.
+
+## Import
+
+```tsx
+import { Code } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+Use `Code` to display inline code. For block code use `CodeHighlight` from `@mantine/code-highlight` or add `block` prop.
+
+```tsx
+import { Code } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <Code>React.createElement()</Code>
+}
+```
+
+## Block code
+
+Add `block` prop to render code inside block:
+
+```tsx
+import { Code } from '@tidbcloud/uikit'
+
+const codeForPreviousDemo = `import { Code } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <Code>React.createElement()</Code>
+}`
+
+function Demo() {
+  return <Code block>{codeForPreviousDemo}</Code>
+}
+```
+
+## With color
+
+```tsx
+import { Code, Group } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Group>
+      <Code color="blue.9" c="white">
+        React.createElement()
+      </Code>
+      <Code color="red.9" c="white">
+        React.createElement()
+      </Code>
+    </Group>
+  )
+}
+```
+
+## Props
+
+| Prop     | Type              | Default | Description                                               |
+| -------- | ----------------- | ------- | --------------------------------------------------------- |
+| block    | `boolean`         | -       | Sets display to block and adds padding                    |
+| children | `React.ReactNode` | -       | Code content                                              |
+| color    | `MantineColor`    | -       | Key of theme.colors or any valid CSS color for background |

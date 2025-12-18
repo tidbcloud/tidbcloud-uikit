@@ -1,5 +1,79 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# Box
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-misc-box--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Base component for all Mantine components.
+
+## Import
+
+```tsx
+import { Box } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+`Box` component is used as a base for all other components. `Box` supports the following features:
+
+- `component` prop for polymorphic behavior
+- Style props (padding, margin, colors, etc.)
+- `style` prop for custom styles
+
+```tsx
+import { Box } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Box bg="red.5" my="xl" component="a" href="/">
+      My component
+    </Box>
+  )
+}
+```
+
+## Style props
+
+Box supports all style props:
+
+```tsx
+import { Box } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Box p="md" m="lg" bg="blue.1" c="blue.9" ta="center" fz="lg" fw={700}>
+      Box with style props
+    </Box>
+  )
+}
+```
+
+## Polymorphic component
+
+Box is a polymorphic component – its default root element is `div`, but it can be changed to any other element:
+
+```tsx
+import { Box } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Box component="span" c="red">
+      I'm a span element
+    </Box>
+  )
+}
+```
+
+## Common style props
+
+| Prop                                    | CSS Property |
+| --------------------------------------- | ------------ |
+| `m`, `mt`, `mb`, `ml`, `mr`, `mx`, `my` | margin       |
+| `p`, `pt`, `pb`, `pl`, `pr`, `px`, `py` | padding      |
+| `bg`                                    | background   |
+| `c`                                     | color        |
+| `fz`                                    | font-size    |
+| `fw`                                    | font-weight  |
+| `ta`                                    | text-align   |
+| `w`                                     | width        |
+| `h`                                     | height       |
+| `maw`                                   | max-width    |
+| `mah`                                   | max-height   |
+| `miw`                                   | min-width    |
+| `mih`                                   | min-height   |

@@ -1,5 +1,57 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# AlphaSlider
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-inputs-alphaslider--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Pick alpha (opacity) value for colors.
+
+## Import
+
+```tsx
+import { AlphaSlider } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+`AlphaSlider` is used to select the alpha (opacity) channel for colors. It is typically used alongside `ColorPicker` or `HueSlider`.
+
+```tsx
+import { useState } from 'react'
+import { AlphaSlider, Text } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [value, setValue] = useState(1)
+
+  return (
+    <>
+      <Text mb="xs">Alpha value: {value}</Text>
+      <AlphaSlider color="#1c7ed6" value={value} onChange={setValue} />
+    </>
+  )
+}
+```
+
+## With color
+
+The `color` prop determines the color displayed in the gradient:
+
+```tsx
+import { AlphaSlider, Stack } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Stack>
+      <AlphaSlider color="#f00" />
+      <AlphaSlider color="#0f0" />
+      <AlphaSlider color="#00f" />
+    </Stack>
+  )
+}
+```
+
+## Props
+
+| Prop        | Type                      | Default | Description                                  |
+| ----------- | ------------------------- | ------- | -------------------------------------------- |
+| color       | `string`                  | -       | Color displayed in the alpha slider gradient |
+| onChange    | `(value: number) => void` | -       | Called when value changes                    |
+| onChangeEnd | `(value: number) => void` | -       | Called when user stops dragging              |
+| size        | `MantineSize`             | `'md'`  | Controls slider height                       |
+| value       | `number`                  | -       | Current alpha value (0-1)                    |

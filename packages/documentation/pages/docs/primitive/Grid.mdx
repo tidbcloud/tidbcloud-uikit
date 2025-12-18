@@ -1,5 +1,220 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# Grid
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-layout-grid--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Flexbox-based 12-column grid system.
+
+## Import
+
+```tsx
+import { Grid } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+```tsx
+import { Grid } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Grid>
+      <Grid.Col span={4}>1</Grid.Col>
+      <Grid.Col span={4}>2</Grid.Col>
+      <Grid.Col span={4}>3</Grid.Col>
+    </Grid>
+  )
+}
+```
+
+## Columns span
+
+`Grid.Col` `span` prop controls the ratio of column width to total width of the row. By default, grid uses 12 columns layout, so `span` can be any number from 1 to 12.
+
+```tsx
+import { Grid } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Grid>
+      <Grid.Col span={3}>1</Grid.Col>
+      <Grid.Col span={3}>2</Grid.Col>
+      <Grid.Col span={3}>3</Grid.Col>
+      <Grid.Col span={3}>4</Grid.Col>
+      <Grid.Col span={4}>5</Grid.Col>
+      <Grid.Col span={8}>6</Grid.Col>
+    </Grid>
+  )
+}
+```
+
+## Gutter
+
+Control spacing between columns with `gutter` prop:
+
+```tsx
+import { Grid } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Grid gutter="xl">
+      <Grid.Col span={4}>1</Grid.Col>
+      <Grid.Col span={4}>2</Grid.Col>
+      <Grid.Col span={4}>3</Grid.Col>
+    </Grid>
+  )
+}
+```
+
+## Grow
+
+Set `grow` prop to make columns grow to fill available space:
+
+```tsx
+import { Grid } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Grid grow>
+      <Grid.Col span={4}>1</Grid.Col>
+      <Grid.Col span={4}>2</Grid.Col>
+      <Grid.Col span={4}>3</Grid.Col>
+      <Grid.Col span={4}>4</Grid.Col>
+      <Grid.Col span={4}>5</Grid.Col>
+    </Grid>
+  )
+}
+```
+
+## Column offset
+
+Set `offset` prop on `Grid.Col` to create space before the column:
+
+```tsx
+import { Grid } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Grid>
+      <Grid.Col span={3}>1</Grid.Col>
+      <Grid.Col span={3}>2</Grid.Col>
+      <Grid.Col span={3} offset={3}>
+        3
+      </Grid.Col>
+    </Grid>
+  )
+}
+```
+
+## Column order
+
+Set `order` prop on `Grid.Col` to control visual order:
+
+```tsx
+import { Grid } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Grid>
+      <Grid.Col span={4} order={2}>
+        1
+      </Grid.Col>
+      <Grid.Col span={4} order={3}>
+        2
+      </Grid.Col>
+      <Grid.Col span={4} order={1}>
+        3
+      </Grid.Col>
+    </Grid>
+  )
+}
+```
+
+## Responsive props
+
+`span`, `offset`, and `order` props support responsive values:
+
+```tsx
+import { Grid } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Grid>
+      <Grid.Col span={{ base: 12, md: 6, lg: 3 }}>1</Grid.Col>
+      <Grid.Col span={{ base: 12, md: 6, lg: 3 }}>2</Grid.Col>
+      <Grid.Col span={{ base: 12, md: 6, lg: 3 }}>3</Grid.Col>
+      <Grid.Col span={{ base: 12, md: 6, lg: 3 }}>4</Grid.Col>
+    </Grid>
+  )
+}
+```
+
+## Auto-sized columns
+
+Set `span="auto"` to let column take available space:
+
+```tsx
+import { Grid } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Grid>
+      <Grid.Col span="auto">1</Grid.Col>
+      <Grid.Col span={6}>2</Grid.Col>
+      <Grid.Col span="auto">3</Grid.Col>
+    </Grid>
+  )
+}
+```
+
+## Content-sized columns
+
+Set `span="content"` to make column take space based on content:
+
+```tsx
+import { Grid } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Grid>
+      <Grid.Col span="content">Fit content</Grid.Col>
+      <Grid.Col span={6}>2</Grid.Col>
+    </Grid>
+  )
+}
+```
+
+## Change columns count
+
+Set `columns` prop to change the default 12 columns layout:
+
+```tsx
+import { Grid } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Grid columns={24}>
+      <Grid.Col span={12}>1</Grid.Col>
+      <Grid.Col span={6}>2</Grid.Col>
+      <Grid.Col span={6}>3</Grid.Col>
+    </Grid>
+  )
+}
+```
+
+## Props
+
+### Grid
+
+| Prop    | Type                | Default | Description                          |
+| ------- | ------------------- | ------- | ------------------------------------ |
+| columns | number              | 12      | Number of grid columns               |
+| gutter  | MantineSpacing      | 'md'    | Space between columns                |
+| grow    | boolean             | false   | Columns grow to fill available space |
+| justify | CSS justify-content | -       | Justify-content property             |
+| align   | CSS align-items     | -       | Align-items property                 |
+
+### Grid.Col
+
+| Prop   | Type                          | Default | Description         |
+| ------ | ----------------------------- | ------- | ------------------- |
+| span   | number \| 'auto' \| 'content' | -       | Column span (1-12)  |
+| offset | number                        | -       | Space before column |
+| order  | number                        | -       | Visual order        |

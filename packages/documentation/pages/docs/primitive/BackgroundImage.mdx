@@ -1,5 +1,50 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# BackgroundImage
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-data-display-backgroundimage--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Displays image as background.
+
+## Import
+
+```tsx
+import { BackgroundImage } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+```tsx
+import { BackgroundImage, Center, Text, Box } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Box maw={300} mx="auto">
+      <BackgroundImage src="https://example.com/image.png" radius="md">
+        <Center p="md">
+          <Text c="white">
+            BackgroundImage component can be used to add any content on image. It is useful for hero headers and other
+            similar sections.
+          </Text>
+        </Center>
+      </BackgroundImage>
+    </Box>
+  )
+}
+```
+
+## Polymorphic component
+
+BackgroundImage is a polymorphic component – its default root element is `div`, but it can be changed:
+
+```tsx
+import { BackgroundImage } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <BackgroundImage component="button" src="image.png" />
+}
+```
+
+## Props
+
+| Prop     | Type              | Default  | Description                                      |
+| -------- | ----------------- | -------- | ------------------------------------------------ |
+| children | `React.ReactNode` | -        | Content to render on top of the background image |
+| radius   | `MantineRadius`   | -        | Border radius                                    |
+| src      | `string`          | required | Image URL                                        |

@@ -1,5 +1,72 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# ColorSwatch
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-data-display-colorswatch--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Display a color swatch.
+
+## Import
+
+```tsx
+import { ColorSwatch } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+```tsx
+import { ColorSwatch, Group } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Group>
+      <ColorSwatch color="#009790" />
+      <ColorSwatch color="rgba(234, 22, 174, 0.5)" />
+      <ColorSwatch color="var(--mantine-color-orange-5)" />
+    </Group>
+  )
+}
+```
+
+## With shadow
+
+By default, `ColorSwatch` has an inner box-shadow to make it more visible on light backgrounds. You can disable it with `withShadow={false}`:
+
+```tsx
+import { ColorSwatch } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <ColorSwatch color="rgba(255, 255, 255, 0.7)" withShadow={false} />
+}
+```
+
+## As button
+
+`ColorSwatch` is a polymorphic component – its root element can be changed with `component` prop:
+
+```tsx
+import { useState } from 'react'
+import { ColorSwatch, CheckIcon } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [checked, setChecked] = useState(true)
+
+  return (
+    <ColorSwatch
+      component="button"
+      color="var(--mantine-color-grape-6)"
+      onClick={() => setChecked((c) => !c)}
+      style={{ color: '#fff', cursor: 'pointer' }}
+    >
+      {checked && <CheckIcon size={12} />}
+    </ColorSwatch>
+  )
+}
+```
+
+## Props
+
+| Prop       | Type                   | Default      | Description                             |
+| ---------- | ---------------------- | ------------ | --------------------------------------- |
+| color      | string                 | **required** | Valid CSS color to display              |
+| size       | CSSProperties['width'] | -            | Controls width and height of the swatch |
+| radius     | MantineRadius          | -            | Border radius                           |
+| withShadow | boolean                | true         | Whether to have inner box-shadow        |
+| children   | ReactNode              | -            | Content displayed inside the swatch     |
+| component  | ElementType            | 'div'        | Root element or component               |

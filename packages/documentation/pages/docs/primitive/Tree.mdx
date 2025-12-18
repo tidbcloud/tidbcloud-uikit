@@ -1,5 +1,92 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# Tree
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-navigation-tree--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Display hierarchical data in a tree structure. Commonly used for file explorers, nested menus, or organizational structures.
+
+## Import
+
+```tsx
+import { Tree, useTree } from '@tidbcloud/uikit'
+```
+
+## Basic Usage
+
+```tsx
+import { Tree } from '@tidbcloud/uikit'
+
+const data = [
+  {
+    value: 'src',
+    label: 'src',
+    children: [
+      { value: 'src/components', label: 'components' },
+      { value: 'src/hooks', label: 'hooks' }
+    ]
+  },
+  { value: 'package.json', label: 'package.json' }
+]
+
+function Demo() {
+  return <Tree data={data} />
+}
+```
+
+## Custom Node Rendering
+
+Use `renderNode` prop to customize node rendering:
+
+```tsx
+import { IconChevronDown } from '@tabler/icons-react'
+import { Group, Tree } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Tree
+      data={data}
+      levelOffset={23}
+      renderNode={({ node, expanded, hasChildren, elementProps }) => (
+        <Group gap={5} {...elementProps}>
+          {hasChildren && (
+            <IconChevronDown size={18} style={{ transform: expanded ? 'rotate(180deg)' : 'rotate(0deg)' }} />
+          )}
+          <span>{node.label}</span>
+        </Group>
+      )}
+    />
+  )
+}
+```
+
+## Using useTree Hook
+
+Control tree state with `useTree` hook:
+
+```tsx
+import { Button, Group, Tree, useTree } from '@tidbcloud/uikit'
+
+function Demo() {
+  const tree = useTree()
+
+  return (
+    <>
+      <Tree data={data} tree={tree} />
+      <Group mt="md">
+        <Button onClick={() => tree.expandAllNodes()}>Expand all</Button>
+        <Button onClick={() => tree.collapseAllNodes()}>Collapse all</Button>
+      </Group>
+    </>
+  )
+}
+```
+
+## Key Props
+
+| Prop                         | Type              | Description                              |
+| ---------------------------- | ----------------- | ---------------------------------------- |
+| data                         | TreeNodeData[]    | Data used to render nodes (required)     |
+| tree                         | UseTreeReturnType | useTree hook instance to control state   |
+| renderNode                   | RenderNode        | Function to customize node rendering     |
+| levelOffset                  | MantineSpacing    | Horizontal padding of each subtree level |
+| expandOnClick                | boolean           | Expand node with children on click       |
+| selectOnClick                | boolean           | Select tree node on click                |
+| clearSelectionOnOutsideClick | boolean           | Clear selection when clicking outside    |
+| allowRangeSelection          | boolean           | Allow range selection with Shift key     |

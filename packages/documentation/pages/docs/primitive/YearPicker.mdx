@@ -1,5 +1,93 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# YearPicker
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-dates-yearpicker--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Inline year picker component. Pick single year, multiple years, or a years range.
+
+## Import
+
+```tsx
+import { YearPicker } from '@tidbcloud/uikit'
+```
+
+## Basic Usage
+
+```tsx
+import { useState } from 'react'
+import { YearPicker } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [value, setValue] = useState<Date | null>(null)
+  return <YearPicker value={value} onChange={setValue} />
+}
+```
+
+## Multiple Years
+
+Set `type="multiple"` to allow selecting multiple years:
+
+```tsx
+import { useState } from 'react'
+import { YearPicker } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [value, setValue] = useState<Date[]>([])
+  return <YearPicker type="multiple" value={value} onChange={setValue} />
+}
+```
+
+## Years Range
+
+Set `type="range"` to pick a range of years:
+
+```tsx
+import { useState } from 'react'
+import { YearPicker } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [value, setValue] = useState<[Date | null, Date | null]>([null, null])
+  return <YearPicker type="range" value={value} onChange={setValue} />
+}
+```
+
+## Min and Max Date
+
+Set `minDate` and `maxDate` to constrain the selectable range:
+
+```tsx
+import { useState } from 'react'
+import { YearPicker } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [value, setValue] = useState<Date | null>(null)
+  return <YearPicker value={value} onChange={setValue} minDate={new Date(2021, 1, 1)} maxDate={new Date(2028, 1, 1)} />
+}
+```
+
+## Custom Year Format
+
+Use `yearsListFormat` to customize year display:
+
+```tsx
+import { useState } from 'react'
+import { YearPicker } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [value, setValue] = useState<Date | null>(null)
+  return <YearPicker yearsListFormat="YY" value={value} onChange={setValue} />
+}
+```
+
+## Key Props
+
+| Prop                | Type                               | Description                                 |
+| ------------------- | ---------------------------------- | ------------------------------------------- |
+| value               | DateValue                          | Selected year value (controlled)            |
+| onChange            | (value: DateValue) => void         | Called when value changes                   |
+| type                | 'default' \| 'multiple' \| 'range' | Picker type                                 |
+| allowDeselect       | boolean                            | Allow deselecting by clicking selected year |
+| minDate             | string \| Date                     | Minimum selectable date                     |
+| maxDate             | string \| Date                     | Maximum selectable date                     |
+| defaultDate         | string \| Date                     | Initial displayed decade                    |
+| numberOfColumns     | number                             | Number of pickers displayed side by side    |
+| yearsListFormat     | string                             | dayjs format for years list                 |
+| decadeLabelFormat   | string                             | dayjs format for decade label               |
+| getYearControlProps | function                           | Add props to year controls                  |

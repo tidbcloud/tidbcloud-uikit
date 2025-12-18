@@ -1,0 +1,101 @@
+# notifier
+
+A utility for displaying notifications with pre-configured colors. Built on top of `@mantine/notifications`.
+
+## Import
+
+```tsx
+import { notifier } from '@tidbcloud/uikit'
+```
+
+## Setup
+
+Before using notifier, make sure you have the `Notifications` component set up in your app:
+
+```tsx
+import { Notifications } from '@tidbcloud/uikit'
+
+function App() {
+  return (
+    <>
+      <Notifications />
+      {/* Your app content */}
+    </>
+  )
+}
+```
+
+## Basic Usage
+
+```tsx
+import { notifier, Button, Group } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Group>
+      <Button onClick={() => notifier.success('Operation completed successfully!')}>Success</Button>
+      <Button onClick={() => notifier.error('Something went wrong!')}>Error</Button>
+      <Button onClick={() => notifier.warn('Please check your input')}>Warning</Button>
+      <Button onClick={() => notifier.info('New updates available')}>Info</Button>
+    </Group>
+  )
+}
+```
+
+## With Additional Options
+
+You can pass additional notification options as the second argument:
+
+```tsx
+import { notifier, Button } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Button
+      onClick={() =>
+        notifier.success('File uploaded!', {
+          title: 'Upload Complete',
+          autoClose: 5000,
+          withCloseButton: true
+        })
+      }
+    >
+      Upload File
+    </Button>
+  )
+}
+```
+
+## Clear All Notifications
+
+```tsx
+import { notifier, Button } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <Button onClick={() => notifier.clear()}>Clear All Notifications</Button>
+}
+```
+
+## Methods
+
+| Method             | Parameters                                       | Description                      |
+| ------------------ | ------------------------------------------------ | -------------------------------- |
+| `notifier.success` | `(message: ReactNode, props?: NotificationData)` | Show green success notification  |
+| `notifier.error`   | `(message: ReactNode, props?: NotificationData)` | Show red error notification      |
+| `notifier.warn`    | `(message: ReactNode, props?: NotificationData)` | Show yellow warning notification |
+| `notifier.info`    | `(message: ReactNode, props?: NotificationData)` | Show cyan info notification      |
+| `notifier.clear`   | `()`                                             | Clear all notifications          |
+
+## NotificationData Options
+
+| Option            | Type              | Description                                |
+| ----------------- | ----------------- | ------------------------------------------ |
+| `title`           | `ReactNode`       | Notification title                         |
+| `icon`            | `ReactNode`       | Notification icon                          |
+| `autoClose`       | `number \| false` | Auto close timeout in ms, false to disable |
+| `withCloseButton` | `boolean`         | Show close button                          |
+| `onClose`         | `() => void`      | Called when notification is closed         |
+| `onOpen`          | `() => void`      | Called when notification is opened         |
+| `loading`         | `boolean`         | Show loading state                         |
+| `radius`          | `MantineRadius`   | Border radius                              |
+| `withBorder`      | `boolean`         | Add border                                 |

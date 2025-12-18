@@ -1,5 +1,121 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# NumberInput
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-inputs-numberinput--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Capture numeric input from user with increment/decrement controls. This is a custom wrapper in `@tidbcloud/uikit` based on react-number-format.
+
+## Import
+
+```tsx
+import { NumberInput } from '@tidbcloud/uikit'
+```
+
+## Basic Usage
+
+```tsx
+import { NumberInput } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <NumberInput label="Enter a number" placeholder="Your number" />
+}
+```
+
+## Controlled
+
+```tsx
+import { useState } from 'react'
+import { NumberInput } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [value, setValue] = useState<string | number>('')
+  return <NumberInput value={value} onChange={setValue} />
+}
+```
+
+## Min and Max
+
+```tsx
+import { NumberInput } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <NumberInput label="Value between 10 and 20" min={10} max={20} />
+}
+```
+
+## Prefix and Suffix
+
+```tsx
+import { NumberInput } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <>
+      <NumberInput label="Price" prefix="$" defaultValue={100} />
+      <NumberInput label="Percentage" suffix="%" defaultValue={50} mt="md" />
+    </>
+  )
+}
+```
+
+## Decimal Configuration
+
+```tsx
+import { NumberInput } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <>
+      <NumberInput label="No decimals" allowDecimal={false} />
+      <NumberInput label="2 decimal places" decimalScale={2} fixedDecimalScale defaultValue={2.5} mt="md" />
+    </>
+  )
+}
+```
+
+## Thousand Separator
+
+```tsx
+import { NumberInput } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <NumberInput label="With thousand separator" thousandSeparator="," defaultValue={1000000} />
+}
+```
+
+## Hide Controls
+
+```tsx
+import { NumberInput } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <NumberInput label="No controls" hideControls />
+}
+```
+
+## Key Props
+
+| Prop                | Type                                | Description                      |
+| ------------------- | ----------------------------------- | -------------------------------- |
+| `value`             | `string \| number`                  | Controlled value                 |
+| `onChange`          | `(value: string \| number) => void` | Called when value changes        |
+| `min`               | `number`                            | Minimum value                    |
+| `max`               | `number`                            | Maximum value                    |
+| `step`              | `number`                            | Increment/decrement step         |
+| `prefix`            | `string`                            | String before value              |
+| `suffix`            | `string`                            | String after value               |
+| `allowDecimal`      | `boolean`                           | Allow decimal values             |
+| `decimalScale`      | `number`                            | Max decimal places               |
+| `thousandSeparator` | `string \| boolean`                 | Thousand separator               |
+| `hideControls`      | `boolean`                           | Hide increment/decrement buttons |
+| `allowNegative`     | `boolean`                           | Allow negative numbers           |
+| `clampBehavior`     | `'blur' \| 'strict' \| 'none'`      | How to clamp values              |
+| `label`             | `ReactNode`                         | Input label                      |
+| `error`             | `ReactNode`                         | Error message                    |
+| `disabled`          | `boolean`                           | Disable input                    |
+
+## Custom Addon Props (@tidbcloud/uikit)
+
+| Prop              | Type              | Description                                         |
+| ----------------- | ----------------- | --------------------------------------------------- |
+| `leftAddon`       | `ReactNode`       | Content displayed as styled addon on the left side  |
+| `rightAddon`      | `ReactNode`       | Content displayed as styled addon on the right side |
+| `leftAddonProps`  | `TypographyProps` | Props passed to the left addon Typography wrapper   |
+| `rightAddonProps` | `TypographyProps` | Props passed to the right addon Typography wrapper  |

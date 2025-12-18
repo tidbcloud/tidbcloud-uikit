@@ -1,5 +1,67 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# Breadcrumbs
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-navigation-breadcrumbs--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Separates list of React nodes with given separator.
+
+## Import
+
+```tsx
+import { Breadcrumbs } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+`Breadcrumbs` component accepts any number of React nodes as children and adds a given separator (defaults to `/`) between them:
+
+```tsx
+import { Breadcrumbs, Anchor } from '@tidbcloud/uikit'
+
+const items = [
+  { title: 'Mantine', href: '#' },
+  { title: 'Mantine hooks', href: '#' },
+  { title: 'use-id', href: '#' }
+].map((item, index) => (
+  <Anchor href={item.href} key={index}>
+    {item.title}
+  </Anchor>
+))
+
+function Demo() {
+  return (
+    <>
+      <Breadcrumbs>{items}</Breadcrumbs>
+      <Breadcrumbs separator="→" separatorMargin="md" mt="xs">
+        {items}
+      </Breadcrumbs>
+    </>
+  )
+}
+```
+
+## Custom separator
+
+```tsx
+import { Breadcrumbs, Anchor } from '@tidbcloud/uikit'
+import { IconChevronRight } from '@tabler/icons-react'
+
+function Demo() {
+  const items = [
+    { title: 'Home', href: '#' },
+    { title: 'Products', href: '#' },
+    { title: 'Item', href: '#' }
+  ].map((item, index) => (
+    <Anchor href={item.href} key={index}>
+      {item.title}
+    </Anchor>
+  ))
+
+  return <Breadcrumbs separator={<IconChevronRight size={14} />}>{items}</Breadcrumbs>
+}
+```
+
+## Props
+
+| Prop            | Type              | Default  | Description                                       |
+| --------------- | ----------------- | -------- | ------------------------------------------------- |
+| children        | `React.ReactNode` | required | React nodes that should be separated              |
+| separator       | `React.ReactNode` | `'/'`    | Separator between children                        |
+| separatorMargin | `MantineSpacing`  | -        | Controls spacing between separator and breadcrumb |

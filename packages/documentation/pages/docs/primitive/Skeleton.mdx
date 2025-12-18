@@ -1,5 +1,58 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# Skeleton
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-feedback-skeleton--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Indicate content loading state with placeholder animations.
+
+## Import
+
+```tsx
+import { Skeleton } from '@tidbcloud/uikit'
+```
+
+## Basic Usage
+
+```tsx
+import { Skeleton } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <>
+      <Skeleton height={50} circle mb="xl" />
+      <Skeleton height={8} radius="xl" />
+      <Skeleton height={8} mt={6} radius="xl" />
+      <Skeleton height={8} mt={6} width="70%" radius="xl" />
+    </>
+  )
+}
+```
+
+## With Content
+
+Wrap existing content and control loading overlay visibility with the `visible` prop:
+
+```tsx
+import { useState } from 'react'
+import { Skeleton, Button } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [loading, setLoading] = useState(true)
+
+  return (
+    <>
+      <Skeleton visible={loading}>Lorem ipsum dolor sit amet...</Skeleton>
+
+      <Button onClick={() => setLoading((l) => !l)}>Toggle Skeleton</Button>
+    </>
+  )
+}
+```
+
+## Key Props
+
+| Prop    | Type                       | Description                                       |
+| ------- | -------------------------- | ------------------------------------------------- |
+| height  | Height\<string \| number\> | Skeleton height                                   |
+| width   | CSSProperties["width"]     | Skeleton width                                    |
+| radius  | MantineRadius \| number    | Border radius                                     |
+| circle  | boolean                    | If set, width and border-radius equal to height   |
+| animate | boolean                    | Enables animation                                 |
+| visible | boolean                    | Controls overlay visibility when wrapping content |

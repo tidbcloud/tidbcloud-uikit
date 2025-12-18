@@ -1,5 +1,71 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# TypographyStylesProvider
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-typography-typographystylesprovider--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Styles provider for HTML content. Use it to add typography styles to raw HTML content, such as content from a CMS or markdown parser.
+
+## Import
+
+```tsx
+import { TypographyStylesProvider } from '@tidbcloud/uikit'
+```
+
+## Basic Usage
+
+Wrap your HTML content with `TypographyStylesProvider` to apply consistent typography styles:
+
+```tsx
+import { TypographyStylesProvider } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <TypographyStylesProvider>
+      <div dangerouslySetInnerHTML={{ __html: '<p>Your html content here</p>' }} />
+    </TypographyStylesProvider>
+  )
+}
+```
+
+## Styled Elements
+
+`TypographyStylesProvider` includes styles for:
+
+- Paragraphs (`<p>`)
+- Headings (`<h1>` - `<h6>`)
+- Lists (`<ul>`, `<ol>`, `<li>`)
+- Blockquotes (`<blockquote>`)
+- Tables (`<table>`, `<th>`, `<td>`)
+- Links (`<a>`)
+- Images (`<img>`)
+- Horizontal rules (`<hr>`)
+- Keyboard keys (`<kbd>`)
+- Code blocks (`<code>`, `<pre>`)
+
+## Example with Markdown
+
+```tsx
+import { TypographyStylesProvider } from '@tidbcloud/uikit'
+
+const htmlContent = `
+  <h1>Welcome</h1>
+  <p>This is a paragraph with a <a href="#">link</a>.</p>
+  <ul>
+    <li>Item 1</li>
+    <li>Item 2</li>
+  </ul>
+  <blockquote>This is a quote</blockquote>
+  <pre><code>const x = 1;</code></pre>
+`
+
+function Demo() {
+  return (
+    <TypographyStylesProvider>
+      <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
+    </TypographyStylesProvider>
+  )
+}
+```
+
+## Key Props
+
+| Prop     | Type      | Description                           |
+| -------- | --------- | ------------------------------------- |
+| children | ReactNode | Content to apply typography styles to |

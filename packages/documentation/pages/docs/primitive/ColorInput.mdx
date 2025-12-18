@@ -1,5 +1,124 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# ColorInput
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-inputs-colorinput--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Capture color from user with a text input and color picker dropdown.
+
+## Import
+
+```tsx
+import { ColorInput } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+`ColorInput` allows users to enter a color value manually or pick from a color picker dropdown.
+
+```tsx
+import { ColorInput } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <ColorInput label="Pick a color" placeholder="Enter color" />
+}
+```
+
+## Controlled
+
+```tsx
+import { useState } from 'react'
+import { ColorInput } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [value, setValue] = useState('')
+  return <ColorInput value={value} onChange={setValue} />
+}
+```
+
+## Formats
+
+`ColorInput` supports hex, hexa, rgb, rgba, hsl and hsla color formats. Slider to change opacity is displayed only for hexa, rgba and hsla formats:
+
+```tsx
+import { ColorInput } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <ColorInput format="rgba" label="RGBA format" />
+}
+```
+
+## With swatches
+
+You can add predefined color swatches:
+
+```tsx
+import { ColorInput } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <ColorInput
+      format="hex"
+      label="Pick color"
+      swatches={[
+        '#25262b',
+        '#868e96',
+        '#fa5252',
+        '#e64980',
+        '#be4bdb',
+        '#7950f2',
+        '#4c6ef5',
+        '#228be6',
+        '#15aabf',
+        '#12b886',
+        '#40c057',
+        '#82c91e',
+        '#fab005',
+        '#fd7e14'
+      ]}
+    />
+  )
+}
+```
+
+## Disable free input
+
+Set `disallowInput` prop to prevent manual input:
+
+```tsx
+import { ColorInput } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <ColorInput disallowInput label="Click to pick" />
+}
+```
+
+## Eye dropper
+
+By default, if [EyeDropper API](https://developer.mozilla.org/en-US/docs/Web/API/EyeDropper_API) is available, an eye dropper icon will be displayed. To disable it:
+
+```tsx
+import { ColorInput } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <ColorInput withEyeDropper={false} label="Without eye dropper" />
+}
+```
+
+## Props
+
+| Prop                    | Type                                                  | Default | Description                          |
+| ----------------------- | ----------------------------------------------------- | ------- | ------------------------------------ |
+| value                   | string                                                | -       | Controlled component value           |
+| defaultValue            | string                                                | -       | Uncontrolled component default value |
+| onChange                | (value: string) => void                               | -       | Called when value changes            |
+| format                  | 'hex' \| 'hexa' \| 'rgb' \| 'rgba' \| 'hsl' \| 'hsla' | 'hex'   | Color format                         |
+| swatches                | string[]                                              | -       | Predefined color swatches            |
+| swatchesPerRow          | number                                                | 7       | Number of swatches per row           |
+| withPicker              | boolean                                               | true    | Show color picker dropdown           |
+| withEyeDropper          | boolean                                               | true    | Show eye dropper button              |
+| disallowInput           | boolean                                               | false   | Disable manual input                 |
+| closeOnColorSwatchClick | boolean                                               | false   | Close dropdown on swatch click       |
+| fixOnBlur               | boolean                                               | true    | Revert to last valid value on blur   |
+| label                   | ReactNode                                             | -       | Input label                          |
+| description             | ReactNode                                             | -       | Input description                    |
+| error                   | ReactNode                                             | -       | Error message                        |
+| disabled                | boolean                                               | false   | Disable input                        |
+| radius                  | MantineRadius                                         | -       | Border radius                        |
+| size                    | MantineSize                                           | 'sm'    | Input size                           |

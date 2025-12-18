@@ -1,5 +1,91 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# JsonInput
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-inputs-jsoninput--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Textarea input for capturing and validating JSON data from users.
+
+## Import
+
+```tsx
+import { JsonInput } from '@tidbcloud/uikit'
+```
+
+## Basic Usage
+
+`JsonInput` includes JSON validation and optional formatting on blur:
+
+```tsx
+import { JsonInput } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <JsonInput
+      label="Your package.json"
+      placeholder="Textarea will autosize to fit the content"
+      validationError="Invalid JSON"
+      formatOnBlur
+      autosize
+      minRows={4}
+    />
+  )
+}
+```
+
+## Controlled
+
+```tsx
+import { useState } from 'react'
+import { JsonInput } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [value, setValue] = useState('')
+  return <JsonInput value={value} onChange={setValue} />
+}
+```
+
+## With Validation Error
+
+```tsx
+import { JsonInput } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <JsonInput
+      label="Configuration"
+      placeholder='{ "key": "value" }'
+      validationError="Please enter valid JSON"
+      formatOnBlur
+      autosize
+      minRows={4}
+    />
+  )
+}
+```
+
+## Disabled State
+
+```tsx
+import { JsonInput } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <JsonInput disabled defaultValue='{ "a": 1, "b": 2 }' label="Disabled" placeholder="Disabled" />
+}
+```
+
+## Key Props
+
+| Prop              | Type                      | Description                        |
+| ----------------- | ------------------------- | ---------------------------------- |
+| `value`           | `string`                  | Controlled value                   |
+| `onChange`        | `(value: string) => void` | Called when value changes          |
+| `validationError` | `ReactNode`               | Error message for invalid JSON     |
+| `formatOnBlur`    | `boolean`                 | Format JSON when input loses focus |
+| `autosize`        | `boolean`                 | Auto-grow textarea height          |
+| `minRows`         | `number`                  | Minimum rows for autosize          |
+| `maxRows`         | `number`                  | Maximum rows for autosize          |
+| `label`           | `ReactNode`               | Input label                        |
+| `description`     | `ReactNode`               | Input description                  |
+| `error`           | `ReactNode`               | Error message                      |
+| `disabled`        | `boolean`                 | Disable the input                  |
+
+## Accessibility
+
+Associate the input with a label for better screen reader support.

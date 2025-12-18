@@ -1,5 +1,100 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# NavLink
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-navigation-navlink--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Navigation link component for building sidebars and navigation menus. Supports nested links, icons, and various visual states.
+
+## Import
+
+```tsx
+import { NavLink } from '@tidbcloud/uikit'
+```
+
+## Basic Usage
+
+```tsx
+import { NavLink } from '@tidbcloud/uikit'
+import { IconHome2, IconGauge } from '@tabler/icons-react'
+
+function Demo() {
+  return (
+    <>
+      <NavLink href="#" label="With icon" leftSection={<IconHome2 size={16} stroke={1.5} />} />
+      <NavLink
+        href="#"
+        label="With description"
+        description="Additional information"
+        leftSection={<IconGauge size={16} stroke={1.5} />}
+      />
+      <NavLink href="#" label="Active link" leftSection={<IconGauge size={16} stroke={1.5} />} active />
+    </>
+  )
+}
+```
+
+## Active State
+
+```tsx
+import { useState } from 'react'
+import { NavLink } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [active, setActive] = useState(0)
+
+  const links = ['Dashboard', 'Security', 'Activity'].map((label, index) => (
+    <NavLink key={label} label={label} active={index === active} onClick={() => setActive(index)} />
+  ))
+
+  return <>{links}</>
+}
+```
+
+## Nested NavLinks
+
+```tsx
+import { NavLink } from '@tidbcloud/uikit'
+import { IconGauge } from '@tabler/icons-react'
+
+function Demo() {
+  return (
+    <NavLink href="#" label="Parent link" leftSection={<IconGauge size={16} stroke={1.5} />} childrenOffset={28}>
+      <NavLink href="#" label="First child" />
+      <NavLink href="#" label="Second child" />
+      <NavLink label="Nested parent" childrenOffset={28}>
+        <NavLink label="Deep child" href="#" />
+      </NavLink>
+    </NavLink>
+  )
+}
+```
+
+## Variants
+
+```tsx
+import { NavLink } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <>
+      <NavLink label="Light (default)" active />
+      <NavLink label="Filled" variant="filled" active />
+      <NavLink label="Subtle" variant="subtle" active />
+    </>
+  )
+}
+```
+
+## Key Props
+
+| Prop             | Type                              | Description                         |
+| ---------------- | --------------------------------- | ----------------------------------- |
+| `label`          | `ReactNode`                       | Main link label                     |
+| `description`    | `ReactNode`                       | Secondary text below label          |
+| `active`         | `boolean`                         | Applies active styles               |
+| `variant`        | `'light' \| 'filled' \| 'subtle'` | Visual variant                      |
+| `color`          | `MantineColor`                    | Color for active styles             |
+| `leftSection`    | `ReactNode`                       | Icon/content on the left            |
+| `rightSection`   | `ReactNode`                       | Icon/content on the right           |
+| `children`       | `ReactNode`                       | Nested NavLink components           |
+| `childrenOffset` | `MantineSpacing`                  | Left padding for nested links       |
+| `defaultOpened`  | `boolean`                         | Initial open state for nested links |
+| `disabled`       | `boolean`                         | Disables the link                   |
+| `href`           | `string`                          | Link destination                    |

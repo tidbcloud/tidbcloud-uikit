@@ -1,5 +1,101 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# Card
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-data-display-card--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Card with sections.
+
+## Import
+
+```tsx
+import { Card } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+`Card` is a wrapper around Paper component with some additional styles and `Card.Section` component that allows to split card into sections.
+
+```tsx
+import { Card, Image, Text, Badge, Button, Group } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Card shadow="sm" padding="lg" radius="md" withBorder>
+      <Card.Section>
+        <Image src="https://example.com/image.png" height={160} alt="Norway" />
+      </Card.Section>
+
+      <Group justify="space-between" mt="md" mb="xs">
+        <Text fw={500}>Norway Fjord Adventures</Text>
+        <Badge color="pink">On Sale</Badge>
+      </Group>
+
+      <Text size="sm" c="dimmed">
+        With Fjord Tours you can explore more of the magical fjord landscapes
+      </Text>
+
+      <Button color="blue" fullWidth mt="md" radius="md">
+        Book classic tour now
+      </Button>
+    </Card>
+  )
+}
+```
+
+## Card.Section
+
+`Card.Section` is used to remove Card padding from its children:
+
+```tsx
+import { Card, Text } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Card padding="xl">
+      {/* top, right, left margins are negative */}
+      <Card.Section>First section</Card.Section>
+
+      {/* Content with normal padding */}
+      <Text>Some other content</Text>
+
+      {/* right, left margins are negative */}
+      <Card.Section>Middle section</Card.Section>
+
+      {/* bottom, right, left margins are negative */}
+      <Card.Section>Last section</Card.Section>
+    </Card>
+  )
+}
+```
+
+## withBorder and inheritPadding props
+
+- `withBorder` adds top and bottom border to `Card.Section`
+- `inheritPadding` adds the same left and right padding as set in `Card`
+
+```tsx
+import { Card, Group, Text } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Card withBorder shadow="sm" radius="md">
+      <Card.Section withBorder inheritPadding py="xs">
+        <Group justify="space-between">
+          <Text fw={500}>Card title</Text>
+        </Group>
+      </Card.Section>
+
+      <Text mt="sm" c="dimmed" size="sm">
+        Card content goes here
+      </Text>
+    </Card>
+  )
+}
+```
+
+## Props
+
+| Prop       | Type              | Default | Description             |
+| ---------- | ----------------- | ------- | ----------------------- |
+| children   | `React.ReactNode` | -       | Card content            |
+| padding    | `MantineSpacing`  | `'md'`  | Padding inside the card |
+| radius     | `MantineRadius`   | -       | Border radius           |
+| shadow     | `MantineShadow`   | -       | Box shadow              |
+| withBorder | `boolean`         | -       | Adds border to the card |

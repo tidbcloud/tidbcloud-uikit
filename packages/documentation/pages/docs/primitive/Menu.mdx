@@ -1,5 +1,115 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# Menu
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-overlays-menu--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Combine a list of secondary actions into a single interactive dropdown area.
+
+## Import
+
+```tsx
+import { Menu } from '@tidbcloud/uikit'
+```
+
+## Basic Usage
+
+```tsx
+import { Menu, Button, Text } from '@tidbcloud/uikit'
+import { IconSettings, IconTrash } from '@tabler/icons-react'
+
+function Demo() {
+  return (
+    <Menu shadow="md" width={200}>
+      <Menu.Target>
+        <Button>Toggle menu</Button>
+      </Menu.Target>
+
+      <Menu.Dropdown>
+        <Menu.Label>Application</Menu.Label>
+        <Menu.Item leftSection={<IconSettings size={14} />}>Settings</Menu.Item>
+
+        <Menu.Divider />
+
+        <Menu.Label>Danger zone</Menu.Label>
+        <Menu.Item color="red" leftSection={<IconTrash size={14} />}>
+          Delete my account
+        </Menu.Item>
+      </Menu.Dropdown>
+    </Menu>
+  )
+}
+```
+
+## Submenus
+
+```tsx
+import { Button, Menu } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Menu width={200} position="bottom-start">
+      <Menu.Target>
+        <Button>Toggle Menu</Button>
+      </Menu.Target>
+
+      <Menu.Dropdown>
+        <Menu.Item>Dashboard</Menu.Item>
+
+        <Menu.Sub>
+          <Menu.Sub.Target>
+            <Menu.Sub.Item>Products</Menu.Sub.Item>
+          </Menu.Sub.Target>
+
+          <Menu.Sub.Dropdown>
+            <Menu.Item>All products</Menu.Item>
+            <Menu.Item>Categories</Menu.Item>
+          </Menu.Sub.Dropdown>
+        </Menu.Sub>
+      </Menu.Dropdown>
+    </Menu>
+  )
+}
+```
+
+## Controlled
+
+```tsx
+import { useState } from 'react'
+import { Menu } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [opened, setOpened] = useState(false)
+  return (
+    <Menu opened={opened} onChange={setOpened}>
+      {/* Menu content */}
+    </Menu>
+  )
+}
+```
+
+## Hover Trigger
+
+```tsx
+import { Menu } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Menu trigger="hover" openDelay={100} closeDelay={400}>
+      {/* ... menu items */}
+    </Menu>
+  )
+}
+```
+
+## Key Props
+
+| Prop               | Type                                  | Description                           |
+| ------------------ | ------------------------------------- | ------------------------------------- |
+| `opened`           | `boolean`                             | Controlled menu opened state          |
+| `onChange`         | `(opened: boolean) => void`           | Called when menu opened state changes |
+| `trigger`          | `'click' \| 'hover' \| 'click-hover'` | Event trigger to open menu            |
+| `openDelay`        | `number`                              | Open delay in ms (for hover trigger)  |
+| `closeDelay`       | `number`                              | Close delay in ms (for hover trigger) |
+| `width`            | `number \| string`                    | Dropdown width                        |
+| `position`         | `FloatingPosition`                    | Dropdown position relative to target  |
+| `shadow`           | `MantineShadow`                       | Dropdown shadow                       |
+| `withArrow`        | `boolean`                             | Display arrow pointing to target      |
+| `closeOnItemClick` | `boolean`                             | Close menu when item is clicked       |
+| `disabled`         | `boolean`                             | Disable menu dropdown                 |

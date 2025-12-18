@@ -1,5 +1,90 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# DatesProvider
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-dates-datesprovider--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Configure settings for all date components.
+
+## Import
+
+```tsx
+import { DatesProvider } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+`DatesProvider` lets you set various settings that are shared across all date components. It supports the following settings:
+
+- `locale` – dayjs locale (you need to import the corresponding locale module from dayjs)
+- `firstDayOfWeek` – number from 0 to 6, where 0 is Sunday and 6 is Saturday (default: 1 – Monday)
+- `weekendDays` – array of numbers from 0 to 6 (default: [0, 6] – Saturday and Sunday)
+- `consistentWeeks` – if true, every month will have 6 weeks (default: false)
+
+```tsx
+import 'dayjs/locale/ru'
+import { DatesProvider, DatePickerInput, MonthPickerInput } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <DatesProvider settings={{ locale: 'ru', firstDayOfWeek: 0, weekendDays: [0] }}>
+      <MonthPickerInput label="Pick month" placeholder="Pick month" />
+      <DatePickerInput mt="md" label="Pick date" placeholder="Pick date" />
+    </DatesProvider>
+  )
+}
+```
+
+## Consistent weeks
+
+Set `consistentWeeks: true` to avoid layout shifts by ensuring every month has 6 weeks:
+
+```tsx
+import { DatesProvider, DatePicker } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <DatesProvider settings={{ consistentWeeks: true }}>
+      <DatePicker />
+    </DatesProvider>
+  )
+}
+```
+
+## Localization
+
+To add localization, import the dayjs locale module and set the `locale` setting:
+
+```tsx
+import 'dayjs/locale/de'
+import { DatesProvider, DatePicker } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <DatesProvider settings={{ locale: 'de' }}>
+      <DatePicker />
+    </DatesProvider>
+  )
+}
+```
+
+## Next.js App Router
+
+If you're using Next.js app router, add `'use client'` directive to the file where you import dayjs locales:
+
+```tsx
+'use client'
+
+import 'dayjs/locale/ru'
+import { DatesProvider } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <DatesProvider settings={{ locale: 'ru' }}>{/* Your app */}</DatesProvider>
+}
+```
+
+## Props
+
+| Prop                     | Type      | Default | Description                    |
+| ------------------------ | --------- | ------- | ------------------------------ |
+| settings.locale          | string    | 'en'    | dayjs locale                   |
+| settings.firstDayOfWeek  | 0-6       | 1       | First day of week (0 = Sunday) |
+| settings.weekendDays     | number[]  | [0, 6]  | Weekend days indices           |
+| settings.consistentWeeks | boolean   | false   | Always show 6 weeks per month  |
+| children                 | ReactNode | -       | Application content            |

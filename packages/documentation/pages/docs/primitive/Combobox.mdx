@@ -1,5 +1,196 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# Combobox
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-combobox-combobox--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Create custom select, autocomplete or multiselect inputs.
+
+## Import
+
+```tsx
+import { Combobox, useCombobox } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+`Combobox` provides a set of components and hooks to build custom select, multiselect or autocomplete components. The component is highly flexible – you have full control of the rendering and logic.
+
+```tsx
+import { useState } from 'react'
+import { Input, InputBase, Combobox, useCombobox } from '@tidbcloud/uikit'
+
+const groceries = ['🍎 Apples', '🍌 Bananas', '🥦 Broccoli', '🥕 Carrots', '🍫 Chocolate']
+
+function Demo() {
+  const combobox = useCombobox({
+    onDropdownClose: () => combobox.resetSelectedOption()
+  })
+
+  const [value, setValue] = useState<string | null>(null)
+
+  const options = groceries.map((item) => (
+    <Combobox.Option value={item} key={item}>
+      {item}
+    </Combobox.Option>
+  ))
+
+  return (
+    <Combobox
+      store={combobox}
+      onOptionSubmit={(val) => {
+        setValue(val)
+        combobox.closeDropdown()
+      }}
+    >
+      <Combobox.Target>
+        <InputBase
+          component="button"
+          type="button"
+          pointer
+          rightSection={<Combobox.Chevron />}
+          rightSectionPointerEvents="none"
+          onClick={() => combobox.toggleDropdown()}
+        >
+          {value || <Input.Placeholder>Pick value</Input.Placeholder>}
+        </InputBase>
+      </Combobox.Target>
+
+      <Combobox.Dropdown>
+        <Combobox.Options>{options}</Combobox.Options>
+      </Combobox.Dropdown>
+    </Combobox>
+  )
+}
+```
+
+## useCombobox hook
+
+`useCombobox` hook provides combobox store that manages the component state:
+
+```tsx
+import { Combobox, useCombobox } from '@tidbcloud/uikit'
+
+function Demo() {
+  const combobox = useCombobox({
+    onDropdownOpen: () => combobox.selectFirstOption(),
+    onDropdownClose: () => combobox.resetSelectedOption()
+  })
+
+  return <Combobox store={combobox}>{/* Your implementation */}</Combobox>
+}
+```
+
+## Autocomplete example
+
+```tsx
+import { useState } from 'react'
+import { Combobox, TextInput, useCombobox } from '@tidbcloud/uikit'
+
+const groceries = ['🍎 Apples', '🍌 Bananas', '🥦 Broccoli', '🥕 Carrots', '🍫 Chocolate']
+
+function Demo() {
+  const combobox = useCombobox()
+  const [value, setValue] = useState('')
+
+  const filteredOptions = groceries.filter((item) => item.toLowerCase().includes(value.toLowerCase().trim()))
+
+  const options = filteredOptions.map((item) => (
+    <Combobox.Option value={item} key={item}>
+      {item}
+    </Combobox.Option>
+  ))
+
+  return (
+    <Combobox
+      onOptionSubmit={(optionValue) => {
+        setValue(optionValue)
+        combobox.closeDropdown()
+      }}
+      store={combobox}
+    >
+      <Combobox.Target>
+        <TextInput
+          placeholder="Pick value or type anything"
+          value={value}
+          onChange={(event) => {
+            setValue(event.currentTarget.value)
+            combobox.openDropdown()
+            combobox.updateSelectedOptionIndex()
+          }}
+          onClick={() => combobox.openDropdown()}
+          onFocus={() => combobox.openDropdown()}
+          onBlur={() => combobox.closeDropdown()}
+        />
+      </Combobox.Target>
+
+      <Combobox.Dropdown>
+        <Combobox.Options>
+          {options.length === 0 ? <Combobox.Empty>Nothing found</Combobox.Empty> : options}
+        </Combobox.Options>
+      </Combobox.Dropdown>
+    </Combobox>
+  )
+}
+```
+
+## Options groups
+
+```tsx
+import { Combobox, useCombobox, InputBase, Input } from '@tidbcloud/uikit'
+
+function Demo() {
+  const combobox = useCombobox()
+
+  return (
+    <Combobox store={combobox}>
+      <Combobox.Target>
+        <InputBase component="button" pointer>
+          Pick value
+        </InputBase>
+      </Combobox.Target>
+
+      <Combobox.Dropdown>
+        <Combobox.Options>
+          <Combobox.Group label="Fruits">
+            <Combobox.Option value="🍎 Apples">🍎 Apples</Combobox.Option>
+            <Combobox.Option value="🍌 Bananas">🍌 Bananas</Combobox.Option>
+          </Combobox.Group>
+
+          <Combobox.Group label="Vegetables">
+            <Combobox.Option value="🥦 Broccoli">🥦 Broccoli</Combobox.Option>
+            <Combobox.Option value="🥕 Carrots">🥕 Carrots</Combobox.Option>
+          </Combobox.Group>
+        </Combobox.Options>
+      </Combobox.Dropdown>
+    </Combobox>
+  )
+}
+```
+
+## Combobox components
+
+- `Combobox` – root component, context provider
+- `Combobox.Target` – wrapper for target element
+- `Combobox.Dropdown` – dropdown element
+- `Combobox.Options` – options wrapper
+- `Combobox.Option` – single option
+- `Combobox.Group` – options group with label
+- `Combobox.Search` – search input inside dropdown
+- `Combobox.Empty` – displayed when no options
+- `Combobox.Chevron` – chevron icon
+- `Combobox.Header` – dropdown header
+- `Combobox.Footer` – dropdown footer
+
+## Props
+
+| Prop            | Type                                                      | Default | Description                          |
+| --------------- | --------------------------------------------------------- | ------- | ------------------------------------ |
+| store           | ComboboxStore                                             | -       | Combobox store from useCombobox hook |
+| onOptionSubmit  | (value: string, optionProps: ComboboxOptionProps) => void | -       | Called when option is selected       |
+| size            | MantineSize                                               | 'sm'    | Controls items font-size and padding |
+| dropdownPadding | number                                                    | -       | Dropdown padding                     |
+| disabled        | boolean                                                   | false   | Disable the combobox                 |
+| readOnly        | boolean                                                   | false   | Make combobox read-only              |
+| width           | PopoverWidth                                              | -       | Dropdown width                       |
+| position        | FloatingPosition                                          | -       | Dropdown position                    |
+| offset          | number                                                    | -       | Dropdown offset                      |
+| withArrow       | boolean                                                   | false   | Display arrow                        |
+| shadow          | MantineShadow                                             | -       | Dropdown shadow                      |
+| radius          | MantineRadius                                             | -       | Dropdown border radius               |

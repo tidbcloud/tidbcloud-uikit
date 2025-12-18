@@ -1,5 +1,85 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# AnimatedNumber
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-animated-animatednumber--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Animated number component with smooth transitions.
+
+## Import
+
+```tsx
+import { AnimatedNumber } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+`AnimatedNumber` displays numbers with smooth animations when values change. It's powered by [number-flow](https://number-flow.barvian.me/).
+
+```tsx
+import { useState } from 'react'
+import { AnimatedNumber, Button, Group } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [value, setValue] = useState(1234)
+
+  return (
+    <>
+      <AnimatedNumber value={value} />
+      <Group mt="md">
+        <Button onClick={() => setValue((v) => v + 100)}>Increase</Button>
+        <Button onClick={() => setValue((v) => v - 100)}>Decrease</Button>
+      </Group>
+    </>
+  )
+}
+```
+
+## Formatting
+
+You can use standard NumberFlowProps to format the output:
+
+```tsx
+import { AnimatedNumber } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <AnimatedNumber value={1234.56} format={{ style: 'currency', currency: 'USD' }} />
+}
+```
+
+## AnimatedNumber.Group
+
+If an `AnimatedNumber` affects another `AnimatedNumber`'s position, you can wrap them in an `AnimatedNumber.Group` to properly sync their transitions:
+
+```tsx
+import { AnimatedNumber } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <AnimatedNumber.Group>
+      <AnimatedNumber value={100} />
+      <span> / </span>
+      <AnimatedNumber value={200} />
+    </AnimatedNumber.Group>
+  )
+}
+```
+
+## Style props
+
+`AnimatedNumber` supports all Box component style props:
+
+```tsx
+import { AnimatedNumber } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <AnimatedNumber value={9999} fz="xl" fw={700} c="blue" />
+}
+```
+
+## Props
+
+| Prop        | Type                       | Default | Description                           |
+| ----------- | -------------------------- | ------- | ------------------------------------- |
+| value       | `number`                   | -       | The number to display                 |
+| format      | `Intl.NumberFormatOptions` | -       | Formatting options for the number     |
+| locales     | `string \| string[]`       | -       | Locale(s) for number formatting       |
+| animated    | `boolean`                  | `true`  | Whether to animate value changes      |
+| trend       | `boolean`                  | -       | Highlight positive/negative changes   |
+| ...BoxProps | -                          | -       | All Box component props are supported |

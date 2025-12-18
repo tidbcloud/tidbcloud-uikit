@@ -1,5 +1,142 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# Modal
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-overlays-modal--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+An accessible overlay dialog for displaying content that requires user attention.
+
+## Import
+
+```tsx
+import { Modal } from '@tidbcloud/uikit'
+```
+
+## Basic Usage
+
+```tsx
+import { useDisclosure } from '@tidbcloud/uikit-hooks'
+import { Modal, Button } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [opened, { open, close }] = useDisclosure(false)
+
+  return (
+    <>
+      <Modal opened={opened} onClose={close} title="Authentication">
+        {/* Modal content */}
+      </Modal>
+
+      <Button onClick={open}>Open modal</Button>
+    </>
+  )
+}
+```
+
+## Centered Modal
+
+```tsx
+import { useDisclosure } from '@tidbcloud/uikit-hooks'
+import { Modal, Button } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [opened, { open, close }] = useDisclosure(false)
+
+  return (
+    <>
+      <Modal opened={opened} onClose={close} title="Authentication" centered>
+        {/* Modal content */}
+      </Modal>
+
+      <Button onClick={open}>Open centered Modal</Button>
+    </>
+  )
+}
+```
+
+## Fullscreen Modal
+
+```tsx
+import { useDisclosure } from '@tidbcloud/uikit-hooks'
+import { Modal, Button } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [opened, { open, close }] = useDisclosure(false)
+
+  return (
+    <>
+      <Modal
+        opened={opened}
+        onClose={close}
+        title="Fullscreen modal"
+        fullScreen
+        transitionProps={{ transition: 'fade', duration: 200 }}
+      >
+        {/* Modal content */}
+      </Modal>
+
+      <Button onClick={open}>Open fullscreen modal</Button>
+    </>
+  )
+}
+```
+
+## Without Header
+
+```tsx
+import { Modal } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Modal opened={true} onClose={() => {}} withCloseButton={false}>
+      Modal without header, press escape or click on overlay to close
+    </Modal>
+  )
+}
+```
+
+## Customize Overlay
+
+```tsx
+import { Modal } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Modal
+      opened={true}
+      onClose={() => {}}
+      title="Authentication"
+      overlayProps={{
+        backgroundOpacity: 0.55,
+        blur: 3
+      }}
+    >
+      {/* Modal content */}
+    </Modal>
+  )
+}
+```
+
+## Key Props
+
+| Prop                  | Type                              | Default | Description                                     |
+| --------------------- | --------------------------------- | ------- | ----------------------------------------------- |
+| `opened`              | `boolean`                         | -       | Controls modal visibility                       |
+| `onClose`             | `() => void`                      | -       | Called when modal is closed                     |
+| `title`               | `ReactNode`                       | -       | Modal title                                     |
+| `centered`            | `boolean`                         | -       | Center modal vertically                         |
+| `fullScreen`          | `boolean`                         | -       | Make modal fullscreen                           |
+| `size`                | `MantineSize \| number \| string` | `'md'`  | Modal width (xs, sm, md, lg, xl, or any value)  |
+| `radius`              | `MantineRadius`                   | -       | Border radius                                   |
+| `withCloseButton`     | `boolean`                         | `true`  | Show/hide close button                          |
+| `closeButtonProps`    | `CloseButtonProps`                | -       | Props passed to the close button                |
+| `closeOnClickOutside` | `boolean`                         | `true`  | Close on outside click                          |
+| `closeOnEscape`       | `boolean`                         | `true`  | Close on Escape key press                       |
+| `overlayProps`        | `OverlayProps`                    | -       | Props for overlay customization                 |
+| `withOverlay`         | `boolean`                         | `true`  | Determines whether overlay should be rendered   |
+| `transitionProps`     | `TransitionProps`                 | -       | Transition animation props                      |
+| `keepMounted`         | `boolean`                         | `false` | If set, modal will not be unmounted when closed |
+| `lockScroll`          | `boolean`                         | `true`  | Determines whether scroll should be locked      |
+| `trapFocus`           | `boolean`                         | `true`  | Determines whether focus should be trapped      |
+| `returnFocus`         | `boolean`                         | `true`  | Return focus to last active element on close    |
+| `padding`             | `MantineSpacing`                  | `'md'`  | Modal content padding                           |
+| `shadow`              | `MantineShadow`                   | `'xl'`  | Modal shadow                                    |
+| `zIndex`              | `string \| number`                | `200`   | z-index CSS property                            |
+| `xOffset`             | `number \| string`                | -       | Horizontal content offset                       |
+| `yOffset`             | `number \| string`                | -       | Vertical content offset                         |

@@ -1,5 +1,79 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# Title
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-typography-title--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Render h1-h6 headings with Mantine theme styles. By default, Title has no margins and paddings.
+
+## Import
+
+```tsx
+import { Title } from '@tidbcloud/uikit'
+```
+
+## Basic Usage
+
+Set `order` prop to render a specific heading element (h1-h6):
+
+```tsx
+import { Title } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <>
+      <Title order={1}>This is h1 title</Title>
+      <Title order={2}>This is h2 title</Title>
+      <Title order={3}>This is h3 title</Title>
+      <Title order={4}>This is h4 title</Title>
+      <Title order={5}>This is h5 title</Title>
+      <Title order={6}>This is h6 title</Title>
+    </>
+  )
+}
+```
+
+## Custom Size
+
+Change Title `size` independent of its `order`:
+
+```tsx
+import { Title } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <>
+      <Title order={3} size="h1">
+        H3 heading with h1 font-size
+      </Title>
+      <Title size="h4">H1 heading with h4 font-size</Title>
+      <Title size={16}>H1 heading with 16px size</Title>
+      <Title size="xs">H1 heading with xs size</Title>
+    </>
+  )
+}
+```
+
+## Line Clamp
+
+Set `lineClamp` prop to truncate text after a specified number of lines:
+
+```tsx
+import { Title, Box } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Box maw={400}>
+      <Title order={2} lineClamp={2}>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure doloremque quas dolorum. Quo amet earum alias
+        consequuntur.
+      </Title>
+    </Box>
+  )
+}
+```
+
+## Key Props
+
+| Prop      | Type                                        | Description                                                       |
+| --------- | ------------------------------------------- | ----------------------------------------------------------------- |
+| order     | 1-6                                         | Heading order (h1-h6), controls font-size if size prop is not set |
+| size      | TitleSize                                   | Changes title size independent of order                           |
+| lineClamp | number                                      | Number of lines after which heading will be truncated             |
+| textWrap  | 'wrap' \| 'nowrap' \| 'balance' \| 'pretty' | Controls text-wrap CSS property                                   |

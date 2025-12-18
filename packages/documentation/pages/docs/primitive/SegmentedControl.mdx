@@ -1,5 +1,184 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# SegmentedControl
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-inputs-segmentedcontrol--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+SegmentedControl is a linear set of two or more segments, each of which functions as a mutually exclusive button.
+
+## Import
+
+```tsx
+import { SegmentedControl } from '@tidbcloud/uikit'
+```
+
+## Basic Usage
+
+```tsx
+import { SegmentedControl } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <SegmentedControl data={['React', 'Angular', 'Vue']} />
+}
+```
+
+## Controlled
+
+```tsx
+import { useState } from 'react'
+import { SegmentedControl } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [value, setValue] = useState('react')
+
+  return (
+    <SegmentedControl
+      value={value}
+      onChange={setValue}
+      data={[
+        { label: 'React', value: 'react' },
+        { label: 'Angular', value: 'ng' },
+        { label: 'Vue', value: 'vue' },
+        { label: 'Svelte', value: 'svelte' }
+      ]}
+    />
+  )
+}
+```
+
+## Data Formats
+
+SegmentedControl supports two data formats:
+
+```tsx
+import { SegmentedControl } from '@tidbcloud/uikit'
+
+// Array of strings (value and label are the same)
+function ArrayOfStrings() {
+  return <SegmentedControl data={['React', 'Angular', 'Svelte', 'Vue']} />
+}
+
+// Array of objects (value and label are different)
+function ArrayOfObjects() {
+  return (
+    <SegmentedControl
+      data={[
+        { value: 'react', label: 'React' },
+        { value: 'ng', label: 'Angular' },
+        { value: 'svelte', label: 'Svelte' },
+        { value: 'vue', label: 'Vue' }
+      ]}
+    />
+  )
+}
+```
+
+## Disabled
+
+```tsx
+import { SegmentedControl, Stack, Text } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Stack>
+      {/* Entire component disabled */}
+      <div>
+        <Text size="sm" fw={500} mb={3}>
+          Disabled control
+        </Text>
+        <SegmentedControl disabled data={['Preview', 'Code', 'Export']} />
+      </div>
+
+      {/* Individual option disabled */}
+      <div>
+        <Text size="sm" fw={500} mb={3}>
+          Disabled option
+        </Text>
+        <SegmentedControl
+          data={[
+            { value: 'preview', label: 'Preview', disabled: true },
+            { value: 'code', label: 'Code' },
+            { value: 'export', label: 'Export' }
+          ]}
+        />
+      </div>
+    </Stack>
+  )
+}
+```
+
+## Custom Labels with Icons
+
+```tsx
+import { Center, SegmentedControl } from '@tidbcloud/uikit'
+import { IconEye, IconCode, IconExternalLink } from '@tabler/icons-react'
+
+function Demo() {
+  return (
+    <SegmentedControl
+      data={[
+        {
+          value: 'preview',
+          label: (
+            <Center style={{ gap: 10 }}>
+              <IconEye size={16} />
+              <span>Preview</span>
+            </Center>
+          )
+        },
+        {
+          value: 'code',
+          label: (
+            <Center style={{ gap: 10 }}>
+              <IconCode size={16} />
+              <span>Code</span>
+            </Center>
+          )
+        },
+        {
+          value: 'export',
+          label: (
+            <Center style={{ gap: 10 }}>
+              <IconExternalLink size={16} />
+              <span>Export</span>
+            </Center>
+          )
+        }
+      ]}
+    />
+  )
+}
+```
+
+## Color
+
+```tsx
+import { SegmentedControl } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <SegmentedControl color="blue" data={['React', 'Angular', 'Vue', 'Svelte']} />
+}
+```
+
+## Read Only
+
+```tsx
+import { SegmentedControl } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <SegmentedControl readOnly defaultValue="Angular" data={['React', 'Angular', 'Vue']} />
+}
+```
+
+## Key Props
+
+| Prop                 | Type                                 | Default        | Description                             |
+| -------------------- | ------------------------------------ | -------------- | --------------------------------------- |
+| `data`               | `(string \| SegmentedControlItem)[]` | required       | Data used to generate segments          |
+| `value`              | `string`                             | -              | Controlled component value              |
+| `defaultValue`       | `string`                             | -              | Uncontrolled component default value    |
+| `onChange`           | `(value: string) => void`            | -              | Called when value changes               |
+| `color`              | `MantineColor`                       | -              | Color of the indicator                  |
+| `size`               | `MantineSize`                        | `'sm'`         | Controls font-size, padding, and height |
+| `radius`             | `MantineRadius`                      | -              | Border radius of indicator and root     |
+| `fullWidth`          | `boolean`                            | `false`        | Whether component takes 100% width      |
+| `orientation`        | `'horizontal' \| 'vertical'`         | `'horizontal'` | Component orientation                   |
+| `disabled`           | `boolean`                            | `false`        | Disables all segments                   |
+| `readOnly`           | `boolean`                            | `false`        | Prevents value from being changed       |
+| `transitionDuration` | `number`                             | `200`          | Indicator transition duration in ms     |

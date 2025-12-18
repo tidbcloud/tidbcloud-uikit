@@ -1,5 +1,84 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# Overlay
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-overlays-overlay--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Overlays parent element with a div element with any color and opacity. Useful for creating loading states or modal backdrops.
+
+## Import
+
+```tsx
+import { Overlay } from '@tidbcloud/uikit'
+```
+
+## Basic Usage
+
+```tsx
+import { useState } from 'react'
+import { Button, Overlay, Box } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [visible, setVisible] = useState(true)
+
+  return (
+    <>
+      <Box pos="relative" h={200}>
+        <img src="image.png" alt="Demo" />
+        {visible && <Overlay color="#000" backgroundOpacity={0.85} />}
+      </Box>
+      <Button onClick={() => setVisible((v) => !v)}>Toggle overlay</Button>
+    </>
+  )
+}
+```
+
+## With Gradient
+
+```tsx
+import { Overlay, Box } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Box pos="relative" h={200}>
+      <img src="image.png" alt="Demo" />
+      <Overlay gradient="linear-gradient(145deg, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0) 100%)" />
+    </Box>
+  )
+}
+```
+
+## With Blur
+
+```tsx
+import { Overlay, Box } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Box pos="relative" h={200}>
+      <img src="image.png" alt="Demo" />
+      <Overlay color="#000" backgroundOpacity={0.35} blur={2} />
+    </Box>
+  )
+}
+```
+
+## Fixed Position
+
+```tsx
+import { Overlay } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <Overlay fixed color="#000" backgroundOpacity={0.5} />
+}
+```
+
+## Key Props
+
+| Prop                | Type               | Description                    |
+| ------------------- | ------------------ | ------------------------------ |
+| `color`             | `string`           | Background color               |
+| `backgroundOpacity` | `number`           | Opacity from 0 to 1            |
+| `gradient`          | `string`           | CSS gradient (overrides color) |
+| `blur`              | `string \| number` | Backdrop blur amount           |
+| `fixed`             | `boolean`          | Use fixed positioning          |
+| `center`            | `boolean`          | Center content inside overlay  |
+| `zIndex`            | `string \| number` | z-index value                  |
+| `radius`            | `MantineRadius`    | Border radius                  |
+| `children`          | `ReactNode`        | Content inside overlay         |

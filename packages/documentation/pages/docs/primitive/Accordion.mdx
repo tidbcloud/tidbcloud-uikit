@@ -1,5 +1,154 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# Accordion
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-data-display-accordion--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Divide content into collapsible sections.
+
+## Import
+
+```tsx
+import { Accordion } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+Accordion allows users to expand and collapse sections of content. It helps manage large amounts of information in a limited space by showing only the section headers initially and revealing content on interaction.
+
+```tsx
+import { Accordion } from '@tidbcloud/uikit'
+
+const data = [
+  {
+    emoji: '🍎',
+    value: 'Apples',
+    description: 'Crisp and refreshing fruit. Apples are known for their versatility and nutritional benefits.'
+  },
+  {
+    emoji: '🍌',
+    value: 'Bananas',
+    description:
+      'Naturally sweet and potassium-rich fruit. Bananas are a popular choice for their energy-boosting properties.'
+  },
+  {
+    emoji: '🥦',
+    value: 'Broccoli',
+    description: 'Nutrient-packed green vegetable. Broccoli is packed with vitamins, minerals, and fiber.'
+  }
+]
+
+function Demo() {
+  const items = data.map((item) => (
+    <Accordion.Item key={item.value} value={item.value}>
+      <Accordion.Control icon={item.emoji}>{item.value}</Accordion.Control>
+      <Accordion.Panel>{item.description}</Accordion.Panel>
+    </Accordion.Item>
+  ))
+
+  return <Accordion defaultValue="Apples">{items}</Accordion>
+}
+```
+
+## Multiple items open
+
+Set `multiple` prop to allow multiple items to be opened at the same time:
+
+```tsx
+import { Accordion } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Accordion multiple defaultValue={['item-1', 'item-2']}>
+      <Accordion.Item value="item-1">
+        <Accordion.Control>First item</Accordion.Control>
+        <Accordion.Panel>First panel content</Accordion.Panel>
+      </Accordion.Item>
+      <Accordion.Item value="item-2">
+        <Accordion.Control>Second item</Accordion.Control>
+        <Accordion.Panel>Second panel content</Accordion.Panel>
+      </Accordion.Item>
+    </Accordion>
+  )
+}
+```
+
+## Controlled
+
+```tsx
+import { useState } from 'react'
+import { Accordion } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [value, setValue] = useState<string | null>(null)
+
+  return (
+    <Accordion value={value} onChange={setValue}>
+      <Accordion.Item value="item-1">
+        <Accordion.Control>Item 1</Accordion.Control>
+        <Accordion.Panel>Panel 1</Accordion.Panel>
+      </Accordion.Item>
+      <Accordion.Item value="item-2">
+        <Accordion.Control>Item 2</Accordion.Control>
+        <Accordion.Panel>Panel 2</Accordion.Panel>
+      </Accordion.Item>
+    </Accordion>
+  )
+}
+```
+
+## Variants
+
+Accordion supports several variants: `default`, `contained`, `filled`, and `separated`.
+
+```tsx
+import { Accordion } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Accordion variant="contained" radius="md">
+      <Accordion.Item value="item-1">
+        <Accordion.Control>Item 1</Accordion.Control>
+        <Accordion.Panel>Panel 1</Accordion.Panel>
+      </Accordion.Item>
+    </Accordion>
+  )
+}
+```
+
+## Disabled items
+
+Set the `disabled` prop on `Accordion.Control` to disable it:
+
+```tsx
+import { Accordion } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Accordion>
+      <Accordion.Item value="item-1">
+        <Accordion.Control>Enabled item</Accordion.Control>
+        <Accordion.Panel>Content</Accordion.Panel>
+      </Accordion.Item>
+      <Accordion.Item value="item-2">
+        <Accordion.Control disabled>Disabled item</Accordion.Control>
+        <Accordion.Panel>Content</Accordion.Panel>
+      </Accordion.Item>
+    </Accordion>
+  )
+}
+```
+
+## Props
+
+| Prop                   | Type                                                  | Default     | Description                                           |
+| ---------------------- | ----------------------------------------------------- | ----------- | ----------------------------------------------------- |
+| chevron                | `React.ReactNode`                                     | -           | Custom chevron icon                                   |
+| chevronPosition        | `'left' \| 'right'`                                   | `'right'`   | Position of the chevron relative to the item label    |
+| chevronSize            | `number \| string`                                    | `24`        | Size of the chevron icon container                    |
+| defaultValue           | `string \| string[] \| null`                          | -           | Uncontrolled component default value                  |
+| disableChevronRotation | `boolean`                                             | -           | If set, chevron rotation is disabled                  |
+| loop                   | `boolean`                                             | `true`      | If set, arrow keys loop through items                 |
+| multiple               | `boolean`                                             | -           | If set, multiple items can be opened at the same time |
+| onChange               | `(value) => void`                                     | -           | Called when value changes                             |
+| order                  | `2 \| 3 \| 4 \| 5 \| 6`                               | -           | Heading order, has no effect on visuals               |
+| radius                 | `MantineRadius`                                       | -           | Border radius                                         |
+| transitionDuration     | `number`                                              | `200`       | Transition duration in ms                             |
+| value                  | `string \| string[] \| null`                          | -           | Controlled component value                            |
+| variant                | `'default' \| 'contained' \| 'filled' \| 'separated'` | `'default'` | Visual variant                                        |

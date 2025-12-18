@@ -1,5 +1,158 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# ScrollArea
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-misc-scrollarea--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+ScrollArea provides a container with custom styled scrollbars for consistent cross-browser appearance.
+
+## Import
+
+```tsx
+import { ScrollArea } from '@tidbcloud/uikit'
+```
+
+## Basic Usage
+
+```tsx
+import { ScrollArea } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <ScrollArea h={250}>
+      {/* Long content here */}
+      <p>Content that exceeds the container height...</p>
+    </ScrollArea>
+  )
+}
+```
+
+## Horizontal Scrollbars
+
+```tsx
+import { ScrollArea, Box } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <ScrollArea w={300} h={200}>
+      <Box w={600}>{/* Wide content here */}</Box>
+    </ScrollArea>
+  )
+}
+```
+
+## Scrollbar Types
+
+Control scrollbar behavior with the `type` prop:
+
+```tsx
+import { ScrollArea } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <>
+      {/* Scrollbars visible on hover (default) */}
+      <ScrollArea h={200} type="hover">
+        <div>Content...</div>
+      </ScrollArea>
+
+      {/* Scrollbars visible on scroll */}
+      <ScrollArea h={200} type="scroll">
+        <div>Content...</div>
+      </ScrollArea>
+
+      {/* Scrollbars always visible when content overflows */}
+      <ScrollArea h={200} type="auto">
+        <div>Content...</div>
+      </ScrollArea>
+
+      {/* Scrollbars always visible */}
+      <ScrollArea h={200} type="always">
+        <div>Content...</div>
+      </ScrollArea>
+
+      {/* Scrollbars always hidden */}
+      <ScrollArea h={200} type="never">
+        <div>Content...</div>
+      </ScrollArea>
+    </>
+  )
+}
+```
+
+## Subscribe to Scroll Position
+
+```tsx
+import { useState } from 'react'
+import { ScrollArea, Text, Code, Box } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [scrollPosition, onScrollPositionChange] = useState({ x: 0, y: 0 })
+
+  return (
+    <>
+      <ScrollArea w={300} h={200} onScrollPositionChange={onScrollPositionChange}>
+        <Box w={600} h={400}>
+          {/* Content */}
+        </Box>
+      </ScrollArea>
+      <Text>
+        Scroll position: <Code>{`{ x: ${scrollPosition.x}, y: ${scrollPosition.y} }`}</Code>
+      </Text>
+    </>
+  )
+}
+```
+
+## Scroll to Position
+
+```tsx
+import { useRef } from 'react'
+import { ScrollArea, Button, Stack, Group } from '@tidbcloud/uikit'
+
+function Demo() {
+  const viewport = useRef<HTMLDivElement>(null)
+
+  const scrollToBottom = () => viewport.current?.scrollTo({ top: viewport.current.scrollHeight, behavior: 'smooth' })
+
+  const scrollToTop = () => viewport.current?.scrollTo({ top: 0, behavior: 'smooth' })
+
+  return (
+    <Stack align="center">
+      <ScrollArea w={300} h={200} viewportRef={viewport}>
+        {/* Long content */}
+      </ScrollArea>
+      <Group>
+        <Button onClick={scrollToTop}>Scroll to top</Button>
+        <Button onClick={scrollToBottom}>Scroll to bottom</Button>
+      </Group>
+    </Stack>
+  )
+}
+```
+
+## ScrollArea.Autosize
+
+Creates a scrollable container when content exceeds `maxHeight`:
+
+```tsx
+import { ScrollArea } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <ScrollArea.Autosize mah={300} maw={400}>
+      {/* Content that may or may not exceed max height */}
+    </ScrollArea.Autosize>
+  )
+}
+```
+
+## Key Props
+
+| Prop                     | Type                                                   | Default     | Description                                               |
+| ------------------------ | ------------------------------------------------------ | ----------- | --------------------------------------------------------- |
+| `type`                   | `'hover' \| 'scroll' \| 'auto' \| 'always' \| 'never'` | `'hover'`   | Scrollbars behavior                                       |
+| `scrollbarSize`          | `number \| string`                                     | `'0.75rem'` | Scrollbar width/height                                    |
+| `offsetScrollbars`       | `boolean \| 'x' \| 'y' \| 'present'`                   | -           | Adds padding to offset scrollbars                         |
+| `scrollHideDelay`        | `number`                                               | `1000`      | Delay in ms to hide scrollbars for `hover`/`scroll` types |
+| `scrollbars`             | `'x' \| 'y' \| 'xy' \| false`                          | `'xy'`      | Which scrollbars to render                                |
+| `viewportRef`            | `Ref<HTMLDivElement>`                                  | -           | Ref to the viewport element for programmatic scrolling    |
+| `onScrollPositionChange` | `(position: { x: number; y: number }) => void`         | -           | Called when scroll position changes                       |
+| `onTopReached`           | `() => void`                                           | -           | Called when scrolled to top                               |
+| `onBottomReached`        | `() => void`                                           | -           | Called when scrolled to bottom                            |

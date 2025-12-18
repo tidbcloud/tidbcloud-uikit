@@ -1,5 +1,132 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# Popover
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-overlays-popover--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Display popover section relative to a target element. Useful for dropdowns, tooltips, and interactive content.
+
+## Import
+
+```tsx
+import { Popover } from '@tidbcloud/uikit'
+```
+
+## Basic Usage
+
+```tsx
+import { Popover, Button, Text } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Popover width={200} position="bottom" withArrow shadow="md">
+      <Popover.Target>
+        <Button>Toggle popover</Button>
+      </Popover.Target>
+      <Popover.Dropdown>
+        <Text size="xs">This is the popover content</Text>
+      </Popover.Dropdown>
+    </Popover>
+  )
+}
+```
+
+## Controlled
+
+```tsx
+import { useState } from 'react'
+import { Popover, Button } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [opened, setOpened] = useState(false)
+
+  return (
+    <Popover opened={opened} onChange={setOpened}>
+      <Popover.Target>
+        <Button onClick={() => setOpened((o) => !o)}>Toggle popover</Button>
+      </Popover.Target>
+      <Popover.Dropdown>Dropdown content</Popover.Dropdown>
+    </Popover>
+  )
+}
+```
+
+## Hover Trigger
+
+```tsx
+import { useDisclosure } from '@tidbcloud/uikit'
+import { Popover, Button, Text } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [opened, { close, open }] = useDisclosure(false)
+
+  return (
+    <Popover width={200} position="bottom" withArrow opened={opened}>
+      <Popover.Target>
+        <Button onMouseEnter={open} onMouseLeave={close}>
+          Hover me
+        </Button>
+      </Popover.Target>
+      <Popover.Dropdown style={{ pointerEvents: 'none' }}>
+        <Text size="sm">Hover popover content</Text>
+      </Popover.Dropdown>
+    </Popover>
+  )
+}
+```
+
+## With Form
+
+```tsx
+import { Popover, Button, TextInput } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Popover width={300} trapFocus position="bottom" withArrow shadow="md">
+      <Popover.Target>
+        <Button>Toggle form</Button>
+      </Popover.Target>
+      <Popover.Dropdown>
+        <TextInput label="Name" placeholder="Name" size="xs" />
+        <TextInput label="Email" placeholder="Email" size="xs" mt="xs" />
+      </Popover.Dropdown>
+    </Popover>
+  )
+}
+```
+
+## Same Width as Target
+
+```tsx
+import { Popover, Button, Text } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Popover width="target" position="bottom" withArrow>
+      <Popover.Target>
+        <Button w={280}>Toggle popover</Button>
+      </Popover.Target>
+      <Popover.Dropdown>
+        <Text size="sm">Dropdown has same width as target</Text>
+      </Popover.Dropdown>
+    </Popover>
+  )
+}
+```
+
+## Key Props
+
+| Prop                  | Type                        | Description               |
+| --------------------- | --------------------------- | ------------------------- |
+| `opened`              | `boolean`                   | Controlled open state     |
+| `onChange`            | `(opened: boolean) => void` | Called when state changes |
+| `defaultOpened`       | `boolean`                   | Initial open state        |
+| `position`            | `FloatingPosition`          | Dropdown position         |
+| `width`               | `number \| 'target'`        | Dropdown width            |
+| `withArrow`           | `boolean`                   | Show arrow                |
+| `arrowSize`           | `number`                    | Arrow size in px          |
+| `offset`              | `number \| object`          | Dropdown offset           |
+| `shadow`              | `MantineShadow`             | Dropdown shadow           |
+| `radius`              | `MantineRadius`             | Border radius             |
+| `trapFocus`           | `boolean`                   | Trap focus in dropdown    |
+| `closeOnClickOutside` | `boolean`                   | Close on outside click    |
+| `closeOnEscape`       | `boolean`                   | Close on Escape key       |
+| `disabled`            | `boolean`                   | Disable popover           |
+| `withinPortal`        | `boolean`                   | Render in portal          |
+| `zIndex`              | `number`                    | z-index value             |

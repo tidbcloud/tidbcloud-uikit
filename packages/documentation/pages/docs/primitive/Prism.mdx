@@ -1,0 +1,120 @@
+# Prism
+
+Code highlight component with copy button. This is a custom component in `@tidbcloud/uikit` built on top of `prism-react-renderer`.
+
+## Import
+
+```tsx
+import { Prism } from '@tidbcloud/uikit'
+```
+
+## Basic Usage
+
+```tsx
+import { Prism } from '@tidbcloud/uikit'
+
+const code = `function greet(name: string) {
+  console.log('Hello, ' + name + '!')
+}
+
+greet('World')`
+
+function Demo() {
+  return <Prism language="tsx">{code}</Prism>
+}
+```
+
+## With Line Numbers
+
+```tsx
+import { Prism } from '@tidbcloud/uikit'
+
+const code = `const numbers = [1, 2, 3, 4, 5]
+const doubled = numbers.map(n => n * 2)
+console.log(doubled)`
+
+function Demo() {
+  return (
+    <Prism language="javascript" withLineNumbers>
+      {code}
+    </Prism>
+  )
+}
+```
+
+## Highlight Lines
+
+```tsx
+import { Prism } from '@tidbcloud/uikit'
+
+const code = `function sum(a: number, b: number) {
+  // This line is highlighted
+  return a + b
+}
+
+const result = sum(1, 2)`
+
+function Demo() {
+  return (
+    <Prism
+      language="tsx"
+      withLineNumbers
+      highlightLines={{
+        2: { color: 'yellow', label: 'Important' },
+        3: { color: 'green' }
+      }}
+    >
+      {code}
+    </Prism>
+  )
+}
+```
+
+## Without Copy Button
+
+```tsx
+import { Prism } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Prism language="sql" noCopy>
+      SELECT * FROM users WHERE id = 1
+    </Prism>
+  )
+}
+```
+
+## Force Color Scheme
+
+```tsx
+import { Prism } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Prism language="json" colorScheme="dark">
+      {JSON.stringify({ name: 'test', value: 123 }, null, 2)}
+    </Prism>
+  )
+}
+```
+
+## Supported Languages
+
+Prism supports many languages including: `javascript`, `typescript`, `tsx`, `jsx`, `json`, `css`, `html`, `sql`, `bash`, `python`, `go`, `rust`, and many more.
+
+## Props
+
+| Prop                  | Type                                                                  | Default       | Description                                   |
+| --------------------- | --------------------------------------------------------------------- | ------------- | --------------------------------------------- |
+| `children`            | `string`                                                              | -             | Code to highlight (required)                  |
+| `language`            | `Language`                                                            | -             | Programming language for syntax highlighting  |
+| `noCopy`              | `boolean`                                                             | `false`       | Remove copy to clipboard button               |
+| `copyLabel`           | `string`                                                              | `'Copy code'` | Copy button tooltip                           |
+| `copiedLabel`         | `string`                                                              | `'Copied'`    | Copy button tooltip in copied state           |
+| `withLineNumbers`     | `boolean`                                                             | `false`       | Display line numbers                          |
+| `highlightLines`      | `Record<number, { color: MantineColor; label?: string }>`             | `{}`          | Highlight specific lines with color and label |
+| `colorScheme`         | `'dark' \| 'light'`                                                   | -             | Force color scheme                            |
+| `trim`                | `boolean`                                                             | `true`        | Trim whitespace from code                     |
+| `radius`              | `MantineRadius`                                                       | -             | Border radius                                 |
+| `scrollAreaComponent` | `React.ComponentType`                                                 | `ScrollArea`  | Custom scroll area component                  |
+| `getPrismTheme`       | `(theme: MantineTheme, colorScheme: 'light' \| 'dark') => PrismTheme` | -             | Custom theme function                         |

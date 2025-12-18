@@ -1,5 +1,84 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# UnstyledButton
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-buttons-unstyledbutton--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Unstyled polymorphic button that resets default button styles. Use it as a base for custom button components.
+
+## Import
+
+```tsx
+import { UnstyledButton } from '@tidbcloud/uikit'
+```
+
+## Basic Usage
+
+```tsx
+import { UnstyledButton } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <UnstyledButton>Button without styles</UnstyledButton>
+}
+```
+
+## Polymorphic Component
+
+`UnstyledButton` is a polymorphic component - change the root element with `component` prop:
+
+```tsx
+import { UnstyledButton } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <>
+      {/* Renders as button (default) */}
+      <UnstyledButton>Click me</UnstyledButton>
+
+      {/* Renders as anchor */}
+      <UnstyledButton component="a" href="https://example.com">
+        Link button
+      </UnstyledButton>
+    </>
+  )
+}
+```
+
+## Custom Button Example
+
+Create a custom styled button based on `UnstyledButton`:
+
+```tsx
+import { UnstyledButton } from '@tidbcloud/uikit'
+
+function CustomButton({ children, ...props }) {
+  return (
+    <UnstyledButton
+      style={{
+        padding: '10px 20px',
+        backgroundColor: 'var(--mantine-color-blue-6)',
+        color: 'white',
+        borderRadius: '4px'
+      }}
+      {...props}
+    >
+      {children}
+    </UnstyledButton>
+  )
+}
+```
+
+## Get Element Ref
+
+```tsx
+import { useRef } from 'react'
+import { UnstyledButton } from '@tidbcloud/uikit'
+
+function Demo() {
+  const ref = useRef<HTMLButtonElement>(null)
+  return <UnstyledButton ref={ref}>Button</UnstyledButton>
+}
+```
+
+## Key Props
+
+| Prop      | Type             | Description                                       |
+| --------- | ---------------- | ------------------------------------------------- |
+| component | ElementType      | Root element to render (default: 'button')        |
+| size      | string \| number | Size passed from parent, sets data-size attribute |

@@ -1,5 +1,96 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# TimeInput
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-dates-timeinput--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Capture time from the user using native browser time input. This component is re-exported from `@mantine/dates` via `@tidbcloud/uikit`.
+
+## Import
+
+```tsx
+import { TimeInput } from '@tidbcloud/uikit'
+```
+
+## Basic Usage
+
+```tsx
+import { TimeInput } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <TimeInput label="Select time" placeholder="Pick time" />
+}
+```
+
+## Controlled
+
+```tsx
+import { useState } from 'react'
+import { TimeInput } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [value, setValue] = useState('')
+  return (
+    <TimeInput value={value} onChange={(event) => setValue(event.currentTarget.value)} label="Controlled time input" />
+  )
+}
+```
+
+## With Seconds
+
+```tsx
+import { TimeInput } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <TimeInput label="With seconds" withSeconds />
+}
+```
+
+## With Icon
+
+```tsx
+import { TimeInput } from '@tidbcloud/uikit'
+import { IconClock } from '@tabler/icons-react'
+
+function Demo() {
+  return <TimeInput label="Select time" leftSection={<IconClock size={16} />} />
+}
+```
+
+## Show Browser Picker
+
+```tsx
+import { useRef } from 'react'
+import { TimeInput, ActionIcon } from '@tidbcloud/uikit'
+import { IconClock } from '@tabler/icons-react'
+
+function Demo() {
+  const ref = useRef<HTMLInputElement>(null)
+
+  return (
+    <TimeInput
+      label="Click icon to show picker"
+      ref={ref}
+      rightSection={
+        <ActionIcon variant="subtle" onClick={() => ref.current?.showPicker()}>
+          <IconClock size={16} />
+        </ActionIcon>
+      }
+    />
+  )
+}
+```
+
+## Key Props
+
+| Prop           | Type              | Description                      |
+| -------------- | ----------------- | -------------------------------- |
+| `value`        | `string`          | Controlled value                 |
+| `defaultValue` | `string`          | Default value (uncontrolled)     |
+| `onChange`     | `(event) => void` | Called when value changes        |
+| `withSeconds`  | `boolean`         | Show seconds input               |
+| `minTime`      | `string`          | Minimum time (HH:mm or HH:mm:ss) |
+| `maxTime`      | `string`          | Maximum time (HH:mm or HH:mm:ss) |
+| `label`        | `ReactNode`       | Input label                      |
+| `description`  | `ReactNode`       | Input description                |
+| `placeholder`  | `string`          | Placeholder text                 |
+| `error`        | `ReactNode`       | Error message                    |
+| `disabled`     | `boolean`         | Disable input                    |
+| `size`         | `MantineSize`     | Input size                       |
+| `radius`       | `MantineRadius`   | Border radius                    |

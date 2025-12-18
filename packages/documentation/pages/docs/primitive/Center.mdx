@@ -1,5 +1,62 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# Center
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-layout-center--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Centers content vertically and horizontally.
+
+## Import
+
+```tsx
+import { Center } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+```tsx
+import { Center, Box } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Center maw={400} h={100} bg="var(--mantine-color-gray-light)">
+      <Box bg="var(--mantine-color-blue-light)">All elements inside Center are centered</Box>
+    </Center>
+  )
+}
+```
+
+## Inline
+
+To use `Center` with inline elements set `inline` prop:
+
+```tsx
+import { Center, Anchor, Box } from '@tidbcloud/uikit'
+import { IconArrowLeft } from '@tabler/icons-react'
+
+function Demo() {
+  return (
+    <Anchor href="https://mantine.dev" target="_blank">
+      <Center inline>
+        <IconArrowLeft size={12} />
+        <Box ml={5}>Back to Mantine website</Box>
+      </Center>
+    </Anchor>
+  )
+}
+```
+
+## Polymorphic component
+
+Center is a polymorphic component – its default root element is `div`:
+
+```tsx
+import { Center } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <Center component="button">Click me</Center>
+}
+```
+
+## Props
+
+| Prop     | Type              | Default | Description                                     |
+| -------- | ----------------- | ------- | ----------------------------------------------- |
+| children | `React.ReactNode` | -       | Content to center                               |
+| inline   | `boolean`         | -       | If set, `inline-flex` is used instead of `flex` |

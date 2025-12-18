@@ -1,5 +1,77 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# TagsInput
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-combobox-tagsinput--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Capture a list of values from user with free input and suggestions. Similar to MultiSelect but allows entering custom values.
+
+## Import
+
+```tsx
+import { TagsInput } from '@tidbcloud/uikit'
+```
+
+## Basic Usage
+
+```tsx
+import { TagsInput } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <TagsInput label="Press Enter to submit a tag" placeholder="Enter tag" />
+}
+```
+
+## With Suggestions
+
+```tsx
+import { TagsInput } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <TagsInput
+      label="Pick or enter tags"
+      placeholder="Pick tag from list"
+      data={['React', 'Angular', 'Vue', 'Svelte']}
+    />
+  )
+}
+```
+
+## Controlled
+
+```tsx
+import { useState } from 'react'
+import { TagsInput } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [value, setValue] = useState<string[]>(['React'])
+  return <TagsInput value={value} onChange={setValue} data={['React', 'Angular', 'Vue']} />
+}
+```
+
+## Max Tags
+
+```tsx
+<TagsInput label="Add up to 3 tags" placeholder="Enter tag" maxTags={3} defaultValue={['first', 'second']} />
+```
+
+## Clearable
+
+```tsx
+<TagsInput label="Clearable tags" placeholder="Enter tag" defaultValue={['React']} clearable />
+```
+
+## Key Props
+
+| Prop                | Type                        | Description                                          |
+| ------------------- | --------------------------- | ---------------------------------------------------- |
+| `value`             | `string[]`                  | Controlled value                                     |
+| `defaultValue`      | `string[]`                  | Default value (uncontrolled)                         |
+| `onChange`          | `(value: string[]) => void` | Called when value changes                            |
+| `data`              | `string[]`                  | Suggestions data                                     |
+| `maxTags`           | `number`                    | Maximum number of tags                               |
+| `clearable`         | `boolean`                   | Show clear button                                    |
+| `allowDuplicates`   | `boolean`                   | Allow duplicate tags                                 |
+| `splitChars`        | `string[]`                  | Characters that trigger tag split (default: `[',']`) |
+| `acceptValueOnBlur` | `boolean`                   | Add value on blur                                    |
+| `label`             | `ReactNode`                 | Input label                                          |
+| `placeholder`       | `string`                    | Input placeholder                                    |
+| `error`             | `ReactNode`                 | Error message                                        |
+| `disabled`          | `boolean`                   | Disable input                                        |

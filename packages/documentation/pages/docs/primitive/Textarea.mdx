@@ -1,5 +1,82 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# Textarea
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-inputs-textarea--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Multi-line text input with optional autosize functionality.
+
+## Import
+
+```tsx
+import { Textarea } from '@tidbcloud/uikit'
+```
+
+## Basic Usage
+
+```tsx
+import { Textarea } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <Textarea label="Your comment" placeholder="Enter your comment" />
+}
+```
+
+## Controlled
+
+```tsx
+import { useState } from 'react'
+import { Textarea } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [value, setValue] = useState('')
+  return (
+    <Textarea value={value} onChange={(event) => setValue(event.currentTarget.value)} label="Controlled textarea" />
+  )
+}
+```
+
+## Autosize
+
+Textarea height grows with content:
+
+```tsx
+import { Textarea } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <>
+      <Textarea label="Autosize with no limit" placeholder="Start typing..." autosize minRows={2} />
+
+      <Textarea label="Autosize with max rows" placeholder="Start typing..." autosize minRows={2} maxRows={4} />
+    </>
+  )
+}
+```
+
+## Enable Resize
+
+```tsx
+<Textarea label="Resizable" placeholder="Your comment" resize="vertical" />
+```
+
+## Error State
+
+```tsx
+<Textarea label="With error" placeholder="Enter text" error="This field is required" />
+```
+
+## Key Props
+
+| Prop           | Type                                             | Description                  |
+| -------------- | ------------------------------------------------ | ---------------------------- |
+| `value`        | `string`                                         | Controlled value             |
+| `defaultValue` | `string`                                         | Default value (uncontrolled) |
+| `onChange`     | `(event) => void`                                | Called when value changes    |
+| `label`        | `ReactNode`                                      | Input label                  |
+| `description`  | `ReactNode`                                      | Input description            |
+| `placeholder`  | `string`                                         | Placeholder text             |
+| `error`        | `ReactNode`                                      | Error message                |
+| `disabled`     | `boolean`                                        | Disable input                |
+| `autosize`     | `boolean`                                        | Enable autosize              |
+| `minRows`      | `number`                                         | Minimum rows (with autosize) |
+| `maxRows`      | `number`                                         | Maximum rows (with autosize) |
+| `resize`       | `'none' \| 'vertical' \| 'horizontal' \| 'both'` | CSS resize property          |
+| `size`         | `MantineSize`                                    | Input size                   |
+| `radius`       | `MantineRadius`                                  | Border radius                |

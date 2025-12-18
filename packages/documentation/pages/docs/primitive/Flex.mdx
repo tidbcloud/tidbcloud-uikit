@@ -1,5 +1,76 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# Flex
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-layout-flex--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Compose elements in a flex container.
+
+## Import
+
+```tsx
+import { Flex } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+```tsx
+import { Flex, Button } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Flex mih={50} bg="rgba(0, 0, 0, .3)" gap="md" justify="center" align="center" direction="row" wrap="wrap">
+      <Button>Button 1</Button>
+      <Button>Button 2</Button>
+      <Button>Button 3</Button>
+    </Flex>
+  )
+}
+```
+
+## Supported props
+
+`Flex` component supports the following props:
+
+- `gap` – gap between elements, key of `theme.spacing` or number value
+- `rowGap` – row gap, key of `theme.spacing` or number value
+- `columnGap` – column gap, key of `theme.spacing` or number value
+- `align` – `align-items` CSS property
+- `justify` – `justify-content` CSS property
+- `wrap` – `flex-wrap` CSS property
+- `direction` – `flex-direction` CSS property
+
+## Responsive props
+
+All Flex props support responsive values:
+
+```tsx
+import { Flex, Button } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Flex direction={{ base: 'column', sm: 'row' }} gap={{ base: 'sm', sm: 'lg' }} justify={{ sm: 'center' }}>
+      <Button>Button 1</Button>
+      <Button>Button 2</Button>
+      <Button>Button 3</Button>
+    </Flex>
+  )
+}
+```
+
+## Difference from Group and Stack
+
+`Flex` component is a more general alternative to `Group` and `Stack` components:
+
+- `Group` is `Flex` with `direction="row"` and some additional features (children positioning based on `justify` prop)
+- `Stack` is `Flex` with `direction="column"`
+
+Use `Flex` when you need more control over flex properties or when you need responsive direction changes.
+
+## Props
+
+| Prop      | Type                | Default  | Description          |
+| --------- | ------------------- | -------- | -------------------- |
+| gap       | MantineSpacing      | -        | Gap between elements |
+| rowGap    | MantineSpacing      | -        | Row gap              |
+| columnGap | MantineSpacing      | -        | Column gap           |
+| align     | CSS align-items     | -        | Align items          |
+| justify   | CSS justify-content | -        | Justify content      |
+| wrap      | CSS flex-wrap       | 'nowrap' | Flex wrap            |
+| direction | CSS flex-direction  | 'row'    | Flex direction       |

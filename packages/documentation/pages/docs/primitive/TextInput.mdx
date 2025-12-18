@@ -1,5 +1,93 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# TextInput
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-inputs-textinput--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Capture string input from user. This is a custom wrapper in `@tidbcloud/uikit` that extends the base input functionality with styled addon support.
+
+## Import
+
+```tsx
+import { TextInput } from '@tidbcloud/uikit'
+```
+
+## Basic Usage
+
+```tsx
+import { TextInput } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <TextInput label="Your name" placeholder="Enter your name" />
+}
+```
+
+## Controlled
+
+```tsx
+import { useState } from 'react'
+import { TextInput } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [value, setValue] = useState('')
+  return <TextInput value={value} onChange={(event) => setValue(event.currentTarget.value)} label="Controlled input" />
+}
+```
+
+## With Icon
+
+```tsx
+import { TextInput } from '@tidbcloud/uikit'
+import { IconAt } from '@tabler/icons-react'
+
+function Demo() {
+  return <TextInput leftSection={<IconAt size={16} />} label="Your email" placeholder="Your email" />
+}
+```
+
+## With Addon
+
+Use `leftAddon` and `rightAddon` props to display styled addons on either side of the input. This is a custom feature in `@tidbcloud/uikit`.
+
+```tsx
+import { TextInput } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <TextInput label="Website URL" placeholder="example.com" leftAddon="https://" rightAddon=".com" />
+}
+```
+
+## Error State
+
+```tsx
+<TextInput label="With error" placeholder="Enter value" error="Invalid input" />
+```
+
+## Disabled
+
+```tsx
+<TextInput label="Disabled" placeholder="Cannot edit" disabled />
+```
+
+## Key Props
+
+| Prop           | Type              | Description                  |
+| -------------- | ----------------- | ---------------------------- |
+| `value`        | `string`          | Controlled value             |
+| `defaultValue` | `string`          | Default value (uncontrolled) |
+| `onChange`     | `(event) => void` | Called when value changes    |
+| `label`        | `ReactNode`       | Input label                  |
+| `description`  | `ReactNode`       | Input description            |
+| `placeholder`  | `string`          | Placeholder text             |
+| `error`        | `ReactNode`       | Error message                |
+| `disabled`     | `boolean`         | Disable input                |
+| `required`     | `boolean`         | Mark as required             |
+| `leftSection`  | `ReactNode`       | Left section content         |
+| `rightSection` | `ReactNode`       | Right section content        |
+| `size`         | `MantineSize`     | Input size                   |
+| `radius`       | `MantineRadius`   | Border radius                |
+
+## Custom Addon Props (@tidbcloud/uikit)
+
+| Prop              | Type              | Description                                         |
+| ----------------- | ----------------- | --------------------------------------------------- |
+| `leftAddon`       | `ReactNode`       | Content displayed as styled addon on the left side  |
+| `rightAddon`      | `ReactNode`       | Content displayed as styled addon on the right side |
+| `leftAddonProps`  | `TypographyProps` | Props passed to the left addon Typography wrapper   |
+| `rightAddonProps` | `TypographyProps` | Props passed to the right addon Typography wrapper  |

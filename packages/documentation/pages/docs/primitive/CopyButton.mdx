@@ -1,5 +1,78 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# CopyButton
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-buttons-copybutton--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Copy given text to clipboard.
+
+## Import
+
+```tsx
+import { CopyButton } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+`CopyButton` is based on `useClipboard` hook. Its children is a render function that receives an object with `copied` (boolean) and `copy` (function) properties.
+
+```tsx
+import { CopyButton, Button } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <CopyButton value="https://mantine.dev">
+      {({ copied, copy }) => (
+        <Button color={copied ? 'teal' : 'blue'} onClick={copy}>
+          {copied ? 'Copied url' : 'Copy url'}
+        </Button>
+      )}
+    </CopyButton>
+  )
+}
+```
+
+## With ActionIcon and Tooltip
+
+```tsx
+import { ActionIcon, CopyButton, Tooltip } from '@tidbcloud/uikit'
+import { IconCopy, IconCheck } from '@tabler/icons-react'
+
+function Demo() {
+  return (
+    <CopyButton value="https://mantine.dev" timeout={2000}>
+      {({ copied, copy }) => (
+        <Tooltip label={copied ? 'Copied' : 'Copy'} withArrow position="right">
+          <ActionIcon color={copied ? 'teal' : 'gray'} variant="subtle" onClick={copy}>
+            {copied ? <IconCheck size={16} /> : <IconCopy size={16} />}
+          </ActionIcon>
+        </Tooltip>
+      )}
+    </CopyButton>
+  )
+}
+```
+
+## Timeout
+
+You can provide a custom `copied` reset timeout (default is 1000ms):
+
+```tsx
+import { CopyButton, Button } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <CopyButton value="https://mantine.dev" timeout={2000}>
+      {({ copied, copy }) => <Button onClick={copy}>{copied ? 'Copied!' : 'Copy'}</Button>}
+    </CopyButton>
+  )
+}
+```
+
+## Security note
+
+Due to security reasons, `CopyButton` will not work in iframes and may not work with local files opened with `file://` protocol. It works fine with local websites using `http://` protocol.
+
+## Props
+
+| Prop     | Type                                                            | Default      | Description                 |
+| -------- | --------------------------------------------------------------- | ------------ | --------------------------- |
+| value    | string                                                          | **required** | Value to copy to clipboard  |
+| children | (payload: \{ copied: boolean; copy: () => void \}) => ReactNode | **required** | Render function             |
+| timeout  | number                                                          | 1000         | Copied status timeout in ms |

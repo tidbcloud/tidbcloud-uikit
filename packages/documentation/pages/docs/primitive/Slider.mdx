@@ -1,5 +1,98 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# Slider
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-inputs-slider--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Capture numeric input from users with a draggable slider.
+
+## Import
+
+```tsx
+import { Slider, RangeSlider } from '@tidbcloud/uikit'
+```
+
+## Basic Usage
+
+```tsx
+import { Slider } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Slider
+      defaultValue={40}
+      marks={[
+        { value: 20, label: '20%' },
+        { value: 50, label: '50%' },
+        { value: 80, label: '80%' }
+      ]}
+    />
+  )
+}
+```
+
+## Controlled
+
+```tsx
+import { useState } from 'react'
+import { Slider } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [value, setValue] = useState(40)
+  return <Slider value={value} onChange={setValue} />
+}
+```
+
+## With Marks
+
+```tsx
+import { Slider } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Slider
+      defaultValue={40}
+      marks={[
+        { value: 20, label: '20%' },
+        { value: 50, label: '50%' },
+        { value: 80, label: '80%' }
+      ]}
+    />
+  )
+}
+```
+
+## Label Control
+
+```tsx
+import { Slider } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <>
+      {/* No label */}
+      <Slider defaultValue={40} label={null} />
+
+      {/* Formatted label */}
+      <Slider defaultValue={40} label={(value) => `${value} °C`} />
+
+      {/* Label always visible */}
+      <Slider defaultValue={40} labelAlwaysOn />
+    </>
+  )
+}
+```
+
+## Key Props
+
+| Prop          | Type                                        | Description                     |
+| ------------- | ------------------------------------------- | ------------------------------- |
+| value         | number                                      | Controlled value                |
+| defaultValue  | number                                      | Default value for uncontrolled  |
+| onChange      | (value: number) => void                     | Called when value changes       |
+| onChangeEnd   | (value: number) => void                     | Called when user stops dragging |
+| min           | number                                      | Minimum possible value          |
+| max           | number                                      | Maximum possible value          |
+| step          | number                                      | Increment/decrement step        |
+| marks         | \{ value: number; label?: ReactNode }[]     | Marks displayed on track        |
+| label         | ReactNode \| ((value: number) => ReactNode) | Label formatter                 |
+| labelAlwaysOn | boolean                                     | Always show label               |
+| disabled      | boolean                                     | Disables slider                 |
+| color         | MantineColor                                | Track and thumb color           |
+| size          | MantineSize                                 | Controls track size             |

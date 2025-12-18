@@ -1,5 +1,134 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# PillsInput
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-combobox-pillsinput--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Base component for custom tag inputs and multi-selects. A utility component that renders given children without its own logic.
+
+## Import
+
+```tsx
+import { PillsInput, Pill } from '@tidbcloud/uikit'
+```
+
+## Basic Usage
+
+```tsx
+import { PillsInput, Pill } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <PillsInput label="PillsInput">
+      <Pill.Group>
+        <Pill>React</Pill>
+        <Pill>Vue</Pill>
+        <Pill>Svelte</Pill>
+        <PillsInput.Field placeholder="Enter tags" />
+      </Pill.Group>
+    </PillsInput>
+  )
+}
+```
+
+## With Removable Pills
+
+```tsx
+import { useState } from 'react'
+import { PillsInput, Pill } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [values, setValues] = useState(['React', 'Vue'])
+
+  const handleRemove = (val: string) => {
+    setValues((current) => current.filter((v) => v !== val))
+  }
+
+  const pills = values.map((item) => (
+    <Pill key={item} withRemoveButton onRemove={() => handleRemove(item)}>
+      {item}
+    </Pill>
+  ))
+
+  return (
+    <PillsInput label="Technologies">
+      <Pill.Group>
+        {pills}
+        <PillsInput.Field placeholder="Add more" />
+      </Pill.Group>
+    </PillsInput>
+  )
+}
+```
+
+## With Combobox (Searchable Multiselect)
+
+```tsx
+import { useState } from 'react'
+import { PillsInput, Pill, Combobox, useCombobox } from '@tidbcloud/uikit'
+
+const data = ['React', 'Vue', 'Angular', 'Svelte']
+
+function Demo() {
+  const combobox = useCombobox()
+  const [search, setSearch] = useState('')
+  const [value, setValue] = useState<string[]>([])
+
+  const handleValueSelect = (val: string) =>
+    setValue((current) => (current.includes(val) ? current.filter((v) => v !== val) : [...current, val]))
+
+  const pills = value.map((item) => (
+    <Pill key={item} withRemoveButton onRemove={() => handleValueSelect(item)}>
+      {item}
+    </Pill>
+  ))
+
+  return (
+    <Combobox store={combobox} onOptionSubmit={handleValueSelect}>
+      <Combobox.DropdownTarget>
+        <PillsInput onClick={() => combobox.openDropdown()}>
+          <Pill.Group>
+            {pills}
+            <Combobox.EventsTarget>
+              <PillsInput.Field
+                value={search}
+                onChange={(e) => setSearch(e.currentTarget.value)}
+                placeholder="Search..."
+              />
+            </Combobox.EventsTarget>
+          </Pill.Group>
+        </PillsInput>
+      </Combobox.DropdownTarget>
+
+      <Combobox.Dropdown>
+        <Combobox.Options>
+          {data
+            .filter((item) => item.toLowerCase().includes(search.toLowerCase()))
+            .map((item) => (
+              <Combobox.Option key={item} value={item}>
+                {item}
+              </Combobox.Option>
+            ))}
+        </Combobox.Options>
+      </Combobox.Dropdown>
+    </Combobox>
+  )
+}
+```
+
+## Key Props
+
+| Prop           | Type            | Description           |
+| -------------- | --------------- | --------------------- |
+| `label`        | `ReactNode`     | Input label           |
+| `description`  | `ReactNode`     | Input description     |
+| `error`        | `ReactNode`     | Error message         |
+| `disabled`     | `boolean`       | Disable input         |
+| `size`         | `MantineSize`   | Input size            |
+| `radius`       | `MantineRadius` | Border radius         |
+| `leftSection`  | `ReactNode`     | Content on left side  |
+| `rightSection` | `ReactNode`     | Content on right side |
+| `pointer`      | `boolean`       | Add pointer cursor    |
+
+## PillsInput.Field Props
+
+| Prop       | Type                              | Description           |
+| ---------- | --------------------------------- | --------------------- |
+| `type`     | `'visible' \| 'hidden' \| 'auto'` | Field visibility type |
+| `disabled` | `boolean`                         | Disable field         |

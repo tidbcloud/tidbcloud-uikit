@@ -1,5 +1,112 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# DateInput
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-dates-dateinput--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Free form date input that allows users to type a date.
+
+## Import
+
+```tsx
+import { DateInput } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+```tsx
+import { useState } from 'react'
+import { DateInput } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [value, setValue] = useState<Date | null>(null)
+  return <DateInput value={value} onChange={setValue} label="Date input" placeholder="Date input" />
+}
+```
+
+## Value format
+
+Use `valueFormat` prop to change the dayjs format of the value label:
+
+```tsx
+import { DateInput } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <DateInput valueFormat="YYYY MMM DD" label="Date input" placeholder="Date input" />
+}
+```
+
+## Allow clear
+
+Set `clearable` prop to allow removing value from the input:
+
+```tsx
+import { DateInput } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <DateInput clearable defaultValue={new Date()} label="Date input" placeholder="Date input" />
+}
+```
+
+## Min and max date
+
+Set `minDate` and `maxDate` props to define allowed date range:
+
+```tsx
+import { DateInput } from '@tidbcloud/uikit'
+
+function Demo() {
+  const today = new Date()
+  const nextMonth = new Date(today.getFullYear(), today.getMonth() + 1, today.getDate())
+
+  return <DateInput minDate={today} maxDate={nextMonth} label="Date input" placeholder="Date input" />
+}
+```
+
+## Custom date parser
+
+Use `dateParser` prop to replace default date parser:
+
+```tsx
+import dayjs from 'dayjs'
+import { DateInput } from '@tidbcloud/uikit'
+
+function Demo() {
+  const dateParser = (input: string) => {
+    if (input === 'WW2') {
+      return new Date(1939, 8, 1)
+    }
+    return dayjs(input, 'DD/MM/YYYY').toDate()
+  }
+
+  return <DateInput dateParser={dateParser} valueFormat="DD/MM/YYYY" label="Type WW2" placeholder="Type WW2" />
+}
+```
+
+## Disabled state
+
+```tsx
+import { DateInput } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <DateInput label="Disabled" placeholder="Date input" disabled />
+}
+```
+
+## Props
+
+| Prop         | Type                              | Default        | Description                        |
+| ------------ | --------------------------------- | -------------- | ---------------------------------- |
+| value        | string \| null                    | -              | Controlled component value         |
+| defaultValue | string                            | -              | Uncontrolled default value         |
+| onChange     | (value: string \| null) => void   | -              | Called when value changes          |
+| valueFormat  | string                            | 'MMMM D, YYYY' | dayjs format for display           |
+| dateParser   | (value: string) => string \| null | -              | Custom date parser function        |
+| clearable    | boolean                           | false          | Show clear button                  |
+| minDate      | string                            | -              | Minimum allowed date               |
+| maxDate      | string                            | -              | Maximum allowed date               |
+| excludeDate  | (date: string) => boolean         | -              | Function to exclude dates          |
+| fixOnBlur    | boolean                           | true           | Revert to last valid value on blur |
+| label        | ReactNode                         | -              | Input label                        |
+| description  | ReactNode                         | -              | Input description                  |
+| error        | ReactNode                         | -              | Error message                      |
+| disabled     | boolean                           | false          | Disable input                      |
+| placeholder  | string                            | -              | Input placeholder                  |
+| size         | MantineSize                       | 'sm'           | Input size                         |
+| locale       | string                            | 'en'           | dayjs locale                       |

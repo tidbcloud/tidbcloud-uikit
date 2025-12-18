@@ -1,5 +1,84 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# AspectRatio
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-layout-aspectratio--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Maintain responsive consistent width/height ratio.
+
+## Import
+
+```tsx
+import { AspectRatio } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+`AspectRatio` maintains a consistent width/height ratio. It can be used to display images, maps, videos and other media.
+
+```tsx
+import { AspectRatio } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <AspectRatio ratio={16 / 9} maw={400}>
+      <img src="https://example.com/image.png" alt="Example" />
+    </AspectRatio>
+  )
+}
+```
+
+## Map embed
+
+```tsx
+import { AspectRatio } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <AspectRatio ratio={16 / 9}>
+      <iframe src="https://www.google.com/maps/embed?..." title="Google map" style={{ border: 0 }} />
+    </AspectRatio>
+  )
+}
+```
+
+## Video embed
+
+```tsx
+import { AspectRatio } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <AspectRatio ratio={16 / 9}>
+      <iframe
+        src="https://www.youtube.com/embed/VIDEO_ID"
+        title="YouTube video player"
+        style={{ border: 0 }}
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowFullScreen
+      />
+    </AspectRatio>
+  )
+}
+```
+
+## Inside flex container
+
+When used inside a flex container, set `width` or `flex` property:
+
+```tsx
+import { AspectRatio, Image } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <div style={{ display: 'flex' }}>
+      <AspectRatio ratio={1} flex="0 0 100px">
+        <Image src="avatar.png" alt="Avatar" />
+      </AspectRatio>
+    </div>
+  )
+}
+```
+
+## Props
+
+| Prop     | Type              | Default | Description                                          |
+| -------- | ----------------- | ------- | ---------------------------------------------------- |
+| children | `React.ReactNode` | -       | Content to display inside the aspect ratio container |
+| ratio    | `number`          | `1`     | Aspect ratio, e.g., `16 / 9`, `4 / 3`, `1920 / 1080` |

@@ -1,5 +1,96 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# Anchor
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-navigation-anchor--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Display link with theme styles.
+
+## Import
+
+```tsx
+import { Anchor } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+```tsx
+import { Anchor } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Anchor href="https://mantine.dev/" target="_blank">
+      Anchor component
+    </Anchor>
+  )
+}
+```
+
+## Underline
+
+Use `underline` prop to configure `text-decoration` property:
+
+- `always` - link is always underlined
+- `hover` - link is underlined on hover
+- `never` - link is never underlined
+- `not-hover` - link is underlined when not hovered
+
+```tsx
+import { Anchor, Group } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Group>
+      <Anchor href="#" underline="always">
+        Underline always
+      </Anchor>
+      <Anchor href="#" underline="hover">
+        Underline hover
+      </Anchor>
+      <Anchor href="#" underline="never">
+        Underline never
+      </Anchor>
+    </Group>
+  )
+}
+```
+
+## Text props
+
+`Anchor` supports all Text component props:
+
+```tsx
+import { Anchor } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Anchor variant="gradient" gradient={{ from: 'pink', to: 'yellow' }} fw={500} fz="lg" href="#">
+      A link with pink to yellow gradient
+    </Anchor>
+  )
+}
+```
+
+## Polymorphic component
+
+Anchor is a polymorphic component – its default root element is `a`, but it can be changed to any other element or component:
+
+```tsx
+import Link from 'next/link'
+import { Anchor } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Anchor component={Link} href="/">
+      Link with Next.js Link
+    </Anchor>
+  )
+}
+```
+
+## Props
+
+| Prop      | Type                                            | Default   | Description                                                |
+| --------- | ----------------------------------------------- | --------- | ---------------------------------------------------------- |
+| children  | `React.ReactNode`                               | -         | Link content                                               |
+| gradient  | `MantineGradient`                               | -         | Gradient configuration for `variant="gradient"`            |
+| href      | `string`                                        | -         | Link URL                                                   |
+| size      | `MantineSize`                                   | -         | Controls font-size and line-height                         |
+| target    | `string`                                        | -         | Link target attribute                                      |
+| underline | `'always' \| 'hover' \| 'never' \| 'not-hover'` | `'hover'` | Defines when text-decoration: underline styles are applied |

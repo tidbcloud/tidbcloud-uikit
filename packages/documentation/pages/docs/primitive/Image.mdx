@@ -1,5 +1,83 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# Image
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-data-display-image--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Image component with optional fallback support.
+
+## Import
+
+```tsx
+import { Image } from '@tidbcloud/uikit'
+```
+
+## Basic Usage
+
+`Image` is a wrapper for `img` with minimal styles. By default, it takes 100% of parent width.
+
+```tsx
+import { Image } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <Image radius="md" src="https://example.com/image.png" />
+}
+```
+
+## Image Height
+
+Set image height to prevent layout jumps during loading:
+
+```tsx
+import { Image } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <Image radius="md" h={200} src="https://example.com/image.png" />
+}
+```
+
+## Image Fit
+
+By default, images use `object-fit: cover`. Use `fit="contain"` with `w="auto"` for different behavior:
+
+```tsx
+import { Image } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <Image radius="md" h={200} w="auto" fit="contain" src="https://example.com/image.png" />
+}
+```
+
+## Fallback Image
+
+Display a fallback when the image fails to load:
+
+```tsx
+import { Image } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <Image radius="md" src={null} h={200} fallbackSrc="https://placehold.co/600x400?text=Placeholder" />
+}
+```
+
+## Usage with Next.js Image
+
+`Image` is polymorphic and can be used with `next/image`:
+
+```tsx
+import NextImage from 'next/image'
+import { Image } from '@tidbcloud/uikit'
+import myImage from './my-image.jpg'
+
+function Demo() {
+  return <Image component={NextImage} src={myImage} alt="My image" />
+}
+```
+
+## Key Props
+
+| Prop          | Type               | Description                         |
+| ------------- | ------------------ | ----------------------------------- |
+| `src`         | `string`           | Image URL                           |
+| `fallbackSrc` | `string`           | Fallback URL if image fails to load |
+| `fit`         | `ObjectFit`        | Controls `object-fit` style         |
+| `radius`      | `MantineRadius`    | Border radius                       |
+| `h`           | `number \| string` | Image height                        |
+| `w`           | `number \| string` | Image width                         |
+| `onError`     | `function`         | Called when image fails to load     |

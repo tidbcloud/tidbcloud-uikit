@@ -1,5 +1,43 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# Mark
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-typography-mark--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Highlight part of the text with a background color.
+
+## Import
+
+```tsx
+import { Mark } from '@tidbcloud/uikit'
+```
+
+## Basic Usage
+
+```tsx
+import { Text, Mark } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Text>
+      Highlight <Mark>this chunk</Mark> of the text
+    </Text>
+  )
+}
+```
+
+## Custom Color
+
+```tsx
+import { Text, Mark } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Text>
+      Highlight <Mark color="blue">with blue</Mark> or <Mark color="red.3">with red</Mark>
+    </Text>
+  )
+}
+```
+
+## Key Props
+
+| Prop    | Type           | Description                                        |
+| ------- | -------------- | -------------------------------------------------- |
+| `color` | `MantineColor` | Background color from theme or any valid CSS color |

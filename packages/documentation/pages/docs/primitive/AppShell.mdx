@@ -1,5 +1,124 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# AppShell
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-layout-appshell--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Responsive shell for your application with header, navbar, aside and footer.
+
+## Import
+
+```tsx
+import { AppShell } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+`AppShell` is a layout component that can be used to implement a common Header / Navbar / Footer / Aside layout pattern. All `AppShell` components have `position: fixed` style.
+
+```tsx
+import { AppShell, Burger } from '@tidbcloud/uikit'
+import { useDisclosure } from '@mantine/hooks'
+
+function Demo() {
+  const [opened, { toggle }] = useDisclosure()
+
+  return (
+    <AppShell
+      padding="md"
+      header={{ height: 60 }}
+      navbar={{
+        width: 300,
+        breakpoint: 'sm',
+        collapsed: { mobile: !opened }
+      }}
+    >
+      <AppShell.Header>
+        <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
+        <div>Logo</div>
+      </AppShell.Header>
+
+      <AppShell.Navbar>Navbar</AppShell.Navbar>
+
+      <AppShell.Main>Main content</AppShell.Main>
+    </AppShell>
+  )
+}
+```
+
+## AppShell components
+
+- `AppShell` – root component that wraps all other sections
+- `AppShell.Header` – fixed header at the top
+- `AppShell.Navbar` – fixed navbar on the left
+- `AppShell.Aside` – fixed aside on the right
+- `AppShell.Footer` – fixed footer at the bottom
+- `AppShell.Main` – main content area
+- `AppShell.Section` – utility for grouping content inside Navbar or Aside
+
+## Responsive navbar
+
+```tsx
+import { AppShell, Burger, Group, NavLink } from '@tidbcloud/uikit'
+import { useDisclosure } from '@mantine/hooks'
+
+function Demo() {
+  const [opened, { toggle }] = useDisclosure()
+
+  return (
+    <AppShell
+      header={{ height: 60 }}
+      navbar={{ width: 300, breakpoint: 'sm', collapsed: { mobile: !opened } }}
+      padding="md"
+    >
+      <AppShell.Header>
+        <Group h="100%" px="md">
+          <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
+          Logo
+        </Group>
+      </AppShell.Header>
+
+      <AppShell.Navbar p="md">
+        <NavLink label="Home" />
+        <NavLink label="Dashboard" />
+        <NavLink label="Settings" />
+      </AppShell.Navbar>
+
+      <AppShell.Main>Main content</AppShell.Main>
+    </AppShell>
+  )
+}
+```
+
+## With aside
+
+```tsx
+import { AppShell } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <AppShell
+      header={{ height: 60 }}
+      navbar={{ width: 300, breakpoint: 'sm' }}
+      aside={{ width: 300, breakpoint: 'md' }}
+      padding="md"
+    >
+      <AppShell.Header>Header</AppShell.Header>
+      <AppShell.Navbar>Navbar</AppShell.Navbar>
+      <AppShell.Main>Main</AppShell.Main>
+      <AppShell.Aside>Aside</AppShell.Aside>
+    </AppShell>
+  )
+}
+```
+
+## Props
+
+| Prop               | Type                          | Default     | Description                                         |
+| ------------------ | ----------------------------- | ----------- | --------------------------------------------------- |
+| aside              | `AppShellAsideConfiguration`  | -           | Aside configuration                                 |
+| disabled           | `boolean`                     | -           | If set, Navbar, Aside, Header and Footer are hidden |
+| footer             | `AppShellFooterConfiguration` | -           | Footer configuration                                |
+| header             | `AppShellHeaderConfiguration` | -           | Header configuration                                |
+| layout             | `'default' \| 'alt'`          | `'default'` | Layout arrangement                                  |
+| navbar             | `AppShellNavbarConfiguration` | -           | Navbar configuration                                |
+| padding            | `MantineSpacing`              | -           | Padding of the main section                         |
+| transitionDuration | `number`                      | -           | Duration of transitions in ms                       |
+| withBorder         | `boolean`                     | `true`      | If set, components have a border                    |
+| zIndex             | `number`                      | `100`       | z-index of all elements                             |

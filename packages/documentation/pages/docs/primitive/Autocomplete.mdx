@@ -1,5 +1,124 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# Autocomplete
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-combobox-autocomplete--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Autocomplete user input with any list of options.
+
+## Import
+
+```tsx
+import { Autocomplete } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+`Autocomplete` provides user a list of suggestions based on the input. However, user is not limited to suggestions and can type anything.
+
+```tsx
+import { Autocomplete } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Autocomplete
+      label="Your favorite library"
+      placeholder="Pick value or enter anything"
+      data={['React', 'Angular', 'Vue', 'Svelte']}
+    />
+  )
+}
+```
+
+## Controlled
+
+```tsx
+import { useState } from 'react'
+import { Autocomplete } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [value, setValue] = useState('')
+  return <Autocomplete data={['React', 'Angular']} value={value} onChange={setValue} />
+}
+```
+
+## Data format
+
+Data can be an array of strings or objects:
+
+```tsx
+import { Autocomplete } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Autocomplete
+      data={[
+        { value: 'react', label: 'React' },
+        { value: 'angular', label: 'Angular' }
+      ]}
+    />
+  )
+}
+```
+
+## Grouped options
+
+```tsx
+import { Autocomplete } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Autocomplete
+      label="Your favorite library"
+      placeholder="Pick value or enter anything"
+      data={[
+        { group: 'Frontend', items: ['React', 'Angular'] },
+        { group: 'Backend', items: ['Express', 'Django'] }
+      ]}
+    />
+  )
+}
+```
+
+## Clearable
+
+Set `clearable` prop to display the clear button:
+
+```tsx
+import { Autocomplete } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <Autocomplete clearable defaultValue="React" data={['React', 'Angular']} label="Clearable autocomplete" />
+}
+```
+
+## Disabled
+
+```tsx
+import { Autocomplete } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Autocomplete
+      label="Your favorite library"
+      placeholder="Pick value or enter anything"
+      data={['React', 'Angular', 'Vue', 'Svelte']}
+      disabled
+    />
+  )
+}
+```
+
+## Props
+
+| Prop              | Type                                             | Default | Description                              |
+| ----------------- | ------------------------------------------------ | ------- | ---------------------------------------- |
+| clearable         | `boolean`                                        | -       | If set, the clear button is displayed    |
+| data              | `string[] \| { value: string; label: string }[]` | -       | Data for options                         |
+| defaultValue      | `string`                                         | -       | Default value for uncontrolled component |
+| description       | `React.ReactNode`                                | -       | Input description                        |
+| disabled          | `boolean`                                        | -       | Sets disabled attribute                  |
+| error             | `React.ReactNode`                                | -       | Error message                            |
+| filter            | `(options, search) => options`                   | -       | Custom filter function                   |
+| label             | `React.ReactNode`                                | -       | Input label                              |
+| limit             | `number`                                         | -       | Maximum number of options displayed      |
+| maxDropdownHeight | `number`                                         | `250`   | Max dropdown height                      |
+| onChange          | `(value: string) => void`                        | -       | Called when value changes                |
+| placeholder       | `string`                                         | -       | Input placeholder                        |
+| value             | `string`                                         | -       | Controlled component value               |

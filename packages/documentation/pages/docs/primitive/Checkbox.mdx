@@ -1,5 +1,138 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# Checkbox
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-inputs-checkbox--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Capture boolean input from user.
+
+## Import
+
+```tsx
+import { Checkbox } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+```tsx
+import { Checkbox } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <Checkbox defaultChecked label="I agree to sell my privacy" />
+}
+```
+
+## Controlled
+
+```tsx
+import { useState } from 'react'
+import { Checkbox } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [checked, setChecked] = useState(false)
+  return <Checkbox checked={checked} onChange={(event) => setChecked(event.currentTarget.checked)} />
+}
+```
+
+## States
+
+```tsx
+import { Checkbox, Stack } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Stack>
+      <Checkbox checked={false} onChange={() => {}} label="Default checkbox" />
+      <Checkbox checked={false} onChange={() => {}} indeterminate label="Indeterminate checkbox" />
+      <Checkbox checked onChange={() => {}} label="Checked checkbox" />
+      <Checkbox disabled label="Disabled checkbox" />
+      <Checkbox disabled checked onChange={() => {}} label="Disabled checked checkbox" />
+    </Stack>
+  )
+}
+```
+
+## Indeterminate state
+
+`Checkbox` supports indeterminate state:
+
+```tsx
+import { Checkbox } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <Checkbox indeterminate label="Indeterminate checkbox" />
+}
+```
+
+## Label with link
+
+```tsx
+import { Checkbox, Anchor } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Checkbox
+      label={
+        <>
+          I accept{' '}
+          <Anchor href="https://mantine.dev" target="_blank" inherit>
+            terms and conditions
+          </Anchor>
+        </>
+      }
+    />
+  )
+}
+```
+
+## Checkbox.Group
+
+```tsx
+import { Checkbox, Group } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Checkbox.Group defaultValue={['react']} label="Select your favorite frameworks" description="This is anonymous">
+      <Group mt="xs">
+        <Checkbox value="react" label="React" />
+        <Checkbox value="svelte" label="Svelte" />
+        <Checkbox value="ng" label="Angular" />
+        <Checkbox value="vue" label="Vue" />
+      </Group>
+    </Checkbox.Group>
+  )
+}
+```
+
+## Controlled Checkbox.Group
+
+```tsx
+import { useState } from 'react'
+import { Checkbox } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [value, setValue] = useState<string[]>([])
+
+  return (
+    <Checkbox.Group value={value} onChange={setValue}>
+      <Checkbox value="react" label="React" />
+      <Checkbox value="svelte" label="Svelte" />
+    </Checkbox.Group>
+  )
+}
+```
+
+## Props
+
+| Prop           | Type                   | Default   | Description                                      |
+| -------------- | ---------------------- | --------- | ------------------------------------------------ |
+| checked        | `boolean`              | -         | Checked state for controlled component           |
+| color          | `MantineColor`         | -         | Key of theme.colors or any valid CSS color       |
+| defaultChecked | `boolean`              | -         | Default checked state for uncontrolled component |
+| description    | `React.ReactNode`      | -         | Description displayed below the label            |
+| disabled       | `boolean`              | -         | Disables checkbox                                |
+| error          | `React.ReactNode`      | -         | Error message                                    |
+| icon           | `(props) => ReactNode` | -         | Custom check icon component                      |
+| iconColor      | `MantineColor`         | -         | Icon color                                       |
+| indeterminate  | `boolean`              | -         | Indeterminate state, ignores checked prop        |
+| label          | `React.ReactNode`      | -         | Checkbox label                                   |
+| labelPosition  | `'left' \| 'right'`    | `'right'` | Position of the label                            |
+| onChange       | `(event) => void`      | -         | Called when checked state changes                |
+| radius         | `MantineRadius`        | -         | Border radius                                    |
+| size           | `MantineSize`          | `'sm'`    | Checkbox size                                    |

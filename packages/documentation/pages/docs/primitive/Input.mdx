@@ -1,5 +1,130 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# Input
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-inputs-input--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Base component for creating custom inputs. In most cases, prefer using `TextInput` or other specific input components instead.
+
+## Import
+
+```tsx
+import { Input } from '@tidbcloud/uikit'
+```
+
+## Important Note
+
+`Input` is a base component not designed for direct use. Use it to create custom inputs; for standard use cases, prefer `TextInput` or other input components.
+
+```tsx
+import { Input, TextInput } from '@tidbcloud/uikit'
+
+// ❌ Incorrect: Input alone is not accessible
+function Incorrect() {
+  return (
+    <Input.Wrapper label="Input label">
+      <Input />
+    </Input.Wrapper>
+  )
+}
+
+// ✅ Correct: Use TextInput which includes accessibility features
+function Correct() {
+  return <TextInput label="Input label" description="Input description" />
+}
+```
+
+## Basic Usage
+
+```tsx
+import { Input } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <Input placeholder="Input component" />
+}
+```
+
+## Input Sections
+
+Add icons or buttons alongside the input:
+
+```tsx
+import { useState } from 'react'
+import { Input, CloseButton } from '@tidbcloud/uikit'
+import { IconAt } from '@tabler/icons-react'
+
+function Demo() {
+  const [value, setValue] = useState('Clear me')
+  return (
+    <>
+      <Input placeholder="Your email" leftSection={<IconAt size={16} />} />
+      <Input
+        placeholder="Clearable input"
+        value={value}
+        onChange={(event) => setValue(event.currentTarget.value)}
+        rightSectionPointerEvents="all"
+        mt="md"
+        rightSection={
+          <CloseButton
+            aria-label="Clear input"
+            onClick={() => setValue('')}
+            style={{ display: value ? undefined : 'none' }}
+          />
+        }
+      />
+    </>
+  )
+}
+```
+
+## Input.Wrapper
+
+Wrap inputs with labels, descriptions, and error messages:
+
+```tsx
+import { Input } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Input.Wrapper label="Your email" description="We'll never share your email" error="">
+      <Input placeholder="your@email.com" />
+    </Input.Wrapper>
+  )
+}
+```
+
+## Polymorphic Component
+
+`Input` can render as different elements:
+
+```tsx
+import { Input } from '@tidbcloud/uikit'
+import { IconChevronDown } from '@tabler/icons-react'
+
+function Demo() {
+  return (
+    <>
+      <Input component="button" pointer>
+        Button input
+      </Input>
+      <Input component="select" rightSection={<IconChevronDown size={14} />} pointer>
+        <option value="1">Option 1</option>
+        <option value="2">Option 2</option>
+      </Input>
+    </>
+  )
+}
+```
+
+## Key Props
+
+| Prop           | Type            | Description               |
+| -------------- | --------------- | ------------------------- |
+| `leftSection`  | `ReactNode`     | Content on the left side  |
+| `rightSection` | `ReactNode`     | Content on the right side |
+| `size`         | `MantineSize`   | Input height and padding  |
+| `radius`       | `MantineRadius` | Border radius             |
+| `disabled`     | `boolean`       | Disable the input         |
+| `error`        | `ReactNode`     | Error state and message   |
+| `pointer`      | `boolean`       | Show pointer cursor       |
+| `component`    | `ElementType`   | Root element type         |
+
+## Accessibility
+
+Always associate inputs with labels using matching `id` attributes or use components like `TextInput` that handle accessibility automatically.

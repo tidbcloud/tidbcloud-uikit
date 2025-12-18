@@ -1,5 +1,86 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# Kbd
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-data-display-kbd--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Display keyboard keys or shortcuts in a styled inline element.
+
+## Import
+
+```tsx
+import { Kbd } from '@tidbcloud/uikit'
+```
+
+## Basic Usage
+
+```tsx
+import { Kbd } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <Kbd>Shift</Kbd>
+}
+```
+
+## Keyboard Shortcuts
+
+Display key combinations:
+
+```tsx
+import { Kbd } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <>
+      <Kbd>⌘</Kbd> + <Kbd>K</Kbd>
+    </>
+  )
+}
+```
+
+## With Text
+
+Combine with text for instructions:
+
+```tsx
+import { Kbd, Text } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Text>
+      Press <Kbd>⌘</Kbd> + <Kbd>Shift</Kbd> + <Kbd>P</Kbd> to open command palette
+    </Text>
+  )
+}
+```
+
+## Different Sizes
+
+```tsx
+import { Kbd, Stack } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Stack>
+      <div>
+        <Kbd size="xs">Ctrl</Kbd> - Extra small
+      </div>
+      <div>
+        <Kbd size="sm">Ctrl</Kbd> - Small
+      </div>
+      <div>
+        <Kbd size="md">Ctrl</Kbd> - Medium
+      </div>
+      <div>
+        <Kbd size="lg">Ctrl</Kbd> - Large
+      </div>
+      <div>
+        <Kbd size="xl">Ctrl</Kbd> - Extra large
+      </div>
+    </Stack>
+  )
+}
+```
+
+## Key Props
+
+| Prop       | Type                    | Description                    |
+| ---------- | ----------------------- | ------------------------------ |
+| `size`     | `MantineSize \| number` | Controls font-size and padding |
+| `children` | `ReactNode`             | Key text to display            |
