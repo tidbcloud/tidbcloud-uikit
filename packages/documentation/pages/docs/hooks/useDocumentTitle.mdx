@@ -1,0 +1,45 @@
+# useDocumentTitle
+
+Set the document title.
+
+## Import
+
+```tsx
+import { useDocumentTitle } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+`useDocumentTitle` sets `document.title` property with `React.useLayoutEffect`. It is not called during server side rendering.
+
+```tsx
+import { useState } from 'react'
+import { useDocumentTitle } from '@tidbcloud/uikit'
+import { TextInput } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [title, setTitle] = useState('My App')
+  useDocumentTitle(title)
+
+  return (
+    <TextInput
+      value={title}
+      onChange={(e) => setTitle(e.currentTarget.value)}
+      label="Page title"
+      placeholder="Enter page title"
+    />
+  )
+}
+```
+
+## Notes
+
+- Use this hook with client-only applications
+- For isomorphic use, consider more advanced options like `react-helmet`
+- The hook triggers every time the value changes and is not empty
+
+## Definition
+
+```tsx
+function useDocumentTitle(title: string): void
+```

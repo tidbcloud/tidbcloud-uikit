@@ -1,5 +1,102 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# Fieldset
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-inputs-fieldset--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Group related form elements with optional legend.
+
+## Import
+
+```tsx
+import { Fieldset } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+```tsx
+import { Fieldset, TextInput, Checkbox, Button, Group } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Fieldset legend="Personal information">
+      <TextInput label="Your name" placeholder="Your name" />
+      <TextInput label="Email" placeholder="Email" mt="md" />
+      <Checkbox label="I agree to terms and conditions" mt="md" />
+      <Group justify="flex-end" mt="md">
+        <Button type="submit">Submit</Button>
+      </Group>
+    </Fieldset>
+  )
+}
+```
+
+## Variants
+
+```tsx
+import { Fieldset, TextInput } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <>
+      <Fieldset legend="Default variant" variant="default">
+        <TextInput label="Field" placeholder="Field" />
+      </Fieldset>
+      <Fieldset legend="Filled variant" variant="filled" mt="md">
+        <TextInput label="Field" placeholder="Field" />
+      </Fieldset>
+      <Fieldset legend="Unstyled variant" variant="unstyled" mt="md">
+        <TextInput label="Field" placeholder="Field" />
+      </Fieldset>
+    </>
+  )
+}
+```
+
+## Disabled state
+
+Set `disabled` prop to disable all form elements inside:
+
+```tsx
+import { Fieldset, TextInput, Checkbox, Button, Group } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Fieldset legend="Personal information" disabled>
+      <TextInput label="Your name" placeholder="Your name" />
+      <TextInput label="Email" placeholder="Email" mt="md" />
+      <Checkbox label="I agree to terms and conditions" mt="md" />
+      <Group justify="flex-end" mt="md">
+        <Button type="submit">Submit</Button>
+      </Group>
+    </Fieldset>
+  )
+}
+```
+
+## Radius
+
+```tsx
+import { Fieldset, TextInput } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <>
+      <Fieldset legend="Radius xs" radius="xs">
+        <TextInput label="Field" placeholder="Field" />
+      </Fieldset>
+      <Fieldset legend="Radius md" radius="md" mt="md">
+        <TextInput label="Field" placeholder="Field" />
+      </Fieldset>
+      <Fieldset legend="Radius lg" radius="lg" mt="md">
+        <TextInput label="Field" placeholder="Field" />
+      </Fieldset>
+    </>
+  )
+}
+```
+
+## Props
+
+| Prop     | Type                                | Default   | Description                      |
+| -------- | ----------------------------------- | --------- | -------------------------------- |
+| legend   | ReactNode                           | -         | Fieldset legend text             |
+| variant  | 'default' \| 'filled' \| 'unstyled' | 'default' | Fieldset variant                 |
+| radius   | MantineRadius                       | 'sm'      | Border radius                    |
+| disabled | boolean                             | false     | Disable all form elements inside |

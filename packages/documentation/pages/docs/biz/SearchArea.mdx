@@ -1,3 +1,145 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# SearchArea
 
-<EmbeddedStory src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=biz-searcharea--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}></EmbeddedStory>
+A form-based search area with multiple filter types, URL state persistence, debounced text input, and clear/refresh functionality.
+
+## Import
+
+```tsx
+import { SearchArea } from '@tidbcloud/uikit/biz'
+```
+
+## Basic Usage
+
+```tsx
+import { SearchArea } from '@tidbcloud/uikit/biz'
+
+function Demo() {
+  const filters = [
+    {
+      type: 'text',
+      name: 'search',
+      placeholder: 'Search...'
+    },
+    {
+      type: 'select',
+      name: 'status',
+      label: 'Status',
+      data: ['Active', 'Inactive', 'Pending']
+    }
+  ]
+
+  return <SearchArea filters={filters} onSubmit={(values) => console.log(values)} />
+}
+```
+
+## Multiple Filter Types
+
+```tsx
+import { SearchArea } from '@tidbcloud/uikit/biz'
+
+function Demo() {
+  const filters = [
+    {
+      type: 'text',
+      name: 'keyword',
+      placeholder: 'Search by keyword'
+    },
+    {
+      type: 'select',
+      name: 'category',
+      label: 'Category',
+      data: ['All', 'Electronics', 'Clothing', 'Books']
+    },
+    {
+      type: 'multiselect',
+      name: 'tags',
+      label: 'Tags',
+      data: ['Featured', 'Sale', 'New', 'Popular']
+    },
+    {
+      type: 'datepicker',
+      name: 'date',
+      label: 'Date'
+    }
+  ]
+
+  return (
+    <SearchArea filters={filters} onSubmit={(values) => console.log(values)} onRefresh={() => console.log('refresh')} />
+  )
+}
+```
+
+## With URL Persistence
+
+```tsx
+import { SearchArea } from '@tidbcloud/uikit/biz'
+
+function Demo() {
+  const filters = [
+    { type: 'text', name: 'q', placeholder: 'Search...' },
+    { type: 'select', name: 'sort', data: ['Newest', 'Oldest', 'Popular'] }
+  ]
+
+  return <SearchArea filters={filters} persistUrl urlStateKey="filters" onSubmit={(values) => console.log(values)} />
+}
+```
+
+## With Default Values
+
+```tsx
+import { SearchArea } from '@tidbcloud/uikit/biz'
+
+function Demo() {
+  const filters = [
+    { type: 'text', name: 'search', placeholder: 'Search...' },
+    { type: 'select', name: 'status', data: ['All', 'Active', 'Inactive'] }
+  ]
+
+  return (
+    <SearchArea filters={filters} defaultValues={{ status: 'Active' }} onSubmit={(values) => console.log(values)} />
+  )
+}
+```
+
+## Time Range Picker
+
+```tsx
+import { SearchArea } from '@tidbcloud/uikit/biz'
+
+function Demo() {
+  const filters = [
+    { type: 'text', name: 'search', placeholder: 'Search...' },
+    {
+      type: 'timerangepicker',
+      name: 'timeRange',
+      label: 'Time Range'
+    }
+  ]
+
+  return <SearchArea filters={filters} onSubmit={(values) => console.log(values)} />
+}
+```
+
+## Props
+
+| Prop            | Type               | Default           | Description                 |
+| --------------- | ------------------ | ----------------- | --------------------------- |
+| `filters`       | `FormItem[]`       | -                 | Array of filter definitions |
+| `persistUrl`    | `boolean`          | -                 | Persist state in URL        |
+| `debug`         | `boolean`          | -                 | Enable debug mode           |
+| `urlStateKey`   | `string`           | `'__fs'`          | URL query key for state     |
+| `clearText`     | `string`           | `'Clear Filters'` | Clear button text           |
+| `onSubmit`      | `(values) => void` | -                 | Submit handler              |
+| `onRefresh`     | `() => void`       | -                 | Refresh handler             |
+| `defaultValues` | `object`           | -                 | Default filter values       |
+| `formProps`     | `FormProps`        | -                 | Additional Form props       |
+
+## Filter Types
+
+| Type              | Description                      |
+| ----------------- | -------------------------------- |
+| `text`            | Text input with debounced search |
+| `select`          | Single select dropdown           |
+| `multiselect`     | Multi-select dropdown            |
+| `datepicker`      | Date picker                      |
+| `timerangepicker` | Time range picker                |

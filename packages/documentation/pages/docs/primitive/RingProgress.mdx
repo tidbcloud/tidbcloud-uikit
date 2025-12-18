@@ -1,5 +1,165 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# RingProgress
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-feedback-ringprogress--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+RingProgress displays a circular progress indicator with customizable sections. Ideal for showing task completion status or data visualization.
+
+## Import
+
+```tsx
+import { RingProgress } from '@tidbcloud/uikit'
+```
+
+## Basic Usage
+
+Set `sections` prop to an array of objects with `value` (0-100) and `color`:
+
+```tsx
+import { RingProgress, Text } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <RingProgress
+      label={
+        <Text size="xs" ta="center">
+          Application data usage
+        </Text>
+      }
+      sections={[
+        { value: 40, color: 'cyan' },
+        { value: 15, color: 'orange' },
+        { value: 15, color: 'grape' }
+      ]}
+    />
+  )
+}
+```
+
+## Size, Thickness & Rounded Caps
+
+```tsx
+import { RingProgress } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <RingProgress
+      size={200}
+      thickness={20}
+      roundCaps
+      sections={[
+        { value: 40, color: 'cyan' },
+        { value: 15, color: 'orange' },
+        { value: 15, color: 'grape' }
+      ]}
+    />
+  )
+}
+```
+
+## Sections with Tooltips
+
+```tsx
+import { RingProgress, Text } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <RingProgress
+      size={170}
+      thickness={16}
+      label={
+        <Text size="xs" ta="center" px="xs" style={{ pointerEvents: 'none' }}>
+          Hover sections to see tooltips
+        </Text>
+      }
+      sections={[
+        { value: 40, color: 'cyan', tooltip: 'Documents – 40 Gb' },
+        { value: 25, color: 'orange', tooltip: 'Apps – 25 Gb' },
+        { value: 15, color: 'grape', tooltip: 'Other – 15 Gb' }
+      ]}
+    />
+  )
+}
+```
+
+## Root Color
+
+```tsx
+import { RingProgress } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <RingProgress sections={[{ value: 40, color: 'yellow' }]} rootColor="red" />
+}
+```
+
+## Custom Label
+
+```tsx
+import { RingProgress, Text, Center, ActionIcon } from '@tidbcloud/uikit'
+import { IconCheck } from '@tabler/icons-react'
+
+function Demo() {
+  return (
+    <>
+      <RingProgress
+        sections={[{ value: 40, color: 'blue' }]}
+        label={
+          <Text c="blue" fw={700} ta="center" size="xl">
+            40%
+          </Text>
+        }
+      />
+
+      <RingProgress
+        sections={[{ value: 100, color: 'teal' }]}
+        label={
+          <Center>
+            <ActionIcon color="teal" variant="light" radius="xl" size="xl">
+              <IconCheck size={22} />
+            </ActionIcon>
+          </Center>
+        }
+      />
+    </>
+  )
+}
+```
+
+## Animated Transitions
+
+```tsx
+import { useState } from 'react'
+import { Button, RingProgress, Stack, Text } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [value, setValue] = useState(30)
+
+  return (
+    <Stack align="center">
+      <RingProgress
+        sections={[{ value, color: 'blue' }]}
+        transitionDuration={250}
+        label={<Text ta="center">{value}%</Text>}
+      />
+      <Button onClick={() => setValue(Math.floor(Math.random() * 100))}>Set random value</Button>
+    </Stack>
+  )
+}
+```
+
+## Key Props
+
+| Prop                 | Type                    | Default  | Description                                                 |
+| -------------------- | ----------------------- | -------- | ----------------------------------------------------------- |
+| `sections`           | `RingProgressSection[]` | required | Ring sections with `value`, `color`, and optional `tooltip` |
+| `size`               | `number`                | `120`    | Width and height of the progress ring                       |
+| `thickness`          | `number`                | `12`     | Ring thickness                                              |
+| `roundCaps`          | `boolean`               | `false`  | Whether edges of progress circle are rounded                |
+| `rootColor`          | `MantineColor`          | -        | Color of the root/empty section                             |
+| `label`              | `ReactNode`             | -        | Label displayed in the center of the ring                   |
+| `transitionDuration` | `number`                | `0`      | Transition duration in ms for animated changes              |
+
+## Section Props
+
+| Prop      | Type           | Description            |
+| --------- | -------------- | ---------------------- |
+| `value`   | `number`       | Segment value (0-100)  |
+| `color`   | `MantineColor` | Segment color          |
+| `tooltip` | `ReactNode`    | Tooltip shown on hover |

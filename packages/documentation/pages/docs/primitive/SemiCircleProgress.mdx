@@ -1,5 +1,123 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# SemiCircleProgress
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-feedback-semicircleprogress--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+SemiCircleProgress displays progress with a semi-circular diagram, useful for dashboards and status indicators.
+
+## Import
+
+```tsx
+import { SemiCircleProgress } from '@tidbcloud/uikit'
+```
+
+## Basic Usage
+
+```tsx
+import { SemiCircleProgress } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <SemiCircleProgress value={40} label="40%" />
+}
+```
+
+## Size and Thickness
+
+```tsx
+import { SemiCircleProgress } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <SemiCircleProgress value={60} size={200} thickness={12} label="60%" />
+}
+```
+
+## Custom Colors
+
+```tsx
+import { SemiCircleProgress } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <SemiCircleProgress value={30} filledSegmentColor="blue" emptySegmentColor="var(--mantine-color-dimmed)" />
+}
+```
+
+## Label Position
+
+By default, label is at the bottom. Use `labelPosition="center"` to center it:
+
+```tsx
+import { SemiCircleProgress } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <>
+      <SemiCircleProgress value={30} label="Bottom" mb="xl" />
+      <SemiCircleProgress value={30} label="Center" labelPosition="center" />
+    </>
+  )
+}
+```
+
+## Fill Direction
+
+Control which direction the progress fills from:
+
+```tsx
+import { SemiCircleProgress } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <>
+      <SemiCircleProgress value={50} fillDirection="left-to-right" label="Left to Right" />
+      <SemiCircleProgress value={50} fillDirection="right-to-left" label="Right to Left" />
+    </>
+  )
+}
+```
+
+## Orientation
+
+```tsx
+import { SemiCircleProgress } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <>
+      <SemiCircleProgress value={50} orientation="up" label="Up" />
+      <SemiCircleProgress value={50} orientation="down" label="Down" />
+    </>
+  )
+}
+```
+
+## Animated Transitions
+
+```tsx
+import { useState } from 'react'
+import { Button, SemiCircleProgress } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [value, setValue] = useState(30)
+
+  return (
+    <>
+      <SemiCircleProgress value={value} transitionDuration={250} label={`${value}%`} />
+      <Button onClick={() => setValue(Math.floor(Math.random() * 100))} mt="xl">
+        Set random value
+      </Button>
+    </>
+  )
+}
+```
+
+## Key Props
+
+| Prop                 | Type                                 | Default           | Description                                    |
+| -------------------- | ------------------------------------ | ----------------- | ---------------------------------------------- |
+| `value`              | `number`                             | required          | Progress value from 0 to 100                   |
+| `size`               | `number`                             | `200`             | Diameter of the SVG in px                      |
+| `thickness`          | `number`                             | `12`              | Circle thickness in px                         |
+| `label`              | `ReactNode`                          | -                 | Label rendered inside the circle               |
+| `labelPosition`      | `'center' \| 'bottom'`               | `'bottom'`        | Label position relative to circle center       |
+| `filledSegmentColor` | `MantineColor`                       | -                 | Color of the filled segment                    |
+| `emptySegmentColor`  | `MantineColor`                       | -                 | Color of the empty segment                     |
+| `fillDirection`      | `'left-to-right' \| 'right-to-left'` | `'left-to-right'` | Direction the circle fills from                |
+| `orientation`        | `'up' \| 'down'`                     | `'up'`            | Orientation of the circle                      |
+| `transitionDuration` | `number`                             | `0`               | Transition duration in ms for animated changes |

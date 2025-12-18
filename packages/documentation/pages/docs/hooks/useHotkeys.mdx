@@ -1,0 +1,94 @@
+# useHotkeys
+
+Listen for keyboard shortcuts.
+
+## Import
+
+```tsx
+import { useHotkeys } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+`useHotkeys` accepts an array of hotkeys and handler tuples:
+
+- `hotkey` - hotkey string, for example `ctrl+E`, `shift+alt+L`, `mod+S`
+- `handler` - event handler called when the combination is pressed
+- `options` - optional object with extra options
+
+```tsx
+import { useHotkeys } from '@tidbcloud/uikit'
+
+function Demo() {
+  useHotkeys([
+    ['mod+J', () => console.log('Toggle color scheme')],
+    ['ctrl+K', () => console.log('Trigger search')],
+    ['alt+mod+shift+X', () => console.log('Special action')]
+  ])
+
+  return <div>Press hotkeys to trigger actions</div>
+}
+```
+
+## Ignored Elements
+
+By default, hotkey events are ignored if focus is in `input`, `textarea`, and `select` elements. You can change this:
+
+```tsx
+import { useHotkeys } from '@tidbcloud/uikit'
+
+function Demo() {
+  // Ignore only when focus is in input and textarea
+  useHotkeys([['ctrl+K', () => console.log('Search')]], ['INPUT', 'TEXTAREA'])
+
+  // Do not ignore any element
+  useHotkeys([['ctrl+K', () => console.log('Search')]], [])
+}
+```
+
+## Targeting Elements
+
+For specific elements, use `getHotkeyHandler`:
+
+```tsx
+import { useState } from 'react'
+import { TextInput } from '@tidbcloud/uikit'
+import { getHotkeyHandler } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [value, setValue] = useState('')
+
+  return (
+    <TextInput
+      placeholder="Press Enter to submit, Escape to clear"
+      value={value}
+      onChange={(event) => setValue(event.currentTarget.value)}
+      onKeyDown={getHotkeyHandler([
+        ['Enter', () => console.log('Submit:', value)],
+        ['Escape', () => setValue('')]
+      ])}
+    />
+  )
+}
+```
+
+## Supported Formats
+
+- `mod+S` – detects `⌘+S` on macOS and `Ctrl+S` on Windows
+- `ctrl+shift+X` – handles multiple modifiers
+- `alt + shift + L` – whitespace is allowed
+- `ArrowLeft` – special keys using KeyboardEvent.key format
+- `shift + [plus]` – use `[plus]` to detect `+` key
+
+## Definition
+
+```tsx
+interface HotkeyItemOptions {
+  preventDefault?: boolean
+  usePhysicalKeys?: boolean
+}
+
+type HotkeyItem = [string, (event: KeyboardEvent) => void, HotkeyItemOptions?]
+
+function useHotkeys(hotkeys: HotkeyItem[], tagsToIgnore?: string[], triggerOnContentEditable?: boolean): void
+```

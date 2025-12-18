@@ -1,5 +1,100 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# Dialog
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-overlays-dialog--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Display a fixed overlay dialog at any side of the screen.
+
+## Import
+
+```tsx
+import { Dialog } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+`Dialog` is a simplified version of Modal. It does not include focus trap and does not close on click outside. Use it to attract attention with non-critical information or actions.
+
+```tsx
+import { useDisclosure } from '@tidbcloud/uikit'
+import { Dialog, Group, Button, TextInput, Text } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [opened, { toggle, close }] = useDisclosure(false)
+
+  return (
+    <>
+      <Group justify="center">
+        <Button onClick={toggle}>Toggle dialog</Button>
+      </Group>
+
+      <Dialog opened={opened} withCloseButton onClose={close} size="lg" radius="md">
+        <Text size="sm" mb="xs" fw={500}>
+          Subscribe to email newsletter
+        </Text>
+
+        <Group align="flex-end">
+          <TextInput placeholder="hello@example.com" style={{ flex: 1 }} />
+          <Button onClick={close}>Subscribe</Button>
+        </Group>
+      </Dialog>
+    </>
+  )
+}
+```
+
+## Change position
+
+`Dialog` is rendered in Portal and has fixed position. Set `position` prop to control dialog position:
+
+```tsx
+import { Dialog } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <>
+      <Dialog position={{ top: 20, left: 20 }} opened>
+        Dialog in top left corner
+      </Dialog>
+      <Dialog position={{ bottom: 20, right: 20 }} opened>
+        Dialog in bottom right corner
+      </Dialog>
+    </>
+  )
+}
+```
+
+## With close button
+
+Set `withCloseButton` prop to display close button:
+
+```tsx
+import { Dialog } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Dialog opened withCloseButton onClose={() => {}}>
+      Dialog with close button
+    </Dialog>
+  )
+}
+```
+
+## Accessibility note
+
+`Dialog` is not accessible and most likely will not be announced by screen readers. Do not put important information in Dialog. For critical content, use Modal, Drawer, or Notifications instead.
+
+## Props
+
+| Prop            | Type                  | Default      | Description                         |
+| --------------- | --------------------- | ------------ | ----------------------------------- |
+| opened          | boolean               | **required** | Opened state                        |
+| onClose         | () => void            | -            | Called when close button is clicked |
+| position        | AffixPosition         | -            | Dialog position on screen           |
+| size            | MantineSize \| number | 'md'         | Dialog width                        |
+| radius          | MantineRadius         | -            | Border radius                       |
+| shadow          | MantineShadow         | -            | Box shadow                          |
+| withCloseButton | boolean               | false        | Display close button                |
+| withBorder      | boolean               | false        | Add border to root element          |
+| children        | ReactNode             | -            | Dialog content                      |
+| withinPortal    | boolean               | true         | Render within Portal                |
+| keepMounted     | boolean               | false        | Keep mounted when hidden            |
+| zIndex          | number                | -            | z-index CSS property                |
+| transitionProps | TransitionProps       | -            | Transition configuration            |

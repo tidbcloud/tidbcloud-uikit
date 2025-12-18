@@ -1,5 +1,100 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# Alert
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-feedback-alert--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Attract user attention with important static message.
+
+## Import
+
+```tsx
+import { Alert } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+```tsx
+import { Alert } from '@tidbcloud/uikit'
+import { IconInfoCircle } from '@tabler/icons-react'
+
+function Demo() {
+  return (
+    <Alert icon={<IconInfoCircle />} title="Alert title" color="blue">
+      Something important happened! You should check it out.
+    </Alert>
+  )
+}
+```
+
+## Variants
+
+Alert supports several variants: `filled`, `light`, `outline`, `default`, and `transparent`.
+
+```tsx
+import { Alert, Stack } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Stack>
+      <Alert variant="filled" color="blue" title="Filled variant">
+        This is a filled alert
+      </Alert>
+      <Alert variant="light" color="blue" title="Light variant">
+        This is a light alert
+      </Alert>
+      <Alert variant="outline" color="blue" title="Outline variant">
+        This is an outline alert
+      </Alert>
+    </Stack>
+  )
+}
+```
+
+## With close button
+
+Set `withCloseButton` prop to display a close button:
+
+```tsx
+import { Alert } from '@tidbcloud/uikit'
+import { IconInfoCircle } from '@tabler/icons-react'
+
+function Demo() {
+  return (
+    <Alert
+      icon={<IconInfoCircle />}
+      title="Dismissible alert"
+      withCloseButton
+      closeButtonLabel="Dismiss"
+      onClose={() => console.log('Alert closed')}
+    >
+      Click the X button to dismiss this alert.
+    </Alert>
+  )
+}
+```
+
+## Accessibility
+
+- Root element role is set to `alert`
+- `aria-describedby` is set to body element id, `aria-labelledby` is set to title element id if `title` is provided
+- Set `closeButtonLabel` prop to make close button accessible
+
+```tsx
+import { Alert } from '@tidbcloud/uikit'
+
+// ✅ Accessible
+function Valid() {
+  return <Alert withCloseButton closeButtonLabel="Dismiss" />
+}
+```
+
+## Props
+
+| Prop             | Type              | Default   | Description                                         |
+| ---------------- | ----------------- | --------- | --------------------------------------------------- |
+| children         | `React.ReactNode` | -         | Alert body content                                  |
+| closeButtonLabel | `string`          | -         | Close button aria-label                             |
+| color            | `MantineColor`    | -         | Key of theme.colors or any valid CSS color          |
+| icon             | `React.ReactNode` | -         | Icon displayed next to the title                    |
+| onClose          | `() => void`      | -         | Called when the close button is clicked             |
+| radius           | `MantineRadius`   | -         | Border radius                                       |
+| title            | `React.ReactNode` | -         | Alert title                                         |
+| variant          | `string`          | `'light'` | Visual variant                                      |
+| withCloseButton  | `boolean`         | `false`   | Determines whether close button should be displayed |

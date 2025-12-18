@@ -1,5 +1,114 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# Switch
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-inputs-switch--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Capture boolean input from users with a toggle switch control.
+
+## Import
+
+```tsx
+import { Switch } from '@tidbcloud/uikit'
+```
+
+## Basic Usage
+
+```tsx
+import { Switch } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <Switch defaultChecked label="I agree to sell my privacy" />
+}
+```
+
+## Controlled
+
+```tsx
+import { useState } from 'react'
+import { Switch } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [checked, setChecked] = useState(false)
+  return <Switch checked={checked} onChange={(event) => setChecked(event.currentTarget.checked)} />
+}
+```
+
+## With Inner Labels
+
+```tsx
+import { Switch, Group } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Group>
+      <Switch size="xs" onLabel="ON" offLabel="OFF" />
+      <Switch size="sm" onLabel="ON" offLabel="OFF" />
+      <Switch size="md" onLabel="ON" offLabel="OFF" />
+      <Switch size="lg" onLabel="ON" offLabel="OFF" />
+    </Group>
+  )
+}
+```
+
+## With Thumb Icon
+
+```tsx
+import { useState } from 'react'
+import { Switch } from '@tidbcloud/uikit'
+import { IconCheck, IconX } from '@tabler/icons-react'
+
+function Demo() {
+  const [checked, setChecked] = useState(false)
+
+  return (
+    <Switch
+      checked={checked}
+      onChange={(event) => setChecked(event.currentTarget.checked)}
+      color="teal"
+      size="md"
+      label="Switch with thumb icon"
+      thumbIcon={
+        checked ? (
+          <IconCheck size={12} color="var(--mantine-color-teal-6)" stroke={3} />
+        ) : (
+          <IconX size={12} color="var(--mantine-color-red-6)" stroke={3} />
+        )
+      }
+    />
+  )
+}
+```
+
+## Switch.Group
+
+```tsx
+import { Switch, Group } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Switch.Group defaultValue={['react']} label="Select frameworks">
+      <Group mt="xs">
+        <Switch value="react" label="React" />
+        <Switch value="svelte" label="Svelte" />
+        <Switch value="ng" label="Angular" />
+        <Switch value="vue" label="Vue" />
+      </Group>
+    </Switch.Group>
+  )
+}
+```
+
+## Key Props
+
+| Prop           | Type              | Description                      |
+| -------------- | ----------------- | -------------------------------- |
+| checked        | boolean           | Controlled checked state         |
+| defaultChecked | boolean           | Default checked state            |
+| onChange       | (event) => void   | Called when value changes        |
+| label          | ReactNode         | Label associated with the switch |
+| description    | ReactNode         | Description below the label      |
+| error          | ReactNode         | Error message below the label    |
+| size           | MantineSize       | Controls size of elements        |
+| color          | MantineColor      | Color when checked               |
+| onLabel        | ReactNode         | Inner label when checked         |
+| offLabel       | ReactNode         | Inner label when unchecked       |
+| thumbIcon      | ReactNode         | Icon inside the thumb            |
+| labelPosition  | "left" \| "right" | Label position                   |
+| disabled       | boolean           | Disables the switch              |

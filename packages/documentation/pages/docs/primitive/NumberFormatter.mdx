@@ -1,5 +1,83 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# NumberFormatter
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-data-display-numberformatter--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Format numbers with thousands/decimal separators, prefixes, and suffixes. Displays formatted numbers without input functionality.
+
+## Import
+
+```tsx
+import { NumberFormatter } from '@tidbcloud/uikit'
+```
+
+## Basic Usage
+
+```tsx
+import { NumberFormatter } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <NumberFormatter prefix="$ " value={1000000} thousandSeparator />
+}
+// Output: $ 1,000,000
+```
+
+## Prefix and Suffix
+
+```tsx
+import { NumberFormatter } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <>
+      <div>
+        With prefix: <NumberFormatter prefix="$ " value={100} />
+      </div>
+      <div>
+        With suffix: <NumberFormatter value={100} suffix=" RUB" />
+      </div>
+    </>
+  )
+}
+```
+
+## Thousands Separator
+
+```tsx
+import { NumberFormatter } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <>
+      <div>
+        Default separator: <NumberFormatter thousandSeparator value={1000000} />
+      </div>
+      <div>
+        Custom separator: <NumberFormatter thousandSeparator="." decimalSeparator="," value={1000000} />
+      </div>
+    </>
+  )
+}
+```
+
+## Decimal Scale
+
+```tsx
+import { NumberFormatter } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <NumberFormatter value={5 / 3} decimalScale={2} />
+}
+// Output: 1.67
+```
+
+## Key Props
+
+| Prop                  | Type                                      | Description                      |
+| --------------------- | ----------------------------------------- | -------------------------------- |
+| `value`               | `string \| number`                        | Value to format                  |
+| `prefix`              | `string`                                  | String added before value        |
+| `suffix`              | `string`                                  | String added after value         |
+| `thousandSeparator`   | `string \| boolean`                       | Character to separate thousands  |
+| `decimalSeparator`    | `string`                                  | Character for decimal separator  |
+| `decimalScale`        | `number`                                  | Number of decimal places         |
+| `fixedDecimalScale`   | `boolean`                                 | Always show fixed decimal places |
+| `allowNegative`       | `boolean`                                 | Allow negative values            |
+| `thousandsGroupStyle` | `'thousand' \| 'lakh' \| 'wan' \| 'none'` | Grouping style                   |

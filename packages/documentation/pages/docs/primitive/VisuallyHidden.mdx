@@ -1,5 +1,95 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# VisuallyHidden
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-misc-visuallyhidden--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Hide content visually but keep it accessible for screen readers. Essential for improving accessibility of icon-only buttons and other visual elements.
+
+## Import
+
+```tsx
+import { VisuallyHidden } from '@tidbcloud/uikit'
+```
+
+## Basic Usage
+
+Use with icon-only buttons to provide accessible labels:
+
+```tsx
+import { IconHeart } from '@tabler/icons-react'
+import { ActionIcon, VisuallyHidden } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <ActionIcon>
+      <IconHeart />
+      <VisuallyHidden>Like post</VisuallyHidden>
+    </ActionIcon>
+  )
+}
+```
+
+## With Burger Menu
+
+```tsx
+import { Burger, VisuallyHidden } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Burger opened={false} onClick={() => {}}>
+      <VisuallyHidden>Toggle navigation</VisuallyHidden>
+    </Burger>
+  )
+}
+```
+
+## With Close Button
+
+```tsx
+import { CloseButton, VisuallyHidden } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <CloseButton>
+      <VisuallyHidden>Close modal</VisuallyHidden>
+    </CloseButton>
+  )
+}
+```
+
+## With SegmentedControl
+
+```tsx
+import { IconEye, IconCode, IconExternalLink } from '@tabler/icons-react'
+import { SegmentedControl, VisuallyHidden, Center } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <SegmentedControl
+      data={[
+        {
+          value: 'preview',
+          label: (
+            <Center>
+              <IconEye size={16} />
+              <VisuallyHidden>Preview</VisuallyHidden>
+            </Center>
+          )
+        },
+        {
+          value: 'code',
+          label: (
+            <Center>
+              <IconCode size={16} />
+              <VisuallyHidden>Code</VisuallyHidden>
+            </Center>
+          )
+        }
+      ]}
+    />
+  )
+}
+```
+
+## Key Props
+
+| Prop     | Type      | Description                                  |
+| -------- | --------- | -------------------------------------------- |
+| children | ReactNode | Content to hide visually but keep accessible |

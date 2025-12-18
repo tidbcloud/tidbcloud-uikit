@@ -1,0 +1,43 @@
+# useHover
+
+Detect hover state of an element.
+
+## Import
+
+```tsx
+import { useHover } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+```tsx
+import { useHover } from '@tidbcloud/uikit'
+import { Box } from '@tidbcloud/uikit'
+
+function Demo() {
+  const { hovered, ref } = useHover()
+
+  return (
+    <Box
+      ref={ref}
+      p="xl"
+      style={{
+        backgroundColor: hovered ? 'var(--mantine-color-blue-light)' : 'transparent'
+      }}
+    >
+      {hovered ? 'Hovered!' : 'Hover over me'}
+    </Box>
+  )
+}
+```
+
+## Definition
+
+```tsx
+interface UseHoverReturnValue<T extends HTMLElement = any> {
+  hovered: boolean
+  ref: React.RefCallback<T | null>
+}
+
+function useHover<T extends HTMLElement = any>(): UseHoverReturnValue<T>
+```

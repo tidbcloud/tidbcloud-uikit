@@ -1,5 +1,68 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# Highlight
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-typography-highlight--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Highlight a substring within a string with customizable styles.
+
+## Import
+
+```tsx
+import { Highlight } from '@tidbcloud/uikit'
+```
+
+## Basic Usage
+
+Use `Highlight` to highlight a substring in a given string with a mark tag. Pass the main string as children and the substring to highlight via the `highlight` prop.
+
+```tsx
+import { Highlight } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <Highlight highlight="important">This is an important message</Highlight>
+}
+```
+
+## Highlight Multiple Substrings
+
+Provide an array of values to highlight multiple substrings:
+
+```tsx
+import { Highlight } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <Highlight highlight={['this', 'that']}>Highlight this and also that</Highlight>
+}
+```
+
+## Custom Highlight Styles
+
+Override default styles with the `highlightStyles` prop:
+
+```tsx
+import { Highlight } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Highlight
+      highlight={['highlighted', 'default']}
+      highlightStyles={{
+        backgroundImage: 'linear-gradient(45deg, var(--mantine-color-cyan-5), var(--mantine-color-indigo-5))',
+        fontWeight: 700,
+        WebkitBackgroundClip: 'text',
+        WebkitTextFillColor: 'transparent'
+      }}
+    >
+      You can change styles of highlighted part if you do not like default styles
+    </Highlight>
+  )
+}
+```
+
+## Key Props
+
+| Prop              | Type                 | Description                                  |
+| ----------------- | -------------------- | -------------------------------------------- |
+| `children`        | `string`             | String to search for highlight matches       |
+| `highlight`       | `string \| string[]` | Substring or list of substrings to highlight |
+| `highlightStyles` | `CSSProperties`      | Custom styles for highlighted text           |
+| `color`           | `string`             | Color key from theme or any valid CSS color  |
+| `size`            | `MantineSize`        | Controls font-size and line-height           |
+| `inherit`         | `boolean`            | Inherit font properties from parent          |

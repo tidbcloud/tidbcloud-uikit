@@ -1,0 +1,65 @@
+# useToggle
+
+Toggle between values.
+
+## Import
+
+```tsx
+import { useToggle } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+`useToggle` switches state between given values.
+
+```tsx
+import { useToggle } from '@tidbcloud/uikit'
+import { Button, Text } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [value, toggle] = useToggle(['light', 'dark'] as const)
+
+  return (
+    <>
+      <Text>Color scheme: {value}</Text>
+      <Button onClick={() => toggle()}>Toggle</Button>
+      <Button onClick={() => toggle('dark')}>Force dark</Button>
+    </>
+  )
+}
+```
+
+## Boolean Toggle
+
+If you don't provide options, `useToggle` uses boolean values with `false` as default:
+
+```tsx
+import { useToggle } from '@tidbcloud/uikit'
+
+const [value, toggle] = useToggle()
+// value === false
+
+toggle()
+// value === true
+```
+
+## Type Safety
+
+Use const assertion for better type inference:
+
+```tsx
+import { useToggle } from '@tidbcloud/uikit'
+
+useToggle(['light', 'dark']) // value is string
+useToggle(['light', 'dark'] as const) // value is 'dark' | 'light'
+useToggle<'dark' | 'light'>(['light', 'dark']) // same as above
+```
+
+## Definition
+
+```tsx
+type UseToggleAction<T> = (value?: React.SetStateAction<T>) => void
+type UseToggleReturnValue<T> = [T, UseToggleAction<T>]
+
+function useToggle<T = boolean>(options?: T[]): UseToggleReturnValue<T>
+```

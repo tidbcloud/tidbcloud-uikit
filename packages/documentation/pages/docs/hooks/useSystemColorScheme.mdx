@@ -1,0 +1,54 @@
+# useSystemColorScheme
+
+Detect user's preferred OS color scheme.
+
+## Import
+
+```tsx
+import { useSystemColorScheme } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+`useSystemColorScheme` returns preferred OS color scheme value (`dark` or `light`) and subscribes to changes.
+
+```tsx
+import { useSystemColorScheme } from '@tidbcloud/uikit'
+
+function Demo() {
+  const colorScheme = useSystemColorScheme()
+  return <div>Your system prefers {colorScheme} mode</div>
+}
+```
+
+## Limitations
+
+The hook relies on `window.matchMedia()` API and always returns the specified initial value (first argument, `light` by default) if the API is not available (for example, during server-side rendering).
+
+```tsx
+// returns 'dark' on server side
+// returns computed value on client side after mount
+const colorScheme = useSystemColorScheme('dark')
+```
+
+## Get Initial Value in Effect
+
+By default, to support server-side rendering, the hook does not calculate the initial value on the first render. Instead, the value is calculated in `useEffect` and updated after the parent component mounts.
+
+If your application does not have server-side rendering, you can enable immediate calculation:
+
+```tsx
+const colorScheme = useSystemColorScheme('light', { getInitialValueInEffect: false })
+```
+
+## Definition
+
+```tsx
+type UseColorSchemeValue = 'dark' | 'light'
+
+interface UseMediaQueryOptions {
+  getInitialValueInEffect: boolean
+}
+
+function useSystemColorScheme(initialValue?: UseColorSchemeValue, options?: UseMediaQueryOptions): UseColorSchemeValue
+```

@@ -1,0 +1,38 @@
+# usePrevious
+
+Store the previous value of a state.
+
+## Import
+
+```tsx
+import { usePrevious } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+`usePrevious` stores the previous value of a state in a ref. It returns `undefined` on initial render and the previous value after re-renders.
+
+```tsx
+import { useState } from 'react'
+import { usePrevious } from '@tidbcloud/uikit'
+import { TextInput, Text } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [value, setValue] = useState('')
+  const previousValue = usePrevious(value)
+
+  return (
+    <>
+      <TextInput value={value} onChange={(e) => setValue(e.currentTarget.value)} placeholder="Type something..." />
+      <Text mt="md">Current value: {value}</Text>
+      <Text>Previous value: {previousValue}</Text>
+    </>
+  )
+}
+```
+
+## Definition
+
+```tsx
+function usePrevious<T>(value: T): T | undefined
+```

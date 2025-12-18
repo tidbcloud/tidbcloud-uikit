@@ -1,3 +1,111 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# TransferTree
 
-<EmbeddedStory src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=biz-transfertree--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}></EmbeddedStory>
+A dual-panel transfer component with tree structures on both sides, allowing users to move items between source and target trees.
+
+## Import
+
+```tsx
+import { TransferTree } from '@tidbcloud/uikit/biz'
+```
+
+## Basic Usage
+
+```tsx
+import { useState } from 'react'
+import { TransferTree } from '@tidbcloud/uikit/biz'
+
+function Demo() {
+  const [data, setData] = useState([
+    {
+      key: '1',
+      title: 'Node 1',
+      children: [
+        { key: '1-1', title: 'Child 1-1' },
+        { key: '1-2', title: 'Child 1-2' }
+      ]
+    },
+    {
+      key: '2',
+      title: 'Node 2',
+      children: [{ key: '2-1', title: 'Child 2-1' }]
+    }
+  ])
+
+  return <TransferTree data={data} onChange={(newData) => setData(newData)} />
+}
+```
+
+## With Custom Headers
+
+```tsx
+import { TransferTree } from '@tidbcloud/uikit/biz'
+
+function Demo() {
+  return (
+    <TransferTree
+      data={treeData}
+      sourceHeader="Available Items"
+      targetHeader="Selected Items"
+      onChange={(newData) => console.log(newData)}
+    />
+  )
+}
+```
+
+## With Initial Selection
+
+```tsx
+import { TransferTree } from '@tidbcloud/uikit/biz'
+
+function Demo() {
+  return (
+    <TransferTree data={treeData} defaultTargetKeys={['1-1', '2-1']} onChange={(newData) => console.log(newData)} />
+  )
+}
+```
+
+## With Callbacks
+
+```tsx
+import { TransferTree } from '@tidbcloud/uikit/biz'
+
+function Demo() {
+  return (
+    <TransferTree
+      data={treeData}
+      onChange={(newData) => console.log('Data changed:', newData)}
+      onLeftCheck={(keys) => console.log('Left checked:', keys)}
+      onRightCheck={(keys) => console.log('Right checked:', keys)}
+      onMoveRight={() => console.log('Moved to right')}
+      onMoveLeft={() => console.log('Moved to left')}
+    />
+  )
+}
+```
+
+## Props
+
+| Prop                | Type                         | Default    | Description              |
+| ------------------- | ---------------------------- | ---------- | ------------------------ |
+| `sourceHeader`      | `ReactNode`                  | `'Source'` | Source panel header      |
+| `targetHeader`      | `ReactNode`                  | `'Target'` | Target panel header      |
+| `data`              | `TreeNode[]`                 | -          | Tree data                |
+| `onChange`          | `(data: TreeNode[]) => void` | -          | Change handler           |
+| `onLeftCheck`       | `(keys: string[]) => void`   | -          | Left tree check handler  |
+| `onRightCheck`      | `(keys: string[]) => void`   | -          | Right tree check handler |
+| `onMoveRight`       | `() => void`                 | -          | Move right callback      |
+| `onMoveLeft`        | `() => void`                 | -          | Move left callback       |
+| `className`         | `string`                     | -          | Container class          |
+| `treeProps`         | `TreeProps`                  | -          | Props for both trees     |
+| `defaultTargetKeys` | `string[]`                   | -          | Initially selected keys  |
+
+## TreeNode Type
+
+```tsx
+interface TreeNode {
+  key: string
+  title: string
+  children?: TreeNode[]
+  disabled?: boolean
+}
+```

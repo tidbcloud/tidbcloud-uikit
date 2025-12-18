@@ -1,5 +1,89 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# MonthPickerInput
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-dates-monthpickerinput--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Month, multiple months, and months range picker input with dropdown.
+
+## Import
+
+```tsx
+import { MonthPickerInput } from '@tidbcloud/uikit'
+```
+
+## Basic Usage
+
+```tsx
+import { MonthPickerInput } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <MonthPickerInput label="Pick month" placeholder="Pick month" />
+}
+```
+
+## Multiple Dates
+
+```tsx
+import { MonthPickerInput } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <MonthPickerInput type="multiple" label="Pick months" placeholder="Pick months" />
+}
+```
+
+## Date Range
+
+```tsx
+import { MonthPickerInput } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <MonthPickerInput type="range" label="Pick month range" placeholder="Pick month range" />
+}
+```
+
+## Value Format
+
+Customize the display format using `valueFormat` (dayjs format).
+
+```tsx
+import { MonthPickerInput } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <MonthPickerInput valueFormat="YYYY MMM" type="multiple" label="Pick month" placeholder="Pick month" />
+}
+```
+
+## Clearable
+
+```tsx
+import { MonthPickerInput } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <MonthPickerInput label="Pick month" placeholder="Pick month" clearable />
+}
+```
+
+## Open in Modal
+
+```tsx
+import { MonthPickerInput } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <MonthPickerInput label="Pick month" placeholder="Pick month" dropdownType="modal" />
+}
+```
+
+## Key Props
+
+| Prop           | Type                                          | Description                    |
+| -------------- | --------------------------------------------- | ------------------------------ |
+| `value`        | `DateValue \| DateValue[] \| DatesRangeValue` | Selected value                 |
+| `onChange`     | `(value) => void`                             | Called when value changes      |
+| `type`         | `'default' \| 'multiple' \| 'range'`          | Picker type                    |
+| `valueFormat`  | `string`                                      | dayjs format for display value |
+| `clearable`    | `boolean`                                     | Show clear button              |
+| `dropdownType` | `'popover' \| 'modal'`                        | Dropdown type                  |
+| `minDate`      | `string \| Date`                              | Minimum selectable date        |
+| `maxDate`      | `string \| Date`                              | Maximum selectable date        |
+| `label`        | `ReactNode`                                   | Input label                    |
+| `placeholder`  | `string`                                      | Input placeholder              |
+| `disabled`     | `boolean`                                     | Disable input                  |
+| `size`         | `MantineSize`                                 | Component size                 |
+| `locale`       | `string`                                      | dayjs locale                   |

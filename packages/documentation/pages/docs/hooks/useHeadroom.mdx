@@ -1,0 +1,62 @@
+# useHeadroom
+
+Create headers that hide on scroll.
+
+## Import
+
+```tsx
+import { useHeadroom } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+`useHeadroom` creates headers that are hidden after user scrolls past a given distance. It returns `true` when the header should be pinned and `false` when hidden.
+
+```tsx
+import { useHeadroom } from '@tidbcloud/uikit'
+import { AppShell, Box } from '@tidbcloud/uikit'
+
+function Demo() {
+  const pinned = useHeadroom({ fixedAt: 120 })
+
+  return (
+    <AppShell header={{ height: 60, collapsed: !pinned }}>
+      <AppShell.Header>
+        <Box p="md">Header content</Box>
+      </AppShell.Header>
+      <AppShell.Main>{/* Content */}</AppShell.Main>
+    </AppShell>
+  )
+}
+```
+
+## Options
+
+- `fixedAt` – scroll distance in px at which element should be fixed
+- `onPin` – called when element is pinned
+- `onFix` – called when element is at fixed position
+- `onRelease` – called when element is unpinned
+
+```tsx
+import { useHeadroom } from '@tidbcloud/uikit'
+
+const pinned = useHeadroom({
+  fixedAt: 100,
+  onPin: () => console.log('Header pinned'),
+  onFix: () => console.log('Header fixed'),
+  onRelease: () => console.log('Header released')
+})
+```
+
+## Definition
+
+```tsx
+interface UseHeadroomOptions {
+  fixedAt?: number
+  onPin?: () => void
+  onFix?: () => void
+  onRelease?: () => void
+}
+
+function useHeadroom(input?: UseHeadroomOptions): boolean
+```

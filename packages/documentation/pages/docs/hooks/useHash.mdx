@@ -1,0 +1,56 @@
+# useHash
+
+Read and write URL hash.
+
+## Import
+
+```tsx
+import { useHash } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+`useHash` returns hash from URL, subscribes to its changes with the hashchange event, and allows changing it with `setHash` function.
+
+```tsx
+import { useHash } from '@tidbcloud/uikit'
+import { Button, Text, Group } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [hash, setHash] = useHash()
+
+  return (
+    <>
+      <Text>Current hash: {hash || 'none'}</Text>
+      <Group>
+        <Button onClick={() => setHash('section-1')}>Go to section 1</Button>
+        <Button onClick={() => setHash('section-2')}>Go to section 2</Button>
+      </Group>
+    </>
+  )
+}
+```
+
+## Initial State Value
+
+By default, `useHash` retrieves value in `useEffect`. If you want to get the initial value immediately:
+
+```tsx
+import { useHash } from '@tidbcloud/uikit'
+
+const [hash, setHash] = useHash({ getInitialValueInEffect: false })
+```
+
+Note: This option is not compatible with server-side rendering.
+
+## Definition
+
+```tsx
+interface UseHashOptions {
+  getInitialValueInEffect?: boolean
+}
+
+type UseHashReturnValue = [string, (value: string) => void]
+
+function useHash(options?: UseHashOptions): UseHashReturnValue
+```

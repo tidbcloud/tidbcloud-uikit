@@ -1,0 +1,122 @@
+# useListState
+
+Manage array state with convenient handlers.
+
+## Import
+
+```tsx
+import { useListState } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+`useListState` provides an API to work with list state:
+
+```tsx
+import { useListState } from '@tidbcloud/uikit'
+
+const [values, handlers] = useListState([{ a: 1 }])
+
+// Add items to the end
+handlers.append({ a: 2 })
+// values -> [{ a: 1 }, { a: 2 }]
+
+// Add items to the start
+handlers.prepend({ a: 3 }, { a: 4 })
+// values -> [{ a: 3 }, { a: 4 }, { a: 1 }, { a: 2 }]
+
+// Remove items at given positions
+handlers.remove(0, 2)
+// values -> [{ a: 4 }, { a: 2 }]
+
+// Insert items at given position
+handlers.insert(1, { a: 5 })
+// values -> [{ a: 4 }, { a: 5 }, { a: 2 }]
+
+// Apply function to all items
+handlers.apply((item, index) => ({ a: item.a * index }))
+// values -> [{ a: 0 }, { a: 5 }, { a: 4 }]
+
+// Move item from one position to another
+handlers.reorder({ from: 2, to: 0 })
+// values -> [{ a: 4 }, { a: 0 }, { a: 5 }]
+
+// Swap items positions
+handlers.swap({ from: 0, to: 2 })
+// values -> [{ a: 5 }, { a: 0 }, { a: 4 }]
+
+// Apply function to items matching condition
+handlers.applyWhere(
+  (item) => item.a > 0,
+  (item) => ({ a: item.a + 2 })
+)
+// values -> [{ a: 7 }, { a: 0 }, { a: 6 }]
+
+// Set new state
+handlers.setState([{ a: 6 }, { a: 7 }])
+// values -> [{ a: 6 }, { a: 7 }]
+
+// Set item at position
+handlers.setItem(0, { a: 8 })
+// values -> [{ a: 8 }, { a: 7 }]
+
+// Set item property at position
+handlers.setItemProp(1, 'a', 'new-prop')
+// values -> [{ a: 8 }, { a: 'new-prop' }]
+
+// Filter items
+handlers.filter((item) => item.a === 'new-prop')
+// values -> [{ a: 'new-prop' }]
+```
+
+## Available Handlers
+
+- `append` – add items to the end of the list
+- `prepend` – add items to the start of the list
+- `pop` – remove last item
+- `shift` – remove first item
+- `insert` – insert items at given index
+- `remove` – remove items at given indices
+- `reorder` – move item from one position to another
+- `swap` – swap items positions
+- `apply` – apply given function to all items
+- `applyWhere` – apply given function to items matching condition
+- `setItem` – replace item at given index
+- `setItemProp` – set item property at given index
+- `setState` – set list state with react action
+- `filter` – filter values with callback function
+
+## Set Item Type
+
+By default, the hook will use type from `initialValues`. If you call the hook with an empty array, specify the item type:
+
+```tsx
+import { useListState } from '@tidbcloud/uikit'
+
+useListState(['hello']) // ok, item type is string
+useListState([]) // not ok, item type is any
+useListState<string>([]) // ok, item type is string
+```
+
+## Definition
+
+```tsx
+interface UseListStateHandlers<T> {
+  setState: React.Dispatch<React.SetStateAction<T[]>>
+  append: (...items: T[]) => void
+  prepend: (...items: T[]) => void
+  insert: (index: number, ...items: T[]) => void
+  pop: () => void
+  shift: () => void
+  apply: (fn: (item: T, index?: number) => T) => void
+  applyWhere: (condition: (item: T, index: number) => boolean, fn: (item: T, index?: number) => T) => void
+  remove: (...indices: number[]) => void
+  reorder: ({ from, to }: { from: number; to: number }) => void
+  swap: ({ from, to }: { from: number; to: number }) => void
+  setItem: (index: number, item: T) => void
+  setItemProp: <K extends keyof T, U extends T[K]>(index: number, prop: K, value: U) => void
+  filter: (fn: (item: T, i: number) => boolean) => void
+}
+
+function useListState<T>(initialValue?: T[]): [T[], UseListStateHandlers<T>]
+```

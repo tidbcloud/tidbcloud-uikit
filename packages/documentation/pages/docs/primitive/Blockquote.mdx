@@ -1,5 +1,61 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# Blockquote
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-typography-blockquote--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Blockquote with optional cite.
+
+## Import
+
+```tsx
+import { Blockquote } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+```tsx
+import { Blockquote } from '@tidbcloud/uikit'
+import { IconInfoCircle } from '@tabler/icons-react'
+
+function Demo() {
+  return (
+    <Blockquote cite="– Forrest Gump" icon={<IconInfoCircle />} mt="xl">
+      Life is like an npm install – you never know what you are going to get.
+    </Blockquote>
+  )
+}
+```
+
+## Without icon
+
+```tsx
+import { Blockquote } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <Blockquote cite="– Someone famous">This is a blockquote without an icon.</Blockquote>
+}
+```
+
+## Colors
+
+```tsx
+import { Blockquote, Stack } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Stack>
+      <Blockquote color="blue">Blue blockquote</Blockquote>
+      <Blockquote color="red">Red blockquote</Blockquote>
+      <Blockquote color="green">Green blockquote</Blockquote>
+    </Stack>
+  )
+}
+```
+
+## Props
+
+| Prop     | Type              | Default | Description                                |
+| -------- | ----------------- | ------- | ------------------------------------------ |
+| children | `React.ReactNode` | -       | Quote content                              |
+| cite     | `React.ReactNode` | -       | Reference to a cited quote                 |
+| color    | `MantineColor`    | -       | Key of theme.colors or any valid CSS color |
+| icon     | `React.ReactNode` | -       | Icon displayed at the top left side        |
+| iconSize | `number`          | -       | Icon width and height                      |
+| radius   | `MantineRadius`   | -       | Border radius                              |

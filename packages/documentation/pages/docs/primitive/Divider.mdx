@@ -1,5 +1,131 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# Divider
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-misc-divider--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Horizontal line with optional label or vertical divider.
+
+## Import
+
+```tsx
+import { Divider } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+```tsx
+import { Text, Divider } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <>
+      <Text>First section</Text>
+      <Divider my="md" />
+      <Text>Second section</Text>
+      <Divider my="md" />
+      <Text>Third section</Text>
+    </>
+  )
+}
+```
+
+## Variants
+
+```tsx
+import { Divider } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <>
+      <Divider my="sm" />
+      <Divider my="sm" variant="dashed" />
+      <Divider my="sm" variant="dotted" />
+    </>
+  )
+}
+```
+
+## With label
+
+```tsx
+import { Divider, Box, Anchor } from '@tidbcloud/uikit'
+import { IconSearch } from '@tabler/icons-react'
+
+function Demo() {
+  return (
+    <>
+      <Divider my="xs" label="Label on the left" labelPosition="left" />
+      <Divider my="xs" label="Label in the center" labelPosition="center" />
+      <Divider my="xs" label="Label on the right" labelPosition="right" />
+      <Divider
+        my="xs"
+        variant="dashed"
+        labelPosition="center"
+        label={
+          <>
+            <IconSearch size={12} />
+            <Box ml={5}>Search results</Box>
+          </>
+        }
+      />
+      <Divider
+        my="xs"
+        label={
+          <Anchor href="https://mantine.dev" target="_blank" inherit>
+            Link label
+          </Anchor>
+        }
+      />
+    </>
+  )
+}
+```
+
+## Sizes
+
+```tsx
+import { Divider } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <>
+      <Divider size="xs" />
+      <Divider size="sm" />
+      <Divider size="md" />
+      <Divider size="lg" />
+      <Divider size="xl" />
+      <Divider size={10} />
+    </>
+  )
+}
+```
+
+## Vertical orientation
+
+```tsx
+import { Divider, Group, Text } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Group>
+      <Text>Label</Text>
+      <Divider orientation="vertical" />
+      <Text>Label</Text>
+      <Divider size="sm" orientation="vertical" />
+      <Text>Label</Text>
+      <Divider size="md" orientation="vertical" />
+      <Text>Label</Text>
+      <Divider size="lg" orientation="vertical" />
+      <Text>Label</Text>
+    </Group>
+  )
+}
+```
+
+## Props
+
+| Prop          | Type                            | Default      | Description                  |
+| ------------- | ------------------------------- | ------------ | ---------------------------- |
+| orientation   | 'horizontal' \| 'vertical'      | 'horizontal' | Divider orientation          |
+| size          | MantineSize \| number           | 'xs'         | Border width/height          |
+| label         | ReactNode                       | -            | Label text (horizontal only) |
+| labelPosition | 'left' \| 'center' \| 'right'   | 'left'       | Label position               |
+| variant       | 'solid' \| 'dashed' \| 'dotted' | 'solid'      | Border style                 |
+| color         | MantineColor                    | -            | Border color                 |

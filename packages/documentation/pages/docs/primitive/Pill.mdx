@@ -1,5 +1,100 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# Pill
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-combobox-pill--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Removable and non-removable tags. Designed to be used inside inputs for creating custom multi-select or tag inputs.
+
+## Import
+
+```tsx
+import { Pill } from '@tidbcloud/uikit'
+```
+
+## Basic Usage
+
+```tsx
+import { Pill } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <Pill>React</Pill>
+}
+```
+
+## With Remove Button
+
+```tsx
+import { Pill } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Pill withRemoveButton onRemove={() => console.log('removed')}>
+      Removable
+    </Pill>
+  )
+}
+```
+
+## Inside Inputs
+
+```tsx
+import { Pill, InputBase } from '@tidbcloud/uikit'
+
+function Demo() {
+  const pills = ['React', 'Vue', 'Angular'].map((item) => (
+    <Pill key={item} withRemoveButton>
+      {item}
+    </Pill>
+  ))
+
+  return (
+    <InputBase component="div" multiline>
+      <Pill.Group>{pills}</Pill.Group>
+    </InputBase>
+  )
+}
+```
+
+## Pill Group
+
+```tsx
+import { Pill } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Pill.Group>
+      <Pill>First</Pill>
+      <Pill>Second</Pill>
+      <Pill>Third</Pill>
+    </Pill.Group>
+  )
+}
+```
+
+## Disabled State
+
+```tsx
+import { Pill } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Pill disabled withRemoveButton>
+      Disabled pill
+    </Pill>
+  )
+}
+```
+
+## Key Props
+
+| Prop                | Type            | Description                       |
+| ------------------- | --------------- | --------------------------------- |
+| `withRemoveButton`  | `boolean`       | Show remove button                |
+| `onRemove`          | `() => void`    | Called when remove button clicked |
+| `disabled`          | `boolean`       | Applies disabled styles           |
+| `size`              | `MantineSize`   | Controls font-size and padding    |
+| `radius`            | `MantineRadius` | Border radius                     |
+| `removeButtonProps` | `object`        | Props for remove button           |
+
+## Pill.Group Props
+
+| Prop  | Type             | Description       |
+| ----- | ---------------- | ----------------- |
+| `gap` | `MantineSpacing` | Gap between pills |

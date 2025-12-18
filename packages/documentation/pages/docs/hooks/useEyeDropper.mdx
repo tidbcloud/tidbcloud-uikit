@@ -1,0 +1,66 @@
+# useEyeDropper
+
+Use the EyeDropper API to pick colors from the screen.
+
+## Import
+
+```tsx
+import { useEyeDropper } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+`useEyeDropper` provides an interface to work with the EyeDropper API. Check [browser support](https://caniuse.com/mdn-api_eyedropper) to learn which browsers support the API.
+
+```tsx
+import { useState } from 'react'
+import { useEyeDropper } from '@tidbcloud/uikit'
+import { Button, Text, Group } from '@tidbcloud/uikit'
+
+function Demo() {
+  const { supported, open } = useEyeDropper()
+  const [color, setColor] = useState('')
+
+  const handlePick = async () => {
+    const result = await open()
+    if (result) {
+      setColor(result.sRGBHex)
+    }
+  }
+
+  if (!supported) {
+    return <Text>EyeDropper API is not supported in this browser</Text>
+  }
+
+  return (
+    <Group>
+      <Button onClick={handlePick}>Pick color</Button>
+      {color && (
+        <>
+          <Text>Picked color: {color}</Text>
+          <div style={{ width: 30, height: 30, backgroundColor: color }} />
+        </>
+      )}
+    </Group>
+  )
+}
+```
+
+## Definition
+
+```tsx
+interface EyeDropperOpenOptions {
+  signal?: AbortSignal
+}
+
+interface EyeDropperOpenReturnType {
+  sRGBHex: string
+}
+
+interface UseEyeDropperReturnValue {
+  supported: boolean
+  open: (options?: EyeDropperOpenOptions) => Promise<EyeDropperOpenReturnType | undefined>
+}
+
+function useEyeDropper(): UseEyeDropperReturnValue
+```

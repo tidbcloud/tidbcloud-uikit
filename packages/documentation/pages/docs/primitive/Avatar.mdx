@@ -1,5 +1,115 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# Avatar
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-data-display-avatar--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Display user profile image, initials or fallback icon.
+
+## Import
+
+```tsx
+import { Avatar } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+```tsx
+import { Avatar } from '@tidbcloud/uikit'
+import { IconStar } from '@tabler/icons-react'
+
+function Demo() {
+  return (
+    <>
+      {/* With image */}
+      <Avatar src="avatar.png" alt="it's me" />
+
+      {/* Default placeholder */}
+      <Avatar radius="xl" />
+
+      {/* Letters with xl radius */}
+      <Avatar color="cyan" radius="xl">
+        MK
+      </Avatar>
+
+      {/* Custom placeholder icon */}
+      <Avatar color="blue" radius="sm">
+        <IconStar size={20} />
+      </Avatar>
+    </>
+  )
+}
+```
+
+## Initials
+
+To display initials instead of the default placeholder, set `name` prop:
+
+```tsx
+import { Avatar, Group } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Group>
+      <Avatar name="John Doe" color="initials" />
+      <Avatar name="Jane Smith" color="initials" />
+    </Group>
+  )
+}
+```
+
+## Placeholder
+
+If the image cannot be loaded or not provided, `Avatar` will display a placeholder:
+
+```tsx
+import { Avatar } from '@tidbcloud/uikit'
+import { IconStar } from '@tabler/icons-react'
+
+function Demo() {
+  return (
+    <>
+      {/* Default placeholder */}
+      <Avatar src={null} alt="no image here" />
+
+      {/* Placeholder with initials */}
+      <Avatar src={null} alt="Vitaly Rtishchev" color="red">
+        VR
+      </Avatar>
+
+      {/* Placeholder with custom icon */}
+      <Avatar color="blue" radius="xl">
+        <IconStar size={20} />
+      </Avatar>
+    </>
+  )
+}
+```
+
+## Avatar.Group
+
+`Avatar.Group` component combines multiple avatars into a stack:
+
+```tsx
+import { Avatar } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Avatar.Group>
+      <Avatar src="image1.png" />
+      <Avatar src="image2.png" />
+      <Avatar src="image3.png" />
+      <Avatar>+5</Avatar>
+    </Avatar.Group>
+  )
+}
+```
+
+## Props
+
+| Prop     | Type                         | Default    | Description                                             |
+| -------- | ---------------------------- | ---------- | ------------------------------------------------------- |
+| alt      | `string`                     | -          | Image alt attribute, also used as title for placeholder |
+| children | `React.ReactNode`            | -          | Avatar placeholder content                              |
+| color    | `MantineColor \| 'initials'` | -          | Key of theme.colors or any valid CSS color              |
+| name     | `string`                     | -          | Name used to display initials                           |
+| radius   | `MantineRadius`              | -          | Border radius                                           |
+| size     | `number \| MantineSize`      | `'md'`     | Width and height of the avatar                          |
+| src      | `string \| null`             | -          | Image URL                                               |
+| variant  | `string`                     | `'filled'` | Visual variant                                          |

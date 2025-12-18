@@ -1,0 +1,59 @@
+# useWindowScroll
+
+Track and control window scroll position.
+
+## Import
+
+```tsx
+import { useWindowScroll } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+`useWindowScroll` returns the current scroll position and a function to scroll to a given position.
+
+```tsx
+import { useWindowScroll } from '@tidbcloud/uikit'
+import { Button, Text, Group } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [scroll, scrollTo] = useWindowScroll()
+
+  return (
+    <Group>
+      <Text>
+        Scroll position: {scroll.x}, {scroll.y}
+      </Text>
+      <Button onClick={() => scrollTo({ y: 0 })}>Scroll to top</Button>
+    </Group>
+  )
+}
+```
+
+## Smooth Scroll
+
+The `scrollTo` function scrolls smoothly to the given position:
+
+```tsx
+import { useWindowScroll } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [, scrollTo] = useWindowScroll()
+
+  return <button onClick={() => scrollTo({ x: 0, y: 500 })}>Scroll to position</button>
+}
+```
+
+## Definition
+
+```tsx
+interface UseWindowScrollPosition {
+  x: number
+  y: number
+}
+
+type UseWindowScrollTo = (position: Partial<UseWindowScrollPosition>) => void
+type UseWindowScrollReturnValue = [UseWindowScrollPosition, UseWindowScrollTo]
+
+function useWindowScroll(): UseWindowScrollReturnValue
+```

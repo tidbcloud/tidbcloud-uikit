@@ -1,5 +1,101 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# Indicator
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-data-display-indicator--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Display an indicator element at the corner of another element, commonly used for badges, notifications, or status indicators.
+
+## Import
+
+```tsx
+import { Indicator } from '@tidbcloud/uikit'
+```
+
+## Basic Usage
+
+```tsx
+import { Indicator, Avatar } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Indicator>
+      <Avatar size="lg" radius="sm" src="https://example.com/avatar.png" />
+    </Indicator>
+  )
+}
+```
+
+## With Label
+
+Display content inside the indicator:
+
+```tsx
+import { Indicator, Avatar } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Indicator inline label="New" size={16}>
+      <Avatar size="lg" radius="sm" src="https://example.com/avatar.png" />
+    </Indicator>
+  )
+}
+```
+
+## Offset
+
+Adjust position for elements with border-radius:
+
+```tsx
+import { Indicator, Avatar } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Indicator inline size={16} offset={7} position="bottom-end" color="red" withBorder>
+      <Avatar size="lg" radius="xl" src="https://example.com/avatar.png" />
+    </Indicator>
+  )
+}
+```
+
+## Processing Animation
+
+Add a pulsing animation to the indicator:
+
+```tsx
+import { Indicator, Avatar } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Indicator inline processing color="red" size={12}>
+      <Avatar size="lg" radius="sm" src="https://example.com/avatar.png" />
+    </Indicator>
+  )
+}
+```
+
+## Disabled
+
+Hide the indicator by setting `disabled`:
+
+```tsx
+import { Indicator, Avatar } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Indicator inline disabled color="red" size={12}>
+      <Avatar size="lg" radius="sm" src="https://example.com/avatar.png" />
+    </Indicator>
+  )
+}
+```
+
+## Key Props
+
+| Prop         | Type                                                         | Description                          |
+| ------------ | ------------------------------------------------------------ | ------------------------------------ |
+| `label`      | `ReactNode`                                                  | Label displayed inside the indicator |
+| `color`      | `MantineColor`                                               | Indicator background color           |
+| `size`       | `number \| string`                                           | Indicator width and height           |
+| `position`   | `'top-start' \| 'top-end' \| 'bottom-start' \| 'bottom-end'` | Position relative to target          |
+| `offset`     | `number`                                                     | Offset from target element           |
+| `processing` | `boolean`                                                    | Enable pulsing animation             |
+| `disabled`   | `boolean`                                                    | Hide the indicator                   |
+| `withBorder` | `boolean`                                                    | Add border to indicator              |
+| `inline`     | `boolean`                                                    | Make container inline-block          |

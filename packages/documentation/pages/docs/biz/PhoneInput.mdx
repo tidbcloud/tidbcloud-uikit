@@ -1,3 +1,99 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# PhoneInput
 
-<EmbeddedStory src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=biz-phoneinput--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}></EmbeddedStory>
+A phone number input with country code selector, built on react-phone-input-2.
+
+## Import
+
+```tsx
+import { PhoneInput, isValidPhoneNumber } from '@tidbcloud/uikit/biz'
+```
+
+## Basic Usage
+
+```tsx
+import { useState } from 'react'
+import { PhoneInput } from '@tidbcloud/uikit/biz'
+
+function Demo() {
+  const [phone, setPhone] = useState('')
+
+  return <PhoneInput value={phone} onChange={setPhone} placeholder="Enter phone number" />
+}
+```
+
+## With Default Country
+
+```tsx
+import { useState } from 'react'
+import { PhoneInput } from '@tidbcloud/uikit/biz'
+
+function Demo() {
+  const [phone, setPhone] = useState('')
+
+  return <PhoneInput value={phone} onChange={setPhone} country="us" placeholder="Enter phone number" />
+}
+```
+
+## Validation
+
+```tsx
+import { useState } from 'react'
+import { PhoneInput, isValidPhoneNumber } from '@tidbcloud/uikit/biz'
+import { Button, Stack, Text } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [phone, setPhone] = useState('')
+  const [isValid, setIsValid] = useState(null)
+
+  const handleValidate = () => {
+    setIsValid(isValidPhoneNumber(phone))
+  }
+
+  return (
+    <Stack>
+      <PhoneInput value={phone} onChange={setPhone} />
+      <Button onClick={handleValidate}>Validate</Button>
+      {isValid !== null && (
+        <Text c={isValid ? 'green' : 'red'}>{isValid ? 'Valid phone number' : 'Invalid phone number'}</Text>
+      )}
+    </Stack>
+  )
+}
+```
+
+## With Form
+
+```tsx
+import { Form, FormPhoneInput } from '@tidbcloud/uikit/biz'
+
+function Demo() {
+  return (
+    <Form onSubmit={(data) => console.log(data)}>
+      <FormPhoneInput name="phone" label="Phone Number" rules={{ required: 'Phone number is required' }} />
+    </Form>
+  )
+}
+```
+
+## Props
+
+| Prop                    | Type                      | Default | Description                         |
+| ----------------------- | ------------------------- | ------- | ----------------------------------- |
+| `value`                 | `string`                  | -       | Phone number value                  |
+| `onChange`              | `(value: string) => void` | -       | Change handler                      |
+| `placeholder`           | `string`                  | `''`    | Input placeholder                   |
+| `country`               | `string`                  | `''`    | Default country code (e.g., 'us')   |
+| `enableAreaCodeStretch` | `boolean`                 | -       | Show country code after first focus |
+| `rootProps`             | `BoxProps`                | -       | Root container props                |
+| `inputClass`            | `string`                  | -       | Input CSS class                     |
+| `buttonClass`           | `string`                  | -       | Button CSS class                    |
+| `containerClass`        | `string`                  | -       | Container CSS class                 |
+| `dropdownClass`         | `string`                  | -       | Dropdown CSS class                  |
+| `searchClass`           | `string`                  | -       | Search CSS class                    |
+| `onFocus`               | `(e) => void`             | -       | Focus handler                       |
+
+## Utilities
+
+| Function             | Description                     |
+| -------------------- | ------------------------------- |
+| `isValidPhoneNumber` | Validates a phone number string |

@@ -1,5 +1,92 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# Timeline
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-data-display-timeline--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Display list of events in chronological order. Timeline is commonly used for activity feeds, version history, or step-by-step processes.
+
+## Import
+
+```tsx
+import { Timeline } from '@tidbcloud/uikit'
+```
+
+## Basic Usage
+
+```tsx
+import { Timeline, Text } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Timeline active={1} bulletSize={24} lineWidth={2}>
+      <Timeline.Item title="New branch">
+        <Text c="dimmed" size="sm">
+          You created new branch fix-notifications from master
+        </Text>
+        <Text size="xs" mt={4}>
+          2 hours ago
+        </Text>
+      </Timeline.Item>
+
+      <Timeline.Item title="Commits">
+        <Text c="dimmed" size="sm">
+          You pushed 23 commits to fix-notifications branch
+        </Text>
+        <Text size="xs" mt={4}>
+          52 minutes ago
+        </Text>
+      </Timeline.Item>
+
+      <Timeline.Item title="Pull request" lineVariant="dashed">
+        <Text c="dimmed" size="sm">
+          You submitted a pull request
+        </Text>
+        <Text size="xs" mt={4}>
+          34 minutes ago
+        </Text>
+      </Timeline.Item>
+
+      <Timeline.Item title="Code review">
+        <Text c="dimmed" size="sm">
+          Robert left a code review on your pull request
+        </Text>
+        <Text size="xs" mt={4}>
+          12 minutes ago
+        </Text>
+      </Timeline.Item>
+    </Timeline>
+  )
+}
+```
+
+## Custom Bullet
+
+Use `bullet` prop to customize the bullet icon:
+
+```tsx
+import { Timeline, ThemeIcon, Avatar } from '@tidbcloud/uikit'
+import { IconSun, IconVideo } from '@tabler/icons-react'
+
+function Demo() {
+  return (
+    <Timeline bulletSize={24}>
+      <Timeline.Item title="Default bullet">Default bullet without anything</Timeline.Item>
+      <Timeline.Item title="Avatar" bullet={<Avatar size={22} radius="xl" src="avatar.png" />}>
+        Timeline bullet as avatar image
+      </Timeline.Item>
+      <Timeline.Item title="Icon" bullet={<IconSun size={13} />}>
+        Timeline bullet as icon
+      </Timeline.Item>
+    </Timeline>
+  )
+}
+```
+
+## Key Props
+
+| Prop          | Type              | Description                                |
+| ------------- | ----------------- | ------------------------------------------ |
+| active        | number            | Index of the active element                |
+| align         | 'left' \| 'right' | Position of content relative to the bullet |
+| bulletSize    | number            | Size of the bullet                         |
+| color         | MantineColor      | Color for active items                     |
+| lineWidth     | number            | Width of the line                          |
+| radius        | MantineRadius     | Border radius of bullets                   |
+| reverseActive | boolean           | Reverse the active items direction         |

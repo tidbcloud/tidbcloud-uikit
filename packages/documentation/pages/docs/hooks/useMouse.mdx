@@ -1,0 +1,68 @@
+# useMouse
+
+Track mouse position relative to an element or document.
+
+## Import
+
+```tsx
+import { useMouse } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+```tsx
+import { useMouse } from '@tidbcloud/uikit'
+import { Box, Text } from '@tidbcloud/uikit'
+
+function Demo() {
+  const { ref, x, y } = useMouse()
+
+  return (
+    <Box ref={ref} p="xl" style={{ height: 200 }}>
+      <Text>
+        Mouse position: {x}, {y}
+      </Text>
+    </Box>
+  )
+}
+```
+
+## Document Tracking
+
+If you do not provide `ref`, mouse position is tracked relative to the document element:
+
+```tsx
+import { useMouse } from '@tidbcloud/uikit'
+
+function Demo() {
+  const { x, y } = useMouse()
+
+  return (
+    <div>
+      Document mouse position: {x}, {y}
+    </div>
+  )
+}
+```
+
+## Reset on Exit
+
+Set `resetOnExit` option to reset mouse position to `0, 0` when mouse leaves the element:
+
+```tsx
+import { useMouse } from '@tidbcloud/uikit'
+
+const { ref, x, y } = useMouse({ resetOnExit: true })
+```
+
+## Definition
+
+```tsx
+function useMouse<T extends HTMLElement = any>(options?: {
+  resetOnExit?: boolean
+}): {
+  x: number
+  y: number
+  ref: React.RefObject<T>
+}
+```

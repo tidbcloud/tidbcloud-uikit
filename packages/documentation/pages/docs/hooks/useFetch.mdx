@@ -1,0 +1,87 @@
+# useFetch
+
+Fetch data with built-in loading and error states.
+
+## Import
+
+```tsx
+import { useFetch } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+`useFetch` sends a fetch request to the specified URL and returns the response data, loading state, error, and utility functions.
+
+```tsx
+import { useFetch } from '@tidbcloud/uikit'
+import { Text, Button, Loader } from '@tidbcloud/uikit'
+
+interface User {
+  id: number
+  name: string
+  email: string
+}
+
+function Demo() {
+  const { data, loading, error, refetch, abort } = useFetch<User>('https://api.example.com/user/1')
+
+  if (loading) return <Loader />
+  if (error) return <Text c="red">Error: {error.message}</Text>
+
+  return (
+    <>
+      <Text>Name: {data?.name}</Text>
+      <Text>Email: {data?.email}</Text>
+      <Button onClick={refetch}>Refetch</Button>
+    </>
+  )
+}
+```
+
+## Options
+
+Pass fetch options as the second argument:
+
+```tsx
+import { useFetch } from '@tidbcloud/uikit'
+
+const { data, loading } = useFetch('/api/data', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({ key: 'value' })
+})
+```
+
+## Auto Invoke
+
+By default, the request is sent when the component mounts. Set `autoInvoke: false` to disable:
+
+```tsx
+import { useFetch } from '@tidbcloud/uikit'
+
+const { data, refetch } = useFetch('/api/data', {
+  autoInvoke: false
+})
+
+// Call refetch() manually to send the request
+```
+
+## Definition
+
+```tsx
+interface UseFetchOptions extends RequestInit {
+  autoInvoke?: boolean
+}
+
+interface UseFetchReturnValue<T> {
+  data: T | null
+  loading: boolean
+  error: Error | null
+  refetch: () => Promise<any>
+  abort: () => void
+}
+
+function useFetch<T>(url: string, options?: UseFetchOptions): UseFetchReturnValue<T>
+```

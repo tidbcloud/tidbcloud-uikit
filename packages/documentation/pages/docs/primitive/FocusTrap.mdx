@@ -1,5 +1,120 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# FocusTrap
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-misc-focustrap--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Trap focus within a container. Useful for modals and dropdowns.
+
+## Import
+
+```tsx
+import { FocusTrap } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+`FocusTrap` is a component that traps focus inside a container. Tab key press moves focus from one focusable element to another within the container, and when focus leaves the container, it cycles back to the first focusable element.
+
+```tsx
+import { useDisclosure } from '@mantine/hooks'
+import { FocusTrap, TextInput, Button, Box } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [active, { toggle }] = useDisclosure(false)
+
+  return (
+    <Box maw={400} mx="auto">
+      <Button onClick={toggle}>{active ? 'Deactivate' : 'Activate'} focus trap</Button>
+
+      <FocusTrap active={active}>
+        <div>
+          <TextInput mt="sm" label="First input" placeholder="First input" />
+          <TextInput mt="sm" label="Second input" placeholder="Second input" />
+          <TextInput mt="sm" label="Third input" placeholder="Third input" />
+        </div>
+      </FocusTrap>
+    </Box>
+  )
+}
+```
+
+## Initial focus
+
+By default, `FocusTrap` focuses the first focusable element. To focus a specific element, set `data-autofocus` attribute:
+
+```tsx
+import { useDisclosure } from '@mantine/hooks'
+import { FocusTrap, TextInput, Button, Box } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [active, { toggle }] = useDisclosure(false)
+
+  return (
+    <Box maw={400} mx="auto">
+      <Button onClick={toggle}>{active ? 'Deactivate' : 'Activate'} focus trap</Button>
+
+      <FocusTrap active={active}>
+        <div>
+          <TextInput mt="sm" label="First input" placeholder="First input" />
+          <TextInput mt="sm" label="Second input" placeholder="Second input" data-autofocus />
+          <TextInput mt="sm" label="Third input" placeholder="Third input" />
+        </div>
+      </FocusTrap>
+    </Box>
+  )
+}
+```
+
+## FocusTrap.InitialFocus
+
+Use `FocusTrap.InitialFocus` component when you need to define an initial focus element that is not a text input (e.g., a button):
+
+```tsx
+import { useDisclosure } from '@mantine/hooks'
+import { FocusTrap, TextInput, Button, Box } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [active, { toggle }] = useDisclosure(false)
+
+  return (
+    <Box maw={400} mx="auto">
+      <Button onClick={toggle}>{active ? 'Deactivate' : 'Activate'} focus trap</Button>
+
+      <FocusTrap active={active}>
+        <div>
+          <FocusTrap.InitialFocus />
+          <TextInput mt="sm" label="First input" placeholder="First input" />
+          <TextInput mt="sm" label="Second input" placeholder="Second input" />
+          <TextInput mt="sm" label="Third input" placeholder="Third input" />
+        </div>
+      </FocusTrap>
+    </Box>
+  )
+}
+```
+
+## useFocusTrap hook
+
+`useFocusTrap` hook can be used to implement custom focus trap components:
+
+```tsx
+import { useFocusTrap } from '@mantine/hooks'
+import { TextInput, Button, Box } from '@tidbcloud/uikit'
+
+function Demo() {
+  const focusTrapRef = useFocusTrap()
+
+  return (
+    <Box maw={400} mx="auto" ref={focusTrapRef}>
+      <TextInput mt="sm" label="First input" placeholder="First input" />
+      <TextInput mt="sm" label="Second input" placeholder="Second input" data-autofocus />
+      <TextInput mt="sm" label="Third input" placeholder="Third input" />
+    </Box>
+  )
+}
+```
+
+## Props
+
+| Prop     | Type      | Default | Description                    |
+| -------- | --------- | ------- | ------------------------------ |
+| active   | boolean   | true    | Whether focus trap is active   |
+| children | ReactNode | -       | Content to trap focus within   |
+| refProp  | string    | 'ref'   | Prop name to pass ref to child |

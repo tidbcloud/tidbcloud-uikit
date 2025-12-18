@@ -1,3 +1,69 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# Dot
 
-<EmbeddedStory src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=biz-dot--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}></EmbeddedStory>
+A simple colored dot/circle indicator component.
+
+## Import
+
+```tsx
+import { Dot } from '@tidbcloud/uikit/biz'
+```
+
+## Basic Usage
+
+```tsx
+import { Dot } from '@tidbcloud/uikit/biz'
+import { Group } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Group>
+      <Dot color="green" />
+      <Dot color="yellow" />
+      <Dot color="red" />
+    </Group>
+  )
+}
+```
+
+## Different Sizes
+
+```tsx
+import { Dot } from '@tidbcloud/uikit/biz'
+import { Group } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Group>
+      <Dot color="blue" size={4} />
+      <Dot color="blue" size={8} />
+      <Dot color="blue" size={12} />
+      <Dot color="blue" size={16} />
+    </Group>
+  )
+}
+```
+
+## With Text
+
+```tsx
+import { Dot } from '@tidbcloud/uikit/biz'
+import { Group, Text } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Group gap="xs">
+      <Dot color="green" />
+      <Text>Online</Text>
+    </Group>
+  )
+}
+```
+
+## Props
+
+| Prop    | Type           | Default | Description             |
+| ------- | -------------- | ------- | ----------------------- |
+| `color` | `MantineColor` | -       | Theme color for the dot |
+| `size`  | `number`       | `8`     | Dot size in pixels      |
+
+Dot also accepts all Box component props.

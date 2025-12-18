@@ -1,3 +1,95 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# BasicTable
 
-<EmbeddedStory src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=biz-basic-table--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}></EmbeddedStory>
+A simple table component for displaying tabular data. For advanced features like sorting, pagination, and virtual scrolling, see [ProTable](./TablePro).
+
+## Import
+
+```tsx
+import { BasicTable } from '@tidbcloud/uikit/biz'
+```
+
+## Basic Usage
+
+```tsx
+import { BasicTable } from '@tidbcloud/uikit/biz'
+
+const data = [
+  { id: 1, name: 'John', email: 'john@example.com' },
+  { id: 2, name: 'Jane', email: 'jane@example.com' },
+  { id: 3, name: 'Bob', email: 'bob@example.com' }
+]
+
+const columns = [
+  { accessorKey: 'id', header: 'ID' },
+  { accessorKey: 'name', header: 'Name' },
+  { accessorKey: 'email', header: 'Email' }
+]
+
+function Demo() {
+  return <BasicTable data={data} columns={columns} />
+}
+```
+
+## With Custom Cell Rendering
+
+```tsx
+import { BasicTable } from '@tidbcloud/uikit/biz'
+import { Badge } from '@tidbcloud/uikit'
+
+const columns = [
+  { accessorKey: 'name', header: 'Name' },
+  {
+    accessorKey: 'status',
+    header: 'Status',
+    Cell: ({ cell }) => <Badge color={cell.getValue() === 'Active' ? 'green' : 'gray'}>{cell.getValue()}</Badge>
+  }
+]
+
+function Demo() {
+  return <BasicTable data={data} columns={columns} />
+}
+```
+
+## Empty State
+
+```tsx
+import { BasicTable } from '@tidbcloud/uikit/biz'
+
+function Demo() {
+  return <BasicTable data={[]} columns={columns} emptyText="No data available" />
+}
+```
+
+## Loading State
+
+```tsx
+import { BasicTable } from '@tidbcloud/uikit/biz'
+
+function Demo() {
+  return <BasicTable data={[]} columns={columns} loading />
+}
+```
+
+## Without Border
+
+```tsx
+import { BasicTable } from '@tidbcloud/uikit/biz'
+
+function Demo() {
+  return <BasicTable data={data} columns={columns} withBorder={false} />
+}
+```
+
+## Props
+
+| Prop           | Type       | Default | Description           |
+| -------------- | ---------- | ------- | --------------------- |
+| `data`         | `T[]`      | -       | Table data            |
+| `columns`      | `Column[]` | -       | Column definitions    |
+| `withBorder`   | `boolean`  | `true`  | Show table border     |
+| `emptyText`    | `string`   | -       | Empty state message   |
+| `errorText`    | `string`   | -       | Error state message   |
+| `loading`      | `boolean`  | `false` | Loading state         |
+| `wrapperProps` | `BoxProps` | -       | Wrapper element props |
+
+BasicTable is built on mantine-react-table and supports all its options.

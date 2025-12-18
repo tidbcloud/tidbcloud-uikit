@@ -1,5 +1,83 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# CloseButton
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-buttons-closebutton--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Button with close icon.
+
+## Import
+
+```tsx
+import { CloseButton } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+`CloseButton` renders a button with X icon inside. It is used in other Mantine components like Drawer or Modal.
+
+```tsx
+import { CloseButton } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <CloseButton />
+}
+```
+
+## Size and variant
+
+```tsx
+import { CloseButton, Group } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Group>
+      <CloseButton size="xs" />
+      <CloseButton size="sm" />
+      <CloseButton size="md" />
+      <CloseButton size="lg" />
+      <CloseButton size="xl" />
+    </Group>
+  )
+}
+```
+
+## Custom icon
+
+You can change icon by passing any react node to the `icon` prop:
+
+```tsx
+import { IconXboxX } from '@tabler/icons-react'
+import { CloseButton } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <CloseButton icon={<IconXboxX size={18} stroke={1.5} />} />
+}
+```
+
+## Accessibility
+
+To make `CloseButton` accessible for screen readers, set `aria-label`:
+
+```tsx
+import { CloseButton, VisuallyHidden } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <>
+      <CloseButton aria-label="Close modal" />
+
+      <CloseButton>
+        <VisuallyHidden>Close modal</VisuallyHidden>
+      </CloseButton>
+    </>
+  )
+}
+```
+
+## Props
+
+| Prop     | Type              | Default | Description                          |
+| -------- | ----------------- | ------- | ------------------------------------ |
+| children | `React.ReactNode` | -       | Content for VisuallyHidden           |
+| disabled | `boolean`         | -       | Sets disabled attribute              |
+| icon     | `React.ReactNode` | -       | Custom icon, replaces default X icon |
+| iconSize | `number`          | -       | X icon width and height              |
+| radius   | `MantineRadius`   | -       | Border radius                        |
+| size     | `MantineSize`     | `'md'`  | Button width and height              |

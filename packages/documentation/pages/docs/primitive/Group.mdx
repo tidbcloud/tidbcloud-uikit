@@ -1,5 +1,158 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# Group
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-layout-group--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Compose elements in a horizontal flex container.
+
+## Import
+
+```tsx
+import { Group } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+```tsx
+import { Group, Button } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Group>
+      <Button variant="default">First</Button>
+      <Button variant="default">Second</Button>
+      <Button variant="default">Third</Button>
+    </Group>
+  )
+}
+```
+
+## Gap
+
+Control spacing between children with `gap` prop. `gap` supports all spacing values from theme (xs, sm, md, lg, xl) and numbers:
+
+```tsx
+import { Group, Button } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Group gap="lg">
+      <Button variant="default">First</Button>
+      <Button variant="default">Second</Button>
+      <Button variant="default">Third</Button>
+    </Group>
+  )
+}
+```
+
+## Justify
+
+Control `justify-content` property with `justify` prop:
+
+```tsx
+import { Group, Button } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <>
+      <Group justify="center">
+        <Button variant="default">1</Button>
+        <Button variant="default">2</Button>
+        <Button variant="default">3</Button>
+      </Group>
+      <Group justify="flex-end" mt="md">
+        <Button variant="default">1</Button>
+        <Button variant="default">2</Button>
+        <Button variant="default">3</Button>
+      </Group>
+      <Group justify="space-between" mt="md">
+        <Button variant="default">1</Button>
+        <Button variant="default">2</Button>
+        <Button variant="default">3</Button>
+      </Group>
+    </>
+  )
+}
+```
+
+## Grow
+
+Set `grow` to make children grow to fill available space:
+
+```tsx
+import { Group, Button } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Group grow>
+      <Button variant="default">First</Button>
+      <Button variant="default">Second</Button>
+      <Button variant="default">Third</Button>
+    </Group>
+  )
+}
+```
+
+## Wrap
+
+By default, `Group` wraps children. Set `wrap="nowrap"` to prevent wrapping:
+
+```tsx
+import { Group, Button } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Group wrap="nowrap">
+      <Button variant="default">First</Button>
+      <Button variant="default">Second</Button>
+      <Button variant="default">Third</Button>
+    </Group>
+  )
+}
+```
+
+## Prevent flex-wrap
+
+Use `preventGrowOverflow` prop to prevent children from taking more space than expected:
+
+```tsx
+import { Group, Button, Text, Box } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Group grow preventGrowOverflow={false} wrap="nowrap">
+      <Button variant="default">
+        <Text truncate>Very long button text</Text>
+      </Button>
+      <Button variant="default">Button 2</Button>
+      <Button variant="default">Button 3</Button>
+    </Group>
+  )
+}
+```
+
+## Responsive props
+
+`gap` and `justify` props support responsive values:
+
+```tsx
+import { Group, Button } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Group justify={{ base: 'center', sm: 'flex-start' }} gap={{ base: 'sm', sm: 'lg' }}>
+      <Button variant="default">First</Button>
+      <Button variant="default">Second</Button>
+      <Button variant="default">Third</Button>
+    </Group>
+  )
+}
+```
+
+## Props
+
+| Prop                | Type                | Default      | Description                 |
+| ------------------- | ------------------- | ------------ | --------------------------- |
+| gap                 | MantineSpacing      | 'md'         | Gap between children        |
+| justify             | CSS justify-content | 'flex-start' | Justify-content property    |
+| align               | CSS align-items     | 'center'     | Align-items property        |
+| wrap                | CSS flex-wrap       | 'wrap'       | Flex-wrap property          |
+| grow                | boolean             | false        | Children grow to fill space |
+| preventGrowOverflow | boolean             | true         | Prevent grow overflow       |

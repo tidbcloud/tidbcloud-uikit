@@ -1,0 +1,89 @@
+# usePagination
+
+Manage pagination state.
+
+## Import
+
+```tsx
+import { usePagination } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+`usePagination` is a state management hook for the Pagination component. It manages pagination with controlled and uncontrolled state.
+
+```tsx
+import { usePagination } from '@tidbcloud/uikit'
+
+const pagination = usePagination({ total: 10, initialPage: 1 })
+
+pagination.range // -> [1, 2, 3, 4, 5, 'dots', 10]
+
+pagination.setPage(5)
+pagination.range // -> [1, 'dots', 4, 5, 6, 'dots', 10]
+
+pagination.next()
+pagination.range // -> [1, 'dots', 5, 6, 7, 'dots', 10]
+
+pagination.previous()
+pagination.range // -> [1, 'dots', 4, 5, 6, 'dots', 10]
+
+pagination.last()
+pagination.range // -> [1, 'dots', 6, 7, 8, 9, 10]
+
+pagination.first()
+pagination.range // -> [1, 2, 3, 4, 5, 'dots', 10]
+```
+
+## Controlled Mode
+
+Provide `page` and `onChange` props:
+
+```tsx
+import { useState } from 'react'
+import { usePagination } from '@tidbcloud/uikit'
+
+const [page, onChange] = useState(1)
+const pagination = usePagination({ total: 10, page, onChange })
+
+pagination.setPage(5) // Will call onChange with 5
+```
+
+## Siblings and Boundaries
+
+Control the number of items around active page (`siblings`) and on each boundary (`boundaries`):
+
+```tsx
+import { usePagination } from '@tidbcloud/uikit'
+
+const pagination = usePagination({
+  total: 20,
+  siblings: 2, // 2 items on each side of active page
+  boundaries: 2 // 2 items on each edge
+})
+```
+
+## Definition
+
+```tsx
+interface UsePaginationOptions {
+  initialPage?: number
+  page?: number
+  total: number
+  siblings?: number
+  boundaries?: number
+  onChange?: (page: number) => void
+}
+
+interface UsePaginationReturnValue {
+  range: (number | 'dots')[]
+  active: number
+  setPage: (page: number) => void
+  next: () => void
+  previous: () => void
+  first: () => void
+  last: () => void
+}
+
+function usePagination(settings: UsePaginationOptions): UsePaginationReturnValue
+```

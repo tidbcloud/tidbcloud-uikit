@@ -1,0 +1,52 @@
+# useThrottledCallback
+
+Create a throttled version of a callback function.
+
+## Import
+
+```tsx
+import { useThrottledCallback } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+`useThrottledCallback` accepts a function and a wait time in milliseconds. It returns a throttled version that will only be called at most once every `wait` milliseconds.
+
+```tsx
+import { useState } from 'react'
+import { useThrottledCallback } from '@tidbcloud/uikit'
+import { TextInput, Text } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [value, setValue] = useState('')
+  const [throttledValue, setThrottledValue] = useState('')
+
+  const handleChange = useThrottledCallback((val: string) => {
+    setThrottledValue(val)
+  }, 1000)
+
+  return (
+    <>
+      <TextInput
+        value={value}
+        onChange={(e) => {
+          setValue(e.currentTarget.value)
+          handleChange(e.currentTarget.value)
+        }}
+        placeholder="Type something..."
+      />
+      <Text mt="md">Value: {value}</Text>
+      <Text>Throttled value (updates at most once per second): {throttledValue}</Text>
+    </>
+  )
+}
+```
+
+## Definition
+
+```tsx
+function useThrottledCallback<T extends (...args: any[]) => any>(
+  callback: T,
+  wait: number
+): (...args: Parameters<T>) => void
+```

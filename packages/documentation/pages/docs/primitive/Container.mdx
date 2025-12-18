@@ -1,5 +1,80 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# Container
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-layout-container--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Center content with padding and max-width.
+
+## Import
+
+```tsx
+import { Container } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+`Container` centers content and limits its `max-width` to the value specified in `size` prop. Note that the `size` prop does not make `max-width` responsive.
+
+```tsx
+import { Container } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <>
+      <Container>Default Container</Container>
+      <Container size="xs">xs Container</Container>
+      <Container size="sm">sm Container</Container>
+      <Container px={0} size={480}>
+        480px Container without padding
+      </Container>
+    </>
+  )
+}
+```
+
+## Fluid
+
+Set `fluid` prop to make container take 100% width of its parent:
+
+```tsx
+import { Container } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <Container fluid>Fluid container has 100% max-width</Container>
+}
+```
+
+## Grid strategy
+
+`Container` supports `strategy="grid"` which uses CSS Grid for more advanced layouts:
+
+```tsx
+import { Box, Container } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Container strategy="grid" size={500}>
+      <Box bg="var(--mantine-color-indigo-light)" h={50}>
+        Main content
+      </Box>
+
+      <Box data-breakout bg="var(--mantine-color-indigo-light)" mt="xs">
+        <div>Breakout</div>
+        <Box data-container bg="indigo" c="white" h={50}>
+          <div>Container inside breakout</div>
+        </Box>
+      </Box>
+    </Container>
+  )
+}
+```
+
+With grid strategy:
+
+- Children with `data-breakout` attribute take the entire width of the container's parent
+- Children with `data-container` inside `data-breakout` have the same width as the main grid column
+
+## Props
+
+| Prop     | Type                  | Default | Description                |
+| -------- | --------------------- | ------- | -------------------------- |
+| size     | MantineSize \| number | 'md'    | Max-width of the container |
+| fluid    | boolean               | false   | Take 100% width of parent  |
+| strategy | 'block' \| 'grid'     | 'block' | Centering strategy         |

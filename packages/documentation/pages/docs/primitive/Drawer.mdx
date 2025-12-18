@@ -1,5 +1,179 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# Drawer
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-overlays-drawer--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Display overlay panel at any side of the screen.
+
+## Import
+
+```tsx
+import { Drawer } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+```tsx
+import { useDisclosure } from '@mantine/hooks'
+import { Drawer, Button } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [opened, { open, close }] = useDisclosure(false)
+
+  return (
+    <>
+      <Drawer opened={opened} onClose={close} title="Authentication">
+        {/* Drawer content */}
+      </Drawer>
+
+      <Button onClick={open}>Open Drawer</Button>
+    </>
+  )
+}
+```
+
+## Position
+
+Drawer can be positioned on left (default), top, right, and bottom:
+
+```tsx
+import { useDisclosure } from '@mantine/hooks'
+import { Drawer, Button, Group } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [rightOpened, { open: openRight, close: closeRight }] = useDisclosure(false)
+  const [topOpened, { open: openTop, close: closeTop }] = useDisclosure(false)
+
+  return (
+    <>
+      <Drawer position="right" opened={rightOpened} onClose={closeRight} title="Right Drawer">
+        Drawer content
+      </Drawer>
+      <Drawer position="top" opened={topOpened} onClose={closeTop} title="Top Drawer">
+        Drawer content
+      </Drawer>
+
+      <Group>
+        <Button onClick={openRight}>Right</Button>
+        <Button onClick={openTop}>Top</Button>
+      </Group>
+    </>
+  )
+}
+```
+
+## Offset
+
+Set `offset` to change drawer offset from the edge of the viewport:
+
+```tsx
+<Drawer offset={8} radius="md" />
+```
+
+## Size
+
+Set `size` to control drawer width (for left/right position) or height (for top/bottom position):
+
+```tsx
+<Drawer size="xs" />  // 320px
+<Drawer size="sm" />  // 380px
+<Drawer size="md" />  // 440px (default)
+<Drawer size="lg" />  // 620px
+<Drawer size="xl" />  // 780px
+<Drawer size="100%" /> // Full width/height
+<Drawer size={500} />  // Custom pixels
+```
+
+## Without overlay
+
+Use `withOverlay={false}` to render drawer without overlay:
+
+```tsx
+<Drawer withOverlay={false} />
+```
+
+## Without close button
+
+Use `withCloseButton={false}` to hide close button:
+
+```tsx
+<Drawer withCloseButton={false} />
+```
+
+## Change transition
+
+Use `transitionProps` to customize the transition:
+
+```tsx
+<Drawer transitionProps={{ transition: 'rotate-left', duration: 150 }} />
+```
+
+## Scrollable content
+
+```tsx
+import { useDisclosure } from '@mantine/hooks'
+import { Drawer, Button } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [opened, { open, close }] = useDisclosure(false)
+
+  const content = Array(100)
+    .fill(0)
+    .map((_, index) => <p key={index}>Drawer with scroll</p>)
+
+  return (
+    <>
+      <Drawer opened={opened} onClose={close} title="Header is sticky">
+        {content}
+      </Drawer>
+
+      <Button onClick={open}>Open Drawer</Button>
+    </>
+  )
+}
+```
+
+## Compound components
+
+Use compound components for better control over drawer parts:
+
+```tsx
+import { useDisclosure } from '@mantine/hooks'
+import { Drawer, Button } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [opened, { open, close }] = useDisclosure(false)
+
+  return (
+    <>
+      <Drawer.Root opened={opened} onClose={close}>
+        <Drawer.Overlay />
+        <Drawer.Content>
+          <Drawer.Header>
+            <Drawer.Title>Drawer title</Drawer.Title>
+            <Drawer.CloseButton />
+          </Drawer.Header>
+          <Drawer.Body>Drawer content</Drawer.Body>
+        </Drawer.Content>
+      </Drawer.Root>
+
+      <Button onClick={open}>Open drawer</Button>
+    </>
+  )
+}
+```
+
+## Props
+
+| Prop                | Type                                   | Default | Description                  |
+| ------------------- | -------------------------------------- | ------- | ---------------------------- |
+| opened              | boolean                                | -       | Controls drawer opened state |
+| onClose             | () => void                             | -       | Called when drawer is closed |
+| title               | ReactNode                              | -       | Drawer title                 |
+| position            | 'top' \| 'right' \| 'bottom' \| 'left' | 'left'  | Drawer position              |
+| size                | MantineSize \| number                  | 'md'    | Drawer width/height          |
+| offset              | number                                 | 0       | Offset from viewport edge    |
+| radius              | MantineRadius                          | 0       | Border radius                |
+| withCloseButton     | boolean                                | true    | Show close button            |
+| withOverlay         | boolean                                | true    | Show overlay                 |
+| closeOnClickOutside | boolean                                | true    | Close on outside click       |
+| closeOnEscape       | boolean                                | true    | Close on escape key          |
+| trapFocus           | boolean                                | true    | Trap focus inside drawer     |
+| transitionProps     | TransitionProps                        | -       | Transition configuration     |

@@ -1,5 +1,95 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# Tooltip
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-overlays-tooltip--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Render a tooltip at a given element on mouse over or other events. Commonly used to provide additional context or information.
+
+## Import
+
+```tsx
+import { Tooltip } from '@tidbcloud/uikit'
+```
+
+## Basic Usage
+
+```tsx
+import { Tooltip, Button } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Tooltip label="Tooltip content">
+      <Button>Button with tooltip</Button>
+    </Tooltip>
+  )
+}
+```
+
+## With Arrow
+
+Set `withArrow` prop to add an arrow to the tooltip:
+
+```tsx
+import { Tooltip, Button } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Tooltip label="Tooltip with arrow" withArrow>
+      <Button>With arrow</Button>
+    </Tooltip>
+  )
+}
+```
+
+## Multiline
+
+Enable multiline mode with `multiline` prop and set width with `w` prop:
+
+```tsx
+import { Tooltip, Button } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Tooltip
+      multiline
+      w={220}
+      withArrow
+      label="Use this button to save this information in your profile, after that you will be able to access it any time."
+    >
+      <Button>Multiline tooltip</Button>
+    </Tooltip>
+  )
+}
+```
+
+## Controlled
+
+Control tooltip state with `opened` prop:
+
+```tsx
+import { useState } from 'react'
+import { Tooltip, Button } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [opened, setOpened] = useState(false)
+
+  return (
+    <Tooltip label="Ctrl + J" opened={opened}>
+      <Button onClick={() => setOpened((o) => !o)}>Toggle tooltip</Button>
+    </Tooltip>
+  )
+}
+```
+
+## Key Props
+
+| Prop       | Type             | Description                                       |
+| ---------- | ---------------- | ------------------------------------------------- |
+| label      | ReactNode        | Tooltip content                                   |
+| position   | FloatingPosition | Tooltip position relative to target               |
+| withArrow  | boolean          | Adds an arrow to the tooltip                      |
+| arrowSize  | number           | Arrow size in px                                  |
+| offset     | number           | Space between tooltip and target in px            |
+| multiline  | boolean          | Enable multiline mode                             |
+| opened     | boolean          | Control tooltip state (controlled mode)           |
+| openDelay  | number           | Delay in ms before showing tooltip                |
+| closeDelay | number           | Delay in ms before hiding tooltip                 |
+| color      | MantineColor     | Tooltip background color                          |
+| events     | object           | Events that trigger tooltip (hover, focus, touch) |

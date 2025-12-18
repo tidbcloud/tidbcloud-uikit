@@ -1,5 +1,55 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# HueSlider
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-inputs-hueslider--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+A slider component for selecting hue values (0-360) in color pickers.
+
+## Import
+
+```tsx
+import { HueSlider } from '@tidbcloud/uikit'
+```
+
+## Basic Usage
+
+```tsx
+import { useState } from 'react'
+import { HueSlider, Text } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [value, onChange] = useState(250)
+
+  return (
+    <>
+      <Text>Hue value: {value}</Text>
+      <HueSlider value={value} onChange={onChange} />
+    </>
+  )
+}
+```
+
+## Controlled Component
+
+```tsx
+import { useState } from 'react'
+import { HueSlider } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [hue, setHue] = useState(180)
+
+  return <HueSlider value={hue} onChange={setHue} onChangeEnd={(value) => console.log('Final hue:', value)} />
+}
+```
+
+## Key Props
+
+| Prop          | Type                      | Description                                  |
+| ------------- | ------------------------- | -------------------------------------------- |
+| `value`       | `number`                  | Controlled hue value (0-360)                 |
+| `onChange`    | `(value: number) => void` | Called when value changes during interaction |
+| `onChangeEnd` | `(value: number) => void` | Called when interaction ends                 |
+| `size`        | `MantineSize`             | Slider size                                  |
+
+## Accessibility
+
+- Slider is focusable
+- Values can be changed with arrow keys
+- Set appropriate labels for screen readers

@@ -1,5 +1,81 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# Burger
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-navigation-burger--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Open/close navigation button.
+
+## Import
+
+```tsx
+import { Burger } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+`Burger` component renders open/close menu button. Set `opened` and `onClick` props to control component state. If `opened` prop is set, cross will be rendered, otherwise – burger.
+
+```tsx
+import { useDisclosure } from '@mantine/hooks'
+import { Burger } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [opened, { toggle }] = useDisclosure()
+  return <Burger opened={opened} onClick={toggle} aria-label="Toggle navigation" />
+}
+```
+
+## Size
+
+```tsx
+import { Burger, Group } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Group>
+      <Burger size="xs" />
+      <Burger size="sm" />
+      <Burger size="md" />
+      <Burger size="lg" />
+      <Burger size="xl" />
+    </Group>
+  )
+}
+```
+
+## Color
+
+```tsx
+import { Burger } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <Burger color="red" />
+}
+```
+
+## Accessibility
+
+To make `Burger` accessible for screen readers, set `aria-label`:
+
+```tsx
+import { Burger, VisuallyHidden } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <>
+      <Burger aria-label="Toggle navigation" />
+
+      <Burger>
+        <VisuallyHidden>Toggle navigation</VisuallyHidden>
+      </Burger>
+    </>
+  )
+}
+```
+
+## Props
+
+| Prop               | Type           | Default | Description                             |
+| ------------------ | -------------- | ------- | --------------------------------------- |
+| color              | `MantineColor` | -       | Lines color                             |
+| lineSize           | `number`       | -       | Height of lines                         |
+| opened             | `boolean`      | -       | When true, burger is transformed into X |
+| size               | `MantineSize`  | `'md'`  | Burger width and height                 |
+| transitionDuration | `number`       | `300`   | Transition duration in ms               |

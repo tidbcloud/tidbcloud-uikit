@@ -1,0 +1,85 @@
+# useFocusTrap
+
+Trap focus within an element.
+
+## Import
+
+```tsx
+import { useFocusTrap } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+`useFocusTrap` traps focus at the given node, for example in modal, drawer, or menu. Node must include at least one focusable element. When the node unmounts, the focus trap is automatically released.
+
+```tsx
+import { useFocusTrap } from '@tidbcloud/uikit'
+
+function Demo() {
+  const focusTrapRef = useFocusTrap()
+
+  return (
+    <div ref={focusTrapRef}>
+      <input placeholder="First input" />
+      <input placeholder="Second input" />
+      <button>Submit</button>
+    </div>
+  )
+}
+```
+
+## API
+
+The hook accepts focus trap active state as a single argument:
+
+```tsx
+import { useFocusTrap } from '@tidbcloud/uikit'
+
+useFocusTrap() // focus trap inactive
+useFocusTrap(true) // focus trap active
+useFocusTrap(false) // focus trap disabled
+```
+
+## Initial Focus
+
+By default, focus trap will move focus to the first interactive element. To specify the element that should receive initial focus, add `data-autofocus` attribute:
+
+```tsx
+import { useFocusTrap } from '@tidbcloud/uikit'
+
+function Demo() {
+  const focusTrapRef = useFocusTrap()
+
+  return (
+    <div ref={focusTrapRef}>
+      <input placeholder="First input" />
+      <input placeholder="Will receive initial focus" data-autofocus />
+      <input placeholder="Third input" />
+    </div>
+  )
+}
+```
+
+## Combine with Other Ref Hooks
+
+To combine `useFocusTrap` with other ref-based hooks, use `useMergedRef`:
+
+```tsx
+import { useRef } from 'react'
+import { useClickOutside, useFocusTrap, useMergedRef } from '@tidbcloud/uikit'
+
+function Demo() {
+  const myRef = useRef()
+  const clickOutsideRef = useClickOutside(() => {})
+  const focusTrapRef = useFocusTrap()
+  const mergedRef = useMergedRef(myRef, clickOutsideRef, focusTrapRef)
+
+  return <div ref={mergedRef} />
+}
+```
+
+## Definition
+
+```tsx
+function useFocusTrap(active?: boolean): React.RefCallback<HTMLElement | null>
+```

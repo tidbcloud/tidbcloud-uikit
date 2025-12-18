@@ -1,0 +1,149 @@
+# PropertyCard
+
+A card component for displaying key-value property lists with consistent styling.
+
+## Import
+
+```tsx
+import { PropertyCard } from '@tidbcloud/uikit/biz'
+```
+
+## Basic Usage
+
+```tsx
+import { PropertyCard } from '@tidbcloud/uikit/biz'
+
+function Demo() {
+  return (
+    <PropertyCard title="User Information">
+      <PropertyCard.Item label="Name">John Doe</PropertyCard.Item>
+      <PropertyCard.Item label="Email">john@example.com</PropertyCard.Item>
+      <PropertyCard.Item label="Role">Administrator</PropertyCard.Item>
+    </PropertyCard>
+  )
+}
+```
+
+## With Divider
+
+```tsx
+import { PropertyCard } from '@tidbcloud/uikit/biz'
+
+function Demo() {
+  return (
+    <PropertyCard title="Server Details">
+      <PropertyCard.Item label="Host">192.168.1.1</PropertyCard.Item>
+      <PropertyCard.Item label="Port">3306</PropertyCard.Item>
+      <PropertyCard.Divider />
+      <PropertyCard.Item label="Status">Running</PropertyCard.Item>
+      <PropertyCard.Item label="Uptime">7 days</PropertyCard.Item>
+    </PropertyCard>
+  )
+}
+```
+
+## Custom Value Rendering
+
+```tsx
+import { PropertyCard } from '@tidbcloud/uikit/biz'
+import { Badge, CopyButton, ActionIcon, Group } from '@tidbcloud/uikit'
+import { IconCopy } from '@tabler/icons-react'
+
+function Demo() {
+  return (
+    <PropertyCard title="Connection">
+      <PropertyCard.Item label="Status">
+        <Badge color="green">Connected</Badge>
+      </PropertyCard.Item>
+      <PropertyCard.Item label="Connection String">
+        <Group gap="xs">
+          <code>mysql://user:***@host:3306/db</code>
+          <CopyButton value="mysql://user:pass@host:3306/db">
+            {({ copy }) => (
+              <ActionIcon variant="subtle" onClick={copy}>
+                <IconCopy size={14} />
+              </ActionIcon>
+            )}
+          </CopyButton>
+        </Group>
+      </PropertyCard.Item>
+    </PropertyCard>
+  )
+}
+```
+
+## Custom Label/Value Props
+
+```tsx
+import { PropertyCard } from '@tidbcloud/uikit/biz'
+
+function Demo() {
+  return (
+    <PropertyCard title="Settings" labelProps={{ w: 150, fw: 600 }} valueProps={{ c: 'dimmed' }}>
+      <PropertyCard.Item label="Theme">Dark</PropertyCard.Item>
+      <PropertyCard.Item label="Language">English</PropertyCard.Item>
+    </PropertyCard>
+  )
+}
+```
+
+## Override Props Per Item
+
+```tsx
+import { PropertyCard } from '@tidbcloud/uikit/biz'
+
+function Demo() {
+  return (
+    <PropertyCard title="Details">
+      <PropertyCard.Item label="Normal">Value</PropertyCard.Item>
+      <PropertyCard.Item label="Important" labelProps={{ c: 'red', fw: 700 }} valueProps={{ c: 'red' }}>
+        Critical Value
+      </PropertyCard.Item>
+    </PropertyCard>
+  )
+}
+```
+
+## Without Title
+
+```tsx
+import { PropertyCard } from '@tidbcloud/uikit/biz'
+
+function Demo() {
+  return (
+    <PropertyCard>
+      <PropertyCard.Item label="Key">Value</PropertyCard.Item>
+      <PropertyCard.Item label="Another Key">Another Value</PropertyCard.Item>
+    </PropertyCard>
+  )
+}
+```
+
+## Props
+
+### PropertyCard
+
+| Prop         | Type        | Default | Description                |
+| ------------ | ----------- | ------- | -------------------------- |
+| `title`      | `string`    | -       | Card title                 |
+| `labelProps` | `TextProps` | -       | Props for all labels       |
+| `valueProps` | `TextProps` | -       | Props for all values       |
+| `children`   | `ReactNode` | -       | PropertyCard.Item children |
+
+PropertyCard also accepts all Card component props.
+
+### PropertyCard.Item
+
+| Prop         | Type        | Default | Description          |
+| ------------ | ----------- | ------- | -------------------- |
+| `label`      | `string`    | -       | Property label       |
+| `labelProps` | `TextProps` | -       | Override label props |
+| `valueProps` | `TextProps` | -       | Override value props |
+| `children`   | `ReactNode` | -       | Property value       |
+
+## Sub-components
+
+| Component              | Description             |
+| ---------------------- | ----------------------- |
+| `PropertyCard.Item`    | Individual property row |
+| `PropertyCard.Divider` | Divider between items   |

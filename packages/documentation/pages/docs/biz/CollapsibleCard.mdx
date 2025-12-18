@@ -1,0 +1,89 @@
+# CollapsibleCard
+
+A card component with collapsible/expandable content section, featuring a clickable header with chevron animation.
+
+## Import
+
+```tsx
+import { CollapsibleCard } from '@tidbcloud/uikit/biz'
+```
+
+## Basic Usage
+
+```tsx
+import { CollapsibleCard } from '@tidbcloud/uikit/biz'
+
+function Demo() {
+  return (
+    <CollapsibleCard header="Click to expand">
+      <p>This content can be collapsed or expanded.</p>
+    </CollapsibleCard>
+  )
+}
+```
+
+## Default Open
+
+```tsx
+import { CollapsibleCard } from '@tidbcloud/uikit/biz'
+
+function Demo() {
+  return (
+    <CollapsibleCard header="Expanded by default" defaultOpened>
+      <p>This content is visible by default.</p>
+    </CollapsibleCard>
+  )
+}
+```
+
+## Controlled
+
+```tsx
+import { useState } from 'react'
+import { CollapsibleCard } from '@tidbcloud/uikit/biz'
+
+function Demo() {
+  const [opened, setOpened] = useState(false)
+
+  return (
+    <CollapsibleCard header="Controlled card" opened={opened} onToggle={() => setOpened(!opened)}>
+      <p>Controlled collapsible content.</p>
+    </CollapsibleCard>
+  )
+}
+```
+
+## Custom Header
+
+```tsx
+import { CollapsibleCard } from '@tidbcloud/uikit/biz'
+import { Group, Badge, Text } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <CollapsibleCard
+      header={
+        <Group>
+          <Text fw={600}>Advanced Settings</Text>
+          <Badge>3 options</Badge>
+        </Group>
+      }
+    >
+      <p>Settings content here.</p>
+    </CollapsibleCard>
+  )
+}
+```
+
+## Props
+
+| Prop              | Type                        | Default | Description               |
+| ----------------- | --------------------------- | ------- | ------------------------- |
+| `header`          | `ReactNode`                 | -       | Card header/title content |
+| `children`        | `ReactNode`                 | -       | Collapsible content       |
+| `opened`          | `boolean`                   | -       | Controlled open state     |
+| `defaultOpened`   | `boolean`                   | `false` | Initial open state        |
+| `headerProps`     | `BoxProps`                  | -       | Props for header section  |
+| `contentProps`    | `CollapseProps`             | -       | Props for content section |
+| `onToggle`        | `(opened: boolean) => void` | -       | Callback when toggled     |
+| `onTransitionEnd` | `() => void`                | -       | Callback after transition |

@@ -1,5 +1,133 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# FileButton
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-buttons-filebutton--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Open file picker with a button click.
+
+## Import
+
+```tsx
+import { FileButton } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+```tsx
+import { useState } from 'react'
+import { FileButton, Button, Group, Text } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [file, setFile] = useState<File | null>(null)
+
+  return (
+    <>
+      <Group justify="center">
+        <FileButton onChange={setFile} accept="image/png,image/jpeg">
+          {(props) => <Button {...props}>Upload image</Button>}
+        </FileButton>
+      </Group>
+
+      {file && (
+        <Text size="sm" ta="center" mt="sm">
+          Picked file: {file.name}
+        </Text>
+      )}
+    </>
+  )
+}
+```
+
+## Multiple files
+
+Set `multiple` prop to allow picking multiple files:
+
+```tsx
+import { useState } from 'react'
+import { FileButton, Button, Group, Text } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [files, setFiles] = useState<File[]>([])
+
+  return (
+    <>
+      <Group justify="center">
+        <FileButton onChange={setFiles} accept="image/png,image/jpeg" multiple>
+          {(props) => <Button {...props}>Upload images</Button>}
+        </FileButton>
+      </Group>
+
+      {files.length > 0 && (
+        <Text size="sm" mt="sm">
+          Picked files:
+        </Text>
+      )}
+      <ul>
+        {files.map((file, index) => (
+          <li key={index}>{file.name}</li>
+        ))}
+      </ul>
+    </>
+  )
+}
+```
+
+## Reset file
+
+`resetRef` can be used to reset file input value:
+
+```tsx
+import { useState, useRef } from 'react'
+import { FileButton, Button, Group, Text } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [file, setFile] = useState<File | null>(null)
+  const resetRef = useRef<() => void>(null)
+
+  const clearFile = () => {
+    setFile(null)
+    resetRef.current?.()
+  }
+
+  return (
+    <>
+      <Group justify="center">
+        <FileButton resetRef={resetRef} onChange={setFile} accept="image/png,image/jpeg">
+          {(props) => <Button {...props}>Upload image</Button>}
+        </FileButton>
+        <Button disabled={!file} color="red" onClick={clearFile}>
+          Reset
+        </Button>
+      </Group>
+
+      {file && (
+        <Text size="sm" ta="center" mt="sm">
+          Picked file: {file.name}
+        </Text>
+      )}
+    </>
+  )
+}
+```
+
+## Disabled state
+
+Set `disabled` prop to prevent file picker from opening:
+
+```tsx
+<FileButton onChange={setFile} disabled>
+  {(props) => <Button {...props}>Disabled upload</Button>}
+</FileButton>
+```
+
+## Props
+
+| Prop       | Type                                    | Default | Description                   |
+| ---------- | --------------------------------------- | ------- | ----------------------------- |
+| onChange   | (files: File \| File[] \| null) => void | -       | Called when files are picked  |
+| accept     | string                                  | -       | Accepted file types           |
+| multiple   | boolean                                 | false   | Allow multiple file selection |
+| disabled   | boolean                                 | false   | Disable file picker           |
+| capture    | 'user' \| 'environment'                 | -       | Capture attribute for mobile  |
+| resetRef   | React.ForwardedRef\<() => void>         | -       | Ref to reset function         |
+| children   | (props) => ReactNode                    | -       | Render prop function          |
+| name       | string                                  | -       | Input name attribute          |
+| form       | string                                  | -       | Form id attribute             |
+| inputProps | object                                  | -       | Props spread to hidden input  |

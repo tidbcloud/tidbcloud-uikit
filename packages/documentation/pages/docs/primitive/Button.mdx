@@ -1,5 +1,165 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# Button
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-buttons-button--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Button component to render button or link.
+
+## Import
+
+```tsx
+import { Button } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+```tsx
+import { Button } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <Button>Click me</Button>
+}
+```
+
+## Variants
+
+Button supports several variants: `filled`, `light`, `outline`, `transparent`, `white`, `subtle`, `default`, and `gradient`.
+
+```tsx
+import { Button, Group } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Group>
+      <Button variant="filled">Filled</Button>
+      <Button variant="light">Light</Button>
+      <Button variant="outline">Outline</Button>
+      <Button variant="default">Default</Button>
+    </Group>
+  )
+}
+```
+
+## Gradient
+
+```tsx
+import { Button } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Button variant="gradient" gradient={{ from: 'cyan', to: 'blue', deg: 90 }}>
+      Gradient button
+    </Button>
+  )
+}
+```
+
+## Left and right sections
+
+```tsx
+import { Button, Group } from '@tidbcloud/uikit'
+import { IconPhoto, IconDownload } from '@tabler/icons-react'
+
+function Demo() {
+  return (
+    <Group>
+      <Button leftSection={<IconPhoto size={14} />} variant="default">
+        Gallery
+      </Button>
+      <Button rightSection={<IconDownload size={14} />}>Download</Button>
+    </Group>
+  )
+}
+```
+
+## Full width
+
+```tsx
+import { Button } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <Button fullWidth>Full width button</Button>
+}
+```
+
+## Loading state
+
+When `loading` or `data-loading` prop is set, Button will be disabled and a Loader will replace the left section. This is a custom behavior in `@tidbcloud/uikit`.
+
+```tsx
+import { Button } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <Button loading>Loading button</Button>
+}
+```
+
+You can also use the `data-loading` attribute:
+
+```tsx
+import { Button } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <Button data-loading>Loading button</Button>
+}
+```
+
+## Disabled state
+
+```tsx
+import { Button } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <Button disabled>Disabled button</Button>
+}
+```
+
+## Compact size
+
+Button supports `xs` – `xl` and `compact-xs` – `compact-xl` sizes:
+
+```tsx
+import { Button, Group } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Group>
+      <Button size="md">Regular md</Button>
+      <Button size="compact-md">Compact md</Button>
+    </Group>
+  )
+}
+```
+
+## Button.Group
+
+```tsx
+import { Button } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Button.Group>
+      <Button variant="default">First</Button>
+      <Button variant="default">Second</Button>
+      <Button variant="default">Third</Button>
+    </Button.Group>
+  )
+}
+```
+
+## Props
+
+| Prop         | Type                                                                                                  | Default    | Description                                                                |
+| ------------ | ----------------------------------------------------------------------------------------------------- | ---------- | -------------------------------------------------------------------------- |
+| autoContrast | `boolean`                                                                                             | -          | Determines whether text color should depend on background-color luminosity |
+| children     | `React.ReactNode`                                                                                     | -          | Button content                                                             |
+| color        | `MantineColor`                                                                                        | -          | Key of theme.colors or any valid CSS color                                 |
+| data-loading | `boolean`                                                                                             | -          | Custom: triggers loading state same as `loading` prop                      |
+| disabled     | `boolean`                                                                                             | -          | Sets disabled attribute                                                    |
+| fullWidth    | `boolean`                                                                                             | -          | If set, button takes 100% width                                            |
+| gradient     | `MantineGradient`                                                                                     | -          | Gradient configuration for `variant="gradient"`                            |
+| justify      | `JustifyContent`                                                                                      | -          | Sets justify-content of inner element                                      |
+| leftSection  | `React.ReactNode`                                                                                     | -          | Content displayed on the left side                                         |
+| loading      | `boolean`                                                                                             | -          | If set, Loader replaces leftSection and button is disabled                 |
+| loaderProps  | `LoaderProps`                                                                                         | -          | Props passed to Loader component                                           |
+| radius       | `MantineRadius`                                                                                       | -          | Border radius                                                              |
+| rightSection | `React.ReactNode`                                                                                     | -          | Content displayed on the right side                                        |
+| size         | `MantineSize \| 'compact-xs' \| ... \| 'compact-xl'`                                                  | `'sm'`     | Controls height, font-size and padding                                     |
+| variant      | `'filled' \| 'light' \| 'outline' \| 'transparent' \| 'white' \| 'subtle' \| 'default' \| 'gradient'` | `'filled'` | Visual variant                                                             |

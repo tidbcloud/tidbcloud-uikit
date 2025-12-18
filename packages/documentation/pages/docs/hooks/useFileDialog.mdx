@@ -1,0 +1,84 @@
+# useFileDialog
+
+Open file dialog without a file input element.
+
+## Import
+
+```tsx
+import { useFileDialog } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+`useFileDialog` allows capturing one or more files from the user without a file input element.
+
+```tsx
+import { useFileDialog } from '@tidbcloud/uikit'
+import { Button, Text, Stack } from '@tidbcloud/uikit'
+
+function Demo() {
+  const { files, open, reset } = useFileDialog({
+    multiple: true,
+    accept: 'image/*'
+  })
+
+  return (
+    <Stack>
+      <Button onClick={open}>Select images</Button>
+      <Button onClick={reset} variant="outline">
+        Reset
+      </Button>
+
+      {files && (
+        <div>
+          <Text>Selected files:</Text>
+          {Array.from(files).map((file) => (
+            <Text key={file.name} size="sm">
+              {file.name}
+            </Text>
+          ))}
+        </div>
+      )}
+    </Stack>
+  )
+}
+```
+
+## Options
+
+```tsx
+import { useFileDialog } from '@tidbcloud/uikit'
+
+const { files, open, reset } = useFileDialog({
+  multiple: true, // Allow multiple files
+  accept: '.pdf,.doc', // Accepted file types
+  directory: false, // Allow directory selection
+  resetOnOpen: false, // Reset state when dialog opens
+  initialFiles: null, // Initial selected files
+  onChange: (files) => {}, // Called when files are selected
+  onCancel: () => {} // Called when dialog is canceled
+})
+```
+
+## Definition
+
+```tsx
+interface UseFileDialogOptions {
+  multiple?: boolean
+  accept?: string
+  capture?: string
+  directory?: boolean
+  resetOnOpen?: boolean
+  initialFiles?: FileList | File[]
+  onChange?: (files: FileList | null) => void
+  onCancel?: () => void
+}
+
+interface UseFileDialogReturnValue {
+  files: FileList | null
+  open: () => void
+  reset: () => void
+}
+
+function useFileDialog(input?: UseFileDialogOptions): UseFileDialogReturnValue
+```

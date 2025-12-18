@@ -1,0 +1,86 @@
+# useMergedRef
+
+Merge multiple refs into one.
+
+## Import
+
+```tsx
+import { useMergedRef, mergeRefs } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+`useMergedRef` accepts any number of refs and returns a function that should be passed to the `ref` prop.
+
+```tsx
+import { useRef } from 'react'
+import { useClickOutside, useFocusTrap, useMergedRef } from '@tidbcloud/uikit'
+
+function Demo() {
+  const myRef = useRef()
+  const clickOutsideRef = useClickOutside(() => {})
+  const focusTrapRef = useFocusTrap()
+  const mergedRef = useMergedRef(myRef, clickOutsideRef, focusTrapRef)
+
+  return <div ref={mergedRef} />
+}
+```
+
+## mergeRefs Function
+
+For cases where memoization with `useCallback` causes issues (like dynamic lists), use `mergeRefs` instead:
+
+```tsx
+import { useRef } from 'react'
+import { mergeRefs, useClickOutside } from '@tidbcloud/uikit'
+
+function Demo() {
+  const myRef = useRef()
+  const clickOutsideRef = useClickOutside(() => {})
+  const mergedRef = mergeRefs(myRef, clickOutsideRef)
+
+  return <div ref={mergedRef} />
+}
+```
+
+Note: `mergeRefs` does not work correctly with `useFocusTrap`.
+
+## assignRef Function
+
+`assignRef` can be used to assign refs that are not memoized:
+
+```tsx
+import { useState } from 'react'
+import { assignRef } from '@tidbcloud/uikit'
+
+interface NumberInputHandlers {
+  increment: () => void
+  decrement: () => void
+}
+
+interface DemoProps {
+  handlersRef?: React.ForwardedRef<NumberInputHandlers | undefined>
+}
+
+function Demo({ handlersRef }: DemoProps) {
+  const [value, setValue] = useState(0)
+
+  const increment = () => setValue((v) => v + 1)
+  const decrement = () => setValue((v) => v - 1)
+
+  assignRef(handlersRef, { increment, decrement })
+
+  return (
+    <>
+      <button onClick={increment}>+</button>
+      <button onClick={decrement}>-</button>
+    </>
+  )
+}
+```
+
+## Definition
+
+```tsx
+function useMergedRef<T = any>(...refs: React.ForwardedRef<T>[]): (node: T) => void
+```

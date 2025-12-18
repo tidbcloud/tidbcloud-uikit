@@ -1,0 +1,49 @@
+# useResizeObserver
+
+Observe element size changes with ResizeObserver.
+
+## Import
+
+```tsx
+import { useResizeObserver } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+`useResizeObserver` returns a `ref` object that should be passed to the observed element, and the current element content rect.
+
+```tsx
+import { useResizeObserver } from '@tidbcloud/uikit'
+import { Text } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [ref, rect] = useResizeObserver()
+
+  return (
+    <>
+      <textarea ref={ref} style={{ width: 400, height: 120 }} defaultValue="Resize this textarea" />
+      <Text mt="md">
+        Width: {rect.width}px, Height: {rect.height}px
+      </Text>
+    </>
+  )
+}
+```
+
+## API
+
+On the first render (as well as during SSR), or when no element is being observed, all properties are equal to `0`.
+
+See [Resize Observer API](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver) documentation for more information.
+
+For a simpler API that only returns `width` and `height`, see `useElementSize`.
+
+## Definition
+
+```tsx
+type ObserverRect = Omit<DOMRectReadOnly, 'toJSON'>
+
+function useResizeObserver<T extends HTMLElement = any>(
+  options?: ResizeObserverOptions
+): readonly [React.RefObject<T>, ObserverRect]
+```

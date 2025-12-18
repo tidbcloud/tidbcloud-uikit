@@ -1,5 +1,119 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# Rating
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-inputs-rating--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Rating component allows users to pick and display a rating value using a visual star-based interface.
+
+## Import
+
+```tsx
+import { Rating } from '@tidbcloud/uikit'
+```
+
+## Basic Usage
+
+```tsx
+import { Rating } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <Rating defaultValue={2} />
+}
+```
+
+## Controlled
+
+```tsx
+import { useState } from 'react'
+import { Rating } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [value, setValue] = useState(0)
+  return <Rating value={value} onChange={setValue} />
+}
+```
+
+## Read Only
+
+```tsx
+import { Rating } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <Rating value={3.5} fractions={2} readOnly />
+}
+```
+
+## Fractions
+
+Use `fractions` prop to allow fractional ratings:
+
+```tsx
+import { Rating, Stack, Group } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Stack>
+      <Group>
+        <span>Fractions: 2</span>
+        <Rating fractions={2} defaultValue={1.5} />
+      </Group>
+      <Group>
+        <span>Fractions: 3</span>
+        <Rating fractions={3} defaultValue={2.33} />
+      </Group>
+      <Group>
+        <span>Fractions: 4</span>
+        <Rating fractions={4} defaultValue={3.75} />
+      </Group>
+    </Stack>
+  )
+}
+```
+
+## Custom Symbol
+
+```tsx
+import { Rating } from '@tidbcloud/uikit'
+import { IconSun, IconMoon } from '@tabler/icons-react'
+
+function Demo() {
+  return <Rating emptySymbol={<IconSun size={16} />} fullSymbol={<IconMoon size={16} />} />
+}
+```
+
+## Custom Symbols Per Item
+
+```tsx
+import { Rating } from '@tidbcloud/uikit'
+import { IconMoodCry, IconMoodSad, IconMoodSmile, IconMoodHappy, IconMoodCrazyHappy } from '@tabler/icons-react'
+
+function Demo() {
+  const getEmptyIcon = (value: number) => {
+    const icons = [IconMoodCry, IconMoodSad, IconMoodSmile, IconMoodHappy, IconMoodCrazyHappy]
+    const Icon = icons[value - 1]
+    return <Icon size={24} />
+  }
+
+  const getFullIcon = (value: number) => {
+    const colors = ['red', 'orange', 'yellow', 'lime', 'green']
+    const icons = [IconMoodCry, IconMoodSad, IconMoodSmile, IconMoodHappy, IconMoodCrazyHappy]
+    const Icon = icons[value - 1]
+    return <Icon size={24} color={`var(--mantine-color-${colors[value - 1]}-7)`} />
+  }
+
+  return <Rating emptySymbol={getEmptyIcon} fullSymbol={getFullIcon} highlightSelectedOnly />
+}
+```
+
+## Key Props
+
+| Prop                    | Type                                | Default | Description                                       |
+| ----------------------- | ----------------------------------- | ------- | ------------------------------------------------- |
+| `value`                 | `number`                            | -       | Controlled component value                        |
+| `defaultValue`          | `number`                            | -       | Uncontrolled component default value              |
+| `onChange`              | `(value: number) => void`           | -       | Called when value changes                         |
+| `count`                 | `number`                            | `5`     | Number of rating items                            |
+| `fractions`             | `number`                            | `1`     | Number of fractions each item can be divided into |
+| `size`                  | `MantineSize`                       | `'sm'`  | Controls component size                           |
+| `color`                 | `MantineColor`                      | -       | Color of filled symbols                           |
+| `readOnly`              | `boolean`                           | `false` | If set, user cannot interact with the component   |
+| `highlightSelectedOnly` | `boolean`                           | `false` | If set, only the selected symbol changes to full  |
+| `emptySymbol`           | `ReactNode \| (value) => ReactNode` | -       | Icon displayed when symbol is empty               |
+| `fullSymbol`            | `ReactNode \| (value) => ReactNode` | -       | Icon displayed when symbol is full                |

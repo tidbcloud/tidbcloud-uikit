@@ -1,5 +1,158 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# ActionIcon
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-buttons-actionicon--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Icon button component.
+
+## Import
+
+```tsx
+import { ActionIcon } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+```tsx
+import { ActionIcon } from '@tidbcloud/uikit'
+import { IconAdjustments } from '@tabler/icons-react'
+
+function Demo() {
+  return (
+    <ActionIcon aria-label="Settings">
+      <IconAdjustments style={{ width: '70%', height: '70%' }} stroke={1.5} />
+    </ActionIcon>
+  )
+}
+```
+
+## Variants
+
+ActionIcon supports several variants: `filled`, `light`, `outline`, `transparent`, `white`, `subtle`, `default`, and `gradient`.
+
+```tsx
+import { ActionIcon, Group } from '@tidbcloud/uikit'
+import { IconHeart } from '@tabler/icons-react'
+
+function Demo() {
+  return (
+    <Group>
+      <ActionIcon variant="filled" aria-label="Filled">
+        <IconHeart size={18} />
+      </ActionIcon>
+      <ActionIcon variant="light" aria-label="Light">
+        <IconHeart size={18} />
+      </ActionIcon>
+      <ActionIcon variant="outline" aria-label="Outline">
+        <IconHeart size={18} />
+      </ActionIcon>
+      <ActionIcon variant="default" aria-label="Default">
+        <IconHeart size={18} />
+      </ActionIcon>
+    </Group>
+  )
+}
+```
+
+## Gradient
+
+```tsx
+import { ActionIcon } from '@tidbcloud/uikit'
+import { IconHeart } from '@tabler/icons-react'
+
+function Demo() {
+  return (
+    <ActionIcon
+      variant="gradient"
+      size="xl"
+      aria-label="Gradient action icon"
+      gradient={{ from: 'cyan', to: 'blue', deg: 90 }}
+    >
+      <IconHeart />
+    </ActionIcon>
+  )
+}
+```
+
+## Size
+
+You can use any valid CSS value in `size` prop. When `size` is a number, the value is treated as `px` units.
+
+```tsx
+import { ActionIcon } from '@tidbcloud/uikit'
+import { IconHeart } from '@tabler/icons-react'
+
+function Demo() {
+  return (
+    <ActionIcon size={42} variant="default" aria-label="ActionIcon with size as a number">
+      <IconHeart size={24} />
+    </ActionIcon>
+  )
+}
+```
+
+## Loading state
+
+When `loading` prop is set, ActionIcon will be disabled and a Loader will be rendered in the center:
+
+```tsx
+import { ActionIcon } from '@tidbcloud/uikit'
+import { IconHeart } from '@tabler/icons-react'
+
+function Demo() {
+  return (
+    <ActionIcon loading aria-label="Loading">
+      <IconHeart size={18} />
+    </ActionIcon>
+  )
+}
+```
+
+## Disabled state
+
+```tsx
+import { ActionIcon } from '@tidbcloud/uikit'
+import { IconHeart } from '@tabler/icons-react'
+
+function Demo() {
+  return (
+    <ActionIcon disabled aria-label="Disabled">
+      <IconHeart size={18} />
+    </ActionIcon>
+  )
+}
+```
+
+## ActionIcon.Group
+
+```tsx
+import { ActionIcon } from '@tidbcloud/uikit'
+import { IconPhoto, IconSettings, IconHeart } from '@tabler/icons-react'
+
+function Demo() {
+  return (
+    <ActionIcon.Group>
+      <ActionIcon variant="default" size="lg" aria-label="Gallery">
+        <IconPhoto size={20} />
+      </ActionIcon>
+      <ActionIcon variant="default" size="lg" aria-label="Settings">
+        <IconSettings size={20} />
+      </ActionIcon>
+      <ActionIcon variant="default" size="lg" aria-label="Likes">
+        <IconHeart size={20} />
+      </ActionIcon>
+    </ActionIcon.Group>
+  )
+}
+```
+
+## Props
+
+| Prop        | Type                    | Default    | Description                                                   |
+| ----------- | ----------------------- | ---------- | ------------------------------------------------------------- |
+| children    | `React.ReactNode`       | -          | Icon element                                                  |
+| color       | `MantineColor`          | -          | Key of `theme.colors` or any valid CSS color                  |
+| disabled    | `boolean`               | -          | Sets disabled attribute                                       |
+| gradient    | `MantineGradient`       | -          | Gradient values used with `variant="gradient"`                |
+| loading     | `boolean`               | -          | If set, Loader component is displayed instead of the children |
+| loaderProps | `LoaderProps`           | -          | Props passed to the Loader component                          |
+| radius      | `MantineRadius`         | -          | Border radius                                                 |
+| size        | `number \| MantineSize` | `'md'`     | Controls width and height                                     |
+| variant     | `string`                | `'filled'` | Visual variant                                                |

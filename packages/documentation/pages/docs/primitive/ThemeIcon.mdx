@@ -1,5 +1,103 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# ThemeIcon
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-data-display-themeicon--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Render an icon inside an element with theme colors. Useful for decorative icons with consistent styling.
+
+## Import
+
+```tsx
+import { ThemeIcon } from '@tidbcloud/uikit'
+```
+
+## Basic Usage
+
+```tsx
+import { ThemeIcon } from '@tidbcloud/uikit'
+import { IconPhoto } from '@tabler/icons-react'
+
+function Demo() {
+  return (
+    <ThemeIcon>
+      <IconPhoto style={{ width: '70%', height: '70%' }} />
+    </ThemeIcon>
+  )
+}
+```
+
+## Colors and Variants
+
+```tsx
+import { ThemeIcon, Group } from '@tidbcloud/uikit'
+import { IconHeart } from '@tabler/icons-react'
+
+function Demo() {
+  return (
+    <Group>
+      <ThemeIcon variant="filled" color="blue">
+        <IconHeart size={16} />
+      </ThemeIcon>
+      <ThemeIcon variant="light" color="teal">
+        <IconHeart size={16} />
+      </ThemeIcon>
+      <ThemeIcon variant="outline" color="grape">
+        <IconHeart size={16} />
+      </ThemeIcon>
+    </Group>
+  )
+}
+```
+
+## Gradient
+
+```tsx
+import { ThemeIcon } from '@tidbcloud/uikit'
+import { IconHeart } from '@tabler/icons-react'
+
+function Demo() {
+  return (
+    <ThemeIcon variant="gradient" size="xl" gradient={{ from: 'cyan', to: 'blue', deg: 90 }}>
+      <IconHeart />
+    </ThemeIcon>
+  )
+}
+```
+
+## Sizes
+
+```tsx
+import { ThemeIcon, Group } from '@tidbcloud/uikit'
+import { IconPhoto } from '@tabler/icons-react'
+
+function Demo() {
+  return (
+    <Group>
+      <ThemeIcon size="xs">
+        <IconPhoto size={12} />
+      </ThemeIcon>
+      <ThemeIcon size="sm">
+        <IconPhoto size={14} />
+      </ThemeIcon>
+      <ThemeIcon size="md">
+        <IconPhoto size={16} />
+      </ThemeIcon>
+      <ThemeIcon size="lg">
+        <IconPhoto size={20} />
+      </ThemeIcon>
+      <ThemeIcon size="xl">
+        <IconPhoto size={24} />
+      </ThemeIcon>
+    </Group>
+  )
+}
+```
+
+## Key Props
+
+| Prop           | Type                                             | Description                                        |
+| -------------- | ------------------------------------------------ | -------------------------------------------------- |
+| `children`     | `ReactNode`                                      | Icon to display                                    |
+| `color`        | `MantineColor`                                   | Icon container color                               |
+| `variant`      | `'filled' \| 'light' \| 'outline' \| 'gradient'` | Visual variant                                     |
+| `size`         | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| number` | Icon container size                                |
+| `radius`       | `MantineRadius`                                  | Border radius                                      |
+| `gradient`     | `MantineGradient`                                | Gradient configuration (with `variant="gradient"`) |
+| `autoContrast` | `boolean`                                        | Adjust icon color based on background              |

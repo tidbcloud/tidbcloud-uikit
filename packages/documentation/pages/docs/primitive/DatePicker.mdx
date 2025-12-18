@@ -1,5 +1,170 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# DatePicker
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-dates-datepicker--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Inline date, multiple dates and dates range picker.
+
+## Import
+
+```tsx
+import { DatePicker } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+```tsx
+import { useState } from 'react'
+import { DatePicker } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [value, setValue] = useState<Date | null>(null)
+  return <DatePicker value={value} onChange={setValue} />
+}
+```
+
+## Allow deselect
+
+Set `allowDeselect` to allow user to deselect current selected date by clicking on it:
+
+```tsx
+import { DatePicker } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <DatePicker allowDeselect />
+}
+```
+
+## Multiple dates
+
+Set `type="multiple"` to allow user to pick multiple dates:
+
+```tsx
+import { useState } from 'react'
+import { DatePicker } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [value, setValue] = useState<Date[]>([])
+  return <DatePicker type="multiple" value={value} onChange={setValue} />
+}
+```
+
+## Dates range
+
+Set `type="range"` to allow user to pick dates range:
+
+```tsx
+import { useState } from 'react'
+import { DatePicker } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [value, setValue] = useState<[Date | null, Date | null]>([null, null])
+  return <DatePicker type="range" value={value} onChange={setValue} />
+}
+```
+
+## Min and max date
+
+Set `minDate` and `maxDate` props to define allowed date range:
+
+```tsx
+import { DatePicker } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <DatePicker minDate={new Date(2022, 1, 10)} maxDate={new Date(2022, 1, 25)} />
+}
+```
+
+## Hide outside dates
+
+Set `hideOutsideDates` prop to remove all dates that do not belong to the current month:
+
+```tsx
+import { DatePicker } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <DatePicker hideOutsideDates />
+}
+```
+
+## Display week numbers
+
+Set `withWeekNumbers` prop to display week numbers:
+
+```tsx
+import { DatePicker } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <DatePicker withWeekNumbers />
+}
+```
+
+## First day of week
+
+Set `firstDayOfWeek` prop (0-6, where 0 is Sunday):
+
+```tsx
+import { DatePicker } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <DatePicker firstDayOfWeek={0} /> // Sunday
+}
+```
+
+## Number of columns
+
+Set `numberOfColumns` prop to display multiple months:
+
+```tsx
+import { DatePicker } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <DatePicker numberOfColumns={2} />
+}
+```
+
+## Default level
+
+Set `defaultLevel` prop to configure initial display level:
+
+```tsx
+import { DatePicker } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <DatePicker defaultLevel="decade" />
+}
+```
+
+## Exclude dates
+
+Use `excludeDate` prop to disable specific dates:
+
+```tsx
+import { DatePicker } from '@tidbcloud/uikit'
+
+function Demo() {
+  // Disable all dates except Fridays
+  return <DatePicker excludeDate={(date) => date.getDay() !== 5} />
+}
+```
+
+## Props
+
+| Prop                   | Type                               | Default   | Description                      |
+| ---------------------- | ---------------------------------- | --------- | -------------------------------- |
+| type                   | 'default' \| 'multiple' \| 'range' | 'default' | Picker type                      |
+| value                  | DateValue                          | -         | Controlled value                 |
+| defaultValue           | DateValue                          | -         | Default value                    |
+| onChange               | (value: DateValue) => void         | -         | Called when value changes        |
+| allowDeselect          | boolean                            | false     | Allow deselecting date           |
+| allowSingleDateInRange | boolean                            | false     | Allow single date as range       |
+| numberOfColumns        | number                             | 1         | Number of columns                |
+| minDate                | Date                               | -         | Minimum allowed date             |
+| maxDate                | Date                               | -         | Maximum allowed date             |
+| excludeDate            | (date: Date) => boolean            | -         | Function to exclude dates        |
+| hideOutsideDates       | boolean                            | false     | Hide dates outside current month |
+| hideWeekdays           | boolean                            | false     | Hide weekdays row                |
+| withWeekNumbers        | boolean                            | false     | Display week numbers             |
+| firstDayOfWeek         | 0-6                                | 1         | First day of week                |
+| weekendDays            | number[]                           | [0, 6]    | Weekend days indices             |
+| defaultLevel           | 'month' \| 'year' \| 'decade'      | 'month'   | Initial display level            |
+| maxLevel               | 'month' \| 'year' \| 'decade'      | 'decade'  | Max level user can go to         |
+| locale                 | string                             | 'en'      | dayjs locale                     |
+| size                   | MantineSize                        | 'sm'      | Component size                   |

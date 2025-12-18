@@ -1,5 +1,152 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# Radio
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-inputs-radio--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Radio component is a wrapper for native `input[type="radio"]` element. Use Radio to capture user input when only one option can be selected from a list.
+
+## Import
+
+```tsx
+import { Radio } from '@tidbcloud/uikit'
+```
+
+## Basic Usage
+
+```tsx
+import { Radio } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <Radio label="I agree to terms and conditions" />
+}
+```
+
+## Controlled
+
+```tsx
+import { useState } from 'react'
+import { Radio } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [checked, setChecked] = useState(false)
+  return (
+    <Radio checked={checked} onChange={(event) => setChecked(event.currentTarget.checked)} label="Controlled radio" />
+  )
+}
+```
+
+## Radio.Group
+
+Use `Radio.Group` to group multiple radio inputs together:
+
+```tsx
+import { Radio, Group } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Radio.Group
+      name="favoriteFramework"
+      label="Select your favorite framework"
+      description="This is anonymous"
+      withAsterisk
+    >
+      <Group mt="xs">
+        <Radio value="react" label="React" />
+        <Radio value="svelte" label="Svelte" />
+        <Radio value="ng" label="Angular" />
+        <Radio value="vue" label="Vue" />
+      </Group>
+    </Radio.Group>
+  )
+}
+```
+
+## Controlled Radio.Group
+
+```tsx
+import { useState } from 'react'
+import { Radio, Group } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [value, setValue] = useState('react')
+
+  return (
+    <Radio.Group value={value} onChange={setValue} name="favoriteFramework">
+      <Group mt="xs">
+        <Radio value="react" label="React" />
+        <Radio value="svelte" label="Svelte" />
+        <Radio value="ng" label="Angular" />
+        <Radio value="vue" label="Vue" />
+      </Group>
+    </Radio.Group>
+  )
+}
+```
+
+## States
+
+```tsx
+import { Radio, Stack } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Stack>
+      <Radio checked={false} onChange={() => {}} label="Default radio" />
+      <Radio checked onChange={() => {}} label="Checked radio" />
+      <Radio checked variant="outline" onChange={() => {}} label="Outline checked radio" />
+      <Radio disabled label="Disabled radio" />
+      <Radio disabled checked onChange={() => {}} label="Disabled checked radio" />
+    </Stack>
+  )
+}
+```
+
+## Radio.Card
+
+`Radio.Card` can be used to build custom cards/buttons that work as radios:
+
+```tsx
+import { useState } from 'react'
+import { Radio, Group, Text } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [checked, setChecked] = useState(false)
+
+  return (
+    <Radio.Card radius="md" checked={checked} onClick={() => setChecked((c) => !c)}>
+      <Group wrap="nowrap" align="flex-start">
+        <Radio.Indicator />
+        <div>
+          <Text fw={500}>@tidbcloud/uikit</Text>
+          <Text size="sm" c="dimmed">
+            Core components library: inputs, buttons, overlays, etc.
+          </Text>
+        </div>
+      </Group>
+    </Radio.Card>
+  )
+}
+```
+
+## Key Props
+
+| Prop            | Type                | Description                                    |
+| --------------- | ------------------- | ---------------------------------------------- |
+| `label`         | `ReactNode`         | Content of the label associated with the radio |
+| `description`   | `ReactNode`         | Description displayed below the label          |
+| `error`         | `ReactNode`         | Error message displayed below the label        |
+| `color`         | `MantineColor`      | Color of the radio in checked state            |
+| `size`          | `MantineSize`       | Controls size of the component                 |
+| `labelPosition` | `'left' \| 'right'` | Position of the label relative to the input    |
+| `disabled`      | `boolean`           | Disables the radio input                       |
+| `checked`       | `boolean`           | Controlled checked state                       |
+| `onChange`      | `(event) => void`   | Called when checked state changes              |
+
+## Radio.Group Props
+
+| Prop           | Type                      | Description                          |
+| -------------- | ------------------------- | ------------------------------------ |
+| `value`        | `string`                  | Controlled component value           |
+| `defaultValue` | `string`                  | Uncontrolled component default value |
+| `onChange`     | `(value: string) => void` | Called when value changes            |
+| `name`         | `string`                  | Name attribute of radio inputs       |
+| `label`        | `ReactNode`               | Group label                          |
+| `description`  | `ReactNode`               | Group description                    |
+| `error`        | `ReactNode`               | Group error message                  |

@@ -1,0 +1,102 @@
+# Hooks Overview
+
+Cloud UI provides a collection of React hooks for common UI patterns, state management, utilities, and lifecycle operations. These hooks are based on Mantine hooks with some custom enhancements.
+
+## Import
+
+```tsx
+import { useDisclosure, useClipboard, useHotkeys } from '@tidbcloud/uikit'
+```
+
+## Hook Categories
+
+### DOM & UI
+
+Hooks for interacting with the DOM and handling UI-related events:
+
+- `useClickOutside` - Detect clicks outside of element
+- `useSystemColorScheme` - Detect user's preferred color scheme
+- `useElementSize` - Get element width and height
+- `useEventListener` - Add event listener to element
+- `useFocusReturn` - Return focus to last focused element
+- `useFocusTrap` - Trap focus within element
+- `useFocusWithin` - Detect focus within element
+- `useFullscreen` - Enter/exit fullscreen mode
+- `useHotkeys` - Listen for keyboard shortcuts
+- `useHover` - Detect hover state
+- `useInViewport` - Check if element is in viewport
+- `useIntersection` - Observe element intersection
+- `useMediaQuery` - Subscribe to media query changes
+- `useMouse` - Track mouse position
+- `useMove` - Handle drag/move interactions
+- `useMutationObserver` - Observe DOM mutations
+- `useOrientation` - Track device orientation
+- `useReducedMotion` - Detect reduced motion preference
+- `useResizeObserver` - Observe element size changes
+- `useScrollIntoView` - Scroll element into view
+- `useScrollSpy` - Track scroll position for navigation
+- `useViewportSize` - Get viewport dimensions
+- `useWindowEvent` - Add window event listener
+- `useWindowScroll` - Track window scroll position
+
+### State Management
+
+Hooks for managing component state:
+
+- `useCounter` - Manage numeric counter state
+- `useDebouncedCallback` - Create debounced callback
+- `useDebouncedState` - Debounced state updates
+- `useDebouncedValue` - Debounce value changes
+- `useDisclosure` - Manage boolean state (open/close)
+- `useId` - Generate unique IDs
+- `useInputState` - Handle input state changes
+- `useListState` - Manage array state
+- `useLocalStorage` - Persist state in localStorage
+- `useMap` - Manage Map state
+- `usePagination` - Manage pagination state
+- `usePrevious` - Get previous value
+- `useQueue` - Manage queue state
+- `useSet` - Manage Set state
+- `useSetState` - Shallow merge state updates
+- `useStateHistory` - Track state history
+- `useThrottledCallback` - Create throttled callback
+- `useThrottledState` - Throttled state updates
+- `useThrottledValue` - Throttle value changes
+- `useToggle` - Toggle between values
+- `useUncontrolled` - Handle controlled/uncontrolled state
+- `useValidatedState` - State with validation
+
+### Utilities
+
+General utility hooks:
+
+- `useClipboard` - Copy to clipboard (enhanced with fallback)
+- `useDocumentTitle` - Set document title
+- `useDocumentVisibility` - Track document visibility
+- `useEyeDropper` - Use EyeDropper API
+- `useFavicon` - Set favicon
+- `useFetch` - Fetch data
+- `useFileDialog` - Open file dialog
+- `useHash` - Read/write URL hash
+- `useHeadroom` - Create headroom effect
+- `useIdle` - Detect user idle state
+- `useInterval` - Run function at intervals
+- `useMergedRef` - Merge multiple refs
+- `useNetwork` - Track network status
+- `useOs` - Detect operating system
+- `usePageLeave` - Detect page leave
+- `useTextSelection` - Get text selection
+- `useTimeout` - Run function after timeout
+- `useURLQueryState` - Manage URL query state
+
+### Lifecycle
+
+Hooks for component lifecycle:
+
+- `useDidUpdate` - Run effect only on updates
+- `useForceUpdate` - Force component re-render
+- `useIsFirstRender` - Check if first render
+- `useIsomorphicEffect` - SSR-safe useLayoutEffect
+- `useLogger` - Log component lifecycle
+- `useMounted` - Check if component is mounted
+- `useShallowEffect` - Effect with shallow comparison

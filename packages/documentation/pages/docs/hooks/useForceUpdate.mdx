@@ -1,0 +1,43 @@
+# useForceUpdate
+
+Force component to re-render.
+
+## Import
+
+```tsx
+import { useForceUpdate } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+`useForceUpdate` returns a function that forces the component to re-render when called.
+
+```tsx
+import { useForceUpdate } from '@tidbcloud/uikit'
+import { Button, Text } from '@tidbcloud/uikit'
+
+function Demo() {
+  const forceUpdate = useForceUpdate()
+
+  return (
+    <>
+      <Text>Random value: {Math.random()}</Text>
+      <Button onClick={forceUpdate}>Force re-render</Button>
+    </>
+  )
+}
+```
+
+## Use Cases
+
+- Force update when external state changes
+- Re-render without changing state
+- Integration with non-React code
+
+Note: Use this sparingly – most cases should use `useState` or `useReducer` instead.
+
+## Definition
+
+```tsx
+function useForceUpdate(): () => void
+```

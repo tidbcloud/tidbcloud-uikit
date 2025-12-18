@@ -1,5 +1,83 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# Notification
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-feedback-notification--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Display notifications and alerts to users. This is the base component for building notification systems.
+
+## Import
+
+```tsx
+import { Notification } from '@tidbcloud/uikit'
+```
+
+## Basic Usage
+
+```tsx
+import { Notification } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <Notification title="Default notification">This is a notification message</Notification>
+}
+```
+
+## With Icon
+
+```tsx
+import { Notification } from '@tidbcloud/uikit'
+import { IconCheck, IconX } from '@tabler/icons-react'
+
+function Demo() {
+  return (
+    <>
+      <Notification icon={<IconCheck size={20} />} color="teal" title="Success!">
+        Your changes have been saved
+      </Notification>
+
+      <Notification icon={<IconX size={20} />} color="red" title="Error!">
+        Something went wrong
+      </Notification>
+    </>
+  )
+}
+```
+
+## With Close Button
+
+```tsx
+import { Notification } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Notification title="Dismissable notification" withCloseButton onClose={() => console.log('closed')}>
+      Click the close button to dismiss
+    </Notification>
+  )
+}
+```
+
+## Loading State
+
+```tsx
+import { Notification } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Notification loading title="Uploading...">
+      Please wait while we upload your file
+    </Notification>
+  )
+}
+```
+
+## Key Props
+
+| Prop               | Type            | Description                      |
+| ------------------ | --------------- | -------------------------------- |
+| `title`            | `ReactNode`     | Notification title               |
+| `children`         | `ReactNode`     | Notification message body        |
+| `icon`             | `ReactNode`     | Icon displayed on the left       |
+| `color`            | `MantineColor`  | Color for icon or line           |
+| `loading`          | `boolean`       | Shows loader instead of icon     |
+| `withCloseButton`  | `boolean`       | Shows close button               |
+| `onClose`          | `() => void`    | Called when close button clicked |
+| `withBorder`       | `boolean`       | Adds border to notification      |
+| `radius`           | `MantineRadius` | Border radius                    |
+| `closeButtonProps` | `object`        | Props for close button           |

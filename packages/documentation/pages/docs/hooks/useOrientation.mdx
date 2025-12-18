@@ -1,0 +1,63 @@
+# useOrientation
+
+Track device orientation.
+
+## Import
+
+```tsx
+import { useOrientation } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+`useOrientation` returns an object with the current orientation of the device.
+
+```tsx
+import { useOrientation } from '@tidbcloud/uikit'
+import { Text } from '@tidbcloud/uikit'
+
+function Demo() {
+  const { angle, type } = useOrientation()
+
+  return (
+    <div>
+      <Text>Angle: {angle}</Text>
+      <Text>Type: {type}</Text>
+    </div>
+  )
+}
+```
+
+## Options
+
+```tsx
+import { useOrientation } from '@tidbcloud/uikit'
+
+const { angle, type } = useOrientation({
+  defaultAngle: 0,
+  defaultType: 'landscape-primary',
+  getInitialValueInEffect: true
+})
+```
+
+## Definition
+
+```tsx
+interface UseOrientationOptions {
+  /** Default angle value (during SSR), `0` by default */
+  defaultAngle?: number
+
+  /** Default type value (during SSR), `'landscape-primary'` by default */
+  defaultType?: OrientationType
+
+  /** If true, the initial value will be resolved in useEffect (SSR safe) */
+  getInitialValueInEffect?: boolean
+}
+
+interface UseOrientationReturnType {
+  angle: number
+  type: OrientationType
+}
+
+function useOrientation(options?: UseOrientationOptions): UseOrientationReturnType
+```

@@ -1,0 +1,175 @@
+# Typography
+
+A custom text component with predefined variant styles for consistent typography across your application.
+
+## Import
+
+```tsx
+import { Typography } from '@tidbcloud/uikit'
+```
+
+## Basic Usage
+
+```tsx
+import { Typography } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <Typography variant="headline-lg">Large Headline Text</Typography>
+}
+```
+
+## Variants
+
+Typography supports 18 predefined variants organized into 5 categories:
+
+### Headlines
+
+```tsx
+import { Typography, Stack } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Stack>
+      <Typography variant="headline-lg">Headline Large (24px, 700)</Typography>
+      <Typography variant="headline-md">Headline Medium (20px, 700)</Typography>
+      <Typography variant="headline-sm">Headline Small (18px, 700)</Typography>
+    </Stack>
+  )
+}
+```
+
+### Titles
+
+```tsx
+import { Typography, Stack } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Stack>
+      <Typography variant="title-lg">Title Large (16px, 700)</Typography>
+      <Typography variant="title-md">Title Medium (14px, 700)</Typography>
+      <Typography variant="title-sm">Title Small (12px, 700)</Typography>
+    </Stack>
+  )
+}
+```
+
+### Actions
+
+```tsx
+import { Typography, Stack } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Stack>
+      <Typography variant="action-lg">Action Large (16px, 600)</Typography>
+      <Typography variant="action-md">Action Medium (14px, 600)</Typography>
+      <Typography variant="action-sm">Action Small (12px, 600)</Typography>
+    </Stack>
+  )
+}
+```
+
+### Labels
+
+```tsx
+import { Typography, Stack } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Stack>
+      <Typography variant="label-lg">Label Large (14px, 500)</Typography>
+      <Typography variant="label-md">Label Medium (13px, 500)</Typography>
+      <Typography variant="label-sm">Label Small (12px, 500)</Typography>
+      <Typography variant="label-xs">Label Extra Small (11px, 500)</Typography>
+    </Stack>
+  )
+}
+```
+
+### Body
+
+```tsx
+import { Typography, Stack } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Stack>
+      <Typography variant="body-lg">Body Large (14px, 400)</Typography>
+      <Typography variant="body-md">Body Medium (13px, 400)</Typography>
+      <Typography variant="body-sm">Body Small (12px, 400)</Typography>
+      <Typography variant="body-xs">Body Extra Small (11px, 400)</Typography>
+    </Stack>
+  )
+}
+```
+
+## Polymorphic Component
+
+Typography can render as any HTML element using the `component` prop:
+
+```tsx
+import { Typography } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <>
+      <Typography variant="headline-lg" component="h1">
+        As H1 Element
+      </Typography>
+      <Typography variant="body-md" component="span">
+        As Span Element
+      </Typography>
+    </>
+  )
+}
+```
+
+## Override Styles
+
+You can override the default styles using standard Mantine Text props:
+
+```tsx
+import { Typography } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Typography variant="body-md" c="blue" fw={700}>
+      Custom colored and bold text
+    </Typography>
+  )
+}
+```
+
+## Props
+
+| Prop        | Type                 | Default | Description                     |
+| ----------- | -------------------- | ------- | ------------------------------- |
+| `variant`   | `TypographyVariants` | -       | Predefined typography style     |
+| `component` | `ElementType`        | `'div'` | HTML element to render          |
+| `c`         | `MantineColor`       | -       | Text color (overrides variant)  |
+| `fz`        | `MantineSize`        | -       | Font size (overrides variant)   |
+| `fw`        | `number`             | -       | Font weight (overrides variant) |
+| `lh`        | `string \| number`   | -       | Line height (overrides variant) |
+
+## Variant Reference
+
+| Variant       | Font Size | Line Height | Font Weight | Color     |
+| ------------- | --------- | ----------- | ----------- | --------- |
+| `headline-lg` | 24px      | 32px        | 700         | carbon.9  |
+| `headline-md` | 20px      | 30px        | 700         | carbon.9  |
+| `headline-sm` | 18px      | 28px        | 700         | carbon.9  |
+| `title-lg`    | 16px      | 24px        | 700         | carbon.9  |
+| `title-md`    | 14px      | 20px        | 700         | carbon.9  |
+| `title-sm`    | 12px      | 18px        | 700         | carbon.9  |
+| `action-lg`   | 16px      | 24px        | 600         | peacock.7 |
+| `action-md`   | 14px      | 20px        | 600         | peacock.7 |
+| `action-sm`   | 12px      | 18px        | 600         | peacock.7 |
+| `label-lg`    | 14px      | 20px        | 500         | carbon.8  |
+| `label-md`    | 13px      | 18px        | 500         | carbon.8  |
+| `label-sm`    | 12px      | 18px        | 500         | carbon.8  |
+| `label-xs`    | 11px      | 16px        | 500         | carbon.8  |
+| `body-lg`     | 14px      | 20px        | 400         | carbon.8  |
+| `body-md`     | 13px      | 18px        | 400         | carbon.8  |
+| `body-sm`     | 12px      | 18px        | 400         | carbon.8  |
+| `body-xs`     | 11px      | 16px        | 400         | carbon.8  |

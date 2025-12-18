@@ -1,5 +1,151 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# FileInput
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-inputs-fileinput--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Capture file input from user.
+
+## Import
+
+```tsx
+import { FileInput } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+```tsx
+import { FileInput } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <FileInput label="Upload files" placeholder="Upload files" />
+}
+```
+
+## Multiple files
+
+Set `multiple` prop to allow picking multiple files:
+
+```tsx
+import { FileInput } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <FileInput label="Upload files" placeholder="Upload files" multiple />
+}
+```
+
+## Accept
+
+Use `accept` prop to restrict file types:
+
+```tsx
+import { FileInput } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <FileInput accept="image/png,image/jpeg" label="Upload images" placeholder="Upload images" />
+}
+```
+
+## Clearable
+
+Set `clearable` prop to show clear button:
+
+```tsx
+import { FileInput } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <FileInput clearable label="Upload files" placeholder="Upload files" />
+}
+```
+
+## Custom value component
+
+Use `valueComponent` to customize how selected files are displayed:
+
+```tsx
+import { FileInput, FileInputProps, Pill } from '@tidbcloud/uikit'
+
+const ValueComponent: FileInputProps['valueComponent'] = ({ value }) => {
+  if (value === null) {
+    return null
+  }
+
+  if (Array.isArray(value)) {
+    return (
+      <Pill.Group>
+        {value.map((file, index) => (
+          <Pill key={index}>{file.name}</Pill>
+        ))}
+      </Pill.Group>
+    )
+  }
+
+  return <Pill>{value.name}</Pill>
+}
+
+function Demo() {
+  return <FileInput label="Upload files" placeholder="Upload files" multiple valueComponent={ValueComponent} />
+}
+```
+
+## Left and right sections
+
+```tsx
+import { FileInput, rem } from '@tidbcloud/uikit'
+import { IconFileCv } from '@tabler/icons-react'
+
+function Demo() {
+  const icon = <IconFileCv style={{ width: rem(18), height: rem(18) }} stroke={1.5} />
+
+  return (
+    <>
+      <FileInput leftSection={icon} label="With left section" placeholder="With left section" />
+      <FileInput rightSection={icon} label="With right section" placeholder="With right section" mt="md" />
+    </>
+  )
+}
+```
+
+## Error state
+
+```tsx
+import { FileInput } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <>
+      <FileInput label="Boolean error" placeholder="Boolean error" error />
+      <FileInput mt="md" label="With error message" placeholder="With error message" error="Invalid file" />
+    </>
+  )
+}
+```
+
+## Disabled state
+
+```tsx
+import { FileInput } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <FileInput disabled label="Disabled" placeholder="Disabled" />
+}
+```
+
+## Props
+
+| Prop           | Type                                    | Default   | Description           |
+| -------------- | --------------------------------------- | --------- | --------------------- |
+| value          | File \| File[] \| null                  | -         | Controlled value      |
+| defaultValue   | File \| File[] \| null                  | -         | Default value         |
+| onChange       | (value: File \| File[] \| null) => void | -         | Change callback       |
+| accept         | string                                  | -         | Accepted file types   |
+| multiple       | boolean                                 | false     | Allow multiple files  |
+| clearable      | boolean                                 | false     | Show clear button     |
+| valueComponent | ComponentType                           | -         | Custom value display  |
+| leftSection    | ReactNode                               | -         | Left section content  |
+| rightSection   | ReactNode                               | -         | Right section content |
+| label          | ReactNode                               | -         | Input label           |
+| description    | ReactNode                               | -         | Input description     |
+| error          | ReactNode                               | -         | Error message         |
+| placeholder    | string                                  | -         | Placeholder text      |
+| disabled       | boolean                                 | false     | Disable input         |
+| required       | boolean                                 | false     | Required field        |
+| radius         | MantineRadius                           | -         | Border radius         |
+| size           | MantineSize                             | 'sm'      | Input size            |
+| variant        | 'default' \| 'filled' \| 'unstyled'     | 'default' | Input variant         |

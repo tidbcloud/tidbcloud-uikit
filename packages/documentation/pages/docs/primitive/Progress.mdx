@@ -1,5 +1,144 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# Progress
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-feedback-progress--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Give user feedback for status of tasks. Displays a progress bar that can be single or multi-sectioned.
+
+## Import
+
+```tsx
+import { Progress } from '@tidbcloud/uikit'
+```
+
+## Basic Usage
+
+```tsx
+import { Progress } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <Progress value={50} />
+}
+```
+
+## With Label
+
+```tsx
+import { Progress } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <Progress value={75} size="xl" />
+}
+```
+
+## Multiple Sections
+
+```tsx
+import { Progress } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Progress.Root size="xl">
+      <Progress.Section value={35} color="cyan">
+        <Progress.Label>Documents</Progress.Label>
+      </Progress.Section>
+      <Progress.Section value={28} color="pink">
+        <Progress.Label>Photos</Progress.Label>
+      </Progress.Section>
+      <Progress.Section value={15} color="orange">
+        <Progress.Label>Other</Progress.Label>
+      </Progress.Section>
+    </Progress.Root>
+  )
+}
+```
+
+## Striped and Animated
+
+```tsx
+import { Progress } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <>
+      <Progress value={65} striped />
+      <Progress value={65} striped animated mt="md" />
+    </>
+  )
+}
+```
+
+## With Transition
+
+```tsx
+import { useState } from 'react'
+import { Progress, Button } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [value, setValue] = useState(50)
+
+  return (
+    <>
+      <Progress value={value} transitionDuration={200} />
+      <Button onClick={() => setValue(Math.random() * 100)} mt="md">
+        Set random value
+      </Button>
+    </>
+  )
+}
+```
+
+## Vertical Orientation
+
+```tsx
+import { Progress, Group } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Group>
+      <Progress value={80} orientation="vertical" h={200} />
+      <Progress value={60} color="orange" orientation="vertical" h={200} />
+    </Group>
+  )
+}
+```
+
+## With Tooltips
+
+```tsx
+import { Progress, Tooltip } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Progress.Root size={40}>
+      <Tooltip label="Documents – 33Gb">
+        <Progress.Section value={33} color="cyan">
+          <Progress.Label>Documents</Progress.Label>
+        </Progress.Section>
+      </Tooltip>
+      <Tooltip label="Photos – 28Gb">
+        <Progress.Section value={28} color="pink">
+          <Progress.Label>Photos</Progress.Label>
+        </Progress.Section>
+      </Tooltip>
+    </Progress.Root>
+  )
+}
+```
+
+## Key Props
+
+| Prop                 | Type                         | Description             |
+| -------------------- | ---------------------------- | ----------------------- |
+| `value`              | `number`                     | Progress value (0-100)  |
+| `color`              | `MantineColor`               | Progress bar color      |
+| `size`               | `MantineSize \| number`      | Progress bar height     |
+| `radius`             | `MantineRadius`              | Border radius           |
+| `striped`            | `boolean`                    | Add stripes             |
+| `animated`           | `boolean`                    | Animate stripes         |
+| `transitionDuration` | `number`                     | Width transition in ms  |
+| `orientation`        | `'horizontal' \| 'vertical'` | Bar orientation         |
+| `autoContrast`       | `boolean`                    | Auto-adjust label color |
+
+## Compound Components
+
+- `Progress.Root` - Root wrapper for sections
+- `Progress.Section` - Individual progress section
+- `Progress.Label` - Label inside section

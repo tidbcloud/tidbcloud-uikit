@@ -1,0 +1,62 @@
+# useIntersection
+
+Observe element intersection with Intersection Observer API.
+
+## Import
+
+```tsx
+import { useIntersection } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+`useIntersection` returns information about the intersection of a given element with its scroll container or body element.
+
+```tsx
+import { useIntersection } from '@tidbcloud/uikit'
+import { Box, Text } from '@tidbcloud/uikit'
+
+function Demo() {
+  const { ref, entry } = useIntersection({
+    root: null,
+    threshold: 0.5
+  })
+
+  return (
+    <>
+      <Text>{entry?.isIntersecting ? 'Element is visible' : 'Scroll to see element'}</Text>
+      <div style={{ height: '150vh' }} />
+      <Box ref={ref} p="xl" bg={entry?.isIntersecting ? 'green' : 'red'}>
+        Target element ({Math.round((entry?.intersectionRatio || 0) * 100)}% visible)
+      </Box>
+    </>
+  )
+}
+```
+
+## API
+
+The hook accepts `IntersectionObserver` options as its only argument:
+
+```tsx
+import { useIntersection } from '@tidbcloud/uikit'
+
+useIntersection({
+  root: document.querySelector('#some-element'),
+  rootMargin: '0px',
+  threshold: 1.0
+})
+```
+
+On the first render (as well as during SSR), or when no element is being observed, the entry is `null`.
+
+## Definition
+
+```tsx
+interface UseIntersectionReturnValue<T> {
+  ref: React.RefCallback<T | null>
+  entry: IntersectionObserverEntry | null
+}
+
+function useIntersection<T extends HTMLElement = any>(options?: IntersectionObserverInit): UseIntersectionReturnValue<T>
+```

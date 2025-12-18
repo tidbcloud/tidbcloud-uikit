@@ -1,5 +1,133 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# Chip
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-inputs-chip--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Pick one or multiple values with inline controls.
+
+## Import
+
+```tsx
+import { Chip } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+```tsx
+import { Chip } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <Chip defaultChecked>Awesome chip</Chip>
+}
+```
+
+## Controlled
+
+```tsx
+import { useState } from 'react'
+import { Chip } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [checked, setChecked] = useState(false)
+
+  return (
+    <Chip checked={checked} onChange={() => setChecked((v) => !v)}>
+      My chip
+    </Chip>
+  )
+}
+```
+
+## Variants
+
+Chip supports several variants: `outline`, `light`, and `filled`.
+
+```tsx
+import { Chip, Group } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Group>
+      <Chip variant="outline">Outline</Chip>
+      <Chip variant="light">Light</Chip>
+      <Chip variant="filled">Filled</Chip>
+    </Group>
+  )
+}
+```
+
+## Custom check icon
+
+```tsx
+import { Chip } from '@tidbcloud/uikit'
+import { IconX } from '@tabler/icons-react'
+
+function Demo() {
+  return (
+    <Chip icon={<IconX size={16} />} color="red" variant="filled" defaultChecked>
+      Forbidden
+    </Chip>
+  )
+}
+```
+
+## Chip.Group
+
+`Chip.Group` manages state of child Chip components. Set `multiple` prop to allow multiple chips to be selected:
+
+```tsx
+import { Chip, Group } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <>
+      <Chip.Group>
+        <Group>
+          <Chip value="1">Single chip</Chip>
+          <Chip value="2">Can be selected</Chip>
+          <Chip value="3">At a time</Chip>
+        </Group>
+      </Chip.Group>
+
+      <Chip.Group multiple>
+        <Group mt="md">
+          <Chip value="1">Multiple chips</Chip>
+          <Chip value="2">Can be selected</Chip>
+          <Chip value="3">At a time</Chip>
+        </Group>
+      </Chip.Group>
+    </>
+  )
+}
+```
+
+## Controlled Chip.Group
+
+```tsx
+import { useState } from 'react'
+import { Chip } from '@tidbcloud/uikit'
+
+function Single() {
+  const [value, setValue] = useState('react')
+
+  return (
+    <Chip.Group multiple={false} value={value} onChange={setValue}>
+      <Chip value="react">React</Chip>
+      <Chip value="ng">Angular</Chip>
+      <Chip value="svelte">Svelte</Chip>
+    </Chip.Group>
+  )
+}
+```
+
+## Props
+
+| Prop           | Type                         | Default      | Description                                      |
+| -------------- | ---------------------------- | ------------ | ------------------------------------------------ |
+| checked        | `boolean`                    | -            | Checked state for controlled component           |
+| children       | `React.ReactNode`            | required     | Label element                                    |
+| color          | `MantineColor`               | -            | Controls color based on variant                  |
+| defaultChecked | `boolean`                    | -            | Default checked state for uncontrolled component |
+| icon           | `React.ReactNode`            | -            | Custom check icon                                |
+| onChange       | `(checked: boolean) => void` | -            | Called when checked state changes                |
+| radius         | `MantineRadius`              | -            | Border radius                                    |
+| size           | `MantineSize`                | `'sm'`       | Chip size                                        |
+| type           | `'checkbox' \| 'radio'`      | `'checkbox'` | Input type                                       |
+| variant        | `string`                     | `'outline'`  | Visual variant                                   |

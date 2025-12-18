@@ -1,0 +1,77 @@
+# useUncontrolled
+
+Handle controlled and uncontrolled component state.
+
+## Import
+
+```tsx
+import { useUncontrolled } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+`useUncontrolled` manages state for both controlled and uncontrolled components. It's useful when building custom form components.
+
+```tsx
+import { useUncontrolled } from '@tidbcloud/uikit'
+
+interface CustomInputProps {
+  value?: string
+  defaultValue?: string
+  onChange?: (value: string) => void
+}
+
+function CustomInput({ value, defaultValue, onChange }: CustomInputProps) {
+  const [_value, handleChange] = useUncontrolled({
+    value,
+    defaultValue,
+    finalValue: 'Final',
+    onChange,
+  })
+
+  return (
+    <input
+      type="text"
+      value={_value}
+      onChange={(event) => handleChange(event.currentTarget.value)}
+    />
+  )
+}
+
+// Usage:
+// Uncontrolled
+<CustomInput defaultValue="Hello" />
+
+// Controlled
+<CustomInput value={value} onChange={setValue} />
+```
+
+## Options
+
+- `value` – value for controlled state
+- `defaultValue` – initial value for uncontrolled state
+- `finalValue` – fallback value when both `value` and `defaultValue` are not provided
+- `onChange` – controlled state onChange handler
+
+## Return Value
+
+The hook returns a tuple:
+
+1. Current value
+2. Handler to update the state
+3. Boolean indicating if the state is controlled
+
+## Definition
+
+```tsx
+interface UseUncontrolledOptions<T> {
+  value?: T
+  defaultValue?: T
+  finalValue?: T
+  onChange?: (value: T) => void
+}
+
+type UseUncontrolledReturnValue<T> = [T, (value: T, ...payload: any[]) => void, boolean]
+
+function useUncontrolled<T>(input: UseUncontrolledOptions<T>): UseUncontrolledReturnValue<T>
+```

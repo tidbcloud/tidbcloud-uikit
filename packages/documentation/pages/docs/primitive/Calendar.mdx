@@ -1,5 +1,100 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# Calendar
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-dates-calendar--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Base component for custom date pickers.
+
+## Import
+
+```tsx
+import { Calendar } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+Use `Calendar` component to create custom date pickers. By default, `Calendar` works the same way as `DatePicker` component but does not include any logic of dates selection.
+
+```tsx
+import { Calendar } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <Calendar />
+}
+```
+
+## Custom date picker
+
+Use `Calendar` as a base for custom date pickers. For example, you can create a date picker that allows user to pick three or less dates:
+
+```tsx
+import dayjs from 'dayjs'
+import { useState } from 'react'
+import { Calendar } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [selected, setSelected] = useState<Date[]>([])
+
+  const handleSelect = (date: Date) => {
+    const isSelected = selected.some((s) => dayjs(date).isSame(s, 'date'))
+    if (isSelected) {
+      setSelected((current) => current.filter((d) => !dayjs(d).isSame(date, 'date')))
+    } else if (selected.length < 3) {
+      setSelected((current) => [...current, date])
+    }
+  }
+
+  return (
+    <Calendar
+      getDayProps={(date) => ({
+        selected: selected.some((s) => dayjs(date).isSame(s, 'date')),
+        onClick: () => handleSelect(date)
+      })}
+    />
+  )
+}
+```
+
+## Static calendar
+
+Set `static` prop to display a calendar that user cannot interact with:
+
+```tsx
+import { Calendar, Indicator } from '@tidbcloud/uikit'
+import dayjs from 'dayjs'
+
+function Demo() {
+  return (
+    <Calendar
+      static
+      renderDay={(date) => {
+        const day = dayjs(date).date()
+        return (
+          <Indicator size={6} color="red" offset={-2} disabled={day !== 16}>
+            <div>{day}</div>
+          </Indicator>
+        )
+      }}
+    />
+  )
+}
+```
+
+## Props
+
+| Prop             | Type                            | Default | Description                                     |
+| ---------------- | ------------------------------- | ------- | ----------------------------------------------- |
+| date             | `string \| Date`                | -       | Displayed date in controlled mode               |
+| defaultDate      | `string \| Date`                | -       | Initial displayed date in uncontrolled mode     |
+| excludeDate      | `(date: string) => boolean`     | -       | Callback to determine if day should be disabled |
+| firstDayOfWeek   | `0-6`                           | -       | First day of week (0 = Sunday, 6 = Saturday)    |
+| getDayProps      | `(date: string) => DayProps`    | -       | Passes props to Day components                  |
+| hideOutsideDates | `boolean`                       | -       | Hide dates outside current month                |
+| hideWeekdays     | `boolean`                       | -       | Hide weekdays row                               |
+| highlightToday   | `boolean`                       | -       | Highlight today with a border                   |
+| level            | `'month' \| 'year' \| 'decade'` | -       | Current displayed level                         |
+| locale           | `string`                        | -       | Dayjs locale                                    |
+| maxDate          | `string \| Date`                | -       | Maximum possible date                           |
+| minDate          | `string \| Date`                | -       | Minimum possible date                           |
+| numberOfColumns  | `number`                        | -       | Number of columns displayed                     |
+| onDateChange     | `(date: string) => void`        | -       | Called when date changes                        |
+| renderDay        | `(date: string) => ReactNode`   | -       | Custom day rendering                            |
+| size             | `MantineSize`                   | `'sm'`  | Component size                                  |
+| static           | `boolean`                       | -       | Disable user interaction                        |

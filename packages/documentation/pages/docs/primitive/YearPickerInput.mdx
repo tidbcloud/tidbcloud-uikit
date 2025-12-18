@@ -1,5 +1,100 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# YearPickerInput
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-dates-yearpickerinput--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Year picker input with dropdown. Select single year, multiple years, or a years range from a dropdown.
+
+## Import
+
+```tsx
+import { YearPickerInput } from '@tidbcloud/uikit'
+```
+
+## Basic Usage
+
+```tsx
+import { useState } from 'react'
+import { YearPickerInput } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [value, setValue] = useState<Date | null>(null)
+  return <YearPickerInput label="Pick year" placeholder="Pick year" value={value} onChange={setValue} />
+}
+```
+
+## Multiple Years
+
+Set `type="multiple"` to allow selecting multiple years:
+
+```tsx
+import { useState } from 'react'
+import { YearPickerInput } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [value, setValue] = useState<Date[]>([])
+  return (
+    <YearPickerInput type="multiple" label="Pick years" placeholder="Pick years" value={value} onChange={setValue} />
+  )
+}
+```
+
+## Years Range
+
+Set `type="range"` to pick a range of years:
+
+```tsx
+import { useState } from 'react'
+import { YearPickerInput } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [value, setValue] = useState<[Date | null, Date | null]>([null, null])
+  return (
+    <YearPickerInput
+      type="range"
+      label="Pick years range"
+      placeholder="Pick years range"
+      value={value}
+      onChange={setValue}
+    />
+  )
+}
+```
+
+## Custom Value Format
+
+Use `valueFormat` prop to customize display format:
+
+```tsx
+import { YearPickerInput } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <YearPickerInput valueFormat="YY" type="multiple" label="Pick year" placeholder="Pick year" />
+}
+```
+
+## Modal Dropdown
+
+Change dropdown to modal with `dropdownType="modal"`:
+
+```tsx
+import { YearPickerInput } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <YearPickerInput dropdownType="modal" label="Pick year" placeholder="Pick year" />
+}
+```
+
+## Key Props
+
+| Prop         | Type                               | Description                      |
+| ------------ | ---------------------------------- | -------------------------------- |
+| value        | DateValue                          | Selected year value (controlled) |
+| onChange     | (value: DateValue) => void         | Called when value changes        |
+| type         | 'default' \| 'multiple' \| 'range' | Picker type                      |
+| label        | ReactNode                          | Input label                      |
+| placeholder  | string                             | Input placeholder                |
+| clearable    | boolean                            | Show clear button when has value |
+| dropdownType | 'popover' \| 'modal'               | Dropdown type                    |
+| valueFormat  | string                             | dayjs format for displayed value |
+| minDate      | string \| Date                     | Minimum selectable date          |
+| maxDate      | string \| Date                     | Maximum selectable date          |
+| disabled     | boolean                            | Disable the input                |
+| error        | ReactNode                          | Error message                    |

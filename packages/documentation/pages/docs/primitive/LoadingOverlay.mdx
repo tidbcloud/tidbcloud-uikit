@@ -1,5 +1,84 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# LoadingOverlay
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-overlays-loadingoverlay--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Display an overlay with a centered loader over the parent element.
+
+## Import
+
+```tsx
+import { LoadingOverlay } from '@tidbcloud/uikit'
+```
+
+## Basic Usage
+
+Renders an overlay with a loader over the parent element with `position: relative`.
+
+```tsx
+import { useDisclosure } from '@tidbcloud/uikit-hooks'
+import { LoadingOverlay, Button, Group, Box } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [visible, { toggle }] = useDisclosure(false)
+
+  return (
+    <>
+      <Box pos="relative">
+        <LoadingOverlay visible={visible} zIndex={1000} overlayProps={{ radius: 'sm', blur: 2 }} />
+        {/* ...other content */}
+      </Box>
+
+      <Group justify="center">
+        <Button onClick={toggle}>Toggle overlay</Button>
+      </Group>
+    </>
+  )
+}
+```
+
+## Loader Props
+
+Customize the loader using `loaderProps`.
+
+```tsx
+import { LoadingOverlay, Box } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Box pos="relative">
+      <LoadingOverlay
+        visible={true}
+        zIndex={1000}
+        overlayProps={{ radius: 'sm', blur: 2 }}
+        loaderProps={{ color: 'pink', type: 'bars' }}
+      />
+      {/* ...content */}
+    </Box>
+  )
+}
+```
+
+## Custom Loader Content
+
+Replace the default loader with custom content.
+
+```tsx
+import { LoadingOverlay, Box } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Box pos="relative">
+      <LoadingOverlay visible={true} loaderProps={{ children: 'Loading...' }} />
+      {/* ...content */}
+    </Box>
+  )
+}
+```
+
+## Key Props
+
+| Prop              | Type               | Description                          |
+| ----------------- | ------------------ | ------------------------------------ |
+| `visible`         | `boolean`          | Controls overlay visibility          |
+| `zIndex`          | `number \| string` | Overlay z-index                      |
+| `loaderProps`     | `LoaderProps`      | Props passed to Loader component     |
+| `overlayProps`    | `OverlayProps`     | Props passed to Overlay component    |
+| `transitionProps` | `TransitionProps`  | Props passed to Transition component |

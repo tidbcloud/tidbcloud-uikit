@@ -1,5 +1,122 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# DateTimePicker
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-dates-datetimepicker--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Capture datetime from the user.
+
+## Import
+
+```tsx
+import { DateTimePicker } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+```tsx
+import { DateTimePicker } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <DateTimePicker label="Pick date and time" placeholder="Pick date and time" />
+}
+```
+
+## With seconds
+
+Set `withSeconds` prop to display seconds input:
+
+```tsx
+import { DateTimePicker } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <DateTimePicker withSeconds label="Pick date and time" placeholder="Pick date and time" />
+}
+```
+
+## Value format
+
+Use `valueFormat` prop to change dayjs format of value label:
+
+```tsx
+import { DateTimePicker } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <DateTimePicker valueFormat="DD MMM YYYY hh:mm A" label="Pick date and time" placeholder="Pick date and time" />
+  )
+}
+```
+
+## Clearable
+
+Set `clearable` prop to display clear button:
+
+```tsx
+import { DateTimePicker } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <DateTimePicker clearable label="Pick date and time" placeholder="Pick date and time" />
+}
+```
+
+## Open picker in modal
+
+Set `dropdownType="modal"` to render picker in a modal:
+
+```tsx
+import { DateTimePicker } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <DateTimePicker dropdownType="modal" label="Pick date and time" placeholder="Pick date and time" />
+}
+```
+
+## TimePicker props
+
+You can pass props to the underlying TimePicker component with `timePickerProps`:
+
+```tsx
+import { DateTimePicker } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <DateTimePicker
+      label="Pick date and time"
+      placeholder="Pick date and time"
+      timePickerProps={{
+        withDropdown: true,
+        format: '12h'
+      }}
+    />
+  )
+}
+```
+
+## Disabled state
+
+```tsx
+import { DateTimePicker } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <DateTimePicker label="Disabled" placeholder="Pick date and time" disabled />
+}
+```
+
+## Props
+
+| Prop            | Type                            | Default   | Description               |
+| --------------- | ------------------------------- | --------- | ------------------------- |
+| value           | string \| null                  | -         | Controlled value          |
+| defaultValue    | string                          | -         | Default value             |
+| onChange        | (value: string \| null) => void | -         | Called when value changes |
+| valueFormat     | string                          | -         | dayjs format for display  |
+| withSeconds     | boolean                         | false     | Display seconds input     |
+| clearable       | boolean                         | false     | Show clear button         |
+| dropdownType    | 'popover' \| 'modal'            | 'popover' | Type of dropdown          |
+| timePickerProps | TimePickerProps                 | -         | Props for TimePicker      |
+| minDate         | string                          | -         | Minimum allowed date      |
+| maxDate         | string                          | -         | Maximum allowed date      |
+| label           | ReactNode                       | -         | Input label               |
+| description     | ReactNode                       | -         | Input description         |
+| error           | ReactNode                       | -         | Error message             |
+| disabled        | boolean                         | false     | Disable input             |
+| placeholder     | string                          | -         | Input placeholder         |
+| size            | MantineSize                     | 'sm'      | Input size                |
+| locale          | string                          | 'en'      | dayjs locale              |

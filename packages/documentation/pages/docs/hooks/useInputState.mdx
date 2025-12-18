@@ -1,0 +1,80 @@
+# useInputState
+
+Handle input state changes for both native and custom inputs.
+
+## Import
+
+```tsx
+import { useInputState } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+`useInputState` handles state of native inputs (with event in `onChange` handler) and custom inputs (with value in `onChange` handler).
+
+```tsx
+import { useInputState } from '@tidbcloud/uikit'
+import { TextInput, NumberInput } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [stringValue, setStringValue] = useInputState('')
+  const [numberValue, setNumberValue] = useInputState<string | number>(0)
+
+  return (
+    <>
+      {/* Native input */}
+      <input type="text" value={stringValue} onChange={setStringValue} />
+
+      {/* Mantine TextInput */}
+      <TextInput value={stringValue} onChange={setStringValue} />
+
+      {/* Mantine NumberInput (passes value directly) */}
+      <NumberInput value={numberValue} onChange={setNumberValue} />
+    </>
+  )
+}
+```
+
+## Comparison with useState
+
+```tsx
+import { useState } from 'react'
+import { useInputState } from '@tidbcloud/uikit'
+import { TextInput, NumberInput } from '@tidbcloud/uikit'
+
+// With useState - requires different handling
+function WithUseState() {
+  const [stringValue, setStringValue] = useState('')
+  const [numberValue, setNumberValue] = useState<string | number>(0)
+
+  return (
+    <>
+      <input type="text" value={stringValue} onChange={(event) => setStringValue(event.currentTarget.value)} />
+      <TextInput value={stringValue} onChange={(event) => setStringValue(event.currentTarget.value)} />
+      <NumberInput value={numberValue} onChange={setNumberValue} />
+    </>
+  )
+}
+
+// With useInputState - unified handling
+function WithUseInputState() {
+  const [stringValue, setStringValue] = useInputState('')
+  const [numberValue, setNumberValue] = useInputState<string | number>(0)
+
+  return (
+    <>
+      <input type="text" value={stringValue} onChange={setStringValue} />
+      <TextInput value={stringValue} onChange={setStringValue} />
+      <NumberInput value={numberValue} onChange={setNumberValue} />
+    </>
+  )
+}
+```
+
+## Definition
+
+```tsx
+type UseInputStateReturnValue<T> = [T, (value: null | undefined | T | React.ChangeEvent<any>) => void]
+
+function useInputState<T>(initialState: T): UseInputStateReturnValue<T>
+```

@@ -1,5 +1,282 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# Select
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-combobox-select--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Select component allows capturing user input from a predefined list of options. This is a custom wrapper around Mantine's Select with additional `creatable` functionality.
+
+## Import
+
+```tsx
+import { Select } from '@tidbcloud/uikit'
+```
+
+## Basic Usage
+
+```tsx
+import { Select } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <Select label="Your favorite library" placeholder="Pick value" data={['React', 'Angular', 'Vue', 'Svelte']} />
+}
+```
+
+## Controlled
+
+```tsx
+import { useState } from 'react'
+import { Select } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [value, setValue] = useState<string | null>(null)
+  return <Select data={['React', 'Angular', 'Vue', 'Svelte']} value={value} onChange={setValue} />
+}
+```
+
+## Searchable
+
+```tsx
+import { Select } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Select
+      label="Your favorite library"
+      placeholder="Pick value"
+      data={['React', 'Angular', 'Vue', 'Svelte']}
+      searchable
+    />
+  )
+}
+```
+
+## Clearable
+
+```tsx
+import { Select } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Select
+      label="Your favorite library"
+      placeholder="Pick value"
+      data={['React', 'Angular', 'Vue', 'Svelte']}
+      defaultValue="React"
+      clearable
+    />
+  )
+}
+```
+
+## Creatable (Custom Feature)
+
+The `@tidbcloud/uikit` Select includes a `creatable` prop that allows users to create new options:
+
+```tsx
+import { useState } from 'react'
+import { Select } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [data, setData] = useState(['React', 'Angular', 'Vue', 'Svelte'])
+
+  return (
+    <Select
+      label="Your favorite library"
+      placeholder="Pick or create value"
+      data={data}
+      searchable
+      creatable
+      getCreateLabel={(query) => `+ Create ${query}`}
+      onCreate={(query) => {
+        const item = { value: query, label: query }
+        setData((current) => [...current, query])
+        return item
+      }}
+    />
+  )
+}
+```
+
+## Grouped Options
+
+```tsx
+import { Select } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Select
+      label="Your favorite library"
+      placeholder="Pick value"
+      data={[
+        { group: 'Frontend', items: ['React', 'Angular'] },
+        { group: 'Backend', items: ['Express', 'Django'] }
+      ]}
+    />
+  )
+}
+```
+
+## Nothing Found Message
+
+```tsx
+import { Select } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Select
+      label="Your favorite library"
+      placeholder="Pick value"
+      data={['React', 'Angular', 'Vue', 'Svelte']}
+      searchable
+      nothingFoundMessage="Nothing found..."
+    />
+  )
+}
+```
+
+## Disabled Options
+
+```tsx
+import { Select } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Select
+      label="Your favorite library"
+      placeholder="Pick value"
+      data={[
+        { value: 'react', label: 'React' },
+        { value: 'ng', label: 'Angular' },
+        { value: 'vue', label: 'Vue', disabled: true },
+        { value: 'svelte', label: 'Svelte', disabled: true }
+      ]}
+    />
+  )
+}
+```
+
+## With Sections
+
+```tsx
+import { Select } from '@tidbcloud/uikit'
+import { IconComponents } from '@tabler/icons-react'
+
+function Demo() {
+  return (
+    <Select
+      data={['React', 'Angular', 'Vue']}
+      leftSection={<IconComponents size={16} />}
+      leftSectionPointerEvents="none"
+      label="Your favorite library"
+      placeholder="Pick value"
+    />
+  )
+}
+```
+
+## Key Props
+
+| Prop                  | Type                                                    | Default  | Description                                     |
+| --------------------- | ------------------------------------------------------- | -------- | ----------------------------------------------- |
+| `data`                | `ComboboxData`                                          | -        | Data for options                                |
+| `value`               | `string \| null`                                        | -        | Controlled component value                      |
+| `defaultValue`        | `string \| null`                                        | -        | Uncontrolled component default value            |
+| `onChange`            | `(value: string \| null, option: ComboboxItem) => void` | -        | Called when value changes                       |
+| `searchable`          | `boolean`                                               | `false`  | Enable search filtering                         |
+| `searchValue`         | `string`                                                | -        | Controlled search value                         |
+| `onSearchChange`      | `(value: string) => void`                               | -        | Called when search value changes                |
+| `clearable`           | `boolean`                                               | `false`  | Show clear button when value is set             |
+| `onClear`             | `() => void`                                            | -        | Called when clear button is clicked             |
+| `nothingFoundMessage` | `ReactNode`                                             | -        | Message when no options match search            |
+| `allowDeselect`       | `boolean`                                               | `true`   | Allow deselecting by clicking selected option   |
+| `withCheckIcon`       | `boolean`                                               | `true`   | Show check icon near selected option            |
+| `checkIconPosition`   | `'left' \| 'right'`                                     | `'left'` | Position of check icon relative to option label |
+| `maxDropdownHeight`   | `number`                                                | `250`    | Max height of dropdown                          |
+| `disabled`            | `boolean`                                               | `false`  | Disable the input                               |
+| `readOnly`            | `boolean`                                               | `false`  | Make the input read-only                        |
+| `error`               | `ReactNode`                                             | -        | Error message                                   |
+
+## Creatable Props (Custom)
+
+| Prop             | Type                                                   | Description                              |
+| ---------------- | ------------------------------------------------------ | ---------------------------------------- |
+| `creatable`      | `boolean`                                              | Enable creating new options              |
+| `getCreateLabel` | `(query: string) => string`                            | Function to generate create option label |
+| `onCreate`       | `(query: string) => ComboboxItem \| null \| undefined` | Called when new option is created        |
+
+---
+
+# MultiSelect
+
+MultiSelect component with creatable support. This is a custom wrapper in `@tidbcloud/uikit` that adds the same creatable functionality as Select.
+
+## Import
+
+```tsx
+import { MultiSelect } from '@tidbcloud/uikit'
+```
+
+## Basic Usage
+
+```tsx
+import { MultiSelect } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <MultiSelect
+      label="Your favorite libraries"
+      placeholder="Pick values"
+      data={['React', 'Angular', 'Vue', 'Svelte']}
+    />
+  )
+}
+```
+
+## Creatable MultiSelect
+
+```tsx
+import { useState } from 'react'
+import { MultiSelect } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [data, setData] = useState(['React', 'Angular', 'Vue'])
+
+  return (
+    <MultiSelect
+      label="Creatable MultiSelect"
+      data={data}
+      placeholder="Select or create items"
+      searchable
+      creatable
+      getCreateLabel={(query) => `+ Create ${query}`}
+      onCreate={(query) => {
+        const item = { value: query, label: query }
+        setData((current) => [...current, query])
+        return item
+      }}
+    />
+  )
+}
+```
+
+## MultiSelect Props
+
+| Prop                  | Type                        | Default | Description                               |
+| --------------------- | --------------------------- | ------- | ----------------------------------------- |
+| `data`                | `ComboboxData`              | -       | Data for options                          |
+| `value`               | `string[]`                  | -       | Controlled component value                |
+| `defaultValue`        | `string[]`                  | -       | Uncontrolled component default value      |
+| `onChange`            | `(value: string[]) => void` | -       | Called when value changes                 |
+| `searchable`          | `boolean`                   | `false` | Enable search filtering                   |
+| `clearable`           | `boolean`                   | `false` | Show clear button when value is set       |
+| `nothingFoundMessage` | `ReactNode`                 | -       | Message when no options match search      |
+| `maxValues`           | `number`                    | -       | Maximum number of values                  |
+| `hidePickedOptions`   | `boolean`                   | `false` | Hide already picked options from dropdown |
+| `maxDropdownHeight`   | `number`                    | `250`   | Max height of dropdown                    |
+| `disabled`            | `boolean`                   | `false` | Disable the input                         |
+| `error`               | `ReactNode`                 | -       | Error message                             |
+
+## MultiSelect Creatable Props (Custom)
+
+| Prop             | Type                                                   | Description                              |
+| ---------------- | ------------------------------------------------------ | ---------------------------------------- |
+| `creatable`      | `boolean`                                              | Enable creating new options              |
+| `getCreateLabel` | `(query: string) => string`                            | Function to generate create option label |
+| `onCreate`       | `(query: string) => ComboboxItem \| null \| undefined` | Called when new option is created        |

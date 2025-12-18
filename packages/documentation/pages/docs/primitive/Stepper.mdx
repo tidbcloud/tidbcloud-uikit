@@ -1,5 +1,127 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# Stepper
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-navigation-stepper--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Display content divided into a steps sequence with navigation controls.
+
+## Import
+
+```tsx
+import { Stepper } from '@tidbcloud/uikit'
+```
+
+## Basic Usage
+
+```tsx
+import { useState } from 'react'
+import { Stepper, Button, Group } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [active, setActive] = useState(1)
+  const nextStep = () => setActive((current) => (current < 3 ? current + 1 : current))
+  const prevStep = () => setActive((current) => (current > 0 ? current - 1 : current))
+
+  return (
+    <>
+      <Stepper active={active} onStepClick={setActive}>
+        <Stepper.Step label="First step" description="Create an account">
+          Step 1 content: Create an account
+        </Stepper.Step>
+        <Stepper.Step label="Second step" description="Verify email">
+          Step 2 content: Verify email
+        </Stepper.Step>
+        <Stepper.Step label="Final step" description="Get full access">
+          Step 3 content: Get full access
+        </Stepper.Step>
+        <Stepper.Completed>Completed, click back button to get to previous step</Stepper.Completed>
+      </Stepper>
+
+      <Group justify="center" mt="xl">
+        <Button variant="default" onClick={prevStep}>
+          Back
+        </Button>
+        <Button onClick={nextStep}>Next step</Button>
+      </Group>
+    </>
+  )
+}
+```
+
+## With Custom Icons
+
+```tsx
+import { useState } from 'react'
+import { IconUserCheck, IconMailOpened, IconShieldCheck } from '@tabler/icons-react'
+import { Stepper } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [active, setActive] = useState(1)
+
+  return (
+    <Stepper active={active} onStepClick={setActive}>
+      <Stepper.Step icon={<IconUserCheck size={18} />} label="Step 1" description="Create an account" />
+      <Stepper.Step icon={<IconMailOpened size={18} />} label="Step 2" description="Verify email" />
+      <Stepper.Step icon={<IconShieldCheck size={18} />} label="Step 3" description="Get full access" />
+    </Stepper>
+  )
+}
+```
+
+## Vertical Orientation
+
+```tsx
+import { useState } from 'react'
+import { Stepper } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [active, setActive] = useState(1)
+
+  return (
+    <Stepper active={active} onStepClick={setActive} orientation="vertical">
+      <Stepper.Step label="Step 1" description="Create an account" />
+      <Stepper.Step label="Step 2" description="Verify email" />
+      <Stepper.Step label="Step 3" description="Get full access" />
+    </Stepper>
+  )
+}
+```
+
+## Loading State
+
+```tsx
+import { Stepper } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Stepper active={1}>
+      <Stepper.Step label="Step 1" description="Create an account" />
+      <Stepper.Step label="Step 2" description="Verify email" loading />
+      <Stepper.Step label="Step 3" description="Get full access" />
+    </Stepper>
+  )
+}
+```
+
+## Key Props
+
+### Stepper
+
+| Prop                 | Type                        | Description                         |
+| -------------------- | --------------------------- | ----------------------------------- |
+| active               | number                      | Index of the active step (required) |
+| onStepClick          | (stepIndex: number) => void | Called when step is clicked         |
+| orientation          | "horizontal" \| "vertical"  | Stepper orientation                 |
+| iconPosition         | "left" \| "right"           | Icon position relative to step body |
+| allowNextStepsSelect | boolean                     | Allow selecting next steps          |
+| color                | MantineColor                | Color of active and progress steps  |
+| size                 | MantineSize                 | Controls size of elements           |
+| completedIcon        | ReactNode                   | Icon for completed steps            |
+
+### Stepper.Step
+
+| Prop            | Type      | Description              |
+| --------------- | --------- | ------------------------ |
+| label           | ReactNode | Step label               |
+| description     | ReactNode | Step description         |
+| icon            | ReactNode | Custom step icon         |
+| loading         | boolean   | Show loading state       |
+| allowStepSelect | boolean   | Allow clicking this step |
+| completedIcon   | ReactNode | Custom completed icon    |

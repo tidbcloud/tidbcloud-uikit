@@ -1,5 +1,148 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# MultiSelect
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-combobox-multiselect--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Custom searchable multi-select component for selecting multiple values from a list.
+
+## Import
+
+```tsx
+import { MultiSelect } from '@tidbcloud/uikit'
+```
+
+## Basic Usage
+
+```tsx
+import { MultiSelect } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <MultiSelect
+      label="Your favorite libraries"
+      placeholder="Pick value"
+      data={['React', 'Angular', 'Vue', 'Svelte']}
+    />
+  )
+}
+```
+
+## Controlled
+
+```tsx
+import { useState } from 'react'
+import { MultiSelect } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [value, setValue] = useState<string[]>([])
+  return <MultiSelect data={['React', 'Angular', 'Vue', 'Svelte']} value={value} onChange={setValue} />
+}
+```
+
+## Searchable
+
+```tsx
+import { MultiSelect } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <MultiSelect
+      label="Your favorite libraries"
+      placeholder="Pick value"
+      data={['React', 'Angular', 'Vue', 'Svelte']}
+      searchable
+    />
+  )
+}
+```
+
+## Clearable
+
+```tsx
+import { MultiSelect } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <MultiSelect
+      label="Your favorite libraries"
+      placeholder="Pick value"
+      data={['React', 'Angular', 'Vue', 'Svelte']}
+      defaultValue={['React']}
+      clearable
+    />
+  )
+}
+```
+
+## Max Values
+
+Limit the number of selected values.
+
+```tsx
+import { MultiSelect } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <MultiSelect
+      label="Your favorite libraries"
+      placeholder="Select up to 2 libraries"
+      data={['React', 'Angular', 'Vue', 'Svelte']}
+      maxValues={2}
+    />
+  )
+}
+```
+
+## Hide Picked Options
+
+```tsx
+import { MultiSelect } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <MultiSelect
+      label="Your favorite libraries"
+      placeholder="Pick value"
+      data={['React', 'Angular', 'Vue', 'Svelte']}
+      hidePickedOptions
+    />
+  )
+}
+```
+
+## Grouped Options
+
+```tsx
+import { MultiSelect } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <MultiSelect
+      label="Your favorite libraries"
+      placeholder="Pick value"
+      data={[
+        { group: 'Frontend', items: ['React', 'Angular'] },
+        { group: 'Backend', items: ['Express', 'Django'] }
+      ]}
+    />
+  )
+}
+```
+
+## Key Props
+
+| Prop                  | Type                        | Description                          |
+| --------------------- | --------------------------- | ------------------------------------ |
+| `data`                | `string[] \| ComboboxData`  | Options data                         |
+| `value`               | `string[]`                  | Selected values (controlled)         |
+| `defaultValue`        | `string[]`                  | Default selected values              |
+| `onChange`            | `(value: string[]) => void` | Called when value changes            |
+| `searchable`          | `boolean`                   | Enable filtering by user input       |
+| `clearable`           | `boolean`                   | Show clear button                    |
+| `maxValues`           | `number`                    | Maximum number of selected values    |
+| `hidePickedOptions`   | `boolean`                   | Hide selected options from dropdown  |
+| `nothingFoundMessage` | `string`                    | Message when no options match search |
+| `checkIconPosition`   | `'left' \| 'right'`         | Position of check icon               |
+| `withCheckIcon`       | `boolean`                   | Show check icon on selected options  |
+| `label`               | `ReactNode`                 | Input label                          |
+| `placeholder`         | `string`                    | Input placeholder                    |
+| `disabled`            | `boolean`                   | Disable input                        |
+| `searchValue`         | `string`                    | Controlled search value              |
+| `onSearchChange`      | `(value: string) => void`   | Called when search value changes     |

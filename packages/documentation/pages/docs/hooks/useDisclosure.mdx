@@ -1,0 +1,85 @@
+# useDisclosure
+
+Manage boolean state with open, close, and toggle handlers.
+
+## Import
+
+```tsx
+import { useDisclosure } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+`useDisclosure` manages boolean state. It provides `open`, `close`, and `toggle` handlers and accepts optional `onOpen` and `onClose` callbacks.
+
+```tsx
+import { useDisclosure } from '@tidbcloud/uikit'
+import { Modal, Button } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [opened, { open, close }] = useDisclosure(false)
+
+  return (
+    <>
+      <Modal opened={opened} onClose={close} title="My Modal">
+        Modal content
+      </Modal>
+      <Button onClick={open}>Open modal</Button>
+    </>
+  )
+}
+```
+
+## Handlers
+
+```tsx
+import { useDisclosure } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [opened, handlers] = useDisclosure(false)
+
+  handlers.open() // Sets opened to true
+  handlers.close() // Sets opened to false
+  handlers.toggle() // Toggles opened state
+}
+```
+
+## Callbacks
+
+The `onOpen` and `onClose` callbacks execute when the opened state changes:
+
+```tsx
+import { useDisclosure } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [opened, handlers] = useDisclosure(false, {
+    onOpen: () => console.log('Opened'),
+    onClose: () => console.log('Closed')
+  })
+
+  handlers.open() // Calls onOpen and sets opened to true
+  handlers.open() // Does nothing, opened is already true
+
+  handlers.close() // Calls onClose and sets opened to false
+  handlers.close() // Does nothing, opened is already false
+}
+```
+
+## Definition
+
+```tsx
+interface UseDisclosureOptions {
+  onOpen?: () => void
+  onClose?: () => void
+}
+
+interface UseDisclosureHandlers {
+  open: () => void
+  close: () => void
+  toggle: () => void
+}
+
+type UseDisclosureReturnValue = [boolean, UseDisclosureHandlers]
+
+function useDisclosure(initialState?: boolean, options?: UseDisclosureOptions): UseDisclosureReturnValue
+```

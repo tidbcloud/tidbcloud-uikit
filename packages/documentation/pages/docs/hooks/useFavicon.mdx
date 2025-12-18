@@ -1,0 +1,56 @@
+# useFavicon
+
+Set the page favicon.
+
+## Import
+
+```tsx
+import { useFavicon } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+`useFavicon` appends a `<link />` element to the head with the given favicon. The hook is not called during server side rendering.
+
+```tsx
+import { useFavicon } from '@tidbcloud/uikit'
+
+function Demo() {
+  useFavicon('/favicon.ico')
+
+  return <div>Page with custom favicon</div>
+}
+```
+
+## Dynamic Favicon
+
+```tsx
+import { useState } from 'react'
+import { useFavicon } from '@tidbcloud/uikit'
+import { Button, Group } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [favicon, setFavicon] = useState('/default.ico')
+  useFavicon(favicon)
+
+  return (
+    <Group>
+      <Button onClick={() => setFavicon('/success.ico')}>Success</Button>
+      <Button onClick={() => setFavicon('/error.ico')}>Error</Button>
+    </Group>
+  )
+}
+```
+
+## Supported Formats
+
+- `.ico`
+- `.png`
+- `.svg`
+- `.gif`
+
+## Definition
+
+```tsx
+function useFavicon(url: string): void
+```

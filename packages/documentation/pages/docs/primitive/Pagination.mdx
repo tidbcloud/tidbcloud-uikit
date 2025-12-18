@@ -1,5 +1,125 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# Pagination
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-navigation-pagination--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Display active page and navigate between multiple pages. Supports customizable controls and styling.
+
+## Import
+
+```tsx
+import { Pagination } from '@tidbcloud/uikit'
+```
+
+## Basic Usage
+
+```tsx
+import { Pagination } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <Pagination total={10} />
+}
+```
+
+## Controlled
+
+```tsx
+import { useState } from 'react'
+import { Pagination } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [activePage, setPage] = useState(1)
+  return <Pagination total={10} value={activePage} onChange={setPage} />
+}
+```
+
+## With Chunked Content
+
+```tsx
+import { useState } from 'react'
+import { Pagination, Text } from '@tidbcloud/uikit'
+
+const data = [
+  /* array of items */
+]
+const itemsPerPage = 5
+
+function Demo() {
+  const [activePage, setPage] = useState(1)
+  const totalPages = Math.ceil(data.length / itemsPerPage)
+
+  const items = data
+    .slice((activePage - 1) * itemsPerPage, activePage * itemsPerPage)
+    .map((item) => <Text key={item.id}>{item.name}</Text>)
+
+  return (
+    <>
+      {items}
+      <Pagination total={totalPages} value={activePage} onChange={setPage} />
+    </>
+  )
+}
+```
+
+## Siblings and Boundaries
+
+```tsx
+import { Pagination } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <>
+      {/* Show 2 pages on each side of active */}
+      <Pagination total={20} siblings={2} defaultValue={10} />
+
+      {/* Show 3 pages at start and end */}
+      <Pagination total={20} boundaries={3} defaultValue={10} />
+    </>
+  )
+}
+```
+
+## With Edge Controls
+
+```tsx
+import { Pagination } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <Pagination total={10} withEdges />
+}
+```
+
+## Compound Components
+
+```tsx
+import { Pagination, Group } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Pagination.Root total={10}>
+      <Group gap={5}>
+        <Pagination.First />
+        <Pagination.Previous />
+        <Pagination.Items />
+        <Pagination.Next />
+        <Pagination.Last />
+      </Group>
+    </Pagination.Root>
+  )
+}
+```
+
+## Key Props
+
+| Prop           | Type                     | Description                        |
+| -------------- | ------------------------ | ---------------------------------- |
+| `total`        | `number`                 | Total number of pages (required)   |
+| `value`        | `number`                 | Controlled active page             |
+| `onChange`     | `(page: number) => void` | Called when page changes           |
+| `defaultValue` | `number`                 | Default active page                |
+| `siblings`     | `number`                 | Pages shown on each side of active |
+| `boundaries`   | `number`                 | Pages shown at start/end           |
+| `withEdges`    | `boolean`                | Show first/last controls           |
+| `withControls` | `boolean`                | Show next/previous controls        |
+| `withPages`    | `boolean`                | Show page numbers                  |
+| `color`        | `MantineColor`           | Active page color                  |
+| `size`         | `MantineSize`            | Controls size                      |
+| `radius`       | `MantineRadius`          | Border radius                      |
+| `disabled`     | `boolean`                | Disable all controls               |

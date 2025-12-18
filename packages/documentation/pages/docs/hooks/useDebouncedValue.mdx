@@ -1,0 +1,88 @@
+# useDebouncedValue
+
+Debounce value changes for controlled components.
+
+## Import
+
+```tsx
+import { useDebouncedValue } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+`useDebouncedValue` hook debounces value changes. It is designed to work with controlled components.
+
+```tsx
+import { useState } from 'react'
+import { useDebouncedValue } from '@tidbcloud/uikit'
+import { TextInput, Text } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [value, setValue] = useState('')
+  const [debounced] = useDebouncedValue(value, 500)
+
+  return (
+    <>
+      <TextInput value={value} onChange={(e) => setValue(e.currentTarget.value)} placeholder="Type something..." />
+      <Text mt="md">Value: {value}</Text>
+      <Text>Debounced: {debounced}</Text>
+    </>
+  )
+}
+```
+
+## Differences from useDebouncedState
+
+- You have direct access to the non-debounced value
+- It is used for controlled inputs (`value` prop instead of `defaultValue`)
+- It works with props or other state providers
+
+## Leading Update
+
+Immediately update value with first call using `{ leading: true }`:
+
+```tsx
+import { useDebouncedValue } from '@tidbcloud/uikit'
+
+const [debounced] = useDebouncedValue(value, 500, { leading: true })
+```
+
+## Cancel Update
+
+The hook provides a `cancel` callback to cancel the pending update:
+
+```tsx
+import { useState } from 'react'
+import { useDebouncedValue } from '@tidbcloud/uikit'
+import { TextInput, Button, Group } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [value, setValue] = useState('')
+  const [debounced, cancel] = useDebouncedValue(value, 1000)
+
+  return (
+    <>
+      <TextInput value={value} onChange={(e) => setValue(e.currentTarget.value)} />
+      <Group mt="md">
+        <Button onClick={cancel}>Cancel</Button>
+      </Group>
+    </>
+  )
+}
+```
+
+## Definition
+
+```tsx
+interface UseDebouncedValueOptions {
+  leading?: boolean
+}
+
+type UseDebouncedValueReturnValue<T> = [T, () => void]
+
+function useDebouncedValue<T = any>(
+  value: T,
+  wait: number,
+  options?: UseDebouncedValueOptions
+): UseDebouncedValueReturnValue<T>
+```

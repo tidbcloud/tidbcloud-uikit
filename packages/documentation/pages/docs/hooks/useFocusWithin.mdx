@@ -1,0 +1,69 @@
+# useFocusWithin
+
+Detect if any element within has focus.
+
+## Import
+
+```tsx
+import { useFocusWithin } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+`useFocusWithin` hook detects if any element within the other element has focus. It works the same way as `:focus-within` CSS selector.
+
+```tsx
+import { useFocusWithin } from '@tidbcloud/uikit'
+import { TextInput, Button, Box } from '@tidbcloud/uikit'
+
+function Demo() {
+  const { ref, focused } = useFocusWithin()
+
+  return (
+    <Box
+      ref={ref}
+      p="lg"
+      style={{
+        backgroundColor: focused ? 'var(--mantine-color-blue-light)' : 'transparent'
+      }}
+    >
+      <TextInput label="Name" placeholder="Enter name" />
+      <TextInput label="Email" placeholder="Enter email" mt="md" />
+      <Button mt="md">Submit</Button>
+    </Box>
+  )
+}
+```
+
+## Callbacks
+
+You can pass `onFocus` and `onBlur` callbacks:
+
+```tsx
+import { useFocusWithin } from '@tidbcloud/uikit'
+
+function Demo() {
+  const { ref, focused } = useFocusWithin({
+    onFocus: () => console.log('Focused'),
+    onBlur: () => console.log('Blurred')
+  })
+
+  return <div ref={ref}>...</div>
+}
+```
+
+## Definition
+
+```tsx
+interface UseFocusWithinOptions {
+  onFocus?: (event: FocusEvent) => void
+  onBlur?: (event: FocusEvent) => void
+}
+
+interface UseFocusWithinReturnValue<T extends HTMLElement = any> {
+  ref: React.RefCallback<T | null>
+  focused: boolean
+}
+
+function useFocusWithin<T extends HTMLElement = any>(options?: UseFocusWithinOptions): UseFocusWithinReturnValue<T>
+```

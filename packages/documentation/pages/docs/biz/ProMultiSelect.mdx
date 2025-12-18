@@ -1,0 +1,160 @@
+# ProMultiSelect
+
+An enhanced multi-select component with search, select all functionality, overflow handling, and pill-based selection display.
+
+## Import
+
+```tsx
+import { ProMultiSelect } from '@tidbcloud/uikit/biz'
+```
+
+## Basic Usage
+
+```tsx
+import { useState } from 'react'
+import { ProMultiSelect } from '@tidbcloud/uikit/biz'
+
+function Demo() {
+  const [value, setValue] = useState([])
+
+  return (
+    <ProMultiSelect
+      data={[
+        { value: 'react', label: 'React' },
+        { value: 'vue', label: 'Vue' },
+        { value: 'angular', label: 'Angular' },
+        { value: 'svelte', label: 'Svelte' }
+      ]}
+      value={value}
+      onChange={setValue}
+      placeholder="Select frameworks"
+    />
+  )
+}
+```
+
+## With Search
+
+```tsx
+import { ProMultiSelect } from '@tidbcloud/uikit/biz'
+
+function Demo() {
+  return <ProMultiSelect data={frameworks} searchable placeholder="Search and select" />
+}
+```
+
+## With Select All
+
+```tsx
+import { ProMultiSelect } from '@tidbcloud/uikit/biz'
+
+function Demo() {
+  return (
+    <ProMultiSelect
+      data={frameworks}
+      showSelectAll
+      selectAllLabel="Select All Frameworks"
+      placeholder="Select frameworks"
+    />
+  )
+}
+```
+
+## With Max Values
+
+```tsx
+import { ProMultiSelect } from '@tidbcloud/uikit/biz'
+
+function Demo() {
+  return <ProMultiSelect data={frameworks} maxValues={3} placeholder="Select up to 3" />
+}
+```
+
+## Clearable
+
+```tsx
+import { ProMultiSelect } from '@tidbcloud/uikit/biz'
+
+function Demo() {
+  return <ProMultiSelect data={frameworks} clearable placeholder="Select frameworks" />
+}
+```
+
+## With Label and Error
+
+```tsx
+import { ProMultiSelect } from '@tidbcloud/uikit/biz'
+
+function Demo() {
+  return (
+    <ProMultiSelect
+      data={frameworks}
+      label="Frameworks"
+      error="Please select at least one framework"
+      placeholder="Select frameworks"
+    />
+  )
+}
+```
+
+## Custom Max Options Display
+
+```tsx
+import { ProMultiSelect } from '@tidbcloud/uikit/biz'
+
+function Demo() {
+  return <ProMultiSelect data={frameworks} maxDisplayOptions={2} placeholder="Select frameworks" />
+}
+```
+
+## With Form
+
+```tsx
+import { Form, FormProMultiSelect } from '@tidbcloud/uikit/biz'
+
+function Demo() {
+  return (
+    <Form onSubmit={(data) => console.log(data)}>
+      <FormProMultiSelect
+        name="frameworks"
+        label="Frameworks"
+        data={frameworks}
+        rules={{ required: 'Please select at least one framework' }}
+      />
+    </Form>
+  )
+}
+```
+
+## Props
+
+| Prop                 | Type                                 | Default  | Description                  |
+| -------------------- | ------------------------------------ | -------- | ---------------------------- |
+| `data`               | `ComboboxData`                       | -        | Select options               |
+| `value`              | `string[]`                           | -        | Selected values              |
+| `defaultValue`       | `string[]`                           | -        | Default selected values      |
+| `onChange`           | `(value: string[]) => void`          | -        | Change handler               |
+| `maxDisplayOptions`  | `number`                             | -        | Max options to show in input |
+| `searchable`         | `boolean`                            | -        | Enable search                |
+| `searchValue`        | `string`                             | -        | Controlled search value      |
+| `defaultSearchValue` | `string`                             | -        | Default search value         |
+| `onSearchChange`     | `(value: string) => void`            | -        | Search change handler        |
+| `maxValues`          | `number`                             | Infinity | Max selections allowed       |
+| `readOnly`           | `boolean`                            | -        | Read-only mode               |
+| `disabled`           | `boolean`                            | -        | Disabled state               |
+| `size`               | `MantineSize`                        | -        | Component size               |
+| `w`                  | `number \| string`                   | -        | Component width              |
+| `placeholder`        | `string`                             | -        | Input placeholder            |
+| `clearable`          | `boolean`                            | -        | Allow clearing               |
+| `label`              | `ReactNode`                          | -        | Input label                  |
+| `emptyText`          | `string`                             | -        | Empty state message          |
+| `dropdownOpened`     | `boolean`                            | -        | Controlled dropdown state    |
+| `maxDropdownHeight`  | `number`                             | `200`    | Max dropdown height          |
+| `error`              | `ReactNode`                          | -        | Error message                |
+| `loading`            | `boolean`                            | -        | Loading state                |
+| `showSelectAll`      | `boolean`                            | -        | Show select all option       |
+| `selectAllLabel`     | `string`                             | `'All'`  | Select all label             |
+| `onSubmit`           | `(options: ComboboxItem[]) => void`  | -        | Option submit handler        |
+| `renderOption`       | `(option) => ReactNode`              | -        | Custom option renderer       |
+| `filter`             | `(value, options) => ComboboxItem[]` | -        | Custom filter function       |
+| `onClear`            | `() => void`                         | -        | Clear handler                |

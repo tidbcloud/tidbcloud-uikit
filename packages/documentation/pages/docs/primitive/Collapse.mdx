@@ -1,5 +1,91 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# Collapse
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-misc-collapse--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Animate presence with slide down/up transition.
+
+## Import
+
+```tsx
+import { Collapse } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+```tsx
+import { useDisclosure } from '@mantine/hooks'
+import { Button, Collapse, Text, Box } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [opened, { toggle }] = useDisclosure(false)
+
+  return (
+    <Box maw={400} mx="auto">
+      <Button onClick={toggle}>Toggle content</Button>
+
+      <Collapse in={opened}>
+        <Text mt="md">
+          From Bulbapedia: Pikachu is a short, chubby rodent Pokémon. It is covered in yellow fur with two horizontal
+          brown stripes on its back. It has a small mouth, long, pointed ears with black tips, and brown eyes. Each
+          cheek is a red circle that contains a pouch for electricity storage.
+        </Text>
+      </Collapse>
+    </Box>
+  )
+}
+```
+
+## Animation duration
+
+Set `transitionDuration` and `transitionTimingFunction` props to control transition:
+
+```tsx
+import { useDisclosure } from '@mantine/hooks'
+import { Collapse, Button } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [opened, { toggle }] = useDisclosure(false)
+
+  return (
+    <>
+      <Button onClick={toggle}>Toggle with custom duration</Button>
+      <Collapse in={opened} transitionDuration={1000} transitionTimingFunction="linear">
+        <div>Content</div>
+      </Collapse>
+    </>
+  )
+}
+```
+
+## With nested Collapse
+
+```tsx
+import { useDisclosure } from '@mantine/hooks'
+import { Collapse, Button, Stack } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [outerOpened, outerHandlers] = useDisclosure(false)
+  const [innerOpened, innerHandlers] = useDisclosure(false)
+
+  return (
+    <Stack>
+      <Button onClick={outerHandlers.toggle}>Toggle outer</Button>
+      <Collapse in={outerOpened}>
+        <Button onClick={innerHandlers.toggle}>Toggle inner</Button>
+        <Collapse in={innerOpened}>
+          <div>Inner content</div>
+        </Collapse>
+      </Collapse>
+    </Stack>
+  )
+}
+```
+
+## Props
+
+| Prop                     | Type              | Default  | Description                   |
+| ------------------------ | ----------------- | -------- | ----------------------------- |
+| animateOpacity           | `boolean`         | `true`   | Should opacity be animated    |
+| children                 | `React.ReactNode` | required | Content that will be animated |
+| in                       | `boolean`         | required | Control open/close state      |
+| onTransitionEnd          | `() => void`      | -        | Called when transition ends   |
+| transitionDuration       | `number`          | `200`    | Transition duration in ms     |
+| transitionTimingFunction | `string`          | `'ease'` | CSS timing function           |

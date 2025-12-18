@@ -1,5 +1,98 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# HoverCard
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-overlays-hovercard--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Display a popover section when the target element is hovered.
+
+## Import
+
+```tsx
+import { HoverCard } from '@tidbcloud/uikit'
+```
+
+## Basic Usage
+
+```tsx
+import { HoverCard, Button, Text, Group } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Group justify="center">
+      <HoverCard width={280} shadow="md">
+        <HoverCard.Target>
+          <Button>Hover to reveal the card</Button>
+        </HoverCard.Target>
+        <HoverCard.Dropdown>
+          <Text size="sm">
+            Hover card is revealed when user hovers over target element, it will be hidden once mouse is not over both
+            target and dropdown elements
+          </Text>
+        </HoverCard.Dropdown>
+      </HoverCard>
+    </Group>
+  )
+}
+```
+
+## Delays
+
+Set open and close delays with `openDelay` and `closeDelay` props (in ms):
+
+```tsx
+import { HoverCard, Button, Text, Group } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Group justify="center">
+      <HoverCard shadow="md" openDelay={1000}>
+        <HoverCard.Target>
+          <Button>1000ms open delay</Button>
+        </HoverCard.Target>
+        <HoverCard.Dropdown>
+          <Text size="sm">Opened with 1000ms delay</Text>
+        </HoverCard.Dropdown>
+      </HoverCard>
+    </Group>
+  )
+}
+```
+
+## HoverCard Group
+
+Use `HoverCard.Group` to sync open/close delays across multiple HoverCards:
+
+```tsx
+import { HoverCard, Button, Text, Group } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <HoverCard.Group openDelay={500} closeDelay={100}>
+      <Group justify="center">
+        <HoverCard shadow="md">
+          <HoverCard.Target>
+            <Button>First</Button>
+          </HoverCard.Target>
+          <HoverCard.Dropdown>
+            <Text size="sm">First hover card content</Text>
+          </HoverCard.Dropdown>
+        </HoverCard>
+      </Group>
+    </HoverCard.Group>
+  )
+}
+```
+
+## Key Props
+
+| Prop         | Type                 | Description                          |
+| ------------ | -------------------- | ------------------------------------ |
+| `width`      | `number \| 'target'` | Dropdown width                       |
+| `shadow`     | `MantineShadow`      | Box shadow for dropdown              |
+| `openDelay`  | `number`             | Open delay in ms                     |
+| `closeDelay` | `number`             | Close delay in ms                    |
+| `withArrow`  | `boolean`            | Display an arrow pointing to target  |
+| `position`   | `FloatingPosition`   | Dropdown position relative to target |
+| `offset`     | `number`             | Offset of dropdown from target       |
+| `disabled`   | `boolean`            | Disable the hover card               |
+
+## Accessibility
+
+HoverCard is ignored by screen readers and cannot be activated with keyboard. Use it only for additional, non-essential information.

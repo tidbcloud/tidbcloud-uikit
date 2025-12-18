@@ -1,0 +1,44 @@
+# useDidUpdate
+
+Call a function only when dependencies change, not on mount.
+
+## Import
+
+```tsx
+import { useDidUpdate } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+`useDidUpdate` works like `useEffect`, but does not run on mount – only when dependencies change.
+
+```tsx
+import { useState } from 'react'
+import { useDidUpdate } from '@tidbcloud/uikit'
+import { Button, Text, Group } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [count, setCount] = useState(0)
+  const [updates, setUpdates] = useState(0)
+
+  useDidUpdate(() => {
+    setUpdates((u) => u + 1)
+  }, [count])
+
+  return (
+    <>
+      <Text>Count: {count}</Text>
+      <Text>Updates (excluding mount): {updates}</Text>
+      <Group>
+        <Button onClick={() => setCount((c) => c + 1)}>Increment</Button>
+      </Group>
+    </>
+  )
+}
+```
+
+## Definition
+
+```tsx
+function useDidUpdate(fn: React.EffectCallback, dependencies?: React.DependencyList): void
+```

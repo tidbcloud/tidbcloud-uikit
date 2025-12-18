@@ -1,0 +1,122 @@
+# useMove
+
+Handle move/drag behavior over an element.
+
+## Import
+
+```tsx
+import { useMove } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+`useMove` handles move behavior over any element. The callback receives `x` and `y` values between `0` and `1`.
+
+```tsx
+import { useState } from 'react'
+import { useMove } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [value, setValue] = useState({ x: 0.5, y: 0.5 })
+  const { ref, active } = useMove(setValue)
+
+  return (
+    <div
+      ref={ref}
+      style={{
+        width: 200,
+        height: 200,
+        backgroundColor: 'var(--mantine-color-blue-light)',
+        position: 'relative'
+      }}
+    >
+      <div
+        style={{
+          position: 'absolute',
+          left: `calc(${value.x * 100}% - 8px)`,
+          top: `calc(${value.y * 100}% - 8px)`,
+          width: 16,
+          height: 16,
+          backgroundColor: active ? 'red' : 'blue',
+          borderRadius: '50%'
+        }}
+      />
+    </div>
+  )
+}
+```
+
+## Horizontal Slider
+
+You can ignore changes for one of the axes:
+
+```tsx
+import { useState } from 'react'
+import { useMove } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [value, setValue] = useState(0.5)
+  const { ref } = useMove(({ x }) => setValue(x))
+
+  return (
+    <div
+      ref={ref}
+      style={{
+        width: 200,
+        height: 16,
+        backgroundColor: 'var(--mantine-color-gray-2)',
+        position: 'relative'
+      }}
+    >
+      <div
+        style={{
+          position: 'absolute',
+          left: `calc(${value * 100}% - 8px)`,
+          top: 0,
+          width: 16,
+          height: 16,
+          backgroundColor: 'blue',
+          borderRadius: '50%'
+        }}
+      />
+    </div>
+  )
+}
+```
+
+## clampUseMovePosition
+
+Use `clampUseMovePosition` function to clamp `x` and `y` values to `0-1` range:
+
+```tsx
+import { clampUseMovePosition } from '@tidbcloud/uikit'
+
+clampUseMovePosition({ x: 0.5, y: 0.5 }) // -> { x: 0.5, y: 0.5 }
+clampUseMovePosition({ x: 1.5, y: 0.5 }) // -> { x: 1, y: 0.5 }
+clampUseMovePosition({ x: -0.5, y: 0.5 }) // -> { x: 0, y: 0.5 }
+```
+
+## Definition
+
+```tsx
+interface UseMovePosition {
+  x: number
+  y: number
+}
+
+interface UseMoveHandlers {
+  onScrubStart?: () => void
+  onScrubEnd?: () => void
+}
+
+interface UseMoveReturnValue<T extends HTMLElement = any> {
+  ref: React.RefCallback<T | null>
+  active: boolean
+}
+
+function useMove<T extends HTMLElement = any>(
+  onChange: (value: UseMovePosition) => void,
+  handlers?: UseMoveHandlers,
+  dir?: 'ltr' | 'rtl'
+): UseMoveReturnValue<T>
+```

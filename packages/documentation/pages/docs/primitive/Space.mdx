@@ -1,5 +1,83 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# Space
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-layout-space--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Add horizontal or vertical spacing between elements using theme spacing values.
+
+## Import
+
+```tsx
+import { Space } from '@tidbcloud/uikit'
+```
+
+## Basic Usage
+
+### Vertical Spacing
+
+```tsx
+import { Text, Space } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <>
+      <Text>First line</Text>
+      <Space h="md" />
+      <Text>Second line</Text>
+    </>
+  )
+}
+```
+
+### Horizontal Spacing
+
+```tsx
+import { Text, Space } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <div style={{ display: 'flex' }}>
+      <Text>First</Text>
+      <Space w="md" />
+      <Text>Second</Text>
+    </div>
+  )
+}
+```
+
+## When to Use
+
+Use `Space` when working with regular HTML elements that don't have access to margin props:
+
+```tsx
+import { Space } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <>
+      <div>First line</div>
+      <Space h="md" />
+      <div>Second line</div>
+    </>
+  )
+}
+```
+
+For Mantine components, prefer using margin props instead:
+
+```tsx
+import { Text } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <>
+      <Text>First line</Text>
+      <Text mt="md">Second line</Text>
+    </>
+  )
+}
+```
+
+## Key Props
+
+| Prop | Type           | Description            |
+| ---- | -------------- | ---------------------- |
+| w    | MantineSpacing | Horizontal space width |
+| h    | MantineSpacing | Vertical space height  |

@@ -1,3 +1,151 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# CodeBlock
 
-<EmbeddedStory src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=biz-codeblock--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}></EmbeddedStory>
+A code display component with syntax highlighting, copy functionality, and optional folding/collapsing capabilities.
+
+## Import
+
+```tsx
+import { CodeBlock, CopyText } from '@tidbcloud/uikit/biz'
+```
+
+## Basic Usage
+
+```tsx
+import { CodeBlock } from '@tidbcloud/uikit/biz'
+
+const code = `SELECT * FROM users WHERE id = 1;`
+
+function Demo() {
+  return <CodeBlock language="sql">{code}</CodeBlock>
+}
+```
+
+## Different Languages
+
+```tsx
+import { CodeBlock } from '@tidbcloud/uikit/biz'
+
+function Demo() {
+  return (
+    <>
+      <CodeBlock language="javascript">
+        {`const greeting = 'Hello, World!';
+console.log(greeting);`}
+      </CodeBlock>
+
+      <CodeBlock language="python">
+        {`def greet(name):
+    return f"Hello, {name}!"`}
+      </CodeBlock>
+    </>
+  )
+}
+```
+
+## Foldable Code Block
+
+```tsx
+import { CodeBlock } from '@tidbcloud/uikit/biz'
+
+const longCode = `// Long code content...
+line 1
+line 2
+line 3
+...`
+
+function Demo() {
+  return (
+    <CodeBlock language="javascript" defaultFoldHeight={100} showFoldIcon foldStateKey="my-code-block">
+      {longCode}
+    </CodeBlock>
+  )
+}
+```
+
+## Without Copy Button
+
+```tsx
+import { CodeBlock } from '@tidbcloud/uikit/biz'
+
+function Demo() {
+  return (
+    <CodeBlock language="bash" showCopy={false}>
+      npm install @tidbcloud/uikit
+    </CodeBlock>
+  )
+}
+```
+
+## Without Border
+
+```tsx
+import { CodeBlock } from '@tidbcloud/uikit/biz'
+
+function Demo() {
+  return (
+    <CodeBlock language="json" showBorder={false}>
+      {JSON.stringify({ name: 'test' }, null, 2)}
+    </CodeBlock>
+  )
+}
+```
+
+## Custom Copy Content
+
+```tsx
+import { CodeBlock } from '@tidbcloud/uikit/biz'
+
+function Demo() {
+  return (
+    <CodeBlock language="bash" copyContent="npm install @tidbcloud/uikit" onCopy={() => console.log('Copied!')}>
+      $ npm install @tidbcloud/uikit
+    </CodeBlock>
+  )
+}
+```
+
+## Props
+
+| Prop                | Type                          | Default  | Description                                   |
+| ------------------- | ----------------------------- | -------- | --------------------------------------------- |
+| `children`          | `string`                      | -        | The code content to display                   |
+| `language`          | `string`                      | `'bash'` | Programming language for syntax highlight     |
+| `copyContent`       | `string`                      | -        | Custom content to copy (defaults to children) |
+| `onCopy`            | `() => void`                  | -        | Callback when copy is clicked                 |
+| `codeRenderer`      | `(code: string) => ReactNode` | -        | Custom code renderer                          |
+| `prismProps`        | `PrismProps`                  | -        | Props for Prism highlighter                   |
+| `defaultFoldHeight` | `number`                      | -        | Default height when folded                    |
+| `foldStateKey`      | `string`                      | -        | Key for persisting fold state                 |
+| `showFoldIcon`      | `boolean`                     | -        | Show fold/expand icon                         |
+| `onFoldIconClick`   | `(folded: boolean) => void`   | -        | Fold icon click callback                      |
+| `showBorder`        | `boolean`                     | `true`   | Show border                                   |
+| `showCopy`          | `boolean`                     | `true`   | Show copy button                              |
+
+---
+
+# CopyText
+
+A component that displays text with a copy button.
+
+## Import
+
+```tsx
+import { CopyText } from '@tidbcloud/uikit/biz'
+```
+
+## Basic Usage
+
+```tsx
+import { CopyText } from '@tidbcloud/uikit/biz'
+
+function Demo() {
+  return <CopyText value="Text to copy">Click to copy this text</CopyText>
+}
+```
+
+## Props
+
+| Prop       | Type        | Description       |
+| ---------- | ----------- | ----------------- |
+| `value`    | `string`    | The value to copy |
+| `children` | `ReactNode` | Display content   |

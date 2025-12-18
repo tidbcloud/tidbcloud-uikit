@@ -1,0 +1,192 @@
+# AppShell
+
+A main application shell component that provides a layout structure with a collapsible sidebar navbar, banner support, and main content area.
+
+## Import
+
+```tsx
+import { AppShell, AppPageShell } from '@tidbcloud/uikit/biz'
+```
+
+## Basic Usage
+
+```tsx
+import { AppShell, AppPageShell } from '@tidbcloud/uikit/biz'
+
+function Demo() {
+  return (
+    <AppShell
+      navbar={{
+        logo: <img src="/logo.svg" alt="Logo" />
+      }}
+    >
+      <AppShell.NavMenuPortal>
+        <AppShell.NavItem label="Dashboard" href="/dashboard" />
+        <AppShell.NavItem label="Settings" href="/settings" />
+      </AppShell.NavMenuPortal>
+
+      <AppPageShell title="Dashboard">
+        <p>Page content here</p>
+      </AppPageShell>
+    </AppShell>
+  )
+}
+```
+
+## With Banner
+
+```tsx
+import { AppShell, AppPageShell } from '@tidbcloud/uikit/biz'
+import { Alert } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <AppShell
+      banner={<Alert color="blue">New features available!</Alert>}
+      navbar={{
+        logo: <img src="/logo.svg" alt="Logo" />
+      }}
+    >
+      <AppPageShell title="Home">Content</AppPageShell>
+    </AppShell>
+  )
+}
+```
+
+## Navigation Items
+
+```tsx
+import { AppShell } from '@tidbcloud/uikit/biz'
+import { IconHome, IconSettings } from '@tabler/icons-react'
+
+function Demo() {
+  return (
+    <AppShell navbar={{ logo: <Logo /> }}>
+      <AppShell.NavMenuPortal>
+        <AppShell.NavItem label="Dashboard" href="/dashboard" leftSection={<IconHome size={16} />} />
+        <AppShell.NavItem label="Settings" href="/settings" leftSection={<IconSettings size={16} />}>
+          <AppShell.NavSubItem label="General" href="/settings/general" />
+          <AppShell.NavSubItem label="Security" href="/settings/security" />
+        </AppShell.NavItem>
+      </AppShell.NavMenuPortal>
+
+      <AppShell.NavFooterPortal>
+        <AppShell.NavFooterItem label="Help" href="/help" />
+      </AppShell.NavFooterPortal>
+    </AppShell>
+  )
+}
+```
+
+## Collapse Events
+
+```tsx
+import { AppShell } from '@tidbcloud/uikit/biz'
+
+function Demo() {
+  return (
+    <AppShell
+      navbar={{
+        logo: <Logo />,
+        onCollapse: () => console.log('Navbar collapsed'),
+        onExpand: () => console.log('Navbar expanded')
+      }}
+    >
+      {/* content */}
+    </AppShell>
+  )
+}
+```
+
+## AppShell Props
+
+| Prop     | Type        | Default | Description                 |
+| -------- | ----------- | ------- | --------------------------- |
+| `banner` | `ReactNode` | -       | Banner displayed at the top |
+| `navbar` | `object`    | -       | Navbar configuration object |
+
+### Navbar Configuration
+
+| Prop                       | Type         | Default | Description                     |
+| -------------------------- | ------------ | ------- | ------------------------------- |
+| `navbar.width`             | `number`     | `240`   | Custom width of the navbar      |
+| `navbar.logo`              | `ReactNode`  | -       | Logo displayed in navbar header |
+| `navbar.headerLeftSection` | `ReactNode`  | -       | Left section of navbar header   |
+| `navbar.menuTop`           | `ReactNode`  | -       | Content between header and menu |
+| `navbar.footer`            | `ReactNode`  | -       | Footer section of navbar        |
+| `navbar.onLogoClick`       | `() => void` | -       | Callback when logo is clicked   |
+| `navbar.onCollapse`        | `() => void` | -       | Callback when navbar collapses  |
+| `navbar.onExpand`          | `() => void` | -       | Callback when navbar expands    |
+
+## Sub-components
+
+| Component                          | Description                   |
+| ---------------------------------- | ----------------------------- |
+| `AppShell.NavMenuPortal`           | Portal for nav menu items     |
+| `AppShell.NavItem`                 | Base navigation item          |
+| `AppShell.NavSubItem`              | Sub-navigation item           |
+| `AppShell.NavFooterPortal`         | Portal for footer items       |
+| `AppShell.NavFooterItem`           | Footer navigation item        |
+| `AppShell.ExpandButtonPlaceholder` | Placeholder for expand button |
+
+---
+
+# AppPageShell
+
+Page-level shell component designed to work within AppShell.
+
+## Basic Usage
+
+```tsx
+import { AppPageShell } from '@tidbcloud/uikit/biz'
+
+function Demo() {
+  return (
+    <AppPageShell title="Page Title">
+      <p>Page content goes here</p>
+    </AppPageShell>
+  )
+}
+```
+
+## With Back Button
+
+```tsx
+import { AppPageShell } from '@tidbcloud/uikit/biz'
+
+function Demo() {
+  return (
+    <AppPageShell title="Details" showBack onBack={() => window.history.back()}>
+      <p>Detail content</p>
+    </AppPageShell>
+  )
+}
+```
+
+## Sticky Header
+
+```tsx
+import { AppPageShell } from '@tidbcloud/uikit/biz'
+
+function Demo() {
+  return (
+    <AppPageShell title="Long Page" stickyHeader>
+      {/* Long scrollable content */}
+    </AppPageShell>
+  )
+}
+```
+
+## AppPageShell Props
+
+| Prop           | Type         | Default    | Description                |
+| -------------- | ------------ | ---------- | -------------------------- |
+| `maxWidth`     | `string`     | `'1920px'` | Maximum width of the page  |
+| `withHeader`   | `boolean`    | `true`     | Whether to show the header |
+| `title`        | `ReactNode`  | -          | Page title                 |
+| `children`     | `ReactNode`  | -          | Page content               |
+| `wrapperProps` | `object`     | -          | Props for the wrapper      |
+| `stickyHeader` | `boolean`    | -          | Whether header is sticky   |
+| `showBack`     | `boolean`    | -          | Show back button           |
+| `onBack`       | `() => void` | -          | Back button click handler  |
+| `bodyProps`    | `object`     | -          | Props for body section     |

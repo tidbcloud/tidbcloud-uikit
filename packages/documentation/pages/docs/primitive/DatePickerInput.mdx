@@ -1,5 +1,141 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# DatePickerInput
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-dates-datepickerinput--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Date, multiple dates and dates range picker input.
+
+## Import
+
+```tsx
+import { DatePickerInput } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+```tsx
+import { useState } from 'react'
+import { DatePickerInput } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [value, setValue] = useState<Date | null>(null)
+  return <DatePickerInput label="Pick date" placeholder="Pick date" value={value} onChange={setValue} />
+}
+```
+
+## Multiple dates
+
+Set `type="multiple"` to allow user to pick multiple dates:
+
+```tsx
+import { useState } from 'react'
+import { DatePickerInput } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [value, setValue] = useState<Date[]>([])
+  return (
+    <DatePickerInput type="multiple" label="Pick dates" placeholder="Pick dates" value={value} onChange={setValue} />
+  )
+}
+```
+
+## Dates range
+
+Set `type="range"` to allow user to pick dates range:
+
+```tsx
+import { useState } from 'react'
+import { DatePickerInput } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [value, setValue] = useState<[Date | null, Date | null]>([null, null])
+  return (
+    <DatePickerInput
+      type="range"
+      label="Pick dates range"
+      placeholder="Pick dates range"
+      value={value}
+      onChange={setValue}
+    />
+  )
+}
+```
+
+## Value format
+
+Use `valueFormat` prop to change dayjs format of value label:
+
+```tsx
+import { DatePickerInput } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <DatePickerInput valueFormat="YYYY MMM DD" label="Pick date" placeholder="Pick date" />
+}
+```
+
+## Clearable
+
+Set `clearable` prop to display clear button:
+
+```tsx
+import { DatePickerInput } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <DatePickerInput clearable label="Pick date" placeholder="Pick date" />
+}
+```
+
+## Open picker in modal
+
+Set `dropdownType="modal"` to render picker in a modal instead of popover:
+
+```tsx
+import { DatePickerInput } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <DatePickerInput dropdownType="modal" label="Pick date" placeholder="Pick date" />
+}
+```
+
+## With icon
+
+```tsx
+import { DatePickerInput } from '@tidbcloud/uikit'
+import { IconCalendar } from '@tabler/icons-react'
+
+function Demo() {
+  return <DatePickerInput leftSection={<IconCalendar size={18} />} label="Pick date" placeholder="Pick date" />
+}
+```
+
+## Disabled state
+
+```tsx
+import { DatePickerInput } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <DatePickerInput label="Disabled" placeholder="Pick date" disabled />
+}
+```
+
+## Props
+
+| Prop            | Type                               | Default        | Description                       |
+| --------------- | ---------------------------------- | -------------- | --------------------------------- |
+| type            | 'default' \| 'multiple' \| 'range' | 'default'      | Picker type                       |
+| value           | DateValue                          | -              | Controlled value                  |
+| defaultValue    | DateValue                          | -              | Default value                     |
+| onChange        | (value: DateValue) => void         | -              | Called when value changes         |
+| valueFormat     | string                             | 'MMMM D, YYYY' | dayjs format for display          |
+| clearable       | boolean                            | false          | Show clear button                 |
+| dropdownType    | 'popover' \| 'modal'               | 'popover'      | Type of dropdown                  |
+| closeOnChange   | boolean                            | true           | Close dropdown when date selected |
+| numberOfColumns | number                             | 1              | Number of calendar columns        |
+| minDate         | string                             | -              | Minimum allowed date              |
+| maxDate         | string                             | -              | Maximum allowed date              |
+| label           | ReactNode                          | -              | Input label                       |
+| description     | ReactNode                          | -              | Input description                 |
+| error           | ReactNode                          | -              | Error message                     |
+| disabled        | boolean                            | false          | Disable input                     |
+| placeholder     | string                             | -              | Input placeholder                 |
+| size            | MantineSize                        | 'sm'           | Input size                        |
+| locale          | string                             | 'en'           | dayjs locale                      |
+| leftSection     | ReactNode                          | -              | Left section content              |
+| rightSection    | ReactNode                          | -              | Right section content             |

@@ -1,0 +1,38 @@
+# useId
+
+Generate unique IDs that persist across renders.
+
+## Import
+
+```tsx
+import { useId } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+`useId` generates a random id that persists across renders. It's commonly used to bind input elements to labels.
+
+```tsx
+import { useId } from '@tidbcloud/uikit'
+
+function Input({ id }: { id?: string }) {
+  const uuid = useId(id)
+
+  return (
+    <>
+      <label htmlFor={uuid}>Input label</label>
+      <input type="text" id={uuid} />
+    </>
+  )
+}
+
+// Usage:
+// <Input id="my-id" />  -> input and label will have id 'my-id'
+// <Input />             -> input and label will have random id like 'mantine-fZMoF'
+```
+
+## Definition
+
+```tsx
+function useId(id?: string): string
+```

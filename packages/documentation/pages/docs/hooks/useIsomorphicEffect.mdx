@@ -1,0 +1,37 @@
+# useIsomorphicEffect
+
+useLayoutEffect that works on both server and client.
+
+## Import
+
+```tsx
+import { useIsomorphicEffect } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+`useIsomorphicEffect` uses `useLayoutEffect` on the client and `useEffect` on the server. This is useful for isomorphic (SSR) apps.
+
+```tsx
+import { useIsomorphicEffect } from '@tidbcloud/uikit'
+
+function Demo() {
+  useIsomorphicEffect(() => {
+    // This runs like useLayoutEffect on client
+    // And like useEffect on server (no warning)
+    console.log('Effect ran')
+  }, [])
+
+  return <div>Demo</div>
+}
+```
+
+## Why?
+
+`useLayoutEffect` fires a warning when used during server-side rendering. This hook suppresses that warning by using `useEffect` on the server.
+
+## Definition
+
+```tsx
+function useIsomorphicEffect(effect: React.EffectCallback, deps?: React.DependencyList): void
+```

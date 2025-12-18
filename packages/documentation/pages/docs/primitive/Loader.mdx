@@ -1,5 +1,78 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# Loader
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-feedback-loader--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Indicate loading state with animated loading indicators.
+
+## Import
+
+```tsx
+import { Loader } from '@tidbcloud/uikit'
+```
+
+## Basic Usage
+
+```tsx
+import { Loader } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <Loader />
+}
+```
+
+## Loader Types
+
+Loader supports 3 types: `oval` (default), `bars`, and `dots`.
+
+```tsx
+import { Loader, Group } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Group>
+      <Loader type="oval" />
+      <Loader type="bars" />
+      <Loader type="dots" />
+    </Group>
+  )
+}
+```
+
+## Size and Color
+
+```tsx
+import { Loader, Group } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Group>
+      <Loader size="xs" />
+      <Loader size="sm" />
+      <Loader size="md" />
+      <Loader size="lg" />
+      <Loader size="xl" />
+      <Loader size={50} color="blue" />
+    </Group>
+  )
+}
+```
+
+## Custom Children
+
+Use `children` prop to render custom content instead of the loader.
+
+```tsx
+import { Loader } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <Loader>Loading...</Loader>
+}
+```
+
+## Key Props
+
+| Prop       | Type                         | Description                              |
+| ---------- | ---------------------------- | ---------------------------------------- |
+| `type`     | `'oval' \| 'bars' \| 'dots'` | Loader animation type                    |
+| `size`     | `MantineSize \| number`      | Controls width and height                |
+| `color`    | `MantineColor`               | Loader color from theme or CSS color     |
+| `children` | `ReactNode`                  | Custom content to replace default loader |
+| `loaders`  | `object`                     | Custom loader components                 |

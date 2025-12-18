@@ -1,5 +1,81 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# Spoiler
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-data-display-spoiler--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Hide long sections of content under a collapsible spoiler with show/hide controls.
+
+## Import
+
+```tsx
+import { Spoiler } from '@tidbcloud/uikit'
+```
+
+## Basic Usage
+
+```tsx
+import { Spoiler } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Spoiler maxHeight={120} showLabel="Show more" hideLabel="Hide">
+      {/* Long content here */}
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+      <p>More content that will be hidden...</p>
+    </Spoiler>
+  )
+}
+```
+
+## Controlled
+
+```tsx
+import { useState } from 'react'
+import { Spoiler } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [expanded, setExpanded] = useState(false)
+
+  return (
+    <Spoiler
+      maxHeight={120}
+      showLabel="Show more"
+      hideLabel="Hide details"
+      expanded={expanded}
+      onExpandedChange={setExpanded}
+    >
+      {/* Content */}
+    </Spoiler>
+  )
+}
+```
+
+## Transition Duration
+
+Control or disable the expand/collapse animation:
+
+```tsx
+import { Spoiler } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Spoiler
+      maxHeight={120}
+      showLabel="Show more"
+      hideLabel="Hide"
+      transitionDuration={0} // Disable animation
+    >
+      {/* Content */}
+    </Spoiler>
+  )
+}
+```
+
+## Key Props
+
+| Prop               | Type                        | Description                                           |
+| ------------------ | --------------------------- | ----------------------------------------------------- |
+| maxHeight          | number                      | Maximum visible content height before spoiler appears |
+| showLabel          | ReactNode                   | Label for expand action (required)                    |
+| hideLabel          | ReactNode                   | Label for collapse action (required)                  |
+| expanded           | boolean                     | Controlled expanded state                             |
+| onExpandedChange   | (expanded: boolean) => void | Called when expanded state changes                    |
+| transitionDuration | number                      | Animation duration in ms (0 to disable)               |
+| initialState       | boolean                     | Initial expanded state                                |

@@ -1,5 +1,78 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# SimpleGrid
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-layout-simplegrid--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Responsive grid system with equal-width columns. Uses CSS grid layout for flexible, responsive layouts.
+
+## Import
+
+```tsx
+import { SimpleGrid } from '@tidbcloud/uikit'
+```
+
+## Basic Usage
+
+```tsx
+import { SimpleGrid } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <SimpleGrid cols={3}>
+      <div>1</div>
+      <div>2</div>
+      <div>3</div>
+      <div>4</div>
+      <div>5</div>
+    </SimpleGrid>
+  )
+}
+```
+
+## Responsive Columns
+
+Use object notation for responsive values with `base`, `xs`, `sm`, `md`, `lg`, and `xl` breakpoints:
+
+```tsx
+import { SimpleGrid } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <SimpleGrid
+      cols={{ base: 1, sm: 2, lg: 5 }}
+      spacing={{ base: 10, sm: 'xl' }}
+      verticalSpacing={{ base: 'md', sm: 'xl' }}
+    >
+      <div>1</div>
+      <div>2</div>
+      <div>3</div>
+      <div>4</div>
+      <div>5</div>
+    </SimpleGrid>
+  )
+}
+```
+
+## Container Queries
+
+Use container queries instead of media queries for container-based responsiveness:
+
+```tsx
+import { SimpleGrid } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <SimpleGrid type="container" cols={{ base: 1, '300px': 2, '500px': 5 }} spacing={{ base: 10, '300px': 'xl' }}>
+      <div>1</div>
+      <div>2</div>
+      <div>3</div>
+    </SimpleGrid>
+  )
+}
+```
+
+## Key Props
+
+| Prop            | Type                        | Description                                |
+| --------------- | --------------------------- | ------------------------------------------ |
+| cols            | StyleProp\<number\>         | Number of columns                          |
+| spacing         | StyleProp\<MantineSpacing\> | Spacing between columns                    |
+| verticalSpacing | StyleProp\<MantineSpacing\> | Spacing between rows                       |
+| type            | "media" \| "container"      | Type of queries used for responsive styles |

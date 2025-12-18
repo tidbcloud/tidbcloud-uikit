@@ -1,5 +1,123 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# Badge
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-data-display-badge--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Display badge, pill or tag.
+
+## Import
+
+```tsx
+import { Badge } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+```tsx
+import { Badge } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <Badge>Badge</Badge>
+}
+```
+
+## Variants
+
+Badge supports several variants: `filled`, `light`, `outline`, `dot`, `transparent`, `white`, and `default`.
+
+```tsx
+import { Badge, Group } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Group>
+      <Badge variant="filled">Filled</Badge>
+      <Badge variant="light">Light</Badge>
+      <Badge variant="outline">Outline</Badge>
+      <Badge variant="dot">Dot</Badge>
+    </Group>
+  )
+}
+```
+
+## Gradient
+
+```tsx
+import { Badge } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Badge size="xl" variant="gradient" gradient={{ from: 'cyan', to: 'blue', deg: 90 }}>
+      Gradient badge
+    </Badge>
+  )
+}
+```
+
+## Rounded
+
+Set `circle` prop to make badge width equal to its height:
+
+```tsx
+import { Badge, Group } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Group>
+      <Badge size="xs" circle>
+        1
+      </Badge>
+      <Badge size="sm" circle>
+        7
+      </Badge>
+      <Badge size="md" circle>
+        9
+      </Badge>
+      <Badge size="lg" circle>
+        3
+      </Badge>
+    </Group>
+  )
+}
+```
+
+## Left and right sections
+
+```tsx
+import { Badge, Group } from '@tidbcloud/uikit'
+import { IconAt } from '@tabler/icons-react'
+
+function Demo() {
+  const icon = <IconAt size={12} />
+  return (
+    <Group>
+      <Badge leftSection={icon}>With left section</Badge>
+      <Badge rightSection={icon}>With right section</Badge>
+    </Group>
+  )
+}
+```
+
+## Full width
+
+Set `fullWidth` to make badge span full width of its parent:
+
+```tsx
+import { Badge } from '@tidbcloud/uikit'
+
+function Demo() {
+  return <Badge fullWidth>Full width badge</Badge>
+}
+```
+
+## Props
+
+| Prop         | Type              | Default    | Description                                         |
+| ------------ | ----------------- | ---------- | --------------------------------------------------- |
+| children     | `React.ReactNode` | -          | Main badge content                                  |
+| circle       | `boolean`         | -          | If set, badge min-width becomes equal to its height |
+| color        | `MantineColor`    | -          | Key of theme.colors or any valid CSS color          |
+| fullWidth    | `boolean`         | -          | If set, badge takes 100% width of its parent        |
+| gradient     | `MantineGradient` | -          | Gradient configuration for `variant="gradient"`     |
+| leftSection  | `React.ReactNode` | -          | Content displayed on the left side                  |
+| radius       | `MantineRadius`   | -          | Border radius                                       |
+| rightSection | `React.ReactNode` | -          | Content displayed on the right side                 |
+| size         | `MantineSize`     | `'md'`     | Controls font-size, height and padding              |
+| variant      | `string`          | `'filled'` | Visual variant                                      |

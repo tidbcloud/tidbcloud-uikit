@@ -1,0 +1,172 @@
+# PageShell
+
+A page layout component with header, body, and optional wrapper sections. Supports back navigation and sticky header.
+
+> **Note:** For new projects, consider using [AppPageShell](./AppShell) which provides a more modern API.
+
+## Import
+
+```tsx
+import { PageShell } from '@tidbcloud/uikit/biz'
+```
+
+## Basic Usage
+
+```tsx
+import { PageShell } from '@tidbcloud/uikit/biz'
+
+function Demo() {
+  return (
+    <PageShell title="Page Title">
+      <p>Page content goes here</p>
+    </PageShell>
+  )
+}
+```
+
+## With Back Button
+
+```tsx
+import { PageShell } from '@tidbcloud/uikit/biz'
+
+function Demo() {
+  return (
+    <PageShell title="Details Page" showBack onBack={() => window.history.back()}>
+      <p>Detail content</p>
+    </PageShell>
+  )
+}
+```
+
+## Sticky Header
+
+```tsx
+import { PageShell } from '@tidbcloud/uikit/biz'
+
+function Demo() {
+  return (
+    <PageShell title="Long Page" stickyHeader>
+      {/* Long scrollable content */}
+    </PageShell>
+  )
+}
+```
+
+## With Right Section
+
+```tsx
+import { PageShell } from '@tidbcloud/uikit/biz'
+import { Button, Group } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <PageShell
+      title="Settings"
+      rightSection={
+        <Group>
+          <Button variant="default">Cancel</Button>
+          <Button>Save</Button>
+        </Group>
+      }
+    >
+      <p>Settings form here</p>
+    </PageShell>
+  )
+}
+```
+
+## With Wrapper
+
+```tsx
+import { PageShell } from '@tidbcloud/uikit/biz'
+
+function Demo() {
+  return (
+    <PageShell title="Wrapped Page" withWrapper wrapperProps={{ maw: 800, mx: 'auto' }}>
+      <p>Centered content with max width</p>
+    </PageShell>
+  )
+}
+```
+
+## Props
+
+| Prop           | Type         | Default | Description                   |
+| -------------- | ------------ | ------- | ----------------------------- |
+| `title`        | `ReactNode`  | -       | Page title                    |
+| `children`     | `ReactNode`  | -       | Page content                  |
+| `withWrapper`  | `boolean`    | `false` | Wrap content in div container |
+| `wrapperProps` | `BoxProps`   | -       | Wrapper element props         |
+| `stickyHeader` | `boolean`    | `false` | Make header sticky            |
+| `rightSection` | `ReactNode`  | -       | Right section content         |
+| `showBack`     | `boolean`    | -       | Show back button              |
+| `onBack`       | `() => void` | -       | Back click handler            |
+| `bodyProps`    | `BoxProps`   | -       | Body element props            |
+
+---
+
+# PageShellBase
+
+A composable page shell system with individual components for building custom page layouts.
+
+## Import
+
+```tsx
+import { PageShellBase } from '@tidbcloud/uikit/biz'
+```
+
+## Basic Usage
+
+```tsx
+import { PageShellBase } from '@tidbcloud/uikit/biz'
+
+function Demo() {
+  return (
+    <PageShellBase.Root>
+      <PageShellBase.Header>
+        <PageShellBase.Title>Custom Page</PageShellBase.Title>
+      </PageShellBase.Header>
+      <PageShellBase.Body>
+        <p>Content here</p>
+      </PageShellBase.Body>
+    </PageShellBase.Root>
+  )
+}
+```
+
+## With Back Button
+
+```tsx
+import { PageShellBase } from '@tidbcloud/uikit/biz'
+
+function Demo() {
+  return (
+    <PageShellBase.Root>
+      <PageShellBase.Header leftSection={<PageShellBase.BackButton />}>
+        <PageShellBase.Title>Details</PageShellBase.Title>
+      </PageShellBase.Header>
+      <PageShellBase.Body>
+        <p>Content</p>
+      </PageShellBase.Body>
+    </PageShellBase.Root>
+  )
+}
+```
+
+## Sub-components
+
+| Component                  | Description            |
+| -------------------------- | ---------------------- |
+| `PageShellBase.Root`       | Root container         |
+| `PageShellBase.Header`     | Header section         |
+| `PageShellBase.Title`      | Title component        |
+| `PageShellBase.Body`       | Body content area      |
+| `PageShellBase.BackButton` | Back navigation button |
+
+## PageShellBase.Header Props
+
+| Prop           | Type        | Default | Description           |
+| -------------- | ----------- | ------- | --------------------- |
+| `sticky`       | `boolean`   | `false` | Sticky positioning    |
+| `leftSection`  | `ReactNode` | -       | Left section content  |
+| `rightSection` | `ReactNode` | -       | Right section content |

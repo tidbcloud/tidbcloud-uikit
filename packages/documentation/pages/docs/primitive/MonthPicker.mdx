@@ -1,5 +1,92 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# MonthPicker
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-dates-monthpicker--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Inline month, multiple months, and months range picker component.
+
+## Import
+
+```tsx
+import { MonthPicker } from '@tidbcloud/uikit'
+```
+
+## Basic Usage
+
+```tsx
+import { useState } from 'react'
+import { MonthPicker } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [value, setValue] = useState<Date | null>(null)
+  return <MonthPicker value={value} onChange={setValue} />
+}
+```
+
+## Multiple Dates
+
+Select multiple months with `type="multiple"`.
+
+```tsx
+import { useState } from 'react'
+import { MonthPicker } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [value, setValue] = useState<Date[]>([])
+  return <MonthPicker type="multiple" value={value} onChange={setValue} />
+}
+```
+
+## Date Range
+
+Select a range of months with `type="range"`.
+
+```tsx
+import { useState } from 'react'
+import { MonthPicker } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [value, setValue] = useState<[Date | null, Date | null]>([null, null])
+  return <MonthPicker type="range" value={value} onChange={setValue} />
+}
+```
+
+## Min and Max Date
+
+```tsx
+import { useState } from 'react'
+import { MonthPicker } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [value, setValue] = useState<Date | null>(null)
+  return <MonthPicker value={value} onChange={setValue} minDate={new Date(2022, 1, 1)} maxDate={new Date(2022, 8, 1)} />
+}
+```
+
+## Allow Deselect
+
+Allow users to deselect the date by clicking on the selected item.
+
+```tsx
+import { useState } from 'react'
+import { MonthPicker } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [value, setValue] = useState<Date | null>(null)
+  return <MonthPicker allowDeselect value={value} onChange={setValue} />
+}
+```
+
+## Key Props
+
+| Prop                     | Type                                          | Description                                |
+| ------------------------ | --------------------------------------------- | ------------------------------------------ |
+| `value`                  | `DateValue \| DateValue[] \| DatesRangeValue` | Selected value                             |
+| `onChange`               | `(value) => void`                             | Called when value changes                  |
+| `type`                   | `'default' \| 'multiple' \| 'range'`          | Picker type                                |
+| `allowDeselect`          | `boolean`                                     | Allow deselecting date (default type only) |
+| `allowSingleDateInRange` | `boolean`                                     | Allow single date as range                 |
+| `minDate`                | `string \| Date`                              | Minimum selectable date                    |
+| `maxDate`                | `string \| Date`                              | Maximum selectable date                    |
+| `defaultDate`            | `string \| Date`                              | Initial displayed date                     |
+| `numberOfColumns`        | `number`                                      | Number of pickers side by side             |
+| `maxLevel`               | `'month' \| 'year' \| 'decade'`               | Max level user can navigate to             |
+| `locale`                 | `string`                                      | dayjs locale                               |
+| `size`                   | `MantineSize`                                 | Component size                             |

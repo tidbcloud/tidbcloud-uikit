@@ -1,0 +1,65 @@
+# useDebouncedState
+
+Debounce state updates for uncontrolled components.
+
+## Import
+
+```tsx
+import { useDebouncedState } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+`useDebouncedState` hook debounces value changes. It is designed to work with uncontrolled components.
+
+```tsx
+import { useDebouncedState } from '@tidbcloud/uikit'
+import { TextInput, Text } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [value, setValue] = useDebouncedState('', 500)
+
+  return (
+    <>
+      <TextInput
+        defaultValue={value}
+        onChange={(e) => setValue(e.currentTarget.value)}
+        placeholder="Type something..."
+      />
+      <Text mt="md">Debounced value: {value}</Text>
+    </>
+  )
+}
+```
+
+## Differences from useDebouncedValue
+
+- You do not have direct access to the non-debounced value
+- It is used for uncontrolled inputs (`defaultValue` prop instead of `value`)
+- It does not work with custom state providers or props, uses `useState` internally
+
+## Leading Update
+
+Immediately update value with first call using `{ leading: true }`:
+
+```tsx
+import { useDebouncedState } from '@tidbcloud/uikit'
+
+const [value, setValue] = useDebouncedState('', 500, { leading: true })
+```
+
+## Definition
+
+```tsx
+interface UseDebouncedStateOptions {
+  leading?: boolean
+}
+
+type UseDebouncedStateReturnValue<T> = [T, (newValue: SetStateAction<T>) => void]
+
+function useDebouncedState<T = any>(
+  defaultValue: T,
+  wait: number,
+  options?: UseDebouncedStateOptions
+): UseDebouncedStateReturnValue<T>
+```

@@ -1,0 +1,82 @@
+# MediaQuery
+
+Apply styles to children based on media query. This component is useful for applying responsive styles without using CSS media queries directly.
+
+## Import
+
+```tsx
+import { MediaQuery } from '@tidbcloud/uikit'
+```
+
+## Basic Usage
+
+```tsx
+import { MediaQuery, Text } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <MediaQuery smallerThan="sm" styles={{ display: 'none' }}>
+      <Text>Hidden on small screens</Text>
+    </MediaQuery>
+  )
+}
+```
+
+## Larger Than Breakpoint
+
+```tsx
+import { MediaQuery, Text } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <MediaQuery largerThan="md" styles={{ color: 'red' }}>
+      <Text>Red text on medium and larger screens</Text>
+    </MediaQuery>
+  )
+}
+```
+
+## Using Theme Function
+
+```tsx
+import { MediaQuery, Text } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <MediaQuery
+      smallerThan="lg"
+      styles={(theme) => ({
+        backgroundColor: theme.colors.blue[0],
+        padding: theme.spacing.md
+      })}
+    >
+      <Text>Styled with theme</Text>
+    </MediaQuery>
+  )
+}
+```
+
+## Custom Media Query
+
+```tsx
+import { MediaQuery, Text } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <MediaQuery query="(max-width: 600px) and (min-width: 400px)" styles={{ fontSize: 12 }}>
+      <Text>Custom query styles</Text>
+    </MediaQuery>
+  )
+}
+```
+
+## Props
+
+| Prop          | Type                                              | Description                                                |
+| ------------- | ------------------------------------------------- | ---------------------------------------------------------- |
+| `children`    | `ReactNode`                                       | Child element that should accept className prop (required) |
+| `smallerThan` | `MantineSize \| number`                           | Apply styles when viewport is smaller than breakpoint      |
+| `largerThan`  | `MantineSize \| number`                           | Apply styles when viewport is larger than breakpoint       |
+| `query`       | `string`                                          | Custom media query string                                  |
+| `styles`      | `CSSObject \| (theme: MantineTheme) => CSSObject` | Styles to apply when media query matches (required)        |
+| `className`   | `string`                                          | Additional className for the child                         |

@@ -1,5 +1,93 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# Transition
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-misc-transition--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Animate presence of components with pre-made or custom animations. Use it to add enter/exit animations to elements.
+
+## Import
+
+```tsx
+import { Transition } from '@tidbcloud/uikit'
+```
+
+## Basic Usage
+
+```tsx
+import { Transition } from '@tidbcloud/uikit'
+
+function Demo({ opened }: { opened: boolean }) {
+  return (
+    <Transition mounted={opened} transition="fade" duration={400} timingFunction="ease">
+      {(styles) => <div style={styles}>Your content</div>}
+    </Transition>
+  )
+}
+```
+
+## Premade Transitions
+
+Available transition presets: `fade`, `scale`, `scale-y`, `scale-x`, `skew-up`, `skew-down`, `rotate-left`, `rotate-right`, `slide-down`, `slide-up`, `slide-left`, `slide-right`, `pop`, `pop-bottom-left`, `pop-bottom-right`, `pop-top-left`, `pop-top-right`.
+
+## Custom Transition
+
+Create custom transitions with an object containing `in`, `out`, and `transitionProperty`:
+
+```tsx
+import { useState } from 'react'
+import { Transition, Paper, Button, Box } from '@tidbcloud/uikit'
+
+const scaleY = {
+  in: { opacity: 1, transform: 'scaleY(1)' },
+  out: { opacity: 0, transform: 'scaleY(0)' },
+  common: { transformOrigin: 'top' },
+  transitionProperty: 'transform, opacity'
+}
+
+function Demo() {
+  const [opened, setOpened] = useState(false)
+
+  return (
+    <Box>
+      <Button onClick={() => setOpened((o) => !o)}>Toggle</Button>
+      <Transition mounted={opened} transition={scaleY} duration={200}>
+        {(styles) => (
+          <Paper shadow="md" p="xl" style={styles}>
+            Dropdown content
+          </Paper>
+        )}
+      </Transition>
+    </Box>
+  )
+}
+```
+
+## Enter and Exit Delay
+
+Use `enterDelay` and `exitDelay` props to delay transition start:
+
+```tsx
+import { Transition } from '@tidbcloud/uikit'
+
+function Demo({ opened }: { opened: boolean }) {
+  return (
+    <Transition mounted={opened} transition="pop" enterDelay={500} exitDelay={300}>
+      {(styles) => <div style={styles}>Delayed transition</div>}
+    </Transition>
+  )
+}
+```
+
+## Key Props
+
+| Prop           | Type              | Description                                   |
+| -------------- | ----------------- | --------------------------------------------- |
+| mounted        | boolean           | Whether component should be mounted           |
+| transition     | MantineTransition | Transition name or custom transition object   |
+| duration       | number            | Transition duration in ms                     |
+| exitDuration   | number            | Exit transition duration in ms                |
+| timingFunction | string            | Timing function for transition                |
+| enterDelay     | number            | Delay before enter transition starts          |
+| exitDelay      | number            | Delay before exit transition starts           |
+| keepMounted    | boolean           | If true, element is not unmounted when hidden |
+| onEnter        | () => void        | Called when enter transition starts           |
+| onEntered      | () => void        | Called when enter transition ends             |
+| onExit         | () => void        | Called when exit transition starts            |
+| onExited       | () => void        | Called when exit transition ends              |

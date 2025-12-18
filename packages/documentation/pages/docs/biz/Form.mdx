@@ -1,3 +1,174 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# Form
 
-<EmbeddedStory src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=biz-form--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}></EmbeddedStory>
+A comprehensive form component built on react-hook-form with validation, error handling, and layout support.
+
+## Import
+
+```tsx
+import { Form, FormTextInput, FormSelect, FormActions } from '@tidbcloud/uikit/biz'
+```
+
+## Basic Usage
+
+```tsx
+import { Form, FormTextInput, FormSelect } from '@tidbcloud/uikit/biz'
+
+function Demo() {
+  const handleSubmit = (data) => {
+    console.log(data)
+  }
+
+  return (
+    <Form onSubmit={handleSubmit}>
+      <FormTextInput name="username" label="Username" required />
+      <FormTextInput name="email" label="Email" type="email" required />
+      <FormSelect name="role" label="Role" data={['Admin', 'User', 'Guest']} />
+    </Form>
+  )
+}
+```
+
+## With Validation
+
+```tsx
+import { Form, FormTextInput } from '@tidbcloud/uikit/biz'
+
+function Demo() {
+  return (
+    <Form onSubmit={(data) => console.log(data)} defaultValues={{ email: '' }}>
+      <FormTextInput
+        name="email"
+        label="Email"
+        rules={{
+          required: 'Email is required',
+          pattern: {
+            value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+            message: 'Invalid email address'
+          }
+        }}
+      />
+    </Form>
+  )
+}
+```
+
+## Horizontal Layout
+
+```tsx
+import { Form, FormTextInput } from '@tidbcloud/uikit/biz'
+
+function Demo() {
+  return (
+    <Form layout="horizontal" onSubmit={(data) => console.log(data)}>
+      <FormTextInput name="firstName" label="First Name" />
+      <FormTextInput name="lastName" label="Last Name" />
+    </Form>
+  )
+}
+```
+
+## Without Actions
+
+```tsx
+import { Form, FormTextInput } from '@tidbcloud/uikit/biz'
+import { Button } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Form withActions={false} onSubmit={(data) => console.log(data)}>
+      <FormTextInput name="search" label="Search" />
+      <Button type="submit">Search</Button>
+    </Form>
+  )
+}
+```
+
+## Custom Actions
+
+```tsx
+import { Form, FormTextInput, FormActions } from '@tidbcloud/uikit/biz'
+
+function Demo() {
+  return (
+    <Form
+      onSubmit={(data) => console.log(data)}
+      onCancel={() => console.log('cancelled')}
+      actionsProps={{
+        cancelText: 'Reset',
+        confirmText: 'Save Changes'
+      }}
+    >
+      <FormTextInput name="name" label="Name" />
+    </Form>
+  )
+}
+```
+
+## With Error Message
+
+```tsx
+import { Form, FormTextInput } from '@tidbcloud/uikit/biz'
+
+function Demo() {
+  return (
+    <Form errorMessage="Failed to submit form. Please try again." onSubmit={(data) => console.log(data)}>
+      <FormTextInput name="name" label="Name" />
+    </Form>
+  )
+}
+```
+
+## Form Props
+
+| Prop                | Type                                   | Default      | Description                   |
+| ------------------- | -------------------------------------- | ------------ | ----------------------------- |
+| `errorMessage`      | `string`                               | -            | Error message to display      |
+| `mode`              | `'onChange' \| 'onBlur' \| 'onSubmit'` | -            | react-hook-form mode          |
+| `reValidateMode`    | `'onChange' \| 'onBlur' \| 'onSubmit'` | `'onChange'` | Re-validation mode            |
+| `defaultValues`     | `object`                               | -            | Default form values           |
+| `form`              | `UseFormReturn`                        | -            | External form instance        |
+| `withActions`       | `boolean`                              | `true`       | Show form actions             |
+| `actionsProps`      | `FormActionsProps`                     | -            | Props for actions             |
+| `errorMessageProps` | `FormErrorMessageProps`                | -            | Props for error message       |
+| `layout`            | `'horizontal' \| 'vertical' \| 'none'` | `'vertical'` | Form layout                   |
+| `layoutProps`       | `object`                               | -            | Props for layout              |
+| `stopPropagation`   | `boolean`                              | -            | Stop submit event propagation |
+| `preventDefault`    | `boolean`                              | -            | Prevent default submit        |
+| `onSubmit`          | `(data) => void \| Promise`            | -            | Form submit handler           |
+| `onRefresh`         | `() => void`                           | -            | Refresh callback              |
+| `onError`           | `() => any`                            | -            | Error handler                 |
+| `onCancel`          | `() => void`                           | -            | Cancel callback               |
+| `onUnmount`         | `() => void`                           | -            | Unmount callback              |
+
+## FormActions Props
+
+| Prop           | Type          | Default     | Description          |
+| -------------- | ------------- | ----------- | -------------------- |
+| `loading`      | `boolean`     | -           | Loading state        |
+| `disabled`     | `boolean`     | -           | Disabled state       |
+| `onCancel`     | `() => void`  | -           | Cancel handler       |
+| `onConfirm`    | `() => void`  | -           | Confirm handler      |
+| `cancelText`   | `ReactNode`   | `'Cancel'`  | Cancel button text   |
+| `confirmText`  | `ReactNode`   | `'Confirm'` | Confirm button text  |
+| `cancelProps`  | `ButtonProps` | -           | Cancel button props  |
+| `confirmProps` | `ButtonProps` | -           | Confirm button props |
+
+## Form Field Components
+
+| Component            | Description           |
+| -------------------- | --------------------- |
+| `FormTextInput`      | Text input field      |
+| `FormPasswordInput`  | Password input field  |
+| `FormNumberInput`    | Number input field    |
+| `FormTextArea`       | Textarea field        |
+| `FormSelect`         | Select dropdown       |
+| `FormMultiSelect`    | Multi-select dropdown |
+| `FormSwitch`         | Switch toggle         |
+| `FormCheckbox`       | Checkbox field        |
+| `FormRadioGroup`     | Radio button group    |
+| `FormRating`         | Rating input          |
+| `FormPhoneInput`     | Phone number input    |
+| `FormProMultiSelect` | Enhanced multi-select |
+| `FormDateTimePicker` | Date and time picker  |
+| `FormCopyText`       | Copyable text field   |
+| `FormSegmentControl` | Segmented control     |

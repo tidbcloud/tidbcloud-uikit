@@ -1,0 +1,41 @@
+# useViewportSize
+
+Get viewport width and height.
+
+## Import
+
+```tsx
+import { useViewportSize } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+`useViewportSize` returns current viewport's `width` and `height`, and subscribes to `resize` and `orientationchange` events.
+
+```tsx
+import { useViewportSize } from '@tidbcloud/uikit'
+import { Text } from '@tidbcloud/uikit'
+
+function Demo() {
+  const { height, width } = useViewportSize()
+
+  return (
+    <Text>
+      Viewport: {width}px × {height}px
+    </Text>
+  )
+}
+```
+
+## Server Side Rendering
+
+During SSR, the hook will return `{ width: 0, height: 0 }`.
+
+## Definition
+
+```tsx
+function useViewportSize(): {
+  height: number
+  width: number
+}
+```

@@ -10,7 +10,8 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "gen:storybook": "tsx ./.storybook/genStories.ts",
-    "gen:embedded-story": "tsx ./scripts/generateEmbeddedStory.ts"
+    "gen:embedded-story": "tsx ./scripts/generateEmbeddedStory.ts",
+    "gen:llms-txt": "tsx ./scripts/generateLlmsTxt.ts"
   },
   "dependencies": {
     "@tidbcloud/uikit": "workspace:*",

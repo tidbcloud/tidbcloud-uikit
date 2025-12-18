@@ -1,0 +1,115 @@
+# useScrollSpy
+
+Track scroll position for navigation and table of contents.
+
+## Import
+
+```tsx
+import { useScrollSpy } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+`useScrollSpy` tracks scroll position and returns the index of the element that is currently in the viewport. It's useful for creating table of contents components and similar features.
+
+```tsx
+import { useScrollSpy } from '@tidbcloud/uikit'
+import { NavLink, Stack } from '@tidbcloud/uikit'
+
+function Demo() {
+  const { data, active } = useScrollSpy()
+
+  return (
+    <div style={{ display: 'flex', gap: 20 }}>
+      <nav style={{ position: 'sticky', top: 20 }}>
+        <Stack gap="xs">
+          {data.map((item, index) => (
+            <NavLink
+              key={item.id}
+              label={item.value}
+              active={active === index}
+              onClick={() => item.getNode().scrollIntoView()}
+            />
+          ))}
+        </Stack>
+      </nav>
+
+      <main>
+        <h1 id="section-1">Section 1</h1>
+        <p>Content...</p>
+        <h2 id="section-2">Section 2</h2>
+        <p>Content...</p>
+        <h2 id="section-3">Section 3</h2>
+        <p>Content...</p>
+      </main>
+    </div>
+  )
+}
+```
+
+## Options
+
+- `selector` – selector to get headings, `'h1, h2, h3, h4, h5, h6'` by default
+- `getDepth` – function to retrieve depth of heading
+- `getValue` – function to retrieve heading value
+- `scrollHost` – host element to attach scroll event listener
+- `offset` – offset from the top of the viewport
+
+```tsx
+import { useScrollSpy } from '@tidbcloud/uikit'
+
+// Custom selector for elements with data-heading attribute
+const { data, active } = useScrollSpy({
+  selector: '[data-heading]',
+  getDepth: (element) => Number(element.getAttribute('data-depth')),
+  getValue: (element) => element.getAttribute('data-value') || '',
+  offset: 100
+})
+```
+
+## Reinitializing
+
+If the DOM changes after mount, use `reinitialize` to update the headings data:
+
+```tsx
+import { useEffect } from 'react'
+import { useScrollSpy } from '@tidbcloud/uikit'
+
+function Demo({ dependency }) {
+  const { reinitialize, data, active } = useScrollSpy()
+
+  useEffect(() => {
+    reinitialize()
+  }, [dependency])
+
+  return null
+}
+```
+
+## Definition
+
+```tsx
+interface UseScrollSpyHeadingData {
+  depth: number
+  value: string
+  id: string
+  getNode: () => HTMLElement
+}
+
+interface UseScrollSpyOptions {
+  selector?: string
+  getDepth?: (element: HTMLElement) => number
+  getValue?: (element: HTMLElement) => string
+  scrollHost?: HTMLElement
+  offset?: number
+}
+
+interface UseScrollSpyReturnType {
+  active: number
+  data: UseScrollSpyHeadingData[]
+  initialized: boolean
+  reinitialize: () => void
+}
+
+function useScrollSpy(options?: UseScrollSpyOptions): UseScrollSpyReturnType
+```

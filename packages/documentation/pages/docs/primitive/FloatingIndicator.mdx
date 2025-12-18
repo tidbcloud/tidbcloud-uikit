@@ -1,5 +1,109 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# FloatingIndicator
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-overlays-floatingindicator--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Display a floating highlight indicator over target elements.
+
+## Import
+
+```tsx
+import { FloatingIndicator } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+`FloatingIndicator` is a component that displays a floating highlight over a target element. It is useful for creating navigation tabs, segmented controls, and other similar UI patterns.
+
+```tsx
+import { useState } from 'react'
+import { FloatingIndicator, UnstyledButton } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [rootRef, setRootRef] = useState<HTMLDivElement | null>(null)
+  const [controlsRefs, setControlsRefs] = useState<Record<string, HTMLButtonElement | null>>({})
+  const [active, setActive] = useState(0)
+
+  const setControlRef = (index: number) => (node: HTMLButtonElement) => {
+    controlsRefs[index] = node
+    setControlsRefs(controlsRefs)
+  }
+
+  const controls = ['React', 'Vue', 'Angular', 'Svelte'].map((item, index) => (
+    <UnstyledButton
+      key={item}
+      className="control"
+      ref={setControlRef(index)}
+      onClick={() => setActive(index)}
+      mod={{ active: active === index }}
+    >
+      <span className="controlLabel">{item}</span>
+    </UnstyledButton>
+  ))
+
+  return (
+    <div className="root" ref={setRootRef}>
+      {controls}
+      <FloatingIndicator target={controlsRefs[active]} parent={rootRef} className="indicator" />
+    </div>
+  )
+}
+```
+
+## With Tabs
+
+```tsx
+import { useState } from 'react'
+import { Tabs, FloatingIndicator } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [rootRef, setRootRef] = useState<HTMLDivElement | null>(null)
+  const [value, setValue] = useState<string | null>('first')
+  const [controlsRefs, setControlsRefs] = useState<Record<string, HTMLButtonElement | null>>({})
+
+  const setControlRef = (val: string) => (node: HTMLButtonElement) => {
+    controlsRefs[val] = node
+    setControlsRefs(controlsRefs)
+  }
+
+  return (
+    <Tabs value={value} onChange={setValue}>
+      <Tabs.List ref={setRootRef}>
+        <Tabs.Tab value="first" ref={setControlRef('first')}>
+          First tab
+        </Tabs.Tab>
+        <Tabs.Tab value="second" ref={setControlRef('second')}>
+          Second tab
+        </Tabs.Tab>
+        <Tabs.Tab value="third" ref={setControlRef('third')}>
+          Third tab
+        </Tabs.Tab>
+
+        <FloatingIndicator target={value ? controlsRefs[value] : null} parent={rootRef} className="indicator" />
+      </Tabs.List>
+    </Tabs>
+  )
+}
+```
+
+## Display vertical
+
+Set `displayAxis="y"` to make the indicator expand vertically:
+
+```tsx
+<FloatingIndicator target={controlsRefs[active]} parent={rootRef} displayAxis="y" />
+```
+
+## Transition duration
+
+Control the transition duration with `transitionDuration` prop:
+
+```tsx
+<FloatingIndicator target={controlsRefs[active]} parent={rootRef} transitionDuration={300} />
+```
+
+## Props
+
+| Prop               | Type                | Default | Description                        |
+| ------------------ | ------------------- | ------- | ---------------------------------- |
+| target             | HTMLElement \| null | -       | Target element to highlight        |
+| parent             | HTMLElement \| null | -       | Parent element for positioning     |
+| displayAxis        | 'x' \| 'y'          | 'x'     | Axis along which indicator expands |
+| transitionDuration | number              | 150     | Transition duration in ms          |

@@ -1,0 +1,42 @@
+# useSet
+
+Manage Set state with automatic re-renders.
+
+## Import
+
+```tsx
+import { useSet } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+`useSet` returns a Set object that can be used as React state. The `add`, `clear`, and `delete` methods trigger state updates.
+
+```tsx
+import { useSet } from '@tidbcloud/uikit'
+import { Button, Group, Text } from '@tidbcloud/uikit'
+
+function Demo() {
+  const set = useSet(['react', 'typescript'])
+
+  return (
+    <>
+      <Text>Items: {Array.from(set).join(', ')}</Text>
+      <Text>Has react: {set.has('react') ? 'Yes' : 'No'}</Text>
+      <Text>Size: {set.size}</Text>
+
+      <Group mt="md">
+        <Button onClick={() => set.add('mantine')}>Add mantine</Button>
+        <Button onClick={() => set.delete('react')}>Delete react</Button>
+        <Button onClick={() => set.clear()}>Clear all</Button>
+      </Group>
+    </>
+  )
+}
+```
+
+## Definition
+
+```tsx
+function useSet<T>(values?: T[]): Set<T>
+```

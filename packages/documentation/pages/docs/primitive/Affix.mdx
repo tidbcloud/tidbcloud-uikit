@@ -1,5 +1,63 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# Affix
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=primitive-overlays-affix--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+Renders children inside portal at fixed position.
+
+## Import
+
+```tsx
+import { Affix } from '@tidbcloud/uikit'
+```
+
+## Usage
+
+`Affix` renders a div element with a fixed position inside the Portal component. Use it to display elements fixed at any position on the screen, for example, scroll to top button:
+
+```tsx
+import { IconArrowUp } from '@tabler/icons-react'
+import { useWindowScroll } from '@mantine/hooks'
+import { Affix, Button, Transition } from '@tidbcloud/uikit'
+
+function Demo() {
+  const [scroll, scrollTo] = useWindowScroll()
+
+  return (
+    <>
+      <Affix position={{ bottom: 20, right: 20 }}>
+        <Transition transition="slide-up" mounted={scroll.y > 0}>
+          {(transitionStyles) => (
+            <Button leftSection={<IconArrowUp size={16} />} style={transitionStyles} onClick={() => scrollTo({ y: 0 })}>
+              Scroll to top
+            </Button>
+          )}
+        </Transition>
+      </Affix>
+    </>
+  )
+}
+```
+
+## Position
+
+Use `position` prop to control the position of the Affix:
+
+```tsx
+import { Affix, Button } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Affix position={{ bottom: 20, left: 20 }}>
+      <Button>Bottom left</Button>
+    </Affix>
+  )
+}
+```
+
+## Props
+
+| Prop         | Type                                                               | Default                   | Description                                                   |
+| ------------ | ------------------------------------------------------------------ | ------------------------- | ------------------------------------------------------------- |
+| children     | `React.ReactNode`                                                  | -                         | Content to render inside Affix                                |
+| portalProps  | `PortalProps`                                                      | -                         | Props passed to the Portal component                          |
+| position     | `{ top?: number; right?: number; bottom?: number; left?: number }` | `{ bottom: 0, right: 0 }` | Affix position on screen                                      |
+| withinPortal | `boolean`                                                          | `true`                    | Determines whether component should be rendered within Portal |
+| zIndex       | `number`                                                           | -                         | Root element z-index property                                 |
