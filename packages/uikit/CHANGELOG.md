@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.7.0
+
+### Minor Changes
+
+- feat(docs): migrate documentation from StoryBook to inline docs with llms.txt support ([#619](https://github.com/tidbcloud/tidbcloud-uikit/pull/619))
+
 ## 2.6.1
 
 ### Patch Changes
