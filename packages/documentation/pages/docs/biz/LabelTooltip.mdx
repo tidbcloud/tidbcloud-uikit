@@ -1,0 +1,91 @@
+# LabelTooltip
+
+An info icon with a hover card tooltip, commonly used for providing additional information next to form labels.
+
+## Import
+
+```tsx
+import { LabelTooltip } from '@tidbcloud/uikit/biz'
+```
+
+## Basic Usage
+
+```tsx
+import { LabelTooltip } from '@tidbcloud/uikit/biz'
+import { Group, Text } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Group gap="xs">
+      <Text>Field Label</Text>
+      <LabelTooltip>This is helpful information about the field.</LabelTooltip>
+    </Group>
+  )
+}
+```
+
+## With Form Field
+
+```tsx
+import { LabelTooltip } from '@tidbcloud/uikit/biz'
+import { TextInput, Group } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <TextInput
+      label={
+        <Group gap={4}>
+          Username
+          <LabelTooltip>Your username must be unique and between 3-20 characters.</LabelTooltip>
+        </Group>
+      }
+      placeholder="Enter username"
+    />
+  )
+}
+```
+
+## Rich Content
+
+```tsx
+import { LabelTooltip } from '@tidbcloud/uikit/biz'
+import { Stack, Text, Code } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <LabelTooltip>
+      <Stack gap="xs">
+        <Text size="sm">Supported formats:</Text>
+        <Code>JSON, CSV, XML</Code>
+      </Stack>
+    </LabelTooltip>
+  )
+}
+```
+
+## Custom HoverCard Props
+
+```tsx
+import { LabelTooltip } from '@tidbcloud/uikit/biz'
+
+function Demo() {
+  return (
+    <LabelTooltip
+      hoverCardProps={{
+        position: 'right',
+        width: 300,
+        openDelay: 200
+      }}
+    >
+      Detailed explanation that may need more space.
+    </LabelTooltip>
+  )
+}
+```
+
+## Props
+
+| Prop             | Type             | Default | Description               |
+| ---------------- | ---------------- | ------- | ------------------------- |
+| `children`       | `ReactNode`      | -       | Tooltip content           |
+| `hoverCardProps` | `HoverCardProps` | -       | Props passed to HoverCard |

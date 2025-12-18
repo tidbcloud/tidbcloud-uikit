@@ -1,0 +1,133 @@
+# DateTimePicker
+
+A comprehensive date and time picker with calendar, time input, and scrollable time selection.
+
+## Import
+
+```tsx
+import { DateTimePicker } from '@tidbcloud/uikit/biz'
+```
+
+## Basic Usage
+
+```tsx
+import { useState } from 'react'
+import { DateTimePicker } from '@tidbcloud/uikit/biz'
+
+function Demo() {
+  const [value, setValue] = useState(null)
+
+  return <DateTimePicker value={value} onChange={setValue} placeholder="Select date and time" />
+}
+```
+
+## With Default Value
+
+```tsx
+import { useState } from 'react'
+import { DateTimePicker } from '@tidbcloud/uikit/biz'
+
+function Demo() {
+  const [value, setValue] = useState(new Date())
+
+  return <DateTimePicker value={value} onChange={setValue} />
+}
+```
+
+## Custom Format
+
+```tsx
+import { DateTimePicker } from '@tidbcloud/uikit/biz'
+
+function Demo() {
+  return <DateTimePicker placeholder="Select date" format="YYYY/MM/DD HH:mm" />
+}
+```
+
+## With Min/Max Date
+
+```tsx
+import { DateTimePicker } from '@tidbcloud/uikit/biz'
+
+function Demo() {
+  const minDate = new Date()
+  const maxDate = new Date()
+  maxDate.setMonth(maxDate.getMonth() + 3)
+
+  return <DateTimePicker placeholder="Select date" minDate={minDate} maxDate={maxDate} />
+}
+```
+
+## Disabled
+
+```tsx
+import { DateTimePicker } from '@tidbcloud/uikit/biz'
+
+function Demo() {
+  return <DateTimePicker placeholder="Disabled" disabled />
+}
+```
+
+## Loading
+
+```tsx
+import { DateTimePicker } from '@tidbcloud/uikit/biz'
+
+function Demo() {
+  return <DateTimePicker placeholder="Loading..." loading />
+}
+```
+
+## With Footer
+
+```tsx
+import { DateTimePicker } from '@tidbcloud/uikit/biz'
+import { Button, Group } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <DateTimePicker
+      placeholder="Select date"
+      footer={
+        <Group justify="flex-end" p="xs">
+          <Button size="xs" variant="subtle">
+            Now
+          </Button>
+        </Group>
+      }
+    />
+  )
+}
+```
+
+## With Form
+
+```tsx
+import { Form, FormDateTimePicker } from '@tidbcloud/uikit/biz'
+
+function Demo() {
+  return (
+    <Form onSubmit={(data) => console.log(data)}>
+      <FormDateTimePicker name="datetime" label="Select Date & Time" rules={{ required: 'Date is required' }} />
+    </Form>
+  )
+}
+```
+
+## Props
+
+| Prop           | Type                           | Default                  | Description               |
+| -------------- | ------------------------------ | ------------------------ | ------------------------- |
+| `value`        | `Date \| null`                 | -                        | Controlled date value     |
+| `defaultValue` | `Date`                         | -                        | Default date value        |
+| `onChange`     | `(date: Date \| null) => void` | -                        | Change callback           |
+| `placeholder`  | `string`                       | `'Select date and time'` | Input placeholder         |
+| `format`       | `string`                       | `'YYYY-MM-DD HH:mm:ss'`  | Date format string        |
+| `formatter`    | `(date: Date) => string`       | -                        | Custom date formatter     |
+| `minDate`      | `Date`                         | 10 years ago             | Minimum selectable date   |
+| `maxDate`      | `Date`                         | 10 years from now        | Maximum selectable date   |
+| `disabled`     | `boolean`                      | `false`                  | Disable the picker        |
+| `withinPortal` | `boolean`                      | `true`                   | Render dropdown in portal |
+| `loading`      | `boolean`                      | `false`                  | Show loading state        |
+| `size`         | `MantineSize`                  | -                        | Input size                |
+| `footer`       | `ReactNode`                    | -                        | Footer content            |

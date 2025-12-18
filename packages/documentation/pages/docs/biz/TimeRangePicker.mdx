@@ -1,3 +1,160 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# TimeRangePicker
 
-<EmbeddedStory src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=biz-timerangepicker--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}></EmbeddedStory>
+A time range picker supporting both relative (e.g., "Last 15 minutes") and absolute time ranges with a customizable quick selection menu.
+
+## Import
+
+```tsx
+import { TimeRangePicker } from '@tidbcloud/uikit/biz'
+```
+
+## Basic Usage
+
+```tsx
+import { useState } from 'react'
+import { TimeRangePicker } from '@tidbcloud/uikit/biz'
+
+function Demo() {
+  const [range, setRange] = useState(null)
+
+  return <TimeRangePicker value={range} onChange={setRange} />
+}
+```
+
+## With Default Relative Range
+
+```tsx
+import { useState } from 'react'
+import { TimeRangePicker } from '@tidbcloud/uikit/biz'
+
+function Demo() {
+  const [range, setRange] = useState({
+    type: 'relative',
+    duration: 3600 // 1 hour in seconds
+  })
+
+  return <TimeRangePicker value={range} onChange={setRange} />
+}
+```
+
+## Absolute Time Range
+
+```tsx
+import { useState } from 'react'
+import { TimeRangePicker } from '@tidbcloud/uikit/biz'
+
+function Demo() {
+  const [range, setRange] = useState({
+    type: 'absolute',
+    start: new Date('2024-01-01T00:00:00'),
+    end: new Date('2024-01-31T23:59:59')
+  })
+
+  return <TimeRangePicker value={range} onChange={setRange} />
+}
+```
+
+## Custom Quick Options
+
+```tsx
+import { useState } from 'react'
+import { TimeRangePicker } from '@tidbcloud/uikit/biz'
+
+function Demo() {
+  const [range, setRange] = useState(null)
+
+  const quickOptions = [
+    { label: 'Last 5 minutes', value: 300 },
+    { label: 'Last 15 minutes', value: 900 },
+    { label: 'Last 1 hour', value: 3600 },
+    { label: 'Last 24 hours', value: 86400 },
+    { label: 'Last 7 days', value: 604800 }
+  ]
+
+  return <TimeRangePicker value={range} onChange={setRange} quickOptions={quickOptions} />
+}
+```
+
+## With Max Duration
+
+```tsx
+import { useState } from 'react'
+import { TimeRangePicker } from '@tidbcloud/uikit/biz'
+
+function Demo() {
+  const [range, setRange] = useState(null)
+
+  return (
+    <TimeRangePicker
+      value={range}
+      onChange={setRange}
+      maxDuration={86400 * 30} // Max 30 days
+    />
+  )
+}
+```
+
+## Clearable
+
+```tsx
+import { useState } from 'react'
+import { TimeRangePicker } from '@tidbcloud/uikit/biz'
+
+function Demo() {
+  const [range, setRange] = useState(null)
+
+  return <TimeRangePicker value={range} onChange={setRange} clearable />
+}
+```
+
+## Hide Custom Picker
+
+```tsx
+import { useState } from 'react'
+import { TimeRangePicker } from '@tidbcloud/uikit/biz'
+
+function Demo() {
+  const [range, setRange] = useState(null)
+
+  return <TimeRangePicker value={range} onChange={setRange} hideCustomPicker />
+}
+```
+
+## Props
+
+| Prop               | Type                                   | Default        | Description             |
+| ------------------ | -------------------------------------- | -------------- | ----------------------- |
+| `value`            | `TimeRange`                            | -              | Selected time range     |
+| `onChange`         | `(range: TimeRange) => void`           | -              | Change handler          |
+| `loading`          | `boolean`                              | -              | Loading state           |
+| `placeholder`      | `string`                               | `'Time Range'` | Button placeholder      |
+| `badgePlaceholder` | `string`                               | `'All'`        | Badge placeholder       |
+| `clearable`        | `boolean`                              | `false`        | Allow clearing          |
+| `formatRelative`   | `(range: RelativeTimeRange) => string` | -              | Custom relative format  |
+| `formatAbsolute`   | `(range: AbsoluteTimeRange) => string` | -              | Custom absolute format  |
+| `dropdownFooter`   | `ReactNode`                            | -              | Dropdown footer content |
+| `minDateTime`      | `Date`                                 | -              | Minimum date/time       |
+| `maxDateTime`      | `Date`                                 | -              | Maximum date/time       |
+| `maxDuration`      | `number`                               | -              | Max duration in seconds |
+| `quickOptions`     | `QuickOption[]`                        | (default list) | Quick selection options |
+| `hideCustomPicker` | `boolean`                              | `false`        | Hide custom picker      |
+| `timezoneOffset`   | `number`                               | -              | Timezone offset         |
+| `datePickerProps`  | `DatePickerProps`                      | -              | Date picker props       |
+| `sx`               | `Sx`                                   | -              | Style props             |
+
+## TimeRange Types
+
+```tsx
+type RelativeTimeRange = {
+  type: 'relative'
+  duration: number // seconds
+}
+
+type AbsoluteTimeRange = {
+  type: 'absolute'
+  start: Date
+  end: Date
+}
+
+type TimeRange = RelativeTimeRange | AbsoluteTimeRange
+```

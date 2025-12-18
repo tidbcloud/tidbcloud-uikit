@@ -1,3 +1,168 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# Tree
 
-<EmbeddedStory src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=biz-tree--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}></EmbeddedStory>
+A tree view component built on rc-tree with custom styling, checkboxes, and collapsible nodes.
+
+## Import
+
+```tsx
+import { Tree } from '@tidbcloud/uikit/biz'
+```
+
+## Basic Usage
+
+```tsx
+import { Tree } from '@tidbcloud/uikit/biz'
+
+const treeData = [
+  {
+    key: '1',
+    title: 'Parent 1',
+    children: [
+      { key: '1-1', title: 'Child 1-1' },
+      { key: '1-2', title: 'Child 1-2' }
+    ]
+  },
+  {
+    key: '2',
+    title: 'Parent 2',
+    children: [{ key: '2-1', title: 'Child 2-1' }]
+  }
+]
+
+function Demo() {
+  return <Tree treeData={treeData} />
+}
+```
+
+## With Checkboxes
+
+```tsx
+import { useState } from 'react'
+import { Tree } from '@tidbcloud/uikit/biz'
+
+function Demo() {
+  const [checkedKeys, setCheckedKeys] = useState([])
+
+  return <Tree treeData={treeData} checkable checkedKeys={checkedKeys} onCheck={(keys) => setCheckedKeys(keys)} />
+}
+```
+
+## With Lines
+
+```tsx
+import { Tree } from '@tidbcloud/uikit/biz'
+
+function Demo() {
+  return <Tree treeData={treeData} showLine />
+}
+```
+
+## Default Expanded
+
+```tsx
+import { Tree } from '@tidbcloud/uikit/biz'
+
+function Demo() {
+  return <Tree treeData={treeData} defaultExpandAll />
+}
+```
+
+## Controlled Expansion
+
+```tsx
+import { useState } from 'react'
+import { Tree } from '@tidbcloud/uikit/biz'
+
+function Demo() {
+  const [expandedKeys, setExpandedKeys] = useState(['1'])
+
+  return <Tree treeData={treeData} expandedKeys={expandedKeys} onExpand={(keys) => setExpandedKeys(keys)} />
+}
+```
+
+## With Icons
+
+```tsx
+import { Tree } from '@tidbcloud/uikit/biz'
+import { IconFolder, IconFile } from '@tabler/icons-react'
+
+const treeData = [
+  {
+    key: '1',
+    title: 'Documents',
+    icon: <IconFolder size={16} />,
+    children: [
+      { key: '1-1', title: 'file1.txt', icon: <IconFile size={16} /> },
+      { key: '1-2', title: 'file2.txt', icon: <IconFile size={16} /> }
+    ]
+  }
+]
+
+function Demo() {
+  return <Tree treeData={treeData} showIcon />
+}
+```
+
+## Disabled Nodes
+
+```tsx
+import { Tree } from '@tidbcloud/uikit/biz'
+
+const treeData = [
+  {
+    key: '1',
+    title: 'Parent 1',
+    children: [
+      { key: '1-1', title: 'Child 1-1', disabled: true },
+      { key: '1-2', title: 'Child 1-2' }
+    ]
+  }
+]
+
+function Demo() {
+  return <Tree treeData={treeData} checkable />
+}
+```
+
+## Props
+
+| Prop                  | Type                                   | Default | Description              |
+| --------------------- | -------------------------------------- | ------- | ------------------------ |
+| `treeData`            | `TreeNode[]`                           | -       | Tree data nodes          |
+| `showLine`            | `boolean \| { showLeafIcon: boolean }` | -       | Show connecting lines    |
+| `className`           | `string`                               | -       | Container class          |
+| `multiple`            | `boolean`                              | -       | Multi-select support     |
+| `autoExpandParent`    | `boolean`                              | -       | Auto expand parents      |
+| `checkable`           | `boolean`                              | `false` | Show checkboxes          |
+| `disabled`            | `boolean`                              | -       | Disable entire tree      |
+| `defaultExpandAll`    | `boolean`                              | -       | Expand all by default    |
+| `defaultExpandParent` | `boolean`                              | -       | Expand parent by default |
+| `defaultExpandedKeys` | `string[]`                             | -       | Default expanded keys    |
+| `expandedKeys`        | `string[]`                             | -       | Controlled expanded keys |
+| `checkedKeys`         | `string[]`                             | -       | Controlled checked keys  |
+| `defaultCheckedKeys`  | `string[]`                             | -       | Default checked keys     |
+| `selectedKeys`        | `string[]`                             | -       | Controlled selected keys |
+| `defaultSelectedKeys` | `string[]`                             | -       | Default selected keys    |
+| `selectable`          | `boolean`                              | `true`  | Enable selection         |
+| `showIcon`            | `boolean`                              | `false` | Show node icons          |
+| `blockNode`           | `boolean`                              | `false` | Full-width nodes         |
+| `switcherIcon`        | `ReactNode \| (props) => ReactNode`    | -       | Custom expand icon       |
+| `onCheck`             | `(keys, info) => void`                 | -       | Check handler            |
+| `onSelect`            | `(keys, info) => void`                 | -       | Select handler           |
+| `onExpand`            | `(keys, info) => void`                 | -       | Expand handler           |
+
+## TreeNode Type
+
+```tsx
+interface TreeNode {
+  key: string
+  title: ReactNode
+  children?: TreeNode[]
+  disabled?: boolean
+  disableCheckbox?: boolean
+  selectable?: boolean
+  checkable?: boolean
+  icon?: ReactNode
+  isLeaf?: boolean
+}
+```

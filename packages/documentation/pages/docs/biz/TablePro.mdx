@@ -1,91 +1,215 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# ProTable
 
-### Introduction
+An advanced data table built on [Mantine React Table](https://v2.mantine-react-table.com/) with customized styling, pagination, sorting, and expansion support.
 
-`ProTable` is built up on [Mantine React Table](https://v2.mantine-react-table.com/). In principle we don't change compoent behavior, only
-with some style changes. So you can refer its documentation directly.
+## Import
 
-### Changes
-
-#### Pagination
-
-Refer to [Mantine React Table Pagination](https://www.mantine-react-table.com/docs/guides/pagination). Basically, you can directly use the props listed on the documentation
-excepts `manualPagination`, `paginationDisplayMode` and `positionPagination`
-
-| Name                   | Type                                                                                                                                                                      | Description                     | Usage                                                                                      |
-| ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------- | ------------------------------------------------------------------------------------------ |
-| mantinePaginationProps | `PaginationProps & { rowsPerPageOptions?: string[], showRowsPerPage?: boolean; }`                                                                                         | props for pagination            | `deprecated`, please use `pagination`                                                      |
-| paginationDisplayMode  | 'default', 'pages', 'custom'                                                                                                                                              |                                 | `deprecated`                                                                               |
-| positionPagination     | 'bottom', 'top', 'both'                                                                                                                                                   |                                 |                                                                                            |
-| pagination             | `PaginationProps & { rowsPerPageOptions?: ComboboxData[], showRowsPerPage?: boolean; showTotal?: boolean, localization?: { total?: string }, wrapperProps?: FlexProps  }` | props for pagination            |                                                                                            |
-| pagination.value       | `number`                                                                                                                                                                  | current page of pagination      | `deprecated`, please use `state.pagination.pageIndex`                                      |
-| pagination.total       | `number`                                                                                                                                                                  | current page size of pagination | `deprecated`, please use `state.pagination.rowCount`, table will calculate size internally |
-
-###### `pagination` vs `state.pagination`
-
-In general, use the `pagintaion` to control the style of paginations, such as layout, show or hide total pages. Use `state.pagination` to control the state of pagination such as changing pageIndex or pageSize
-
-##### Usage
-
-1. For client side pagination:
-
-```typescript
-const table = useProTable({
-  columns,
-  data,
-  enablePagination: true,
-})
-
-<ProTable table={table} />
-
-// or
-<ProTable data={columns} data={data} enabolePagination />
+```tsx
+import { ProTable, useProTable, TablePagination } from '@tidbcloud/uikit/biz'
 ```
 
-2. For manual or server-side pagination
+## Basic Usage
 
-```typescript
-//store pagination state in your own state
-const [pagination, setPagination] = useState({
-  pageIndex: 0,
-  pageSize: 5 //customize the default page size
-})
+```tsx
+import { ProTable, useProTable } from '@tidbcloud/uikit/biz'
 
-const table = useProTable({
-  columns,
-  data,
-  manualPagination: true, // set this true
-  onPaginationChange: setPagination,
-  rowCount: data.meta.totalDBRowCount // you can tell the pagination how many rows there are in your back-end data,
-  enablePagination: true,
-  state: { pagination }, //pass the pagination state to the table
-})
+const data = [
+  { id: 1, name: 'John', email: 'john@example.com', status: 'Active' },
+  { id: 2, name: 'Jane', email: 'jane@example.com', status: 'Inactive' }
+]
 
-<ProTable table={table} />
+const columns = [
+  { accessorKey: 'id', header: 'ID' },
+  { accessorKey: 'name', header: 'Name' },
+  { accessorKey: 'email', header: 'Email' },
+  { accessorKey: 'status', header: 'Status' }
+]
 
+function Demo() {
+  const table = useProTable({ data, columns })
+  return <ProTable table={table} />
+}
 ```
 
-3. For pagination UI
+## With Pagination
 
-```typescript
+### Client-side Pagination
+
+```tsx
+import { ProTable, useProTable } from '@tidbcloud/uikit/biz'
+
+function Demo() {
+  const table = useProTable({
+    data,
+    columns,
+    enablePagination: true
+  })
+
+  return <ProTable table={table} />
+}
+```
+
+### Server-side Pagination
+
+```tsx
+import { useState } from 'react'
+import { ProTable, useProTable } from '@tidbcloud/uikit/biz'
+
+function Demo() {
+  const [pagination, setPagination] = useState({
+    pageIndex: 0,
+    pageSize: 10
+  })
+
+  const table = useProTable({
+    data,
+    columns,
+    manualPagination: true,
+    onPaginationChange: setPagination,
+    rowCount: totalCount, // Total rows from server
+    enablePagination: true,
+    state: { pagination }
+  })
+
+  return <ProTable table={table} />
+}
+```
+
+### Pagination UI Options
+
+```tsx
 const table = useProTable({
-  columns,
   data,
+  columns,
   enablePagination: true,
   pagination: {
-    wrapperProps: {}, // Props for pagination container
-    rowsPerPageOptions: [] // configure rows per page options
-    showRowsPerPage: true, // determine whether shows rows per page
-    showTotal: true, // determine whether shows total
-    localization: { // i18n
-      total: 'Total' // default is 'Total:`
+    rowsPerPageOptions: ['10', '20', '50', '100'],
+    showRowsPerPage: true,
+    showTotal: true,
+    localization: {
+      total: 'Total:'
     }
   }
 })
-
-<ProTable table={table} />
 ```
 
-<EmbeddedStory
-  src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=biz-pro-table--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}
-></EmbeddedStory>
+## With Sorting
+
+```tsx
+import { ProTable, useProTable } from '@tidbcloud/uikit/biz'
+
+function Demo() {
+  const table = useProTable({
+    data,
+    columns,
+    enableSorting: true
+  })
+
+  return <ProTable table={table} />
+}
+```
+
+## With Row Expansion
+
+```tsx
+import { ProTable, useProTable } from '@tidbcloud/uikit/biz'
+
+function Demo() {
+  const table = useProTable({
+    data,
+    columns,
+    enableExpanding: true,
+    renderDetailPanel: ({ row }) => <div>Details for {row.original.name}</div>
+  })
+
+  return <ProTable table={table} />
+}
+```
+
+## With Virtual Scrolling
+
+```tsx
+import { ProTable, useProTable } from '@tidbcloud/uikit/biz'
+
+function Demo() {
+  const table = useProTable({
+    data: largeDataset,
+    columns,
+    enableRowVirtualization: true
+  })
+
+  return <ProTable table={table} />
+}
+```
+
+## Sticky Header
+
+```tsx
+import { ProTable, useProTable } from '@tidbcloud/uikit/biz'
+
+function Demo() {
+  const table = useProTable({
+    data,
+    columns,
+    enableStickyHeader: true
+  })
+
+  return <ProTable table={table} />
+}
+```
+
+## Loading State
+
+```tsx
+import { ProTable, useProTable } from '@tidbcloud/uikit/biz'
+
+function Demo() {
+  const table = useProTable({
+    data: [],
+    columns,
+    loading: true
+  })
+
+  return <ProTable table={table} />
+}
+```
+
+## Props
+
+| Prop                      | Type                | Default | Description                     |
+| ------------------------- | ------------------- | ------- | ------------------------------- |
+| `table`                   | `MRT_TableInstance` | -       | Table instance from useProTable |
+| `data`                    | `T[]`               | -       | Table data                      |
+| `columns`                 | `MRT_ColumnDef[]`   | -       | Column definitions              |
+| `withBorder`              | `boolean`           | `true`  | Show table border               |
+| `emptyText`               | `string`            | -       | Empty state message             |
+| `errorText`               | `string`            | -       | Error state message             |
+| `loading`                 | `boolean`           | `false` | Loading state                   |
+| `enablePagination`        | `boolean`           | `false` | Enable pagination               |
+| `enableSorting`           | `boolean`           | `false` | Enable sorting                  |
+| `enableExpanding`         | `boolean`           | `false` | Enable row expansion            |
+| `enableStickyHeader`      | `boolean`           | -       | Sticky header                   |
+| `enableStickyFooter`      | `boolean`           | -       | Sticky footer                   |
+| `enableRowVirtualization` | `boolean`           | `false` | Virtual scrolling               |
+| `pagination`              | `PaginationConfig`  | -       | Pagination configuration        |
+| `wrapperProps`            | `BoxProps`          | -       | Wrapper props                   |
+
+## Pagination Config
+
+| Prop                 | Type        | Default                                     | Description             |
+| -------------------- | ----------- | ------------------------------------------- | ----------------------- |
+| `rowsPerPageOptions` | `string[]`  | `['5','10','15','20','25','30','50','100']` | Page size options       |
+| `showRowsPerPage`    | `boolean`   | `false`                                     | Show page size selector |
+| `showTotal`          | `boolean`   | `false`                                     | Show total count        |
+| `wrapperProps`       | `FlexProps` | -                                           | Wrapper props           |
+| `localization.total` | `string`    | `'Total:'`                                  | Total label text        |
+
+## Exports
+
+| Export            | Description                      |
+| ----------------- | -------------------------------- |
+| `ProTable`        | Main table component             |
+| `useProTable`     | Hook for creating table instance |
+| `TablePagination` | Standalone pagination component  |
+
+ProTable supports all [Mantine React Table](https://v2.mantine-react-table.com/) options.

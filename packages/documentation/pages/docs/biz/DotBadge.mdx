@@ -1,3 +1,61 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# DotBadge
 
-<EmbeddedStory src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=biz-dotbadge--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}></EmbeddedStory>
+A badge component with a colored dot indicator, useful for status displays.
+
+## Import
+
+```tsx
+import { DotBadge } from '@tidbcloud/uikit/biz'
+```
+
+## Basic Usage
+
+```tsx
+import { DotBadge } from '@tidbcloud/uikit/biz'
+import { Group } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Group>
+      <DotBadge color="green">Active</DotBadge>
+      <DotBadge color="yellow">Pending</DotBadge>
+      <DotBadge color="red">Error</DotBadge>
+    </Group>
+  )
+}
+```
+
+## Status Indicator
+
+```tsx
+import { DotBadge } from '@tidbcloud/uikit/biz'
+import { Stack } from '@tidbcloud/uikit'
+
+function Demo() {
+  const statuses = [
+    { status: 'running', color: 'green', label: 'Running' },
+    { status: 'stopped', color: 'gray', label: 'Stopped' },
+    { status: 'error', color: 'red', label: 'Error' },
+    { status: 'warning', color: 'yellow', label: 'Warning' }
+  ]
+
+  return (
+    <Stack>
+      {statuses.map((s) => (
+        <DotBadge key={s.status} color={s.color}>
+          {s.label}
+        </DotBadge>
+      ))}
+    </Stack>
+  )
+}
+```
+
+## Props
+
+| Prop       | Type           | Default   | Description         |
+| ---------- | -------------- | --------- | ------------------- |
+| `color`    | `MantineColor` | `'green'` | Dot and badge color |
+| `children` | `ReactNode`    | -         | Badge content       |
+
+DotBadge also accepts all Badge component props (excluding color).

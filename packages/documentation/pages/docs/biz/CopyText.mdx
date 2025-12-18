@@ -1,3 +1,77 @@
-import { EmbeddedStory } from '@components/EmbeddedStory'
+# CopyText
 
-<EmbeddedStory src={`${process.env.NEXT_PUBLIC_STORYBOOK_HOST}/iframe.html?args=&id=biz-copytext--docs&viewMode=story&full=1&shortcuts=false&singleStory=true`}></EmbeddedStory>
+A text component with built-in copy-to-clipboard functionality, displaying text in a code-styled container with a copy button.
+
+## Import
+
+```tsx
+import { CopyText } from '@tidbcloud/uikit/biz'
+```
+
+## Basic Usage
+
+```tsx
+import { CopyText } from '@tidbcloud/uikit/biz'
+
+function Demo() {
+  return <CopyText value="mysql://user:password@host:3306/database">mysql://user:password@host:3306/database</CopyText>
+}
+```
+
+## Custom Display vs Copy Value
+
+You can display different content than what gets copied:
+
+```tsx
+import { CopyText } from '@tidbcloud/uikit/biz'
+
+function Demo() {
+  const connectionString = 'mysql://user:password@host:3306/database'
+
+  return <CopyText value={connectionString}>mysql://user:***@host:3306/database</CopyText>
+}
+```
+
+## Custom Styling
+
+CopyText extends Code props, so you can customize the styling:
+
+```tsx
+import { CopyText } from '@tidbcloud/uikit/biz'
+
+function Demo() {
+  return (
+    <CopyText value="SELECT * FROM users" bg="dark.6" c="green.4" fz="sm">
+      SELECT * FROM users
+    </CopyText>
+  )
+}
+```
+
+## In a Card
+
+```tsx
+import { CopyText } from '@tidbcloud/uikit/biz'
+import { Card, Text, Stack } from '@tidbcloud/uikit'
+
+function Demo() {
+  return (
+    <Card withBorder>
+      <Stack gap="sm">
+        <Text fw={500}>Connection Details</Text>
+        <CopyText value="192.168.1.100">Host: 192.168.1.100</CopyText>
+        <CopyText value="3306">Port: 3306</CopyText>
+      </Stack>
+    </Card>
+  )
+}
+```
+
+## Props
+
+| Prop       | Type        | Default | Description                         |
+| ---------- | ----------- | ------- | ----------------------------------- |
+| `value`    | `string`    | -       | The text value to copy to clipboard |
+| `children` | `ReactNode` | -       | Content to display                  |
+
+CopyText also accepts all Code component props (`bg`, `c`, `fz`, `p`, `sx`, etc.).
