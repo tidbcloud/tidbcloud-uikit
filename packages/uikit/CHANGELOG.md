@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.7.1
+
+### Patch Changes
+
+- Feat/expand line icon ([#627](https://github.com/tidbcloud/tidbcloud-uikit/pull/627))
+
 ## 2.7.0
 
 ### Minor Changes
