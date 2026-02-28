@@ -21,23 +21,76 @@ on:
         description: Commit SHA for snapshot publishing (optional)
         required: false
         type: string
-  workflow_call:
-    inputs:
-      commit_sha:
-        description: Commit SHA to build and publish as snapshot
-        required: false
-        type: string
-    outputs:
-      version:
-        description: Published snapshot version
-        value: ${{ jobs.snapshot_release.outputs.version }}
+  issue_comment:
+    types: [created]
 
 permissions:
   contents: write
   pull-requests: write
+  issues: write
   id-token: write
 
 jobs:
+  handle_snapshot_command:
+    if: github.event_name == 'workflow_dispatch' || (github.event_name == 'issue_comment' && github.event.issue.pull_request)
+    runs-on: ubuntu-latest
+    outputs:
+      command_found: ${{ steps.check_command.outputs.command_found || 'false' }}
+      status_comment_id: ${{ steps.comment_deployment.outputs.comment_id || '' }}
+      pr_sha: ${{ steps.pr_details.outputs.sha || '' }}
+
+    steps:
+      - name: Check for snapshot-release command
+        if: github.event_name == 'issue_comment'
+        id: check_command
+        run: |
+          comment="${{ github.event.comment.body }}"
+          comment=$(echo "$comment" | xargs)
+          if [[ "$comment" =~ ^/snapshot-release ]]; then
+            echo "command_found=true" >> $GITHUB_OUTPUT
+          else
+            echo "command_found=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: React to comment
+        if: github.event_name == 'issue_comment' && steps.check_command.outputs.command_found == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.reactions.createForIssueComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              comment_id: ${{ github.event.comment.id }},
+              content: 'rocket'
+            });
+
+      - name: Get PR details
+        if: github.event_name == 'issue_comment' && steps.check_command.outputs.command_found == 'true'
+        id: pr_details
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { data: pr } = await github.rest.pulls.get({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: ${{ github.event.issue.number }}
+            });
+            core.setOutput('sha', pr.head.sha);
+
+      - name: Comment deployment started
+        if: github.event_name == 'issue_comment' && steps.check_command.outputs.command_found == 'true'
+        id: comment_deployment
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { data: comment } = await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: ${{ github.event.issue.number }},
+              body: '🚀 Starting snapshot release... This may take a few minutes.'
+            });
+            core.setOutput('comment_id', comment.id);
+
   release:
     if: github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && github.event.inputs.release_mode == 'stable')
     runs-on: ubuntu-latest
@@ -79,7 +132,10 @@ jobs:
           NPM_CONFIG_PROVENANCE: true
 
   snapshot_release:
-    if: github.event_name == 'workflow_call' || (github.event_name == 'workflow_dispatch' && github.event.inputs.release_mode == 'snapshot')
+    needs: handle_snapshot_command
+    if: |
+      (github.event_name == 'issue_comment' && needs.handle_snapshot_command.outputs.command_found == 'true') ||
+      (github.event_name == 'workflow_dispatch' && github.event.inputs.release_mode == 'snapshot')
     runs-on: ubuntu-latest
     # Must match npm Trusted Publisher environment configuration.
     environment: PUBLISH_NPM_REGISTRY_TOKEN
@@ -92,7 +148,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          ref: ${{ inputs.commit_sha || github.sha }}
+          ref: ${{ github.event_name == 'issue_comment' && needs.handle_snapshot_command.outputs.pr_sha || github.event.inputs.commit_sha || github.sha }}
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
@@ -140,3 +196,42 @@ jobs:
       - name: Get Published Version
         id: get_version
         run: echo "version=$(node -p "require('./packages/uikit/package.json').version")" >> $GITHUB_OUTPUT
+
+  notify_snapshot_result:
+    needs: [handle_snapshot_command, snapshot_release]
+    if: github.event_name == 'issue_comment' && always() && needs.handle_snapshot_command.outputs.command_found == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Update comment with success
+        if: needs.snapshot_release.result == 'success'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.updateComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              comment_id: ${{ needs.handle_snapshot_command.outputs.status_comment_id }},
+              body: `✅ Snapshot release published successfully!
+
+              📦 **Version**: \`${{ needs.snapshot_release.outputs.version }}\`
+              🏷️ **Tag**: \`experimental\`
+              🔗 **npm**: https://www.npmjs.com/package/@tidbcloud/uikit/v/${{ needs.snapshot_release.outputs.version }}?activeTab=readme
+              📥 **Install**:
+              \`\`\`
+              pnpm install @tidbcloud/uikit@${{ needs.snapshot_release.outputs.version }}
+              \`\`\`
+
+              You can test this version in your project now.`
+            });
+
+      - name: Update comment with failure
+        if: needs.snapshot_release.result == 'failure'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.updateComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              comment_id: ${{ needs.handle_snapshot_command.outputs.status_comment_id }},
+              body: '❌ Snapshot release failed. Please check the [workflow logs](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}) for details.'
+            });
