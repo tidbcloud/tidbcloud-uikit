@@ -70,9 +70,8 @@ jobs:
   snapshot_release:
     needs: handle_commands
     if: needs.handle_commands.outputs.command_found == 'true'
-    uses: ./.github/workflows/snapshot-release.yml
+    uses: ./.github/workflows/publish-github-packages.yml
     with:
-      pr_number: ${{ github.event.issue.number }}
       commit_sha: ${{ needs.handle_commands.outputs.pr_sha }}
     secrets: inherit
 

@@ -1,4 +1,5 @@
-# This workflow publishes npm packages via npm Trusted Publishing (OIDC).
+# This workflow is the single npm Trusted Publisher entrypoint.
+# It handles both stable releases and snapshot releases.
 name: Publish npm Package
 
 on:
@@ -6,24 +7,52 @@ on:
     branches:
       - master
       - v2
+  workflow_dispatch:
+    inputs:
+      release_mode:
+        description: Release mode
+        required: true
+        default: snapshot
+        type: choice
+        options:
+          - snapshot
+          - stable
+      commit_sha:
+        description: Commit SHA for snapshot publishing (optional)
+        required: false
+        type: string
+  workflow_call:
+    inputs:
+      commit_sha:
+        description: Commit SHA to build and publish as snapshot
+        required: false
+        type: string
+    outputs:
+      version:
+        description: Published snapshot version
+        value: ${{ jobs.snapshot_release.outputs.version }}
+
+permissions:
+  contents: write
+  pull-requests: write
+  id-token: write
 
 jobs:
-  build:
+  release:
+    if: github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && github.event.inputs.release_mode == 'stable')
     runs-on: ubuntu-latest
-    # Must match the environment configured in npm Trusted Publisher settings.
+    # Must match npm Trusted Publisher environment configuration.
     environment: PUBLISH_NPM_REGISTRY_TOKEN
-    permissions:
-      contents: write
-      pull-requests: write
-      id-token: write
 
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v4
 
-      - uses: pnpm/action-setup@v4
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
 
-      - uses: actions/setup-node@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
           # npm Trusted Publishing requires modern Node/npm versions.
           node-version: '24'
@@ -48,3 +77,66 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_CONFIG_PROVENANCE: true
+
+  snapshot_release:
+    if: github.event_name == 'workflow_call' || (github.event_name == 'workflow_dispatch' && github.event.inputs.release_mode == 'snapshot')
+    runs-on: ubuntu-latest
+    # Must match npm Trusted Publisher environment configuration.
+    environment: PUBLISH_NPM_REGISTRY_TOKEN
+    concurrency: ${{ github.workflow }}-${{ github.ref }}-snapshot
+    outputs:
+      version: ${{ steps.get_version.outputs.version }}
+
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ inputs.commit_sha || github.sha }}
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: 'pnpm'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Type Check UIKit
+        run: pnpm --filter @tidbcloud/uikit type-check
+
+      - name: Build Packages
+        run: pnpm build
+
+      - name: Configure Git User
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Create Snapshot Changeset File
+        run: |
+          echo "---" > .changeset/snapshot-${{ github.run_id }}.md
+          echo "'@tidbcloud/uikit': patch" >> .changeset/snapshot-${{ github.run_id }}.md
+          echo "---" >> .changeset/snapshot-${{ github.run_id }}.md
+          echo "" >> .changeset/snapshot-${{ github.run_id }}.md
+          echo "chore: snapshot release" >> .changeset/snapshot-${{ github.run_id }}.md
+
+      - name: Bump Version for Snapshot
+        run: pnpm exec changeset version --snapshot
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Publish Snapshot to npm under experimental tag
+        run: pnpm exec changeset publish --tag experimental
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_CONFIG_PROVENANCE: true
+
+      - name: Get Published Version
+        id: get_version
+        run: echo "version=$(node -p "require('./packages/uikit/package.json').version")" >> $GITHUB_OUTPUT
