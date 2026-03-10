@@ -1,5 +1,14 @@
 # @tidbcloud/uikit
 
+## 2.7.2
+
+### Patch Changes
+
+- feat(uikit): add project icons ([#631](https://github.com/tidbcloud/tidbcloud-uikit/pull/631))
+- ci: use single publish workflow for trusted publisher ([#630](https://github.com/tidbcloud/tidbcloud-uikit/pull/630))
+- feat(uikit): add project icons ([#631](https://github.com/tidbcloud/tidbcloud-uikit/pull/631))
+- ci: use single publish workflow for trusted publisher ([#630](https://github.com/tidbcloud/tidbcloud-uikit/pull/630))
+
 ## 2.7.1
 
 ### Patch Changes
