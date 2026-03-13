@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.7.3
+
+### Patch Changes
+
+- feat(uikit): update DProject icon dimensions and SVG structure ([#633](https://github.com/tidbcloud/tidbcloud-uikit/pull/633))
+
 ## 2.7.2
 
 ### Patch Changes
