@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.7.4
+
+### Patch Changes
+
+- fix(uikit): update DProject icon ([#635](https://github.com/tidbcloud/tidbcloud-uikit/pull/635))
+
 ## 2.7.3
 
 ### Patch Changes
