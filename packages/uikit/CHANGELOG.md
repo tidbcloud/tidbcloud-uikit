@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.7.5
+
+### Patch Changes
+
+- Feat/dproject fill icon ([#637](https://github.com/tidbcloud/tidbcloud-uikit/pull/637))
+
 ## 2.7.4
 
 ### Patch Changes
