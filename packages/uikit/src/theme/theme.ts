@@ -3,6 +3,7 @@ import {
   AccordionProps,
   DEFAULT_THEME,
   MantineTheme,
+  PaginationProps,
   RadioIndicatorProps,
   TagsInputProps,
   createTheme,
@@ -1401,6 +1402,34 @@ const theme = createTheme({
           root: {
             backgroundColor: themeColor(theme, 'carbon', 3),
             color: themeColor(theme, 'carbon', 8)
+          }
+        }
+      }
+    },
+    Pagination: {
+      styles: (theme: MantineTheme, _props: PaginationProps, u: EmotionHelpers) => {
+        return {
+          control: {
+            border: 'none',
+            color: themeColor(theme, 'carbon', 9),
+            borderRadius: theme.defaultRadius,
+            backgroundColor: 'transparent',
+            [u.dark]: {
+              color: themeColor(theme, 'carbon', 8)
+            },
+            '&:hover': {
+              [u.light]: {
+                backgroundColor: themeColor(theme, 'carbon', 2)
+              }
+            },
+            '&[data-active]': {
+              color: themeColor(theme, 'carbon', 9),
+              border: `1px solid ${themeColor(theme, 'carbon', 5)}`,
+              background: themeColor(theme, 'carbon', 2),
+              [u.dark]: {
+                color: themeColor(theme, 'carbon', 8)
+              }
+            }
           }
         }
       }
