@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.7.6
+
+### Patch Changes
+
+- refactor(uikit): simplify TablePagination styles and move them to theme ([#639](https://github.com/tidbcloud/tidbcloud-uikit/pull/639))
+
 ## 2.7.5
 
 ### Patch Changes
