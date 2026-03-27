@@ -95,20 +95,6 @@ export const ProTablePagination = <TData extends MRT_RowData>({ table, ...props 
           total={paginationProps?.total ?? numberOfPages}
           value={paginationProps.value ?? pageIndex + 1}
           withEdges={withEdges}
-          styles={mergeStylesList([
-            (theme) => ({
-              control: {
-                border: 'none',
-                color: theme.colors.carbon[9],
-                borderRadius: theme.defaultRadius,
-                '&[data-active]': {
-                  color: theme.colors.carbon[9],
-                  background: theme.colors.carbon[4]
-                }
-              }
-            }),
-            rest.styles
-          ])}
           {...rest}
         />
         {showRowsPerPage && (
