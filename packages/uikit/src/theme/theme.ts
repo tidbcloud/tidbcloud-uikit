@@ -1418,9 +1418,7 @@ const theme = createTheme({
               color: themeColor(theme, 'carbon', 8)
             },
             '&:hover': {
-              [u.light]: {
-                backgroundColor: themeColor(theme, 'carbon', 2)
-              }
+              backgroundColor: themeColor(theme, 'carbon', 2)
             },
             '&[data-active]': {
               color: themeColor(theme, 'carbon', 9),
