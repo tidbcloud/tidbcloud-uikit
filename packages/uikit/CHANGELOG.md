@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.7.7
+
+### Patch Changes
+
+- fix(uikit): simplify hover styles in theme ([#641](https://github.com/tidbcloud/tidbcloud-uikit/pull/641))
+
 ## 2.7.6
 
 ### Patch Changes
