@@ -1,5 +1,17 @@
 # @tidbcloud/uikit
 
+## 2.8.0
+
+### Minor Changes
+
+- fix(uikit): make DateTimePicker future mode opt-in ([#647](https://github.com/tidbcloud/tidbcloud-uikit/pull/647))
+- feat(uikit): update DateTimePicker date states ([#645](https://github.com/tidbcloud/tidbcloud-uikit/pull/645))
+
+### Patch Changes
+
+- fix(uikit): make DateTimePicker future mode opt-in ([#647](https://github.com/tidbcloud/tidbcloud-uikit/pull/647))
+- feat(uikit): update DateTimePicker date states ([#645](https://github.com/tidbcloud/tidbcloud-uikit/pull/645))
+
 ## 2.7.7
 
 ### Patch Changes
