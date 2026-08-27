@@ -38,6 +38,7 @@ export const DateTimePicker = ({
   defaultValue,
   value,
   today = new Date(),
+  futureOnly = false,
   startDate = dayjs().subtract(10, 'year').toDate(),
   endDate = dayjs().add(10, 'year').toDate(),
   onChange,
@@ -50,7 +51,7 @@ export const DateTimePicker = ({
 }: DateTimePickerProps) => {
   const [opened, { close, open }] = useDisclosure(false)
   const currentDay = dayjs(today).startOf('day')
-  const minimumDate = dayjs.max(dayjs(startDate), dayjs(today))
+  const minimumDate = futureOnly ? dayjs.max(dayjs(startDate), dayjs(today)) : dayjs(startDate)
   const initialCalendarDate = getInitialCalendarDate(currentDay)
   const [calendarDate, setCalendarDate] = useState(initialCalendarDate.toDate())
   const [currentValue, setCurrentValue] = useUncontrolled({
@@ -98,7 +99,9 @@ export const DateTimePicker = ({
     let next = currentValue
     next = next.year(v.getFullYear()).month(v.getMonth()).date(v.getDate())
 
-    setCalendarDate(v)
+    if (futureOnly) {
+      setCalendarDate(v)
+    }
     updateCurrentValue(next, 'calendar')
   })
 
@@ -128,7 +131,9 @@ export const DateTimePicker = ({
       closeOnClickOutside
       onChange={(opened) => {
         if (opened) {
-          setCalendarDate(getInitialCalendarDate(currentDay).toDate())
+          if (futureOnly) {
+            setCalendarDate(getInitialCalendarDate(currentDay).toDate())
+          }
           open()
         } else {
           close()
@@ -151,49 +156,57 @@ export const DateTimePicker = ({
         <Stack>
           <Group align="flex-start">
             <DatePicker
-              date={calendarDate}
-              onDateChange={setCalendarDate}
-              minDate={minimumDate.startOf('day').toDate()}
+              date={futureOnly ? calendarDate : undefined}
+              onDateChange={futureOnly ? setCalendarDate : undefined}
+              minDate={futureOnly ? minimumDate.startOf('day').toDate() : startDate}
               maxDate={endDate}
-              getDayProps={(date) => {
-                const day = dayjs(date)
-                const isCurrentDay = day.isSame(currentDay, 'day')
-                const isSelected = day.isSame(currentValue, 'day')
+              getDayProps={
+                futureOnly
+                  ? (date) => {
+                      const day = dayjs(date)
+                      const isCurrentDay = day.isSame(currentDay, 'day')
+                      const isSelected = day.isSame(currentValue, 'day')
 
-                return {
-                  style:
-                    isCurrentDay && !isSelected
-                      ? {
-                          border: '1px solid var(--mantine-color-carbon-8)',
-                          color: 'var(--mantine-color-carbon-8)',
-                          opacity: 1
-                        }
-                      : undefined
-                }
-              }}
+                      return {
+                        style:
+                          isCurrentDay && !isSelected
+                            ? {
+                                border: '1px solid var(--mantine-color-carbon-8)',
+                                color: 'var(--mantine-color-carbon-8)',
+                                opacity: 1
+                              }
+                            : undefined
+                      }
+                    }
+                  : undefined
+              }
               value={currentValue.toDate()}
               onChange={calendarChange}
               withCellSpacing={false}
               size="sm"
-              styles={(theme) => ({
-                day: {
-                  '&[data-disabled]': {
-                    color: `${theme.colors.carbon[4]} !important`,
-                    opacity: 1
-                  },
-                  '&[data-outside]': {
-                    color: theme.colors.carbon[6],
-                    opacity: 1
-                  },
-                  '&[data-today]:not([data-selected])': {
-                    border: 0
-                  },
-                  '&[data-selected]': {
-                    backgroundColor: theme.colors.carbon[8],
-                    color: theme.white
-                  }
-                }
-              })}
+              styles={
+                futureOnly
+                  ? (theme) => ({
+                      day: {
+                        '&[data-disabled]': {
+                          color: `${theme.colors.carbon[4]} !important`,
+                          opacity: 1
+                        },
+                        '&[data-outside]': {
+                          color: theme.colors.carbon[6],
+                          opacity: 1
+                        },
+                        '&[data-today]:not([data-selected])': {
+                          border: 0
+                        },
+                        '&[data-selected]': {
+                          backgroundColor: theme.colors.carbon[8],
+                          color: theme.white
+                        }
+                      }
+                    })
+                  : undefined
+              }
             />
 
             <Divider orientation="vertical" mt={-12} mb={-16} />

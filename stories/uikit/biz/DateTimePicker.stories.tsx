@@ -42,6 +42,7 @@ export function Demo() {
   return (
     <Stack>
       <DateTimePicker
+        futureOnly
         value={displayValue}
         onChange={onChange}
         today={today}
@@ -66,12 +67,26 @@ export function Uncontrolled() {
   return <DateTimePicker defaultValue={new Date()} onChange={console.log} />
 }
 
+export function LegacyDateRange() {
+  const [value, setValue] = useState(() => new Date())
+
+  return (
+    <DateTimePicker
+      startDate={dayjs().subtract(1, 'year').toDate()}
+      endDate={dayjs().add(1, 'year').toDate()}
+      value={value}
+      onChange={setValue}
+    />
+  )
+}
+
 export function MonthEnd() {
   const today = new Date(2026, 7, 31, 8, 0, 0)
   const [value, setValue] = useState(new Date(2026, 8, 12, 8, 0, 0))
 
   return (
     <DateTimePicker
+      futureOnly
       today={today}
       startDate={today}
       endDate={new Date(2027, 7, 31, 23, 59, 59)}
@@ -87,6 +102,7 @@ export function DisabledAndOutsideDates() {
 
   return (
     <DateTimePicker
+      futureOnly
       today={today}
       startDate={today}
       endDate={dayjs(today).add(1, 'year').toDate()}
