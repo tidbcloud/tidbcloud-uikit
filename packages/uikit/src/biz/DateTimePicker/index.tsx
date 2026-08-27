@@ -28,12 +28,16 @@ export type { DateTimePickerProps } from './types.js'
 
 export { useDateTimePicker } from './helpers.js'
 
+const getInitialCalendarDate = (currentDay: Dayjs) =>
+  currentDay.date() === currentDay.daysInMonth() ? currentDay.add(1, 'month') : currentDay
+
 export const DateTimePicker = ({
   placeholder = 'Select time',
   format = DEFAULT_TIME_FORMAT,
   formatter,
   defaultValue,
   value,
+  today = new Date(),
   startDate = dayjs().subtract(10, 'year').toDate(),
   endDate = dayjs().add(10, 'year').toDate(),
   onChange,
@@ -45,6 +49,10 @@ export const DateTimePicker = ({
   footer
 }: DateTimePickerProps) => {
   const [opened, { close, open }] = useDisclosure(false)
+  const currentDay = dayjs(today).startOf('day')
+  const minimumDate = dayjs.max(dayjs(startDate), dayjs(today))
+  const initialCalendarDate = getInitialCalendarDate(currentDay)
+  const [calendarDate, setCalendarDate] = useState(initialCalendarDate.toDate())
   const [currentValue, setCurrentValue] = useUncontrolled({
     value: value ? dayjs(value) : undefined,
     defaultValue: defaultValue ? dayjs(defaultValue) : dayjs(),
@@ -65,8 +73,8 @@ export const DateTimePicker = ({
       return
     }
 
-    if (startDate && next.isBefore(startDate)) {
-      next = dayjs(startDate)
+    if (next.isBefore(minimumDate)) {
+      next = minimumDate
     } else if (endDate && next.isAfter(endDate)) {
       next = dayjs(endDate)
     }
@@ -90,6 +98,7 @@ export const DateTimePicker = ({
     let next = currentValue
     next = next.year(v.getFullYear()).month(v.getMonth()).date(v.getDate())
 
+    setCalendarDate(v)
     updateCurrentValue(next, 'calendar')
   })
 
@@ -119,6 +128,7 @@ export const DateTimePicker = ({
       closeOnClickOutside
       onChange={(opened) => {
         if (opened) {
+          setCalendarDate(getInitialCalendarDate(currentDay).toDate())
           open()
         } else {
           close()
@@ -141,12 +151,49 @@ export const DateTimePicker = ({
         <Stack>
           <Group align="flex-start">
             <DatePicker
-              minDate={startDate}
+              date={calendarDate}
+              onDateChange={setCalendarDate}
+              minDate={minimumDate.startOf('day').toDate()}
               maxDate={endDate}
+              getDayProps={(date) => {
+                const day = dayjs(date)
+                const isCurrentDay = day.isSame(currentDay, 'day')
+                const isSelected = day.isSame(currentValue, 'day')
+
+                return {
+                  style:
+                    isCurrentDay && !isSelected
+                      ? {
+                          border: '1px solid var(--mantine-color-carbon-8)',
+                          color: 'var(--mantine-color-carbon-8)',
+                          opacity: 1
+                        }
+                      : undefined
+                }
+              }}
               value={currentValue.toDate()}
               onChange={calendarChange}
               withCellSpacing={false}
               size="sm"
+              styles={(theme) => ({
+                day: {
+                  '&[data-disabled]': {
+                    color: `${theme.colors.carbon[4]} !important`,
+                    opacity: 1
+                  },
+                  '&[data-outside]': {
+                    color: theme.colors.carbon[6],
+                    opacity: 1
+                  },
+                  '&[data-today]:not([data-selected])': {
+                    border: 0
+                  },
+                  '&[data-selected]': {
+                    backgroundColor: theme.colors.carbon[8],
+                    color: theme.white
+                  }
+                }
+              })}
             />
 
             <Divider orientation="vertical" mt={-12} mb={-16} />
@@ -212,7 +259,7 @@ export const DateTimePicker = ({
                   currentValue={currentValue}
                   currentValueChangedBy={currentValueChangedBy}
                   onChange={timeScrollPickerChange}
-                  start={startDate}
+                  start={minimumDate.toDate()}
                   end={endDate}
                 />
               </Box>

@@ -24,6 +24,12 @@ export interface DateTimePickerProps extends Omit<TextInputProps, 'value' | 'onC
   utcOffset?: number
   defaultValue?: Date
   value?: Date
+  /**
+   * The current date and time used to highlight today and disable past values.
+   * Pass the organization time when the picker is displayed in an organization timezone.
+   * @default new Date()
+   */
+  today?: Date
   startDate?: Date
   endDate?: Date
   onChange?: (val: Date) => void
