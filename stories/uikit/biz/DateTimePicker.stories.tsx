@@ -24,13 +24,13 @@ export function Demo() {
   const utcOffset = '-01:00'
   const {
     value: displayValue,
+    today,
     startDate,
     endDate,
     onChange,
     formatter
   } = useDateTimePicker({
-    startDate: new Date(Date.now() - 1000 * 60 * 60 * 24 * 3),
-    endDate: new Date(),
+    endDate: new Date(Date.now() + 1000 * 60 * 60 * 24 * 365),
     value,
     utcOffset,
     onChange: setValue,
@@ -44,6 +44,7 @@ export function Demo() {
       <DateTimePicker
         value={displayValue}
         onChange={onChange}
+        today={today}
         startDate={startDate}
         endDate={endDate}
         formatter={formatter}
@@ -63,6 +64,36 @@ export function Demo() {
 
 export function Uncontrolled() {
   return <DateTimePicker defaultValue={new Date()} onChange={console.log} />
+}
+
+export function MonthEnd() {
+  const today = new Date(2026, 7, 31, 8, 0, 0)
+  const [value, setValue] = useState(new Date(2026, 8, 12, 8, 0, 0))
+
+  return (
+    <DateTimePicker
+      today={today}
+      startDate={today}
+      endDate={new Date(2027, 7, 31, 23, 59, 59)}
+      value={value}
+      onChange={setValue}
+    />
+  )
+}
+
+export function DisabledAndOutsideDates() {
+  const [today] = useState(() => new Date())
+  const [value, setValue] = useState(() => dayjs().add(2, 'day').toDate())
+
+  return (
+    <DateTimePicker
+      today={today}
+      startDate={today}
+      endDate={dayjs(today).add(1, 'year').toDate()}
+      value={value}
+      onChange={setValue}
+    />
+  )
 }
 
 export default meta

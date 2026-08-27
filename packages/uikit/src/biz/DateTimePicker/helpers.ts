@@ -6,7 +6,7 @@ import { dayjs, Dayjs } from '../../utils/dayjs.js'
 import { DateTimePickerProps } from './types.js'
 
 export interface UseDateTimePickerProps
-  extends Pick<DateTimePickerProps, 'value' | 'onChange' | 'startDate' | 'endDate' | 'format' | 'formatter'> {
+  extends Pick<DateTimePickerProps, 'value' | 'onChange' | 'today' | 'startDate' | 'endDate' | 'format' | 'formatter'> {
   /**
    * the UTC offset in minutes.
    * User selected time will be treated as time in that timezone
@@ -32,7 +32,6 @@ export interface UseDateTimePickerProps
  *   const dateTimePickerProps = useDateTimePicker({
  *     value,
  *     onChange: setValue,
- *     startDate: dayjs().subtract(1, 'day').toDate(),
  *     endDate: dayjs().add(1, 'day').toDate(),
  *     utcOffset
  *   })
@@ -45,12 +44,16 @@ export interface UseDateTimePickerProps
 export const useDateTimePicker = ({
   value,
   onChange,
+  today = new Date(),
   startDate = dayjs().subtract(10, 'year').toDate(),
   endDate = dayjs().add(10, 'year').toDate(),
   utcOffset = dayjs().utcOffset(),
   format,
   formatter
-}: UseDateTimePickerProps): Pick<DateTimePickerProps, 'value' | 'onChange' | 'startDate' | 'endDate' | 'formatter'> => {
+}: UseDateTimePickerProps): Pick<
+  DateTimePickerProps,
+  'value' | 'onChange' | 'today' | 'startDate' | 'endDate' | 'formatter'
+> => {
   // Convert time with specified utcOffset to local timezone for display
   const convertToLocal = useMemoizedFn((date: Date): Date => {
     // Treat time as specified utcOffset time, then shift to local timezone
@@ -79,6 +82,10 @@ export const useDateTimePicker = ({
     return convertToLocal(startDate)
   }, [startDate, convertToLocal])
 
+  const displayToday = useMemo(() => {
+    return convertToLocal(today)
+  }, [today, convertToLocal])
+
   const displayEndDate = useMemo(() => {
     return convertToLocal(endDate)
   }, [endDate, convertToLocal])
@@ -92,6 +99,7 @@ export const useDateTimePicker = ({
   return {
     value: displayValue,
     onChange: handleChange,
+    today: displayToday,
     startDate: displayStartDate,
     endDate: displayEndDate,
     formatter: (val) => {
