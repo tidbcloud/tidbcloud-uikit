@@ -47,7 +47,7 @@ export interface UseDateTimePickerProps
 export const useDateTimePicker = ({
   value,
   onChange,
-  today = new Date(),
+  today,
   highlightToday = false,
   startDate = dayjs().subtract(10, 'year').toDate(),
   endDate = dayjs().add(10, 'year').toDate(),
@@ -87,8 +87,11 @@ export const useDateTimePicker = ({
   }, [startDate, convertToLocal])
 
   const displayToday = useMemo(() => {
-    return convertToLocal(today)
-  }, [today, convertToLocal])
+    // Default "today" to the current day in the organization timezone, so callers
+    // only need to opt in via `highlightToday` without reasoning about timezones.
+    const orgToday = today ?? dayjs().utcOffset(utcOffset).startOf('day').toDate()
+    return convertToLocal(orgToday)
+  }, [today, utcOffset, convertToLocal])
 
   const displayEndDate = useMemo(() => {
     return convertToLocal(endDate)

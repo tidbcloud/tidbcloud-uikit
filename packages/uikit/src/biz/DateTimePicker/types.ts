@@ -25,10 +25,12 @@ export interface DateTimePickerProps extends Omit<TextInputProps, 'value' | 'onC
   defaultValue?: Date
   value?: Date
   /**
-   * The current date used to highlight "today" in the calendar.
-   * Pass the organization time when the picker is displayed in an organization timezone.
+   * The reference date used to highlight "today" in the calendar.
    * It only drives the current-day highlight; it does NOT change the selectable range.
-   * @default new Date()
+   * When using `useDateTimePicker`, leave this undefined to default to "today" in the
+   * organization timezone (derived from `utcOffset`). Pass a value only to override
+   * the reference day (e.g. tests or a custom anchor date).
+   * @default organization timezone's today (or `new Date()` when used without the hook)
    */
   today?: Date
   /**
