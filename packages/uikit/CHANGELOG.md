@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.8.3
+
+### Patch Changes
+
+- fix(uikit): unify DateTimePicker disabled/out-of-month colors ([#652](https://github.com/tidbcloud/tidbcloud-uikit/pull/652))
+
 ## 2.8.2
 
 ### Patch Changes
