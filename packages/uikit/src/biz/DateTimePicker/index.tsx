@@ -176,12 +176,10 @@ export const DateTimePicker = ({
               styles={(theme) => ({
                 day: {
                   '&[data-disabled]': {
-                    color: `${theme.colors.carbon[5]} !important`,
-                    opacity: 1
+                    color: `${theme.colors.carbon[5]} !important`
                   },
                   '&[data-outside]': {
-                    color: theme.colors.carbon[7],
-                    opacity: 1
+                    color: `${theme.colors.carbon[7]} !important`
                   },
                   '&[data-today]:not([data-selected])': {
                     border: 0
