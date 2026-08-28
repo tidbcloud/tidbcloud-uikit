@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.8.1
+
+### Patch Changes
+
+- fix(uikit): improve DateTimePicker dark mode contrast ([#648](https://github.com/tidbcloud/tidbcloud-uikit/pull/648))
+
 ## 2.8.0
 
 ### Minor Changes
