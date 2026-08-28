@@ -25,17 +25,18 @@ export interface DateTimePickerProps extends Omit<TextInputProps, 'value' | 'onC
   defaultValue?: Date
   value?: Date
   /**
-   * The current date and time used by `futureOnly` mode.
+   * The current date used to highlight "today" in the calendar.
    * Pass the organization time when the picker is displayed in an organization timezone.
+   * It only drives the current-day highlight; it does NOT change the selectable range.
    * @default new Date()
    */
   today?: Date
   /**
-   * Enables future-date selection behavior without changing existing DateTimePicker usages.
-   * Past values are disabled and the calendar opens from today (or next month on month-end).
+   * When true, "today" is highlighted with a dark border in the calendar (unless it is
+   * the currently selected date). Off by default so existing usages are unaffected.
    * @default false
    */
-  futureOnly?: boolean
+  highlightToday?: boolean
   startDate?: Date
   endDate?: Date
   onChange?: (val: Date) => void

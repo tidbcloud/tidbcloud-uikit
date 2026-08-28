@@ -8,7 +8,7 @@ import { DateTimePickerProps } from './types.js'
 export interface UseDateTimePickerProps
   extends Pick<
     DateTimePickerProps,
-    'value' | 'onChange' | 'today' | 'futureOnly' | 'startDate' | 'endDate' | 'format' | 'formatter'
+    'value' | 'onChange' | 'today' | 'highlightToday' | 'startDate' | 'endDate' | 'format' | 'formatter'
   > {
   /**
    * the UTC offset in minutes.
@@ -48,7 +48,7 @@ export const useDateTimePicker = ({
   value,
   onChange,
   today = new Date(),
-  futureOnly = false,
+  highlightToday = false,
   startDate = dayjs().subtract(10, 'year').toDate(),
   endDate = dayjs().add(10, 'year').toDate(),
   utcOffset = dayjs().utcOffset(),
@@ -56,7 +56,7 @@ export const useDateTimePicker = ({
   formatter
 }: UseDateTimePickerProps): Pick<
   DateTimePickerProps,
-  'value' | 'onChange' | 'today' | 'futureOnly' | 'startDate' | 'endDate' | 'formatter'
+  'value' | 'onChange' | 'today' | 'highlightToday' | 'startDate' | 'endDate' | 'formatter'
 > => {
   // Convert time with specified utcOffset to local timezone for display
   const convertToLocal = useMemoizedFn((date: Date): Date => {
@@ -104,7 +104,7 @@ export const useDateTimePicker = ({
     value: displayValue,
     onChange: handleChange,
     today: displayToday,
-    futureOnly,
+    highlightToday,
     startDate: displayStartDate,
     endDate: displayEndDate,
     formatter: (val) => {

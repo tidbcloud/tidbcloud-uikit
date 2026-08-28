@@ -28,9 +28,6 @@ export type { DateTimePickerProps } from './types.js'
 
 export { useDateTimePicker } from './helpers.js'
 
-const getInitialCalendarDate = (currentDay: Dayjs) =>
-  currentDay.date() === currentDay.daysInMonth() ? currentDay.add(1, 'month') : currentDay
-
 export const DateTimePicker = ({
   placeholder = 'Select time',
   format = DEFAULT_TIME_FORMAT,
@@ -38,7 +35,7 @@ export const DateTimePicker = ({
   defaultValue,
   value,
   today = new Date(),
-  futureOnly = false,
+  highlightToday = false,
   startDate = dayjs().subtract(10, 'year').toDate(),
   endDate = dayjs().add(10, 'year').toDate(),
   onChange,
@@ -51,9 +48,9 @@ export const DateTimePicker = ({
 }: DateTimePickerProps) => {
   const [opened, { close, open }] = useDisclosure(false)
   const currentDay = dayjs(today).startOf('day')
-  const minimumDate = futureOnly ? dayjs.max(dayjs(startDate), dayjs(today)) : dayjs(startDate)
-  const initialCalendarDate = getInitialCalendarDate(futureOnly ? minimumDate.startOf('day') : currentDay)
-  const [calendarDate, setCalendarDate] = useState(initialCalendarDate.toDate())
+  // The selectable range is always driven by `startDate` (identical to the
+  // pre-feature behavior). `today` is used only for the current-day highlight.
+  const minimumDate = dayjs(startDate)
   const [currentValue, setCurrentValue] = useUncontrolled({
     value: value ? dayjs(value) : undefined,
     defaultValue: defaultValue ? dayjs(defaultValue) : dayjs(),
@@ -99,9 +96,6 @@ export const DateTimePicker = ({
     let next = currentValue
     next = next.year(v.getFullYear()).month(v.getMonth()).date(v.getDate())
 
-    if (futureOnly) {
-      setCalendarDate(v)
-    }
     updateCurrentValue(next, 'calendar')
   })
 
@@ -131,9 +125,6 @@ export const DateTimePicker = ({
       closeOnClickOutside
       onChange={(opened) => {
         if (opened) {
-          if (futureOnly) {
-            setCalendarDate(getInitialCalendarDate(currentDay).toDate())
-          }
           open()
         } else {
           close()
@@ -156,12 +147,10 @@ export const DateTimePicker = ({
         <Stack>
           <Group align="flex-start">
             <DatePicker
-              date={futureOnly ? calendarDate : undefined}
-              onDateChange={futureOnly ? setCalendarDate : undefined}
-              minDate={futureOnly ? minimumDate.startOf('day').toDate() : startDate}
+              minDate={startDate}
               maxDate={endDate}
               getDayProps={
-                futureOnly
+                highlightToday
                   ? (date) => {
                       const day = dayjs(date)
                       const isCurrentDay = day.isSame(currentDay, 'day')
@@ -184,35 +173,31 @@ export const DateTimePicker = ({
               onChange={calendarChange}
               withCellSpacing={false}
               size="sm"
-              styles={
-                futureOnly
-                  ? (theme) => ({
-                      day: {
-                        '&[data-disabled]': {
-                          color: `${theme.colors.carbon[4]} !important`,
-                          opacity: 1,
-                          '[data-mantine-color-scheme="dark"] &': {
-                            color: `${theme.colors.carbon[5]} !important`
-                          }
-                        },
-                        '&[data-outside]': {
-                          color: theme.colors.carbon[6],
-                          opacity: 1,
-                          '[data-mantine-color-scheme="dark"] &': {
-                            color: theme.colors.carbon[7]
-                          }
-                        },
-                        '&[data-today]:not([data-selected])': {
-                          border: 0
-                        },
-                        '&[data-selected]': {
-                          backgroundColor: theme.colors.carbon[8],
-                          color: theme.white
-                        }
-                      }
-                    })
-                  : undefined
-              }
+              styles={(theme) => ({
+                day: {
+                  '&[data-disabled]': {
+                    color: `${theme.colors.carbon[4]} !important`,
+                    opacity: 1,
+                    '[data-mantine-color-scheme="dark"] &': {
+                      color: `${theme.colors.carbon[5]} !important`
+                    }
+                  },
+                  '&[data-outside]': {
+                    color: theme.colors.carbon[6],
+                    opacity: 1,
+                    '[data-mantine-color-scheme="dark"] &': {
+                      color: theme.colors.carbon[7]
+                    }
+                  },
+                  '&[data-today]:not([data-selected])': {
+                    border: 0
+                  },
+                  '&[data-selected]': {
+                    backgroundColor: theme.colors.carbon[8],
+                    color: theme.white
+                  }
+                }
+              })}
             />
 
             <Divider orientation="vertical" mt={-12} mb={-16} />
