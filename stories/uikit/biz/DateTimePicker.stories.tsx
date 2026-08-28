@@ -42,7 +42,7 @@ export function Demo() {
   return (
     <Stack>
       <DateTimePicker
-        futureOnly
+        highlightToday
         value={displayValue}
         onChange={onChange}
         today={today}
@@ -86,10 +86,27 @@ export function MonthEnd() {
 
   return (
     <DateTimePicker
-      futureOnly
+      highlightToday
       today={today}
       startDate={today}
       endDate={new Date(2027, 7, 31, 23, 59, 59)}
+      value={value}
+      onChange={setValue}
+    />
+  )
+}
+
+export function FutureStartDate() {
+  const today = new Date(2026, 7, 12, 8, 0, 0)
+  const startDate = new Date(2026, 9, 15, 8, 0, 0)
+  const [value, setValue] = useState(startDate)
+
+  return (
+    <DateTimePicker
+      highlightToday
+      today={today}
+      startDate={startDate}
+      endDate={new Date(2027, 9, 15, 23, 59, 59)}
       value={value}
       onChange={setValue}
     />
@@ -102,7 +119,7 @@ export function DisabledAndOutsideDates() {
 
   return (
     <DateTimePicker
-      futureOnly
+      highlightToday
       today={today}
       startDate={today}
       endDate={dayjs(today).add(1, 'year').toDate()}

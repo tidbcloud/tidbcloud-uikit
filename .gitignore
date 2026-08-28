@@ -1,6 +1,7 @@
 .idea/
 .next/
 node_modules/
+.pnpm-store/
 dist/
 build/
 storybook-static/
