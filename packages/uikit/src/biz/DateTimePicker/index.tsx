@@ -52,7 +52,7 @@ export const DateTimePicker = ({
   const [opened, { close, open }] = useDisclosure(false)
   const currentDay = dayjs(today).startOf('day')
   const minimumDate = futureOnly ? dayjs.max(dayjs(startDate), dayjs(today)) : dayjs(startDate)
-  const initialCalendarDate = getInitialCalendarDate(currentDay)
+  const initialCalendarDate = getInitialCalendarDate(futureOnly ? minimumDate.startOf('day') : currentDay)
   const [calendarDate, setCalendarDate] = useState(initialCalendarDate.toDate())
   const [currentValue, setCurrentValue] = useUncontrolled({
     value: value ? dayjs(value) : undefined,
