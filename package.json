@@ -48,7 +48,7 @@
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "storybook": "^7.6.10",
+    "storybook": "^8.0.0",
     "storybook-dark-mode": "^3.0.3",
     "tsup": "^8.0.1",
     "tsx": "^3.12.7",
