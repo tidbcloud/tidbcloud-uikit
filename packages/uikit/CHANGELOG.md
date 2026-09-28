@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.8.4
+
+### Patch Changes
+
+- feat(icons): add file system icon ([#655](https://github.com/tidbcloud/tidbcloud-uikit/pull/655))
+
 ## 2.8.3
 
 ### Patch Changes
