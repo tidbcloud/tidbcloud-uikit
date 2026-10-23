@@ -46,8 +46,17 @@ export const FormErrorMessage: React.FC<FormErrorMessageProps> = ({
       }}
       {...rest}
     >
-      {/* trick for displaying error message with html tags like <a></a> */}
-      <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(message) }} />
+      <div
+        dangerouslySetInnerHTML={{
+          __html: DOMPurify.sanitize(message, {
+            ALLOWED_TAGS: ['a', 'b', 'br', 'code', 'em', 'i', 'li', 'ol', 'p', 'span', 'strong', 'ul'],
+            ALLOWED_ATTR: ['href', 'title'],
+            ALLOW_ARIA_ATTR: false,
+            ALLOW_DATA_ATTR: false,
+            ALLOWED_URI_REGEXP: /^(?:(?:https?|mailto):|[^a-z]|[a-z+.\-]+(?:[^a-z+.\-:]|$))/i
+          })
+        }}
+      />
       <div ref={bottomRef} />
     </Alert>
   )
