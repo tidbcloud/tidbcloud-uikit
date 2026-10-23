@@ -18,94 +18,118 @@ on:
           - snapshot
           - stable
       commit_sha:
-        description: Commit SHA for snapshot publishing (optional)
+        description: Full commit SHA for snapshot publishing (optional)
         required: false
         type: string
   issue_comment:
     types: [created]
 
 permissions:
-  contents: write
-  pull-requests: write
-  issues: write
-  id-token: write
+  contents: read
 
 jobs:
   handle_snapshot_command:
-    if: github.event_name == 'workflow_dispatch' || (github.event_name == 'issue_comment' && github.event.issue.pull_request)
+    if: >-
+      (github.event_name == 'workflow_dispatch' && github.event.inputs.release_mode == 'snapshot' &&
+        (github.ref == 'refs/heads/v2' || github.ref == 'refs/heads/master')) ||
+      (github.event_name == 'issue_comment' && github.event.issue.pull_request)
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: read
+      issues: write
     outputs:
-      command_found: ${{ steps.check_command.outputs.command_found || 'false' }}
-      status_comment_id: ${{ steps.comment_deployment.outputs.comment_id || '' }}
-      pr_sha: ${{ steps.pr_details.outputs.sha || '' }}
+      authorized: ${{ steps.authorize.outputs.authorized || 'false' }}
+      status_comment_id: ${{ steps.authorize.outputs.comment_id || '' }}
+      sha: ${{ steps.authorize.outputs.sha }}
 
     steps:
-      - name: Check for snapshot-release command
-        if: github.event_name == 'issue_comment'
-        id: check_command
-        run: |
-          comment="${{ github.event.comment.body }}"
-          comment=$(echo "$comment" | xargs)
-          if [[ "$comment" =~ ^/snapshot-release ]]; then
-            echo "command_found=true" >> $GITHUB_OUTPUT
-          else
-            echo "command_found=false" >> $GITHUB_OUTPUT
-          fi
-
-      - name: React to comment
-        if: github.event_name == 'issue_comment' && steps.check_command.outputs.command_found == 'true'
-        uses: actions/github-script@v7
+      - name: Authorize snapshot release
+        id: authorize
+        uses: actions/github-script@f28e40c7f34bde8b3046d885e986cb6290c5673b # v7
+        env:
+          TRIGGERING_ACTOR: ${{ github.triggering_actor }}
         with:
           script: |
-            await github.rest.reactions.createForIssueComment({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              comment_id: ${{ github.event.comment.id }},
-              content: 'rocket'
-            });
+            const isComment = context.eventName === 'issue_comment';
+            if (isComment && context.payload.comment.body.trim() !== '/snapshot-release') return;
 
-      - name: Get PR details
-        if: github.event_name == 'issue_comment' && steps.check_command.outputs.command_found == 'true'
-        id: pr_details
-        uses: actions/github-script@v7
-        with:
-          script: |
-            const { data: pr } = await github.rest.pulls.get({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              pull_number: ${{ github.event.issue.number }}
-            });
-            core.setOutput('sha', pr.head.sha);
+            const actors = new Set([
+              context.actor,
+              process.env.TRIGGERING_ACTOR,
+              ...(isComment ? [context.payload.comment.user.login] : [])
+            ]);
+            for (const username of actors) {
+              const { data } = await github.rest.repos.getCollaboratorPermissionLevel({
+                ...context.repo,
+                username
+              });
+              if (!['admin', 'maintain', 'write'].includes(data.permission)) {
+                core.setFailed('Snapshot releases require repository write permission.');
+                return;
+              }
+            }
 
-      - name: Comment deployment started
-        if: github.event_name == 'issue_comment' && steps.check_command.outputs.command_found == 'true'
-        id: comment_deployment
-        uses: actions/github-script@v7
-        with:
-          script: |
-            const { data: comment } = await github.rest.issues.createComment({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: ${{ github.event.issue.number }},
-              body: '🚀 Starting snapshot release... This may take a few minutes.'
-            });
-            core.setOutput('comment_id', comment.id);
+            let sha = context.sha;
+            if (isComment) {
+              const { data: pr } = await github.rest.pulls.get({
+                ...context.repo,
+                pull_number: context.issue.number
+              });
+              if (pr.state !== 'open' || pr.head.repo?.full_name !== context.payload.repository.full_name ||
+                  !['v2', 'master'].includes(pr.base.ref)) {
+                core.setFailed('Snapshot releases require an open, same-repository PR targeting v2 or master.');
+                return;
+              }
+              sha = pr.head.sha;
+            } else {
+              sha = context.payload.inputs.commit_sha?.trim() || context.sha;
+              if (!/^[a-f0-9]{40}$/i.test(sha)) {
+                core.setFailed('Snapshot commit must be a full 40-character SHA.');
+                return;
+              }
+              const { data: commit } = await github.rest.repos.getCommit({ ...context.repo, ref: sha });
+              sha = commit.sha;
+            }
+
+            if (isComment) {
+              await github.rest.reactions.createForIssueComment({
+                ...context.repo,
+                comment_id: context.payload.comment.id,
+                content: 'rocket'
+              });
+              const { data: comment } = await github.rest.issues.createComment({
+                ...context.repo,
+                issue_number: context.issue.number,
+                body: `Starting snapshot release for commit \`${sha}\`.`
+              });
+              core.setOutput('comment_id', comment.id);
+            }
+            core.setOutput('sha', sha);
+            core.setOutput('authorized', 'true');
 
   release:
-    if: github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && github.event.inputs.release_mode == 'stable')
+    permissions:
+      contents: write
+      pull-requests: write
+      id-token: write
+    if: >-
+      github.event_name == 'push' ||
+      (github.event_name == 'workflow_dispatch' && github.event.inputs.release_mode == 'stable' &&
+        (github.ref == 'refs/heads/v2' || github.ref == 'refs/heads/master'))
     runs-on: ubuntu-latest
     # Must match npm Trusted Publisher environment configuration.
     environment: PUBLISH_NPM_REGISTRY_TOKEN
 
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
 
       - name: Setup pnpm
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@b906affcce14559ad1aafd4ab0e942779e9f58b1 # v4
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           # npm Trusted Publishing requires modern Node/npm versions.
           node-version: '24'
@@ -122,7 +146,7 @@ jobs:
         run: pnpm -r build
 
       - name: Create Release Pull Request or Publish to npm
-        uses: changesets/action@v1
+        uses: changesets/action@a45c4d594aa4e2c509dc14a9f2b3b67ba3780d0d # v1
         with:
           commit: 'release: bump versions'
           title: 'release: bump versions'
@@ -131,37 +155,31 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_CONFIG_PROVENANCE: true
 
-  snapshot_release:
+  snapshot_build:
     needs: handle_snapshot_command
-    if: |
-      (github.event_name == 'issue_comment' && needs.handle_snapshot_command.outputs.command_found == 'true') ||
-      (github.event_name == 'workflow_dispatch' && github.event.inputs.release_mode == 'snapshot')
+    if: needs.handle_snapshot_command.outputs.authorized == 'true'
     runs-on: ubuntu-latest
-    # Must match npm Trusted Publisher environment configuration.
-    environment: PUBLISH_NPM_REGISTRY_TOKEN
-    concurrency: ${{ github.workflow }}-${{ github.ref }}-snapshot
-    outputs:
-      version: ${{ steps.get_version.outputs.version }}
+    permissions:
+      contents: read
 
     steps:
-      - name: Checkout Repo
-        uses: actions/checkout@v4
+      - name: Checkout authorized commit
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
+          ref: ${{ needs.handle_snapshot_command.outputs.sha }}
           fetch-depth: 0
-          ref: ${{ github.event_name == 'issue_comment' && needs.handle_snapshot_command.outputs.pr_sha || github.event.inputs.commit_sha || github.sha }}
+          persist-credentials: false
 
       - name: Setup pnpm
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@b906affcce14559ad1aafd4ab0e942779e9f58b1 # v4
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: '24'
-          cache: 'pnpm'
-          registry-url: 'https://registry.npmjs.org'
 
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --frozen-lockfile
 
       - name: Type Check UIKit
         run: pnpm --filter @tidbcloud/uikit type-check
@@ -169,69 +187,108 @@ jobs:
       - name: Build Packages
         run: pnpm build
 
-      - name: Configure Git User
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-
       - name: Create Snapshot Changeset File
         run: |
-          echo "---" > .changeset/snapshot-${{ github.run_id }}.md
-          echo "'@tidbcloud/uikit': patch" >> .changeset/snapshot-${{ github.run_id }}.md
-          echo "---" >> .changeset/snapshot-${{ github.run_id }}.md
-          echo "" >> .changeset/snapshot-${{ github.run_id }}.md
-          echo "chore: snapshot release" >> .changeset/snapshot-${{ github.run_id }}.md
+          cat > .changeset/snapshot.md <<'CHANGESET'
+          ---
+          '@tidbcloud/uikit': patch
+          ---
+
+          chore: snapshot release
+          CHANGESET
 
       - name: Bump Version for Snapshot
         run: pnpm exec changeset version --snapshot
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Publish Snapshot to npm under experimental tag
-        run: pnpm exec changeset publish --tag experimental
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_CONFIG_PROVENANCE: true
+      - name: Pack snapshot
+        run: |
+          mkdir -p "$RUNNER_TEMP/snapshot"
+          npm pack ./packages/uikit --ignore-scripts --pack-destination "$RUNNER_TEMP/snapshot"
+          mv "$RUNNER_TEMP"/snapshot/*.tgz "$RUNNER_TEMP/snapshot/snapshot.tgz"
 
-      - name: Get Published Version
-        id: get_version
-        run: echo "version=$(node -p "require('./packages/uikit/package.json').version")" >> $GITHUB_OUTPUT
+      - name: Upload snapshot package
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: snapshot-package
+          path: ${{ runner.temp }}/snapshot/snapshot.tgz
+          if-no-files-found: error
+          retention-days: 1
+
+  snapshot_release:
+    needs: [handle_snapshot_command, snapshot_build]
+    if: needs.handle_snapshot_command.outputs.authorized == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    # Must match npm Trusted Publisher environment configuration.
+    environment: PUBLISH_NPM_REGISTRY_TOKEN
+    concurrency: ${{ github.workflow }}-${{ github.ref }}-snapshot
+    outputs:
+      version: ${{ steps.validate.outputs.version }}
+
+    steps:
+      # This job never checks out or executes PR code, including lifecycle scripts.
+      - name: Download snapshot package
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        with:
+          name: snapshot-package
+          path: ${{ runner.temp }}/snapshot-artifact
+
+      - name: Setup Node.js
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: '24'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Validate snapshot metadata
+        id: validate
+        run: |
+          node <<'NODE'
+          const { execFileSync } = require('node:child_process');
+          const { appendFileSync } = require('node:fs');
+          const archive = `${process.env.RUNNER_TEMP}/snapshot-artifact/snapshot.tgz`;
+          const pkg = JSON.parse(execFileSync('tar', ['-xOf', archive, 'package/package.json'], {
+            encoding: 'utf8',
+            maxBuffer: 1024 * 1024
+          }));
+          if (pkg.name !== '@tidbcloud/uikit' || !/^0\.0\.0-\d{14}$/.test(pkg.version)) {
+            throw new Error('Expected a UIKit timestamp snapshot.');
+          }
+          if (Object.entries(pkg.publishConfig ?? {}).some(([key, value]) => key !== 'access' || value !== 'public')) {
+            throw new Error('Unexpected publish configuration.');
+          }
+          appendFileSync(process.env.GITHUB_OUTPUT, `version=${pkg.version}\n`);
+          NODE
+
+      - name: Publish snapshot to npm under experimental tag
+        working-directory: ${{ runner.temp }}
+        run: npm publish ./snapshot-artifact/snapshot.tgz --tag experimental --access public --ignore-scripts --provenance --registry https://registry.npmjs.org
 
   notify_snapshot_result:
-    needs: [handle_snapshot_command, snapshot_release]
-    if: github.event_name == 'issue_comment' && always() && needs.handle_snapshot_command.outputs.command_found == 'true'
+    needs: [handle_snapshot_command, snapshot_build, snapshot_release]
+    if: >-
+      always() && github.event_name == 'issue_comment' &&
+      needs.handle_snapshot_command.outputs.authorized == 'true'
     runs-on: ubuntu-latest
+    permissions:
+      issues: write
     steps:
-      - name: Update comment with success
-        if: needs.snapshot_release.result == 'success'
-        uses: actions/github-script@v7
+      - name: Update status comment
+        uses: actions/github-script@f28e40c7f34bde8b3046d885e986cb6290c5673b # v7
+        env:
+          COMMENT_ID: ${{ needs.handle_snapshot_command.outputs.status_comment_id }}
+          RELEASE_RESULT: ${{ needs.snapshot_release.result }}
+          VERSION: ${{ needs.snapshot_release.outputs.version }}
         with:
           script: |
+            const version = process.env.VERSION;
+            const runUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
+            const body = process.env.RELEASE_RESULT === 'success'
+              ? `Snapshot published: \`@tidbcloud/uikit@${version}\` (experimental).\n\nInstall: \`pnpm add @tidbcloud/uikit@${version}\``
+              : `Snapshot release did not complete. Check the [workflow logs](${runUrl}) for details.`;
             await github.rest.issues.updateComment({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              comment_id: ${{ needs.handle_snapshot_command.outputs.status_comment_id }},
-              body: `✅ Snapshot release published successfully!
-
-              📦 **Version**: \`${{ needs.snapshot_release.outputs.version }}\`
-              🏷️ **Tag**: \`experimental\`
-              🔗 **npm**: https://www.npmjs.com/package/@tidbcloud/uikit/v/${{ needs.snapshot_release.outputs.version }}?activeTab=readme
-              📥 **Install**:
-              \`\`\`
-              pnpm install @tidbcloud/uikit@${{ needs.snapshot_release.outputs.version }}
-              \`\`\`
-
-              You can test this version in your project now.`
-            });
-
-      - name: Update comment with failure
-        if: needs.snapshot_release.result == 'failure'
-        uses: actions/github-script@v7
-        with:
-          script: |
-            await github.rest.issues.updateComment({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              comment_id: ${{ needs.handle_snapshot_command.outputs.status_comment_id }},
-              body: '❌ Snapshot release failed. Please check the [workflow logs](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}) for details.'
+              ...context.repo,
+              comment_id: Number(process.env.COMMENT_ID),
+              body
             });
