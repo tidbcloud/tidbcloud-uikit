@@ -145,11 +145,12 @@ Snapshot releases are a way to release your changes for testing without impactin
 
 The easiest way to create a snapshot release is through GitHub Actions:
 
-1.  Go to the **Actions** tab in the `tidbcloud/uikit` repository.
-2.  Find and select the **Manual Snapshot Release** workflow in the left sidebar.
-3.  Click the **Run workflow** dropdown button on the right.
-4.  Select the branch you want to release from (usually your feature branch).
-5.  Click the green **Run workflow** button.
+Snapshot publishing requires repository **write**, **maintain**, or **admin** permission, including for workflow reruns.
+
+- Comment exactly `/snapshot-release` on an open PR from this repository targeting `v2` or `master`. Fork PRs are not eligible.
+- Or open **Actions → Publish npm Package → Run workflow**, select `v2` or `master`, and choose `snapshot` as the release mode. To publish a feature commit, enter its full 40-character SHA in `commit_sha`; otherwise the selected branch's commit is used.
+
+The workflow captures the authorized commit before building. Installation, building, versioning, and packing run in a job without publishing credentials or OIDC permission. A separate job publishes only the package archive, with lifecycle scripts disabled and the package name, snapshot version, and publishing configuration validated.
 
 The CI/CD pipeline will then automatically:
 
