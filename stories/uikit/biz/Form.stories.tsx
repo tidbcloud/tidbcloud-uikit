@@ -322,3 +322,13 @@ export const Primary: Story = {
   },
   parameters: {}
 }
+
+export const ErrorMessages: Story = {
+  render: () => (
+    <div style={{ display: 'grid', gap: 16, maxWidth: 640 }}>
+      <Form.ErrorMessage message="Unable to save your changes. Please try again." />
+      <Form.ErrorMessage message='Unable to connect. <strong>Check your settings</strong><br />Read the <a href="https://docs.pingcap.com/tidbcloud/" title="TiDB Cloud documentation">troubleshooting guide</a> or <a href="mailto:support@example.com">contact support</a>.' />
+      <Form.ErrorMessage message='Blocked content: <img src="x" onerror="alert(1)" /><svg onload="alert(1)"></svg><a href="javascript:alert(1)" onclick="alert(1)">unsafe link</a><span style="position:fixed;inset:0" data-action="run"> and injected styling.</span>' />
+    </div>
+  )
+}
