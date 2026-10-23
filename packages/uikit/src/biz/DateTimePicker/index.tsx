@@ -28,6 +28,11 @@ export type { DateTimePickerProps } from './types.js'
 
 export { useDateTimePicker } from './helpers.js'
 
+const getValidDate = (value?: Date) => {
+  const date = value ? dayjs(value) : undefined
+  return date?.isValid() ? date : undefined
+}
+
 export const DateTimePicker = ({
   placeholder = 'Select time',
   format = DEFAULT_TIME_FORMAT,
@@ -51,9 +56,15 @@ export const DateTimePicker = ({
   // The selectable range is always driven by `startDate` (identical to the
   // pre-feature behavior). `today` is used only for the current-day highlight.
   const minimumDate = dayjs(startDate)
+  const initialValue = getValidDate(defaultValue) ?? dayjs()
+  const fallbackValue = initialValue.isBefore(minimumDate)
+    ? minimumDate
+    : initialValue.isAfter(endDate)
+      ? dayjs(endDate)
+      : initialValue
   const [currentValue, setCurrentValue] = useUncontrolled({
-    value: value ? dayjs(value) : undefined,
-    defaultValue: defaultValue ? dayjs(defaultValue) : dayjs(),
+    value: getValidDate(value),
+    defaultValue: fallbackValue,
     onChange: (v) => {
       onChange?.(v.toDate())
     }

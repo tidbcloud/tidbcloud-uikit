@@ -22,7 +22,14 @@ export interface DateTimePickerProps extends Omit<TextInputProps, 'value' | 'onC
    * @deprecated
    */
   utcOffset?: number
+  /**
+   * Initial date for an uncontrolled picker. Missing or invalid dates fall back
+   * to the current time within the selectable range.
+   */
   defaultValue?: Date
+  /**
+   * Controlled date. Invalid dates are treated as missing values.
+   */
   value?: Date
   /**
    * The current date used to highlight "today" in the calendar.

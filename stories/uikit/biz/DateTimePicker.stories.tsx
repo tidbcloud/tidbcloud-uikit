@@ -67,6 +67,34 @@ export function Uncontrolled() {
   return <DateTimePicker defaultValue={new Date()} onChange={console.log} />
 }
 
+export function InvalidValue() {
+  const [value, setValue] = useState(() => new Date(NaN))
+  const [endDate] = useState(() => new Date())
+
+  return (
+    <Stack>
+      <DateTimePicker
+        startDate={dayjs(endDate).subtract(1, 'day').toDate()}
+        endDate={endDate}
+        value={value}
+        onChange={setValue}
+      />
+      <Button onClick={() => setValue(new Date(NaN))}>Reset invalid value</Button>
+    </Stack>
+  )
+}
+
+export function InvalidDefaultValue() {
+  return (
+    <DateTimePicker
+      defaultValue={new Date(NaN)}
+      startDate={dayjs().subtract(1, 'year').toDate()}
+      endDate={dayjs().subtract(1, 'day').toDate()}
+      onChange={console.log}
+    />
+  )
+}
+
 export function LegacyDateRange() {
   const [value, setValue] = useState(() => new Date())
 
