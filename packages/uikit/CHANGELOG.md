@@ -1,5 +1,12 @@
 # @tidbcloud/uikit
 
+## 2.8.6
+
+### Patch Changes
+
+- fix(Form): restrict error message HTML ([#659](https://github.com/tidbcloud/tidbcloud-uikit/pull/659))
+- fix(ci): authorize and isolate snapshot publishing ([#660](https://github.com/tidbcloud/tidbcloud-uikit/pull/660))
+
 ## 2.8.5
 
 ### Patch Changes
