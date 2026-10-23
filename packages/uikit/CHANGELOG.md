@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.8.5
+
+### Patch Changes
+
+- fix(DateTimePicker): recover from invalid date values ([#657](https://github.com/tidbcloud/tidbcloud-uikit/pull/657))
+
 ## 2.8.4
 
 ### Patch Changes
