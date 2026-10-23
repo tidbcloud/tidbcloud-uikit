@@ -1,5 +1,12 @@
 # @tidbcloud/uikit-example-with-nextjs-pages-router
 
+## 0.1.82
+
+### Patch Changes
+
+- Updated dependencies [eb43da4]
+  - @tidbcloud/uikit@2.8.5
+
 ## 0.1.81
 
 ### Patch Changes
