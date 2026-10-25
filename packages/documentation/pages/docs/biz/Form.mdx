@@ -52,6 +52,38 @@ function Demo() {
 }
 ```
 
+## Date and Time Fields
+
+`FormDateTimePicker` binds a date and time picker to a form field. Set the initial value through the form's
+`defaultValues` (or the external `useForm` instance). Field values are ISO strings; `onChange` receives a `Date`.
+`utcOffset` controls the displayed timezone while the stored value remains a UTC ISO string.
+
+```tsx
+import { Form, FormDateTimePicker } from '@tidbcloud/uikit/biz'
+
+function Demo() {
+  return (
+    <Form defaultValues={{ startTime: '2026-10-25T08:15:30.000Z' }} onSubmit={(data) => console.log(data)}>
+      <FormDateTimePicker
+        name="startTime"
+        label="Start time"
+        utcOffset="+08:00"
+        format="YYYY-MM-DD HH:mm:ss Z"
+        rules={{ required: 'Start time is required' }}
+      />
+    </Form>
+  )
+}
+```
+
+The example displays `2026-10-25 16:15:30 +08:00` and submits `2026-10-25T08:15:30.000Z` until changed.
+Pass `startDate` and `endDate` as absolute `Date` values to limit the selectable range. Input props such as
+`label`, `required`, `disabled`, `size`, and `onBlur` are forwarded to the picker. Form validation errors appear
+below the input, and invalid submissions focus it automatically.
+
+Missing or invalid values use the picker's visual fallback without writing a value to the form or firing `onChange`.
+Use `rules.required` to require a selection and `rules.validate` if existing values also need date or range validation.
+
 ## Horizontal Layout
 
 ```tsx
