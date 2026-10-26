@@ -79,20 +79,20 @@ export const useDateTimePicker = ({
   const displayValue = useMemo(() => {
     if (!value) return undefined
     return convertToLocal(value)
-  }, [value, convertToLocal])
+  }, [value, utcOffset, convertToLocal])
 
   // Convert start/end time from specified timezone to local timezone
   const displayStartDate = useMemo(() => {
     return convertToLocal(startDate)
-  }, [startDate, convertToLocal])
+  }, [startDate, utcOffset, convertToLocal])
 
   const displayToday = useMemo(() => {
     return convertToLocal(today)
-  }, [today, convertToLocal])
+  }, [today, utcOffset, convertToLocal])
 
   const displayEndDate = useMemo(() => {
     return convertToLocal(endDate)
-  }, [endDate, convertToLocal])
+  }, [endDate, utcOffset, convertToLocal])
 
   // Handle onChange callback, convert local timezone time to specified timezone
   const handleChange = useMemoizedFn((localTime: Date) => {

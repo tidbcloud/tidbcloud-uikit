@@ -1,5 +1,5 @@
 import { useMemoizedFn } from 'ahooks'
-import { useMemo, useState } from 'react'
+import { forwardRef, ForwardedRef, useMemo, useState } from 'react'
 
 import { useDisclosure, useUncontrolled } from '../../hooks/index.js'
 import { IconClock } from '../../icons/index.js'
@@ -33,24 +33,31 @@ const getValidDate = (value?: Date) => {
   return date?.isValid() ? date : undefined
 }
 
-export const DateTimePicker = ({
-  placeholder = 'Select time',
-  format = DEFAULT_TIME_FORMAT,
-  formatter,
-  defaultValue,
-  value,
-  today = new Date(),
-  highlightToday = false,
-  startDate = dayjs().subtract(10, 'year').toDate(),
-  endDate = dayjs().add(10, 'year').toDate(),
-  onChange,
-  disable = false,
-  withinPortal = true,
-  sx,
-  loading = false,
-  size,
-  footer
-}: DateTimePickerProps) => {
+const DateTimePickerInput = (
+  {
+    placeholder = 'Select time',
+    format = DEFAULT_TIME_FORMAT,
+    formatter,
+    defaultValue,
+    value,
+    today = new Date(),
+    highlightToday = false,
+    startDate = dayjs().subtract(10, 'year').toDate(),
+    endDate = dayjs().add(10, 'year').toDate(),
+    onChange,
+    disable = false,
+    withinPortal = true,
+    sx,
+    loading = false,
+    size,
+    footer,
+    disabled,
+    onClick,
+    utcOffset: _utcOffset,
+    ...rest
+  }: DateTimePickerProps,
+  ref: ForwardedRef<HTMLInputElement>
+) => {
   const [opened, { close, open }] = useDisclosure(false)
   const currentDay = dayjs(today).startOf('day')
   // The selectable range is always driven by `startDate` (identical to the
@@ -144,14 +151,19 @@ export const DateTimePicker = ({
     >
       <Popover.Target>
         <TextInput
+          {...rest}
+          ref={ref}
           readOnly
-          disabled={disable}
+          disabled={disable || disabled}
           placeholder={placeholder}
           value={inputStr}
           rightSection={loading ? <Loader size="xs" /> : <Box component={IconClock} size={18} c="carbon.6" />}
           sx={sx}
           size={size}
-          onClick={open}
+          onClick={(event) => {
+            onClick?.(event)
+            if (!event.defaultPrevented) open()
+          }}
         />
       </Popover.Target>
       <Popover.Dropdown>
@@ -283,6 +295,10 @@ export const DateTimePicker = ({
     </Popover>
   )
 }
+
+export const DateTimePicker = forwardRef(DateTimePickerInput)
+
+DateTimePicker.displayName = 'DateTimePicker'
 
 export interface TimePickerProps
   extends Omit<TimeInputProps, 'value' | 'onChange' | 'defaultValue'>,
