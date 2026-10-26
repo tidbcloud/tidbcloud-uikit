@@ -1,5 +1,11 @@
 # @tidbcloud/uikit
 
+## 2.9.0
+
+### Minor Changes
+
+- feat(Form): add timezone-aware date time picker ([#662](https://github.com/tidbcloud/tidbcloud-uikit/pull/662))
+
 ## 2.8.6
 
 ### Patch Changes
