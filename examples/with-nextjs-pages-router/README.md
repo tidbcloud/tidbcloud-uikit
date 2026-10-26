@@ -2,16 +2,12 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
-First, run the development server:
+Run these commands from the repository root. This example uses the pnpm workspace and its root lockfile:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pnpm install --frozen-lockfile
+pnpm --filter @tidbcloud/uikit build
+pnpm --filter @tidbcloud/uikit-example-with-nextjs-pages-router dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.

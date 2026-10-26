@@ -67,7 +67,8 @@
       "react": "18.3.1",
       "react-dom": "18.3.1",
       "@types/react": "18.3.18",
-      "@types/react-dom": "18.3.5"
+      "@types/react-dom": "18.3.5",
+      "next@15.5.28>postcss": "^8.5.23"
     },
     "peerDependencyRules": {
       "ignoreMissing": [

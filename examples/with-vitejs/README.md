@@ -1,5 +1,15 @@
 # React + TypeScript + Vite
 
+## Getting Started
+
+Run these commands from the repository root. This example uses the pnpm workspace and its root lockfile:
+
+```bash
+pnpm install --frozen-lockfile
+pnpm --filter @tidbcloud/uikit build
+pnpm --filter @tidbcloud/uikit-example-with-vitejs dev
+```
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:
