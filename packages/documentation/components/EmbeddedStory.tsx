@@ -1,4 +1,6 @@
-import { useTheme } from 'nextra-theme-docs'
+'use client'
+
+import { useTheme } from 'next-themes'
 import { useEffect, useMemo, useRef, useState } from 'react'
 
 export function EmbeddedStory({ src, title, initHeight }: { src: string; title: string; initHeight?: number }) {

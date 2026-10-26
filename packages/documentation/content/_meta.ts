@@ -3,7 +3,14 @@ export default {
     type: 'page',
     title: 'Home',
     theme: {
-      layout: 'raw'
+      layout: 'full',
+      navbar: false,
+      footer: false,
+      sidebar: false,
+      toc: false,
+      breadcrumb: false,
+      pagination: false,
+      timestamp: false
     }
   },
   'cloud-ui': {
@@ -36,21 +43,12 @@ export default {
   },
   __rap: {
     type: 'page',
-    title: 'RAP API ↗',
-    href: 'https://doc.rapapi.cn/',
-    newWindow: true
-  },
-  '404': {
-    type: 'page',
-    theme: {
-      timestamp: false,
-      typesetting: 'article'
-    }
+    title: 'RAP API',
+    href: 'https://doc.rapapi.cn/'
   },
   storybook_link: {
     type: 'page',
-    title: 'Storybook ↗',
-    href: 'https://tidbcloud-uikit-story.netlify.app/',
-    newWindow: true
+    title: 'Storybook',
+    href: 'https://tidbcloud-uikit-story.netlify.app/'
   }
 }

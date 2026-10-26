@@ -3,7 +3,6 @@ export default {
   storybook_link: {
     type: 'page',
     title: 'Icons Library↗',
-    href: '/icons',
-    newWindow: true
+    href: '/icons'
   }
 }
