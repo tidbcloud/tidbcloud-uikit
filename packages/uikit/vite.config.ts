@@ -102,6 +102,7 @@ export default defineConfig({
   build: {
     minify: false,
     lib: {
+      cssFileName: 'style',
       entry: [
         resolve(__dirname, 'src/biz/index.ts'),
         resolve(__dirname, 'src/hooks/index.ts'),

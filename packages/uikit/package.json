@@ -107,12 +107,12 @@
     "@types/react-dom": "^18.2.18",
     "@types/react-table": "^7.7.12",
     "@types/react-window": "^1.8.5",
-    "@vitejs/plugin-react": "^4.3.3",
+    "@vitejs/plugin-react": "^4.7.0",
     "cpy-cli": "^5.0.0",
     "ora": "8.1.0",
     "react-hook-form": "^7.51.5",
     "typescript": "^5.4.2",
-    "vite": "^5.4.10",
+    "vite": "^6.4.4",
     "vite-plugin-dts": "^4.3.0"
   },
   "typesVersions": {
