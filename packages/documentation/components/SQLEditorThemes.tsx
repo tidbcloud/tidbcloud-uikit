@@ -1,3 +1,5 @@
+'use client'
+
 import { EmbeddedStory } from '@components/EmbeddedStory'
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@components/ui/tabs'
 

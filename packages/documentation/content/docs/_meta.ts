@@ -26,9 +26,8 @@ export default {
     title: 'Contribution'
   },
   'mantine-link': {
-    title: 'Mantine Docs ↗',
-    href: 'https://mantine.dev/',
-    newWindow: true
+    title: 'Mantine Docs',
+    href: 'https://mantine.dev/'
   },
   '-- SQL Editor': {
     type: 'separator',
@@ -44,8 +43,7 @@ export default {
     title: 'SQL Editor Playground'
   },
   'codemirror-link': {
-    title: 'CodeMirror Docs ↗',
-    href: 'https://codemirror.net/',
-    newWindow: true
+    title: 'CodeMirror Docs',
+    href: 'https://codemirror.net/'
   }
 }

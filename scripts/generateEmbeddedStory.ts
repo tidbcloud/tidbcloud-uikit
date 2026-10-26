@@ -3,7 +3,7 @@ import path from 'node:path'
 
 import { components } from '../.storybook/components.js'
 
-const DOCS_DIR = 'packages/documentation/pages/docs/primitive'
+const DOCS_DIR = 'packages/documentation/content/docs/primitive'
 const MDX_TEMPLATE = `import { EmbeddedStory } from '@components/EmbeddedStory'
 
 <EmbeddedStory

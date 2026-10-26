@@ -10,7 +10,7 @@
 import * as fs from 'node:fs'
 import * as path from 'node:path'
 
-const DOCS_DIR = path.join(__dirname, '../packages/documentation/pages/docs')
+const DOCS_DIR = path.join(__dirname, '../packages/documentation/content/docs')
 const OUTPUT_FILE = path.join(__dirname, '../packages/uikit/llms.txt')
 
 interface DocSection {

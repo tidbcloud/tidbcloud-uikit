@@ -1,3 +1,5 @@
+'use client'
+
 import dynamic from 'next/dynamic'
 
 const IconsPreview = dynamic(() => import('@components/IconsPreview'), { ssr: false })

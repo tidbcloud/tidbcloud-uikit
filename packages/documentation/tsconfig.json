@@ -4,20 +4,32 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "pages/_app.js",
     "components/Dynamics.js",
-    "pages/sql-editor.mdx",
-    "pages/sql-editor-doc.mdx",
+    ".next/types/**/*.ts"
   ],
-  "exclude": ["node_modules"],
+  "exclude": [
+    "node_modules"
+  ],
   "compilerOptions": {
     "moduleResolution": "bundler",
     "incremental": true,
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
-      "@components/*": ["components/*"],
-      "@lib/*": ["lib/*"]
-    }
+      "@mdx-components": [
+        "mdx-components.tsx"
+      ],
+      "@components/*": [
+        "components/*"
+      ],
+      "@lib/*": [
+        "lib/*"
+      ]
+    },
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
   }
 }
