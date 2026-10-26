@@ -1,5 +1,14 @@
 # @tidbcloud/uikit
 
+## 2.9.1
+
+### Patch Changes
+
+- chore(docs): migrate to patched Next.js and Nextra dependencies ([#667](https://github.com/tidbcloud/tidbcloud-uikit/pull/667))
+- fix: update vulnerable UIKit runtime dependencies ([#665](https://github.com/tidbcloud/tidbcloud-uikit/pull/665))
+- chore: patch development and build dependency chains ([#664](https://github.com/tidbcloud/tidbcloud-uikit/pull/664))
+- chore(examples): update vulnerable framework dependencies ([#663](https://github.com/tidbcloud/tidbcloud-uikit/pull/663))
+
 ## 2.9.0
 
 ### Minor Changes
