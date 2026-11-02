@@ -1,24 +1,13 @@
-import { execSync } from 'node:child_process'
+import { execFileSync } from 'node:child_process'
 
 import create from '@changesets/write'
 import prompts from 'prompts'
 
-import packageJson from '../package.json'
-
-function generateChangelogFromTags() {
-  execSync('git fetch --all --tags')
-  const lastTag = execSync('git describe --tags --abbrev=0').toString().trim()
-  const repoUrl = packageJson.repository.url.replace(/\.git$/, '')
-  const changelog = execSync(
-    `git log ${lastTag}..HEAD --pretty=format:"- %s" | sed -E 's|#([0-9]+)|[#\\1](${repoUrl}/pull/\\1)|g'`
-  ).toString()
-
-  return changelog
-}
+import generateChangelogFromTags from './generateChangelogFromTags.js'
 
 async function main() {
   if (process.argv.includes('version')) {
-    execSync('npx changeset version', { stdio: 'inherit' })
+    execFileSync('npx', ['changeset', 'version'], { stdio: 'inherit' })
     return
   }
 
